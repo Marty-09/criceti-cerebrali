@@ -3,65 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ordina anche tu il tuo criceto</title>
+    <title>Ordina il tuo criceto cerebrale</title>
 </head>
-
 <body>
 
-    <header>
-        <h1>Ordina anche tu il tuo criceto per far roteare quella ruota vuota nel tuo cervello una volta tanto</h1>
-        <p>Il primo e unico negozio di criceti cerebrali.</p>
-    </header>
+    <h1>Ordina anche tu il tuo criceto per far roteare quella ruota vuota nel tuo cervello una volta tanto</h1>
+    <p>Il primo e unico negozio di criceti cerebrali.</p>
 
-    <main>
+    <h2>I nostri criceti</h2>
 
-        <section>
-            <h2>Hai la ruota del cervello ferma?</h2>
-            <p>
-                Non preoccuparti. I nostri criceti altamente qualificati
-                sono pronti a correre al posto tuo.
-            </p>
-        </section>
+    <div>
+        <h3>Criceto Base</h3>
+        <p>Fa girare la ruota. A volte.</p>
+        <p>Prezzo: gratis</p>
+        <button onclick="aggiungi('Criceto Base')">Ordina</button>
+    </div>
 
-        <section>
-            <h2>I nostri criceti</h2>
+    <div>
+        <h3>Criceto Turbo</h3>
+        <p>Corre come se avesse appena bevuto sette caffè.</p>
+        <p>Prezzo: gratis</p>
+        <button onclick="aggiungi('Criceto Turbo')">Ordina</button>
+    </div>
 
-            <div>
-                <h3>Criceto Base</h3>
-                <p>Fa girare la ruota. A volte.</p>
-                <p>Prezzo: 0,00 €</p>
-                <button>Ordina</button>
-            </div>
+    <div>
+        <h3>Criceto Post-Verifica</h3>
+        <p>Stanco, confuso e probabilmente insufficiente in matematica.</p>
+        <p>Prezzo: gratis</p>
+        <button onclick="aggiungi('Criceto Post-Verifica')">Ordina</button>
+    </div>
 
-            <div>
-                <h3>Criceto Turbo</h3>
-                <p>Gira la ruota con una velocità preoccupante.</p>
-                <p>Prezzo: 0,00 €</p>
-                <button>Ordina</button>
-            </div>
+    <h2>Il tuo carrello</h2>
+    <ul id="carrello"></ul>
+    <p id="messaggio">Non hai ancora ordinato nessun criceto.</p>
 
-            <div>
-                <h3>Criceto Post-Verifica</h3>
-                <p>
-                    Particolarmente indicato dopo una verifica di matematica.
-                    Potrebbe essere già mezzo morto.
-                </p>
-                <p>Prezzo: 0,00 €</p>
-                <button>Ordina</button>
-            </div>
+    <button onclick="svuota()">Libera la ruota</button>
 
-        </section>
+    <script>
+        let criceti = [];
 
-        <section>
-            <h2>Il tuo ordine</h2>
-            <p id="ordine">Nessun criceto ordinato.</p>
-        </section>
+        function aggiungi(nome) {
+            criceti.push(nome);
+            aggiornaCarrello();
+        }
 
-    </main>
+        function svuota() {
+            criceti = [];
+            aggiornaCarrello();
+        }
 
-    <footer>
-        <p>© 2026 Criceti Cerebrali™ — Tutti i criceti sono immaginari.</p>
-    </footer>
+        function aggiornaCarrello() {
+            let lista = document.getElementById("carrello");
+            let messaggio = document.getElementById("messaggio");
+
+            lista.innerHTML = "";
+
+            for (let i = 0; i < criceti.length; i++) {
+                let elemento = document.createElement("li");
+                elemento.textContent = criceti[i];
+
+                lista.appendChild(elemento);
+            }
+
+            if (criceti.length === 0) {
+                messaggio.textContent = "Non hai ancora ordinato nessun criceto.";
+            } else {
+                messaggio.textContent =
+                    "Hai ordinato " + criceti.length + " criceto/i. Ottima scelta.";
+            }
+        }
+    </script>
 
 </body>
 </html>
