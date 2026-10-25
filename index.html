@@ -39,6 +39,26 @@
 
     <button onclick="svuota()">Libera la ruota</button>
 
+    <h2>Completa il tuo ordine</h2>
+    
+    <form id="checkout">
+        <label for="nome">Come ti chiami?</label>
+        <input type="text" id="nome" required>
+        <br><br>
+        
+        <label for="modello">Quanto è attiva la tua ruota?</label>
+        <select id="modello" required>
+            <option value="">Scegli...</option>
+            <option value="Ferma">Non gira dal 2019</option>
+            <option value="Lenta">Gira, ma con fatica</option>
+            <option value="Turbo">Sembra un motore Ferrari</option>
+        </select>
+        <br><br>
+        <button type="submit">Conferma l'ordine</button>
+    </form>
+    
+    <p id="conferma"></p>
+
     <script>
         let criceti = [];
 
@@ -81,6 +101,21 @@
                     "Hai ordinato " + criceti.length + " criceto/i. Ottima scelta.";
             }
         }
+        
+        document.getElementById("checkout").onsubmit = function(event) {
+            event.preventDefault();
+            
+            if (criceti.length === 0) {
+                alert("Non puoi ordinare il nulla cosmico. Scegli un criceto!");
+                return;
+            }
+            
+            let nome = document.getElementById("nome").value;
+            let modello = document.getElementById("modello").value;
+            
+            document.getElementById("conferma").textContent = "Complimenti " + nome + "! Il tuo ordine di " + criceti.length + " criceto/i è stato registrato nella simulazione. " + "Stato della ruota: " + modello + ". Nessun criceto è stato spedito.";
+        };
+    
     </script>
 
 </body>
