@@ -60,8 +60,17 @@
 
             for (let i = 0; i < criceti.length; i++) {
                 let elemento = document.createElement("li");
-                elemento.textContent = criceti[i];
-
+                
+                elemento.textContent = criceti[i] + " ";
+                let pulsante = document.createElement("button");
+                pulsante.textContent = "Rimuovi";
+                
+                pulsante.onclick = function() {
+                    criceti.splice(i, 1);
+                    aggiornaCarrello();
+                };
+                
+                elemento.appendChild(pulsante);
                 lista.appendChild(elemento);
             }
 
