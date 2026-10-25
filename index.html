@@ -105,8 +105,6 @@ h2 {letter-spacing:-.025em}
 .about-emoji {display:grid;place-items:center;min-height:180px;border-radius:28px;background:var(--yellow);font-size:6rem}
 .about h2 {margin:8px 0 12px;font-size:2.3rem;line-height:1.1}
 .about p {max-width:650px;margin:0;color:var(--muted)}
-
-/* Pagine interne */
 .inner-page {padding:48px 0 80px}
 .page-heading {margin-bottom:30px}
 .page-heading h1 {margin:8px 0 12px}
@@ -125,10 +123,10 @@ h2 {letter-spacing:-.025em}
 .form-actions {display:flex;align-items:center;flex-wrap:wrap;gap:14px;margin-top:23px}
 .form-note {margin:14px 0 0;color:var(--muted);font-size:.77rem;line-height:1.6}
 .form-note strong {color:var(--ink)}
-.notice {display:none;padding:15px 19px;margin-bottom:20px;border:1px solid #ead8d5;border-radius:15px;background:#fff7f6;color:#6f4b4a;font-size:.9rem}
-.notice.show {display:block;animation:pageIn .3s ease both}
-.notice strong {display:block;margin-bottom:3px}
-.notice p {margin:0;color:#817873}
+.type-fields {display:contents}
+.field-row {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;min-width:0}
+.type-fields[hidden] {display:none!important}
+.notice {display:none !important}
 .checkout-summary {margin-bottom:25px}
 .summary-products {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
 .summary-product {display:flex;align-items:center;gap:12px;min-width:0;padding:13px;border:1px solid var(--line);border-radius:15px}
@@ -220,6 +218,17 @@ footer p {margin:6px 0 0;color:var(--muted);font-size:.78rem}
     .quantity-controls {gap:6px}
     .toast {right:12px;bottom:12px}
 }
+/* Popup di conferma */
+.confirm-overlay {position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(48,36,34,.48);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.confirm-overlay.show {display:flex;animation:overlayIn .2s ease both}
+.confirm-popup {position:relative;width:100%;max-width:420px;padding:34px 28px 28px;border:1px solid #f0dfd8;border-radius:25px;background:#fffaf7;box-shadow:0 22px 70px rgba(48,36,34,.2);text-align:center;animation:popupIn .3s cubic-bezier(.2,.8,.2,1) both}
+.confirm-icon {display:grid;place-items:center;width:68px;height:68px;margin:0 auto 17px;border-radius:22px;background:#fce9e7;font-size:2rem}
+.confirm-popup h2 {margin:0 0 10px;font-size:1.8rem;color:var(--ink)}
+.confirm-popup p {margin:0 0 24px;color:var(--muted);font-size:.95rem;line-height:1.65}
+.confirm-close {width:100%;border:0;border-radius:13px;padding:14px 20px;background:var(--ink);color:white;font:inherit;font-weight:800;cursor:pointer;transition:transform .2s ease,filter .2s ease}
+.confirm-close:hover {filter:brightness(.96);transform:translateY(-2px)}
+@keyframes overlayIn {from{opacity:0}to{opacity:1}}
+@keyframes popupIn {from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(prefers-reduced-motion:reduce) {
     *,*::before,*::after {animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
 }
@@ -248,7 +257,6 @@ footer p {margin:6px 0 0;color:var(--muted);font-size:.78rem}
 </header>
 
 <main>
-<!-- HOME E CATALOGO -->
 <div class="page active" id="catalogo">
     <section class="hero">
         <div class="container hero-inner">
@@ -305,7 +313,6 @@ footer p {margin:6px 0 0;color:var(--muted);font-size:.78rem}
     </section>
 </div>
 
-<!-- CARRELLO -->
 <section class="page inner-page" id="carrello">
     <div class="container">
         <div class="page-heading">
@@ -314,29 +321,19 @@ footer p {margin:6px 0 0;color:var(--muted);font-size:.78rem}
             <p>I tuoi futuri collaboratori ti stanno aspettando.</p>
             <button class="secondary-button back-button" onclick="showPage('catalogo')">← Torna al negozio</button>
         </div>
-
         <div class="notice" id="orderNotice" role="status" aria-live="polite"></div>
-
         <section class="panel">
             <div class="cart-toolbar">
                 <h2>Il tuo ordine</h2>
                 <button class="text-button" id="clearCartButton" onclick="clearCart()">Svuota carrello</button>
             </div>
             <div class="cart-items" id="cartItems"></div>
-            <div class="checkout-totals">
-                <span>Totale ordine, spedizione inclusa</span>
-                <strong id="cartTotal">0,00 €</strong>
-            </div>
+            <div class="checkout-totals"><span>Totale prodotti</span><strong id="cartTotal">0,00 €</strong></div>
         </section>
-
         <section class="panel" style="margin-top:24px">
             <h2>Completa il tuo ordine</h2>
-            <p class="panel-intro">Inserisci i dettagli necessari per preparare il tuo ordine.</p>
-
-            <div class="checkout-summary">
-                <div class="summary-products" id="summaryProducts"></div>
-            </div>
-
+            <p class="panel-intro">Inserisci i dettagli per completare il riepilogo del tuo ordine.</p>
+            <div class="checkout-summary"><div class="summary-products" id="summaryProducts"></div></div>
             <form id="checkoutForm">
                 <div class="form-grid">
                     <div class="field full"><label for="fullName">Nome e cognome</label><input id="fullName" name="fullName" maxlength="60" autocomplete="off" placeholder="Mario Rossi" required></div>
@@ -351,8 +348,8 @@ footer p {margin:6px 0 0;color:var(--muted);font-size:.78rem}
                     <div class="field full">
                         <label>Metodo di pagamento</label>
                         <div class="payment-options">
-                            <label class="payment-option"><input type="radio" name="payment" value="Carta (demo)" required><span><strong>💳 Carta</strong><small>Simulazione, nessun dato richiesto</small></span></label>
-                            <label class="payment-option"><input type="radio" name="payment" value="PayPal (demo)"><span><strong>🅿️ PayPal</strong><small>Solo per finta</small></span></label>
+                            <label class="payment-option"><input type="radio" name="payment" value="Carta (demo)" required><span><strong>💳 Carta</strong><small>Pagamento con carta</small></span></label>
+                            <label class="payment-option"><input type="radio" name="payment" value="PayPal (demo)"><span><strong>🅿️ PayPal</strong><small>Pagamento online</small></span></label>
                             <label class="payment-option"><input type="radio" name="payment" value="Alla consegna (demo)"><span><strong>📦 Alla consegna</strong><small>Il criceto porta il resto</small></span></label>
                             <label class="payment-option"><input type="radio" name="payment" value="In criceti"><span><strong>🐹 In criceti</strong><small>Tasso di cambio discutibile</small></span></label>
                         </div>
@@ -360,64 +357,101 @@ footer p {margin:6px 0 0;color:var(--muted);font-size:.78rem}
                     <div class="field full"><label for="orderNotes">Note per la consegna (facoltative)</label><textarea id="orderNotes" name="orderNotes" maxlength="300" placeholder="Es. lasciare il pacco lontano dal gatto."></textarea></div>
                 </div>
                 <div class="form-actions"><button class="primary-button" id="checkoutButton" type="submit">Conferma l'ordine →</button></div>
-                
             </form>
         </section>
     </div>
 </section>
 
-<!-- RESTITUZIONE E RICONDIZIONAMENTO -->
 <section class="page inner-page" id="restituzioni">
     <div class="container">
         <div class="page-heading">
             <span class="tiny-label">Economia circolare roditoriale</span>
             <h1>Seconda vita, nuova ruota. ♻️</h1>
-            <p>Il tuo criceto ha smesso di collaborare? La ruota fa rumori sospetti? Spedisci il tuo prodotto usato al nostro centro di ricondizionamento: valuteremo se può tornare in servizio.</p>
+            <p>Restituisci un prodotto, descrivine le condizioni e dicci se potrebbe meritare una seconda vita. Le domande cambiano in base a ciò che scegli di restituire.</p>
         </div>
-
         <div class="notice" id="returnNotice" role="status" aria-live="polite"></div>
-
         <section class="panel">
             <h2>Richiedi una restituzione</h2>
-            <p class="panel-intro">Raccontaci che cosa vuoi restituire e in che condizioni si trova: le domande cambieranno in base al prodotto scelto.</p>
-
+            <p class="panel-intro">Indica il modello, raccontaci com'è messo e scegli il motivo della restituzione.</p>
             <form id="returnForm">
                 <div class="form-grid">
                     <div class="field">
                         <label for="returnType">Che cosa vuoi restituire?</label>
                         <select id="returnType" name="returnType" required>
                             <option value="">Seleziona una categoria</option>
-                            <option value="criceto">🐹 Un criceto</option>
-                            <option value="ruota">🎡 Una ruota</option>
+                            <option value="criceto">Un criceto</option>
+                            <option value="ruota">Una ruota</option>
                         </select>
                     </div>
                     <div class="field">
                         <label for="returnModel">Modello</label>
-                        <select id="returnModel" name="returnModel" required disabled>
-                            <option value="">Prima scegli una categoria</option>
-                        </select>
+                        <select id="returnModel" name="returnModel" required disabled><option value="">Prima scegli una categoria</option></select>
                     </div>
-                    <div class="field">
-                        <label for="returnCondition">Condizioni del prodotto</label>
-                        <select id="returnCondition" name="returnCondition" required>
-                            <option value="">Prima scegli una categoria</option>
-                        </select>
+                    <div class="field full type-fields" id="returnHamsterFields" hidden>
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="hamsterReturnCondition">Com'è messo il criceto?</label>
+                                <select id="hamsterReturnCondition" name="returnCondition" required disabled>
+                                    <option value="">Valuta il suo stato</option>
+                                    <option>In forma, ma cambio modello</option>
+                                    <option>Affaticato dopo lo studio</option>
+                                    <option>Si distrae continuamente</option>
+                                    <option>Gira molto lentamente</option>
+                                    <option>Non collabora più</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="hamsterReturnReason">Perché lo restituisci?</label>
+                                <select id="hamsterReturnReason" name="returnReason" required disabled>
+                                    <option value="">Scegli il motivo</option>
+                                    <option>Prestazioni insufficienti</option>
+                                    <option>Troppo stress da studio</option>
+                                    <option>Ho scelto il modello sbagliato</option>
+                                    <option>Vorrei proporlo per il ricondizionamento</option>
+                                    <option>Ha sviluppato una coscienza</option>
+                                </select>
+                            </div>
+                            <div class="field full">
+                                <label for="hamsterReturnDetails">Abitudini o comportamenti insoliti (facoltativo)</label>
+                                <textarea id="hamsterReturnDetails" name="returnDetails" maxlength="500" placeholder="Es. corre soltanto quando sente la parola verifica..." disabled></textarea>
+                            </div>
+                        </div>
                     </div>
-                    <div class="field">
-                        <label for="returnReason">Motivo della restituzione</label>
-                        <select id="returnReason" name="returnReason" required>
-                            <option value="">Prima scegli una categoria</option>
-                        </select>
-                    </div>
-                    <div class="field full">
-                        <label for="returnDetails" id="returnDetailsLabel">Dettagli aggiuntivi (facoltativi)</label>
-                        <textarea id="returnDetails" name="returnDetails" maxlength="500" placeholder="Prima scegli se stai restituendo un criceto o una ruota..."></textarea>
+                    <div class="field full type-fields" id="returnWheelFields" hidden>
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="wheelReturnCondition">In che condizioni è la ruota?</label>
+                                <select id="wheelReturnCondition" name="returnCondition" required disabled>
+                                    <option value="">Valuta lo stato della ruota</option>
+                                    <option>Quasi perfetta</option>
+                                    <option>Usurata ma funzionante</option>
+                                    <option>Si inceppa ogni tanto</option>
+                                    <option>Fa rumore durante la rotazione</option>
+                                    <option>Danneggiata o incompleta</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="wheelReturnReason">Perché la restituisci?</label>
+                                <select id="wheelReturnReason" name="returnReason" required disabled>
+                                    <option value="">Scegli il motivo</option>
+                                    <option>Rotazione irregolare</option>
+                                    <option>Troppo rumorosa</option>
+                                    <option>Dimensioni non adatte</option>
+                                    <option>Vorrei proporla per il ricondizionamento</option>
+                                    <option>Voglio passare alla Ruota Pro</option>
+                                    <option>Manca un componente</option>
+                                </select>
+                            </div>
+                            <div class="field full">
+                                <label for="wheelReturnDetails">Difetti o componenti mancanti (facoltativo)</label>
+                                <textarea id="wheelReturnDetails" name="returnDetails" maxlength="500" placeholder="Es. cigola a ogni giro completo..." disabled></textarea>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-actions"><button class="primary-button" type="submit">Richiedi la restituzione →</button></div>
             </form>
         </section>
-
         <section class="trust-strip">
             <div class="trust-item"><span class="trust-icon">🔎</span><div><strong>1. Valutazione</strong><small>Controlliamo il prodotto.</small></div></div>
             <div class="trust-item"><span class="trust-icon">🛠️</span><div><strong>2. Ricondizionamento</strong><small>Se possibile, lo rimettiamo in sesto.</small></div></div>
@@ -426,7 +460,6 @@ footer p {margin:6px 0 0;color:var(--muted);font-size:.78rem}
     </div>
 </section>
 
-<!-- ASSISTENZA -->
 <section class="page inner-page" id="assistenza">
     <div class="container">
         <div class="page-heading">
@@ -434,37 +467,26 @@ footer p {margin:6px 0 0;color:var(--muted);font-size:.78rem}
             <h1>Centro assistenza 🛠️</h1>
             <p>Il criceto non gira? La ruota fa un rumore inquietante? Hai ricevuto un prodotto che sembra avere opinioni proprie? Apri una segnalazione.</p>
         </div>
-
         <div class="notice" id="supportNotice" role="status" aria-live="polite"></div>
-
         <section class="panel">
             <h2>Come possiamo aiutarti?</h2>
-            <p class="panel-intro">Scegli il tipo di problema: le domande successive si adatteranno alla tua richiesta.</p>
-
+            <p class="panel-intro">Per domande su ordini, prodotti o problemi tecnici, scegli la categoria e raccontaci che cosa succede.</p>
             <form id="supportForm">
                 <div class="form-grid">
-                    <div class="field full">
-                        <label for="supportTopic">Di cosa hai bisogno?</label>
+                    <div class="field">
+                        <label for="supportTopic">Tipo di problema</label>
                         <select id="supportTopic" name="supportTopic" required>
                             <option value="">Seleziona una categoria</option>
-                            <option value="criceto">🐹 Problema con un criceto</option>
-                            <option value="ruota">🎡 Problema con una ruota</option>
-                            <option value="ordine">📦 Problema con un ordine</option>
-                            <option value="sito">💻 Problema con il sito</option>
-                            <option value="altro">❓ Altro</option>
+                            <option value="criceto">Domanda su un criceto</option>
+                            <option value="ruota">Domanda su una ruota</option>
+                            <option value="ordine">Problema con un ordine</option>
+                            <option value="tecnico">Problema tecnico del sito</option>
+                            <option value="pagamento">Prezzi o pagamento</option>
+                            <option value="filosofo">Il mio criceto è diventato filosofo</option>
+                            <option value="altro">Altro</option>
                         </select>
                     </div>
-                    <div class="field" id="supportProductField">
-                        <label for="supportProduct">Quale prodotto?</label>
-                        <select id="supportProduct" name="supportProduct" disabled>
-                            <option value="">Prima scegli una categoria</option>
-                        </select>
-                    </div>
-                    <div class="field" id="supportOrderField" hidden>
-                        <label for="supportOrder">Numero ordine (facoltativo)</label>
-                        <input id="supportOrder" name="supportOrder" maxlength="30" autocomplete="off" placeholder="Es. CRICETO-001">
-                    </div>
-                    <div class="field" id="supportPriorityField">
+                    <div class="field">
                         <label for="supportPriority">Livello di emergenza</label>
                         <select id="supportPriority" name="supportPriority" required>
                             <option value="">Seleziona la priorità</option>
@@ -474,12 +496,32 @@ footer p {margin:6px 0 0;color:var(--muted);font-size:.78rem}
                             <option>Critica — interrogazione tra 5 minuti</option>
                         </select>
                     </div>
-                    <div class="field" id="supportContactField">
+                    <div class="field type-fields" id="supportOrderFields" hidden>
+                        <label for="supportOrder">Numero ordine (facoltativo)</label>
+                        <input id="supportOrder" name="supportOrder" maxlength="30" autocomplete="off" placeholder="Es. CRICETO-001" disabled>
+                    </div>
+                    <div class="field type-fields" id="supportProductFields" hidden>
+                        <label for="supportProductModel">Modello del prodotto</label>
+                        <select id="supportProductModel" name="supportProductModel" required disabled><option value="">Seleziona un modello</option></select>
+                    </div>
+                    <div class="field type-fields" id="supportTechFields" hidden>
+                        <label for="supportDevice">Dispositivo</label>
+                        <select id="supportDevice" name="supportDevice" disabled>
+                            <option>Computer</option><option>Telefono</option><option>Tablet</option><option>Altro</option>
+                        </select>
+                    </div>
+                    <div class="field type-fields" id="supportPaymentFields" hidden>
+                        <label for="supportPaymentTopic">Argomento</label>
+                        <select id="supportPaymentTopic" name="supportPaymentTopic" disabled>
+                            <option>Prezzo di un prodotto</option><option>Totale del carrello</option><option>Metodi di pagamento</option>
+                        </select>
+                    </div>
+                    <div class="field">
                         <label for="supportContact">Nome in codice (facoltativo)</label>
                         <input id="supportContact" name="supportContact" maxlength="50" autocomplete="off" placeholder="Es. Panico Totale">
                     </div>
                     <div class="field full">
-                        <label for="supportDescription" id="supportDescriptionLabel">Descrizione del problema</label>
+                        <label for="supportDescription">Descrizione del problema</label>
                         <textarea id="supportDescription" name="supportDescription" maxlength="1000" placeholder="Spiegaci che cosa non funziona..." required></textarea>
                     </div>
                 </div>
@@ -500,6 +542,15 @@ footer p {margin:6px 0 0;color:var(--muted);font-size:.78rem}
 <div class="toast" id="toast" role="status" aria-live="polite">
     <span class="toast-icon" id="toastIcon">✓</span>
     <div><strong id="toastTitle">Aggiunto al carrello!</strong><small id="toastMessage">Il prodotto è pronto.</small></div>
+</div>
+
+<div class="confirm-overlay" id="confirmOverlay" role="dialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmMessage">
+    <div class="confirm-popup">
+        <div class="confirm-icon" id="confirmIcon" aria-hidden="true">✨</div>
+        <h2 id="confirmTitle">Confermato!</h2>
+        <p id="confirmMessage">È andato tutto bene.</p>
+        <button class="confirm-close" id="confirmClose" type="button">Perfetto!</button>
+    </div>
 </div>
 
 <script>
@@ -675,7 +726,6 @@ function clearCart() {
     cart = {};
     updateCartCount();
     renderCart();
-    document.getElementById("orderNotice").classList.remove("show");
     showToast("🧹","Carrello svuotato","I prodotti sono tornati al loro habitat.");
 }
 
@@ -780,18 +830,36 @@ function renderCart() {
 }
 
 function showFormNotice(id,titleText,messageText) {
-    const notice = document.getElementById(id);
-    notice.replaceChildren();
+    const overlay = document.getElementById("confirmOverlay");
+    const title = document.getElementById("confirmTitle");
+    const message = document.getElementById("confirmMessage");
+    const icon = document.getElementById("confirmIcon");
 
-    const title = document.createElement("strong");
-    title.textContent = titleText;
-    const message = document.createElement("p");
-    message.textContent = messageText;
+    icon.textContent = "✨";
+    title.textContent = titleText || "Confermato!";
+    message.textContent = messageText || "Tutto sistemato. I criceti possono tornare alle loro attività.";
 
-    notice.append(title,message);
-    notice.classList.add("show");
-    notice.scrollIntoView({behavior:"smooth",block:"center"});
+    if (id === "orderNotice") icon.textContent = "🎉";
+    if (id === "returnNotice") icon.textContent = "♻️";
+    if (id === "supportNotice") icon.textContent = "🛠️";
+
+    overlay.classList.add("show");
+    document.body.style.overflow = "hidden";
+    document.getElementById("confirmClose").focus();
 }
+
+function closeConfirmPopup() {
+    document.getElementById("confirmOverlay").classList.remove("show");
+    document.body.style.overflow = "";
+}
+
+document.getElementById("confirmClose").addEventListener("click",closeConfirmPopup);
+document.getElementById("confirmOverlay").addEventListener("click",function(event) {
+    if (event.target === this) closeConfirmPopup();
+});
+document.addEventListener("keydown",function(event) {
+    if (event.key === "Escape") closeConfirmPopup();
+});
 
 document.getElementById("checkoutForm").addEventListener("submit",function(event) {
     event.preventDefault();
@@ -799,15 +867,13 @@ document.getElementById("checkoutForm").addEventListener("submit",function(event
 
     const data = new FormData(this);
     const name = String(data.get("fullName")).trim();
-    const city = String(data.get("city")).trim();
-    const payment = String(data.get("payment"));
     const total = euro(cartTotal());
     const count = cartQuantity();
 
     showFormNotice(
         "orderNotice",
-        "🎉 Ordine immaginario confermato!",
-        `Grazie, ${name}! Hai ordinato ${count} articol${count === 1 ? "o" : "i"} per ${total}. Destinazione: ${city}. Metodo scelto: ${payment}. Nessun ordine reale è stato inviato e nessun pagamento è stato effettuato.`
+        "Ordine confermato!",
+        `Grazie, ${name}! Hai preparato ${count} articol${count === 1 ? "o" : "i"} per ${total}. Il reparto criceti è già in fermento.`
     );
 
     cart = {};
@@ -816,109 +882,115 @@ document.getElementById("checkoutForm").addEventListener("submit",function(event
     this.reset();
 });
 
-const returnOptions = {
-    criceto: {
-        conditions:["Quasi perfetto","Affaticato ma operativo","Gira poco","Non gira più","Preferisco non indagare"],
-        reasons:["Ha smesso di correre","Prestazioni deludenti","Ha sviluppato una coscienza","Ho cambiato idea","Ha bisogno di una seconda vita","Altro"],
-        placeholder:"Raccontaci come si comporta il criceto..."
-    },
-    ruota: {
-        conditions:["Quasi perfetta","Usurata ma funzionante","Si inceppa ogni tanto","Gira male","Non gira più"],
-        reasons:["Fa troppo rumore","Rotazione irregolare","Si inceppa","Ho cambiato idea","Vorrei farla ricondizionare","Altro"],
-        placeholder:"Descrivi rumori, inceppamenti o altri problemi della ruota..."
-    }
-};
-
-function fillSelect(id, values, firstText) {
-    const select=document.getElementById(id);
-    select.replaceChildren();
-    const first=document.createElement("option");
-    first.value=""; first.textContent=firstText; select.append(first);
-    values.forEach(value=>{ const option=document.createElement("option"); option.value=value; option.textContent=value; select.append(option); });
+function setGroupEnabled(group,enabled) {
+    group.querySelectorAll("input,select,textarea,button").forEach(control => {
+        control.disabled = !enabled;
+    });
 }
 
-document.getElementById("returnType").addEventListener("change",function() {
-    const category=this.value;
-    const modelSelect=document.getElementById("returnModel");
+function updateReturnFields() {
+    const category = document.getElementById("returnType").value;
+    const modelSelect = document.getElementById("returnModel");
+    const hamsterFields = document.getElementById("returnHamsterFields");
+    const wheelFields = document.getElementById("returnWheelFields");
+    const isHamster = category === "criceto";
+    const isWheel = category === "ruota";
+
+    hamsterFields.hidden = !isHamster;
+    wheelFields.hidden = !isWheel;
+    setGroupEnabled(hamsterFields,isHamster);
+    setGroupEnabled(wheelFields,isWheel);
+
     modelSelect.replaceChildren();
-    const first=document.createElement("option"); first.value=""; first.textContent=category ? "Seleziona un modello" : "Prima scegli una categoria"; modelSelect.append(first);
-    modelSelect.disabled=!category;
-    if(category) {
-        products.filter(p=>p.category===category).forEach(product=>{ const option=document.createElement("option"); option.value=product.id; option.textContent=product.name; modelSelect.append(option); });
-        fillSelect("returnCondition",returnOptions[category].conditions,"Seleziona le condizioni");
-        fillSelect("returnReason",returnOptions[category].reasons,"Seleziona un motivo");
-        document.getElementById("returnDetailsLabel").textContent=category==="criceto" ? "Raccontaci qualcosa in più (facoltativo)" : "Dettagli sulla ruota (facoltativo)";
-        document.getElementById("returnDetails").placeholder=returnOptions[category].placeholder;
-    } else {
-        fillSelect("returnCondition",[],"Prima scegli una categoria");
-        fillSelect("returnReason",[],"Prima scegli una categoria");
-    }
-});
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = category ? "Seleziona un modello" : "Prima scegli una categoria";
+    modelSelect.append(placeholder);
+    modelSelect.disabled = !category;
+
+    products.filter(product => product.category === category).forEach(product => {
+        const option = document.createElement("option");
+        option.value = product.id;
+        option.textContent = product.name;
+        modelSelect.append(option);
+    });
+}
+
+document.getElementById("returnType").addEventListener("change",updateReturnFields);
 
 document.getElementById("returnForm").addEventListener("submit",function(event) {
     event.preventDefault();
-    const data=new FormData(this);
-    const product=getProduct(data.get("returnModel"));
-    if(!product) return;
-    const condition=String(data.get("returnCondition"));
-    const reason=String(data.get("returnReason"));
-    showFormNotice("returnNotice","♻️ Richiesta preparata",`${product.name}: ${condition.toLowerCase()}. Motivo: ${reason.toLowerCase()}.`);
+
+    const data = new FormData(this);
+    const product = getProduct(data.get("returnModel"));
+    if (!product) return;
+
+    showFormNotice(
+        "returnNotice",
+        "Richiesta confermata!",
+        `${product.name}: ${String(data.get("returnReason"))}. Il reparto ricondizionamento prenderà nota della faccenda.`
+    );
+
     this.reset();
-    document.getElementById("returnModel").innerHTML='<option value="">Prima scegli una categoria</option>';
-    document.getElementById("returnModel").disabled=true;
-    fillSelect("returnCondition",[],"Prima scegli una categoria");
-    fillSelect("returnReason",[],"Prima scegli una categoria");
-    document.getElementById("returnDetails").placeholder="Prima scegli se stai restituendo un criceto o una ruota...";
+    updateReturnFields();
 });
 
-const supportOptions={
-    criceto: products.filter(p=>p.category==="criceto"),
-    ruota: products.filter(p=>p.category==="ruota")
-};
+function updateSupportFields() {
+    const topic = document.getElementById("supportTopic").value;
+    const orderFields = document.getElementById("supportOrderFields");
+    const productFields = document.getElementById("supportProductFields");
+    const techFields = document.getElementById("supportTechFields");
+    const paymentFields = document.getElementById("supportPaymentFields");
+    const isProduct = topic === "criceto" || topic === "ruota";
 
-document.getElementById("supportTopic").addEventListener("change",function(){
-    const type=this.value;
-    const productField=document.getElementById("supportProductField");
-    const orderField=document.getElementById("supportOrderField");
-    const priorityField=document.getElementById("supportPriorityField");
-    const productSelect=document.getElementById("supportProduct");
-    const label=document.getElementById("supportDescriptionLabel");
-    productSelect.replaceChildren();
-    if(type==="criceto" || type==="ruota") {
-        productField.hidden=false; productSelect.disabled=false;
-        const first=document.createElement("option"); first.value=""; first.textContent="Seleziona un prodotto"; productSelect.append(first);
-        supportOptions[type].forEach(product=>{const o=document.createElement("option");o.value=product.id;o.textContent=product.name;productSelect.append(o);});
-        label.textContent=type==="criceto" ? "Che cosa non va nel criceto?" : "Che cosa non va nella ruota?";
-        document.getElementById("supportDescription").placeholder=type==="criceto" ? "Descrivi il comportamento del criceto..." : "Descrivi il problema della ruota...";
-    } else {
-        productField.hidden=true; productSelect.disabled=true;
-        label.textContent=type==="ordine" ? "Che cosa non va con l'ordine?" : type==="sito" ? "Che cosa succede sul sito?" : "Descrizione del problema";
-        document.getElementById("supportDescription").placeholder=type==="ordine" ? "Raccontaci che cosa è successo con l'ordine..." : type==="sito" ? "Descrivi il problema tecnico..." : "Spiegaci che cosa non funziona...";
-    }
-    orderField.hidden=type!=="ordine";
-    priorityField.hidden=type==="altro";
-});
+    orderFields.hidden = topic !== "ordine";
+    productFields.hidden = !isProduct;
+    techFields.hidden = topic !== "tecnico";
+    paymentFields.hidden = topic !== "pagamento";
 
-document.getElementById("supportForm").addEventListener("submit",function(event){
+    setGroupEnabled(orderFields,topic === "ordine");
+    setGroupEnabled(productFields,isProduct);
+    setGroupEnabled(techFields,topic === "tecnico");
+    setGroupEnabled(paymentFields,topic === "pagamento");
+
+    const modelSelect = document.getElementById("supportProductModel");
+    modelSelect.replaceChildren();
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "Seleziona un modello";
+    modelSelect.append(placeholder);
+    products.filter(product => product.category === topic).forEach(product => {
+        const option = document.createElement("option");
+        option.value = product.id;
+        option.textContent = product.name;
+        modelSelect.append(option);
+    });
+}
+
+document.getElementById("supportTopic").addEventListener("change",updateSupportFields);
+
+document.getElementById("supportForm").addEventListener("submit",function(event) {
     event.preventDefault();
-    const data=new FormData(this);
-    const topic=document.getElementById("supportTopic").value;
-    const description=String(data.get("supportDescription")).trim();
-    if(!topic || !description) return;
-    let subject=topic;
-    if(topic==="criceto" || topic==="ruota") { const product=getProduct(data.get("supportProduct")); if(!product) return; subject=product.name; }
-    const ticket="CC-"+Math.random().toString(36).slice(2,7).toUpperCase();
-    showFormNotice("supportNotice","🛠️ Segnalazione preparata",`Pratica ${ticket} · ${subject}. La tua descrizione è stata acquisita nella pagina.`);
+    const data = new FormData(this);
+    const topic = document.getElementById("supportTopic");
+    let detail = topic.options[topic.selectedIndex].text;
+    if (data.get("supportProductModel")) detail += ` · ${getProduct(data.get("supportProductModel")).name}`;
+    if (data.get("supportOrder")) detail += ` · ordine ${data.get("supportOrder")}`;
+
+    showFormNotice(
+        "supportNotice",
+        "Segnalazione inviata!",
+        `${detail}. Il team di assistenza è stato informato (e sta cercando una ruota di scorta).`
+    );
     this.reset();
-    document.getElementById("supportProductField").hidden=false;
-    document.getElementById("supportProduct").disabled=true;
-    document.getElementById("supportProduct").innerHTML='<option value="">Prima scegli una categoria</option>';
-    document.getElementById("supportOrderField").hidden=true;
+    updateSupportFields();
 });
 
 renderProducts();
 updateCartCount();
 renderCart();
+updateReturnFields();
+updateSupportFields();
 </script>
 </body>
 </html>
