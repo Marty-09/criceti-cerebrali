@@ -3,24 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Criceti Cerebrali™ — Il negozio ufficiale</title>
+    <title>Criceti Cerebrali — La ruota non gira da sola</title>
+    <meta name="description" content="Criceti specializzati nel far girare la ruota del tuo cervello. Acquista il tuo preferito!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            box-sizing: border-box;
+        :root {
+            --bg: #fffaf5;
+            --paper: #ffffff;
+            --ink: #302a28;
+            --muted: #817873;
+            --pink: #f4b7bd;
+            --pink-light: #fff0f1;
+            --orange: #f2a66f;
+            --yellow: #ffe4a3;
+            --green: #d8e8d1;
+            --purple: #e6ddf5;
+            --line: #eee5df;
+            --shadow: 0 12px 35px rgba(70, 45, 35, .07);
+            --radius: 24px;
         }
 
-        :root {
-            --bg: #fffaf3;
-            --paper: #ffffff;
-            --ink: #302b38;
-            --muted: #777180;
-            --pink: #f4b7c8;
-            --purple: #d9c8f4;
-            --yellow: #ffe4a3;
-            --green: #c9e9d5;
-            --border: #eee3e5;
+        * {
+            box-sizing: border-box;
         }
 
         html {
@@ -31,7 +37,7 @@
             margin: 0;
             background: var(--bg);
             color: var(--ink);
-            font-family: "Trebuchet MS", Arial, sans-serif;
+            font-family: "DM Sans", sans-serif;
             line-height: 1.6;
         }
 
@@ -41,17 +47,6 @@
 
         button {
             cursor: pointer;
-            transition: transform 0.15s, opacity 0.15s;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-        }
-
-        button:focus-visible, a:focus-visible,
-        input:focus-visible, select:focus-visible {
-            outline: 3px solid #9274c7;
-            outline-offset: 3px;
         }
 
         a {
@@ -61,899 +56,1620 @@
 
         .announcement {
             padding: 9px 16px;
-            text-align: center;
             background: var(--ink);
             color: white;
-            font-size: 0.85rem;
+            text-align: center;
+            font-size: .78rem;
+            letter-spacing: .04em;
         }
 
         header {
-            background: var(--paper);
-            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(255, 250, 245, .93);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(238, 229, 223, .8);
         }
 
-        nav {
-            max-width: 1120px;
+        .nav {
+            max-width: 1160px;
+            min-height: 76px;
             margin: auto;
-            padding: 18px 24px;
+            padding: 12px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 20px;
+            gap: 18px;
         }
 
         .logo {
-            font-size: 1.2rem;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-        }
-
-        .logo span {
-            display: inline-block;
-            margin-right: 7px;
-        }
-
-        .nav-links {
             display: flex;
             align-items: center;
-            gap: 22px;
-            font-size: 0.9rem;
+            gap: 10px;
+            border: 0;
+            background: none;
+            color: var(--ink);
+            font-family: "Nunito", sans-serif;
+            font-weight: 900;
+            font-size: 1.12rem;
+            text-align: left;
         }
 
-        .cart-link {
-            background: var(--purple);
-            padding: 9px 15px;
-            border-radius: 30px;
-            font-weight: bold;
+        .logo-icon {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            background: var(--yellow);
+            border-radius: 15px;
+            font-size: 1.5rem;
+            transform: rotate(-5deg);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-link {
+            border: 0;
+            background: transparent;
+            padding: 10px 14px;
+            border-radius: 14px;
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .nav-link:hover {
+            background: var(--pink-light);
+        }
+
+        .cart-button {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            border: 0;
+            border-radius: 15px;
+            background: var(--ink);
+            color: white;
+            padding: 11px 16px;
+            font-weight: 800;
+            transition: transform .2s, background .2s;
+        }
+
+        .cart-button:hover {
+            background: #51433d;
+            transform: translateY(-2px);
+        }
+
+        .cart-count {
+            display: grid;
+            place-items: center;
+            min-width: 24px;
+            height: 24px;
+            padding: 0 6px;
+            border-radius: 50px;
+            background: var(--pink);
+            color: var(--ink);
+            font-size: .78rem;
+            font-weight: 900;
+        }
+
+        main {
+            min-height: 65vh;
+        }
+
+        .page {
+            display: none;
+            animation: pageIn .35s ease both;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes pageIn {
+            from {
+                opacity: 0;
+                transform: translateY(9px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: auto;
         }
 
         .hero {
-            max-width: 1120px;
-            margin: auto;
-            padding: 65px 24px 55px;
+            padding: 66px 0 48px;
+        }
+
+        .hero-inner {
             display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
-            gap: 30px;
+            grid-template-columns: 1.15fr .85fr;
             align-items: center;
+            gap: 48px;
         }
 
         .eyebrow {
-            display: inline-block;
-            background: var(--yellow);
-            padding: 6px 12px;
-            border-radius: 30px;
-            font-size: 0.78rem;
-            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 13px;
+            border: 1px solid #f0d9d6;
+            border-radius: 100px;
+            background: white;
+            color: #9d5e62;
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .05em;
             text-transform: uppercase;
-            letter-spacing: 1px;
+        }
+
+        h1, h2, h3, p {
+            margin-top: 0;
+        }
+
+        h1, h2, h3 {
+            font-family: "Nunito", sans-serif;
         }
 
         h1 {
-            font-size: clamp(2.3rem, 5vw, 4.5rem);
-            line-height: 1.08;
-            letter-spacing: -2px;
+            max-width: 650px;
             margin: 20px 0;
+            font-size: clamp(2.7rem, 5.8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.02;
+            letter-spacing: -.055em;
         }
 
-        h1 em {
-            color: #ad6684;
-            font-style: normal;
+        .highlight {
+            position: relative;
+            color: #d77f81;
         }
 
-        .hero p {
+        .hero-copy {
+            max-width: 510px;
             color: var(--muted);
-            max-width: 520px;
-            font-size: 1.05rem;
+            font-size: 1.08rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 27px;
+        }
+
+        .primary-button, .secondary-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            border: 0;
+            border-radius: 15px;
+            padding: 14px 20px;
+            font-weight: 800;
+            transition: transform .2s, box-shadow .2s;
         }
 
         .primary-button {
-            display: inline-block;
             background: var(--ink);
             color: white;
-            border: none;
-            padding: 14px 22px;
-            border-radius: 12px;
-            font-weight: bold;
-            margin-top: 15px;
+        }
+
+        .secondary-button {
+            background: white;
+            border: 1px solid var(--line);
+            color: var(--ink);
+        }
+
+        .primary-button:hover, .secondary-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
 
         .hero-art {
-            min-height: 300px;
-            border-radius: 35px;
-            background: var(--pink);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 25px;
-            transform: rotate(2deg);
+            position: relative;
+            min-height: 340px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            border-radius: 40px;
+            background: #f9e6d7;
         }
 
-        .hero-art .hamster {
-            font-size: 8rem;
-            line-height: 1.2;
+        .hero-art::before, .hero-art::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,.35);
         }
 
-        .hero-art strong {
-            font-size: 1.25rem;
+        .hero-art::before {
+            width: 230px;
+            height: 230px;
+            top: -55px;
+            right: -35px;
         }
 
-        .hero-art small {
-            color: #684354;
+        .hero-art::after {
+            width: 150px;
+            height: 150px;
+            bottom: -50px;
+            left: -20px;
+        }
+
+        .hero-wheel {
+            position: relative;
+            width: 215px;
+            height: 215px;
+            display: grid;
+            place-items: center;
+            border: 13px solid #c88965;
+            border-radius: 50%;
+            background: #f7d3b4;
+            box-shadow: inset 0 0 0 5px #e8b18a, 0 20px 40px rgba(95,55,35,.13);
+            animation: wheelTurn 12s linear infinite;
+        }
+
+        .hero-wheel::before {
+            content: "";
+            position: absolute;
+            inset: 22px;
+            border: 3px dashed rgba(139, 87, 56, .55);
+            border-radius: 50%;
+        }
+
+        .hero-hamster {
+            z-index: 1;
+            font-size: 6.2rem;
+            animation: hamsterBob 1.4s ease-in-out infinite alternate;
+        }
+
+        @keyframes wheelTurn {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes hamsterBob {
+            from { transform: translateY(-3px) rotate(-5deg); }
+            to { transform: translateY(3px) rotate(5deg); }
+        }
+
+        .floating-note {
+            position: absolute;
+            z-index: 2;
+            padding: 11px 15px;
+            border-radius: 16px;
+            background: white;
+            box-shadow: var(--shadow);
+            font-size: .82rem;
+            font-weight: 800;
+        }
+
+        .note-one {
+            top: 30px;
+            left: 20px;
+            transform: rotate(-5deg);
+        }
+
+        .note-two {
+            right: 17px;
+            bottom: 32px;
+            transform: rotate(4deg);
         }
 
         .trust-strip {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 18px 35px;
-            padding: 20px;
-            background: #f4eee8;
-            font-size: 0.9rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding: 20px 0 45px;
         }
 
-        .section {
-            max-width: 1120px;
-            margin: auto;
-            padding: 70px 24px;
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 17px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: rgba(255,255,255,.65);
+        }
+
+        .trust-icon {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            border-radius: 14px;
+            background: var(--pink-light);
+            font-size: 1.3rem;
+        }
+
+        .trust-item strong {
+            display: block;
+            font-size: .88rem;
+        }
+
+        .trust-item small {
+            color: var(--muted);
+            font-size: .76rem;
+        }
+
+        .catalog-section {
+            padding: 32px 0 75px;
+            scroll-margin-top: 95px;
         }
 
         .section-heading {
-            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 20px;
+            margin-bottom: 28px;
         }
 
-        .section-heading h2 {
-            font-size: clamp(1.8rem, 4vw, 2.7rem);
-            letter-spacing: -1px;
+        .section-heading h2, .cart-heading h1 {
             margin: 8px 0;
+            font-size: clamp(2rem, 4vw, 3.1rem);
+            letter-spacing: -.04em;
+            line-height: 1.1;
         }
 
         .section-heading p {
-            color: var(--muted);
             margin: 0;
+            color: var(--muted);
         }
 
-        .products {
+        .tiny-label {
+            color: #b66d70;
+            font-size: .76rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+        }
+
+        .product-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 22px;
         }
 
         .product-card {
-            background: var(--paper);
-            border: 1px solid var(--border);
-            border-radius: 22px;
-            overflow: hidden;
+            position: relative;
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s, box-shadow 0.2s;
+            min-width: 0;
+            padding: 13px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--paper);
+            box-shadow: 0 4px 15px rgba(70,45,35,.025);
+            transition: transform .25s, box-shadow .25s;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 30px #302b3810;
+            box-shadow: var(--shadow);
         }
 
         .product-art {
-            min-height: 185px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             position: relative;
+            min-height: 175px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            border-radius: 17px;
         }
 
         .product-art .emoji {
-            font-size: 6rem;
-            filter: drop-shadow(0 8px 5px #302b3815);
+            display: inline-block;
+            font-size: 5rem;
+            filter: drop-shadow(0 8px 4px rgba(80,40,25,.08));
+            transition: transform .25s;
         }
 
-        .tag {
+        .product-card:hover .product-art .emoji {
+            transform: scale(1.12) rotate(-5deg);
+        }
+
+        .product-tag {
             position: absolute;
-            top: 14px;
-            left: 14px;
-            background: white;
-            border-radius: 20px;
-            padding: 5px 10px;
-            font-size: 0.72rem;
-            font-weight: bold;
-        }
-
-        .product-info {
-            padding: 22px;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        .product-info h3 {
-            margin: 0;
-            font-size: 1.3rem;
-        }
-
-        .product-info .description {
-            color: var(--muted);
-            font-size: 0.9rem;
-            min-height: 48px;
-        }
-
-        .stats {
-            background: #faf6f2;
-            border-radius: 12px;
-            padding: 12px;
-            margin: 10px 0 15px;
-            font-size: 0.83rem;
-        }
-
-        .stats div {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            margin: 4px 0;
-        }
-
-        .stats span {
-            color: var(--muted);
-        }
-
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            margin-top: auto;
-            padding-top: 10px;
-        }
-
-        .price {
-            font-size: 1.2rem;
+            top: 11px;
+            left: 11px;
+            padding: 5px 9px;
+            border-radius: 9px;
+            background: rgba(255,255,255,.85);
+            font-size: .68rem;
             font-weight: 900;
         }
 
+        .product-body {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            padding: 17px 8px 8px;
+        }
+
+        .product-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 10px;
+        }
+
+        .product-title-row h3 {
+            margin: 0 0 7px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+
+        .price {
+            flex-shrink: 0;
+            color: #b76568;
+            font-family: "Nunito", sans-serif;
+            font-size: 1.05rem;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .product-description {
+            min-height: 66px;
+            margin: 5px 0 16px;
+            color: var(--muted);
+            font-size: .88rem;
+        }
+
+        .stats {
+            display: grid;
+            gap: 8px;
+            padding: 13px 0;
+            margin-top: auto;
+            border-top: 1px solid var(--line);
+        }
+
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 10px;
+            font-size: .79rem;
+        }
+
+        .stat span {
+            color: var(--muted);
+        }
+
+        .stat strong {
+            max-width: 62%;
+            text-align: right;
+            font-weight: 800;
+        }
+
         .add-button {
-            border: none;
-            border-radius: 11px;
-            background: var(--purple);
-            padding: 10px 13px;
-            font-weight: bold;
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            padding: 12px;
+            border: 0;
+            border-radius: 13px;
+            background: var(--ink);
+            color: white;
+            font-size: .88rem;
+            font-weight: 800;
+            overflow: hidden;
+            transition: background .2s, transform .2s;
         }
 
-        .cart-section {
-            background: #f3edf9;
-            max-width: none;
+        .add-button:hover {
+            background: #51433d;
         }
 
-        .cart-inner {
-            max-width: 1120px;
-            margin: auto;
-            padding: 65px 24px;
+        .add-button:active {
+            transform: scale(.96);
+        }
+
+        .add-button.added {
+            background: #537b59;
+            animation: buttonPop .35s ease;
+        }
+
+        @keyframes buttonPop {
+            0% { transform: scale(1); }
+            45% { transform: scale(1.06); }
+            100% { transform: scale(1); }
+        }
+
+        .add-button.added .button-symbol {
+            animation: checkPop .35s ease;
+        }
+
+        @keyframes checkPop {
+            0% { transform: scale(.3) rotate(-25deg); }
+            70% { transform: scale(1.35) rotate(8deg); }
+            100% { transform: scale(1) rotate(0); }
+        }
+
+        .about {
+            padding: 55px 0 70px;
+            background: #f7eee7;
+        }
+
+        .about-inner {
+            display: grid;
+            grid-template-columns: .7fr 1.3fr;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .about-emoji {
+            display: grid;
+            place-items: center;
+            min-height: 190px;
+            border-radius: 28px;
+            background: var(--yellow);
+            font-size: 6rem;
+        }
+
+        .about h2 {
+            margin: 8px 0 12px;
+            font-size: 2.3rem;
+            line-height: 1.1;
+        }
+
+        .about p {
+            max-width: 650px;
+            margin: 0;
+            color: var(--muted);
+        }
+
+        /* PAGINA CARRELLO */
+
+        .cart-page {
+            padding: 48px 0 80px;
+        }
+
+        .cart-heading {
+            margin-bottom: 28px;
+        }
+
+        .cart-heading p {
+            color: var(--muted);
         }
 
         .cart-layout {
             display: grid;
-            grid-template-columns: 1fr 0.8fr;
-            gap: 25px;
+            grid-template-columns: 1.35fr .8fr;
             align-items: start;
+            gap: 24px;
         }
 
-        .panel {
+        .cart-panel, .checkout-panel {
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
             background: white;
-            padding: 25px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
         }
 
-        .panel h3 {
-            margin-top: 0;
-        }
-
-        .cart-item {
+        .panel-title {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 12px;
-            padding: 14px 0;
-            border-bottom: 1px solid var(--border);
+            margin-bottom: 18px;
         }
 
-        .cart-item:last-child {
-            border-bottom: none;
+        .panel-title h2 {
+            margin: 0;
+            font-size: 1.25rem;
         }
 
-        .cart-item small {
-            display: block;
-            color: var(--muted);
-        }
-
-        .remove-button {
-            border: none;
-            background: #fff0f1;
-            color: #a13d55;
-            border-radius: 9px;
-            padding: 7px 10px;
-            font-size: 0.8rem;
-        }
-
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid var(--border);
-            padding-top: 15px;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        .empty {
-            color: var(--muted);
-            padding: 15px 0;
-        }
-
-        .secondary-button {
+        .text-button {
+            padding: 6px 0;
+            border: 0;
             background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 9px 12px;
-            margin-top: 12px;
+            color: #b76568;
+            font-size: .82rem;
+            font-weight: 800;
         }
 
-        .checkout-note {
-            color: var(--muted);
-            font-size: 0.82rem;
-            margin-top: 0;
+        .text-button:hover {
+            text-decoration: underline;
         }
 
-        label {
-            display: block;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin: 15px 0 6px;
-        }
-
-        input, select {
-            width: 100%;
-            border: 1px solid #ded5e3;
-            border-radius: 10px;
-            padding: 12px;
-            background: white;
-            color: var(--ink);
-        }
-
-        .full-button {
-            width: 100%;
-            margin-top: 18px;
-        }
-
-        .confirmation {
-            display: none;
-            margin-top: 18px;
-            background: var(--green);
-            border-radius: 14px;
-            padding: 18px;
-            overflow-wrap: anywhere;
-        }
-
-        .confirmation h3 {
-            margin-top: 0;
-        }
-
-        .notice {
-            font-size: 0.8rem;
-            color: var(--muted);
-            margin-top: 12px;
-        }
-
-        .about-grid {
+        .cart-items {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 12px;
         }
 
-        .about-card {
-            background: white;
-            border: 1px solid var(--border);
-            padding: 23px;
-            border-radius: 18px;
+        .cart-item {
+            display: grid;
+            grid-template-columns: 62px minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 13px;
+            padding: 12px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            animation: itemIn .3s ease both;
         }
 
-        .about-card .icon {
+        @keyframes itemIn {
+            from { opacity: 0; transform: translateX(10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .cart-item-art {
+            width: 62px;
+            height: 62px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
             font-size: 2rem;
         }
 
-        .about-card h3 {
-            margin-bottom: 8px;
+        .cart-item-info strong {
+            display: block;
+            font-size: .92rem;
         }
 
-        .about-card p {
+        .cart-item-info small {
+            display: block;
+            margin-top: 2px;
             color: var(--muted);
-            font-size: 0.9rem;
-            margin-bottom: 0;
+            font-size: .77rem;
         }
 
-        footer {
-            background: var(--ink);
-            color: white;
-            padding: 35px 24px;
+        .cart-item-price {
+            text-align: right;
+            font-weight: 900;
+            font-size: .9rem;
+            white-space: nowrap;
+        }
+
+        .remove-button {
+            display: block;
+            margin: 4px 0 0 auto;
+            padding: 3px 0;
+            border: 0;
+            background: transparent;
+            color: #b76568;
+            font-size: .75rem;
+            font-weight: 700;
+        }
+
+        .empty-cart {
+            padding: 40px 15px;
             text-align: center;
         }
 
-        footer p {
-            margin: 5px;
-            font-size: 0.85rem;
-            color: #d5cddc;
+        .empty-cart .empty-emoji {
+            font-size: 4rem;
         }
 
-        @media (max-width: 800px) {
-            .hero {
-                grid-template-columns: 1fr;
-                padding-top: 45px;
+        .empty-cart h3 {
+            margin: 12px 0 5px;
+            font-size: 1.35rem;
+        }
+
+        .empty-cart p {
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        .empty-cart .primary-button {
+            margin-top: 8px;
+        }
+
+        .checkout-panel {
+            position: sticky;
+            top: 100px;
+        }
+
+        .checkout-panel h2 {
+            margin: 0 0 20px;
+            font-size: 1.25rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 12px 0;
+            font-size: .9rem;
+        }
+
+        .summary-row span {
+            color: var(--muted);
+        }
+
+        .summary-total {
+            padding-top: 16px;
+            margin-top: 16px;
+            border-top: 1px solid var(--line);
+            font-size: 1.15rem;
+            font-weight: 900;
+        }
+
+        .summary-total span {
+            color: var(--ink);
+        }
+
+        .checkout-form {
+            display: grid;
+            gap: 15px;
+            margin-top: 24px;
+        }
+
+        .field {
+            display: grid;
+            gap: 6px;
+        }
+
+        .field label {
+            font-size: .83rem;
+            font-weight: 800;
+        }
+
+        .field input, .field select {
+            width: 100%;
+            min-width: 0;
+            padding: 12px;
+            border: 1px solid #e7dcd5;
+            border-radius: 12px;
+            outline: none;
+            background: #fffdfb;
+            color: var(--ink);
+        }
+
+        .field input:focus, .field select:focus {
+            border-color: #d99598;
+            box-shadow: 0 0 0 3px rgba(244,183,189,.2);
+        }
+
+        .checkout-submit {
+            width: 100%;
+            margin-top: 3px;
+        }
+
+        .form-note {
+            margin: 0;
+            color: var(--muted);
+            font-size: .73rem;
+            line-height: 1.5;
+        }
+
+        .notice {
+            display: none;
+            padding: 14px 16px;
+            margin-bottom: 18px;
+            border: 1px solid #b8d5b5;
+            border-radius: 14px;
+            background: #eff8ed;
+            color: #315e38;
+            font-size: .9rem;
+        }
+
+        .notice.show {
+            display: block;
+            animation: pageIn .3s ease both;
+        }
+
+        .notice strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        footer {
+            padding: 30px 20px;
+            border-top: 1px solid var(--line);
+            text-align: center;
+        }
+
+        footer strong {
+            font-family: "Nunito", sans-serif;
+            font-size: 1rem;
+        }
+
+        footer p {
+            margin: 6px 0 0;
+            color: var(--muted);
+            font-size: .78rem;
+        }
+
+        /* CONFERMA AGGIUNTA AL CARRELLO */
+
+        .toast {
+            position: fixed;
+            z-index: 50;
+            right: 22px;
+            bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: min(360px, calc(100% - 32px));
+            padding: 15px 19px;
+            border: 1px solid #e5d8cf;
+            border-radius: 17px;
+            background: white;
+            box-shadow: 0 15px 50px rgba(55,35,25,.16);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px) scale(.96);
+            transition: opacity .25s, transform .25s;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .toast-icon {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            border-radius: 13px;
+            background: #e5f2df;
+            font-size: 1.25rem;
+        }
+
+        .toast strong {
+            display: block;
+            font-size: .88rem;
+        }
+
+        .toast small {
+            display: block;
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: .78rem;
+        }
+
+        .cart-button.bump {
+            animation: cartBump .4s ease;
+        }
+
+        @keyframes cartBump {
+            0%, 100% { transform: scale(1); }
+            35% { transform: scale(1.12) rotate(-3deg); }
+            70% { transform: scale(.96) rotate(2deg); }
+        }
+
+        @media (max-width: 850px) {
+            .hero-inner {
+                grid-template-columns: 1fr .8fr;
+                gap: 25px;
             }
 
             .hero-art {
-                min-height: 230px;
+                min-height: 280px;
             }
 
-            .hero-art .hamster {
-                font-size: 6rem;
+            .hero-wheel {
+                width: 175px;
+                height: 175px;
             }
 
-            .products {
+            .hero-hamster {
+                font-size: 5rem;
+            }
+
+            .product-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
             .cart-layout {
                 grid-template-columns: 1fr;
             }
+
+            .checkout-panel {
+                position: static;
+            }
         }
 
-        @media (max-width: 520px) {
-            nav {
-                padding: 15px;
+        @media (max-width: 600px) {
+            .announcement {
+                font-size: .68rem;
+            }
+
+            .nav {
+                padding: 10px 16px;
+                min-height: 68px;
             }
 
             .logo {
-                font-size: 1rem;
+                gap: 7px;
+                font-size: .91rem;
             }
 
-            .nav-links {
-                gap: 10px;
-                font-size: 0.8rem;
+            .logo-icon {
+                width: 37px;
+                height: 37px;
+                font-size: 1.25rem;
             }
 
-            .nav-links a:first-child {
-                display: none;
+            .nav-actions {
+                gap: 4px;
             }
 
-            .hero, .section, .cart-inner {
-                padding-left: 16px;
-                padding-right: 16px;
+            .nav-link {
+                padding: 9px 7px;
+                font-size: .8rem;
             }
 
-            .products {
-                grid-template-columns: 1fr;
+            .cart-button {
+                gap: 5px;
+                padding: 9px 10px;
+                font-size: .8rem;
             }
 
-            .product-art {
-                min-height: 160px;
+            .container {
+                width: min(100% - 28px, 1120px);
             }
 
-            .about-grid {
+            .hero {
+                padding-top: 37px;
+            }
+
+            .hero-inner {
                 grid-template-columns: 1fr;
             }
 
             h1 {
-                letter-spacing: -1px;
+                font-size: clamp(2.8rem, 12vw, 4.2rem);
+            }
+
+            .hero-copy {
+                font-size: 1rem;
+            }
+
+            .hero-art {
+                min-height: 280px;
+            }
+
+            .trust-strip {
+                grid-template-columns: 1fr;
+                padding-bottom: 30px;
+            }
+
+            .section-heading {
+                align-items: start;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 17px;
+            }
+
+            .product-art {
+                min-height: 190px;
+            }
+
+            .product-description {
+                min-height: auto;
+            }
+
+            .about-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .about-emoji {
+                min-height: 145px;
+                font-size: 5rem;
+            }
+
+            .cart-page {
+                padding-top: 32px;
+            }
+
+            .cart-panel, .checkout-panel {
+                padding: 16px;
+            }
+
+            .cart-item {
+                grid-template-columns: 48px minmax(0, 1fr) auto;
+                gap: 9px;
+                padding: 9px;
+            }
+
+            .cart-item-art {
+                width: 48px;
+                height: 48px;
+                font-size: 1.65rem;
+            }
+
+            .cart-item-info strong {
+                font-size: .83rem;
+            }
+
+            .cart-item-price {
+                font-size: .82rem;
+            }
+
+            .toast {
+                right: 12px;
+                bottom: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
             }
         }
     </style>
 </head>
 
 <body>
-
     <div class="announcement">
-        SPEDIZIONE IMMAGINARIA GRATUITA · 0 € PER TUTTI I CRICETI
+        SPEDIZIONE IMMAGINARIA GRATUITA · 100% CRICETI, 0% PRODUTTIVITÀ GARANTITA
     </div>
 
     <header>
-        <nav>
-            <a class="logo" href="#">
-                <span>🐹</span> Criceti Cerebrali™
-            </a>
+        <nav class="nav">
+            <button class="logo" onclick="showPage('catalogo')" aria-label="Torna al catalogo">
+                <span class="logo-icon">🐹</span>
+                <span>Criceti Cerebrali</span>
+            </button>
 
-            <div class="nav-links">
-                <a href="#catalogo">Catalogo</a>
-                <a href="#chi-siamo">Chi siamo</a>
-                <a class="cart-link" href="#carrello">
-                    Carrello (<span id="cart-count">0</span>)
-                </a>
+            <div class="nav-actions">
+                <button class="nav-link" onclick="goToCatalog()">Catalogo</button>
+                <button class="cart-button" id="cartNavButton" onclick="showPage('carrello')">
+                    <span>🛒</span>
+                    <span>Carrello</span>
+                    <span class="cart-count" id="cartCount" aria-live="polite">0</span>
+                </button>
             </div>
         </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <div>
-                <span class="eyebrow">Il tuo cervello merita di meglio</span>
+        <!-- PAGINA CATALOGO -->
+        <div class="page active" id="catalogo">
+            <section class="hero">
+                <div class="container hero-inner">
+                    <div>
+                        <span class="eyebrow">🐹 Il tuo cervello ci ringrazierà</span>
+                        <h1>La tua mente.<br>La nostra <span class="highlight">ruota.</span></h1>
+                        <p class="hero-copy">
+                            Hai mille pensieri e zero voglia di gestirli?
+                            Ci pensiamo noi. Scegli il criceto più adatto al tuo
+                            caos mentale e lascia che faccia il lavoro sporco.
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="primary-button" onclick="goToCatalog()">
+                                Trova il tuo criceto →
+                            </button>
+                            <button class="secondary-button" onclick="showPage('carrello')">
+                                🛒 Il mio carrello
+                            </button>
+                        </div>
+                    </div>
 
-                <h1>La ruota gira.<br>
-                    <em>O almeno ci prova.</em>
-                </h1>
+                    <div class="hero-art" aria-label="Un criceto che corre nella sua ruota">
+                        <span class="floating-note note-one">⚡ Produttività discutibile</span>
+                        <div class="hero-wheel">
+                            <span class="hero-hamster">🐹</span>
+                        </div>
+                        <span class="floating-note note-two">🧠 Pensieri in corso...</span>
+                    </div>
+                </div>
+            </section>
 
-                <p>
-                    Hai la mente completamente vuota? Le idee non collaborano?
-                    La tua ultima verifica ti ha lasciato un criceto in coma?
-                    Abbiamo il roditore che fa per te.
-                </p>
-
-                <a class="primary-button" href="#catalogo">
-                    Trova il tuo criceto →
-                </a>
+            <div class="container">
+                <section class="trust-strip">
+                    <div class="trust-item">
+                        <span class="trust-icon">🧠</span>
+                        <div>
+                            <strong>Pensieri sempre in movimento</strong>
+                            <small>Almeno sulla carta.</small>
+                        </div>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">💸</span>
+                        <div>
+                            <strong>Prezzi scientificamente inventati</strong>
+                            <small>Economia applicata ai roditori.</small>
+                        </div>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">📦</span>
+                        <div>
+                            <strong>Consegna ultraterrena</strong>
+                            <small>Il corriere è un criceto.</small>
+                        </div>
+                    </div>
+                </section>
             </div>
 
-            <div class="hero-art">
-                <div class="hamster">🐹</div>
-                <strong>CEO della ruota mentale</strong>
-                <small>Laureato in giramento di cervello</small>
-            </div>
-        </section>
+            <section class="catalog-section" id="catalog">
+                <div class="container">
+                    <div class="section-heading">
+                        <div>
+                            <span class="tiny-label">Il nostro catalogo</span>
+                            <h2>Sei criceti. Sei disastri.</h2>
+                            <p>Trova quello che rappresenta meglio la tua situazione.</p>
+                        </div>
+                        <span class="eyebrow">6 modelli disponibili</span>
+                    </div>
 
-        <div class="trust-strip">
-            <span>✓ 100% criceti immaginari</span>
-            <span>✓ Prezzi imbattibili: zero euro</span>
-            <span>✓ Nessuna ruota inclusa</span>
+                    <div class="product-grid" id="productGrid"></div>
+                </div>
+            </section>
+
+            <section class="about">
+                <div class="container about-inner">
+                    <div class="about-emoji">🐹💭</div>
+                    <div>
+                        <span class="tiny-label">La nostra filosofia</span>
+                        <h2>Non è pigrizia.<br>È un problema di criceti.</h2>
+                        <p>
+                            Crediamo in un mondo in cui ogni pensiero abbia il
+                            suo roditore di fiducia. I nostri criceti sono
+                            selezionati con criteri assolutamente non verificati
+                            e statistiche totalmente discutibili.
+                            I risultati, naturalmente, non sono garantiti.
+                        </p>
+                    </div>
+                </div>
+            </section>
         </div>
 
-        <section class="section" id="catalogo">
-            <div class="section-heading">
-                <span class="eyebrow">Il catalogo ufficiale</span>
-                <h2>Scegli il tuo collega cerebrale.</h2>
-                <p>Ogni criceto ha una personalità. Non necessariamente una competenza.</p>
-            </div>
-
-            <div class="products" id="products"></div>
-        </section>
-
-        <section class="cart-section" id="carrello">
-            <div class="cart-inner">
-                <div class="section-heading">
-                    <span class="eyebrow">La fase più importante</span>
-                    <h2>Il tuo ordine.</h2>
-                    <p>Finalmente qualcuno che lavora al posto tuo.</p>
+        <!-- PAGINA CARRELLO -->
+        <section class="page cart-page" id="carrello">
+            <div class="container">
+                <div class="cart-heading">
+                    <span class="tiny-label">Il tuo acquisto immaginario</span>
+                    <h1>Il tuo carrello 🛒</h1>
+                    <p>I tuoi futuri collaboratori ti stanno aspettando.</p>
+                    <button class="secondary-button" onclick="showPage('catalogo')">
+                        ← Torna al catalogo
+                    </button>
                 </div>
+
+                <div class="notice" id="orderNotice" role="status" aria-live="polite"></div>
 
                 <div class="cart-layout">
-                    <div class="panel">
-                        <h3>🐹 I tuoi criceti</h3>
+                    <section class="cart-panel">
+                        <div class="panel-title">
+                            <h2>I tuoi criceti</h2>
+                            <button class="text-button" id="clearCartButton" onclick="clearCart()">
+                                Svuota carrello
+                            </button>
+                        </div>
+                        <div class="cart-items" id="cartItems"></div>
+                    </section>
 
-                        <div id="cart-items" aria-live="polite"></div>
+                    <aside class="checkout-panel">
+                        <h2>Riepilogo dell'ordine</h2>
 
-                        <div class="cart-total">
+                        <div class="summary-row">
+                            <span>Numero di criceti</span>
+                            <strong id="summaryQuantity">0</strong>
+                        </div>
+                        <div class="summary-row">
+                            <span>Spedizione immaginaria</span>
+                            <strong>Gratis</strong>
+                        </div>
+                        <div class="summary-row summary-total">
                             <span>Totale</span>
-                            <span id="cart-total">0,00 €</span>
+                            <strong id="summaryTotal">0,00 €</strong>
                         </div>
 
-                        <button class="secondary-button" id="clear-cart">
-                            Svuota il carrello
-                        </button>
-                    </div>
+                        <form class="checkout-form" id="checkoutForm">
+                            <div class="field">
+                                <label for="nickname">Nome in codice</label>
+                                <input
+                                    id="nickname"
+                                    name="nickname"
+                                    type="text"
+                                    maxlength="30"
+                                    placeholder="Es. Cervello in panne"
+                                    required
+                                >
+                            </div>
 
-                    <div class="panel">
-                        <h3>📦 Completa l'ordine</h3>
-                        <p class="checkout-note">
-                            Checkout interamente finto. Nessun pagamento,
-                            nessuna spedizione, nessun criceto sfruttato.
-                        </p>
+                            <div class="field">
+                                <label for="wheelStatus">Stato attuale della ruota</label>
+                                <select id="wheelStatus" name="wheelStatus" required>
+                                    <option value="">Scegli una risposta...</option>
+                                    <option>Gira a malapena</option>
+                                    <option>Gira troppo velocemente</option>
+                                    <option>La ruota è ferma</option>
+                                    <option>La ruota non è mai esistita</option>
+                                    <option>Non so, sto procrastinando</option>
+                                </select>
+                            </div>
 
-                        <form id="checkout">
-                            <label for="nickname">Il tuo nome da cricetaro</label>
-                            <input
-                                type="text"
-                                id="nickname"
-                                maxlength="30"
-                                placeholder="Es. La mente superiore"
-                                autocomplete="off"
-                                required
-                            >
-
-                            <label for="brain-status">
-                                Stato attuale della ruota
-                            </label>
-
-                            <select id="brain-status" required>
-                                <option value="">Scegli la tua condizione...</option>
-                                <option value="Ruota ferma dal 2019">
-                                    Ruota ferma dal 2019
-                                </option>
-                                <option value="Gira con molta fatica">
-                                    Gira con molta fatica
-                                </option>
-                                <option value="Modalità Ferrari">
-                                    Modalità Ferrari
-                                </option>
-                                <option value="La ruota è scappata">
-                                    La ruota è scappata
-                                </option>
-                                <option value="Non c'è mai stata una ruota">
-                                    Non c'è mai stata una ruota
-                                </option>
-                            </select>
-
-                            <button class="primary-button full-button" type="submit">
-                                Conferma il mio ordine finto
+                            <button class="primary-button checkout-submit" type="submit">
+                                Conferma l'ordine immaginario →
                             </button>
+
+                            <p class="form-note">
+                                È tutto uno scherzo: l'ordine non viene inviato
+                                a nessuno. Non inserire dati personali reali.
+                            </p>
                         </form>
-
-                        <div class="confirmation" id="confirmation" role="status" aria-live="polite"></div>
-
-                        <p class="notice">
-                            Non inserire dati personali reali: questo è
-                            un negozio satirico, non un servizio commerciale.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="chi-siamo">
-            <div class="section-heading">
-                <span class="eyebrow">La nostra filosofia</span>
-                <h2>Perché scegliere noi?</h2>
-                <p>Perché il tuo cervello ha bisogno di assistenza specializzata.</p>
-            </div>
-
-            <div class="about-grid">
-                <div class="about-card">
-                    <div class="icon">🧠</div>
-                    <h3>Scienza discutibile</h3>
-                    <p>I nostri test sono stati condotti da criceti che non sanno leggere.</p>
-                </div>
-
-                <div class="about-card">
-                    <div class="icon">💸</div>
-                    <h3>Prezzi onestissimi</h3>
-                    <p>Non paghi nulla. Non guadagniamo nulla. Il capitalismo trema.</p>
-                </div>
-
-                <div class="about-card">
-                    <div class="icon">🏃</div>
-                    <h3>Massime prestazioni</h3>
-                    <p>Il criceto lavora. Tu guardi. Un modello economico rivoluzionario.</p>
+                    </aside>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <strong>🐹 Criceti Cerebrali™</strong>
-        <p>Il tuo cervello è in buone zampe.</p>
-        <p>© 2026 · Negozio immaginario · Nessun criceto spedito davvero.</p>
+        <strong>🐹 Criceti Cerebrali</strong>
+        <p>Un criceto alla volta, verso il collasso mentale.</p>
+        <p>Negozio immaginario a scopo umoristico. Nessun criceto è stato assunto.</p>
     </footer>
 
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <span class="toast-icon" id="toastIcon">✓</span>
+        <div>
+            <strong id="toastTitle">Aggiunto al carrello!</strong>
+            <small id="toastMessage">Il criceto è pronto a lavorare.</small>
+        </div>
+    </div>
+
     <script>
+        // CATALOGO: questi sono gli unici sei criceti disponibili.
         const products = [
             {
                 id: 1,
                 name: "Criceto Base",
                 emoji: "🐹",
+                color: "#f9e4d5",
                 tag: "Il classico",
-                color: "#f8dce5",
-                description: "Fa girare la ruota. A volte si dimentica perché.",
+                description: "Fa girare la ruota. A volte si dimentica perché, ma fa il suo lavoro.",
                 personality: "Distratto ma volenteroso",
-                speed: "3 giri/minuto",
-                intelligence: "Da verificare"
+                speed: "30 giri al minuto",
+                intelligence: "Base",
+                duration: "30 giorni",
+                price: 1.00
             },
             {
                 id: 2,
                 name: "Criceto Turbo",
-                emoji: "🐿️",
+                emoji: "⚡",
+                color: "#ffe5a8",
                 tag: "Alta velocità",
-                color: "#e1d5fa",
-                description: "Corre come se avesse appena bevuto sette caffè.",
+                description: "Corre come se avesse appena bevuto sette caffè. Perfetto per le disperate sessioni di studio notturne prima di un esame o di una verifica.",
                 personality: "Ansioso e produttivo",
-                speed: "9000 giri/minuto",
-                intelligence: "Non disponibile"
+                speed: "9.000 giri/minuto",
+                intelligence: "Alta",
+                duration: "8 ore",
+                price: 25.00
             },
             {
                 id: 3,
-                name: "Criceto Post-Verifica",
-                emoji: "🐹",
-                tag: "Edizione limitata",
-                color: "#ffe8b6",
-                description: "Sopravvissuto a matematica. Non fare domande.",
+                name: "Criceto Ricondizionato",
+                emoji: "🩹",
+                color: "#dce9d6",
+                tag: "Usato garantito*",
+                description: "Sopravvissuto a livelli estremi di stress. Non ci assumiamo alcuna responsabilità sul suo funzionamento.",
                 personality: "Traumatizzato",
-                speed: "0,2 giri/minuto",
-                intelligence: "In aggiornamento"
+                speed: "1 giro al minuto",
+                intelligence: "Media",
+                duration: "Dai 10 giorni ai 10 minuti",
+                price: 2.50
             },
             {
                 id: 4,
                 name: "Criceto Filosofo",
-                emoji: "🐭",
-                tag: "Edizione premium",
-                color: "#d7eddf",
-                description: "Si chiede se la ruota esista davvero. Non corre mai.",
+                emoji: "🧐",
+                color: "#e8def8",
+                tag: "Edizione esistenziale",
+                description: "Si chiede se la ruota esista davvero o se sia lui stesso a esistere. Potrebbe non ripartire mai più.",
                 personality: "Esistenzialista",
-                speed: "Dipende dal senso della vita",
-                intelligence: "Troppo consapevole"
+                speed: "Tra 10 e 30 giri al minuto",
+                intelligence: "Troppo consapevole",
+                duration: "Insostituibile",
+                price: 50.00
             },
             {
                 id: 5,
                 name: "Criceto Procrastinatore",
                 emoji: "😴",
-                tag: "Best seller",
-                color: "#dce8fb",
-                description: "Domani inizia a correre. Promesso.",
+                color: "#d9eafa",
+                tag: "Inizia domani",
+                description: "Domani comincia a correre. Promesso. Probabilmente. Ne riparliamo domani.",
                 personality: "Rimanda tutto",
-                speed: "Domani",
-                intelligence: "Potenziale inesplorato"
+                speed: "0 giri al secondo",
+                intelligence: "Potenziale inesplorato",
+                duration: "Insostituibile",
+                price: 0
             },
             {
                 id: 6,
-                name: "Criceto del Caos",
-                emoji: "🐹",
-                tag: "Attenzione",
-                color: "#f8d8c6",
-                description: "Corre sulla ruota, poi la smonta, poi scappa.",
-                personality: "Imprevedibile",
+                name: "Criceto Napoletano",
+                emoji: "🕶️",
+                color: "#f8d9de",
+                tag: "Non fare domande",
+                description: "Corre sulla ruota, poi la smonta, scappa e la rivende. Quando te ne accorgi, è già sparito.",
+                personality: "Imprevedibile e furtivo",
                 speed: "Non misurabile",
-                intelligence: "Pericolosamente creativo"
+                intelligence: "Pericolosamente alta",
+                duration: "Dai 5 giorni ai 5 minuti",
+                price: 0
             }
         ];
 
+        // Il carrello contiene gli ID dei prodotti.
+        // Lo stesso criceto può essere aggiunto più volte.
         let cart = [];
+        let toastTimeout;
 
-        const productsContainer = document.getElementById("products");
-        const cartItems = document.getElementById("cart-items");
-        const cartCount = document.getElementById("cart-count");
-        const cartTotal = document.getElementById("cart-total");
-        const checkout = document.getElementById("checkout");
-        const confirmation = document.getElementById("confirmation");
+        const euro = value =>
+            value.toLocaleString("it-IT", {
+                style: "currency",
+                currency: "EUR"
+            });
+
+        function getProduct(id) {
+            return products.find(product => product.id === id);
+        }
+
+        function cartTotal() {
+            return cart.reduce((total, id) => {
+                const product = getProduct(id);
+                return total + (product ? product.price : 0);
+            }, 0);
+        }
 
         function renderProducts() {
-            productsContainer.innerHTML = products.map(product => `
+            const grid = document.getElementById("productGrid");
+
+            grid.innerHTML = products.map(product => `
                 <article class="product-card">
                     <div class="product-art" style="background:${product.color}">
-                        <span class="tag">${product.tag}</span>
+                        <span class="product-tag">${product.tag}</span>
                         <span class="emoji" aria-hidden="true">${product.emoji}</span>
                     </div>
 
-                    <div class="product-info">
-                        <h3>${product.name}</h3>
-                        <p class="description">${product.description}</p>
+                    <div class="product-body">
+                        <div class="product-title-row">
+                            <h3>${product.name}</h3>
+                            <span class="price">${euro(product.price)}</span>
+                        </div>
+
+                        <p class="product-description">${product.description}</p>
 
                         <div class="stats">
-                            <div>
+                            <div class="stat">
                                 <span>Personalità</span>
                                 <strong>${product.personality}</strong>
                             </div>
-                            <div>
+                            <div class="stat">
                                 <span>Velocità</span>
                                 <strong>${product.speed}</strong>
                             </div>
-                            <div>
+                            <div class="stat">
                                 <span>Intelligenza</span>
                                 <strong>${product.intelligence}</strong>
                             </div>
+                            <div class="stat">
+                                <span>Durata</span>
+                                <strong>${product.duration}</strong>
+                            </div>
                         </div>
 
-                        <div class="price-row">
-                            <span class="price">0,00 €</span>
-                            <button class="add-button" data-add="${product.id}">
-                                + Aggiungi
-                            </button>
-                        </div>
+                        <button class="add-button" id="add-${product.id}"
+                            onclick="addToCart(${product.id})">
+                            <span class="button-symbol">＋</span>
+                            <span class="button-label">Aggiungi al carrello</span>
+                        </button>
                     </div>
                 </article>
             `).join("");
         }
 
-        function renderCart() {
-            cartCount.textContent = cart.length;
+        function showPage(pageName) {
+            document.querySelectorAll(".page").forEach(page => {
+                page.classList.remove("active");
+            });
 
-            if (cart.length === 0) {
-                cartItems.innerHTML =
-                    '<p class="empty">Il tuo carrello è vuoto. La ruota è ferma.</p>';
-            } else {
-                cartItems.innerHTML = cart.map((id, index) => {
-                    const product = products.find(item => item.id === id);
+            document.getElementById(pageName).classList.add("active");
+            window.scrollTo({ top: 0, behavior: "smooth" });
 
-                    return `
-                        <div class="cart-item">
-                            <div>
-                                <strong>${product.emoji} ${product.name}</strong>
-                                <small>Prezzo: 0,00 €</small>
-                            </div>
-                            <button class="remove-button" data-remove="${index}">
-                                Rimuovi
-                            </button>
-                        </div>
-                    `;
-                }).join("");
+            if (pageName === "carrello") {
+                renderCart();
             }
-
-            cartTotal.textContent = "0,00 €";
         }
 
-        productsContainer.addEventListener("click", function(event) {
-            const button = event.target.closest("[data-add]");
+        function goToCatalog() {
+            showPage("catalogo");
+            document.getElementById("catalog").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
 
-            if (!button) return;
+        function addToCart(id) {
+            const product = getProduct(id);
+            if (!product) return;
 
-            const id = Number(button.dataset.add);
             cart.push(id);
-
-            confirmation.style.display = "none";
+            updateCartCount();
             renderCart();
-        });
 
-        cartItems.addEventListener("click", function(event) {
-            const button = event.target.closest("[data-remove]");
+            // Animazione sul pulsante che hai appena premuto.
+            const button = document.getElementById(`add-${id}`);
+            if (button) {
+                button.classList.remove("added");
+                void button.offsetWidth;
+                button.classList.add("added");
+                button.querySelector(".button-symbol").textContent = "✓";
+                button.querySelector(".button-label").textContent = "Aggiunto!";
 
-            if (!button) return;
+                setTimeout(() => {
+                    button.classList.remove("added");
+                    button.querySelector(".button-symbol").textContent = "＋";
+                    button.querySelector(".button-label").textContent = "Aggiungi al carrello";
+                }, 1100);
+            }
 
-            const index = Number(button.dataset.remove);
+            // Il contatore del carrello fa un piccolo rimbalzo.
+            const cartButton = document.getElementById("cartNavButton");
+            cartButton.classList.remove("bump");
+            void cartButton.offsetWidth;
+            cartButton.classList.add("bump");
+
+            // Conferma visiva in basso a destra.
+            showToast("✓", "Aggiunto al carrello!", `${product.name} è pronto a lavorare.`);
+        }
+
+        function showToast(icon, title, message) {
+            const toast = document.getElementById("toast");
+
+            document.getElementById("toastIcon").textContent = icon;
+            document.getElementById("toastTitle").textContent = title;
+            document.getElementById("toastMessage").textContent = message;
+
+            toast.classList.add("show");
+            clearTimeout(toastTimeout);
+
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2600);
+        }
+
+        function updateCartCount() {
+            document.getElementById("cartCount").textContent = cart.length;
+        }
+
+        function removeFromCart(index) {
+            if (index < 0 || index >= cart.length) return;
+
             cart.splice(index, 1);
-
+            updateCartCount();
             renderCart();
-        });
+        }
 
-        document.getElementById("clear-cart").addEventListener("click", function() {
+        function clearCart() {
+            if (cart.length === 0) return;
+
             cart = [];
+            updateCartCount();
             renderCart();
-        });
 
-        checkout.addEventListener("submit", function(event) {
-            event.preventDefault();
+            document.getElementById("orderNotice").classList.remove("show");
+            showToast("🧹", "Carrello svuotato", "I criceti sono tornati al loro habitat.");
+        }
+
+        function renderCart() {
+            const itemsContainer = document.getElementById("cartItems");
+            const clearButton = document.getElementById("clearCartButton");
+            const form = document.getElementById("checkoutForm");
+
+            document.getElementById("summaryQuantity").textContent = cart.length;
+            document.getElementById("summaryTotal").textContent = euro(cartTotal());
+            clearButton.style.visibility = cart.length ? "visible" : "hidden";
 
             if (cart.length === 0) {
-                alert("Il carrello è vuoto! Scegli almeno un criceto.");
+                itemsContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-emoji">🐹💤</div>
+                        <h3>Qui non gira niente.</h3>
+                        <p>Il tuo carrello è vuoto. Anche i criceti si annoiano.</p>
+                        <button class="primary-button" onclick="showPage('catalogo')">
+                            Vai a scegliere un criceto →
+                        </button>
+                    </div>
+                `;
+
+                form.style.opacity = ".5";
+                form.querySelector("button[type='submit']").disabled = true;
                 return;
             }
 
-            const nickname = document.getElementById("nickname").value.trim();
-            const status = document.getElementById("brain-status").value;
+            form.style.opacity = "1";
+            form.querySelector("button[type='submit']").disabled = false;
 
-            if (!nickname || !status) return;
+            itemsContainer.innerHTML = cart.map((id, index) => {
+                const product = getProduct(id);
+                if (!product) return "";
+
+                return `
+                    <div class="cart-item">
+                        <div class="cart-item-art" style="background:${product.color}">
+                            ${product.emoji}
+                        </div>
+                        <div class="cart-item-info">
+                            <strong>${product.name}</strong>
+                            <small>${product.personality}</small>
+                        </div>
+                        <div class="cart-item-price">
+                            ${euro(product.price)}
+                            <button class="remove-button"
+                                onclick="removeFromCart(${index})"
+                                aria-label="Rimuovi ${product.name} dal carrello">
+                                Rimuovi
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join("");
+        }
+
+        document.getElementById("checkoutForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            if (cart.length === 0) return;
+
+            const nickname = document.getElementById("nickname").value.trim();
+            const wheelStatus = document.getElementById("wheelStatus").value;
+
+            if (!nickname || !wheelStatus) return;
 
             const quantity = cart.length;
-            const orderNames = cart.map(id =>
-                products.find(product => product.id === id).name
-            );
+            const total = euro(cartTotal());
+            const notice = document.getElementById("orderNotice");
 
-            confirmation.replaceChildren();
+            // textContent evita di interpretare il testo inserito come HTML.
+            notice.replaceChildren();
 
-            const title = document.createElement("h3");
-            title.textContent = "Ordine immaginario confermato!";
+            const title = document.createElement("strong");
+            title.textContent = "🎉 Ordine immaginario confermato!";
 
-            const greeting = document.createElement("p");
-            greeting.textContent = "Complimenti, " + nickname + "!";
+            const message = document.createElement("span");
+            message.textContent =
+                `Grazie, ${nickname}! Hai ordinato ${quantity} cricet${quantity === 1 ? "o" : "i"} ` +
+                `per un totale di ${total}. Stato della ruota: ${wheelStatus}. ` +
+                "I tuoi criceti stanno già preparando le valigie. Ovviamente è tutto uno scherzo!";
 
-            const details = document.createElement("p");
-            details.textContent =
-                "Hai selezionato " + quantity + " criceto/i: " +
-                orderNames.join(", ") + ".";
+            notice.append(title, message);
+            notice.classList.add("show");
 
-            const brain = document.createElement("p");
-            brain.textContent = "Stato della ruota: " + status + ".";
-
-            const ending = document.createElement("p");
-            ending.textContent =
-                "Totale: 0,00 €. Nessun pagamento effettuato e nessun criceto spedito.";
-
-            confirmation.append(title, greeting, details, brain, ending);
-            confirmation.style.display = "block";
-
+            // L'ordine è solo una simulazione: nessun dato viene inviato.
             cart = [];
+            updateCartCount();
             renderCart();
-            checkout.reset();
 
-            confirmation.scrollIntoView({
-                behavior: "smooth",
-                block: "nearest"
-            });
+            this.reset();
+
+            window.scrollTo({ top: 0, behavior: "smooth" });
         });
 
         renderProducts();
+        updateCartCount();
         renderCart();
     </script>
-
 </body>
 </html>
