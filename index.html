@@ -3,124 +3,956 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ordina il tuo criceto cerebrale</title>
+
+    <title>Criceti Cerebrali™ — Il negozio ufficiale</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #fffaf3;
+            --paper: #ffffff;
+            --ink: #302b38;
+            --muted: #777180;
+            --pink: #f4b7c8;
+            --purple: #d9c8f4;
+            --yellow: #ffe4a3;
+            --green: #c9e9d5;
+            --border: #eee3e5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        button, input, select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            transition: transform 0.15s, opacity 0.15s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button:focus-visible, a:focus-visible,
+        input:focus-visible, select:focus-visible {
+            outline: 3px solid #9274c7;
+            outline-offset: 3px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .announcement {
+            padding: 9px 16px;
+            text-align: center;
+            background: var(--ink);
+            color: white;
+            font-size: 0.85rem;
+        }
+
+        header {
+            background: var(--paper);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 1120px;
+            margin: auto;
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            display: inline-block;
+            margin-right: 7px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            font-size: 0.9rem;
+        }
+
+        .cart-link {
+            background: var(--purple);
+            padding: 9px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .hero {
+            max-width: 1120px;
+            margin: auto;
+            padding: 65px 24px 55px;
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: var(--yellow);
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 5vw, 4.5rem);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            margin: 20px 0;
+        }
+
+        h1 em {
+            color: #ad6684;
+            font-style: normal;
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 520px;
+            font-size: 1.05rem;
+        }
+
+        .primary-button {
+            display: inline-block;
+            background: var(--ink);
+            color: white;
+            border: none;
+            padding: 14px 22px;
+            border-radius: 12px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .hero-art {
+            min-height: 300px;
+            border-radius: 35px;
+            background: var(--pink);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+            transform: rotate(2deg);
+        }
+
+        .hero-art .hamster {
+            font-size: 8rem;
+            line-height: 1.2;
+        }
+
+        .hero-art strong {
+            font-size: 1.25rem;
+        }
+
+        .hero-art small {
+            color: #684354;
+        }
+
+        .trust-strip {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px 35px;
+            padding: 20px;
+            background: #f4eee8;
+            font-size: 0.9rem;
+        }
+
+        .section {
+            max-width: 1120px;
+            margin: auto;
+            padding: 70px 24px;
+        }
+
+        .section-heading {
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+            letter-spacing: -1px;
+            margin: 8px 0;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .product-card {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px #302b3810;
+        }
+
+        .product-art {
+            min-height: 185px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .product-art .emoji {
+            font-size: 6rem;
+            filter: drop-shadow(0 8px 5px #302b3815);
+        }
+
+        .tag {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: white;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 0.72rem;
+            font-weight: bold;
+        }
+
+        .product-info {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .product-info h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+        .product-info .description {
+            color: var(--muted);
+            font-size: 0.9rem;
+            min-height: 48px;
+        }
+
+        .stats {
+            background: #faf6f2;
+            border-radius: 12px;
+            padding: 12px;
+            margin: 10px 0 15px;
+            font-size: 0.83rem;
+        }
+
+        .stats div {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 4px 0;
+        }
+
+        .stats span {
+            color: var(--muted);
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-top: auto;
+            padding-top: 10px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        .add-button {
+            border: none;
+            border-radius: 11px;
+            background: var(--purple);
+            padding: 10px 13px;
+            font-weight: bold;
+        }
+
+        .cart-section {
+            background: #f3edf9;
+            max-width: none;
+        }
+
+        .cart-inner {
+            max-width: 1120px;
+            margin: auto;
+            padding: 65px 24px;
+        }
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 1fr 0.8fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .panel {
+            background: white;
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+        }
+
+        .panel h3 {
+            margin-top: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item small {
+            display: block;
+            color: var(--muted);
+        }
+
+        .remove-button {
+            border: none;
+            background: #fff0f1;
+            color: #a13d55;
+            border-radius: 9px;
+            padding: 7px 10px;
+            font-size: 0.8rem;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .empty {
+            color: var(--muted);
+            padding: 15px 0;
+        }
+
+        .secondary-button {
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 9px 12px;
+            margin-top: 12px;
+        }
+
+        .checkout-note {
+            color: var(--muted);
+            font-size: 0.82rem;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin: 15px 0 6px;
+        }
+
+        input, select {
+            width: 100%;
+            border: 1px solid #ded5e3;
+            border-radius: 10px;
+            padding: 12px;
+            background: white;
+            color: var(--ink);
+        }
+
+        .full-button {
+            width: 100%;
+            margin-top: 18px;
+        }
+
+        .confirmation {
+            display: none;
+            margin-top: 18px;
+            background: var(--green);
+            border-radius: 14px;
+            padding: 18px;
+            overflow-wrap: anywhere;
+        }
+
+        .confirmation h3 {
+            margin-top: 0;
+        }
+
+        .notice {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-top: 12px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .about-card {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 23px;
+            border-radius: 18px;
+        }
+
+        .about-card .icon {
+            font-size: 2rem;
+        }
+
+        .about-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .about-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        footer {
+            background: var(--ink);
+            color: white;
+            padding: 35px 24px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px;
+            font-size: 0.85rem;
+            color: #d5cddc;
+        }
+
+        @media (max-width: 800px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 45px;
+            }
+
+            .hero-art {
+                min-height: 230px;
+            }
+
+            .hero-art .hamster {
+                font-size: 6rem;
+            }
+
+            .products {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+            nav {
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 10px;
+                font-size: 0.8rem;
+            }
+
+            .nav-links a:first-child {
+                display: none;
+            }
+
+            .hero, .section, .cart-inner {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .product-art {
+                min-height: 160px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                letter-spacing: -1px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-    <h1>Ordina anche tu il tuo criceto per far roteare quella ruota vuota nel tuo cervello una volta tanto</h1>
-    <p>Il primo e unico negozio di criceti cerebrali.</p>
-
-    <h2>I nostri criceti</h2>
-
-    <div>
-        <h3>Criceto Base</h3>
-        <p>Fa girare la ruota. A volte.</p>
-        <p>Prezzo: gratis</p>
-        <button onclick="aggiungi('Criceto Base')">Ordina</button>
+    <div class="announcement">
+        SPEDIZIONE IMMAGINARIA GRATUITA · 0 € PER TUTTI I CRICETI
     </div>
 
-    <div>
-        <h3>Criceto Turbo</h3>
-        <p>Corre come se avesse appena bevuto sette caffè.</p>
-        <p>Prezzo: gratis</p>
-        <button onclick="aggiungi('Criceto Turbo')">Ordina</button>
-    </div>
+    <header>
+        <nav>
+            <a class="logo" href="#">
+                <span>🐹</span> Criceti Cerebrali™
+            </a>
 
-    <div>
-        <h3>Criceto Post-Verifica</h3>
-        <p>Stanco, confuso e probabilmente insufficiente in matematica.</p>
-        <p>Prezzo: gratis</p>
-        <button onclick="aggiungi('Criceto Post-Verifica')">Ordina</button>
-    </div>
+            <div class="nav-links">
+                <a href="#catalogo">Catalogo</a>
+                <a href="#chi-siamo">Chi siamo</a>
+                <a class="cart-link" href="#carrello">
+                    Carrello (<span id="cart-count">0</span>)
+                </a>
+            </div>
+        </nav>
+    </header>
 
-    <h2>Il tuo carrello</h2>
-    <ul id="carrello"></ul>
-    <p id="messaggio">Non hai ancora ordinato nessun criceto.</p>
+    <main>
+        <section class="hero">
+            <div>
+                <span class="eyebrow">Il tuo cervello merita di meglio</span>
 
-    <button onclick="svuota()">Libera la ruota</button>
+                <h1>La ruota gira.<br>
+                    <em>O almeno ci prova.</em>
+                </h1>
 
-    <h2>Completa il tuo ordine</h2>
-    
-    <form id="checkout">
-        <label for="nome">Come ti chiami?</label>
-        <input type="text" id="nome" required>
-        <br><br>
-        
-        <label for="modello">Quanto è attiva la tua ruota?</label>
-        <select id="modello" required>
-            <option value="">Scegli...</option>
-            <option value="Ferma">Non gira dal 2019</option>
-            <option value="Lenta">Gira, ma con fatica</option>
-            <option value="Turbo">Sembra un motore Ferrari</option>
-        </select>
-        <br><br>
-        <button type="submit">Conferma l'ordine</button>
-    </form>
-    
-    <p id="conferma"></p>
+                <p>
+                    Hai la mente completamente vuota? Le idee non collaborano?
+                    La tua ultima verifica ti ha lasciato un criceto in coma?
+                    Abbiamo il roditore che fa per te.
+                </p>
+
+                <a class="primary-button" href="#catalogo">
+                    Trova il tuo criceto →
+                </a>
+            </div>
+
+            <div class="hero-art">
+                <div class="hamster">🐹</div>
+                <strong>CEO della ruota mentale</strong>
+                <small>Laureato in giramento di cervello</small>
+            </div>
+        </section>
+
+        <div class="trust-strip">
+            <span>✓ 100% criceti immaginari</span>
+            <span>✓ Prezzi imbattibili: zero euro</span>
+            <span>✓ Nessuna ruota inclusa</span>
+        </div>
+
+        <section class="section" id="catalogo">
+            <div class="section-heading">
+                <span class="eyebrow">Il catalogo ufficiale</span>
+                <h2>Scegli il tuo collega cerebrale.</h2>
+                <p>Ogni criceto ha una personalità. Non necessariamente una competenza.</p>
+            </div>
+
+            <div class="products" id="products"></div>
+        </section>
+
+        <section class="cart-section" id="carrello">
+            <div class="cart-inner">
+                <div class="section-heading">
+                    <span class="eyebrow">La fase più importante</span>
+                    <h2>Il tuo ordine.</h2>
+                    <p>Finalmente qualcuno che lavora al posto tuo.</p>
+                </div>
+
+                <div class="cart-layout">
+                    <div class="panel">
+                        <h3>🐹 I tuoi criceti</h3>
+
+                        <div id="cart-items" aria-live="polite"></div>
+
+                        <div class="cart-total">
+                            <span>Totale</span>
+                            <span id="cart-total">0,00 €</span>
+                        </div>
+
+                        <button class="secondary-button" id="clear-cart">
+                            Svuota il carrello
+                        </button>
+                    </div>
+
+                    <div class="panel">
+                        <h3>📦 Completa l'ordine</h3>
+                        <p class="checkout-note">
+                            Checkout interamente finto. Nessun pagamento,
+                            nessuna spedizione, nessun criceto sfruttato.
+                        </p>
+
+                        <form id="checkout">
+                            <label for="nickname">Il tuo nome da cricetaro</label>
+                            <input
+                                type="text"
+                                id="nickname"
+                                maxlength="30"
+                                placeholder="Es. La mente superiore"
+                                autocomplete="off"
+                                required
+                            >
+
+                            <label for="brain-status">
+                                Stato attuale della ruota
+                            </label>
+
+                            <select id="brain-status" required>
+                                <option value="">Scegli la tua condizione...</option>
+                                <option value="Ruota ferma dal 2019">
+                                    Ruota ferma dal 2019
+                                </option>
+                                <option value="Gira con molta fatica">
+                                    Gira con molta fatica
+                                </option>
+                                <option value="Modalità Ferrari">
+                                    Modalità Ferrari
+                                </option>
+                                <option value="La ruota è scappata">
+                                    La ruota è scappata
+                                </option>
+                                <option value="Non c'è mai stata una ruota">
+                                    Non c'è mai stata una ruota
+                                </option>
+                            </select>
+
+                            <button class="primary-button full-button" type="submit">
+                                Conferma il mio ordine finto
+                            </button>
+                        </form>
+
+                        <div class="confirmation" id="confirmation" role="status" aria-live="polite"></div>
+
+                        <p class="notice">
+                            Non inserire dati personali reali: questo è
+                            un negozio satirico, non un servizio commerciale.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="chi-siamo">
+            <div class="section-heading">
+                <span class="eyebrow">La nostra filosofia</span>
+                <h2>Perché scegliere noi?</h2>
+                <p>Perché il tuo cervello ha bisogno di assistenza specializzata.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="icon">🧠</div>
+                    <h3>Scienza discutibile</h3>
+                    <p>I nostri test sono stati condotti da criceti che non sanno leggere.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="icon">💸</div>
+                    <h3>Prezzi onestissimi</h3>
+                    <p>Non paghi nulla. Non guadagniamo nulla. Il capitalismo trema.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="icon">🏃</div>
+                    <h3>Massime prestazioni</h3>
+                    <p>Il criceto lavora. Tu guardi. Un modello economico rivoluzionario.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <strong>🐹 Criceti Cerebrali™</strong>
+        <p>Il tuo cervello è in buone zampe.</p>
+        <p>© 2026 · Negozio immaginario · Nessun criceto spedito davvero.</p>
+    </footer>
 
     <script>
-        let criceti = [];
-
-        function aggiungi(nome) {
-            criceti.push(nome);
-            aggiornaCarrello();
-        }
-
-        function svuota() {
-            criceti = [];
-            aggiornaCarrello();
-        }
-
-        function aggiornaCarrello() {
-            let lista = document.getElementById("carrello");
-            let messaggio = document.getElementById("messaggio");
-
-            lista.innerHTML = "";
-
-            for (let i = 0; i < criceti.length; i++) {
-                let elemento = document.createElement("li");
-                
-                elemento.textContent = criceti[i] + " ";
-                let pulsante = document.createElement("button");
-                pulsante.textContent = "Rimuovi";
-                
-                pulsante.onclick = function() {
-                    criceti.splice(i, 1);
-                    aggiornaCarrello();
-                };
-                
-                elemento.appendChild(pulsante);
-                lista.appendChild(elemento);
+        const products = [
+            {
+                id: 1,
+                name: "Criceto Base",
+                emoji: "🐹",
+                tag: "Il classico",
+                color: "#f8dce5",
+                description: "Fa girare la ruota. A volte si dimentica perché.",
+                personality: "Distratto ma volenteroso",
+                speed: "3 giri/minuto",
+                intelligence: "Da verificare"
+            },
+            {
+                id: 2,
+                name: "Criceto Turbo",
+                emoji: "🐿️",
+                tag: "Alta velocità",
+                color: "#e1d5fa",
+                description: "Corre come se avesse appena bevuto sette caffè.",
+                personality: "Ansioso e produttivo",
+                speed: "9000 giri/minuto",
+                intelligence: "Non disponibile"
+            },
+            {
+                id: 3,
+                name: "Criceto Post-Verifica",
+                emoji: "🐹",
+                tag: "Edizione limitata",
+                color: "#ffe8b6",
+                description: "Sopravvissuto a matematica. Non fare domande.",
+                personality: "Traumatizzato",
+                speed: "0,2 giri/minuto",
+                intelligence: "In aggiornamento"
+            },
+            {
+                id: 4,
+                name: "Criceto Filosofo",
+                emoji: "🐭",
+                tag: "Edizione premium",
+                color: "#d7eddf",
+                description: "Si chiede se la ruota esista davvero. Non corre mai.",
+                personality: "Esistenzialista",
+                speed: "Dipende dal senso della vita",
+                intelligence: "Troppo consapevole"
+            },
+            {
+                id: 5,
+                name: "Criceto Procrastinatore",
+                emoji: "😴",
+                tag: "Best seller",
+                color: "#dce8fb",
+                description: "Domani inizia a correre. Promesso.",
+                personality: "Rimanda tutto",
+                speed: "Domani",
+                intelligence: "Potenziale inesplorato"
+            },
+            {
+                id: 6,
+                name: "Criceto del Caos",
+                emoji: "🐹",
+                tag: "Attenzione",
+                color: "#f8d8c6",
+                description: "Corre sulla ruota, poi la smonta, poi scappa.",
+                personality: "Imprevedibile",
+                speed: "Non misurabile",
+                intelligence: "Pericolosamente creativo"
             }
+        ];
 
-            if (criceti.length === 0) {
-                messaggio.textContent = "Non hai ancora ordinato nessun criceto.";
+        let cart = [];
+
+        const productsContainer = document.getElementById("products");
+        const cartItems = document.getElementById("cart-items");
+        const cartCount = document.getElementById("cart-count");
+        const cartTotal = document.getElementById("cart-total");
+        const checkout = document.getElementById("checkout");
+        const confirmation = document.getElementById("confirmation");
+
+        function renderProducts() {
+            productsContainer.innerHTML = products.map(product => `
+                <article class="product-card">
+                    <div class="product-art" style="background:${product.color}">
+                        <span class="tag">${product.tag}</span>
+                        <span class="emoji" aria-hidden="true">${product.emoji}</span>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p class="description">${product.description}</p>
+
+                        <div class="stats">
+                            <div>
+                                <span>Personalità</span>
+                                <strong>${product.personality}</strong>
+                            </div>
+                            <div>
+                                <span>Velocità</span>
+                                <strong>${product.speed}</strong>
+                            </div>
+                            <div>
+                                <span>Intelligenza</span>
+                                <strong>${product.intelligence}</strong>
+                            </div>
+                        </div>
+
+                        <div class="price-row">
+                            <span class="price">0,00 €</span>
+                            <button class="add-button" data-add="${product.id}">
+                                + Aggiungi
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `).join("");
+        }
+
+        function renderCart() {
+            cartCount.textContent = cart.length;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML =
+                    '<p class="empty">Il tuo carrello è vuoto. La ruota è ferma.</p>';
             } else {
-                messaggio.textContent =
-                    "Hai ordinato " + criceti.length + " criceto/i. Ottima scelta.";
+                cartItems.innerHTML = cart.map((id, index) => {
+                    const product = products.find(item => item.id === id);
+
+                    return `
+                        <div class="cart-item">
+                            <div>
+                                <strong>${product.emoji} ${product.name}</strong>
+                                <small>Prezzo: 0,00 €</small>
+                            </div>
+                            <button class="remove-button" data-remove="${index}">
+                                Rimuovi
+                            </button>
+                        </div>
+                    `;
+                }).join("");
             }
+
+            cartTotal.textContent = "0,00 €";
         }
-        
-        document.getElementById("checkout").onsubmit = function(event) {
+
+        productsContainer.addEventListener("click", function(event) {
+            const button = event.target.closest("[data-add]");
+
+            if (!button) return;
+
+            const id = Number(button.dataset.add);
+            cart.push(id);
+
+            confirmation.style.display = "none";
+            renderCart();
+        });
+
+        cartItems.addEventListener("click", function(event) {
+            const button = event.target.closest("[data-remove]");
+
+            if (!button) return;
+
+            const index = Number(button.dataset.remove);
+            cart.splice(index, 1);
+
+            renderCart();
+        });
+
+        document.getElementById("clear-cart").addEventListener("click", function() {
+            cart = [];
+            renderCart();
+        });
+
+        checkout.addEventListener("submit", function(event) {
             event.preventDefault();
-            
-            if (criceti.length === 0) {
-                alert("Non puoi ordinare il nulla cosmico. Scegli un criceto!");
+
+            if (cart.length === 0) {
+                alert("Il carrello è vuoto! Scegli almeno un criceto.");
                 return;
             }
-            
-            let nome = document.getElementById("nome").value;
-            let modello = document.getElementById("modello").value;
-            let quantita = criceti.length;
-            
-            document.getElementById("conferma").textContent = "Complimenti " + nome + "! Hai ordinato " + quantita + " criceto/i. Stato della ruota: " + modello + ". Ordine finto completato!";
-            criceti = [];
-            aggiornaCarrello();
-            
-            document.getElementById("checkout").reset();
-        };
-    
+
+            const nickname = document.getElementById("nickname").value.trim();
+            const status = document.getElementById("brain-status").value;
+
+            if (!nickname || !status) return;
+
+            const quantity = cart.length;
+            const orderNames = cart.map(id =>
+                products.find(product => product.id === id).name
+            );
+
+            confirmation.replaceChildren();
+
+            const title = document.createElement("h3");
+            title.textContent = "Ordine immaginario confermato!";
+
+            const greeting = document.createElement("p");
+            greeting.textContent = "Complimenti, " + nickname + "!";
+
+            const details = document.createElement("p");
+            details.textContent =
+                "Hai selezionato " + quantity + " criceto/i: " +
+                orderNames.join(", ") + ".";
+
+            const brain = document.createElement("p");
+            brain.textContent = "Stato della ruota: " + status + ".";
+
+            const ending = document.createElement("p");
+            ending.textContent =
+                "Totale: 0,00 €. Nessun pagamento effettuato e nessun criceto spedito.";
+
+            confirmation.append(title, greeting, details, brain, ending);
+            confirmation.style.display = "block";
+
+            cart = [];
+            renderCart();
+            checkout.reset();
+
+            confirmation.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+        });
+
+        renderProducts();
+        renderCart();
     </script>
 
 </body>
