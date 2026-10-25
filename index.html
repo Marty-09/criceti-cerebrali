@@ -112,8 +112,13 @@
             
             let nome = document.getElementById("nome").value;
             let modello = document.getElementById("modello").value;
+            let quantita = criceti.length;
             
-            document.getElementById("conferma").textContent = "Complimenti " + nome + "! Il tuo ordine di " + criceti.length + " criceto/i è stato registrato nella simulazione. " + "Stato della ruota: " + modello + ". Nessun criceto è stato spedito.";
+            document.getElementById("conferma").textContent = "Complimenti " + nome + "! Hai ordinato " + quantita + " criceto/i. Stato della ruota: " + modello + ". Ordine finto completato!";
+            criceti = [];
+            aggiornaCarrello();
+            
+            document.getElementById("checkout").reset();
         };
     
     </script>
