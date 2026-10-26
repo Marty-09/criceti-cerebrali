@@ -1451,8 +1451,8 @@ footer p {
         <div class="page-heading">
             <span class="tiny-label">Economia circolare roditoriale</span>
             <h1>Seconda vita, nuova ruota. ♻️</h1>
-            <p>Restituisci un prodotto, descrivine le condizioni e dicci se potrebbe meritare una seconda vita. Le domande cambiano in  a ciò che scegli di restituire.</p>
-        </div>
+            
+            <p>Restituisci un prodotto, descrivine le condizioni e dicci se potrebbe meritare una seconda vita. Le domande cambiano in base a ciò che scegli di restituire.</p>        </div>
 
         <div class="notice" id="returnNotice" role="status" aria-live="polite"></div>
 
@@ -1591,6 +1591,7 @@ footer p {
                             <option value="">Seleziona una categoria</option>
                             <option value="criceto">Domanda su un criceto</option>
                             <option value="ruota">Domanda su una ruota</option>
+                            <option value="extra">Domanda su un accessorio</option>
                             <option value="ordine">Problema con un ordine</option>
                             <option value="tecnico">Problema tecnico del sito</option>
                             <option value="pagamento">Prezzi o pagamento</option>
@@ -1932,7 +1933,6 @@ const products = [
         price:499.99
     },
     {
-    {
         id:"e1",
         category:"extra",
         name:"Cibo per criceti",
@@ -2093,12 +2093,21 @@ function renderProducts() {
 }
 
 function showPage(pageName) {
-    document.querySelectorAll(".page").forEach(page => page.classList.remove("active"));
-    document.getElementById(pageName).classList.add("active");
-
-    document.querySelectorAll(".nav-link").forEach(button =>
-        button.classList.toggle("current",button.dataset.page === pageName)
+    document.querySelectorAll(".page").forEach(page =>
+        page.classList.remove("active")
     );
+
+    const page = document.getElementById(pageName);
+    if (!page) return;
+
+    page.classList.add("active");
+
+    document.querySelectorAll(".nav-link").forEach(button => {
+        button.classList.toggle(
+            "current",
+            button.dataset.page === pageName
+        );
+    });
 
     window.scrollTo({top:0,behavior:"smooth"});
 
@@ -2108,13 +2117,23 @@ function showPage(pageName) {
 function goToSection(sectionId) {
     showPage("catalogo");
 
-    setTimeout(
-        () => document.getElementById(sectionId).scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        }),
-        50
-    );
+    document.querySelectorAll(".nav-link").forEach(button => {
+        button.classList.toggle(
+            "current",
+            button.dataset.page === sectionId
+        );
+    });
+
+    setTimeout(() => {
+        const section = document.getElementById(sectionId);
+
+        if (section) {
+            section.scrollIntoView({
+                behavior:"smooth",
+                block:"start"
+            });
+        }
+    },50);
 }
 
 function addToCart(id) {
@@ -2422,14 +2441,16 @@ function updateSupportFields() {
     const productFields = document.getElementById("supportProductFields");
     const techFields = document.getElementById("supportTechFields");
     const paymentFields = document.getElementById("supportPaymentFields");
-
-    const isProduct = topic === "criceto" || topic === "ruota";
-
+    
+    const isProduct =
+        topic === "criceto" ||
+        topic === "ruota" ||
+        topic === "extra";
     orderFields.hidden = topic !== "ordine";
     productFields.hidden = !isProduct;
     techFields.hidden = topic !== "tecnico";
     paymentFields.hidden = topic !== "pagamento";
-
+    
     setGroupEnabled(orderFields,topic === "ordine");
     setGroupEnabled(productFields,isProduct);
     setGroupEnabled(techFields,topic === "tecnico");
