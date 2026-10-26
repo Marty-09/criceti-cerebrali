@@ -26,7 +26,6 @@
 }
 
 * {box-sizing:border-box}
-
 html {scroll-behavior:smooth}
 
 body {
@@ -123,9 +122,7 @@ header {
 }
 
 .nav-link:hover,
-.nav-link.current {
-    background:var(--pink-light)
-}
+.nav-link.current {background:var(--pink-light)}
 
 .cart-button {
     display:flex;
@@ -175,10 +172,7 @@ main {min-height:65vh}
 }
 
 h1,h2,h3,p {margin-top:0}
-
-h1,h2,h3 {
-    font-family:"Nunito",sans-serif
-}
+h1,h2,h3 {font-family:"Nunito",sans-serif}
 
 h1 {
     font-size:clamp(2.5rem,5vw,4.4rem);
@@ -257,7 +251,6 @@ h2 {letter-spacing:-.025em}
 }
 
 .hero h1 {margin:19px 0}
-
 .highlight {color:#d77f81}
 
 .hero-copy {
@@ -332,9 +325,7 @@ h2 {letter-spacing:-.025em}
     animation:hamsterBob 1.4s ease-in-out infinite alternate
 }
 
-@keyframes wheelTurn {
-    to {transform:rotate(360deg)}
-}
+@keyframes wheelTurn {to {transform:rotate(360deg)}}
 
 @keyframes hamsterBob {
     from {transform:translateY(-3px) rotate(-5deg)}
@@ -558,9 +549,7 @@ h2 {letter-spacing:-.025em}
 }
 
 .add-button:hover {background:#51433d}
-
 .add-button:active {transform:scale(.96)}
-
 .add-button.added {
     background:#537b59;
     animation:buttonPop .35s ease
@@ -577,9 +566,7 @@ h2 {letter-spacing:-.025em}
     100% {transform:scale(1)}
 }
 
-.add-button.added .button-symbol {
-    animation:checkPop .35s ease
-}
+.add-button.added .button-symbol {animation:checkPop .35s ease}
 
 .about {
     padding:55px 0 70px;
@@ -615,9 +602,7 @@ h2 {letter-spacing:-.025em}
 }
 
 .inner-page {padding:48px 0 80px}
-
 .page-heading {margin-bottom:30px}
-
 .page-heading h1 {margin:8px 0 12px}
 
 .page-heading p {
@@ -706,7 +691,6 @@ h2 {letter-spacing:-.025em}
 
 .form-note strong {color:var(--ink)}
 
-/* Campi dinamici */
 .type-fields {display:none}
 
 .type-fields:not([hidden]) {
@@ -727,13 +711,9 @@ h2 {letter-spacing:-.025em}
 }
 
 #returnHamsterFields .field.full,
-#returnWheelFields .field.full {
-    grid-column:1/-1
-}
+#returnWheelFields .field.full {grid-column:1/-1}
 
-.type-fields[hidden] {
-    display:none!important
-}
+.type-fields[hidden] {display:none!important}
 
 .field-row {
     grid-column:1/-1;
@@ -744,7 +724,6 @@ h2 {letter-spacing:-.025em}
 }
 
 .notice {display:none!important}
-
 .checkout-summary {margin-bottom:25px}
 
 .summary-products {
@@ -804,12 +783,8 @@ h2 {letter-spacing:-.025em}
     font-weight:900
 }
 
-.checkout-layout {
-    display:grid;
-    gap:22px
-}
+.checkout-layout {display:grid;gap:22px}
 
-/* Metodi di pagamento */
 .payment-options {
     display:grid;
     grid-template-columns:repeat(2,minmax(0,1fr));
@@ -867,10 +842,7 @@ h2 {letter-spacing:-.025em}
     overflow-wrap:anywhere
 }
 
-.cart-items {
-    display:grid;
-    gap:12px
-}
+.cart-items {display:grid;gap:12px}
 
 .cart-item {
     display:grid;
@@ -937,7 +909,6 @@ h2 {letter-spacing:-.025em}
 }
 
 .quantity-controls button:hover {background:var(--pink-light)}
-
 .quantity-controls button:active {transform:scale(.9)}
 
 .quantity-number {
@@ -1053,10 +1024,7 @@ footer p {
     font-size:1.25rem
 }
 
-.toast strong {
-    display:block;
-    font-size:.88rem
-}
+.toast strong {display:block;font-size:.88rem}
 
 .toast small {
     display:block;
@@ -1065,9 +1033,7 @@ footer p {
     font-size:.78rem
 }
 
-.cart-button.bump {
-    animation:cartBump .4s ease
-}
+.cart-button.bump {animation:cartBump .4s ease}
 
 @keyframes cartBump {
     0%,100% {transform:scale(1)}
@@ -1075,7 +1041,6 @@ footer p {
     70% {transform:scale(.96) rotate(2deg)}
 }
 
-/* Popup di conferma */
 .confirm-overlay {
     position:fixed;
     inset:0;
@@ -1218,12 +1183,10 @@ footer p {
     .inner-page {padding:32px 0 60px}
     .form-grid,
     .payment-options,
-    .summary-products {
-        grid-template-columns:1fr
-    }
+    .summary-products {grid-template-columns:1fr}
     .field.full {grid-column:auto}
     .field-row {
-        grid-column:auto;
+        grid-column:1/-1;
         grid-template-columns:1fr
     }
     #returnHamsterFields > .form-grid,
@@ -1231,9 +1194,7 @@ footer p {
         grid-template-columns:minmax(0,1fr)
     }
     #returnHamsterFields .field.full,
-    #returnWheelFields .field.full {
-        grid-column:1/-1
-    }
+    #returnWheelFields .field.full {grid-column:1/-1}
     .panel {padding:19px}
     .cart-item {
         grid-template-columns:48px minmax(0,1fr) auto;
@@ -1265,10 +1226,7 @@ footer p {
 </head>
 
 <body>
-
-<div class="announcement">
-    SPEDIZIONE IMMAGINARIA GRATUITA · 100% CRICETI, 0% PRODUTTIVITÀ GARANTITA
-</div>
+<div class="announcement">SPEDIZIONE GRATUITA · 100% CRICETI, 0% PRODUTTIVITÀ GARANTITA</div>
 
 <header>
     <nav class="nav">
@@ -1283,62 +1241,37 @@ footer p {
             <button class="nav-link" data-page="ruote" onclick="showPage('catalogo');goToSection('ruote')">Ruote</button>
             <button class="nav-link" data-page="restituzioni" onclick="showPage('restituzioni')">Usato</button>
             <button class="nav-link" data-page="assistenza" onclick="showPage('assistenza')">Assistenza</button>
-
-            <button class="cart-button" id="cartNavButton" onclick="showPage('carrello')">
-                🛒 Carrello <span class="cart-count" id="cartCount">0</span>
-            </button>
+            <button class="cart-button" id="cartNavButton" onclick="showPage('carrello')">🛒 Carrello <span class="cart-count" id="cartCount">0</span></button>
         </div>
     </nav>
 </header>
 
 <main>
-
 <div class="page active" id="catalogo">
-
     <section class="hero">
         <div class="container hero-inner">
-
             <div>
                 <span class="eyebrow">🐹 Il tuo cervello ci ringrazierà</span>
-
-                <h1>
-                    La tua mente.<br>
-                    La nostra <span class="highlight">ruota.</span>
-                </h1>
-
-                <p class="hero-copy">
-                    Hai mille pensieri e zero voglia di gestirli?
-                    Ci pensiamo noi. Scegli il criceto più adatto al tuo caos mentale
-                    e lascia che faccia il lavoro sporco.
-                </p>
-
+                <h1>La tua mente.<br>La nostra <span class="highlight">ruota.</span></h1>
+                <p class="hero-copy">Hai mille pensieri e zero voglia di gestirli? Ci pensiamo noi! Scegli il criceto più adatto al tuo caos mentale e lascia che faccia lui il lavoro sporco.</p>
                 <div class="hero-buttons">
-                    <button class="primary-button" onclick="goToSection('criceti')">
-                        Trova il tuo criceto →
-                    </button>
-
-                    <button class="secondary-button" onclick="showPage('carrello')">
-                        🛒 Il mio carrello
-                    </button>
+                    <button class="primary-button" onclick="goToSection('criceti')">Trova il tuo criceto →</button>
+                    <button class="secondary-button" onclick="showPage('carrello')">🛒 Il mio carrello</button>
                 </div>
             </div>
 
             <div class="hero-art">
                 <span class="floating-note note-one">⚡ Produttività discutibile</span>
-
                 <div class="hero-wheel">
                     <span class="hero-hamster">🐹</span>
                 </div>
-
                 <span class="floating-note note-two">🧠 Pensieri in corso...</span>
             </div>
-
         </div>
     </section>
 
     <div class="container">
         <section class="trust-strip">
-
             <div class="trust-item">
                 <span class="trust-icon">🧠</span>
                 <div>
@@ -1362,164 +1295,112 @@ footer p {
                     <small>Il corriere è un criceto.</small>
                 </div>
             </div>
-
         </section>
     </div>
 
     <section class="catalog-section" id="criceti">
         <div class="container">
-
             <div class="section-heading">
                 <div>
                     <span class="tiny-label">Reparto roditori</span>
                     <h2>Criceti cerebrali</h2>
-                    <p>Nove modelli. Nove modi diversi di perdere il controllo.</p>
+                    <p>Dodici modelli. Dodici modi diversi di perdere il controllo.</p>
                 </div>
-
-                <span class="eyebrow">9 modelli</span>
+                <span class="eyebrow">12 modelli</span>
             </div>
-
             <div class="product-grid" id="hamsterGrid"></div>
-
         </div>
     </section>
 
     <section class="catalog-section" id="ruote" style="background:#f7eee7">
         <div class="container">
-
             <div class="section-heading">
                 <div>
                     <span class="tiny-label">Reparto accessori</span>
                     <h2>Ruote e ricambi</h2>
                     <p>Perché anche i criceti hanno diritto a strumenti decenti.</p>
                 </div>
-
                 <span class="eyebrow">6 modelli</span>
             </div>
-
             <div class="product-grid" id="wheelGrid"></div>
-
         </div>
     </section>
 
     <section class="about">
         <div class="container about-inner">
-
             <div class="about-emoji">🐹💭</div>
-
             <div>
                 <span class="tiny-label">La nostra filosofia</span>
-
-                <h2>
-                    Non è pigrizia.<br>
-                    È un problema di criceti.
-                </h2>
-
-                <p>
-                    Crediamo in un mondo in cui ogni pensiero abbia il suo roditore
-                    di fiducia. I nostri prodotti sono selezionati con criteri
-                    assolutamente non verificati e statistiche totalmente discutibili.
-                    I risultati non sono garantiti.
-                </p>
+                <h2>Non è pigrizia.<br>È un problema di criceti.</h2>
+                <p>Crediamo in un mondo in cui ogni pensiero abbia il suo roditore di fiducia. I nostri prodotti sono selezionati con criteri assolutamente non verificati e statistiche totalmente discutibili. I risultati non sono garantiti.</p>
             </div>
-
         </div>
     </section>
-
 </div>
-
 
 <section class="page inner-page" id="carrello">
     <div class="container">
-
         <div class="page-heading">
             <span class="tiny-label">Il tuo acquisto immaginario</span>
             <h1>Il tuo carrello 🛒</h1>
             <p>I tuoi futuri collaboratori ti stanno aspettando.</p>
-
-            <button class="secondary-button back-button" onclick="showPage('catalogo')">
-                ← Torna al negozio
-            </button>
+            <button class="secondary-button back-button" onclick="showPage('catalogo')">← Torna al negozio</button>
         </div>
 
         <div class="notice" id="orderNotice" role="status" aria-live="polite"></div>
 
         <section class="panel">
-
             <div class="cart-toolbar">
                 <h2>Il tuo ordine</h2>
-
-                <button class="text-button" id="clearCartButton" onclick="clearCart()">
-                    Svuota carrello
-                </button>
+                <button class="text-button" id="clearCartButton" onclick="clearCart()">Svuota carrello</button>
             </div>
-
             <div class="cart-items" id="cartItems"></div>
-
             <div class="checkout-totals">
                 <span>Totale prodotti</span>
                 <strong id="cartTotal">0,00 €</strong>
             </div>
-
         </section>
 
         <section class="panel" style="margin-top:24px">
-
             <h2>Completa il tuo ordine</h2>
-
-            <p class="panel-intro">
-                Inserisci i dettagli per completare il riepilogo del tuo ordine.
-            </p>
+            <p class="panel-intro">Inserisci i dettagli per completare il riepilogo del tuo ordine.</p>
 
             <div class="checkout-summary">
                 <div class="summary-products" id="summaryProducts"></div>
             </div>
 
             <form id="checkoutForm">
-
                 <div class="form-grid">
-
                     <div class="field full">
                         <label for="fullName">Nome e cognome</label>
-                        <input id="fullName" name="fullName" maxlength="60"
-                               autocomplete="off" placeholder="Mario Rossi" required>
+                        <input id="fullName" name="fullName" maxlength="60" autocomplete="off" placeholder="Mario Rossi" required>
                     </div>
 
                     <div class="field">
                         <label for="email">Indirizzo e-mail</label>
-                        <input id="email" name="email" type="email"
-                               maxlength="100" autocomplete="off"
-                               placeholder="mario@example.com" required>
+                        <input id="email" name="email" type="email" maxlength="100" autocomplete="off" placeholder="mario@example.com" required>
                     </div>
 
                     <div class="field">
                         <label for="phone">Telefono (facoltativo)</label>
-                        <input id="phone" name="phone" type="tel"
-                               maxlength="25" autocomplete="off"
-                               placeholder="Numero inventato">
+                        <input id="phone" name="phone" type="tel" maxlength="25" autocomplete="off" placeholder="Numero inventato">
                     </div>
 
                     <div class="field full">
                         <label for="address">Indirizzo di consegna</label>
-                        <input id="address" name="address" maxlength="100"
-                               autocomplete="off" placeholder="Via della Ruota, 7" required>
+                        <input id="address" name="address" maxlength="100" autocomplete="off" placeholder="Via della Ruota, 7" required>
                     </div>
 
                     <div class="field">
                         <label for="city">Città</label>
-                        <input id="city" name="city" maxlength="60"
-                               autocomplete="off" placeholder="Cricetolandia" required>
+                        <input id="city" name="city" maxlength="60" autocomplete="off" placeholder="Cricetolandia" required>
                     </div>
 
                     <div class="field-row">
-
                         <div class="field">
                             <label for="postalCode">CAP</label>
-                            <input id="postalCode" name="postalCode"
-                                   maxlength="10" autocomplete="off"
-                                   placeholder="00000" required>
+                            <input id="postalCode" name="postalCode" maxlength="10" autocomplete="off" placeholder="00000" required>
                         </div>
-
                         <div class="field">
                             <label for="country">Paese</label>
                             <select id="country" name="country" required>
@@ -1527,118 +1408,62 @@ footer p {
                                 <option value="Altro">Altro</option>
                             </select>
                         </div>
-
                     </div>
 
                     <div class="field full">
-
                         <label>Metodo di pagamento</label>
-
                         <div class="payment-options">
-
                             <label class="payment-option">
-                                <input type="radio" name="payment"
-                                       value="Carta (demo)" required>
-
-                                <span>
-                                    <strong>💳 Carta</strong>
-                                    <small>Pagamento con carta</small>
-                                </span>
+                                <input type="radio" name="payment" value="Carta (demo)" required>
+                                <span><strong>💳 Carta</strong><small>Pagamento con carta</small></span>
                             </label>
-
                             <label class="payment-option">
-                                <input type="radio" name="payment"
-                                       value="PayPal (demo)">
-
-                                <span>
-                                    <strong>🅿️ PayPal</strong>
-                                    <small>Pagamento online</small>
-                                </span>
+                                <input type="radio" name="payment" value="PayPal (demo)">
+                                <span><strong>🅿️ PayPal</strong><small>Pagamento online</small></span>
                             </label>
-
                             <label class="payment-option">
-                                <input type="radio" name="payment"
-                                       value="Alla consegna (demo)">
-
-                                <span>
-                                    <strong>📦 Alla consegna</strong>
-                                    <small>Il criceto porta il resto</small>
-                                </span>
+                                <input type="radio" name="payment" value="Alla consegna (demo)">
+                                <span><strong>📦 Alla consegna</strong><small>Il criceto porta il resto</small></span>
                             </label>
-
                             <label class="payment-option">
-                                <input type="radio" name="payment"
-                                       value="In criceti">
-
-                                <span>
-                                    <strong>🐹 In criceti</strong>
-                                    <small>Tasso di cambio discutibile</small>
-                                </span>
+                                <input type="radio" name="payment" value="In criceti">
+                                <span><strong>🐹 In criceti</strong><small>Tasso di cambio discutibile</small></span>
                             </label>
-
                         </div>
                     </div>
 
                     <div class="field full">
-                        <label for="orderNotes">
-                            Note per la consegna (facoltative)
-                        </label>
-
-                        <textarea id="orderNotes"
-                                  name="orderNotes"
-                                  maxlength="300"
-                                  placeholder="Es. lasciare il pacco lontano dal gatto."></textarea>
+                        <label for="orderNotes">Note per la consegna (facoltative)</label>
+                        <textarea id="orderNotes" name="orderNotes" maxlength="300" placeholder="Es. lasciare il pacco lontano dal gatto."></textarea>
                     </div>
-
                 </div>
 
                 <div class="form-actions">
-                    <button class="primary-button" id="checkoutButton" type="submit">
-                        Conferma l'ordine →
-                    </button>
+                    <button class="primary-button" id="checkoutButton" type="submit">Conferma l'ordine →</button>
                 </div>
-
             </form>
         </section>
-
     </div>
 </section>
 
-
 <section class="page inner-page" id="restituzioni">
     <div class="container">
-
         <div class="page-heading">
             <span class="tiny-label">Economia circolare roditoriale</span>
-
             <h1>Seconda vita, nuova ruota. ♻️</h1>
-
-            <p>
-                Restituisci un prodotto, descrivine le condizioni e dicci se potrebbe
-                meritare una seconda vita. Le domande cambiano in base a ciò che
-                scegli di restituire.
-            </p>
+            <p>Restituisci un prodotto, descrivine le condizioni e dicci se potrebbe meritare una seconda vita. Le domande cambiano in base a ciò che scegli di restituire.</p>
         </div>
 
         <div class="notice" id="returnNotice" role="status" aria-live="polite"></div>
 
         <section class="panel">
-
             <h2>Richiedi una restituzione</h2>
-
-            <p class="panel-intro">
-                Indica il modello, raccontaci com'è messo e scegli il motivo della restituzione.
-            </p>
+            <p class="panel-intro">Indica il modello, raccontaci com'è messo e scegli il motivo della restituzione.</p>
 
             <form id="returnForm">
-
                 <div class="form-grid">
-
                     <div class="field">
-                        <label for="returnType">
-                            Che cosa vuoi restituire?
-                        </label>
-
+                        <label for="returnType">Che cosa vuoi restituire?</label>
                         <select id="returnType" name="returnType" required>
                             <option value="">Seleziona una categoria</option>
                             <option value="criceto">Un criceto</option>
@@ -1648,506 +1473,224 @@ footer p {
 
                     <div class="field">
                         <label for="returnModel">Modello</label>
-
-                        <select id="returnModel"
-                                name="returnModel"
-                                required
-                                disabled>
+                        <select id="returnModel" name="returnModel" required disabled>
                             <option value="">Prima scegli una categoria</option>
                         </select>
                     </div>
 
-
-                    <div class="field full type-fields"
-                         id="returnHamsterFields"
-                         hidden>
-
+                    <div class="field full type-fields" id="returnHamsterFields" hidden>
                         <div class="form-grid">
-
                             <div class="field">
-                                <label for="hamsterReturnCondition">
-                                    Com'è messo il criceto?
-                                </label>
-
-                                <select id="hamsterReturnCondition"
-                                        name="returnCondition"
-                                        required
-                                        disabled>
-
-                                    <option value="">
-                                        Valuta il suo stato
-                                    </option>
-
+                                <label for="hamsterReturnCondition">Com'è messo il criceto?</label>
+                                <select id="hamsterReturnCondition" name="returnCondition" required disabled>
+                                    <option value="">Valuta il suo stato</option>
                                     <option>In forma, ma cambio modello</option>
                                     <option>Affaticato dopo lo studio</option>
                                     <option>Si distrae continuamente</option>
                                     <option>Gira molto lentamente</option>
                                     <option>Non collabora più</option>
-
                                 </select>
                             </div>
 
                             <div class="field">
-                                <label for="hamsterReturnReason">
-                                    Perché lo restituisci?
-                                </label>
-
-                                <select id="hamsterReturnReason"
-                                        name="returnReason"
-                                        required
-                                        disabled>
-
-                                    <option value="">
-                                        Scegli il motivo
-                                    </option>
-
+                                <label for="hamsterReturnReason">Perché lo restituisci?</label>
+                                <select id="hamsterReturnReason" name="returnReason" required disabled>
+                                    <option value="">Scegli il motivo</option>
                                     <option>Prestazioni insufficienti</option>
                                     <option>Troppo stress da studio</option>
                                     <option>Ho scelto il modello sbagliato</option>
                                     <option>Vorrei proporlo per il ricondizionamento</option>
                                     <option>Ha sviluppato una coscienza</option>
-
                                 </select>
                             </div>
 
                             <div class="field full">
-                                <label for="hamsterReturnDetails">
-                                    Abitudini o comportamenti insoliti (facoltativo)
-                                </label>
-
-                                <textarea id="hamsterReturnDetails"
-                                          name="returnDetails"
-                                          maxlength="500"
-                                          placeholder="Es. corre soltanto quando sente la parola verifica..."
-                                          disabled></textarea>
+                                <label for="hamsterReturnDetails">Abitudini o comportamenti insoliti (facoltativo)</label>
+                                <textarea id="hamsterReturnDetails" name="returnDetails" maxlength="500" placeholder="Es. corre soltanto quando sente la parola verifica..." disabled></textarea>
                             </div>
-
                         </div>
                     </div>
 
-
-                    <div class="field full type-fields"
-                         id="returnWheelFields"
-                         hidden>
-
+                    <div class="field full type-fields" id="returnWheelFields" hidden>
                         <div class="form-grid">
-
                             <div class="field">
-                                <label for="wheelReturnCondition">
-                                    In che condizioni è la ruota?
-                                </label>
-
-                                <select id="wheelReturnCondition"
-                                        name="returnCondition"
-                                        required
-                                        disabled>
-
-                                    <option value="">
-                                        Valuta lo stato della ruota
-                                    </option>
-
+                                <label for="wheelReturnCondition">In che condizioni è la ruota?</label>
+                                <select id="wheelReturnCondition" name="returnCondition" required disabled>
+                                    <option value="">Valuta lo stato della ruota</option>
                                     <option>Quasi perfetta</option>
                                     <option>Usurata ma funzionante</option>
                                     <option>Si inceppa ogni tanto</option>
                                     <option>Fa rumore durante la rotazione</option>
                                     <option>Danneggiata o incompleta</option>
-
                                 </select>
                             </div>
 
                             <div class="field">
-                                <label for="wheelReturnReason">
-                                    Perché la restituisci?
-                                </label>
-
-                                <select id="wheelReturnReason"
-                                        name="returnReason"
-                                        required
-                                        disabled>
-
-                                    <option value="">
-                                        Scegli il motivo
-                                    </option>
-
+                                <label for="wheelReturnReason">Perché la restituisci?</label>
+                                <select id="wheelReturnReason" name="returnReason" required disabled>
+                                    <option value="">Scegli il motivo</option>
                                     <option>Rotazione irregolare</option>
                                     <option>Troppo rumorosa</option>
                                     <option>Dimensioni non adatte</option>
                                     <option>Vorrei proporla per il ricondizionamento</option>
                                     <option>Voglio passare alla Ruota Pro</option>
                                     <option>Manca un componente</option>
-
                                 </select>
                             </div>
 
                             <div class="field full">
-                                <label for="wheelReturnDetails">
-                                    Difetti o componenti mancanti (facoltativo)
-                                </label>
-
-                                <textarea id="wheelReturnDetails"
-                                          name="returnDetails"
-                                          maxlength="500"
-                                          placeholder="Es. cigola a ogni giro completo..."
-                                          disabled></textarea>
+                                <label for="wheelReturnDetails">Difetti o componenti mancanti (facoltativo)</label>
+                                <textarea id="wheelReturnDetails" name="returnDetails" maxlength="500" placeholder="Es. cigola a ogni giro completo..." disabled></textarea>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
 
                 <div class="form-actions">
-                    <button class="primary-button" type="submit">
-                        Richiedi la restituzione →
-                    </button>
+                    <button class="primary-button" type="submit">Richiedi la restituzione →</button>
                 </div>
-
             </form>
         </section>
 
-
         <section class="trust-strip">
-
             <div class="trust-item">
                 <span class="trust-icon">🔎</span>
-                <div>
-                    <strong>1. Valutazione</strong>
-                    <small>Controlliamo il prodotto.</small>
-                </div>
+                <div><strong>1. Valutazione</strong><small>Controlliamo il prodotto.</small></div>
             </div>
-
             <div class="trust-item">
                 <span class="trust-icon">🛠️</span>
-                <div>
-                    <strong>2. Ricondizionamento</strong>
-                    <small>Se possibile, lo rimettiamo in sesto.</small>
-                </div>
+                <div><strong>2. Ricondizionamento</strong><small>Se possibile, lo rimettiamo in sesto.</small></div>
             </div>
-
             <div class="trust-item">
                 <span class="trust-icon">♻️</span>
-                <div>
-                    <strong>3. Nuova vita</strong>
-                    <small>Potrebbe tornare in vendita.</small>
-                </div>
+                <div><strong>3. Nuova vita</strong><small>Potrebbe tornare in vendita.</small></div>
             </div>
-
         </section>
-
     </div>
 </section>
 
-
 <section class="page inner-page" id="assistenza">
-
     <div class="container">
-
         <div class="page-heading">
-
-            <span class="tiny-label">
-                Siamo qui per te (e per i roditori)
-            </span>
-
+            <span class="tiny-label">Siamo qui per te (e per i roditori)</span>
             <h1>Centro assistenza 🛠️</h1>
-
-            <p>
-                Il criceto non gira? La ruota fa un rumore inquietante?
-                Hai ricevuto un prodotto che sembra avere opinioni proprie?
-                Apri una segnalazione.
-            </p>
-
+            <p>Il criceto non gira? La ruota fa un rumore inquietante? Hai ricevuto un prodotto che sembra avere opinioni proprie? Apri una segnalazione.</p>
         </div>
 
         <div class="notice" id="supportNotice" role="status" aria-live="polite"></div>
 
         <section class="panel">
-
             <h2>Come possiamo aiutarti?</h2>
-
-            <p class="panel-intro">
-                Per domande su ordini, prodotti o problemi tecnici,
-                scegli la categoria e raccontaci che cosa succede.
-            </p>
+            <p class="panel-intro">Per domande su ordini, prodotti o problemi tecnici, scegli la categoria e raccontaci che cosa succede.</p>
 
             <form id="supportForm">
-
                 <div class="form-grid">
-
                     <div class="field">
-                        <label for="supportTopic">
-                            Tipo di problema
-                        </label>
-
-                        <select id="supportTopic"
-                                name="supportTopic"
-                                required>
-
-                            <option value="">
-                                Seleziona una categoria
-                            </option>
-
-                            <option value="criceto">
-                                Domanda su un criceto
-                            </option>
-
-                            <option value="ruota">
-                                Domanda su una ruota
-                            </option>
-
-                            <option value="ordine">
-                                Problema con un ordine
-                            </option>
-
-                            <option value="tecnico">
-                                Problema tecnico del sito
-                            </option>
-
-                            <option value="pagamento">
-                                Prezzi o pagamento
-                            </option>
-
-                            <option value="filosofo">
-                                Il mio criceto è diventato filosofo
-                            </option>
-
-                            <option value="altro">
-                                Altro
-                            </option>
-
+                        <label for="supportTopic">Tipo di problema</label>
+                        <select id="supportTopic" name="supportTopic" required>
+                            <option value="">Seleziona una categoria</option>
+                            <option value="criceto">Domanda su un criceto</option>
+                            <option value="ruota">Domanda su una ruota</option>
+                            <option value="ordine">Problema con un ordine</option>
+                            <option value="tecnico">Problema tecnico del sito</option>
+                            <option value="pagamento">Prezzi o pagamento</option>
+                            <option value="filosofo">Il mio criceto è diventato filosofo</option>
+                            <option value="altro">Altro</option>
                         </select>
                     </div>
 
-
                     <div class="field">
-
-                        <label for="supportPriority">
-                            Livello di emergenza
-                        </label>
-
-                        <select id="supportPriority"
-                                name="supportPriority"
-                                required>
-
-                            <option value="">
-                                Seleziona la priorità
-                            </option>
-
+                        <label for="supportPriority">Livello di emergenza</label>
+                        <select id="supportPriority" name="supportPriority" required>
+                            <option value="">Seleziona la priorità</option>
                             <option>Bassa — può aspettare</option>
                             <option>Media — la ruota è lenta</option>
                             <option>Alta — verifica domani</option>
                             <option>Critica — interrogazione tra 5 minuti</option>
-
                         </select>
-
                     </div>
 
-
-                    <div class="field type-fields"
-                         id="supportOrderFields"
-                         hidden>
-
-                        <label for="supportOrder">
-                            Numero ordine (facoltativo)
-                        </label>
-
-                        <input id="supportOrder"
-                               name="supportOrder"
-                               maxlength="30"
-                               autocomplete="off"
-                               placeholder="Es. CRICETO-001"
-                               disabled>
-
+                    <div class="field type-fields" id="supportOrderFields" hidden>
+                        <label for="supportOrder">Numero ordine (facoltativo)</label>
+                        <input id="supportOrder" name="supportOrder" maxlength="30" autocomplete="off" placeholder="Es. CRICETO-001" disabled>
                     </div>
 
-
-                    <div class="field type-fields"
-                         id="supportProductFields"
-                         hidden>
-
-                        <label for="supportProductModel">
-                            Modello del prodotto
-                        </label>
-
-                        <select id="supportProductModel"
-                                name="supportProductModel"
-                                required
-                                disabled>
-
-                            <option value="">
-                                Seleziona un modello
-                            </option>
-
+                    <div class="field type-fields" id="supportProductFields" hidden>
+                        <label for="supportProductModel">Modello del prodotto</label>
+                        <select id="supportProductModel" name="supportProductModel" required disabled>
+                            <option value="">Seleziona un modello</option>
                         </select>
-
                     </div>
 
-
-                    <div class="field type-fields"
-                         id="supportTechFields"
-                         hidden>
-
-                        <label for="supportDevice">
-                            Dispositivo
-                        </label>
-
-                        <select id="supportDevice"
-                                name="supportDevice"
-                                disabled>
-
+                    <div class="field type-fields" id="supportTechFields" hidden>
+                        <label for="supportDevice">Dispositivo</label>
+                        <select id="supportDevice" name="supportDevice" disabled>
                             <option>Computer</option>
                             <option>Telefono</option>
                             <option>Tablet</option>
                             <option>Altro</option>
-
                         </select>
-
                     </div>
 
-
-                    <div class="field type-fields"
-                         id="supportPaymentFields"
-                         hidden>
-
-                        <label for="supportPaymentTopic">
-                            Argomento
-                        </label>
-
-                        <select id="supportPaymentTopic"
-                                name="supportPaymentTopic"
-                                disabled>
-
+                    <div class="field type-fields" id="supportPaymentFields" hidden>
+                        <label for="supportPaymentTopic">Argomento</label>
+                        <select id="supportPaymentTopic" name="supportPaymentTopic" disabled>
                             <option>Prezzo di un prodotto</option>
                             <option>Totale del carrello</option>
                             <option>Metodi di pagamento</option>
-
                         </select>
-
                     </div>
-
 
                     <div class="field">
-
-                        <label for="supportContact">
-                            Nome in codice (facoltativo)
-                        </label>
-
-                        <input id="supportContact"
-                               name="supportContact"
-                               maxlength="50"
-                               autocomplete="off"
-                               placeholder="Es. Panico Totale">
-
+                        <label for="supportContact">Nome in codice (facoltativo)</label>
+                        <input id="supportContact" name="supportContact" maxlength="50" autocomplete="off" placeholder="Es. Panico Totale">
                     </div>
-
 
                     <div class="field full">
-
-                        <label for="supportDescription">
-                            Descrizione del problema
-                        </label>
-
-                        <textarea id="supportDescription"
-                                  name="supportDescription"
-                                  maxlength="1000"
-                                  placeholder="Spiegaci che cosa non funziona..."
-                                  required></textarea>
-
+                        <label for="supportDescription">Descrizione del problema</label>
+                        <textarea id="supportDescription" name="supportDescription" maxlength="1000" placeholder="Spiegaci che cosa non funziona..." required></textarea>
                     </div>
-
                 </div>
 
                 <div class="form-actions">
-
-                    <button class="primary-button" type="submit">
-                        Invia la segnalazione →
-                    </button>
-
+                    <button class="primary-button" type="submit">Invia la segnalazione →</button>
                 </div>
-
             </form>
-
         </section>
-
     </div>
-
 </section>
-
 </main>
-
 
 <footer>
     <strong>🐹 Criceti Cerebrali</strong>
-
-    <p>
-        Un criceto alla volta, verso il collasso mentale.
-    </p>
-
-    <p>
-        Negozio immaginario a scopo umoristico. Nessun criceto è stato assunto.
-    </p>
-
+    <p>Un criceto alla volta, verso il collasso mentale.</p>
+    <p>Negozio immaginario a scopo umoristico. Nessun criceto è stato assunto.</p>
     <p style="margin-top:12px">
-        <button class="text-button" onclick="showPage('restituzioni')">
-            Restituzioni
-        </button>
+        <button class="text-button" onclick="showPage('restituzioni')">Restituzioni</button>
         ·
-        <button class="text-button" onclick="showPage('assistenza')">
-            Assistenza
-        </button>
+        <button class="text-button" onclick="showPage('assistenza')">Assistenza</button>
     </p>
 </footer>
 
-
 <div class="toast" id="toast" role="status" aria-live="polite">
-
     <span class="toast-icon" id="toastIcon">✓</span>
-
     <div>
         <strong id="toastTitle">Aggiunto al carrello!</strong>
         <small id="toastMessage">Il prodotto è pronto.</small>
     </div>
-
 </div>
 
-
-<div class="confirm-overlay"
-     id="confirmOverlay"
-     role="dialog"
-     aria-modal="true"
-     aria-labelledby="confirmTitle"
-     aria-describedby="confirmMessage">
-
+<div class="confirm-overlay" id="confirmOverlay" role="dialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmMessage">
     <div class="confirm-popup">
-
-        <div class="confirm-icon"
-             id="confirmIcon"
-             aria-hidden="true">
-            ✨
-        </div>
-
-        <h2 id="confirmTitle">
-            Confermato!
-        </h2>
-
-        <p id="confirmMessage">
-            È andato tutto bene.
-        </p>
-
-        <button class="confirm-close"
-                id="confirmClose"
-                type="button">
-            Perfetto!
-        </button>
-
+        <div class="confirm-icon" id="confirmIcon" aria-hidden="true">✨</div>
+        <h2 id="confirmTitle">Confermato!</h2>
+        <p id="confirmMessage">È andato tutto bene.</p>
+        <button class="confirm-close" id="confirmClose" type="button">Perfetto!</button>
     </div>
-
 </div>
-
 
 <script>
-
 const products = [
-
     {
         id:"h1",
         category:"criceto",
@@ -2162,7 +1705,6 @@ const products = [
         duration:"30 giorni",
         price:1.00
     },
-
     {
         id:"h2",
         category:"criceto",
@@ -2177,7 +1719,6 @@ const products = [
         duration:"8 ore",
         price:25.00
     },
-
     {
         id:"h3",
         category:"criceto",
@@ -2192,7 +1733,6 @@ const products = [
         duration:"Dai 10 giorni ai 10 minuti",
         price:2.50
     },
-
     {
         id:"h4",
         category:"criceto",
@@ -2207,7 +1747,6 @@ const products = [
         duration:"Insostituibile",
         price:50.00
     },
-
     {
         id:"h5",
         category:"criceto",
@@ -2222,7 +1761,6 @@ const products = [
         duration:"Insostituibile",
         price:0
     },
-
     {
         id:"h6",
         category:"criceto",
@@ -2237,7 +1775,6 @@ const products = [
         duration:"Dai 5 giorni ai 5 minuti",
         price:0
     },
-
     {
         id:"h7",
         category:"criceto",
@@ -2252,7 +1789,6 @@ const products = [
         duration:"50 giorni",
         price:75.00
     },
-
     {
         id:"h8",
         category:"criceto",
@@ -2267,7 +1803,6 @@ const products = [
         duration:"Tra i 2 e i 10 giorni",
         price:49.99
     },
-
     {
         id:"h9",
         category:"criceto",
@@ -2282,7 +1817,48 @@ const products = [
         duration:"100 giorni",
         price:24.99
     },
-
+    {
+        id:"h10",
+        category:"criceto",
+        name:"Criceto Olivia Rodrigo",
+        emoji:"💜",
+        color:"#e8def8",
+        tag:"Guts & heartbreak",
+        description:"Trasforma ogni delusione in una hit e ogni giro di ruota in un dramma adolescenziale. Se gli dici che va tutto bene, parte una ballata di quattro minuti.",
+        personality:"Drammatico e talentuoso",
+        speed:"1. drivers license al minuto",
+        intelligence:"Emotivamente devastante",
+        duration:"Finché non supera la rottura",
+        price:99.99
+    },
+    {
+        id:"h11",
+        category:"criceto",
+        name:"Criceto Billie Eilish",
+        emoji:"🖤",
+        color:"#d8e8d1",
+        tag:"Edizione dark",
+        description:"Corre al buio, sussurra pensieri inquietanti e ti giudica in silenzio. Ogni tanto sparisce sotto una coperta e riemerge con un album premiato ai Grammy.",
+        personality:"Misterioso e introspettivo",
+        speed:"1.000 sussurri al minuto",
+        intelligence:"Fuori scala",
+        duration:"Finché dura l'ispirazione",
+        price:119.99
+    },
+    {
+        id:"h12",
+        category:"criceto",
+        name:"Criceto Alex Warren",
+        emoji:"🎤",
+        color:"#f8d9de",
+        tag:"Emozioni in loop",
+        description:"Parte tranquillo, poi trasforma una corsetta in un videoclip pieno di emozioni. Attenzione: potrebbe farti rivalutare tutta la tua vita durante una pausa merenda.",
+        personality:"Sentimentale e teatrale",
+        speed:"500 ritornelli al minuto",
+        intelligence:"Sa come colpire nel cuore",
+        duration:"Finché qualcuno ascolta",
+        price:39.99
+    },
     {
         id:"w1",
         category:"ruota",
@@ -2295,7 +1871,6 @@ const products = [
         duration:"120 giorni",
         price:10.00
     },
-
     {
         id:"w2",
         category:"ruota",
@@ -2308,7 +1883,6 @@ const products = [
         duration:"365 giorni",
         price:50.00
     },
-
     {
         id:"w3",
         category:"ruota",
@@ -2321,7 +1895,6 @@ const products = [
         duration:"50 giorni",
         price:25.00
     },
-
     {
         id:"w4",
         category:"ruota",
@@ -2334,7 +1907,6 @@ const products = [
         duration:"200 giorni",
         price:79.99
     },
-
     {
         id:"w5",
         category:"ruota",
@@ -2347,7 +1919,6 @@ const products = [
         duration:"30 giorni",
         price:119.99
     },
-
     {
         id:"w6",
         category:"ruota",
@@ -2360,13 +1931,10 @@ const products = [
         duration:"30 giorni",
         price:499.99
     }
-
 ];
-
 
 let cart = {};
 let toastTimeout;
-
 
 const euro = value =>
     value.toLocaleString("it-IT", {
@@ -2374,1143 +1942,506 @@ const euro = value =>
         currency:"EUR"
     });
 
-
 const getProduct = id =>
     products.find(product => product.id === id);
 
-
 const cartQuantity = () =>
-    Object.values(cart).reduce(
-        (sum,quantity) => sum + quantity,
-        0
-    );
-
+    Object.values(cart).reduce((sum,quantity) => sum + quantity,0);
 
 const cartTotal = () =>
     Object.entries(cart).reduce(
-        (total,[id,quantity]) =>
-            total + getProduct(id).price * quantity,
+        (total,[id,quantity]) => total + getProduct(id).price * quantity,
         0
     );
 
-
 function renderProductCard(product) {
-
     const card = document.createElement("article");
     card.className = "product-card";
-
 
     const art = document.createElement("div");
     art.className = "product-art";
     art.style.background = product.color;
 
-
     const tag = document.createElement("span");
     tag.className = "product-tag";
     tag.textContent = product.tag;
-
 
     const emoji = document.createElement("span");
     emoji.className = "emoji";
     emoji.textContent = product.emoji;
     emoji.setAttribute("aria-hidden","true");
 
-
     art.append(tag,emoji);
-
 
     const body = document.createElement("div");
     body.className = "product-body";
 
-
     const titleRow = document.createElement("div");
     titleRow.className = "product-title-row";
 
-
     const title = document.createElement("h3");
     title.textContent = product.name;
-
 
     const price = document.createElement("span");
     price.className = "price";
     price.textContent = euro(product.price);
 
-
     titleRow.append(title,price);
-
 
     const description = document.createElement("p");
     description.className = "product-description";
     description.textContent = product.description;
 
-
     const stats = document.createElement("div");
     stats.className = "stats";
 
-
-    const statData =
-        product.category === "criceto"
-
+    const statData = product.category === "criceto"
         ? [
             ["Personalità",product.personality],
             ["Velocità",product.speed],
             ["Intelligenza",product.intelligence],
             ["Durata",product.duration]
         ]
-
         : [
             ["Velocità massima",product.speed],
             ["Durata",product.duration]
         ];
 
-
     statData.forEach(([label,value]) => {
-
         const row = document.createElement("div");
         row.className = "stat";
-
 
         const left = document.createElement("span");
         left.textContent = label;
 
-
         const right = document.createElement("strong");
         right.textContent = value;
 
-
         row.append(left,right);
         stats.append(row);
-
     });
-
 
     const button = document.createElement("button");
     button.className = "add-button";
     button.id = `add-${product.id}`;
     button.type = "button";
-
     button.innerHTML =
         '<span class="button-symbol">＋</span>' +
         '<span class="button-label">Aggiungi al carrello</span>';
 
+    button.addEventListener("click",() => addToCart(product.id));
 
-    button.addEventListener(
-        "click",
-        () => addToCart(product.id)
-    );
-
-
-    body.append(
-        titleRow,
-        description,
-        stats,
-        button
-    );
-
-
+    body.append(titleRow,description,stats,button);
     card.append(art,body);
 
     return card;
 }
 
-
 function renderProducts() {
-
-    const hamsterGrid =
-        document.getElementById("hamsterGrid");
-
-    const wheelGrid =
-        document.getElementById("wheelGrid");
-
+    const hamsterGrid = document.getElementById("hamsterGrid");
+    const wheelGrid = document.getElementById("wheelGrid");
 
     hamsterGrid.replaceChildren();
     wheelGrid.replaceChildren();
 
-
     products.forEach(product => {
-
-        const card =
-            renderProductCard(product);
-
-
-        (
-            product.category === "criceto"
-            ? hamsterGrid
-            : wheelGrid
-        ).append(card);
-
+        const card = renderProductCard(product);
+        (product.category === "criceto" ? hamsterGrid : wheelGrid).append(card);
     });
 }
-
 
 function showPage(pageName) {
+    document.querySelectorAll(".page").forEach(page => page.classList.remove("active"));
+    document.getElementById(pageName).classList.add("active");
 
-    document
-        .querySelectorAll(".page")
-        .forEach(page =>
-            page.classList.remove("active")
-        );
+    document.querySelectorAll(".nav-link").forEach(button =>
+        button.classList.toggle("current",button.dataset.page === pageName)
+    );
 
+    window.scrollTo({top:0,behavior:"smooth"});
 
-    document
-        .getElementById(pageName)
-        .classList.add("active");
-
-
-    document
-        .querySelectorAll(".nav-link")
-        .forEach(button =>
-            button.classList.toggle(
-                "current",
-                button.dataset.page === pageName
-            )
-        );
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-
-    if (pageName === "carrello") {
-        renderCart();
-    }
+    if (pageName === "carrello") renderCart();
 }
 
-
 function goToSection(sectionId) {
-
     showPage("catalogo");
 
     setTimeout(
-        () =>
-            document
-                .getElementById(sectionId)
-                .scrollIntoView({
-                    behavior:"smooth",
-                    block:"start"
-                }),
+        () => document.getElementById(sectionId).scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        }),
         50
     );
 }
 
-
 function addToCart(id) {
-
     const product = getProduct(id);
-
     if (!product) return;
 
-
-    cart[id] =
-        (cart[id] || 0) + 1;
-
+    cart[id] = (cart[id] || 0) + 1;
 
     updateCartCount();
     renderCart();
 
-
-    const button =
-        document.getElementById(`add-${id}`);
-
+    const button = document.getElementById(`add-${id}`);
 
     if (button) {
-
         button.classList.remove("added");
-
         void button.offsetWidth;
-
         button.classList.add("added");
 
-        button
-            .querySelector(".button-symbol")
-            .textContent = "✓";
-
-        button
-            .querySelector(".button-label")
-            .textContent = "Aggiunto!";
-
+        button.querySelector(".button-symbol").textContent = "✓";
+        button.querySelector(".button-label").textContent = "Aggiunto!";
 
         setTimeout(() => {
-
             if (!button.isConnected) return;
 
             button.classList.remove("added");
-
-            button
-                .querySelector(".button-symbol")
-                .textContent = "＋";
-
-            button
-                .querySelector(".button-label")
-                .textContent = "Aggiungi al carrello";
-
+            button.querySelector(".button-symbol").textContent = "＋";
+            button.querySelector(".button-label").textContent = "Aggiungi al carrello";
         },1100);
     }
 
-
-    const cartButton =
-        document.getElementById("cartNavButton");
-
-
+    const cartButton = document.getElementById("cartNavButton");
     cartButton.classList.remove("bump");
-
     void cartButton.offsetWidth;
-
     cartButton.classList.add("bump");
 
-
-    showToast(
-        "✓",
-        "Aggiunto al carrello!",
-        `${product.name} è pronto a lavorare.`
-    );
+    showToast("✓","Aggiunto al carrello!",`${product.name} è pronto a lavorare.`);
 }
-
 
 function showToast(icon,title,message) {
+    const toast = document.getElementById("toast");
 
-    const toast =
-        document.getElementById("toast");
-
-
-    document.getElementById("toastIcon")
-        .textContent = icon;
-
-    document.getElementById("toastTitle")
-        .textContent = title;
-
-    document.getElementById("toastMessage")
-        .textContent = message;
-
+    document.getElementById("toastIcon").textContent = icon;
+    document.getElementById("toastTitle").textContent = title;
+    document.getElementById("toastMessage").textContent = message;
 
     toast.classList.add("show");
-
-
     clearTimeout(toastTimeout);
 
-
-    toastTimeout =
-        setTimeout(
-            () => toast.classList.remove("show"),
-            2600
-        );
+    toastTimeout = setTimeout(() => toast.classList.remove("show"),2600);
 }
-
 
 function updateCartCount() {
-
-    document.getElementById("cartCount")
-        .textContent = cartQuantity();
+    document.getElementById("cartCount").textContent = cartQuantity();
 }
-
 
 function changeQuantity(id,amount) {
-
     if (!cart[id]) return;
 
-
     cart[id] += amount;
-
-
-    if (cart[id] <= 0) {
-        delete cart[id];
-    }
-
+    if (cart[id] <= 0) delete cart[id];
 
     updateCartCount();
     renderCart();
 }
-
 
 function removeProduct(id) {
-
     delete cart[id];
-
     updateCartCount();
     renderCart();
 }
-
 
 function clearCart() {
-
     if (cartQuantity() === 0) return;
 
-
     cart = {};
-
     updateCartCount();
     renderCart();
 
-
-    showToast(
-        "🧹",
-        "Carrello svuotato",
-        "I prodotti sono tornati al loro habitat."
-    );
+    showToast("🧹","Carrello svuotato","I prodotti sono tornati al loro habitat.");
 }
 
-
 function renderCart() {
-
-    const container =
-        document.getElementById("cartItems");
-
-
-    const summary =
-        document.getElementById("summaryProducts");
-
-
+    const container = document.getElementById("cartItems");
+    const summary = document.getElementById("summaryProducts");
     const quantity = cartQuantity();
 
-
-    document.getElementById("cartTotal")
-        .textContent = euro(cartTotal());
-
-
-    document.getElementById("clearCartButton")
-        .style.visibility =
-            quantity ? "visible" : "hidden";
-
-
-    document.getElementById("checkoutButton")
-        .disabled = quantity === 0;
-
+    document.getElementById("cartTotal").textContent = euro(cartTotal());
+    document.getElementById("clearCartButton").style.visibility = quantity ? "visible" : "hidden";
+    document.getElementById("checkoutButton").disabled = quantity === 0;
 
     if (quantity === 0) {
-
         container.innerHTML = `
             <div class="empty-cart">
                 <div class="empty-emoji">🐹💤</div>
-
                 <h3>Qui non gira niente.</h3>
-
-                <p>
-                    Il tuo carrello è vuoto.
-                    Anche i criceti si annoiano.
-                </p>
-
-                <button
-                    class="primary-button"
-                    onclick="showPage('catalogo')">
-                    Torna al negozio →
-                </button>
+                <p>Il tuo carrello è vuoto. Anche i criceti si annoiano.</p>
+                <button class="primary-button" onclick="showPage('catalogo')">Torna al negozio →</button>
             </div>
         `;
 
-
         summary.innerHTML =
-            '<p class="form-note">' +
-            'Aggiungi qualche prodotto per visualizzare qui ' +
-            'il riepilogo del tuo ordine.' +
-            '</p>';
-
+            '<p class="form-note">Aggiungi qualche prodotto per visualizzare qui il riepilogo del tuo ordine.</p>';
         return;
     }
-
 
     container.replaceChildren();
     summary.replaceChildren();
 
-
-    Object.entries(cart).forEach(
-        ([id,amount]) => {
-
-            const product = getProduct(id);
-
-
-            const item =
-                document.createElement("div");
-
-            item.className = "cart-item";
-
-
-            const art =
-                document.createElement("div");
-
-            art.className = "cart-item-art";
-            art.style.background = product.color;
-            art.textContent = product.emoji;
-
-
-            const info =
-                document.createElement("div");
-
-            info.className = "cart-item-info";
-
-
-            const name =
-                document.createElement("strong");
-
-            name.textContent = product.name;
-
-
-            const unitPrice =
-                document.createElement("small");
-
-            unitPrice.textContent =
-                `${euro(product.price)} ciascuno`;
-
-
-            const controls =
-                document.createElement("div");
-
-            controls.className = "quantity-controls";
-
-
-            const minus =
-                document.createElement("button");
-
-            minus.type = "button";
-            minus.textContent = "−";
-
-            minus.setAttribute(
-                "aria-label",
-                `Diminuisci quantità di ${product.name}`
-            );
-
-            minus.addEventListener(
-                "click",
-                () => changeQuantity(id,-1)
-            );
-
-
-            const number =
-                document.createElement("span");
-
-            number.className = "quantity-number";
-            number.textContent = amount;
-
-            number.setAttribute(
-                "aria-live",
-                "polite"
-            );
-
-
-            const plus =
-                document.createElement("button");
-
-            plus.type = "button";
-            plus.textContent = "+";
-
-            plus.setAttribute(
-                "aria-label",
-                `Aumenta quantità di ${product.name}`
-            );
-
-            plus.addEventListener(
-                "click",
-                () => changeQuantity(id,1)
-            );
-
-
-            controls.append(
-                minus,
-                number,
-                plus
-            );
-
-
-            info.append(
-                name,
-                unitPrice,
-                controls
-            );
-
-
-            const priceBox =
-                document.createElement("div");
-
-            priceBox.className =
-                "cart-item-price";
-
-
-            priceBox.append(
-                document.createTextNode(
-                    euro(product.price * amount)
-                )
-            );
-
-
-            const remove =
-                document.createElement("button");
-
-            remove.className =
-                "remove-button";
-
-            remove.type = "button";
-            remove.textContent = "Rimuovi";
-
-
-            remove.addEventListener(
-                "click",
-                () => removeProduct(id)
-            );
-
-
-            priceBox.append(remove);
-
-
-            item.append(
-                art,
-                info,
-                priceBox
-            );
-
-
-            container.append(item);
-
-
-            const summaryItem =
-                document.createElement("div");
-
-            summaryItem.className =
-                "summary-product";
-
-
-            const summaryIcon =
-                document.createElement("div");
-
-            summaryIcon.className =
-                "summary-product-icon";
-
-            summaryIcon.style.background =
-                product.color;
-
-            summaryIcon.textContent =
-                product.emoji;
-
-
-            const summaryInfo =
-                document.createElement("div");
-
-            summaryInfo.className =
-                "summary-product-info";
-
-
-            const summaryName =
-                document.createElement("strong");
-
-            summaryName.textContent =
-                product.name;
-
-
-            const summaryDetail =
-                document.createElement("small");
-
-            summaryDetail.textContent =
-                `${amount} × ${euro(product.price)} = ${euro(product.price * amount)}`;
-
-
-            summaryInfo.append(
-                summaryName,
-                summaryDetail
-            );
-
-
-            summaryItem.append(
-                summaryIcon,
-                summaryInfo
-            );
-
-
-            summary.append(summaryItem);
-
-        }
-    );
+    Object.entries(cart).forEach(([id,amount]) => {
+        const product = getProduct(id);
+
+        const item = document.createElement("div");
+        item.className = "cart-item";
+
+        const art = document.createElement("div");
+        art.className = "cart-item-art";
+        art.style.background = product.color;
+        art.textContent = product.emoji;
+
+        const info = document.createElement("div");
+        info.className = "cart-item-info";
+
+        const name = document.createElement("strong");
+        name.textContent = product.name;
+
+        const unitPrice = document.createElement("small");
+        unitPrice.textContent = `${euro(product.price)} ciascuno`;
+
+        const controls = document.createElement("div");
+        controls.className = "quantity-controls";
+
+        const minus = document.createElement("button");
+        minus.type = "button";
+        minus.textContent = "−";
+        minus.setAttribute("aria-label",`Diminuisci quantità di ${product.name}`);
+        minus.addEventListener("click",() => changeQuantity(id,-1));
+
+        const number = document.createElement("span");
+        number.className = "quantity-number";
+        number.textContent = amount;
+        number.setAttribute("aria-live","polite");
+
+        const plus = document.createElement("button");
+        plus.type = "button";
+        plus.textContent = "+";
+        plus.setAttribute("aria-label",`Aumenta quantità di ${product.name}`);
+        plus.addEventListener("click",() => changeQuantity(id,1));
+
+        controls.append(minus,number,plus);
+        info.append(name,unitPrice,controls);
+
+        const priceBox = document.createElement("div");
+        priceBox.className = "cart-item-price";
+        priceBox.append(document.createTextNode(euro(product.price * amount)));
+
+        const remove = document.createElement("button");
+        remove.className = "remove-button";
+        remove.type = "button";
+        remove.textContent = "Rimuovi";
+        remove.addEventListener("click",() => removeProduct(id));
+
+        priceBox.append(remove);
+        item.append(art,info,priceBox);
+        container.append(item);
+
+        const summaryItem = document.createElement("div");
+        summaryItem.className = "summary-product";
+
+        const summaryIcon = document.createElement("div");
+        summaryIcon.className = "summary-product-icon";
+        summaryIcon.style.background = product.color;
+        summaryIcon.textContent = product.emoji;
+
+        const summaryInfo = document.createElement("div");
+        summaryInfo.className = "summary-product-info";
+
+        const summaryName = document.createElement("strong");
+        summaryName.textContent = product.name;
+
+        const summaryDetail = document.createElement("small");
+        summaryDetail.textContent = `${amount} × ${euro(product.price)} = ${euro(product.price * amount)}`;
+
+        summaryInfo.append(summaryName,summaryDetail);
+        summaryItem.append(summaryIcon,summaryInfo);
+        summary.append(summaryItem);
+    });
 }
 
-
-function showFormNotice(
-    id,
-    titleText,
-    messageText
-) {
-
-    const overlay =
-        document.getElementById("confirmOverlay");
-
-
-    const title =
-        document.getElementById("confirmTitle");
-
-
-    const message =
-        document.getElementById("confirmMessage");
-
-
-    const icon =
-        document.getElementById("confirmIcon");
-
+function showFormNotice(id,titleText,messageText) {
+    const overlay = document.getElementById("confirmOverlay");
+    const title = document.getElementById("confirmTitle");
+    const message = document.getElementById("confirmMessage");
+    const icon = document.getElementById("confirmIcon");
 
     icon.textContent = "✨";
+    title.textContent = titleText || "Confermato!";
+    message.textContent = messageText || "Tutto sistemato. I criceti possono tornare alle loro attività.";
 
-
-    title.textContent =
-        titleText ||
-        "Confermato!";
-
-
-    message.textContent =
-        messageText ||
-        "Tutto sistemato. I criceti possono tornare alle loro attività.";
-
-
-    if (id === "orderNotice")
-        icon.textContent = "🎉";
-
-
-    if (id === "returnNotice")
-        icon.textContent = "♻️";
-
-
-    if (id === "supportNotice")
-        icon.textContent = "🛠️";
-
+    if (id === "orderNotice") icon.textContent = "🎉";
+    if (id === "returnNotice") icon.textContent = "♻️";
+    if (id === "supportNotice") icon.textContent = "🛠️";
 
     overlay.classList.add("show");
-
+    document.body.style.overflow = "";
     document.body.style.overflow = "hidden";
-
-
-    document
-        .getElementById("confirmClose")
-        .focus();
+    document.getElementById("confirmClose").focus();
 }
 
-
 function closeConfirmPopup() {
-
-    document
-        .getElementById("confirmOverlay")
-        .classList.remove("show");
-
-
+    document.getElementById("confirmOverlay").classList.remove("show");
     document.body.style.overflow = "";
 }
 
+document.getElementById("confirmClose").addEventListener("click",closeConfirmPopup);
 
-document
-    .getElementById("confirmClose")
-    .addEventListener(
-        "click",
-        closeConfirmPopup
+document.getElementById("confirmOverlay").addEventListener("click",function(event) {
+    if (event.target === this) closeConfirmPopup();
+});
+
+document.addEventListener("keydown",function(event) {
+    if (event.key === "Escape") closeConfirmPopup();
+});
+
+document.getElementById("checkoutForm").addEventListener("submit",function(event) {
+    event.preventDefault();
+    if (cartQuantity() === 0) return;
+
+    const data = new FormData(this);
+    const name = String(data.get("fullName")).trim();
+    const total = euro(cartTotal());
+    const count = cartQuantity();
+
+    showFormNotice(
+        "orderNotice",
+        "Ordine confermato!",
+        `Grazie, ${name}! Hai preparato ${count} articol${count === 1 ? "o" : "i"} per ${total}. Il reparto criceti è già in fermento.`
     );
 
+    cart = {};
+    updateCartCount();
+    renderCart();
+    this.reset();
+});
 
-document
-    .getElementById("confirmOverlay")
-    .addEventListener(
-        "click",
-        function(event) {
-
-            if (event.target === this) {
-                closeConfirmPopup();
-            }
-
-        }
+function setGroupEnabled(group,enabled) {
+    group.querySelectorAll("input,select,textarea,button").forEach(
+        control => control.disabled = !enabled
     );
-
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (event.key === "Escape") {
-            closeConfirmPopup();
-        }
-
-    }
-);
-
-
-document
-    .getElementById("checkoutForm")
-    .addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-
-            if (cartQuantity() === 0) return;
-
-
-            const data =
-                new FormData(this);
-
-
-            const name =
-                String(
-                    data.get("fullName")
-                ).trim();
-
-
-            const total =
-                euro(cartTotal());
-
-
-            const count =
-                cartQuantity();
-
-
-            showFormNotice(
-                "orderNotice",
-                "Ordine confermato!",
-                `Grazie, ${name}! Hai preparato ${count} articol${count === 1 ? "o" : "i"} per ${total}. Il reparto criceti è già in fermento.`
-            );
-
-
-            cart = {};
-
-            updateCartCount();
-            renderCart();
-
-            this.reset();
-
-        }
-    );
-
-
-function setGroupEnabled(
-    group,
-    enabled
-) {
-
-    group
-        .querySelectorAll(
-            "input,select,textarea,button"
-        )
-        .forEach(
-            control =>
-                control.disabled = !enabled
-        );
 }
 
-
 function updateReturnFields() {
+    const category = document.getElementById("returnType").value;
+    const modelSelect = document.getElementById("returnModel");
+    const hamsterFields = document.getElementById("returnHamsterFields");
+    const wheelFields = document.getElementById("returnWheelFields");
 
-    const category =
-        document.getElementById("returnType").value;
-
-
-    const modelSelect =
-        document.getElementById("returnModel");
-
-
-    const hamsterFields =
-        document.getElementById("returnHamsterFields");
-
-
-    const wheelFields =
-        document.getElementById("returnWheelFields");
-
-
-    const isHamster =
-        category === "criceto";
-
-
-    const isWheel =
-        category === "ruota";
-
+    const isHamster = category === "criceto";
+    const isWheel = category === "ruota";
 
     hamsterFields.hidden = !isHamster;
     wheelFields.hidden = !isWheel;
 
-
-    setGroupEnabled(
-        hamsterFields,
-        isHamster
-    );
-
-
-    setGroupEnabled(
-        wheelFields,
-        isWheel
-    );
-
+    setGroupEnabled(hamsterFields,isHamster);
+    setGroupEnabled(wheelFields,isWheel);
 
     modelSelect.replaceChildren();
 
-
-    const placeholder =
-        document.createElement("option");
-
-
+    const placeholder = document.createElement("option");
     placeholder.value = "";
-
-
-    placeholder.textContent =
-        category
-        ? "Seleziona un modello"
-        : "Prima scegli una categoria";
-
-
+    placeholder.textContent = category ? "Seleziona un modello" : "Prima scegli una categoria";
     modelSelect.append(placeholder);
-
-
     modelSelect.disabled = !category;
 
-
-    products
-        .filter(
-            product =>
-                product.category === category
-        )
-        .forEach(product => {
-
-            const option =
-                document.createElement("option");
-
-
-            option.value =
-                product.id;
-
-
-            option.textContent =
-                product.name;
-
-
-            modelSelect.append(option);
-
-        });
+    products.filter(product => product.category === category).forEach(product => {
+        const option = document.createElement("option");
+        option.value = product.id;
+        option.textContent = product.name;
+        modelSelect.append(option);
+    });
 }
 
+document.getElementById("returnType").addEventListener("change",updateReturnFields);
 
-document
-    .getElementById("returnType")
-    .addEventListener(
-        "change",
-        updateReturnFields
+document.getElementById("returnForm").addEventListener("submit",function(event) {
+    event.preventDefault();
+
+    const data = new FormData(this);
+    const product = getProduct(data.get("returnModel"));
+    if (!product) return;
+
+    showFormNotice(
+        "returnNotice",
+        "Richiesta confermata!",
+        `${product.name}: ${String(data.get("returnReason"))}. Il reparto ricondizionamento prenderà nota della faccenda.`
     );
 
-
-document
-    .getElementById("returnForm")
-    .addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-
-            const data =
-                new FormData(this);
-
-
-            const product =
-                getProduct(
-                    data.get("returnModel")
-                );
-
-
-            if (!product) return;
-
-
-            showFormNotice(
-                "returnNotice",
-                "Richiesta confermata!",
-                `${product.name}: ${String(data.get("returnReason"))}. Il reparto ricondizionamento prenderà nota della faccenda.`
-            );
-
-
-            this.reset();
-
-            updateReturnFields();
-
-        }
-    );
-
+    this.reset();
+    updateReturnFields();
+});
 
 function updateSupportFields() {
+    const topic = document.getElementById("supportTopic").value;
 
-    const topic =
-        document.getElementById("supportTopic").value;
+    const orderFields = document.getElementById("supportOrderFields");
+    const productFields = document.getElementById("supportProductFields");
+    const techFields = document.getElementById("supportTechFields");
+    const paymentFields = document.getElementById("supportPaymentFields");
 
+    const isProduct = topic === "criceto" || topic === "ruota";
 
-    const orderFields =
-        document.getElementById("supportOrderFields");
+    orderFields.hidden = topic !== "ordine";
+    productFields.hidden = !isProduct;
+    techFields.hidden = topic !== "tecnico";
+    paymentFields.hidden = topic !== "pagamento";
 
+    setGroupEnabled(orderFields,topic === "ordine");
+    setGroupEnabled(productFields,isProduct);
+    setGroupEnabled(techFields,topic === "tecnico");
+    setGroupEnabled(paymentFields,topic === "pagamento");
 
-    const productFields =
-        document.getElementById("supportProductFields");
-
-
-    const techFields =
-        document.getElementById("supportTechFields");
-
-
-    const paymentFields =
-        document.getElementById("supportPaymentFields");
-
-
-    const isProduct =
-        topic === "criceto" ||
-        topic === "ruota";
-
-
-    orderFields.hidden =
-        topic !== "ordine";
-
-
-    productFields.hidden =
-        !isProduct;
-
-
-    techFields.hidden =
-        topic !== "tecnico";
-
-
-    paymentFields.hidden =
-        topic !== "pagamento";
-
-
-    setGroupEnabled(
-        orderFields,
-        topic === "ordine"
-    );
-
-
-    setGroupEnabled(
-        productFields,
-        isProduct
-    );
-
-
-    setGroupEnabled(
-        techFields,
-        topic === "tecnico"
-    );
-
-
-    setGroupEnabled(
-        paymentFields,
-        topic === "pagamento"
-    );
-
-
-    const modelSelect =
-        document.getElementById(
-            "supportProductModel"
-        );
-
-
+    const modelSelect = document.getElementById("supportProductModel");
     modelSelect.replaceChildren();
 
-
-    const placeholder =
-        document.createElement("option");
-
-
+    const placeholder = document.createElement("option");
     placeholder.value = "";
-
-
-    placeholder.textContent =
-        "Seleziona un modello";
-
-
+    placeholder.textContent = "Seleziona un modello";
     modelSelect.append(placeholder);
 
-
-    products
-        .filter(
-            product =>
-                product.category === topic
-        )
-        .forEach(product => {
-
-            const option =
-                document.createElement("option");
-
-
-            option.value =
-                product.id;
-
-
-            option.textContent =
-                product.name;
-
-
-            modelSelect.append(option);
-
-        });
+    products.filter(product => product.category === topic).forEach(product => {
+        const option = document.createElement("option");
+        option.value = product.id;
+        option.textContent = product.name;
+        modelSelect.append(option);
+    });
 }
 
+document.getElementById("supportTopic").addEventListener("change",updateSupportFields);
 
-document
-    .getElementById("supportTopic")
-    .addEventListener(
-        "change",
-        updateSupportFields
+document.getElementById("supportForm").addEventListener("submit",function(event) {
+    event.preventDefault();
+
+    const data = new FormData(this);
+    const topic = document.getElementById("supportTopic");
+
+    let detail = topic.options[topic.selectedIndex].text;
+
+    if (data.get("supportProductModel")) {
+        detail += ` · ${getProduct(data.get("supportProductModel")).name}`;
+    }
+
+    if (data.get("supportOrder")) {
+        detail += ` · ordine ${data.get("supportOrder")}`;
+    }
+
+    showFormNotice(
+        "supportNotice",
+        "Segnalazione inviata!",
+        `${detail}. Il team di assistenza è stato informato (e sta cercando una ruota di scorta).`
     );
 
-
-document
-    .getElementById("supportForm")
-    .addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-
-            const data =
-                new FormData(this);
-
-
-            const topic =
-                document.getElementById(
-                    "supportTopic"
-                );
-
-
-            let detail =
-                topic.options[
-                    topic.selectedIndex
-                ].text;
-
-
-            if (data.get("supportProductModel")) {
-
-                detail +=
-                    ` · ${getProduct(
-                        data.get("supportProductModel")
-                    ).name}`;
-
-            }
-
-
-            if (data.get("supportOrder")) {
-
-                detail +=
-                    ` · ordine ${data.get("supportOrder")}`;
-
-            }
-
-
-            showFormNotice(
-                "supportNotice",
-                "Segnalazione inviata!",
-                `${detail}. Il team di assistenza è stato informato (e sta cercando una ruota di scorta).`
-            );
-
-
-            this.reset();
-
-            updateSupportFields();
-
-        }
-    );
-
+    this.reset();
+    updateSupportFields();
+});
 
 renderProducts();
 updateCartCount();
 renderCart();
 updateReturnFields();
 updateSupportFields();
-
 </script>
-
 </body>
 </html>
