@@ -7,7 +7,6 @@
 <meta name="description" content="Criceti, ruote e soluzioni per ogni emergenza cerebrale.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
 <style>
 :root {
     --bg:#fffaf5; --paper:#fff; --ink:#302a28; --muted:#817873;
@@ -231,6 +230,90 @@ footer p {margin:6px 0 0;color:var(--muted);font-size:.78rem}
 @keyframes popupIn {from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(prefers-reduced-motion:reduce) {
     *,*::before,*::after {animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
+    /* FIX: allineamento dei campi dinamici */
+.type-fields {
+    display: none;
+}
+
+.type-fields:not([hidden]) {
+    display: grid;
+    gap: 7px;
+}
+
+/* I campi di Usato contengono una griglia interna */
+#returnHamsterFields.type-fields:not([hidden]),
+#returnWheelFields.type-fields:not([hidden]) {
+    display: block;
+}
+
+#returnHamsterFields > .form-grid,
+#returnWheelFields > .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+#returnHamsterFields .field.full,
+#returnWheelFields .field.full {
+    grid-column: 1 / -1;
+}
+
+/* FIX: metodi di pagamento */
+.payment-options {
+    align-items: stretch;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 76px;
+    padding: 14px;
+    text-align: left;
+}
+
+.payment-option input {
+    flex: 0 0 17px;
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    align-self: center;
+}
+
+.payment-option > span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    text-align: left;
+    line-height: 1.4;
+}
+
+.payment-option strong {
+    display: block;
+    line-height: 1.4;
+}
+
+.payment-option small {
+    display: block;
+    color: var(--muted);
+    font-size: .75rem;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+/* FIX: campi a tutta larghezza su schermi piccoli */
+@media (max-width: 650px) {
+    #returnHamsterFields > .form-grid,
+    #returnWheelFields > .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #returnHamsterFields .field.full,
+    #returnWheelFields .field.full {
+        grid-column: 1 / -1;
+    }
 }
 </style>
 </head>
