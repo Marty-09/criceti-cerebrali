@@ -1238,7 +1238,7 @@ footer p {
         <div class="nav-actions">
             <button class="nav-link" data-page="catalogo" onclick="showPage('catalogo')">Home</button>
             <button class="nav-link" data-page="criceti" onclick="showPage('catalogo');goToSection('criceti')">Criceti</button>
-            <button class="nav-link" data-page="ruote" onclick="showPage('catalogo');goToSection('ruote')">Ruote</button>
+            <button class="nav-link" data-page="extra" onclick="showPage('catalogo');goToSection('extra')">Extra</button>
             <button class="nav-link" data-page="restituzioni" onclick="showPage('restituzioni')">Usato</button>
             <button class="nav-link" data-page="assistenza" onclick="showPage('assistenza')">Assistenza</button>
             <button class="cart-button" id="cartNavButton" onclick="showPage('carrello')">🛒 Carrello <span class="cart-count" id="cartCount">0</span></button>
@@ -1312,12 +1312,12 @@ footer p {
         </div>
     </section>
 
-    <section class="catalog-section" id="ruote" style="background:#f7eee7">
+    <section class="catalog-section" id="extra" style="background:#f7eee7">
         <div class="container">
             <div class="section-heading">
                 <div>
                     <span class="tiny-label">Reparto accessori</span>
-                    <h2>Ruote e ricambi</h2>
+                    <h2>extra e ricambi</h2>
                     <p>Perché anche i criceti hanno diritto a strumenti decenti.</p>
                 </div>
                 <span class="eyebrow">6 modelli</span>
@@ -1930,6 +1930,43 @@ const products = [
         speed:"1.000 giri al minuto",
         duration:"30 giorni",
         price:499.99
+    },
+    {
+    {
+        id:"e1",
+        category:"extra",
+        name:"Cibo per criceti",
+        emoji:"🥜",
+        color:"#f9e4d5",
+        tag:"Carburante cerebrale",
+        description:"Una miscela nutriente per mantenere il criceto operativo. Non garantisce che smetta di procrastinare.",
+        speed:"Energia per la giornata",
+        duration:"Confezione da 30 giorni",
+        price:5.99
+    },
+    {
+        id:"e2",
+        category:"extra",
+        name:"Acqua per criceti",
+        emoji:"💧",
+        color:"#d9eafa",
+        tag:"Idratazione premium",
+        description:"Acqua fresca e pulita. Il criceto potrebbe comunque preferire bere dalla ciotola sbagliata.",
+        speed:"Sempre disponibile",
+        duration:"Scorta da 7 giorni",
+        price:2.99
+    },
+    {
+        id:"e3",
+        category:"extra",
+        name:"Paglia morbida",
+        emoji:"🌾",
+        color:"#ffe5a8",
+        tag:"Nido deluxe",
+        description:"Paglia soffice per un nido accogliente. Ideale per riposare dopo una giornata estenuante passata a non fare niente.",
+        speed:"Comfort massimo",
+        duration:"Confezione da 30 giorni",
+        price:4.49
     }
 ];
 
@@ -2001,6 +2038,11 @@ function renderProductCard(product) {
             ["Velocità",product.speed],
             ["Intelligenza",product.intelligence],
             ["Durata",product.duration]
+        ]
+        : product.category === "extra"
+        ? [
+            ["Disponibilità",product.speed],
+            ["Confezione",product.duration]
         ]
         : [
             ["Velocità massima",product.speed],
