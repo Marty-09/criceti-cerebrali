@@ -3412,27 +3412,33 @@ function updateEyes() {
             const group = button.dataset.group;
             const value = button.dataset.value;
 
-        if (group === "accessory") {
-            if (state.accessories.includes(value)) {
-                state.accessories = state.accessories.filter(
-                    item => item !== value
-                );
-            } else {
-                if (headAccessories.includes(value)) {
+            if (group === "accessory") {
+                if (state.accessories.includes(value)) {
                     state.accessories = state.accessories.filter(
-                        item => !headAccessories.includes(item)
+                        item => item !== value
                     );
-                }
+                } else {
+                    if (headAccessories.includes(value)) {
+                        state.accessories = state.accessories.filter(
+                            item => !headAccessories.includes(item)
+                        );
+                    }
 
-                state.accessories.push(value);
+                    state.accessories.push(value);
+                }
+            } else if (group === "fur") {
+                state.fur = value;
+            } else if (group === "eyes") {
+                state.eyes = value;
+            } else if (group === "whiskers") {
+                state.whiskers = value;
             }
-        }
 
             updateAvatar();
             status.textContent = "Il tuo criceto sta prendendo forma!";
         });
     });
-
+    
     // Salva la creazione nel browser.
     document.getElementById("hamsterSave").addEventListener("click", () => {
         localStorage.setItem(
@@ -3460,12 +3466,26 @@ function updateEyes() {
         ];
 
         state.fur = pick(Object.keys(furColors));
-        state.eyes = pick(["round", "sleepy", "sparkle"]);
+        state.eyes = pick(["big", "small"]);
         state.whiskers = pick(["soft", "curly", "bold", "short"]);
 
-        state.accessories = Object.keys(accessoryIds).filter(
-            () => Math.random() > 0.55
-        );
+        state.accessories = [];
+
+        // Occhiali e bandana possono essere combinati.
+        if (Math.random() > 0.5) {
+            state.accessories.push("glasses");
+        }
+
+        if (Math.random() > 0.5) {
+            state.accessories.push("bandana");
+        }
+
+        // Sceglie al massimo un accessorio per la testa.
+        if (Math.random() > 0.3) {
+            state.accessories.push(
+                pick(["bow", "hat", "flower", "crown"])
+            );
+        }
 
         updateAvatar();
         status.textContent = "Ecco il tuo criceto a sorpresa!";
@@ -3474,7 +3494,7 @@ function updateEyes() {
     // Ripristina il look iniziale.
     document.getElementById("hamsterReset").addEventListener("click", () => {
         state.fur = "cream";
-        state.eyes = "round";
+        state.eyes = "big";
         state.whiskers = "soft";
         state.accessories = [];
 
@@ -3484,6 +3504,7 @@ function updateEyes() {
         status.textContent = "Si riparte da zero. Pasticcino è tornato!";
     });
 }
+
 
 initHamsterCreator();
 
