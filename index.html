@@ -1226,82 +1226,62 @@ footer p {
    CREA IL TUO CRICETO
    ========================================== */
 
+/* CREATOR CRICETO */
 .creator-page {
-    padding: 48px 0 72px;
+    padding: 48px 0 80px;
 }
 
 .creator-heading {
-    text-align: center;
-    max-width: 680px;
-    margin: 0 auto 32px;
+    margin-bottom: 28px;
 }
 
 .creator-heading h1 {
+    margin: 8px 0 10px;
     font-family: "Nunito", sans-serif;
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     line-height: 1.1;
-    margin: 12px 0;
 }
 
 .creator-heading p {
+    max-width: 720px;
     color: var(--muted);
-    margin: 0;
 }
 
 .creator-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
-    gap: 24px;
+    grid-template-columns: minmax(280px, .9fr) minmax(0, 1.1fr);
     align-items: start;
-}
-
-.creator-preview,
-.creator-controls {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 24px;
+    gap: 25px;
 }
 
 .creator-preview {
     position: sticky;
-    top: 100px;
+    top: 110px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: white;
+    box-shadow: var(--shadow);
     text-align: center;
-    overflow: hidden;
 }
 
 .creator-stage {
-    position: relative;
     display: grid;
     place-items: center;
-    min-height: 330px;
-    margin: 12px 0;
-    border-radius: 20px;
-    background:
-        radial-gradient(ellipse at 50% 80%, #ffffff 0%, transparent 65%),
-        linear-gradient(145deg, #f5eaf9, #fff0f1);
+    min-height: 310px;
     overflow: hidden;
-}
-
-.creator-stage::after {
-    content: "";
-    position: absolute;
-    bottom: 35px;
-    width: 190px;
-    height: 22px;
-    border-radius: 50%;
-    background: rgba(65, 43, 43, .10);
-    filter: blur(9px);
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at 50% 40%, #fff 0%, #fff7f0 72%);
 }
 
 .hamster-avatar {
-    position: relative;
-    z-index: 1;
-    width: min(100%, 340px);
+    width: 100%;
+    max-width: 340px;
     height: auto;
     overflow: visible;
-    animation: hamsterIdle 3s ease-in-out infinite;
+    animation: hamsterIdle 3.5s ease-in-out infinite;
+    transform-origin: 50% 85%;
 }
 
 @keyframes hamsterIdle {
@@ -1311,118 +1291,139 @@ footer p {
 
 .creator-name {
     width: 100%;
-    border: 0;
-    background: transparent;
-    text-align: center;
+    margin-top: 18px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    background: #fffaf7;
     color: var(--ink);
     font-family: "Nunito", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.05rem;
     font-weight: 900;
-    outline-offset: 4px;
+    text-align: center;
 }
 
 .creator-caption {
+    margin: 9px 0 0;
     color: var(--muted);
-    font-size: .85rem;
-    margin: 4px 0 0;
+    font-size: .84rem;
 }
 
-.creator-controls h2 {
+.creator-controls {
+    display: grid;
+    gap: 18px;
+    min-width: 0;
+}
+
+.creator-section {
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: white;
+}
+
+.creator-section h2 {
+    margin: 0 0 5px;
     font-family: "Nunito", sans-serif;
-    font-size: 1.3rem;
-    margin: 0 0 18px;
+    font-size: 1.2rem;
 }
 
-.creator-field {
-    margin-bottom: 19px;
+.creator-section > p {
+    margin: 0 0 15px;
+    color: var(--muted);
+    font-size: .84rem;
 }
 
-.creator-field label {
-    display: block;
-    font-size: .9rem;
-    font-weight: 800;
-    margin-bottom: 7px;
+.creator-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
 }
 
-.creator-field select,
-.creator-field input[type="text"] {
-    width: 100%;
-    min-height: 46px;
-    border: 1px solid var(--line);
-    border-radius: 13px;
-    padding: 10px 12px;
-    background: var(--bg);
+.creator-option {
+    display: flex;
+    min-width: 0;
+    min-height: 100px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 7px;
+    border: 2px solid #eee5df;
+    border-radius: 16px;
+    background: #fffdfb;
     color: var(--ink);
+    font-size: .78rem;
+    font-weight: 800;
+    text-align: center;
+    transition: border-color .18s, background .18s, transform .18s;
 }
 
-.creator-field input[type="color"] {
-    width: 100%;
-    height: 46px;
-    padding: 4px;
-    border: 1px solid var(--line);
+.creator-option:hover {
+    transform: translateY(-2px);
+    border-color: var(--pink);
+}
+
+.creator-option.selected {
+    border-color: #d99598;
+    background: var(--pink-light);
+    box-shadow: 0 0 0 2px rgba(217,149,152,.12);
+}
+
+.creator-option:focus-visible {
+    outline: 3px solid #d99598;
+    outline-offset: 3px;
+}
+
+.creator-swatch {
+    display: block;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 auto;
+    border: 2px solid rgba(48,42,40,.12);
+    border-radius: 50%;
+    box-shadow: inset -4px -4px 0 rgba(48,42,40,.07);
+}
+
+.creator-preview-icon {
+    display: grid;
+    place-items: center;
+    width: 45px;
+    height: 42px;
     border-radius: 13px;
-    background: var(--bg);
-    cursor: pointer;
+    background: white;
+    font-size: 1.65rem;
+    line-height: 1;
 }
 
-.creator-field select:focus,
-.creator-field input:focus {
-    outline: 3px solid #e6ddf5;
-    outline-offset: 2px;
+.creator-option small {
+    display: block;
+    color: var(--muted);
+    font-size: .68rem;
+    font-weight: 600;
 }
 
 .creator-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px;
-    margin-top: 24px;
 }
 
 .creator-actions button {
-    min-height: 46px;
-    border: 0;
-    border-radius: 13px;
-    padding: 11px 14px;
-    font-weight: 800;
-    transition: transform .2s ease, filter .2s ease;
-}
-
-.creator-actions button:hover {
-    transform: translateY(-2px);
-    filter: brightness(.98);
-}
-
-.creator-random {
-    background: var(--yellow);
-    color: var(--ink);
-}
-
-.creator-save {
-    background: var(--pink);
-    color: var(--ink);
-}
-
-.creator-reset {
-    grid-column: 1 / -1;
-    background: var(--purple);
-    color: var(--ink);
+    flex: 1 1 120px;
 }
 
 .creator-status {
-    min-height: 24px;
-    margin: 14px 0 0;
-    color: var(--muted);
-    font-size: .85rem;
-    text-align: center;
+    min-height: 22px;
+    margin: 12px 0 0;
+    color: #537b59;
+    font-size: .84rem;
+    font-weight: 700;
 }
 
-@media (max-width: 760px) {
-    .creator-page {
-        padding: 30px 0 50px;
-    }
-
+@media (max-width: 850px) {
     .creator-layout {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
     }
 
     .creator-preview {
@@ -1430,18 +1431,26 @@ footer p {
     }
 
     .creator-stage {
-        min-height: 290px;
+        min-height: 260px;
     }
 
-    .creator-preview,
-    .creator-controls {
-        padding: 18px;
+    .hamster-avatar {
+        max-width: 300px;
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .hamster-avatar {
-        animation: none;
+@media (max-width: 430px) {
+    .creator-page {
+        padding-top: 30px;
+    }
+
+    .creator-preview,
+    .creator-section {
+        padding: 16px;
+    }
+
+    .creator-options {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 </style>
@@ -1884,289 +1893,406 @@ footer p {
     </div>
 </section>
     <!-- CREA IL TUO CRICETO -->
-<section class="page" id="crea-criceto">
-    <div class="container creator-page">
+<section class="page creator-page" id="crea-criceto">
+    <div class="container">
 
         <div class="creator-heading">
-            <span class="eyebrow">Laboratorio roditoriale</span>
-            <h1>Crea il tuo <span class="highlight">criceto.</span></h1>
-            <p>
-                Scegli il pelo, inventagli un look e rendilo
-                assolutamente inadatto alla vita produttiva.
-            </p>
+            <span class="tiny-label">Il tuo roditore, le tue regole</span>
+            <h1>Crea il tuo criceto</h1>
+            <p>Scegli il pelo, gli occhi, i baffi e tutti gli accessori che vuoi.
+               Qui non esistono combinazioni sbagliate.</p>
         </div>
 
         <div class="creator-layout">
 
-            <!-- ANTEPRIMA DEL PERSONAGGIO -->
-            <div class="creator-preview">
-                <span class="tiny-label">Il tuo capolavoro</span>
-
+            <aside class="creator-preview">
                 <div class="creator-stage">
-                    <svg
-                        id="hamsterAvatar"
-                        class="hamster-avatar"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 320 320"
-                        role="img"
-                        aria-label="Anteprima del tuo criceto personalizzato"
-                    >
-                        <defs>
-                            <linearGradient id="furShade" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stop-color="#fff4e8"/>
-                                <stop offset="100%" stop-color="#dca77e"/>
-                            </linearGradient>
+                    <svg id="hamsterAvatar"
+                         class="hamster-avatar"
+                         viewBox="0 0 320 320"
+                         xmlns="http://www.w3.org/2000/svg"
+                         role="img"
+                         aria-label="Anteprima del tuo criceto">
 
-                            <radialGradient id="cheekShade">
-                                <stop offset="0%" stop-color="#ffb4c1"/>
-                                <stop offset="100%" stop-color="#f4b7bd" stop-opacity=".5"/>
-                            </radialGradient>
-                        </defs>
+                        <!-- Ombra -->
+                        <ellipse cx="160" cy="278" rx="83" ry="13"
+                                 fill="#302a28" opacity=".09"/>
 
-                        <!-- CODA -->
-                        <circle
-                            id="hamsterTail"
-                            cx="238" cy="224" r="15"
-                            fill="#e6c4a8"
-                            stroke="#bd9272" stroke-width="2"
-                        />
+                        <!-- Coda -->
+                        <circle id="hamsterTail" cx="244" cy="224" r="15"
+                                fill="#D7B08A" stroke="#A77C5B"
+                                stroke-width="3"/>
 
-                        <!-- ZAMPE POSTERIORI -->
-                        <ellipse
-                            cx="112" cy="266" rx="31" ry="17"
-                            fill="#dca77e" stroke="#bd9272" stroke-width="2"
-                        />
-                        <ellipse
-                            cx="207" cy="266" rx="31" ry="17"
-                            fill="#dca77e" stroke="#bd9272" stroke-width="2"
-                        />
-                        <path d="M95 267 l7 5 M109 268 l5 5 M190 268 l7 5 M204 268 l5 5"
-                            fill="none" stroke="#bd9272" stroke-width="2"
-                            stroke-linecap="round"
-                        />
-
-                        <!-- ORECCHIE -->
-                        <g id="earLeft">
-                            <ellipse cx="105" cy="91" rx="35" ry="42"
-                                fill="#e6c4a8" stroke="#bd9272" stroke-width="2.5"/>
-                            <ellipse cx="105" cy="94" rx="21" ry="28"
-                                fill="#f4b7bd"/>
+                        <!-- Corpo -->
+                        <g id="hamsterBody">
+                            <ellipse id="hamsterBodyShape"
+                                     cx="160" cy="216" rx="91" ry="59"
+                                     fill="#DDB58F" stroke="#A77C5B"
+                                     stroke-width="3.5"/>
+                            <ellipse cx="160" cy="226" rx="57" ry="37"
+                                     fill="#F8E6D0"/>
                         </g>
 
-                        <g id="earRight">
-                            <ellipse cx="215" cy="91" rx="35" ry="42"
-                                fill="#e6c4a8" stroke="#bd9272" stroke-width="2.5"/>
-                            <ellipse cx="215" cy="94" rx="21" ry="28"
-                                fill="#f4b7bd"/>
+                        <!-- Zampe posteriori -->
+                        <ellipse id="hamsterBackPawL"
+                                 cx="101" cy="255" rx="23" ry="13"
+                                 fill="#DDB58F" stroke="#A77C5B"
+                                 stroke-width="3"/>
+                        <ellipse id="hamsterBackPawR"
+                                 cx="219" cy="255" rx="23" ry="13"
+                                 fill="#DDB58F" stroke="#A77C5B"
+                                 stroke-width="3"/>
+
+                        <!-- Orecchie -->
+                        <g id="hamsterEars">
+                            <ellipse id="hamsterEarL"
+                                     cx="111" cy="106" rx="29" ry="35"
+                                     fill="#DDB58F" stroke="#A77C5B"
+                                     stroke-width="3.5"/>
+                            <ellipse id="hamsterInnerEarL"
+                                     cx="111" cy="108" rx="17" ry="23"
+                                     fill="#ECA6A9"/>
+                            <ellipse id="hamsterEarR"
+                                     cx="209" cy="106" rx="29" ry="35"
+                                     fill="#DDB58F" stroke="#A77C5B"
+                                     stroke-width="3.5"/>
+                            <ellipse id="hamsterInnerEarR"
+                                     cx="209" cy="108" rx="17" ry="23"
+                                     fill="#ECA6A9"/>
                         </g>
 
-                        <!-- CORPO -->
-                        <ellipse
-                            id="hamsterBody"
-                            cx="160" cy="218" rx="78" ry="67"
-                            fill="#f1d0ad"
-                            stroke="#bd9272" stroke-width="2.5"
-                        />
+                        <!-- Testa -->
+                        <ellipse id="hamsterHead"
+                                 cx="160" cy="151" rx="76" ry="70"
+                                 fill="#DDB58F" stroke="#A77C5B"
+                                 stroke-width="3.5"/>
 
-                        <!-- PANCIA -->
-                        <ellipse
-                            cx="160" cy="230" rx="47" ry="43"
-                            fill="#fff0df"
-                        />
+                        <!-- Macchie chiare sulle guance -->
+                        <ellipse id="hamsterFacePatchL"
+                                 cx="119" cy="169" rx="28" ry="25"
+                                 fill="#F8E6D0"/>
+                        <ellipse id="hamsterFacePatchR"
+                                 cx="201" cy="169" rx="28" ry="25"
+                                 fill="#F8E6D0"/>
 
-                        <!-- ZAMPE ANTERIORI -->
-                        <ellipse
-                            cx="112" cy="255" rx="23" ry="14"
-                            fill="#e6c4a8" stroke="#bd9272" stroke-width="2"
-                        />
-                        <ellipse
-                            cx="208" cy="255" rx="23" ry="14"
-                            fill="#e6c4a8" stroke="#bd9272" stroke-width="2"
-                        />
-
-                        <!-- TESTA -->
-                        <ellipse
-                            id="hamsterHead"
-                            cx="160" cy="151" rx="77" ry="70"
-                            fill="#f1d0ad"
-                            stroke="#bd9272" stroke-width="2.5"
-                        />
-
-                        <!-- MACCHIE DEL PELO -->
-                        <g id="furMarkings" opacity=".55">
-                            <path d="M105 119 Q119 100 137 113"
-                                fill="none" stroke="#d4a17c"
-                                stroke-width="8" stroke-linecap="round"/>
-                            <path d="M183 113 Q202 101 215 120"
-                                fill="none" stroke="#d4a17c"
-                                stroke-width="8" stroke-linecap="round"/>
-                        </g>
-
-                        <!-- OCCHI -->
+                        <!-- Occhi -->
                         <g id="hamsterEyes">
-                            <ellipse cx="133" cy="147" rx="12" ry="16" fill="#302a28"/>
-                            <ellipse cx="187" cy="147" rx="12" ry="16" fill="#302a28"/>
-                            <circle cx="137" cy="141" r="4.5" fill="#fff"/>
-                            <circle cx="191" cy="141" r="4.5" fill="#fff"/>
-                            <circle cx="128" cy="153" r="2" fill="#fff" opacity=".7"/>
-                            <circle cx="182" cy="153" r="2" fill="#fff" opacity=".7"/>
+                            <ellipse id="hamsterEyeL"
+                                     cx="133" cy="142" rx="10" ry="13"
+                                     fill="#30231F"/>
+                            <ellipse id="hamsterEyeR"
+                                     cx="187" cy="142" rx="10" ry="13"
+                                     fill="#30231F"/>
+                            <circle id="hamsterEyeShineL"
+                                    cx="136" cy="138" r="3.4"
+                                    fill="white"/>
+                            <circle id="hamsterEyeShineR"
+                                    cx="190" cy="138" r="3.4"
+                                    fill="white"/>
                         </g>
 
-                        <!-- GUANCE -->
-                        <ellipse
-                            cx="111" cy="175" rx="19" ry="12"
-                            fill="url(#cheekShade)"
-                        />
-                        <ellipse
-                            cx="209" cy="175" rx="19" ry="12"
-                            fill="url(#cheekShade)"
-                        />
+                        <!-- Guance rosa -->
+                        <g id="hamsterCheeks">
+                            <ellipse cx="115" cy="176" rx="14" ry="9"
+                                     fill="#EFA5A8" opacity=".8"/>
+                            <ellipse cx="205" cy="176" rx="14" ry="9"
+                                     fill="#EFA5A8" opacity=".8"/>
+                        </g>
 
-                        <!-- MUSO -->
-                        <ellipse cx="160" cy="174" rx="28" ry="23" fill="#fff0df"/>
-                        <ellipse cx="160" cy="166" rx="8" ry="6" fill="#a96570"/>
+                        <!-- Musetto, sempre centrato -->
+                        <g id="hamsterMuzzle">
+                            <ellipse cx="160" cy="175" rx="24" ry="18"
+                                     fill="#F8E6D0"/>
+                            <ellipse cx="160" cy="168" rx="7" ry="5"
+                                     fill="#A96668"/>
+                            <path d="M160 173 L160 181
+                                     M160 181 Q153 188 148 181
+                                     M160 181 Q167 188 172 181"
+                                  fill="none" stroke="#79554C"
+                                  stroke-width="2.4"
+                                  stroke-linecap="round"/>
+                        </g>
 
-                        <!-- BOCCA -->
-                        <path
-                            d="M160 172 Q153 181 147 176 M160 172 Q167 181 173 176"
-                            fill="none" stroke="#80545a"
-                            stroke-width="2.5" stroke-linecap="round"
-                        />
-
-                        <!-- BAFFI -->
+                        <!-- Baffi: tutte le varianti partono da qui -->
                         <g id="hamsterWhiskers"
-                            fill="none" stroke="#8c6c5d"
-                            stroke-width="2" stroke-linecap="round">
-                            <path d="M135 174 Q112 167 91 170"/>
-                            <path d="M135 181 Q111 183 94 193"/>
-                            <path d="M185 174 Q208 167 229 170"/>
-                            <path d="M185 181 Q209 183 226 193"/>
+                           fill="none"
+                           stroke="#79554C"
+                           stroke-width="2.2"
+                           stroke-linecap="round">
+                            <path d="M141 175 Q126 169 111 166"/>
+                            <path d="M141 180 Q124 180 109 184"/>
+                            <path d="M143 184 Q130 191 119 198"/>
+                            <path d="M179 175 Q194 169 209 166"/>
+                            <path d="M179 180 Q196 180 211 184"/>
+                            <path d="M177 184 Q190 191 201 198"/>
                         </g>
 
-                        <!-- ACCESSORIO: BANDANA -->
+                        <!-- Zampe anteriori -->
+                        <ellipse id="hamsterFrontPawL"
+                                 cx="125" cy="252" rx="22" ry="12"
+                                 fill="#DDB58F" stroke="#A77C5B"
+                                 stroke-width="3"/>
+                        <ellipse id="hamsterFrontPawR"
+                                 cx="195" cy="252" rx="22" ry="12"
+                                 fill="#DDB58F" stroke="#A77C5B"
+                                 stroke-width="3"/>
+
+                        <!-- ACCESSORIO: bandana -->
                         <g id="accessoryBandana" style="display:none">
-                            <path d="M113 201 Q160 222 207 201 L160 251 Z"
-                                fill="#d995b2" stroke="#b86f91" stroke-width="2"/>
-                            <circle cx="160" cy="224" r="5" fill="#fff0f1"/>
+                            <path d="M111 205 Q160 225 209 205
+                                     L194 237 L160 258 L126 237 Z"
+                                  fill="#E98F9A" stroke="#A85E69"
+                                  stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M135 219 L160 237 L185 219"
+                                  fill="none" stroke="#FFE7E8"
+                                  stroke-width="4" stroke-linecap="round"/>
                         </g>
 
-                        <!-- ACCESSORIO: OCCHIALI -->
-                        <g id="accessoryGlasses" style="display:none"
-                            fill="none" stroke="#594b60" stroke-width="4">
-                            <circle cx="133" cy="148" r="20"/>
-                            <circle cx="187" cy="148" r="20"/>
-                            <path d="M153 147 Q160 142 167 147"/>
-                            <path d="M113 145 L103 141 M207 145 L217 141"/>
+                        <!-- ACCESSORIO: occhiali -->
+                        <g id="accessoryGlasses" style="display:none">
+                            <rect x="105" y="127" width="43" height="29"
+                                  rx="11" fill="#B9D8D5"
+                                  fill-opacity=".5" stroke="#5D6868"
+                                  stroke-width="4"/>
+                            <rect x="172" y="127" width="43" height="29"
+                                  rx="11" fill="#B9D8D5"
+                                  fill-opacity=".5" stroke="#5D6868"
+                                  stroke-width="4"/>
+                            <path d="M148 137 Q160 130 172 137
+                                     M105 136 L96 132
+                                     M215 136 L224 132"
+                                  fill="none" stroke="#5D6868"
+                                  stroke-width="4" stroke-linecap="round"/>
                         </g>
 
-                        <!-- ACCESSORIO: FIOCCO -->
+                        <!-- ACCESSORIO: fiocco -->
                         <g id="accessoryBow" style="display:none">
-                            <path d="M196 75 Q172 51 178 78 Q180 92 196 84 Z"
-                                fill="#f4b7bd" stroke="#bd7f91" stroke-width="2"/>
-                            <path d="M196 75 Q220 51 214 78 Q212 92 196 84 Z"
-                                fill="#f4b7bd" stroke="#bd7f91" stroke-width="2"/>
-                            <circle cx="196" cy="80" r="6" fill="#d995b2"/>
+                            <path d="M151 88 Q128 67 126 88
+                                     Q127 105 153 96 Z"
+                                  fill="#F4A9C0" stroke="#B96F88"
+                                  stroke-width="3"/>
+                            <path d="M169 88 Q192 67 194 88
+                                     Q193 105 167 96 Z"
+                                  fill="#F4A9C0" stroke="#B96F88"
+                                  stroke-width="3"/>
+                            <circle cx="160" cy="91" r="8"
+                                    fill="#FFE4A3" stroke="#B96F88"
+                                    stroke-width="2.5"/>
                         </g>
 
-                        <!-- ACCESSORIO: CAPPELLINO -->
+                        <!-- ACCESSORIO: cappellino -->
                         <g id="accessoryHat" style="display:none">
-                            <path d="M112 94 Q112 44 160 42 Q208 44 208 94 Z"
-                                fill="#b7a0dc" stroke="#8062a0" stroke-width="2.5"/>
-                            <ellipse cx="160" cy="94" rx="57" ry="10"
-                                fill="#d5c4ef" stroke="#8062a0" stroke-width="2.5"/>
-                            <circle cx="160" cy="45" r="8" fill="#f4b7bd"/>
+                            <path d="M119 101 Q120 62 160 58
+                                     Q200 62 201 101 Z"
+                                  fill="#9DBDAB" stroke="#527C69"
+                                  stroke-width="3.5"/>
+                            <ellipse cx="160" cy="101" rx="48" ry="10"
+                                     fill="#B7D3C4" stroke="#527C69"
+                                     stroke-width="3.5"/>
+                            <circle cx="160" cy="59" r="8"
+                                    fill="#F4B7BD" stroke="#527C69"
+                                    stroke-width="2.5"/>
                         </g>
+
+                        <!-- ACCESSORIO: fiore -->
+                        <g id="accessoryFlower" style="display:none">
+                            <g transform="translate(211 100)">
+                                <ellipse cy="-12" rx="8" ry="12" fill="#F4B7BD"/>
+                                <ellipse cy="12" rx="8" ry="12" fill="#F4B7BD"/>
+                                <ellipse cx="-12" rx="12" ry="8" fill="#F4B7BD"/>
+                                <ellipse cx="12" rx="12" ry="8" fill="#F4B7BD"/>
+                                <circle r="8" fill="#FFE4A3"
+                                        stroke="#D49B5A" stroke-width="2"/>
+                            </g>
+                        </g>
+
+                        <!-- ACCESSORIO: corona -->
+                        <g id="accessoryCrown" style="display:none">
+                            <path d="M124 98 L116 72 L139 85 L160 63
+                                     L181 85 L204 72 L196 98 Z"
+                                  fill="#FFE4A3" stroke="#C59B4D"
+                                  stroke-width="3.5" stroke-linejoin="round"/>
+                            <path d="M124 98 H196"
+                                  stroke="#C59B4D" stroke-width="4"
+                                  stroke-linecap="round"/>
+                            <circle cx="160" cy="79" r="4" fill="#E98F9A"/>
+                        </g>
+
                     </svg>
                 </div>
 
-                <input
-                    class="creator-name"
-                    id="hamsterName"
-                    type="text"
-                    maxlength="24"
-                    value="Pasticcino"
-                    aria-label="Nome del tuo criceto"
-                    placeholder="Dai un nome al criceto"
-                >
+                <input id="hamsterName"
+                       class="creator-name"
+                       type="text"
+                       maxlength="24"
+                       placeholder="Come si chiama?"
+                       value="Pasticcino"
+                       aria-label="Nome del criceto">
 
                 <p class="creator-caption">
-                    Un piccolo roditore. Un enorme problema gestionale.
+                    Un criceto unico, proprio come il tuo cervello.
                 </p>
-            </div>
+            </aside>
 
-            <!-- PANNELLO DI PERSONALIZZAZIONE -->
             <div class="creator-controls">
-                <h2>Personalizza il roditore</h2>
 
-                <div class="creator-field">
-                    <label for="hamsterFur">Colore del pelo</label>
-                    <select id="hamsterFur">
-                        <option value="#f1d0ad">Caramello</option>
-                        <option value="#f8eadb">Panna</option>
-                        <option value="#a9a4a0">Grigio nuvola</option>
-                        <option value="#6b5147">Cioccolato</option>
-                        <option value="#fff7ef">Bianco latte</option>
-                        <option value="#e9b7c9">Rosa pastello</option>
-                        <option value="#b7a0dc">Lavanda</option>
-                        <option value="#d6b85a">Dorato</option>
-                    </select>
+                <section class="creator-section">
+                    <h2>1. Scegli il pelo</h2>
+                    <p>Seleziona il colore che gli sta meglio.</p>
+                    <div class="creator-options" id="furOptions">
+                        <button type="button" class="creator-option selected"
+                                data-group="fur" data-value="cream"
+                                aria-pressed="true">
+                            <span class="creator-swatch" style="background:#E8D1B5"></span>
+                            Crema
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="fur" data-value="honey"
+                                aria-pressed="false">
+                            <span class="creator-swatch" style="background:#D8A15D"></span>
+                            Miele
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="fur" data-value="cocoa"
+                                aria-pressed="false">
+                            <span class="creator-swatch" style="background:#A87858"></span>
+                            Cacao
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="fur" data-value="caramel"
+                                aria-pressed="false">
+                            <span class="creator-swatch" style="background:#C58B68"></span>
+                            Caramello
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="fur" data-value="grey"
+                                aria-pressed="false">
+                            <span class="creator-swatch" style="background:#A8A5A0"></span>
+                            Nuvola
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="fur" data-value="pink"
+                                aria-pressed="false">
+                            <span class="creator-swatch" style="background:#DCA9A7"></span>
+                            Biscotto rosa
+                        </button>
+                    </div>
+                </section>
+
+                <section class="creator-section">
+                    <h2>2. Gli occhi</h2>
+                    <p>Un'espressione diversa cambia tutto.</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option selected"
+                                data-group="eyes" data-value="round"
+                                aria-pressed="true">
+                            <span class="creator-preview-icon">👀</span>
+                            Occhioni
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="eyes" data-value="sleepy"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">😴</span>
+                            Assonnati
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="eyes" data-value="sparkle"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">✨</span>
+                            Brillanti
+                        </button>
+                    </div>
+                </section>
+
+                <section class="creator-section">
+                    <h2>3. I baffi</h2>
+                    <p>Scegli il suo stile da roditore.</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option selected"
+                                data-group="whiskers" data-value="soft"
+                                aria-pressed="true">
+                            <span class="creator-preview-icon">〰️</span>
+                            Morbidi
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="whiskers" data-value="curly"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">➰</span>
+                            Ricciolini
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="whiskers" data-value="bold"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">〽️</span>
+                            Da boss
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="whiskers" data-value="short"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">〰</span>
+                            Mini
+                        </button>
+                    </div>
+                </section>
+
+                <section class="creator-section">
+                    <h2>4. Gli accessori</h2>
+                    <p>Puoi selezionarne quanti ne vuoi. Anche tutti!</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="glasses"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">🕶️</span>
+                            Occhiali
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="bow"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">🎀</span>
+                            Fiocco
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="bandana"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">🔻</span>
+                            Bandana
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="hat"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">🧢</span>
+                            Cappellino
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="flower"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">🌼</span>
+                            Fiore
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="crown"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">👑</span>
+                            Corona
+                        </button>
+                    </div>
+                </section>
+
+                <div class="creator-section">
+                    <h2>Pronto per la ruota?</h2>
+                    <p>Randomizza il look, salva la tua creazione o ricomincia.</p>
+                    <div class="creator-actions">
+                        <button type="button" class="secondary-button"
+                                id="hamsterRandom">Sorprendimi</button>
+                        <button type="button" class="primary-button"
+                                id="hamsterSave">Salva il criceto</button>
+                        <button type="button" class="secondary-button"
+                                id="hamsterReset">Ricomincia</button>
+                    </div>
+                    <p class="creator-status" id="hamsterStatus"
+                       role="status" aria-live="polite"></p>
                 </div>
 
-                <div class="creator-field">
-                    <label for="hamsterCustomFur">Oppure scegli un colore preciso</label>
-                    <input id="hamsterCustomFur" type="color" value="#f1d0ad">
-                </div>
-
-                <div class="creator-field">
-                    <label for="hamsterWhiskerStyle">Baffi</label>
-                    <select id="hamsterWhiskerStyle">
-                        <option value="normal">Classici</option>
-                        <option value="long">Lunghi da professore</option>
-                        <option value="short">Cortissimi</option>
-                        <option value="none">Senza baffi</option>
-                    </select>
-                </div>
-
-                <div class="creator-field">
-                    <label for="hamsterEyesStyle">Occhi</label>
-                    <select id="hamsterEyesStyle">
-                        <option value="big">Occhioni pucciosi</option>
-                        <option value="small">Occhi piccoli</option>
-                        <option value="sleepy">Occhi assonnati</option>
-                    </select>
-                </div>
-
-                <div class="creator-field">
-                    <label for="hamsterAccessory">Accessorio</label>
-                    <select id="hamsterAccessory">
-                        <option value="none">Nessuno</option>
-                        <option value="bandana">Bandana da avventuriero</option>
-                        <option value="glasses">Occhiali da secchione</option>
-                        <option value="bow">Fiocco elegante</option>
-                        <option value="hat">Cappellino da esploratore</option>
-                    </select>
-                </div>
-
-                <div class="creator-actions">
-                    <button type="button" class="creator-random" id="hamsterRandom">
-                        Combina a caso
-                    </button>
-
-                    <button type="button" class="creator-save" id="hamsterSave">
-                        Salva il criceto
-                    </button>
-
-                    <button type="button" class="creator-reset" id="hamsterReset">
-                        Ricomincia da capo
-                    </button>
-                </div>
-
-                <p
-                    class="creator-status"
-                    id="hamsterStatus"
-                    role="status"
-                    aria-live="polite"
-                ></p>
             </div>
         </div>
     </div>
@@ -3016,216 +3142,380 @@ document.getElementById("supportForm").addEventListener("submit",function(event)
 
 function initHamsterCreator() {
     const avatar = document.getElementById("hamsterAvatar");
+
+    // Se la sezione non è presente, non interferisce con il sito.
     if (!avatar) return;
 
-    const furSelect = document.getElementById("hamsterFur");
-    const customFur = document.getElementById("hamsterCustomFur");
-    const whiskersSelect = document.getElementById("hamsterWhiskerStyle");
-    const eyesSelect = document.getElementById("hamsterEyesStyle");
-    const accessorySelect = document.getElementById("hamsterAccessory");
-    const nameInput = document.getElementById("hamsterName");
     const status = document.getElementById("hamsterStatus");
+    const nameInput = document.getElementById("hamsterName");
 
-    const accessories = {
-        bandana: document.getElementById("accessoryBandana"),
-        glasses: document.getElementById("accessoryGlasses"),
-        bow: document.getElementById("accessoryBow"),
-        hat: document.getElementById("accessoryHat")
+    const state = {
+        fur: "cream",
+        eyes: "round",
+        whiskers: "soft",
+        accessories: []
     };
 
-    function updateFur(color) {
-        // Cambia il colore delle parti principali del pelo.
-        avatar.querySelectorAll('ellipse[stroke="#bd9272"]').forEach(part => {
-            part.setAttribute("fill", color);
-        });
+    const furColors = {
+        cream: {
+            main: "#E8D1B5",
+            dark: "#B69A7D",
+            tail: "#E8D1B5",
+            innerEar: "#ECA6A9"
+        },
+        honey: {
+            main: "#D8A15D",
+            dark: "#A8783F",
+            tail: "#D8A15D",
+            innerEar: "#ECA6A9"
+        },
+        cocoa: {
+            main: "#A87858",
+            dark: "#79523B",
+            tail: "#A87858",
+            innerEar: "#C9878B"
+        },
+        caramel: {
+            main: "#C58B68",
+            dark: "#956349",
+            tail: "#C58B68",
+            innerEar: "#ECA6A9"
+        },
+        grey: {
+            main: "#A8A5A0",
+            dark: "#777570",
+            tail: "#A8A5A0",
+            innerEar: "#D6A6A8"
+        },
+        pink: {
+            main: "#DCA9A7",
+            dark: "#AD7777",
+            tail: "#DCA9A7",
+            innerEar: "#F0C0C0"
+        }
+    };
 
-        document.getElementById("hamsterBody").setAttribute("fill", color);
-        document.getElementById("hamsterHead").setAttribute("fill", color);
+    const accessoryIds = {
+        glasses: "accessoryGlasses",
+        bow: "accessoryBow",
+        bandana: "accessoryBandana",
+        hat: "accessoryHat",
+        flower: "accessoryFlower",
+        crown: "accessoryCrown"
+    };
 
-        // Aggiorna anche il colore personalizzato.
-        customFur.value = color;
+    function setFill(id, color) {
+        const element = document.getElementById(id);
+        if (element) element.setAttribute("fill", color);
     }
 
-    function updateWhiskers() {
-        const whiskers = document.getElementById("hamsterWhiskers");
-        const style = whiskersSelect.value;
+    function setStroke(id, color) {
+        const element = document.getElementById(id);
+        if (element) element.setAttribute("stroke", color);
+    }
 
-        whiskers.style.display = style === "none" ? "none" : "";
+    function updateFur() {
+        const colors = furColors[state.fur];
+        if (!colors) return;
 
-        if (style === "long") {
-            whiskers.setAttribute("transform", "translate(-5 0) scale(1.08 1)");
-        } else if (style === "short") {
-            whiskers.setAttribute("transform", "scale(.82 1)");
-        } else {
-            whiskers.removeAttribute("transform");
-        }
+        [
+            "hamsterBodyShape",
+            "hamsterBackPawL",
+            "hamsterBackPawR",
+            "hamsterFrontPawL",
+            "hamsterFrontPawR",
+            "hamsterEarL",
+            "hamsterEarR"
+        ].forEach(id => {
+            setFill(id, colors.main);
+        });
+
+        setFill("hamsterHead", colors.main);
+        setFill("hamsterTail", colors.tail);
+
+        setFill("hamsterInnerEarL", colors.innerEar);
+        setFill("hamsterInnerEarR", colors.innerEar);
+
+        [
+            "hamsterBodyShape",
+            "hamsterBackPawL",
+            "hamsterBackPawR",
+            "hamsterFrontPawL",
+            "hamsterFrontPawR",
+            "hamsterEarL",
+            "hamsterEarR",
+            "hamsterHead",
+            "hamsterTail"
+        ].forEach(id => {
+            setStroke(id, colors.dark);
+        });
     }
 
     function updateEyes() {
-        const eyes = document.getElementById("hamsterEyes");
-        const eyeShapes = eyes.querySelectorAll("ellipse");
-        const highlights = eyes.querySelectorAll("circle");
+        const left = document.getElementById("hamsterEyeL");
+        const right = document.getElementById("hamsterEyeR");
+        const shineLeft = document.getElementById("hamsterEyeShineL");
+        const shineRight = document.getElementById("hamsterEyeShineR");
 
-        eyeShapes.forEach(eye => {
-            if (eyesSelect.value === "small") {
-                eye.setAttribute("rx", eye.getAttribute("cx") === "133" ||
-                    eye.getAttribute("cx") === "187" ? "9" : "9");
-                eye.setAttribute("ry", "11");
-            } else if (eyesSelect.value === "sleepy") {
-                eye.setAttribute("rx", "12");
-                eye.setAttribute("ry", "7");
-            } else {
-                eye.setAttribute("rx", "12");
-                eye.setAttribute("ry", "16");
-            }
-        });
+        if (!left || !right) return;
 
-        highlights.forEach(highlight => {
-            highlight.style.display =
-                eyesSelect.value === "sleepy" ? "none" : "";
-        });
+        if (state.eyes === "round") {
+            left.setAttribute("rx", "10");
+            left.setAttribute("ry", "13");
+            right.setAttribute("rx", "10");
+            right.setAttribute("ry", "13");
+
+            left.setAttribute("cy", "142");
+            right.setAttribute("cy", "142");
+
+            shineLeft.style.display = "";
+            shineRight.style.display = "";
+            shineLeft.setAttribute("r", "3.4");
+            shineRight.setAttribute("r", "3.4");
+        }
+
+        if (state.eyes === "sleepy") {
+            left.setAttribute("rx", "11");
+            left.setAttribute("ry", "6");
+            right.setAttribute("rx", "11");
+            right.setAttribute("ry", "6");
+
+            left.setAttribute("cy", "145");
+            right.setAttribute("cy", "145");
+
+            shineLeft.style.display = "none";
+            shineRight.style.display = "none";
+        }
+
+        if (state.eyes === "sparkle") {
+            left.setAttribute("rx", "11");
+            left.setAttribute("ry", "14");
+            right.setAttribute("rx", "11");
+            right.setAttribute("ry", "14");
+
+            left.setAttribute("cy", "142");
+            right.setAttribute("cy", "142");
+
+            shineLeft.style.display = "";
+            shineRight.style.display = "";
+            shineLeft.setAttribute("r", "4.5");
+            shineRight.setAttribute("r", "4.5");
+        }
+    }
+
+    function updateWhiskers() {
+        const group = document.getElementById("hamsterWhiskers");
+        if (!group) return;
+
+        const styles = {
+            // Partono tutti dagli stessi punti vicino al naso.
+            soft: [
+                "M141 175 Q126 169 111 166",
+                "M141 180 Q124 180 109 184",
+                "M143 184 Q130 191 119 198",
+                "M179 175 Q194 169 209 166",
+                "M179 180 Q196 180 211 184",
+                "M177 184 Q190 191 201 198"
+            ],
+            curly: [
+                "M141 175 Q132 164 122 170 Q116 174 111 164",
+                "M141 180 Q129 176 123 184 Q117 190 109 183",
+                "M143 184 Q137 192 130 193 Q123 193 119 200",
+                "M179 175 Q188 164 198 170 Q204 174 209 164",
+                "M179 180 Q191 176 197 184 Q203 190 211 183",
+                "M177 184 Q183 192 190 193 Q197 193 201 200"
+            ],
+            bold: [
+                "M141 175 Q123 161 105 159",
+                "M141 180 Q121 180 101 181",
+                "M143 184 Q128 196 112 203",
+                "M179 175 Q197 161 215 159",
+                "M179 180 Q199 180 219 181",
+                "M177 184 Q192 196 208 203"
+            ],
+            short: [
+                "M141 175 Q132 171 125 171",
+                "M141 180 Q132 180 124 182",
+                "M143 184 Q136 188 130 191",
+                "M179 175 Q188 171 195 171",
+                "M179 180 Q188 180 196 182",
+                "M177 184 Q184 188 190 191"
+            ]
+        };
+
+        group.innerHTML = styles[state.whiskers]
+            .map(path => `
+                <path d="${path}"
+                      fill="none"
+                      stroke="#79554C"
+                      stroke-width="2.2"
+                      stroke-linecap="round"/>
+            `).join("");
     }
 
     function updateAccessories() {
-        Object.entries(accessories).forEach(([name, element]) => {
-            element.style.display =
-                accessorySelect.value === name ? "" : "none";
+        Object.entries(accessoryIds).forEach(([key, id]) => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.style.display =
+                    state.accessories.includes(key) ? "" : "none";
+            }
         });
     }
 
-    function updateHamster() {
-        updateFur(customFur.value);
-        updateWhiskers();
-        updateEyes();
-        updateAccessories();
+    function updateSelectedCards() {
+        document.querySelectorAll(
+            "#crea-criceto .creator-option"
+        ).forEach(button => {
+            const group = button.dataset.group;
+            const value = button.dataset.value;
+
+            let selected = false;
+
+            if (group === "accessory") {
+                selected = state.accessories.includes(value);
+            } else {
+                selected = state[group] === value;
+            }
+
+            button.classList.toggle("selected", selected);
+            button.setAttribute("aria-pressed", String(selected));
+        });
     }
 
-    function getHamsterSettings() {
+    function updateAvatar() {
+        updateFur();
+        updateEyes();
+        updateWhiskers();
+        updateAccessories();
+        updateSelectedCards();
+    }
+
+    function getSettings() {
         return {
-            name: nameInput.value.trim().slice(0, 24) || "Pasticcino",
-            fur: customFur.value,
-            whiskers: whiskersSelect.value,
-            eyes: eyesSelect.value,
-            accessory: accessorySelect.value
+            name: nameInput.value.trim() || "Pasticcino",
+            fur: state.fur,
+            eyes: state.eyes,
+            whiskers: state.whiskers,
+            accessories: [...state.accessories]
         };
     }
 
-    function applyHamsterSettings(settings) {
+    function applySettings(settings) {
         if (!settings) return;
 
-        const validColors = [
-            "#f1d0ad", "#f8eadb", "#a9a4a0", "#6b5147",
-            "#fff7ef", "#e9b7c9", "#b7a0dc", "#d6b85a"
-        ];
-
-        const fur = typeof settings.fur === "string" &&
-            /^#[0-9a-fA-F]{6}$/.test(settings.fur)
-            ? settings.fur
-            : "#f1d0ad";
-
-        if (settings.name !== undefined) {
-            nameInput.value = String(settings.name).slice(0, 24);
+        if (furColors[settings.fur]) {
+            state.fur = settings.fur;
         }
 
-        customFur.value = fur;
-
-        furSelect.value = validColors.includes(fur) ? fur : "";
-
-        if (["normal", "long", "short", "none"].includes(settings.whiskers)) {
-            whiskersSelect.value = settings.whiskers;
+        if (["round", "sleepy", "sparkle"].includes(settings.eyes)) {
+            state.eyes = settings.eyes;
         }
 
-        if (["big", "small", "sleepy"].includes(settings.eyes)) {
-            eyesSelect.value = settings.eyes;
+        if (["soft", "curly", "bold", "short"].includes(settings.whiskers)) {
+            state.whiskers = settings.whiskers;
         }
 
-        if (["none", "bandana", "glasses", "bow", "hat"].includes(settings.accessory)) {
-            accessorySelect.value = settings.accessory;
+        state.accessories = Array.isArray(settings.accessories)
+            ? settings.accessories.filter(key => accessoryIds[key])
+            : [];
+
+        if (typeof settings.name === "string") {
+            nameInput.value = settings.name.slice(0, 24);
         }
 
-        updateHamster();
+        updateAvatar();
     }
 
-    // Modifiche immediate.
-    furSelect.addEventListener("change", () => {
-        customFur.value = furSelect.value;
-        updateHamster();
+    // Selezione delle card: pelo, occhi, baffi e accessori.
+    document.querySelectorAll(
+        "#crea-criceto .creator-option"
+    ).forEach(button => {
+        button.addEventListener("click", () => {
+            const group = button.dataset.group;
+            const value = button.dataset.value;
+
+            if (group === "accessory") {
+                // Ogni accessorio si attiva o disattiva indipendentemente.
+                if (state.accessories.includes(value)) {
+                    state.accessories = state.accessories.filter(
+                        item => item !== value
+                    );
+                } else {
+                    state.accessories.push(value);
+                }
+            } else if (
+                group === "fur" &&
+                furColors[value]
+            ) {
+                state.fur = value;
+            } else if (
+                group === "eyes" &&
+                ["round", "sleepy", "sparkle"].includes(value)
+            ) {
+                state.eyes = value;
+            } else if (
+                group === "whiskers" &&
+                ["soft", "curly", "bold", "short"].includes(value)
+            ) {
+                state.whiskers = value;
+            }
+
+            updateAvatar();
+            status.textContent = "Il tuo criceto sta prendendo forma!";
+        });
     });
 
-    customFur.addEventListener("input", () => {
-        furSelect.value = "";
-        updateHamster();
-    });
-
-    whiskersSelect.addEventListener("change", updateHamster);
-    eyesSelect.addEventListener("change", updateHamster);
-    accessorySelect.addEventListener("change", updateHamster);
-
-    // Salva la personalizzazione nel browser.
+    // Salva la creazione nel browser.
     document.getElementById("hamsterSave").addEventListener("click", () => {
-        try {
-            localStorage.setItem(
-                "cricetiCerebraliCustomHamster",
-                JSON.stringify(getHamsterSettings())
-            );
+        localStorage.setItem(
+            "cricetiCerebraliHamster",
+            JSON.stringify(getSettings())
+        );
 
-            status.textContent = "Criceto salvato! Il roditore è al sicuro.";
-        } catch (error) {
-            status.textContent =
-                "Il browser non permette di salvare. Prova ad aprire il sito in un browser normale.";
-        }
+        status.textContent = "Criceto salvato! Lo ritroverai alla prossima visita.";
     });
+
+    // Carica la creazione salvata, se esiste.
+    const saved = localStorage.getItem("cricetiCerebraliHamster");
+
+    if (saved) {
+        const savedSettings = JSON.parse(saved);
+        applySettings(savedSettings);
+    } else {
+        updateAvatar();
+    }
 
     // Genera una combinazione casuale.
     document.getElementById("hamsterRandom").addEventListener("click", () => {
-        const colors = [
-            "#f1d0ad", "#f8eadb", "#a9a4a0", "#6b5147",
-            "#fff7ef", "#e9b7c9", "#b7a0dc", "#d6b85a"
+        const pick = items => items[
+            Math.floor(Math.random() * items.length)
         ];
 
-        const whiskers = ["normal", "long", "short", "none"];
-        const eyes = ["big", "small", "sleepy"];
-        const accessoryNames = ["none", "bandana", "glasses", "bow", "hat"];
+        state.fur = pick(Object.keys(furColors));
+        state.eyes = pick(["round", "sleepy", "sparkle"]);
+        state.whiskers = pick(["soft", "curly", "bold", "short"]);
 
-        const pick = list => list[Math.floor(Math.random() * list.length)];
+        state.accessories = Object.keys(accessoryIds).filter(
+            () => Math.random() > 0.55
+        );
 
-        const settings = {
-            name: nameInput.value || "Pasticcino",
-            fur: pick(colors),
-            whiskers: pick(whiskers),
-            eyes: pick(eyes),
-            accessory: pick(accessoryNames)
-        };
-
-        applyHamsterSettings(settings);
-        status.textContent = "Nuovo look generato. Il caos è sotto controllo.";
+        updateAvatar();
+        status.textContent = "Ecco il tuo criceto a sorpresa!";
     });
 
-    // Ripristina il criceto iniziale.
+    // Ripristina il look iniziale.
     document.getElementById("hamsterReset").addEventListener("click", () => {
-        applyHamsterSettings({
-            name: "Pasticcino",
-            fur: "#f1d0ad",
-            whiskers: "normal",
-            eyes: "big",
-            accessory: "none"
-        });
+        state.fur = "cream";
+        state.eyes = "round";
+        state.whiskers = "soft";
+        state.accessories = [];
 
-        status.textContent = "Il criceto è tornato alle origini.";
+        nameInput.value = "Pasticcino";
+
+        updateAvatar();
+        status.textContent = "Si riparte da zero. Pasticcino è tornato!";
     });
-
-    // Prova a recuperare il salvataggio precedente.
-    try {
-        const saved = localStorage.getItem("cricetiCerebraliCustomHamster");
-
-        if (saved) {
-            applyHamsterSettings(JSON.parse(saved));
-        } else {
-            updateHamster();
-        }
-    } catch (error) {
-        updateHamster();
-    }
 }
 
 initHamsterCreator();
