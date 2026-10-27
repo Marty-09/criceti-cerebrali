@@ -1926,9 +1926,9 @@ footer p {
                         <!-- Corpo -->
                         <g id="hamsterBody">
                             <ellipse id="hamsterBodyShape"
-                                     cx="160" cy="216" rx="91" ry="59"
-                                     fill="#DDB58F" stroke="#A77C5B"
-                                     stroke-width="3.5"/>
+                                cx="160" cy="211" rx="86" ry="68"
+                                fill="#DDB58F" stroke="#A77C5B"
+                                stroke-width="3.5"/>
                             <ellipse cx="160" cy="226" rx="57" ry="37"
                                      fill="#F8E6D0"/>
                         </g>
@@ -1962,10 +1962,10 @@ footer p {
                         </g>
 
                         <!-- Testa -->
-                        <ellipse id="hamsterHead"
-                                 cx="160" cy="151" rx="76" ry="70"
-                                 fill="#DDB58F" stroke="#A77C5B"
-                                 stroke-width="3.5"/>
+                            <ellipse id="hamsterHead"
+                                     cx="160" cy="151" rx="79" ry="76"
+                                     fill="#DDB58F" stroke="#A77C5B"
+                                     stroke-width="3.5"/>
 
                         <!-- Macchie chiare sulle guance -->
                         <ellipse id="hamsterFacePatchL"
@@ -2173,8 +2173,8 @@ footer p {
                         <button type="button" class="creator-option"
                                 data-group="fur" data-value="pink"
                                 aria-pressed="false">
-                            <span class="creator-swatch" style="background:#DCA9A7"></span>
-                            Biscotto rosa
+                            <span class="creator-swatch" style="background:#E5A0AE"></span>
+                            Rosa
                         </button>
                     </div>
                 </section>
@@ -2183,23 +2183,16 @@ footer p {
                     <h2>2. Gli occhi</h2>
                     <p>Un'espressione diversa cambia tutto.</p>
                     <div class="creator-options">
-                        <button type="button" class="creator-option selected"
-                                data-group="eyes" data-value="round"
-                                aria-pressed="true">
-                            <span class="creator-preview-icon">👀</span>
-                            Occhioni
-                        </button>
+                       <button type="button" class="creator-option selected"
+                           data-group="eyes" data-value="big"
+                           aria-pressed="true">
+                           <span class="creator-preview-icon">🐹</span>
+                           Occhi grandi
+                       </button>
                         <button type="button" class="creator-option"
-                                data-group="eyes" data-value="sleepy"
-                                aria-pressed="false">
-                            <span class="creator-preview-icon">😴</span>
-                            Assonnati
-                        </button>
-                        <button type="button" class="creator-option"
-                                data-group="eyes" data-value="sparkle"
-                                aria-pressed="false">
-                            <span class="creator-preview-icon">✨</span>
-                            Brillanti
+                            data-group="eyes" data-value="small"
+                            aria-pressed="false"><span class="creator-preview-icon">🐭</span>
+                            Occhi piccoli
                         </button>
                     </div>
                 </section>
@@ -3151,7 +3144,7 @@ function initHamsterCreator() {
 
     const state = {
         fur: "cream",
-        eyes: "round",
+        eyes: "big",
         whiskers: "soft",
         accessories: []
     };
@@ -3188,10 +3181,10 @@ function initHamsterCreator() {
             innerEar: "#D6A6A8"
         },
         pink: {
-            main: "#DCA9A7",
-            dark: "#AD7777",
-            tail: "#DCA9A7",
-            innerEar: "#F0C0C0"
+            main: "#E5A0AE",
+            dark: "#B87585",
+            tail: "#E5A0AE",
+            innerEar: "#F0B9C2"
         }
     };
 
@@ -3203,6 +3196,8 @@ function initHamsterCreator() {
         flower: "accessoryFlower",
         crown: "accessoryCrown"
     };
+
+    const headAccessories = ["bow", "hat", "flower", "crown"];
 
     function setFill(id, color) {
         const element = document.getElementById(id);
@@ -3251,57 +3246,27 @@ function initHamsterCreator() {
         });
     }
 
-    function updateEyes() {
-        const left = document.getElementById("hamsterEyeL");
-        const right = document.getElementById("hamsterEyeR");
-        const shineLeft = document.getElementById("hamsterEyeShineL");
-        const shineRight = document.getElementById("hamsterEyeShineR");
+function updateEyes() {
+    const left = document.getElementById("hamsterEyeL");
+    const right = document.getElementById("hamsterEyeR");
+    const shineLeft = document.getElementById("hamsterEyeShineL");
+    const shineRight = document.getElementById("hamsterEyeShineR");
 
-        if (!left || !right) return;
+    if (!left || !right) return;
 
-        if (state.eyes === "round") {
-            left.setAttribute("rx", "10");
-            left.setAttribute("ry", "13");
-            right.setAttribute("rx", "10");
-            right.setAttribute("ry", "13");
+    const big = state.eyes === "big";
 
-            left.setAttribute("cy", "142");
-            right.setAttribute("cy", "142");
+    [left, right].forEach(eye => {
+        eye.setAttribute("rx", big ? "10" : "7");
+        eye.setAttribute("ry", big ? "13" : "9");
+        eye.setAttribute("cy", "142");
+    });
 
-            shineLeft.style.display = "";
-            shineRight.style.display = "";
-            shineLeft.setAttribute("r", "3.4");
-            shineRight.setAttribute("r", "3.4");
-        }
-
-        if (state.eyes === "sleepy") {
-            left.setAttribute("rx", "11");
-            left.setAttribute("ry", "6");
-            right.setAttribute("rx", "11");
-            right.setAttribute("ry", "6");
-
-            left.setAttribute("cy", "145");
-            right.setAttribute("cy", "145");
-
-            shineLeft.style.display = "none";
-            shineRight.style.display = "none";
-        }
-
-        if (state.eyes === "sparkle") {
-            left.setAttribute("rx", "11");
-            left.setAttribute("ry", "14");
-            right.setAttribute("rx", "11");
-            right.setAttribute("ry", "14");
-
-            left.setAttribute("cy", "142");
-            right.setAttribute("cy", "142");
-
-            shineLeft.style.display = "";
-            shineRight.style.display = "";
-            shineLeft.setAttribute("r", "4.5");
-            shineRight.setAttribute("r", "4.5");
-        }
-    }
+    [shineLeft, shineRight].forEach(shine => {
+        shine.style.display = "";
+        shine.setAttribute("r", big ? "3.4" : "2.5");
+    });
+}
 
     function updateWhiskers() {
         const group = document.getElementById("hamsterWhiskers");
@@ -3407,8 +3372,8 @@ function initHamsterCreator() {
         if (furColors[settings.fur]) {
             state.fur = settings.fur;
         }
-
-        if (["round", "sleepy", "sparkle"].includes(settings.eyes)) {
+        
+        if (["big", "small"].includes(settings.eyes)) {
             state.eyes = settings.eyes;
         }
 
@@ -3419,6 +3384,18 @@ function initHamsterCreator() {
         state.accessories = Array.isArray(settings.accessories)
             ? settings.accessories.filter(key => accessoryIds[key])
             : [];
+
+        const selectedHeadAccessory = state.accessories.find(
+            key => headAccessories.includes(key)
+        );
+
+        state.accessories = state.accessories.filter(
+            key => !headAccessories.includes(key)
+        );
+
+        if (selectedHeadAccessory) {
+            state.accessories.push(selectedHeadAccessory);
+        }
 
         if (typeof settings.name === "string") {
             nameInput.value = settings.name.slice(0, 24);
@@ -3435,31 +3412,21 @@ function initHamsterCreator() {
             const group = button.dataset.group;
             const value = button.dataset.value;
 
-            if (group === "accessory") {
-                // Ogni accessorio si attiva o disattiva indipendentemente.
-                if (state.accessories.includes(value)) {
+        if (group === "accessory") {
+            if (state.accessories.includes(value)) {
+                state.accessories = state.accessories.filter(
+                    item => item !== value
+                );
+            } else {
+                if (headAccessories.includes(value)) {
                     state.accessories = state.accessories.filter(
-                        item => item !== value
+                        item => !headAccessories.includes(item)
                     );
-                } else {
-                    state.accessories.push(value);
                 }
-            } else if (
-                group === "fur" &&
-                furColors[value]
-            ) {
-                state.fur = value;
-            } else if (
-                group === "eyes" &&
-                ["round", "sleepy", "sparkle"].includes(value)
-            ) {
-                state.eyes = value;
-            } else if (
-                group === "whiskers" &&
-                ["soft", "curly", "bold", "short"].includes(value)
-            ) {
-                state.whiskers = value;
+
+                state.accessories.push(value);
             }
+        }
 
             updateAvatar();
             status.textContent = "Il tuo criceto sta prendendo forma!";
