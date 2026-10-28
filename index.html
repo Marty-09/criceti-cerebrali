@@ -2398,7 +2398,9 @@ footer p {
                                   style="background:#E5A0AE"></span>
                             Caramella
                         </button>
-
+                    </div>
+                </section>
+                
                 <section class="creator-section">
                     <h2>2. Il pelo interno</h2>
                     <p>Scegli a parte il colore del pancino e delle guance.</p>
@@ -2465,7 +2467,7 @@ footer p {
 
                 <section class="creator-section">
                     <h2>5. Gli accessori</h2>
-                    <p>Puoi selezionarne quanti ne vuoi. Anche tutti!</p>
+                    <p>Puoi selezionarne quanti ne vuoi!</p>
                     <div class="creator-options">
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="glasses"
@@ -2513,7 +2515,7 @@ footer p {
                         <button type="button" class="secondary-button"
                                 id="hamsterRandom">Sorprendimi</button>
                         <button type="button" class="primary-button"
-                                id="hamsterSave">Salva il criceto (Non in funzione)</button>
+                                id="hamsterSave">Salva il criceto</button>
                         <button type="button" class="secondary-button"
                                 id="hamsterReset">Ricomincia</button>
                     </div>
@@ -3712,8 +3714,15 @@ function updateEyes() {
     // Carica la creazione salvata, se esiste.
     const saved = localStorage.getItem("cricetiCerebraliHamster");
 
-    if (saved) {
-        const savedSettings = JSON.parse(saved);
+    let savedSettings = null;
+ 
+    try {
+        savedSettings = saved ? JSON.parse(saved) : null;
+    } catch {
+        localStorage.removeItem("cricetiCerebraliHamster");
+    }
+ 
+    if (savedSettings) {
         applySettings(savedSettings);
     } else {
         updateAvatar();
@@ -3766,7 +3775,6 @@ function updateEyes() {
         status.textContent = "Si riparte da zero. Pasticcino è tornato!";
     });
 }
-
 
 initHamsterCreator();
 
