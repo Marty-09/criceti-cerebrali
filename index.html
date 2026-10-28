@@ -1295,8 +1295,9 @@ footer p {
     padding: 12px 14px;
     border: 1px solid var(--line);
     border-radius: 13px;
-    background: #fffaf7;
-    color: var(--ink);
+    background: #fff0f4;
+    border-color: #f2c7d2;
+    color: #b76582;
     font-family: "Nunito", sans-serif;
     font-size: 1.05rem;
     font-weight: 900;
@@ -2128,22 +2129,33 @@ footer p {
                         <!-- Corpo -->
                         <g id="hamsterBody">
                             <ellipse id="hamsterBodyShape"
-                                cx="160" cy="211" rx="86" ry="68"
+                                cx="160" cy="211" rx="91" ry="78"
                                 fill="#DDB58F" stroke="#A77C5B"
                                 stroke-width="3.5"/>
-                            <ellipse cx="160" cy="226" rx="57" ry="37"
+                            <ellipse id="hamsterBelly"
+                                     cx="160" cy="226" rx="61" ry="43"
                                      fill="#F8E6D0"/>
                         </g>
 
                         <!-- Zampe posteriori -->
-                        <ellipse id="hamsterBackPawL"
-                                 cx="101" cy="255" rx="23" ry="13"
-                                 fill="#DDB58F" stroke="#A77C5B"
-                                 stroke-width="3"/>
-                        <ellipse id="hamsterBackPawR"
-                                 cx="219" cy="255" rx="23" ry="13"
-                                 fill="#DDB58F" stroke="#A77C5B"
-                                 stroke-width="3"/>
+                            <ellipse id="hamsterBackPawL"
+                                     cx="101" cy="260" rx="23" ry="13"
+                                     fill="#DDB58F" stroke="#A77C5B"
+                                     stroke-width="3"/>
+                            <ellipse id="hamsterBackPawR"
+                                     cx="219" cy="260" rx="23" ry="13"
+                                     fill="#DDB58F" stroke="#A77C5B"
+                                     stroke-width="3"/>
+
+                        <!-- Zampe anteriori -->
+                            <ellipse id="hamsterFrontPawL"
+                                     cx="125" cy="257" rx="22" ry="12"
+                                     fill="#DDB58F" stroke="#A77C5B"
+                                     stroke-width="3"/>
+                            <ellipse id="hamsterFrontPawR"
+                                     cx="195" cy="257" rx="22" ry="12"
+                                     fill="#DDB58F" stroke="#A77C5B"
+                                     stroke-width="3"/>
 
                         <!-- Orecchie -->
                         <g id="hamsterEars">
@@ -2165,7 +2177,7 @@ footer p {
 
                         <!-- Testa -->
                             <ellipse id="hamsterHead"
-                                     cx="160" cy="151" rx="79" ry="76"
+                                     cx="160" cy="150" rx="75" ry="71"
                                      fill="#DDB58F" stroke="#A77C5B"
                                      stroke-width="3.5"/>
 
@@ -2229,16 +2241,6 @@ footer p {
                             <path d="M177 184 Q190 191 201 198"/>
                         </g>
 
-                        <!-- Zampe anteriori -->
-                        <ellipse id="hamsterFrontPawL"
-                                 cx="125" cy="252" rx="22" ry="12"
-                                 fill="#DDB58F" stroke="#A77C5B"
-                                 stroke-width="3"/>
-                        <ellipse id="hamsterFrontPawR"
-                                 cx="195" cy="252" rx="22" ry="12"
-                                 fill="#DDB58F" stroke="#A77C5B"
-                                 stroke-width="3"/>
-
                         <!-- ACCESSORIO: bandana -->
                         <g id="accessoryBandana" style="display:none">
                             <path d="M111 205 Q160 225 209 205
@@ -2253,13 +2255,16 @@ footer p {
                         <!-- ACCESSORIO: occhiali -->
                         <g id="accessoryGlasses" style="display:none">
                             <rect x="105" y="127" width="43" height="29"
-                                  rx="11" fill="#B9D8D5"
-                                  fill-opacity=".5" stroke="#5D6868"
+                                  rx="10" fill="#34424B"
+                                  fill-opacity=".92" stroke="#252D33"
                                   stroke-width="4"/>
                             <rect x="172" y="127" width="43" height="29"
-                                  rx="11" fill="#B9D8D5"
-                                  fill-opacity=".5" stroke="#5D6868"
+                                  rx="10" fill="#34424B"
+                                  fill-opacity=".92" stroke="#252D33"
                                   stroke-width="4"/>
+                            <path d="M112 133 L126 133 M179 133 L193 133"
+                                  stroke="#FFFFFF" stroke-opacity=".75"
+                                  stroke-width="2.5" stroke-linecap="round"/>
                             <path d="M148 137 Q160 130 172 137
                                      M105 136 L96 132
                                      M215 136 L224 132"
@@ -2373,6 +2378,18 @@ footer p {
                             Nuvola
                         </button>
                         <button type="button" class="creator-option"
+                                data-group="fur" data-value="black"
+                                aria-pressed="false">
+                            <span class="creator-swatch" style="background:#48434A"></span>
+                            Nero
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="fur" data-value="white"
+                                aria-pressed="false">
+                            <span class="creator-swatch" style="background:#F8F4EF"></span>
+                            Bianco
+                        </button>
+                        <button type="button" class="creator-option"
                                 data-group="fur" data-value="pink"
                                 aria-pressed="false">
                             <span class="creator-swatch" style="background:#E5A0AE"></span>
@@ -2382,7 +2399,20 @@ footer p {
                 </section>
 
                 <section class="creator-section">
-                    <h2>2. Gli occhi</h2>
+                    <h2>2. Il pelo interno</h2>
+                    <p>Scegli a parte il colore del pancino e delle guance.</p>
+                    <div class="creator-options" id="innerFurOptions">
+                        <button type="button" class="creator-option selected" data-group="innerFur" data-value="cream" aria-pressed="true"><span class="creator-swatch" style="background:#E8D1B5"></span>Crema</button>
+                        <button type="button" class="creator-option" data-group="innerFur" data-value="white" aria-pressed="false"><span class="creator-swatch" style="background:#F8F4EF"></span>Bianco</button>
+                        <button type="button" class="creator-option" data-group="innerFur" data-value="black" aria-pressed="false"><span class="creator-swatch" style="background:#48434A"></span>Nero</button>
+                        <button type="button" class="creator-option" data-group="innerFur" data-value="honey" aria-pressed="false"><span class="creator-swatch" style="background:#D8A15D"></span>Miele</button>
+                        <button type="button" class="creator-option" data-group="innerFur" data-value="pink" aria-pressed="false"><span class="creator-swatch" style="background:#E5A0AE"></span>Rosa</button>
+                        <button type="button" class="creator-option" data-group="innerFur" data-value="grey" aria-pressed="false"><span class="creator-swatch" style="background:#A8A5A0"></span>Nuvola</button>
+                    </div>
+                </section>
+
+                <section class="creator-section">
+                    <h2>3. Gli occhi</h2>
                     <p>Un'espressione diversa cambia tutto.</p>
                     <div class="creator-options">
                        <button type="button" class="creator-option selected"
@@ -2400,7 +2430,7 @@ footer p {
                 </section>
 
                 <section class="creator-section">
-                    <h2>3. I baffi</h2>
+                    <h2>4. I baffi</h2>
                     <p>Scegli il suo stile da roditore.</p>
                     <div class="creator-options">
                         <button type="button" class="creator-option selected"
@@ -2431,13 +2461,13 @@ footer p {
                 </section>
 
                 <section class="creator-section">
-                    <h2>4. Gli accessori</h2>
+                    <h2>5. Gli accessori</h2>
                     <p>Puoi selezionarne quanti ne vuoi. Anche tutti!</p>
                     <div class="creator-options">
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="glasses"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">🕶️</span>
+                            <span class="creator-preview-icon">👓</span>
                             Occhiali
                         </button>
                         <button type="button" class="creator-option"
@@ -2597,7 +2627,7 @@ const products = [
         id:"h6",
         category:"criceto",
         name:"Criceto Napoletano",
-        emoji:"🕶️",
+        emoji:"👓",
         color:"#f8d9de",
         tag:"Non fare domande",
         description:"Corre sulla ruota, poi la smonta, scappa e la rivende. Quando te ne accorgi, è già sparito.",
@@ -3346,6 +3376,7 @@ function initHamsterCreator() {
 
     const state = {
         fur: "cream",
+        innerFur: "cream",
         eyes: "big",
         whiskers: "soft",
         accessories: []
@@ -3387,6 +3418,18 @@ function initHamsterCreator() {
             dark: "#B87585",
             tail: "#E5A0AE",
             innerEar: "#F0B9C2"
+        },
+        black: {
+            main: "#48434A",
+            dark: "#29262C",
+            tail: "#48434A",
+            innerEar: "#D99BA7"
+        },
+        white: {
+            main: "#F8F4EF",
+            dark: "#CFC6BD",
+            tail: "#F8F4EF",
+            innerEar: "#ECA6A9"
         }
     };
 
@@ -3429,6 +3472,11 @@ function initHamsterCreator() {
 
         setFill("hamsterHead", colors.main);
         setFill("hamsterTail", colors.tail);
+
+        const innerColors = furColors[state.innerFur] || furColors.cream;
+        setFill("hamsterBelly", innerColors.main);
+        setFill("hamsterFacePatchL", innerColors.main);
+        setFill("hamsterFacePatchR", innerColors.main);
 
         setFill("hamsterInnerEarL", colors.innerEar);
         setFill("hamsterInnerEarR", colors.innerEar);
@@ -3562,6 +3610,7 @@ function updateEyes() {
         return {
             name: nameInput.value.trim() || "Pasticcino",
             fur: state.fur,
+            innerFur: state.innerFur,
             eyes: state.eyes,
             whiskers: state.whiskers,
             accessories: [...state.accessories]
@@ -3575,6 +3624,10 @@ function updateEyes() {
             state.fur = settings.fur;
         }
         
+        if (furColors[settings.innerFur]) {
+            state.innerFur = settings.innerFur;
+        }
+
         if (["big", "small"].includes(settings.eyes)) {
             state.eyes = settings.eyes;
         }
@@ -3630,6 +3683,8 @@ function updateEyes() {
                 }
             } else if (group === "fur") {
                 state.fur = value;
+            } else if (group === "innerFur") {
+                state.innerFur = value;
             } else if (group === "eyes") {
                 state.eyes = value;
             } else if (group === "whiskers") {
@@ -3668,6 +3723,7 @@ function updateEyes() {
         ];
 
         state.fur = pick(Object.keys(furColors));
+        state.innerFur = pick(Object.keys(furColors));
         state.eyes = pick(["big", "small"]);
         state.whiskers = pick(["soft", "curly", "bold", "short"]);
 
@@ -3696,6 +3752,7 @@ function updateEyes() {
     // Ripristina il look iniziale.
     document.getElementById("hamsterReset").addEventListener("click", () => {
         state.fur = "cream";
+        state.innerFur = "cream";
         state.eyes = "big";
         state.whiskers = "soft";
         state.accessories = [];
