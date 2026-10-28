@@ -2118,112 +2118,109 @@ footer p {
                          aria-label="Anteprima del tuo criceto">
 
                         <!-- Ombra -->
-                        <ellipse cx="160" cy="278" rx="83" ry="13"
+                        <ellipse cx="160" cy="284" rx="92" ry="12"
                                  fill="#302a28" opacity=".09"/>
 
                         <!-- Coda -->
-                        <circle id="hamsterTail" cx="244" cy="224" r="15"
+                        <circle id="hamsterTail" cx="246" cy="252" r="10"
                                 fill="#D7B08A" stroke="#A77C5B"
                                 stroke-width="3"/>
 
-                        <!-- Corpo -->
-                        <g id="hamsterBody">
-                            <ellipse id="hamsterBodyShape"
-                                cx="160" cy="211" rx="91" ry="78"
-                                fill="#DDB58F" stroke="#A77C5B"
-                                stroke-width="3.5"/>
-                            <ellipse id="hamsterBelly"
-                                     cx="160" cy="226" rx="61" ry="43"
-                                     fill="#F8E6D0"/>
-                        </g>
-                        
-                        <!-- Zampe posteriori -->
-                            <ellipse id="hamsterBackPawL"
-                                     cx="101" cy="270" rx="23" ry="13"
-                                     fill="#DDB58F" stroke="#A77C5B"
-                                     stroke-width="3"/>
-                            <ellipse id="hamsterBackPawR"
-                                     cx="219" cy="270" rx="23" ry="13"
-                                     fill="#DDB58F" stroke="#A77C5B"
-                                     stroke-width="3"/>
-                        
-                        <!-- Zampe anteriori -->
-                            <ellipse id="hamsterFrontPawL"
-                                     cx="125" cy="267" rx="22" ry="12"
-                                     fill="#DDB58F" stroke="#A77C5B"
-                                     stroke-width="3"/>
-                            <ellipse id="hamsterFrontPawR"
-                                     cx="195" cy="267" rx="22" ry="12"
-                                     fill="#DDB58F" stroke="#A77C5B"
-                                     stroke-width="3"/>
-                        
+
                         <!-- Orecchie -->
                         <g id="hamsterEars">
-                            <ellipse id="hamsterEarL"
-                                     cx="111" cy="106" rx="29" ry="35"
-                                     fill="#DDB58F" stroke="#A77C5B"
-                                     stroke-width="3.5"/>
-                            <ellipse id="hamsterInnerEarL"
-                                     cx="111" cy="108" rx="17" ry="23"
-                                     fill="#ECA6A9"/>
-                            <ellipse id="hamsterEarR"
-                                     cx="209" cy="106" rx="29" ry="35"
-                                     fill="#DDB58F" stroke="#A77C5B"
-                                     stroke-width="3.5"/>
-                            <ellipse id="hamsterInnerEarR"
-                                     cx="209" cy="108" rx="17" ry="23"
-                                     fill="#ECA6A9"/>
+                            <circle id="hamsterEarL" cx="106" cy="94" r="23"
+                                    fill="#DDB58F" stroke="#A77C5B"
+                                    stroke-width="3.5"/>
+                            <circle id="hamsterInnerEarL" cx="106" cy="95" r="13"
+                                    fill="#ECA6A9"/>
+                            <circle id="hamsterEarR" cx="214" cy="94" r="23"
+                                    fill="#DDB58F" stroke="#A77C5B"
+                                    stroke-width="3.5"/>
+                            <circle id="hamsterInnerEarR" cx="214" cy="95" r="13"
+                                    fill="#ECA6A9"/>
                         </g>
+ 
+                        <!-- Corpo a forma di mochi (testa e corpo uniti) -->
+                            <path id="hamsterBodyShape"
+                                  d="M160 76
+                                     C214 76 240 108 243 146
+                                     C262 170 270 222 250 252
+                                     C232 278 194 281 160 281
+                                     C126 281 88 278 70 252
+                                     C50 222 58 170 77 146
+                                     C80 108 106 76 160 76 Z"
+                                  fill="#DDB58F" stroke="#A77C5B"
+                                  stroke-width="3.5" stroke-linejoin="round"/>
+                        <g id="hamsterBody">
+                            <ellipse id="hamsterBelly"
+                                     cx="160" cy="236" rx="60" ry="40"
+                                     fill="#F8E6D0"/>
+                        </g>
+                        <!-- Ciuffetto -->
+                        <path id="hamsterHead"
+                              d="M148 80 Q149 66 158 73 Q163 61 172 78 Q160 83 148 80 Z"
+                              fill="#DDB58F" stroke="#A77C5B"
+                              stroke-width="3" stroke-linejoin="round"/>
 
-                        <!-- Testa -->
-                            <ellipse id="hamsterHead"
-                                     cx="160" cy="150" rx="75" ry="71"
-                                     fill="#DDB58F" stroke="#A77C5B"
-                                     stroke-width="3.5"/>
-
-                        <!-- Macchie chiare sulle guance -->
+                        <!-- Zampe posteriori -->
+                        <ellipse id="hamsterBackPawL"
+                                 cx="116" cy="274" rx="21" ry="11"
+                                 fill="#DDB58F" stroke="#A77C5B"
+                                 stroke-width="3"/>
+                        <ellipse id="hamsterBackPawR"
+                                 cx="204" cy="274" rx="21" ry="11"
+                                 fill="#DDB58F" stroke="#A77C5B"
+                                 stroke-width="3"/>
+                        <path d="M108 270 V276 M116 269 V277 M124 270 V276
+                                 M196 270 V276 M204 269 V277 M212 270 V276"
+                              stroke="#ECA6A9" stroke-width="2.5"
+                              stroke-linecap="round"/>
+ 
+                        <!-- Muso chiaro (pelo interno) -->
                         <ellipse id="hamsterFacePatchL"
-                                 cx="119" cy="169" rx="28" ry="25"
+                                 cx="142" cy="176" rx="30" ry="22"
                                  fill="#F8E6D0"/>
                         <ellipse id="hamsterFacePatchR"
-                                 cx="201" cy="169" rx="28" ry="25"
+                                 cx="178" cy="176" rx="30" ry="22"
                                  fill="#F8E6D0"/>
 
                         <!-- Occhi -->
                         <g id="hamsterEyes">
                             <ellipse id="hamsterEyeL"
-                                     cx="133" cy="142" rx="10" ry="13"
+                                     cx="124" cy="150" rx="11" ry="12.5"
                                      fill="#30231F"/>
                             <ellipse id="hamsterEyeR"
-                                     cx="187" cy="142" rx="10" ry="13"
+                                     cx="196" cy="150" rx="11" ry="12.5"
                                      fill="#30231F"/>
                             <circle id="hamsterEyeShineL"
-                                    cx="136" cy="138" r="3.4"
+                                    cx="128" cy="145" r="3.6"
                                     fill="white"/>
                             <circle id="hamsterEyeShineR"
-                                    cx="190" cy="138" r="3.4"
+                                    cx="200" cy="145" r="3.6"
                                     fill="white"/>
+                            <circle cx="121" cy="154" r="1.5" fill="white"/>
+                            <circle cx="193" cy="154" r="1.5" fill="white"/>
                         </g>
 
                         <!-- Guance rosa -->
                         <g id="hamsterCheeks">
-                            <ellipse cx="115" cy="176" rx="14" ry="9"
-                                     fill="#EFA5A8" opacity=".8"/>
-                            <ellipse cx="205" cy="176" rx="14" ry="9"
-                                     fill="#EFA5A8" opacity=".8"/>
+                            <ellipse cx="100" cy="172" rx="14" ry="8.5"
+                                     fill="#EFA5A8" opacity=".75"/>
+                            <ellipse cx="220" cy="172" rx="14" ry="8.5"
+                                     fill="#EFA5A8" opacity=".75"/>
                         </g>
 
-                        <!-- Musetto, sempre centrato -->
+                        <!-- Nasino e boccuccia -->
                         <g id="hamsterMuzzle">
-                            <ellipse cx="160" cy="175" rx="24" ry="18"
-                                     fill="#F8E6D0"/>
-                            <ellipse cx="160" cy="168" rx="7" ry="5"
-                                     fill="#A96668"/>
-                            <path d="M160 173 L160 181
-                                     M160 181 Q153 188 148 181
-                                     M160 181 Q167 188 172 181"
+                            <path d="M153 162 Q160 158 167 162 Q164 170 160 170 Q156 170 153 162 Z"
+                                  fill="#E68A93" stroke="#C46E78"
+                                  stroke-width="1.5" stroke-linejoin="round"/>
+                            <path d="M160 170 V174
+                                     M160 174 Q155 180 150 175
+                                     M160 174 Q165 180 170 175"                            
                                   fill="none" stroke="#79554C"
-                                  stroke-width="2.4"
+                                  stroke-width="2.2"
                                   stroke-linecap="round"/>
                         </g>
 
@@ -2231,8 +2228,9 @@ footer p {
                         <g id="hamsterWhiskers"
                            fill="none"
                            stroke="#79554C"
-                           stroke-width="2.2"
-                           stroke-linecap="round">
+                           stroke-width="1.8"
+                           stroke-linecap="round"
+                           opacity=".7">
                             <path d="M141 175 Q126 169 111 166"/>
                             <path d="M141 180 Q124 180 109 184"/>
                             <path d="M143 184 Q130 191 119 198"/>
@@ -2242,7 +2240,7 @@ footer p {
                         </g>
 
                         <!-- ACCESSORIO: bandana -->
-                        <g id="accessoryBandana" style="display:none">
+                        <g id="accessoryBandana" style="display:none" transform="translate(0 6)">
                             <path d="M111 205 Q160 225 209 205
                                      L194 237 L160 258 L126 237 Z"
                                   fill="#E98F9A" stroke="#A85E69"
@@ -2252,8 +2250,28 @@ footer p {
                                   stroke-width="4" stroke-linecap="round"/>
                         </g>
 
+                        <!-- Semino tra le zampe -->
+                        <g id="hamsterSeed">
+                            <path d="M160 190 Q172 202 167 216 Q160 223 153 216 Q148 202 160 190 Z"
+                                  fill="#5B4A44" stroke="#3C302C" stroke-width="2"/>
+                            <path d="M160 195 V214" stroke="#EDE3D6"
+                                  stroke-width="2.5" stroke-linecap="round"/>
+                        </g>
+ 
+                        <!-- Zampe anteriori che tengono il semino -->
+                        <ellipse id="hamsterFrontPawL"
+                                 cx="146" cy="217" rx="11" ry="8.5"
+                                 transform="rotate(-25 146 217)"
+                                 fill="#DDB58F" stroke="#A77C5B"
+                                 stroke-width="3"/>
+                        <ellipse id="hamsterFrontPawR"
+                                 cx="174" cy="217" rx="11" ry="8.5"
+                                 transform="rotate(25 174 217)"
+                                 fill="#DDB58F" stroke="#A77C5B"
+                                 stroke-width="3"/>
+                        
                         <!-- ACCESSORIO: occhiali -->
-                        <g id="accessoryGlasses" style="display:none">
+                        <g id="accessoryGlasses" style="display:none" transform="translate(-1 8)">
                             <rect x="105" y="127" width="43" height="29"
                                   rx="10" fill="#34424B"
                                   fill-opacity=".92" stroke="#252D33"
@@ -2333,7 +2351,7 @@ footer p {
                        type="text"
                        maxlength="24"
                        placeholder="Come si chiama?"
-                       value="Pasticcino"
+                       value="Saturno"
                        aria-label="Nome del criceto">
 
                 <p class="creator-caption">
@@ -2409,9 +2427,9 @@ footer p {
                         <button type="button" class="creator-option" data-group="innerFur" data-value="honey" aria-pressed="false"><span class="creator-swatch" style="background:#D8A15D"></span>Miele</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="cocoa" aria-pressed="false"><span class="creator-swatch" style="background:#A87858"></span>Cacao</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="caramel" aria-pressed="false"><span class="creator-swatch" style="background:#C58B68"></span>Caramello</button>
-                        <button type="button" class="creator-option" data-group="innerFur" data-value="black" aria-pressed="false"><span class="creator-swatch" style="background:#48434A"></span>Nero</button>
-                        <button type="button" class="creator-option" data-group="innerFur" data-value="white" aria-pressed="false"><span class="creator-swatch" style="background:#F8F4EF"></span>Bianco</button>
-                        <button type="button" class="creator-option" data-group="innerFur" data-value="pink" aria-pressed="false"><span class="creator-swatch" style="background:#E5A0AE"></span>Rosa</button>
+                        <button type="button" class="creator-option" data-group="innerFur" data-value="black" aria-pressed="false"><span class="creator-swatch" style="background:#48434A"></span>Peste</button>
+                        <button type="button" class="creator-option" data-group="innerFur" data-value="white" aria-pressed="false"><span class="creator-swatch" style="background:#F8F4EF"></span>Angel</button>
+                        <button type="button" class="creator-option" data-group="innerFur" data-value="pink" aria-pressed="false"><span class="creator-swatch" style="background:#E5A0AE"></span>Caramella</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="grey" aria-pressed="false"><span class="creator-swatch" style="background:#A8A5A0"></span>Nuvola</button>
                     </div>
                 </section>
@@ -3512,14 +3530,14 @@ function updateEyes() {
     const big = state.eyes === "big";
 
     [left, right].forEach(eye => {
-        eye.setAttribute("rx", big ? "10" : "7");
-        eye.setAttribute("ry", big ? "13" : "9");
-        eye.setAttribute("cy", "142");
+        eye.setAttribute("rx", big ? "11" : "7.5");
+        eye.setAttribute("ry", big ? "12.5" : "8.5");
+        eye.setAttribute("cy", "150");
     });
 
     [shineLeft, shineRight].forEach(shine => {
-        shine.style.display = "";
-        shine.setAttribute("r", big ? "3.4" : "2.5");
+        shine.setAttribute("r", big ? "3.6" : "2.4");
+        shine.setAttribute("cy", big ? "145" : "147");
     });
 }
 
@@ -3568,7 +3586,7 @@ function updateEyes() {
                 <path d="${path}"
                       fill="none"
                       stroke="#79554C"
-                      stroke-width="2.2"
+                      stroke-width="1.8"
                       stroke-linecap="round"/>
             `).join("");
     }
@@ -3613,7 +3631,7 @@ function updateEyes() {
 
     function getSettings() {
         return {
-            name: nameInput.value.trim() || "Pasticcino",
+            name: nameInput.value.trim() || "Saturno",
             fur: state.fur,
             innerFur: state.innerFur,
             eyes: state.eyes,
@@ -3769,10 +3787,10 @@ function updateEyes() {
         state.whiskers = "soft";
         state.accessories = [];
 
-        nameInput.value = "Pasticcino";
+        nameInput.value = "Saturno";
 
         updateAvatar();
-        status.textContent = "Si riparte da zero. Pasticcino è tornato!";
+        status.textContent = "Si riparte da zero. Saturno è tornato!";
     });
 }
 
