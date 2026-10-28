@@ -1376,6 +1376,19 @@ footer p {
     outline-offset: 3px;
 }
 
+.creator-subtitle {
+    margin: 18px 0 10px;
+    color: #9d5e62;
+    font-size: .76rem;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+ 
+.creator-section > p + .creator-subtitle {
+    margin-top: 0;
+}
+
 .creator-swatch {
     display: block;
     width: 38px;
@@ -2239,17 +2252,60 @@ footer p {
                             <path d="M177 184 Q190 191 201 198"/>
                         </g>
 
-                        <!-- ACCESSORIO: bandana -->
-                        <g id="accessoryBandana" style="display:none" transform="translate(0 6)">
-                            <path d="M111 205 Q160 225 209 205
-                                     L194 237 L160 258 L126 237 Z"
-                                  fill="#E98F9A" stroke="#A85E69"
-                                  stroke-width="3" stroke-linejoin="round"/>
-                            <path d="M135 219 L160 237 L185 219"
-                                  fill="none" stroke="#FFE7E8"
-                                  stroke-width="4" stroke-linecap="round"/>
+                        <defs>
+                            <clipPath id="hamsterBodyClip">
+                                <use href="#hamsterBodyShape"/>
+                            </clipPath>
+                        </defs>
+ 
+                        <!-- COLLO: bandana a pois -->
+                        <g id="accessoryBandana" style="display:none" clip-path="url(#hamsterBodyClip)">
+                            <path d="M60 194 Q160 232 260 194 L226 220 L160 264 L94 220 Z"
+                                  fill="#F49AAE" stroke="#C9637B" stroke-width="3"
+                                  stroke-linejoin="round"/>
+                            <g fill="#FFF3F5">
+                                <circle cx="128" cy="227" r="3.2"/>
+                                <circle cx="192" cy="227" r="3.2"/>
+                                <circle cx="160" cy="247" r="3.2"/>
+                                <circle cx="108" cy="216" r="2.6"/>
+                                <circle cx="212" cy="216" r="2.6"/>
+                                <circle cx="144" cy="238" r="2.2"/>
+                                <circle cx="176" cy="238" r="2.2"/>
+                            </g>
                         </g>
-
+ 
+                        <!-- COLLO: sciarpa di lana -->
+                        <g id="accessoryScarf" style="display:none">
+                            <g clip-path="url(#hamsterBodyClip)" fill="none" stroke-linecap="round">
+                                <path d="M40 186 Q160 236 280 186" stroke="#5E9580" stroke-width="24"/>
+                                <path d="M40 186 Q160 236 280 186" stroke="#9DCBB6" stroke-width="18"/>
+                                <path d="M40 186 Q160 236 280 186" stroke="#FFF4D6" stroke-width="18"
+                                      stroke-dasharray="7 13" stroke-linecap="butt"/>
+                            </g>
+                            <path d="M194 212 L214 208 L222 252 L202 256 Z"
+                                  fill="#9DCBB6" stroke="#5E9580" stroke-width="3"
+                                  stroke-linejoin="round"/>
+                            <path d="M197 226 L217 222 M199 239 L219 235"
+                                  stroke="#FFF4D6" stroke-width="5"/>
+                            <path d="M205 257 L204 265 M211 256 L211 264 M217 254 L218 262"
+                                  stroke="#5E9580" stroke-width="2.5" stroke-linecap="round"/>
+                        </g>
+ 
+                        <!-- COLLO: collarino con campanella -->
+                        <g id="accessoryCollar" style="display:none">
+                            <g clip-path="url(#hamsterBodyClip)" fill="none" stroke-linecap="round">
+                                <path d="M40 186 Q160 232 280 186" stroke="#B4566A" stroke-width="12"/>
+                                <path d="M40 186 Q160 232 280 186" stroke="#F28DA0" stroke-width="7"/>
+                            </g>
+                            <path d="M160 209 V228" stroke="#C9973A" stroke-width="2.5"/>
+                            <circle cx="160" cy="237" r="10" fill="#FFD66B"
+                                    stroke="#C9973A" stroke-width="2.5"/>
+                            <path d="M152 237 H168" stroke="#C9973A" stroke-width="2"
+                                  stroke-linecap="round"/>
+                            <circle cx="160" cy="242" r="2" fill="#8A6424"/>
+                            <circle cx="156" cy="232" r="2.2" fill="#FFF6D8"/>
+                        </g>
+                        
                         <!-- Semino tra le zampe -->
                         <g id="hamsterSeed">
                             <path d="M160 190 Q172 202 167 216 Q160 223 153 216 Q148 202 160 190 Z"
@@ -2269,78 +2325,174 @@ footer p {
                                  transform="rotate(25 174 217)"
                                  fill="#DDB58F" stroke="#A77C5B"
                                  stroke-width="3"/>
-                        
-                        <!-- ACCESSORIO: occhiali -->
-                        <g id="accessoryGlasses" style="display:none" transform="translate(-1 8)">
-                            <rect x="105" y="127" width="43" height="29"
-                                  rx="10" fill="#34424B"
-                                  fill-opacity=".92" stroke="#252D33"
-                                  stroke-width="4"/>
-                            <rect x="172" y="127" width="43" height="29"
-                                  rx="10" fill="#34424B"
-                                  fill-opacity=".92" stroke="#252D33"
-                                  stroke-width="4"/>
-                            <path d="M112 133 L126 133 M179 133 L193 133"
-                                  stroke="#FFFFFF" stroke-opacity=".75"
-                                  stroke-width="2.5" stroke-linecap="round"/>
-                            <path d="M148 137 Q160 130 172 137
-                                     M105 136 L96 132
-                                     M215 136 L224 132"
-                                  fill="none" stroke="#5D6868"
-                                  stroke-width="4" stroke-linecap="round"/>
-                        </g>
 
-                        <!-- ACCESSORIO: fiocco -->
-                        <g id="accessoryBow" style="display:none">
-                            <path d="M151 88 Q128 67 126 88
-                                     Q127 105 153 96 Z"
-                                  fill="#F4A9C0" stroke="#B96F88"
-                                  stroke-width="3"/>
-                            <path d="M169 88 Q192 67 194 88
-                                     Q193 105 167 96 Z"
-                                  fill="#F4A9C0" stroke="#B96F88"
-                                  stroke-width="3"/>
-                            <circle cx="160" cy="91" r="8"
-                                    fill="#FFE4A3" stroke="#B96F88"
-                                    stroke-width="2.5"/>
-                        </g>
-
-                        <!-- ACCESSORIO: cappellino -->
-                        <g id="accessoryHat" style="display:none">
-                            <path d="M119 101 Q120 62 160 58
-                                     Q200 62 201 101 Z"
-                                  fill="#9DBDAB" stroke="#527C69"
-                                  stroke-width="3.5"/>
-                            <ellipse cx="160" cy="101" rx="48" ry="10"
-                                     fill="#B7D3C4" stroke="#527C69"
-                                     stroke-width="3.5"/>
-                            <circle cx="160" cy="59" r="8"
-                                    fill="#F4B7BD" stroke="#527C69"
-                                    stroke-width="2.5"/>
-                        </g>
-
-                        <!-- ACCESSORIO: fiore -->
-                        <g id="accessoryFlower" style="display:none">
-                            <g transform="translate(211 100)">
-                                <ellipse cy="-12" rx="8" ry="12" fill="#F4B7BD"/>
-                                <ellipse cy="12" rx="8" ry="12" fill="#F4B7BD"/>
-                                <ellipse cx="-12" rx="12" ry="8" fill="#F4B7BD"/>
-                                <ellipse cx="12" rx="12" ry="8" fill="#F4B7BD"/>
-                                <circle r="8" fill="#FFE4A3"
-                                        stroke="#D49B5A" stroke-width="2"/>
+                        <!-- VISO: occhiali tondi -->
+                        <g id="accessoryGlasses" style="display:none">
+                            <g fill="#FFFFFF" fill-opacity=".22" stroke="#E07A8C" stroke-width="4">
+                                <circle cx="124" cy="150" r="18"/>
+                                <circle cx="196" cy="150" r="18"/>
                             </g>
+                            <path d="M142 148 Q160 139 178 148 M106 146 L90 140 M214 146 L230 140"
+                                  fill="none" stroke="#E07A8C" stroke-width="4"
+                                  stroke-linecap="round"/>
+                            <path d="M113 141 Q117 136 123 135 M185 141 Q189 136 195 135"
+                                  fill="none" stroke="#FFFFFF" stroke-width="2.5"
+                                  stroke-linecap="round" opacity=".9"/>
+                        </g>
+ 
+                        <!-- VISO: occhiali a cuore -->
+                        <g id="accessoryHeartGlasses" style="display:none">
+                            <g fill="#FF7FA3" fill-opacity=".85" stroke="#D9506F" stroke-width="2.4"
+                               stroke-linejoin="round">
+                                <path transform="translate(124 154) scale(1.3)"
+                                      d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"/>
+                                <path transform="translate(196 154) scale(1.3)"
+                                      d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"/>
+                            </g>
+                            <path d="M142 145 Q160 137 178 145 M106 143 L90 137 M214 143 L230 137"
+                                  fill="none" stroke="#D9506F" stroke-width="3.5"
+                                  stroke-linecap="round"/>
+                            <path d="M112 141 Q114 137 119 136 M184 141 Q186 137 191 136"
+                                  fill="none" stroke="#FFFFFF" stroke-width="2.5"
+                                  stroke-linecap="round"/>
                         </g>
 
-                        <!-- ACCESSORIO: corona -->
-                        <g id="accessoryCrown" style="display:none">
-                            <path d="M124 98 L116 72 L139 85 L160 63
-                                     L181 85 L204 72 L196 98 Z"
-                                  fill="#FFE4A3" stroke="#C59B4D"
-                                  stroke-width="3.5" stroke-linejoin="round"/>
-                            <path d="M124 98 H196"
-                                  stroke="#C59B4D" stroke-width="4"
+                        <!-- TESTA: fiocco a pois -->
+                        <g id="accessoryBow" style="display:none"
+                           transform="translate(136 86) rotate(-16)">
+                            <path d="M-2 3 Q-8 12 -12 20 L-4 18 Z M2 3 Q8 12 12 20 L4 18 Z"
+                                  fill="#F7A1BC" stroke="#C76A88" stroke-width="2.5"
+                                  stroke-linejoin="round"/>
+                            <path d="M0 0 C-10 -15 -29 -13 -27 2 C-26 15 -10 12 0 0 Z"
+                                  fill="#F7A1BC" stroke="#C76A88" stroke-width="3"/>
+                            <path d="M0 0 C10 -15 29 -13 27 2 C26 15 10 12 0 0 Z"
+                                  fill="#F7A1BC" stroke="#C76A88" stroke-width="3"/>
+                            <g fill="#FFFFFF">
+                                <circle cx="-16" cy="-2" r="2.4"/>
+                                <circle cx="-21" cy="5" r="1.6"/>
+                                <circle cx="16" cy="-2" r="2.4"/>
+                                <circle cx="21" cy="5" r="1.6"/>
+                            </g>
+                            <circle r="6.5" fill="#FFB3C8" stroke="#C76A88" stroke-width="2.5"/>
+                        </g>
+                        
+                        <!-- TESTA: berretto con pon pon -->
+                        <g id="accessoryHat" style="display:none">
+                            <path d="M106 106 Q108 62 160 58 Q212 62 214 106 Z"
+                                  fill="#A9D3C0" stroke="#5E9580" stroke-width="3.5"
+                                  stroke-linejoin="round"/>
+                            <path d="M140 64 Q136 84 138 102 M160 60 V102 M180 64 Q184 84 182 102"
+                                  fill="none" stroke="#8CC0AA" stroke-width="3"
                                   stroke-linecap="round"/>
-                            <circle cx="160" cy="79" r="4" fill="#E98F9A"/>
+                            <path d="M102 100 Q160 88 218 100 L218 114 Q160 102 102 114 Z"
+                                  fill="#FFF4D6" stroke="#5E9580" stroke-width="3.5"
+                                  stroke-linejoin="round"/>
+                            <circle cx="160" cy="54" r="11" fill="#F7A1BC"
+                                    stroke="#C76A88" stroke-width="3"/>
+                        </g>
+
+                        <!-- TESTA: margherita sull'orecchio -->
+                        <g id="accessoryFlower" style="display:none"
+                           transform="translate(208 88)">
+                            <ellipse cx="12" cy="13" rx="9" ry="5" transform="rotate(35 12 13)"
+                                     fill="#9FD18B" stroke="#5F9A4D" stroke-width="2"/>
+                            <g fill="#FFFFFF" stroke="#EBB3C2" stroke-width="2">
+                                <ellipse cy="-11" rx="6" ry="9"/>
+                                <ellipse cy="-11" rx="6" ry="9" transform="rotate(60)"/>
+                                <ellipse cy="-11" rx="6" ry="9" transform="rotate(120)"/>
+                                <ellipse cy="-11" rx="6" ry="9" transform="rotate(180)"/>
+                                <ellipse cy="-11" rx="6" ry="9" transform="rotate(240)"/>
+                                <ellipse cy="-11" rx="6" ry="9" transform="rotate(300)"/>
+                            </g>
+                            <circle r="7" fill="#FFD66B" stroke="#D9A43A" stroke-width="2"/>
+                            <circle cx="-2" cy="-2" r="2" fill="#FFF1B8"/>
+                        </g>
+
+<!-- TESTA: coroncina -->
+                        <g id="accessoryCrown" style="display:none"
+                           transform="translate(160 84) rotate(-8)">
+                            <path d="M-26 0 L-30 -24 L-14 -12 L0 -30 L14 -12 L30 -24 L26 0 Q0 6 -26 0 Z"
+                                  fill="#FFE08A" stroke="#C99A3E" stroke-width="3"
+                                  stroke-linejoin="round"/>
+                            <g fill="#FFE08A" stroke="#C99A3E" stroke-width="2.5">
+                                <circle cx="-30" cy="-25" r="4"/>
+                                <circle cx="0" cy="-31" r="4.5"/>
+                                <circle cx="30" cy="-25" r="4"/>
+                            </g>
+                            <circle cx="0" cy="-9" r="4.5" fill="#F48FA6"/>
+                            <circle cx="-15" cy="-6" r="3" fill="#9FD3C7"/>
+                            <circle cx="15" cy="-6" r="3" fill="#A9C6F5"/>
+                        </g>
+ 
+                        <!-- TESTA: cappellino da festa -->
+                        <g id="accessoryPartyHat" style="display:none"
+                           transform="translate(150 84) rotate(-14)">
+                            <path d="M-21 0 L0 -48 L21 0 Q0 7 -21 0 Z"
+                                  fill="#A9CBF2" stroke="#5F8FBF" stroke-width="3"
+                                  stroke-linejoin="round"/>
+                            <circle cx="-8" cy="-9" r="3.2" fill="#FFE08A"/>
+                            <circle cx="7" cy="-18" r="3.2" fill="#F7A1BC"/>
+                            <circle cx="-2" cy="-30" r="2.6" fill="#FFE08A"/>
+                            <circle cx="9" cy="-5" r="2.6" fill="#F7A1BC"/>
+                            <circle cx="0" cy="-51" r="7" fill="#F7A1BC"
+                                    stroke="#C76A88" stroke-width="2.5"/>
+                        </g>
+ 
+                        <!-- TESTA: cappello fragola -->
+                        <g id="accessoryStrawberryHat" style="display:none">
+                            <path d="M106 106 Q108 62 160 58 Q212 62 214 106 Q160 96 106 106 Z"
+                                  fill="#F27D86" stroke="#C24F5D" stroke-width="3.5"
+                                  stroke-linejoin="round"/>
+                            <g fill="#FFE9A8">
+                                <ellipse cx="130" cy="82" rx="2" ry="3"/>
+                                <ellipse cx="150" cy="74" rx="2" ry="3"/>
+                                <ellipse cx="172" cy="74" rx="2" ry="3"/>
+                                <ellipse cx="192" cy="84" rx="2" ry="3"/>
+                                <ellipse cx="140" cy="94" rx="2" ry="3"/>
+                                <ellipse cx="162" cy="88" rx="2" ry="3"/>
+                                <ellipse cx="182" cy="96" rx="2" ry="3"/>
+                                <ellipse cx="120" cy="98" rx="2" ry="3"/>
+                                <ellipse cx="202" cy="99" rx="2" ry="3"/>
+                            </g>
+                            <path d="M160 62 L144 54 L154 53 L146 42 L160 50 L174 42 L166 53 L176 54 Z"
+                                  fill="#8CC97A" stroke="#4F8F45" stroke-width="2.5"
+                                  stroke-linejoin="round"/>
+                            <path d="M160 48 Q161 39 167 35" fill="none" stroke="#4F8F45"
+                                  stroke-width="3" stroke-linecap="round"/>
+                        </g>
+ 
+                        <!-- TESTA: cappello da streghetta -->
+                        <g id="accessoryWitchHat" style="display:none"
+                           transform="translate(160 94) rotate(-6)">
+                            <ellipse rx="56" ry="11" fill="#9A88CF"
+                                     stroke="#5E4C93" stroke-width="3"/>
+                            <path d="M-30 -2 Q-20 -32 -6 -56 Q6 -74 24 -66 Q8 -60 8 -40 L30 -2 Q0 4 -30 -2 Z"
+                                  fill="#9A88CF" stroke="#5E4C93" stroke-width="3"
+                                  stroke-linejoin="round"/>
+                            <path d="M-28 -9 Q0 -3 28 -9 L30 -2 Q0 4 -30 -2 Z"
+                                  fill="#FFB86B" stroke="#5E4C93" stroke-width="2.5"
+                                  stroke-linejoin="round"/>
+                            <path d="M2 -40 L4.4 -34.6 L10 -34 L5.8 -30.2 L7 -24.6 L2 -27.4 L-3 -24.6 L-1.8 -30.2 L-6 -34 L-0.4 -34.6 Z"
+                                  fill="#FFE08A" stroke="#C99A3E" stroke-width="1.5"
+                                  stroke-linejoin="round"/>
+                        </g>
+ 
+                        <!-- TESTA: cuffiette -->
+                        <g id="accessoryHeadphones" style="display:none">
+                            <path d="M84 122 C78 40 242 40 236 122" fill="none"
+                                  stroke="#C76A88" stroke-width="13" stroke-linecap="round"/>
+                            <path d="M84 122 C78 40 242 40 236 122" fill="none"
+                                  stroke="#F7A1BC" stroke-width="7" stroke-linecap="round"/>
+                            <rect x="68" y="112" width="26" height="40" rx="13"
+                                  fill="#F7A1BC" stroke="#C76A88" stroke-width="3"/>
+                            <rect x="226" y="112" width="26" height="40" rx="13"
+                                  fill="#F7A1BC" stroke="#C76A88" stroke-width="3"/>
+                            <path transform="translate(81 133) scale(.45)"
+                                  d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"
+                                  fill="#FFFFFF"/>
+                            <path transform="translate(239 133) scale(.45)"
+                                  d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"
+                                  fill="#FFFFFF"/>
                         </g>
 
                     </svg>
@@ -2485,14 +2637,9 @@ footer p {
 
                 <section class="creator-section">
                     <h2>5. Gli accessori</h2>
-                    <p>Puoi selezionarne quanti ne vuoi!</p>
+                    <p>Uno per la testa, uno per il viso e uno per il collo: combinali come vuoi!</p>
+                    <h3 class="creator-subtitle">Testa</h3>
                     <div class="creator-options">
-                        <button type="button" class="creator-option"
-                                data-group="accessory" data-value="glasses"
-                                aria-pressed="false">
-                            <span class="creator-preview-icon">👓</span>
-                            Occhiali
-                        </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="bow"
                                 aria-pressed="false">
@@ -2500,28 +2647,82 @@ footer p {
                             Fiocco
                         </button>
                         <button type="button" class="creator-option"
-                                data-group="accessory" data-value="bandana"
-                                aria-pressed="false">
-                            <span class="creator-preview-icon">🔻</span>
-                            Bandana
-                        </button>
-                        <button type="button" class="creator-option"
                                 data-group="accessory" data-value="hat"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">🧢</span>
-                            Cappellino
+                            <span class="creator-preview-icon">🧶</span>
+                            Berretto
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="flower"
                                 aria-pressed="false">
                             <span class="creator-preview-icon">🌼</span>
-                            Fiore
+                            Margherita
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="crown"
                                 aria-pressed="false">
                             <span class="creator-preview-icon">👑</span>
-                            Corona
+                            Coroncina
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="partyHat"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">🥳</span>
+                            Cappellino da festa
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="strawberryHat"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">🍓</span>
+                            Cappello fragola
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="witchHat"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">🧙</span>
+                            Cappello da streghetta
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="headphones"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">🎧</span>
+                            Cuffiette
+                        </button>
+                    </div>
+                    <h3 class="creator-subtitle">Viso</h3>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="glasses"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">👓</span>
+                            Occhiali tondi
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="heartGlasses"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">💖</span>
+                            Occhiali a cuore
+                        </button>
+                    </div>
+                    <h3 class="creator-subtitle">Collo</h3>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="bandana"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">🔻</span>
+                            Bandana a pois
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="scarf"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">🧣</span>
+                            Sciarpa
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="collar"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon">🔔</span>
+                            Collarino
                         </button>
                     </div>
                 </section>
@@ -3458,15 +3659,39 @@ function initHamsterCreator() {
 
     const accessoryIds = {
         glasses: "accessoryGlasses",
+        heartGlasses: "accessoryHeartGlasses",
         bow: "accessoryBow",
-        bandana: "accessoryBandana",
         hat: "accessoryHat",
         flower: "accessoryFlower",
-        crown: "accessoryCrown"
+        crown: "accessoryCrown",
+        partyHat: "accessoryPartyHat",
+        strawberryHat: "accessoryStrawberryHat",
+        witchHat: "accessoryWitchHat",
+        headphones: "accessoryHeadphones",
+        bandana: "accessoryBandana",
+        scarf: "accessoryScarf",
+        collar: "accessoryCollar"
     };
 
-    const headAccessories = ["bow", "hat", "flower", "crown"];
-
+    // Un solo accessorio per zona: testa, viso e collo.
+    const accessoryZones = {
+        head: ["bow", "hat", "flower", "crown", "partyHat", "strawberryHat", "witchHat", "headphones"],
+        face: ["glasses", "heartGlasses"],
+        neck: ["bandana", "scarf", "collar"]
+    };
+ 
+    const zoneOf = key => Object.keys(accessoryZones).find(
+        zone => accessoryZones[zone].includes(key)
+    );
+ 
+    function onePerZone(list) {
+        const picked = {};
+        list.filter(key => accessoryIds[key]).forEach(key => {
+            picked[zoneOf(key)] = key;
+        });
+        return Object.values(picked);
+    }
+    
     function setFill(id, color) {
         const element = document.getElementById(id);
         if (element) element.setAttribute("fill", color);
@@ -3660,20 +3885,8 @@ function updateEyes() {
         }
 
         state.accessories = Array.isArray(settings.accessories)
-            ? settings.accessories.filter(key => accessoryIds[key])
+            ? onePerZone(settings.accessories)
             : [];
-
-        const selectedHeadAccessory = state.accessories.find(
-            key => headAccessories.includes(key)
-        );
-
-        state.accessories = state.accessories.filter(
-            key => !headAccessories.includes(key)
-        );
-
-        if (selectedHeadAccessory) {
-            state.accessories.push(selectedHeadAccessory);
-        }
 
         if (typeof settings.name === "string") {
             nameInput.value = settings.name.slice(0, 24);
@@ -3696,13 +3909,7 @@ function updateEyes() {
                         item => item !== value
                     );
                 } else {
-                    if (headAccessories.includes(value)) {
-                        state.accessories = state.accessories.filter(
-                            item => !headAccessories.includes(item)
-                        );
-                    }
-
-                    state.accessories.push(value);
+                    state.accessories = onePerZone([...state.accessories, value]);                    
                 }
             } else if (group === "fur") {
                 state.fur = value;
@@ -3757,23 +3964,11 @@ function updateEyes() {
         state.eyes = pick(["big", "small"]);
         state.whiskers = pick(["soft", "curly", "bold", "short"]);
 
-        state.accessories = [];
-
-        // Occhiali e bandana possono essere combinati.
-        if (Math.random() > 0.5) {
-            state.accessories.push("glasses");
-        }
-
-        if (Math.random() > 0.5) {
-            state.accessories.push("bandana");
-        }
-
-        // Sceglie al massimo un accessorio per la testa.
-        if (Math.random() > 0.3) {
-            state.accessories.push(
-                pick(["bow", "hat", "flower", "crown"])
-            );
-        }
+        // Al massimo un accessorio per zona.
+        const chance = { head: 0.75, face: 0.4, neck: 0.5 };
+        state.accessories = Object.keys(accessoryZones)
+            .filter(zone => Math.random() < chance[zone])
+            .map(zone => pick(accessoryZones[zone]));
 
         updateAvatar();
         status.textContent = "Ecco il tuo criceto a sorpresa!";
