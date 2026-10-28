@@ -1578,6 +1578,28 @@ footer p {
     border-color: #ded8f5;
 }
 
+    
+.creator-back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding: 10px 16px;
+    border: 1px solid #eadbd0;
+    border-radius: 12px;
+    background: #fffaf6;
+    color: #795b49;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.creator-back-button:hover {
+    background: #f5e8dc;
+    transform: translateX(-3px);
+}
+    
 
 </style>
 </head>
@@ -2074,6 +2096,11 @@ footer p {
 </section>
     <!-- CREA IL TUO CRICETO -->
 <section class="page creator-page" id="crea-criceto">
+
+    <button class="creator-back-button" type="button" onclick="showPage('catalogo')">
+        ← Torna al negozio
+    </button>
+    
     <div class="container">
 
         <div class="creator-heading">
