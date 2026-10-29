@@ -1960,6 +1960,68 @@ footer p {
         font-size: .78rem;
     }
 }
+ 
+.trust-icon svg { width: 28px; height: 28px; }
+.home-menu-icon svg { width: 36px; height: 36px; }
+ 
+button.hero-scene {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    cursor: pointer;
+}
+ 
+button.hero-scene:focus-visible {
+    outline: 3px solid #b88765;
+    outline-offset: 6px;
+    border-radius: 24px;
+}
+ 
+.hero-hamster.dizzy {
+    animation: hamsterDizzy .5s ease-in-out infinite alternate;
+}
+ 
+@keyframes hamsterDizzy {
+    from { transform: rotate(-12deg) translateX(-4px); }
+    to { transform: rotate(12deg) translateX(4px); }
+}
+ 
+.note-two.overload {
+    background: #fde4ea;
+    color: #b0485f;
+}
+ 
+.courier-track {
+    position: relative;
+    height: 112px;
+    margin: -6px -10px 14px;
+    overflow: hidden;
+    border-bottom: 3px dashed #eadbd0;
+}
+ 
+.courier-runner {
+    position: absolute;
+    bottom: 2px;
+    left: -110px;
+    width: 100px;
+    height: 100px;
+    animation: courierRun 3.4s linear infinite;
+}
+ 
+.courier-runner img,
+.courier-runner svg {
+    position: absolute;
+    animation: hamsterBob .26s ease-in-out infinite alternate;
+}
+ 
+.courier-runner img { inset: 0; width: 100px; height: 100px; }
+.courier-runner svg { left: 28px; top: 50px; width: 44px; height: 44px; }
+ 
+@keyframes courierRun {
+    from { left: -110px; }
+    to { left: 100%; }
+}    
 </style>   
 </head>
 
@@ -2005,12 +2067,12 @@ footer p {
             </div>
             <div class="hero-art">
                 <span class="floating-note note-one">⚡ Produttività discutibile</span>
-            <div class="hero-scene" aria-hidden="true">
-                    <svg class="hero-stand" viewBox="0 0 260 300">
+            <button class="hero-scene" id="heroScene" type="button" title="Cliccami!" aria-label="Fai correre il criceto più veloce">
+                    <svg class="hero-stand" viewBox="0 0 260 300" aria-hidden="true">
                         <path d="M130 130 L62 288 M130 130 L198 288" stroke="#b9805e" stroke-width="12" stroke-linecap="round"/>
                         <rect x="40" y="280" width="180" height="14" rx="7" fill="#a86f4f"/>
                     </svg>
-                    <svg class="hero-wheel" viewBox="0 0 240 240">
+                    <svg class="hero-wheel" viewBox="0 0 240 240" aria-hidden="true">
                         <circle cx="120" cy="120" r="108" fill="#f7d3b4" stroke="#c88965" stroke-width="14"/>
                         <circle cx="120" cy="120" r="93" fill="none" stroke="#e3a982" stroke-width="5" stroke-dasharray="4 11"/>
                         <g stroke="#dfa883" stroke-width="5" stroke-linecap="round">
@@ -2023,7 +2085,7 @@ footer p {
                         <circle cx="120" cy="120" r="6" fill="#f7d3b4"/>
                     </svg>
                     <img class="hero-hamster" id="heroHamster" alt="">
-                </div>
+                </button>
                 <span class="floating-note note-two">🧠 Pensieri in corso...</span>
             </div>
         </div>
@@ -2032,24 +2094,23 @@ footer p {
     <div class="container">
         <section class="trust-strip">
             <div class="trust-item">
-                <span class="trust-icon">🧠</span>
-                <div>
+
+                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 10c-3-4-11-4-12 3-6 1-8 8-4 12-3 5 1 11 7 11 2 4 7 4 9 1 2 3 7 3 9-1 6 0 10-6 7-11 4-4 2-11-4-12-1-7-9-7-12-3z" fill="#f7b9c6" stroke="#b05f72" stroke-width="2.5" stroke-linejoin="round"/><path d="M24 10v28M16 20c3 2 5 2 8 0M32 27c-3-2-5-2-8 0" stroke="#b05f72" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></span>                <div>
                     <strong>Pensieri in movimento</strong>
                     <small>Almeno sulla carta.</small>
                 </div>
             </div>
 
             <div class="trust-item">
-                <span class="trust-icon">💸</span>
-                <div>
+                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="15" fill="#ffd66b" stroke="#c9962a" stroke-width="3"/><circle cx="24" cy="24" r="10.5" fill="none" stroke="#e8b543" stroke-width="2"/><text x="24" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="16" fill="#a8771a">€</text></svg></span>                <div>
                     <strong>Prezzi scientifici*</strong>
                     <small>*Non verificati.</small>
                 </div>
             </div>
 
             <div class="trust-item">
-                <span class="trust-icon">📦</span>
-                <div>
+
+                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 17l16-8 16 8v16l-16 8-16-8z" fill="#f1c48f" stroke="#a8713f" stroke-width="2.5" stroke-linejoin="round"/><path d="M8 17l16 8 16-8M24 25v16" fill="none" stroke="#a8713f" stroke-width="2.5" stroke-linejoin="round"/><path d="M15 13l16 8v6" fill="none" stroke="#e8798a" stroke-width="3" stroke-linecap="round"/></svg></span>                <div>
                     <strong>Consegna ultraterrena</strong>
                     <small>Il corriere è un criceto.</small>
                 </div>
@@ -2085,32 +2146,33 @@ footer p {
 
             <div class="home-menu-grid">
                 <button class="home-menu-card" onclick="goToSection('criceti')">
-                    <span class="home-menu-icon hamster-icon">🐹</span>
-                    <span class="home-menu-title">I nostri criceti</span>
+
+                    <span class="home-menu-icon hamster-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="13" cy="15" r="6" fill="#e8cfae" stroke="#9c7556" stroke-width="2.2"/><circle cx="35" cy="15" r="6" fill="#e8cfae" stroke="#9c7556" stroke-width="2.2"/><circle cx="13" cy="15" r="2.6" fill="#f6b5c0"/><circle cx="35" cy="15" r="2.6" fill="#f6b5c0"/><ellipse cx="24" cy="27" rx="16" ry="14" fill="#f1dcc0" stroke="#9c7556" stroke-width="2.4"/><circle cx="18" cy="25" r="2.4" fill="#3a2a25"/><circle cx="30" cy="25" r="2.4" fill="#3a2a25"/><circle cx="18.8" cy="24.2" r=".8" fill="#fff"/><circle cx="30.8" cy="24.2" r=".8" fill="#fff"/><ellipse cx="24" cy="29.5" rx="2" ry="1.4" fill="#e98a9b"/><circle cx="13" cy="30.5" r="2.6" fill="#f6b5c0" opacity=".8"/><circle cx="35" cy="30.5" r="2.6" fill="#f6b5c0" opacity=".8"/></svg></span>                    <span class="home-menu-title">I nostri criceti</span>
                 </button>
 
                 <button class="home-menu-card" onclick="goToSection('extra')">
-                    <span class="home-menu-icon extra-icon">🎡</span>
-                    <span class="home-menu-title">Extra e ricambi</span>
+
+                    <span class="home-menu-icon extra-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 22L13 42M24 22l11 20" stroke="#a86f4f" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="22" r="15" fill="#f7d3b4" stroke="#c88965" stroke-width="3.5"/><path d="M24 7v30M9 22h30M13.4 11.4l21.2 21.2M34.6 11.4L13.4 32.6" stroke="#dfa883" stroke-width="2"/><circle cx="24" cy="22" r="3.2" fill="#c88965"/></svg></span>                    <span class="home-menu-title">Extra e ricambi</span>
                 </button>
 
                 <button class="home-menu-card" onclick="showPage('crea-criceto')">
-                    <span class="home-menu-icon creator-icon">🎨</span>
-                    <span class="home-menu-title">Crea il tuo criceto</span>
+
+                    <span class="home-menu-icon creator-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8C14 8 7 15 7 24s7 16 15 16c3 0 4-2 3-4s0-5 3-5h5c5 0 9-3 9-8 0-9-8-15-18-15z" fill="#fff4e6" stroke="#9c7556" stroke-width="2.5" stroke-linejoin="round"/><circle cx="16" cy="20" r="3" fill="#f28da0"/><circle cx="24" cy="15" r="3" fill="#ffd66b"/><circle cx="32" cy="19" r="3" fill="#8fcdf5"/><circle cx="15" cy="29" r="3" fill="#9bd1a8"/></svg></span>                    <span class="home-menu-title">Crea il tuo criceto</span>
                 </button>
 
                 <button class="home-menu-card" onclick="showPage('assistenza')">
-                    <span class="home-menu-icon">🛠️</span>
-                    <span class="home-menu-title">Centro assistenza</span>
+
+                    <span class="home-menu-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><g transform="rotate(-35 24 24)"><rect x="5" y="16" width="38" height="16" rx="8" fill="#f6c9a8" stroke="#c99470" stroke-width="2.4"/><rect x="18" y="17.2" width="12" height="13.6" fill="#efb08a"/><g fill="#c99470"><circle cx="21.5" cy="21" r="1.2"/><circle cx="26.5" cy="21" r="1.2"/><circle cx="21.5" cy="27" r="1.2"/><circle cx="26.5" cy="27" r="1.2"/></g></g></svg></span>                    <span class="home-menu-title">Centro assistenza</span>
                 </button>
 
                 <button class="home-menu-card" onclick="showPage('restituzioni')">
-                    <span class="home-menu-icon">♻️</span>
+
+                    <span class="home-menu-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#5f9a74" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 24a13 13 0 0 1 22-9.5"/><path d="M34 7v8h-8"/><path d="M37 24a13 13 0 0 1-22 9.5"/><path d="M14 41v-8h8"/></g></svg></span>
                     <span class="home-menu-title">Resi e restituzioni</span>
                 </button>
 
                 <button class="home-menu-card" onclick="showPage('carrello')">
-                    <span class="home-menu-icon">🛒</span>
+                    <span class="home-menu-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M15 16h26l-4 14H18z" fill="#f7b9c6"/><path d="M6 10h6l5 20h20l4-14H14" fill="none" stroke="#6b4a3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="37" r="3" fill="#6b4a3a"/><circle cx="34" cy="37" r="3" fill="#6b4a3a"/></svg></span>
                     <span class="home-menu-title">Il tuo carrello</span>
                 </button>
             </div>
@@ -2373,15 +2435,15 @@ footer p {
 
         <section class="trust-strip">
             <div class="trust-item">
-                <span class="trust-icon">🔎</span>
+                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="21" cy="21" r="11" fill="#d9eefc" stroke="#5c87a8" stroke-width="3.5"/><path d="M29 29l10 10" stroke="#5c87a8" stroke-width="5" stroke-linecap="round"/><path d="M15 19a7 7 0 0 1 5-5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span> 
                 <div><strong>1. Valutazione</strong><small>Controlliamo il prodotto.</small></div>
             </div>
             <div class="trust-item">
-                <span class="trust-icon">🛠️</span>
+                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><g transform="rotate(-35 24 24)"><rect x="5" y="16" width="38" height="16" rx="8" fill="#f6c9a8" stroke="#c99470" stroke-width="2.4"/><rect x="18" y="17.2" width="12" height="13.6" fill="#efb08a"/><g fill="#c99470"><circle cx="21.5" cy="21" r="1.2"/><circle cx="26.5" cy="21" r="1.2"/><circle cx="21.5" cy="27" r="1.2"/><circle cx="26.5" cy="27" r="1.2"/></g></g></svg></span>
                 <div><strong>2. Ricondizionamento</strong><small>Se possibile, lo rimettiamo in sesto.</small></div>
             </div>
             <div class="trust-item">
-                <span class="trust-icon">♻️</span>
+                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#5f9a74" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 24a13 13 0 0 1 22-9.5"/><path d="M34 7v8h-8"/><path d="M37 24a13 13 0 0 1-22 9.5"/><path d="M14 41v-8h8"/></g></svg></span> 
                 <div><strong>3. Nuova vita</strong><small>Potrebbe tornare in vendita.</small></div>
             </div>
         </section>
@@ -3885,7 +3947,33 @@ function showFormNotice(id,titleText,messageText) {
     if (id === "returnNotice") icon.textContent = "♻️";
     if (id === "supportNotice") icon.textContent = "🛠️";
     if (id === "negativeNotice") icon.textContent = "🚨";
-    
+
+    let track = document.getElementById("courierTrack");
+    if (!track) {
+        track = document.createElement("div");
+        track.id = "courierTrack";
+        track.className = "courier-track";
+        track.setAttribute("aria-hidden", "true");
+        track.innerHTML = `<div class="courier-runner"><img alt=""><svg viewBox="0 0 48 48">
+            <path d="M6 16l18-8 18 8v18l-18 8-18-8z" fill="#f1c48f" stroke="#a8713f" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M6 16l18 8 18-8M24 24v18" fill="none" stroke="#a8713f" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M14 12l18 8v7" fill="none" stroke="#e8798a" stroke-width="3.5" stroke-linecap="round"/></svg></div>`;
+        icon.after(track);
+    }
+ 
+    const courier = id === "orderNotice" && window.hamsterImage;
+    track.style.display = courier ? "" : "none";
+    icon.style.display = courier ? "none" : "";
+ 
+    if (courier) {
+        const img = track.querySelector("img");
+        if (!img.getAttribute("src")) img.src = window.hamsterImage({ fur: "honey", accessories: ["hat"] });
+        const runner = track.querySelector(".courier-runner");
+        runner.style.animation = "none";
+        void runner.offsetWidth;
+        runner.style.animation = "";
+    }
+ 
     overlay.classList.add("show");
     document.body.style.overflow = "";
     document.body.style.overflow = "hidden";
@@ -3928,7 +4016,7 @@ document.getElementById("checkoutForm").addEventListener("submit",function(event
     showFormNotice(
         "orderNotice",
         "Ordine confermato!",
-        `Grazie, ${name}! Hai preparato ${count} articol${count === 1 ? "o" : "i"} per ${total}. Il reparto criceti è già in fermento.`
+        `Grazie, ${name}! Hai preparato ${count} articol${count === 1 ? "o" : "i"} per ${total}. Il reparto criceti è già in fermento e il corriere è partito di corsa.`
     );
 
     cart = {};
@@ -4451,12 +4539,30 @@ function updateEyes() {
         snapshot.removeAttribute("class");
         snapshot.setAttribute("xmlns", "http://www.w3.org/2000/svg");
  
-        if (extras.sleeping) {
+        if (extras.sleeping || extras.dizzy) {
             ["hamsterEyeL", "hamsterEyeR", "hamsterEyeShineL", "hamsterEyeShineR"].forEach(id => {
                 const eye = snapshot.querySelector(`#${id}`);
                 if (eye) eye.setAttribute("display", "none");
             });
+        }
  
+        if (extras.dizzy) {
+            const spiral = cx => {
+                const points = [];
+                for (let t = 0; t <= Math.PI * 4.2; t += 0.25) {
+                    const r = 1.2 * t;
+                    points.push(`${(cx + r * Math.cos(t)).toFixed(1)},${(150 + r * Math.sin(t)).toFixed(1)}`);
+                }
+                return `<polyline points="${points.join(" ")}" fill="none" stroke="#3A2A25" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
+            };
+            const star = (x, y, r) => `<path d="M${x} ${y - r} Q${x} ${y} ${x + r} ${y} Q${x} ${y} ${x} ${y + r} Q${x} ${y} ${x - r} ${y} Q${x} ${y} ${x} ${y - r}Z" fill="#f5c542" stroke="#d29a1c" stroke-width="1.5"/>`;
+            const dizzy = document.createElementNS("http://www.w3.org/2000/svg", "g");
+            dizzy.innerHTML = spiral(124) + spiral(196) + star(104, 74, 16) + star(160, 52, 20) + star(216, 74, 16);
+            snapshot.append(dizzy);
+        }
+ 
+        if (extras.sleeping) {
+            
             const svgNS = "http://www.w3.org/2000/svg";
             const sleepy = document.createElementNS(svgNS, "g");
             sleepy.innerHTML = `
@@ -4864,9 +4970,167 @@ function decorateWithHamsters() {
     }, 2600);
 }
  
+function svgDataUrl(svg) {
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+}
+ 
+function drawProductArt() {
+    const star = (x, y, r, fill = "#f5c542") =>
+        `<path d="M${x} ${y - r} Q${x} ${y} ${x + r} ${y} Q${x} ${y} ${x} ${y + r} Q${x} ${y} ${x - r} ${y} Q${x} ${y} ${x} ${y - r}Z" fill="${fill}"/>`;
+ 
+    const wheel = ({ rim, fill, rung, hub, stand, extra = "", behind = "" }) => `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <ellipse cx="100" cy="189" rx="72" ry="6" fill="rgba(80,40,25,.10)"/>
+            ${behind}
+            <path d="M100 92L55 180M100 92l45 88" stroke="${stand}" stroke-width="9" stroke-linecap="round"/>
+            <rect x="35" y="175" width="130" height="10" rx="5" fill="${stand}"/>
+            <circle cx="100" cy="92" r="68" fill="${fill}" stroke="${rim}" stroke-width="11"/>
+            <circle cx="100" cy="92" r="57" fill="none" stroke="${rung}" stroke-width="4" stroke-dasharray="3 9"/>
+            <g stroke="${rung}" stroke-width="4" stroke-linecap="round">
+                <path d="M100 30v124M38 92h124M56 48l88 88M144 48l-88 88"/>
+            </g>
+            <circle cx="100" cy="92" r="10" fill="${hub}"/>
+            <circle cx="100" cy="92" r="4" fill="${fill}"/>
+            ${extra}
+        </svg>`;
+ 
+    const seed = (x, y, angle) =>
+        `<g transform="translate(${x} ${y}) rotate(${angle})"><ellipse rx="6.5" ry="11" fill="#5b4636"/><path d="M0 -8v16" stroke="#efe3d0" stroke-width="2" stroke-linecap="round"/></g>`;
+ 
+    const seeds = [[62,112,-30],[80,100,20],[98,92,-10],[116,99,35],[136,110,-25],[72,118,60],[92,110,-50],[110,113,15],[128,118,70],[100,76,5],[86,86,-35],[118,84,40]]
+        .map(([x, y, a]) => seed(x, y, a)).join("");
+ 
+    const strands = Array.from({ length: 16 }, (_, i) => {
+        const x = 40 + i * 8;
+        const lean = (i % 2 ? 1 : -1) * (10 + (i * 7) % 14);
+        return `<path d="M${x} 168 Q${x + lean / 2} 135 ${x + lean} ${112 + (i * 13) % 18}" stroke="${i % 3 ? "#d9ae52" : "#fbe39c"}" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+    }).join("");
+ 
+    const art = {
+        w1: wheel({
+            rim: "#c88965", fill: "#f7d3b4", rung: "#dfa883", hub: "#c88965", stand: "#a86f4f",
+            extra: `<g fill="none" stroke="#c88965" stroke-width="4" stroke-linecap="round" opacity=".55"><path d="M20 70q-8 22 0 44"/><path d="M8 78q-5 14 0 28"/></g>`
+        }),
+        w2: wheel({
+            rim: "#6fae8c", fill: "#e9f6ee", rung: "#a8d4bb", hub: "#f2b84b", stand: "#5c8f74",
+            extra: star(170, 26, 12) + star(28, 36, 9) + star(176, 140, 8) + star(24, 150, 6)
+        }),
+        w3: wheel({
+            rim: "#a38fd0", fill: "#f1ebfb", rung: "#cbbdec", hub: "#a38fd0", stand: "#8571b8",
+            extra: `<g transform="rotate(40 146 44)"><rect x="128" y="36" width="36" height="15" rx="7.5" fill="#f6c9a8" stroke="#c99470" stroke-width="2"/><rect x="141" y="37" width="10" height="13" fill="#efb08a"/></g>
+                    <g transform="rotate(-30 50 140)"><rect x="34" y="133" width="32" height="13" rx="6.5" fill="#f6c9a8" stroke="#c99470" stroke-width="2"/><rect x="45" y="134" width="10" height="11" fill="#efb08a"/></g>`
+        }),
+        w4: wheel({
+            rim: "#7fb26b", fill: "#eef7e8", rung: "#b5d6a6", hub: "#7fb26b", stand: "#63924f",
+            extra: `<g transform="translate(0 112)"><path d="M22 8h156l-9 13 9 13H22l9-13z" fill="#e8798a"/><text x="100" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="13" fill="#fff">DAI CHE CE LA FAI!</text></g>` + star(176, 120, 9) + star(22, 120, 7)
+        }),
+        w5: wheel({
+            rim: "#9a86c9", fill: "#f0eafa", rung: "#c7b9e6", hub: "#9a86c9", stand: "#7c69ad",
+            extra: `<g><circle cx="146" cy="124" r="9" fill="#fff8e7" stroke="#e7d3a6" stroke-width="2"/><circle cx="160" cy="118" r="10" fill="#fff8e7" stroke="#e7d3a6" stroke-width="2"/><circle cx="174" cy="124" r="9" fill="#fff8e7" stroke="#e7d3a6" stroke-width="2"/><circle cx="153" cy="114" r="8" fill="#fffdf6" stroke="#e7d3a6" stroke-width="2"/><circle cx="168" cy="110" r="8" fill="#fffdf6" stroke="#e7d3a6" stroke-width="2"/>
+                    <path d="M138 128h44l-6 50h-32z" fill="#fff" stroke="#d65a6c" stroke-width="3" stroke-linejoin="round"/><path d="M150 128l3 50M170 128l-3 50" stroke="#e8798a" stroke-width="6"/></g>`
+        }),
+        w6: wheel({
+            rim: "#e07c8f", fill: "#fdeef1", rung: "#f3b7c2", hub: "#e07c8f", stand: "#c25d71",
+            behind: `<path d="M0 0h46l64 170H70z" fill="#fff1a8" opacity=".75"/><path d="M200 0h-46L90 170h40z" fill="#fff1a8" opacity=".75"/>`,
+            extra: `<g><rect x="18" y="40" width="7" height="12" rx="2" fill="#8fcdf5" transform="rotate(25 21 46)"/><rect x="176" y="56" width="7" height="12" rx="2" fill="#9bd1a8" transform="rotate(-20 179 62)"/><rect x="26" y="124" width="7" height="12" rx="2" fill="#f5c542" transform="rotate(-35 29 130)"/><rect x="170" y="132" width="7" height="12" rx="2" fill="#a38fd0" transform="rotate(30 173 138)"/><circle cx="160" cy="24" r="4" fill="#e8798a"/><circle cx="40" cy="20" r="4" fill="#a38fd0"/></g>`
+        }),
+        e1: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                <ellipse cx="100" cy="186" rx="70" ry="7" fill="rgba(80,40,25,.10)"/>
+                <ellipse cx="100" cy="122" rx="70" ry="12" fill="#e9a2ae"/>
+                <path d="M44 124Q100 50 156 124z" fill="#e9c58f"/>
+                ${seeds}
+                <path d="M30 122h140q-6 56-70 60-64-4-70-60z" fill="#f4a7b4" stroke="#c9707f" stroke-width="4" stroke-linejoin="round"/>
+                <path d="M30 122q70 14 140 0" fill="none" stroke="#c9707f" stroke-width="4"/>
+                <g fill="#fff" opacity=".85"><circle cx="66" cy="150" r="5"/><circle cx="100" cy="158" r="5"/><circle cx="134" cy="150" r="5"/></g>
+            </svg>`,
+        e2: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                <ellipse cx="100" cy="190" rx="40" ry="5" fill="rgba(80,40,25,.10)"/>
+                <rect x="96" y="140" width="8" height="30" rx="4" fill="#aab6c2"/>
+                <rect x="88" y="134" width="24" height="14" rx="5" fill="#c9d3dc"/>
+                <rect x="66" y="28" width="68" height="112" rx="24" fill="#eef8ff" stroke="#7fb3d9" stroke-width="4"/>
+                <path d="M70 76q15-8 30 0t30 0v38q0 22-22 22h-16q-22 0-22-22z" fill="#8fcdf5"/>
+                <g fill="#fff" opacity=".8"><circle cx="88" cy="100" r="4"/><circle cx="110" cy="114" r="3"/><circle cx="100" cy="90" r="2.5"/></g>
+                <path d="M100 98c-5-5-12 1-7 6l7 6 7-6c5-5-2-11-7-6z" fill="#f28da0"/>
+                <rect x="76" y="16" width="48" height="18" rx="7" fill="#f4a7b4" stroke="#c9707f" stroke-width="3"/>
+                <path d="M100 176q-7 9 0 14 7-5 0-14z" fill="#8fcdf5"/>
+                <path d="M80 44v40" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+            </svg>`,
+        e3: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                <ellipse cx="100" cy="182" rx="80" ry="7" fill="rgba(80,40,25,.10)"/>
+                <path d="M24 176Q34 104 100 100q66 4 76 76z" fill="#f5d27a" stroke="#d4a64a" stroke-width="3" stroke-linejoin="round"/>
+                ${strands}
+                <g stroke="#d9ae52" stroke-width="3" stroke-linecap="round" fill="none"><path d="M64 112q-8-12-4-22"/><path d="M136 110q10-10 8-20"/><path d="M100 100q3-14-3-24"/></g>
+                <path d="M100 150c-6-7-16 0-10 8l10 9 10-9c6-8-4-15-10-8z" fill="#f28da0"/>
+            </svg>`
+    };
+ 
+    Object.entries(art).forEach(([id, svg]) => {
+        const product = getProduct(id);
+        if (product) product.image = svgDataUrl(svg);
+    });
+}
+ 
+function initHeroHamster() {
+    const scene = document.getElementById("heroScene");
+    const hamster = document.getElementById("heroHamster");
+    const wheel = scene && scene.querySelector(".hero-wheel");
+    const note = document.querySelector(".note-two");
+    if (!scene || !hamster || !wheel || !note) return;
+ 
+    const originalNote = note.textContent;
+    const notes = ["Pensieri in accelerazione...", "Turbo mentale attivo!", "Troppi pensieri!", "Pensieri in sovraccarico!"];
+    let level = 0;
+    let dizzy = false;
+    let normalImage = "";
+    let dizzyImage = "";
+    let coolDown;
+ 
+    const setSpeed = rate => {
+        [wheel, hamster].forEach(element => {
+            if (element.getAnimations) element.getAnimations().forEach(animation => animation.playbackRate = rate);
+        });
+    };
+ 
+    const reset = () => {
+        level = 0;
+        dizzy = false;
+        if (normalImage) hamster.src = normalImage;
+        hamster.classList.remove("dizzy");
+        note.classList.remove("overload");
+        note.textContent = originalNote;
+        setSpeed(1);
+    };
+ 
+    scene.addEventListener("click", () => {
+        if (dizzy) return;
+        clearTimeout(coolDown);
+        level++;
+ 
+        if (level > notes.length) {
+            dizzy = true;
+            normalImage = normalImage || hamster.src;
+            if (!dizzyImage && window.hamsterImage) dizzyImage = window.hamsterImage({}, { dizzy: true });
+            if (dizzyImage) hamster.src = dizzyImage;
+            hamster.classList.add("dizzy");
+            note.textContent = "Errore 404: cervello non trovato";
+            note.classList.add("overload");
+            setSpeed(0.15);
+            coolDown = setTimeout(reset, 3500);
+            return;
+        }
+ 
+        setSpeed(1 + level * 0.9);
+        note.textContent = notes[level - 1];
+        note.classList.toggle("overload", level === notes.length);
+        coolDown = setTimeout(reset, 4000);
+    });
+}
+ 
 loadCart();
 initHamsterCreator();
+drawProductArt();
 decorateWithHamsters();
+initHeroHamster();
 
 renderProducts();
 updateCartCount();
