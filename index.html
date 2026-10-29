@@ -2022,6 +2022,80 @@ button.hero-scene:focus-visible {
     from { left: -110px; }
     to { left: 100%; }
 }    
+ 
+.creator-tabs {
+    display: flex;
+    gap: 6px;
+    padding: 6px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(80, 53, 35, .06);
+}
+ 
+.creator-tab {
+    flex: 1;
+    padding: 10px 8px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: .92rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background .2s, color .2s;
+}
+ 
+.creator-tab:hover { background: #fff4f6; color: var(--ink); }
+.creator-tab.active { background: #fde4ea; color: #b0485f; }
+.creator-tab:focus-visible { outline: 3px solid #b88765; outline-offset: 2px; }
+ 
+.creator-section[hidden] { display: none; }
+ 
+.creator-controls { scroll-margin-top: calc(var(--header-h, 76px) + 12px); }
+ 
+.creator-next {
+    display: block;
+    margin: 18px 0 0 auto;
+}
+ 
+@media (max-width: 850px) {
+    .creator-controls { scroll-margin-top: calc(var(--header-h, 76px) + 170px); }
+}
+ 
+@media (min-width: 851px) {
+    .creator-tabs {
+        position: sticky;
+        top: calc(var(--header-h, 76px) + 12px);
+        z-index: 5;
+    }
+}
+ 
+.creator-preview-icon {
+    width: 72px;
+    height: 60px;
+    overflow: hidden;
+    background: #fff7f0;
+}
+ 
+.creator-preview-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+ 
+.creator-stage.pop { animation: stagePop .35s ease; }
+ 
+@keyframes stagePop {
+    40% { transform: scale(.97); }
+    100% { transform: scale(1); }
+}
+ 
+@media (max-width: 520px) {
+    .creator-tab { padding: 9px 4px; font-size: .8rem; }
+    .creator-preview-icon { width: 62px; height: 52px; }
+}    
 </style>   
 </head>
 
@@ -2552,8 +2626,7 @@ button.hero-scene:focus-visible {
         <div class="creator-heading">
             <span class="tiny-label">Il tuo roditore, le tue regole</span>
             <h1>Crea il tuo criceto</h1>
-            <p>Scegli il pelo, gli occhi, i baffi e gli accessori: uno per la testa,
-               uno per il viso e uno per il collo. Qui non esistono combinazioni sbagliate.</p>
+            <p>Pelo, motivo, espressione, accessori, cosa tiene in mano e perfino lo sfondo. Un accessorio per la testa, uno per il viso e uno per il collo: qui non esistono combinazioni sbagliate.</p>
         </div>
 
         <div class="creator-layout">
@@ -2567,6 +2640,8 @@ button.hero-scene:focus-visible {
                          role="img"
                          aria-label="Anteprima del tuo criceto">
 
+                        <g id="hamsterBackground"></g>
+
                         <!-- Ombra -->
                         <ellipse cx="160" cy="284" rx="92" ry="12"
                                  fill="#302a28" opacity=".09"/>
@@ -2575,7 +2650,6 @@ button.hero-scene:focus-visible {
                         <circle id="hamsterTail" cx="246" cy="252" r="10"
                                 fill="#D7B08A" stroke="#A77C5B"
                                 stroke-width="3"/>
-
 
                         <!-- Orecchie -->
                         <g id="hamsterEars">
@@ -2607,6 +2681,10 @@ button.hero-scene:focus-visible {
                                      cx="160" cy="236" rx="60" ry="40"
                                      fill="#F8E6D0"/>
                         </g>
+                        
+                        <!-- Motivo del pelo -->
+                        <g id="hamsterPattern" clip-path="url(#hamsterBodyClip)"></g>
+                        
                         <!-- Ciuffetto -->
                         <path id="hamsterHead"
                               d="M148 80 Q149 66 158 73 Q163 61 172 78 Q160 83 148 80 Z"
@@ -2666,12 +2744,7 @@ button.hero-scene:focus-visible {
                             <path d="M153 162 Q160 158 167 162 Q164 170 160 170 Q156 170 153 162 Z"
                                   fill="#E68A93" stroke="#C46E78"
                                   stroke-width="1.5" stroke-linejoin="round"/>
-                            <path d="M160 170 V174
-                                     M160 174 Q155 180 150 175
-                                     M160 174 Q165 180 170 175"                            
-                                  fill="none" stroke="#79554C"
-                                  stroke-width="2.2"
-                                  stroke-linecap="round"/>
+                            <g id="hamsterMouth"></g>
                         </g>
 
                         <!-- Baffi: tutte le varianti partono da qui -->
@@ -2741,6 +2814,21 @@ button.hero-scene:focus-visible {
                                   stroke-linecap="round"/>
                             <circle cx="160" cy="242" r="2" fill="#8A6424"/>
                             <circle cx="156" cy="232" r="2.2" fill="#FFF6D8"/>
+                        </g>
+                        
+                        <!-- COLLO: papillon -->
+                        <g id="accessoryBowtie" style="display:none">
+                            <path d="M160 202 L124 186 Q116 202 124 218 Z" fill="#7FB3E8" stroke="#4E83BA" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M160 202 L196 186 Q204 202 196 218 Z" fill="#7FB3E8" stroke="#4E83BA" stroke-width="3" stroke-linejoin="round"/>
+                            <g fill="#FFFFFF" opacity=".85"><circle cx="132" cy="196" r="2.6"/><circle cx="134" cy="209" r="2.6"/><circle cx="188" cy="196" r="2.6"/><circle cx="186" cy="209" r="2.6"/></g>
+                            <rect x="151" y="193" width="18" height="18" rx="6" fill="#5E95CF" stroke="#4E83BA" stroke-width="3"/>
+                        </g>
+ 
+                        <!-- COLLO: collana di perle -->
+                        <g id="accessoryPearls" style="display:none">
+                            <g fill="#FFF8F0" stroke="#D8C3B8" stroke-width="1.6"><circle cx="102.0" cy="190.0" r="5.5"/><circle cx="111.7" cy="196.1" r="5.5"/><circle cx="121.3" cy="201.1" r="5.5"/><circle cx="131.0" cy="205.0" r="5.5"/><circle cx="140.7" cy="207.8" r="5.5"/><circle cx="150.3" cy="209.4" r="5.5"/><circle cx="160.0" cy="210.0" r="5.5"/><circle cx="169.7" cy="209.4" r="5.5"/><circle cx="179.3" cy="207.8" r="5.5"/><circle cx="189.0" cy="205.0" r="5.5"/><circle cx="198.7" cy="201.1" r="5.5"/><circle cx="208.3" cy="196.1" r="5.5"/><circle cx="218.0" cy="190.0" r="5.5"/></g>
+                            <g fill="#FFFFFF"><circle cx="100.2" cy="188.2" r="1.6"/><circle cx="109.9" cy="194.3" r="1.6"/><circle cx="119.5" cy="199.3" r="1.6"/><circle cx="129.2" cy="203.2" r="1.6"/><circle cx="138.9" cy="206.0" r="1.6"/><circle cx="148.5" cy="207.6" r="1.6"/><circle cx="158.2" cy="208.2" r="1.6"/><circle cx="167.9" cy="207.6" r="1.6"/><circle cx="177.5" cy="206.0" r="1.6"/><circle cx="187.2" cy="203.2" r="1.6"/><circle cx="196.9" cy="199.3" r="1.6"/><circle cx="206.5" cy="194.3" r="1.6"/><circle cx="216.2" cy="188.2" r="1.6"/></g>
+                            <path transform="translate(160 236) scale(.42)" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z" fill="#F28DA0" stroke="#D9506F" stroke-width="3"/>
                         </g>
                         
                         <!-- Semino tra le zampe -->
@@ -2932,6 +3020,50 @@ button.hero-scene:focus-visible {
                                   fill="#FFFFFF"/>
                         </g>
 
+                        <!-- VISO: occhiali da sole -->
+                        <g id="accessorySunglasses" style="display:none">
+                            <path d="M100 146 L82 140 M220 146 L238 140" stroke="#2F2A33" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M146 146 Q160 138 174 146" fill="none" stroke="#2F2A33" stroke-width="4.5" stroke-linecap="round"/>
+                            <rect x="98" y="132" width="50" height="34" rx="15" fill="#2F2A33"/>
+                            <rect x="172" y="132" width="50" height="34" rx="15" fill="#2F2A33"/>
+                            <g stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity=".55"><path d="M108 144 L118 138"/><path d="M182 144 L192 138"/></g>
+                        </g>
+ 
+                        <!-- VISO: occhialini a stella -->
+                        <g id="accessoryStarGlasses" style="display:none">
+                            <path d="M145 148 Q160 140 175 148" fill="none" stroke="#E0A325" stroke-width="3.5" stroke-linecap="round"/>
+                            <g fill="#FFD66B" fill-opacity=".5" stroke="#E0A325" stroke-width="3" stroke-linejoin="round">
+                                <polygon points="124.0,126.0 131.1,141.3 147.8,143.3 135.4,154.7 138.7,171.2 124.0,163.0 109.3,171.2 112.6,154.7 100.2,143.3 116.9,141.3"/>
+                                <polygon points="196.0,126.0 203.1,141.3 219.8,143.3 207.4,154.7 210.7,171.2 196.0,163.0 181.3,171.2 184.6,154.7 172.2,143.3 188.9,141.3"/>
+                            </g>
+                        </g>
+ 
+                        <!-- TESTA: tocco da laureato -->
+                        <g id="accessoryGradCap" style="display:none">
+                            <path d="M116 64 V86 Q160 102 204 86 V64" fill="#4A4250" stroke="#24202A" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M160 36 L234 60 L160 84 L86 60 Z" fill="#3B3440" stroke="#24202A" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M160 60 L224 74 V104" fill="none" stroke="#F5C542" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M218 102 h12 l-2 14 h-8 z" fill="#F5C542"/>
+                            <circle cx="160" cy="60" r="4.5" fill="#F5C542"/>
+                        </g>
+ 
+                        <!-- TESTA: aureola -->
+                        <g id="accessoryHalo" style="display:none">
+                            <ellipse cx="160" cy="46" rx="48" ry="13" fill="none" stroke="#E9B83C" stroke-width="9"/>
+                            <ellipse cx="160" cy="46" rx="48" ry="13" fill="none" stroke="#FFE69A" stroke-width="3.5"/>
+                            <path d="M222 26 Q222 34 230 34 Q222 34 222 42 Q222 34 214 34 Q222 34 222 26Z" fill="#FFD66B"/>
+                            <path d="M98 30 Q98 36 104 36 Q98 36 98 42 Q98 36 92 36 Q98 36 98 30Z" fill="#FFD66B"/>
+                        </g>
+ 
+                        <!-- TESTA: orecchie da coniglio -->
+                        <g id="accessoryBunnyEars" style="display:none">
+                            <path d="M128 86 C108 44 110 8 127 8 C143 8 148 46 142 86 Z" fill="#FFFFFF" stroke="#D9C2CC" stroke-width="3"/>
+                            <path d="M131 76 C120 48 121 22 128 21 C136 21 138 50 136 76 Z" fill="#F9BFCF"/>
+                            <path d="M192 86 C212 44 210 8 193 8 C177 8 172 46 178 86 Z" fill="#FFFFFF" stroke="#D9C2CC" stroke-width="3"/>
+                            <path d="M189 76 C200 48 199 22 192 21 C184 21 182 50 184 76 Z" fill="#F9BFCF"/>
+                            <path d="M98 100 Q160 62 222 100" fill="none" stroke="#F7A1BC" stroke-width="9" stroke-linecap="round"/>
+                        </g>
+                        
                     </svg>
                 </div>
 
@@ -2949,9 +3081,15 @@ button.hero-scene:focus-visible {
             </aside>
 
             <div class="creator-controls">
-
-                <section class="creator-section">
-                    <h2>1. Scegli il pelo</h2>
+                <div class="creator-tabs" role="tablist" aria-label="Categorie del creatore">
+                    <button type="button" class="creator-tab active" data-tab="pelo" role="tab" aria-selected="true">Pelo</button>
+                    <button type="button" class="creator-tab" data-tab="viso" role="tab" aria-selected="false">Viso</button>
+                    <button type="button" class="creator-tab" data-tab="accessori" role="tab" aria-selected="false">Accessori</button>
+                    <button type="button" class="creator-tab" data-tab="scena" role="tab" aria-selected="false">Scena</button>
+                </div>
+                
+                <section class="creator-section" data-tab="pelo">
+                    <h2>Scegli il pelo</h2>
                     <p>Seleziona il colore che gli sta meglio.</p>
                     <div class="creator-options" id="furOptions">
                         <button type="button" class="creator-option selected"
@@ -3008,8 +3146,8 @@ button.hero-scene:focus-visible {
                     </div>
                 </section>
                 
-                <section class="creator-section">
-                    <h2>2. Il pelo interno</h2>
+                <section class="creator-section" data-tab="pelo">
+                    <h2>Il pelo interno</h2>
                     <p>Scegli a parte il colore del pancino e delle guance.</p>
                     <div class="creator-options" id="innerFurOptions">
                         <button type="button" class="creator-option selected" data-group="innerFur" data-value="cream" aria-pressed="true"><span class="creator-swatch" style="background:#E8D1B5"></span>Crema</button>
@@ -3023,107 +3161,236 @@ button.hero-scene:focus-visible {
                     </div>
                 </section>
 
-                <section class="creator-section">
-                    <h2>3. Gli occhi</h2>
+                <section class="creator-section" data-tab="pelo">
+                    <h2>Motivo del pelo</h2>
+                    <p>Macchie, strisce o un look da piccolo bandito.</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option selected"
+                                data-group="pattern" data-value="none"
+                                aria-pressed="true">
+                            <span class="creator-preview-icon"></span>
+                            Tinta unita
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="pattern" data-value="spots"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Macchie
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="pattern" data-value="stripe"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Striscia
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="pattern" data-value="mask"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Mascherina
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="pattern" data-value="patch"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Toppa
+                        </button>
+                    </div>
+                </section>
+ 
+                <section class="creator-section" data-tab="viso">
+                    <h2>Gli occhi</h2>
                     <p>Un'espressione diversa cambia tutto.</p>
                     <div class="creator-options">
                        <button type="button" class="creator-option selected"
                            data-group="eyes" data-value="big"
                            aria-pressed="true">
-                           <span class="creator-preview-icon">🐹</span>
+                           <span class="creator-preview-icon"></span>
                            Occhi grandi
                        </button>
                         <button type="button" class="creator-option"
                             data-group="eyes" data-value="small"
-                            aria-pressed="false"><span class="creator-preview-icon">🐭</span>
+                            aria-pressed="false"><span class="creator-preview-icon"></span>
                             Occhi piccoli
                         </button>
                     </div>
                 </section>
 
-                <section class="creator-section">
-                    <h2>4. I baffi</h2>
+                <section class="creator-section" data-tab="viso">
+                    <h2>Espressione</h2>
+                    <p>Che faccia fa quando pensa al lunedì?</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option selected"
+                                data-group="mouth" data-value="smile"
+                                aria-pressed="true">
+                            <span class="creator-preview-icon"></span>
+                            Sorrisino
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="mouth" data-value="grin"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Sorrisone
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="mouth" data-value="surprised"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Sorpreso
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="mouth" data-value="tongue"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Linguaccia
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="mouth" data-value="smug"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Furbetto
+                        </button>
+                    </div>
+                </section>
+ 
+                <section class="creator-section" data-tab="viso">
+                    <h2>Guance</h2>
+                    <p>Un tocco di colore per le guanciotte.</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option selected"
+                                data-group="cheeks" data-value="pink"
+                                aria-pressed="true">
+                            <span class="creator-preview-icon"></span>
+                            Rosa
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="cheeks" data-value="peach"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Pesca
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="cheeks" data-value="lilac"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Lilla
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="cheeks" data-value="hearts"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Cuoricini
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="cheeks" data-value="none"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Niente
+                        </button>
+                    </div>
+                </section>
+ 
+                <section class="creator-section" data-tab="viso">
+                    <h2>I baffi</h2>
                     <p>Scegli il suo stile da roditore.</p>
                     <div class="creator-options">
                         <button type="button" class="creator-option selected"
                                 data-group="whiskers" data-value="soft"
                                 aria-pressed="true">
-                            <span class="creator-preview-icon">〰️</span>
+                            <span class="creator-preview-icon"></span>
                             Lisci
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="whiskers" data-value="curly"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">➰</span>
+                            <span class="creator-preview-icon"></span>
                             Ricci
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="whiskers" data-value="bold"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">〽️</span>
+                            <span class="creator-preview-icon"></span>
                             Lunghi
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="whiskers" data-value="short"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">〰</span>
+                            <span class="creator-preview-icon"></span>
                             Mini
                         </button>
                     </div>
                 </section>
 
-                <section class="creator-section">
-                    <h2>5. Gli accessori</h2>
+                <section class="creator-section" data-tab="accessori">
+                    <h2>Gli accessori</h2>
                     <p>Uno per la testa, uno per il viso e uno per il collo: combinali come vuoi!</p>
                     <h3 class="creator-subtitle">Testa</h3>
                     <div class="creator-options">
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="bow"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">🎀</span>
+                            <span class="creator-preview-icon"></span>
                             Fiocco
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="hat"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">🧶</span>
+                            <span class="creator-preview-icon"></span>
                             Berretto
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="flower"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">🌼</span>
+                            <span class="creator-preview-icon"></span>
                             Margherita
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="crown"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">👑</span>
+                            <span class="creator-preview-icon"></span>
                             Coroncina
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="partyHat"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">🥳</span>
+                            <span class="creator-preview-icon"></span>
                             Cappellino da festa
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="strawberryHat"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">🍓</span>
+                            <span class="creator-preview-icon"></span>
                             Cappello fragola
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="witchHat"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">🧙</span>
+                            <span class="creator-preview-icon"></span>
                             Cappello da streghetta
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="headphones"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">🎧</span>
+                            <span class="creator-preview-icon"></span>
                             Cuffiette
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="gradCap"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Tocco da laureato
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="halo"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Aureola
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="bunnyEars"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Orecchie da coniglio
                         </button>
                     </div>
                     <h3 class="creator-subtitle">Viso</h3>
@@ -3131,36 +3398,146 @@ button.hero-scene:focus-visible {
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="glasses"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">👓</span>
+                            <span class="creator-preview-icon"></span>
                             Occhiali tondi
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="heartGlasses"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">💖</span>
+                            <span class="creator-preview-icon"></span>
                             Occhiali a cuore
                         </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="sunglasses"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Occhiali da sole
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="starGlasses"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Occhialini a stella
+                        </button>                        
                     </div>
                     <h3 class="creator-subtitle">Collo</h3>
                     <div class="creator-options">
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="bandana"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">🔻</span>
+                            <span class="creator-preview-icon"></span>
                             Bandana a pois
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="scarf"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">🧣</span>
+                            <span class="creator-preview-icon"></span>
                             Sciarpa
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="collar"
                                 aria-pressed="false">
-                            <span class="creator-preview-icon">🔔</span>
+                            <span class="creator-preview-icon"></span>
                             Collarino
                         </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="bowtie"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Papillon
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="pearls"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Collana di perle
+                        </button>
+                    </div>
+                </section>
+ 
+                <section class="creator-section" data-tab="scena">
+                    <h2>In mano</h2>
+                    <p>Cosa stringe tra le zampette? Alcune cose costano un pochino di più.</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option selected"
+                                data-group="held" data-value="seed"
+                                aria-pressed="true">
+                            <span class="creator-preview-icon"></span>
+                            Semino
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="held" data-value="strawberry"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Fragola
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="held" data-value="heart"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Cuore
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="held" data-value="coffee"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Caffè
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="held" data-value="book"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Libro
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="held" data-value="none"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Niente
+                        </button>
+                    </div>
+                </section>
+ 
+                <section class="creator-section" data-tab="scena">
+                    <h2>Sfondo</h2>
+                    <p>Dove vive il tuo criceto? Lo sfondo finisce anche nella foto scaricata.</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option selected"
+                                data-group="background" data-value="none"
+                                aria-pressed="true">
+                            <span class="creator-preview-icon"></span>
+                            Nessuno
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="background" data-value="hearts"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Cuori
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="background" data-value="night"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Notte stellata
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="background" data-value="meadow"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Prato
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="background" data-value="rainbow"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Arcobaleno
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="background" data-value="party"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Festa
+                        </button>                        
                     </div>
                 </section>
 
@@ -4165,7 +4542,12 @@ function initHamsterCreator() {
         innerFur: "cream",
         eyes: "big",
         whiskers: "soft",
-        accessories: []
+        accessories: [],
+        pattern: "none",
+        mouth: "smile",
+        cheeks: "pink",
+        held: "seed",
+        background: "none"
     };
 
     const furColors = {
@@ -4232,14 +4614,21 @@ function initHamsterCreator() {
         headphones: "accessoryHeadphones",
         bandana: "accessoryBandana",
         scarf: "accessoryScarf",
-        collar: "accessoryCollar"
+        collar: "accessoryCollar",
+        gradCap: "accessoryGradCap",
+        halo: "accessoryHalo",
+        bunnyEars: "accessoryBunnyEars",
+        sunglasses: "accessorySunglasses",
+        starGlasses: "accessoryStarGlasses",
+        bowtie: "accessoryBowtie",
+        pearls: "accessoryPearls"
     };
 
     // Un solo accessorio per zona: testa, viso e collo.
     const accessoryZones = {
-        head: ["bow", "hat", "flower", "crown", "partyHat", "strawberryHat", "witchHat", "headphones"],
-        face: ["glasses", "heartGlasses"],
-        neck: ["bandana", "scarf", "collar"]
+        head: ["bow", "hat", "flower", "crown", "partyHat", "strawberryHat", "witchHat", "headphones", "gradCap", "halo", "bunnyEars"],
+        face: ["glasses", "heartGlasses", "sunglasses", "starGlasses"],
+        neck: ["bandana", "scarf", "collar", "bowtie", "pearls"]
     };
  
     const zoneOf = key => Object.keys(accessoryZones).find(
@@ -4253,7 +4642,95 @@ function initHamsterCreator() {
         });
         return Object.values(picked);
     }
-    
+
+    // Parti del look disegnate al volo: motivo, bocca, guance, oggetto in mano e sfondo.
+    const heartShape = (x, y, size, fill, extra = "") =>
+        `<path transform="translate(${x} ${y}) scale(${size})" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z" fill="${fill}" ${extra}/>`;
+    const sparkle = (x, y, r, fill) =>
+        `<path d="M${x} ${y - r} Q${x} ${y} ${x + r} ${y} Q${x} ${y} ${x} ${y + r} Q${x} ${y} ${x - r} ${y} Q${x} ${y} ${x} ${y - r}Z" fill="${fill}"/>`;
+    const backdrop = (fill, inner) =>
+        `<defs><clipPath id="hamsterBgClip"><rect width="320" height="320" rx="40"/></clipPath></defs><g clip-path="url(#hamsterBgClip)"><rect width="320" height="320" fill="${fill}"/>${inner}</g>`;
+    const mouthLine = `fill="none" stroke="#79554C" stroke-width="2.2" stroke-linecap="round"`;
+    const smileMouth = `<path d="M160 170 V174 M160 174 Q155 180 150 175 M160 174 Q165 180 170 175" ${mouthLine}/>`;
+    const blush = (fill, opacity = ".75") =>
+        `<ellipse cx="100" cy="172" rx="14" ry="8.5" fill="${fill}" opacity="${opacity}"/><ellipse cx="220" cy="172" rx="14" ry="8.5" fill="${fill}" opacity="${opacity}"/>`;
+    const flower = (x, y, petal) =>
+        `<g fill="${petal}"><circle cx="${x - 5}" cy="${y}" r="4.5"/><circle cx="${x + 5}" cy="${y}" r="4.5"/><circle cx="${x}" cy="${y - 5}" r="4.5"/><circle cx="${x}" cy="${y + 5}" r="4.5"/></g><circle cx="${x}" cy="${y}" r="3.5" fill="#FFD66B"/>`;
+    const confettiColors = ["#F28DA0", "#8FCDF5", "#FFD66B", "#9BD1A8", "#C7B2EE"];
+ 
+    const lookParts = {
+        pattern: {
+            none: () => "",
+            spots: c => `<g fill="${c.dark}" opacity=".45"><circle cx="98" cy="118" r="13"/><circle cx="226" cy="112" r="10"/><circle cx="82" cy="214" r="15"/><circle cx="240" cy="206" r="12"/><circle cx="198" cy="92" r="7"/><circle cx="110" cy="252" r="9"/></g>`,
+            stripe: c => `<path d="M144 70 Q160 64 176 70 L168 134 Q160 142 152 134 Z" fill="${c.dark}" opacity=".45"/>`,
+            mask: c => `<g fill="${c.dark}" opacity=".5"><ellipse cx="122" cy="150" rx="26" ry="21"/><ellipse cx="198" cy="150" rx="26" ry="21"/></g>`,
+            patch: c => `<ellipse cx="204" cy="140" rx="44" ry="36" fill="${c.dark}" opacity=".45"/>`
+        },
+        mouth: {
+            smile: smileMouth,
+            grin: `<path d="M160 170 V173" ${mouthLine}/><path d="M147 174 Q160 176 173 174 Q171 191 160 191 Q149 191 147 174 Z" fill="#8A4B4B" stroke="#79554C" stroke-width="2" stroke-linejoin="round"/><path d="M152 185 Q160 179 168 185 Q165 191 160 191 Q155 191 152 185 Z" fill="#F08C9A"/>`,
+            surprised: `<path d="M160 170 V173" ${mouthLine}/><ellipse cx="160" cy="181" rx="5" ry="6.5" fill="#8A4B4B" stroke="#79554C" stroke-width="2"/>`,
+            tongue: `<path d="M155 175 Q155 188 160 188 Q165 188 165 175 Z" fill="#F08C9A" stroke="#C46E78" stroke-width="1.5"/>${smileMouth}`,
+            smug: `<path d="M160 170 V173" ${mouthLine}/><path d="M149 177 Q158 181 171 172" ${mouthLine}/>`
+        },
+        cheeks: {
+            pink: blush("#EFA5A8"),
+            peach: blush("#F7B58A", ".85"),
+            lilac: blush("#C9A7E8", ".85"),
+            hearts: heartShape(100, 175, .62, "#F28DA0") + heartShape(220, 175, .62, "#F28DA0"),
+            none: ""
+        },
+        held: {
+            seed: `<path d="M160 190 Q172 202 167 216 Q160 223 153 216 Q148 202 160 190 Z" fill="#5B4A44" stroke="#3C302C" stroke-width="2"/><path d="M160 195 V214" stroke="#EDE3D6" stroke-width="2.5" stroke-linecap="round"/>`,
+            strawberry: `<path d="M160 223 C145 215 143 197 150 193 C155 190 165 190 170 193 C177 197 175 215 160 223 Z" fill="#F0606F" stroke="#C2434F" stroke-width="2"/><g fill="#FFE7A0"><circle cx="154" cy="201" r="1.4"/><circle cx="165" cy="200" r="1.4"/><circle cx="160" cy="208" r="1.4"/><circle cx="153" cy="211" r="1.4"/><circle cx="167" cy="210" r="1.4"/></g><path d="M149 194 L155 186 L160 192 L165 186 L171 194 Q160 198 149 194 Z" fill="#7CC36E" stroke="#4F9447" stroke-width="1.5" stroke-linejoin="round"/>`,
+            heart: heartShape(160, 208, 1.1, "#FF7FA3", 'stroke="#D9506F" stroke-width="2"') + `<circle cx="152" cy="197" r="2.6" fill="#FFFFFF" opacity=".8"/>`,
+            coffee: `<path d="M147 195 H173 L170 220 Q160 224 150 220 Z" fill="#FFFFFF" stroke="#8B6A5A" stroke-width="2.2" stroke-linejoin="round"/><path d="M149 206 H171" stroke="#C98B5E" stroke-width="6"/><rect x="145" y="190" width="30" height="7" rx="3.5" fill="#F4A7B4" stroke="#C9707F" stroke-width="1.8"/>`,
+            book: `<g transform="rotate(-8 160 206)"><rect x="143" y="190" width="34" height="31" rx="3" fill="#8FB8E8" stroke="#5B82B5" stroke-width="2.2"/><path d="M150 190 V221" stroke="#5B82B5" stroke-width="2"/><rect x="155" y="197" width="16" height="5" rx="1.5" fill="#FFFFFF"/></g>`,
+            none: ""
+        },
+        background: {
+            none: () => "",
+            hearts: () => backdrop("#FFE4EC", [[40, 52, 1.2], [272, 44, 1], [34, 252, 1], [284, 232, 1.3], [160, 30, .7], [64, 150, .8], [262, 140, .8]]
+                .map(([x, y, size]) => heartShape(x, y, size, "#FFC1D3")).join("")),
+            night: () => backdrop("#36406E", `<circle cx="262" cy="56" r="24" fill="#FFF2B8"/><circle cx="274" cy="47" r="22" fill="#36406E"/>` +
+                [[40, 40, 7], [92, 70, 4], [200, 28, 5], [46, 142, 4], [282, 140, 6], [28, 232, 5], [292, 250, 4], [150, 22, 3]]
+                    .map(([x, y, r]) => sparkle(x, y, r, "#FFF6CF")).join("") +
+                `<path d="M0 292 Q160 270 320 292 V320 H0 Z" fill="#2B3459"/>`),
+            meadow: () => backdrop("#DDF1FF", `<circle cx="56" cy="56" r="26" fill="#FFE27A"/><g fill="#FFFFFF"><circle cx="242" cy="62" r="16"/><circle cx="264" cy="54" r="20"/><circle cx="286" cy="64" r="14"/></g><path d="M0 236 Q90 206 170 224 T320 214 V320 H0 Z" fill="#A8D98F"/>` +
+                flower(30, 270, "#FFFFFF") + flower(62, 300, "#F7B9C6") + flower(262, 296, "#FFFFFF") + flower(296, 264, "#C7B2EE")),
+            rainbow: () => backdrop("#FFF6EC", ["#F7A1B5", "#FFC98B", "#FFF09A", "#A9E2B1", "#A8CFF5", "#C7B2EE"]
+                .map((color, i) => `<path d="M${30 + i * 12} 250 A${130 - i * 12} ${130 - i * 12} 0 0 1 ${290 - i * 12} 250" fill="none" stroke="${color}" stroke-width="12"/>`).join("") +
+                `<g fill="#FFFFFF"><circle cx="30" cy="252" r="18"/><circle cx="54" cy="258" r="16"/><circle cx="12" cy="262" r="12"/><circle cx="290" cy="252" r="18"/><circle cx="266" cy="258" r="16"/><circle cx="308" cy="262" r="12"/></g>`),
+            party: () => backdrop("#F3E8FF", Array.from({ length: 22 }, (_, i) => {
+                const x = (i * 67) % 300 + 10;
+                const y = (i * 41) % 300 + 10;
+                return `<rect x="${x}" y="${y}" width="8" height="14" rx="2.5" fill="${confettiColors[i % confettiColors.length]}" transform="rotate(${(i * 37) % 180} ${x + 4} ${y + 7})"/>`;
+            }).join("") + `<path d="M0 30 Q40 60 80 28 T160 30" fill="none" stroke="#F28DA0" stroke-width="4" stroke-linecap="round"/><path d="M180 24 Q230 56 270 26 T330 30" fill="none" stroke="#8FCDF5" stroke-width="4" stroke-linecap="round"/>`)
+        }
+    };
+ 
+    const lookDefaults = { pattern: "none", mouth: "smile", cheeks: "pink", held: "seed", background: "none" };
+    const lookOptions = Object.fromEntries(
+        Object.entries(lookParts).map(([key, parts]) => [key, Object.keys(parts)])
+    );
+    const lookTargets = {
+        pattern: "hamsterPattern",
+        mouth: "hamsterMouth",
+        cheeks: "hamsterCheeks",
+        held: "hamsterSeed",
+        background: "hamsterBackground"
+    };
+    const shareKeys = { pattern: "motivo", mouth: "bocca", cheeks: "guance", held: "mano", background: "sfondo" };
+ 
+    function updateLook() {
+        const colors = furColors[state.fur] || furColors.cream;
+        Object.entries(lookTargets).forEach(([key, id]) => {
+            const element = document.getElementById(id);
+            const part = lookParts[key][state[key]];
+            if (element) element.innerHTML = typeof part === "function" ? part(colors) : part;
+        });
+    }
+     
     function setFill(id, color) {
         const element = document.getElementById(id);
         if (element) element.setAttribute("fill", color);
@@ -4413,6 +4890,7 @@ function updateEyes() {
         updateEyes();
         updateWhiskers();
         updateAccessories();
+        updateLook();
         updateSelectedCards();
         updatePrice();
     }
@@ -4424,7 +4902,8 @@ function updateEyes() {
             innerFur: state.innerFur,
             eyes: state.eyes,
             whiskers: state.whiskers,
-            accessories: [...state.accessories]
+            accessories: [...state.accessories],
+            ...Object.fromEntries(Object.keys(lookDefaults).map(key => [key, state[key]]))
         };
     }
 
@@ -4451,6 +4930,10 @@ function updateEyes() {
             ? onePerZone(settings.accessories)
             : [];
 
+                Object.keys(lookDefaults).forEach(key => {
+            state[key] = lookOptions[key].includes(settings[key]) ? settings[key] : lookDefaults[key];
+        });
+
         if (typeof settings.name === "string") {
             nameInput.value = settings.name.slice(0, 24);
         }
@@ -4463,8 +4946,13 @@ function updateEyes() {
         bow: 1, hat: 1.5, flower: 0.5, crown: 3, partyHat: 1.5,
         strawberryHat: 2, witchHat: 1.5, headphones: 2.5,
         glasses: 1, heartGlasses: 1.5,
-        bandana: 1, scarf: 1.5, collar: 1
+        bandana: 1, scarf: 1.5, collar: 1,
+        gradCap: 2.5, halo: 2, bunnyEars: 1.5,
+        sunglasses: 2, starGlasses: 1.5,
+        bowtie: 1, pearls: 3
     };
+    const heldPrices = { seed: 0, strawberry: 1, heart: 1.5, coffee: 2, book: 1.5, none: 0 };
+    const heldNames = {};
     const GALLERY_KEY = "cricetiCerebraliGallery";
     const GALLERY_LIMIT = 12;
     const adoptButton = document.getElementById("hamsterAdopt");
@@ -4487,7 +4975,24 @@ function updateEyes() {
         price.textContent = `+${euro(accessoryPrices[key] || 0)}`;
         button.append(price);
     });
+
+    document.querySelectorAll(
+        '#crea-criceto .creator-option[data-group="held"]'
+    ).forEach(button => {
+        const key = button.dataset.value;
+        heldNames[key] = [...button.childNodes]
+            .filter(node => node.nodeType === Node.TEXT_NODE)
+            .map(node => node.textContent)
+            .join("")
+            .trim();
  
+        if (key === "none") return;
+        const price = document.createElement("small");
+        price.className = "creator-price";
+        price.textContent = heldPrices[key] ? `+${euro(heldPrices[key])}` : "incluso";
+        button.append(price);
+    });
+     
     function priceLines(settings) {
         const accessories = onePerZone(
             Array.isArray(settings.accessories) ? settings.accessories : []
@@ -4495,7 +5000,8 @@ function updateEyes() {
  
         return [
             ["Criceto base", BASE_PRICE],
-            ...accessories.map(key => [accessoryNames[key] || key, accessoryPrices[key] || 0])
+            ...accessories.map(key => [accessoryNames[key] || key, accessoryPrices[key] || 0]),
+            ...(heldPrices[settings.held] ? [[heldNames[settings.held] || settings.held, heldPrices[settings.held]]] : [])
         ];
     }
  
@@ -4538,6 +5044,7 @@ function updateEyes() {
         const snapshot = avatar.cloneNode(true);
         snapshot.removeAttribute("class");
         snapshot.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        if (extras.viewBox) snapshot.setAttribute("viewBox", extras.viewBox);
  
         if (extras.sleeping || extras.dizzy) {
             ["hamsterEyeL", "hamsterEyeR", "hamsterEyeShineL", "hamsterEyeShineR"].forEach(id => {
@@ -4668,7 +5175,10 @@ function updateEyes() {
         if (settings.accessories.length) {
             params.set("accessori", settings.accessories.join(","));
         }
- 
+        Object.entries(shareKeys).forEach(([key, param]) => {
+            if (settings[key] && settings[key] !== lookDefaults[key]) params.set(param, settings[key]);
+        });
+        
         return `${location.href.split("#")[0]}#crea-criceto?${params}`;
     }
  
@@ -4684,7 +5194,8 @@ function updateEyes() {
             innerFur: params.get("interno"),
             eyes: params.get("occhi"),
             whiskers: params.get("baffi"),
-            accessories: (params.get("accessori") || "").split(",").filter(Boolean)
+            accessories: (params.get("accessori") || "").split(",").filter(Boolean),
+            ...Object.fromEntries(Object.entries(shareKeys).map(([key, param]) => [key, params.get(param)]))
         });
  
         status.textContent = `Ti hanno mandato ${nameInput.value}! Salvalo o adottalo.`;
@@ -4727,9 +5238,17 @@ function updateEyes() {
                 state.eyes = value;
             } else if (group === "whiskers") {
                 state.whiskers = value;
+            } else if (lookOptions[group]) {
+                state[group] = value;
             }
 
             updateAvatar();
+            const stage = avatar.closest(".creator-stage");
+            if (stage) {
+                stage.classList.remove("pop");
+                void stage.offsetWidth;
+                stage.classList.add("pop");
+            }            
             status.textContent = "Il tuo criceto sta prendendo forma!";
         });
     });
@@ -4874,6 +5393,68 @@ function updateEyes() {
     applySharedFromHash();
     renderGallery();
  
+    // Anteprime delle opzioni disegnate con il criceto vero.
+    const crops = {
+        face: "78 104 164 104",
+        head: "40 0 240 200",
+        faceAccessory: "70 96 180 112",
+        neck: "60 150 200 140",
+        body: "30 40 260 260",
+        full: "0 0 320 320"
+    };
+    const cropFor = (group, value) => {
+        if (group === "accessory") {
+            const zone = zoneOf(value);
+            return zone === "head" ? crops.head : zone === "face" ? crops.faceAccessory : crops.neck;
+        }
+        return {
+            eyes: crops.face, mouth: crops.face, cheeks: crops.face, whiskers: crops.face,
+            held: crops.neck, pattern: crops.body, background: crops.full
+        }[group] || crops.full;
+    };
+    document.querySelectorAll("#crea-criceto .creator-option").forEach(button => {
+        const icon = button.querySelector(".creator-preview-icon");
+        if (!icon) return;
+        const { group, value } = button.dataset;
+        const look = group === "accessory" ? { accessories: [value] } : { [group]: value };
+        const image = document.createElement("img");
+        image.alt = "";
+        image.src = window.hamsterImage(look, { viewBox: cropFor(group, value) });
+        icon.replaceChildren(image);
+    });
+ 
+    // Schede: Pelo, Viso, Accessori, Scena.
+    const tabs = document.querySelectorAll("#crea-criceto .creator-tab");
+    const showTab = name => {
+        tabs.forEach(tab => {
+            const active = tab.dataset.tab === name;
+            tab.classList.toggle("active", active);
+            tab.setAttribute("aria-selected", String(active));
+        });
+        document.querySelectorAll("#crea-criceto .creator-section[data-tab]").forEach(section => {
+            section.hidden = section.dataset.tab !== name;
+        });
+    };
+    const controls = document.querySelector("#crea-criceto .creator-controls");
+    const goToTab = name => {
+        showTab(name);
+        if (controls.getBoundingClientRect().top < 0) controls.scrollIntoView({ behavior: "smooth" });
+    };
+    tabs.forEach(tab => tab.addEventListener("click", () => goToTab(tab.dataset.tab)));
+ 
+    [...tabs].forEach((tab, index) => {
+        const next = tabs[index + 1];
+        const sections = document.querySelectorAll(`#crea-criceto .creator-section[data-tab="${tab.dataset.tab}"]`);
+        if (!next || !sections.length) return;
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "secondary-button creator-next";
+        button.textContent = `Avanti: ${next.textContent} →`;
+        button.addEventListener("click", () => goToTab(next.dataset.tab));
+        sections[sections.length - 1].append(button);
+    });
+    showTab("pelo");
+     
     // Genera una combinazione casuale.
     document.getElementById("hamsterRandom").addEventListener("click", () => {
         const pick = items => items[
@@ -4885,6 +5466,12 @@ function updateEyes() {
         state.eyes = pick(["big", "small"]);
         state.whiskers = pick(["soft", "curly", "bold", "short"]);
 
+        state.pattern = Math.random() < .5 ? "none" : pick(lookOptions.pattern);
+        state.mouth = pick(lookOptions.mouth);
+        state.cheeks = pick(lookOptions.cheeks);
+        state.held = Math.random() < .5 ? "seed" : pick(lookOptions.held);
+        state.background = Math.random() < .4 ? "none" : pick(lookOptions.background);
+         
         // Al massimo un accessorio per zona.
         const chance = { head: 0.75, face: 0.4, neck: 0.5 };
         state.accessories = Object.keys(accessoryZones)
@@ -4901,6 +5488,7 @@ function updateEyes() {
         state.innerFur = "cream";
         state.eyes = "big";
         state.whiskers = "soft";
+        Object.assign(state, lookDefaults);        
         state.accessories = [];
 
         nameInput.value = "Saturno";
@@ -4925,16 +5513,16 @@ function decorateWithHamsters() {
  
     const looks = {
         h1: {},
-        h2: { fur: "honey", whiskers: "bold", accessories: ["headphones"] },
-        h3: { fur: "grey", eyes: "small", whiskers: "curly", accessories: ["bandana"] },
-        h4: { fur: "white", eyes: "small", whiskers: "short", accessories: ["glasses", "scarf"] },
+        h2: { fur: "honey", whiskers: "bold", accessories: ["headphones"], held: "coffee" },
+        h3: { fur: "grey", eyes: "small", whiskers: "curly", accessories: ["bandana"], pattern: "patch" },
+        h4: { fur: "white", eyes: "small", whiskers: "short", accessories: ["glasses", "scarf"], held: "book" },
         h5: { fur: "caramel", accessories: ["partyHat"], sleeping: true },
         h6: { fur: "cocoa", accessories: ["glasses", "bandana"] },
-        h7: { fur: "honey", eyes: "small", accessories: ["crown", "glasses"] },
+        h7: { fur: "honey", eyes: "small", mouth: "grin", accessories: ["gradCap", "glasses"] },
         h8: { fur: "caramel", whiskers: "bold", accessories: ["hat", "scarf"] },
         h9: { fur: "grey", eyes: "small", accessories: ["headphones", "scarf"] },
-        h10: { fur: "pink", accessories: ["bow", "heartGlasses"] },
-        h11: { fur: "black", eyes: "small", innerFur: "grey", accessories: ["witchHat"] },
+        h10: { fur: "pink", accessories: ["bow", "heartGlasses"], held: "heart" },
+        h11: { fur: "black", eyes: "small", innerFur: "grey", mouth: "smug", accessories: ["witchHat"] },
         h12: { fur: "honey", whiskers: "curly", accessories: ["flower", "collar"] }
     };
  
