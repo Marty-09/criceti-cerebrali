@@ -124,6 +124,13 @@ header {
 .nav-link:hover,
 .nav-link.current {background:var(--pink-light)}
 
+.nav-links {
+    display:flex;
+    align-items:center;
+    gap:4px;
+    margin-left:auto
+}
+     
 .cart-button {
     display:flex;
     align-items:center;
@@ -755,6 +762,14 @@ h2 {letter-spacing:-.025em}
 
 .summary-product-info {min-width:0}
 
+.cart-item-art img,
+.summary-product-icon img {
+    width:100%;
+    height:100%;
+    padding:4px;
+    object-fit:contain
+}
+  
 .summary-product-info strong {
     display:block;
     font-size:.84rem
@@ -1145,11 +1160,16 @@ footer p {
         height:36px;
         font-size:1.2rem
     }
-    .nav-actions {
+    .nav {gap:8px 12px}
+    .nav-links {
+        order:3;
         width:100%;
-        justify-content:space-between
+        margin:0 -4px;
+        overflow-x:auto;
+        scrollbar-width:none
     }
-    .nav-link {font-size:.76rem}
+    .nav-links::-webkit-scrollbar {display:none}
+    .nav-link {font-size:.76rem;white-space:nowrap}
     .cart-button {
         padding:8px 10px;
         font-size:.78rem
@@ -1427,6 +1447,10 @@ footer p {
     flex: 1 1 120px;
 }
 
+    .creator-actions .creator-adopt {
+    flex-basis: 100%;
+}
+
 .creator-status {
     min-height: 22px;
     margin: 12px 0 0;
@@ -1441,15 +1465,31 @@ footer p {
     }
 
     .creator-preview {
-        position: static;
+        position: sticky;
+        top: calc(var(--header-h, 76px) + 8px);
+        z-index: 10;
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        align-items: center;
+        gap: 14px;
+        text-align: left;
     }
 
-    .creator-stage {
-        min-height: 260px;
+    .creator-preview .creator-stage {
+        min-height: 0;
+        height: 120px;
     }
 
     .hamster-avatar {
-        max-width: 300px;
+        max-width: 120px;
+    }
+ 
+    .creator-preview .creator-name {
+        margin-top: 0;
+    }
+ 
+    .creator-preview .creator-caption {
+        display: none;
     }
 }
 
@@ -1458,8 +1498,10 @@ footer p {
         padding-top: 30px;
     }
 
-    .creator-preview,
-    .creator-section {
+    .creator-preview {
+        padding: 10px;
+    }
+     .creator-section {
         padding: 16px;
     }
 
@@ -1624,7 +1666,15 @@ footer p {
             <span>Criceti Cerebrali</span>
         </button>
 
-        <div class="nav-actions">
+        
+        <div class="nav-links" role="navigation" aria-label="Menu principale">
+            <button class="nav-link current" data-page="catalogo" onclick="showPage('catalogo')">Negozio</button>
+            <button class="nav-link" data-page="crea-criceto" onclick="showPage('crea-criceto')">Crea il tuo criceto</button>
+            <button class="nav-link" data-page="assistenza" onclick="showPage('assistenza')">Assistenza</button>
+            <button class="nav-link" data-page="restituzioni" onclick="showPage('restituzioni')">Resi</button>
+        </div>
+        
+            <div class="nav-actions">
             <button class="cart-button" id="cartNavButton" onclick="showPage('carrello')">
                 🛒 Carrello
                 <span class="cart-count" id="cartCount">0</span>
@@ -1761,7 +1811,7 @@ footer p {
             <div class="section-heading">
                 <div>
                     <span class="tiny-label">Reparto accessori</span>
-                    <h2>extra e ricambi</h2>
+                    <h2>Extra e ricambi</h2>
                     <p>Perché anche i criceti hanno diritto a strumenti decenti.</p>
                 </div>
                 <span class="eyebrow">9 modelli</span>
@@ -2115,8 +2165,8 @@ footer p {
         <div class="creator-heading">
             <span class="tiny-label">Il tuo roditore, le tue regole</span>
             <h1>Crea il tuo criceto</h1>
-            <p>Scegli il pelo, gli occhi, i baffi e tutti gli accessori che vuoi.
-               Qui non esistono combinazioni sbagliate.</p>
+            <p>Scegli il pelo, gli occhi, i baffi e gli accessori: uno per la testa,
+               uno per il viso e uno per il collo. Qui non esistono combinazioni sbagliate.</p>
         </div>
 
         <div class="creator-layout">
@@ -2729,11 +2779,13 @@ footer p {
 
                 <div class="creator-section">
                     <h2>Pronto per la ruota?</h2>
-                    <p>Randomizza il look, salva la tua creazione o ricomincia.</p>
+                    <p>Adottalo, randomizza il look, salva la tua creazione o ricomincia.</p> 
                     <div class="creator-actions">
+                        <button type="button" class="primary-button creator-adopt"
+                                id="hamsterAdopt">🛒 Adotta questo criceto · 14,99 €</button>                        
                         <button type="button" class="secondary-button"
                                 id="hamsterRandom">Sorprendimi</button>
-                        <button type="button" class="primary-button"
+                        <button type="button" class="secondary-button"
                                 id="hamsterSave">Salva il criceto</button>
                         <button type="button" class="secondary-button"
                                 id="hamsterReset">Ricomincia</button>
@@ -3056,8 +3108,11 @@ const products = [
 ];
 
 let cart = {};
+let customProducts = [];    
 let toastTimeout;
 
+const CART_KEY = "cricetiCerebraliCart";
+    
 const euro = value =>
     value.toLocaleString("it-IT", {
         style:"currency",
@@ -3065,8 +3120,45 @@ const euro = value =>
     });
 
 const getProduct = id =>
-    products.find(product => product.id === id);
-
+    products.find(product => product.id === id) ||
+    customProducts.find(product => product.id === id);
+ 
+function saveCart() {
+    customProducts = customProducts.filter(product => cart[product.id]);
+ 
+    try {
+        localStorage.setItem(CART_KEY, JSON.stringify({cart, customProducts}));
+    } catch {}
+}
+ 
+function loadCart() {
+    try {
+        const data = JSON.parse(localStorage.getItem(CART_KEY));
+        if (!data) return;
+ 
+        customProducts = Array.isArray(data.customProducts) ? data.customProducts : [];
+ 
+        Object.entries(data.cart || {}).forEach(([id,amount]) => {
+            if (getProduct(id) && Number.isInteger(amount) && amount > 0) cart[id] = amount;
+        });
+    } catch {
+        localStorage.removeItem(CART_KEY);
+    }
+}
+ 
+function setProductArt(element,product) {
+    element.style.background = product.color;
+ 
+    if (product.image) {
+        const image = document.createElement("img");
+        image.src = product.image;
+        image.alt = "";
+        element.replaceChildren(image);
+    } else {
+        element.textContent = product.emoji;
+    }
+}
+    
 const cartQuantity = () =>
     Object.values(cart).reduce((sum,quantity) => sum + quantity,0);
 
@@ -3177,7 +3269,13 @@ function renderProducts() {
     });
 }
 
-function showPage(pageName) {
+function pageFromHash() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const page = id && document.getElementById(id);
+    return page && page.classList.contains("page") ? id : "catalogo";
+}
+ 
+function showPage(pageName,fromHistory = false) {
     document.querySelectorAll(".page").forEach(page =>
         page.classList.remove("active")
     );
@@ -3194,21 +3292,23 @@ function showPage(pageName) {
         );
     });
 
+    if (!fromHistory) {
+        const hash = pageName === "catalogo" ? "" : `#${pageName}`;
+        if (location.hash !== hash) {
+            history.pushState(null,"",hash || location.pathname + location.search);
+        }
+    }
+
     window.scrollTo({top:0,behavior:"smooth"});
 
     if (pageName === "carrello") renderCart();
 }
 
+
+window.addEventListener("popstate",() => showPage(pageFromHash(),true));
+
 function goToSection(sectionId) {
     showPage("catalogo");
-
-    document.querySelectorAll(".nav-link").forEach(button => {
-        button.classList.toggle(
-            "current",
-            button.dataset.page === sectionId
-        );
-    });
-
     setTimeout(() => {
         const section = document.getElementById(sectionId);
 
@@ -3272,6 +3372,7 @@ function showToast(icon,title,message) {
 
 function updateCartCount() {
     document.getElementById("cartCount").textContent = cartQuantity();
+    saveCart();
 }
 
 function changeQuantity(id,amount) {
@@ -3335,8 +3436,7 @@ function renderCart() {
 
         const art = document.createElement("div");
         art.className = "cart-item-art";
-        art.style.background = product.color;
-        art.textContent = product.emoji;
+        setProductArt(art,product);
 
         const info = document.createElement("div");
         info.className = "cart-item-info";
@@ -3389,8 +3489,7 @@ function renderCart() {
 
         const summaryIcon = document.createElement("div");
         summaryIcon.className = "summary-product-icon";
-        summaryIcon.style.background = product.color;
-        summaryIcon.textContent = product.emoji;
+        setProductArt(summaryIcon,product);
 
         const summaryInfo = document.createElement("div");
         summaryInfo.className = "summary-product-info";
@@ -3420,7 +3519,8 @@ function showFormNotice(id,titleText,messageText) {
     if (id === "orderNotice") icon.textContent = "🎉";
     if (id === "returnNotice") icon.textContent = "♻️";
     if (id === "supportNotice") icon.textContent = "🛠️";
-
+    if (id === "negativeNotice") icon.textContent = "🚨";
+    
     overlay.classList.add("show");
     document.body.style.overflow = "";
     document.body.style.overflow = "hidden";
@@ -3445,6 +3545,15 @@ document.addEventListener("keydown",function(event) {
 document.getElementById("checkoutForm").addEventListener("submit",function(event) {
     event.preventDefault();
     if (cartQuantity() === 0) return;
+
+    if (cartTotal() < 0) {
+        showFormNotice(
+            "negativeNotice",
+            "Ordine bloccato!",
+            `Il totale è ${euro(cartTotal())}: il Criceto Napoletano sta cercando di farsi pagare da noi. Aggiungi qualcos'altro al carrello per pareggiare i conti.`
+        );
+        return;
+    }
 
     const data = new FormData(this);
     const name = String(data.get("fullName")).trim();
@@ -3936,6 +4045,30 @@ function updateEyes() {
         status.textContent = "Criceto salvato! Lo ritroverai alla prossima visita.";
     });
 
+        // Aggiunge al carrello il criceto appena creato.
+    document.getElementById("hamsterAdopt").addEventListener("click", () => {
+        const settings = getSettings();
+        const snapshot = avatar.cloneNode(true);
+        snapshot.removeAttribute("class");
+        snapshot.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+ 
+        const id = `custom-${Date.now()}`;
+ 
+        customProducts.push({
+            id,
+            category: "custom",
+            name: `${settings.name} (su misura)`,
+            emoji: "🐹",
+            color: "#fff1e6",
+            price: 14.99,
+            image: "data:image/svg+xml;charset=utf-8," +
+                encodeURIComponent(new XMLSerializer().serializeToString(snapshot))
+        });
+ 
+        addToCart(id);
+        status.textContent = `${settings.name} è nel carrello e non vede l'ora di girare!`;
+    });
+
     // Carica la creazione salvata, se esiste.
     const saved = localStorage.getItem("cricetiCerebraliHamster");
 
@@ -3989,6 +4122,17 @@ function updateEyes() {
     });
 }
 
+function updateHeaderHeight() {
+    document.documentElement.style.setProperty(
+        "--header-h",
+        `${document.querySelector("header").offsetHeight}px`
+    );
+}
+ 
+window.addEventListener("resize",updateHeaderHeight);
+updateHeaderHeight();
+ 
+loadCart();
 initHamsterCreator();
 
 renderProducts();
@@ -3996,6 +4140,8 @@ updateCartCount();
 renderCart();
 updateReturnFields();
 updateSupportFields();
+     
+if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
 </script>
 </body>
 </html>
