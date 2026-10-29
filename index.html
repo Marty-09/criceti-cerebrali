@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Criceti Cerebrali — La ruota non gira da sola</title>
 <meta name="description" content="Criceti, ruote e soluzioni per ogni emergenza cerebrale.">
+<meta name="theme-color" content="#fff7f0">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='16' cy='17' r='9' fill='%23E8D1B5' stroke='%23B69A7D' stroke-width='3'/><circle cx='48' cy='17' r='9' fill='%23E8D1B5' stroke='%23B69A7D' stroke-width='3'/><circle cx='16' cy='17' r='4' fill='%23ECA6A9'/><circle cx='48' cy='17' r='4' fill='%23ECA6A9'/><ellipse cx='32' cy='37' rx='26' ry='24' fill='%23E8D1B5' stroke='%23B69A7D' stroke-width='3'/><circle cx='22' cy='34' r='4.5' fill='%233A2A25'/><circle cx='42' cy='34' r='4.5' fill='%233A2A25'/><circle cx='23.5' cy='32.5' r='1.5' fill='white'/><circle cx='43.5' cy='32.5' r='1.5' fill='white'/><circle cx='15' cy='43' r='4' fill='%23F4A7B0'/><circle cx='49' cy='43' r='4' fill='%23F4A7B0'/><path d='M29 40h6l-3 3z' fill='%23E88B9A'/></svg>">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Criceti Cerebrali">
+<meta property="og:title" content="Criceti Cerebrali — La ruota non gira da sola">
+<meta property="og:description" content="Criceti, ruote e soluzioni per ogni emergenza cerebrale. Crea il tuo criceto su misura!">
+<meta property="og:image" content="og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -1451,6 +1462,110 @@ footer p {
     flex-basis: 100%;
 }
 
+.creator-option .creator-price {
+    color: #c46f86;
+    font-weight: 800;
+}
+ 
+.creator-receipt {
+    margin-top: 14px;
+    padding: 14px 16px;
+    border: 1px dashed #e7cfc4;
+    border-radius: 14px;
+    background: #fffaf6;
+    font-size: .82rem;
+}
+ 
+.creator-receipt-title {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-size: .7rem;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+ 
+.receipt-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 2px 0;
+}
+ 
+.receipt-row.joke {
+    color: var(--muted);
+    font-style: italic;
+}
+ 
+.receipt-row.total {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dashed #e7cfc4;
+    font-weight: 900;
+}
+ 
+.creator-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+}
+ 
+.gallery-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 10px;
+    border: 2px solid #eee5df;
+    border-radius: 16px;
+    background: #fffdfb;
+    text-align: center;
+}
+ 
+.gallery-card img {
+    width: 90px;
+    height: 90px;
+}
+ 
+.gallery-card strong {
+    font-size: .85rem;
+    overflow-wrap: anywhere;
+}
+ 
+.gallery-card small {
+    color: var(--muted);
+    font-size: .72rem;
+    font-weight: 700;
+}
+ 
+.gallery-card .secondary-button {
+    padding: 6px 14px;
+    font-size: .78rem;
+}
+ 
+.gallery-remove {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff0f4;
+    color: #b76582;
+    font-weight: 900;
+    cursor: pointer;
+}
+ 
+.creator-gallery-empty {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: var(--muted);
+    font-size: .85rem;
+}
+ 
 .creator-status {
     min-height: 22px;
     margin: 12px 0 0;
@@ -2779,7 +2894,7 @@ footer p {
 
                 <div class="creator-section">
                     <h2>Pronto per la ruota?</h2>
-                    <p>Adottalo, randomizza il look, salva la tua creazione o ricomincia.</p> 
+                    <p>Adottalo, salvalo nella collezione, scaricalo o mandalo a un amico.</p>                    
                     <div class="creator-actions">
                         <button type="button" class="primary-button creator-adopt"
                                 id="hamsterAdopt">🛒 Adotta questo criceto · 14,99 €</button>                        
@@ -2788,12 +2903,23 @@ footer p {
                         <button type="button" class="secondary-button"
                                 id="hamsterSave">Salva il criceto</button>
                         <button type="button" class="secondary-button"
+                                id="hamsterDownload">Scarica</button>
+                        <button type="button" class="secondary-button"
+                                id="hamsterShare">Condividi</button>
+                        <button type="button" class="secondary-button"
                                 id="hamsterReset">Ricomincia</button>
                     </div>
+                    <div class="creator-receipt" id="hamsterReceipt" aria-live="polite"></div>                    
                     <p class="creator-status" id="hamsterStatus"
                        role="status" aria-live="polite"></p>
                 </div>
 
+                <div class="creator-section">
+                    <h2>I miei criceti</h2>
+                    <p>La tua collezione personale. Caricane uno per modificarlo o adottarlo.</p>
+                    <div class="creator-gallery" id="hamsterGallery"></div>
+                </div>
+                 
             </div>
         </div>
     </div>
@@ -3270,7 +3396,7 @@ function renderProducts() {
 }
 
 function pageFromHash() {
-    const id = decodeURIComponent(location.hash.slice(1));
+    const id = decodeURIComponent(location.hash.slice(1).split("?")[0]);
     const page = id && document.getElementById(id);
     return page && page.classList.contains("page") ? id : "catalogo";
 }
@@ -3468,8 +3594,16 @@ function renderCart() {
         plus.addEventListener("click",() => changeQuantity(id,1));
 
         controls.append(minus,number,plus);
-        info.append(name,unitPrice,controls);
-
+        info.append(name,unitPrice);
+ 
+        if (product.details) {
+            const details = document.createElement("small");
+            details.textContent = product.details;
+            info.append(details);
+        }
+ 
+        info.append(controls);
+        
         const priceBox = document.createElement("div");
         priceBox.className = "cart-item-price";
         priceBox.append(document.createTextNode(euro(product.price * amount)));
@@ -3961,6 +4095,7 @@ function updateEyes() {
         updateWhiskers();
         updateAccessories();
         updateSelectedCards();
+        updatePrice();
     }
 
     function getSettings() {
@@ -4004,6 +4139,205 @@ function updateEyes() {
         updateAvatar();
     }
 
+    const BASE_PRICE = 12.99;
+    const accessoryPrices = {
+        bow: 1, hat: 1.5, flower: 0.5, crown: 3, partyHat: 1.5,
+        strawberryHat: 2, witchHat: 1.5, headphones: 2.5,
+        glasses: 1, heartGlasses: 1.5,
+        bandana: 1, scarf: 1.5, collar: 1
+    };
+    const GALLERY_KEY = "cricetiCerebraliGallery";
+    const GALLERY_LIMIT = 12;
+    const adoptButton = document.getElementById("hamsterAdopt");
+    const receipt = document.getElementById("hamsterReceipt");
+    const galleryGrid = document.getElementById("hamsterGallery");
+    const accessoryNames = {};
+ 
+    document.querySelectorAll(
+        '#crea-criceto .creator-option[data-group="accessory"]'
+    ).forEach(button => {
+        const key = button.dataset.value;
+        accessoryNames[key] = [...button.childNodes]
+            .filter(node => node.nodeType === Node.TEXT_NODE)
+            .map(node => node.textContent)
+            .join("")
+            .trim();
+ 
+        const price = document.createElement("small");
+        price.className = "creator-price";
+        price.textContent = `+${euro(accessoryPrices[key] || 0)}`;
+        button.append(price);
+    });
+ 
+    function priceLines(settings) {
+        const accessories = onePerZone(
+            Array.isArray(settings.accessories) ? settings.accessories : []
+        );
+ 
+        return [
+            ["Criceto base", BASE_PRICE],
+            ...accessories.map(key => [accessoryNames[key] || key, accessoryPrices[key] || 0])
+        ];
+    }
+ 
+    const priceOf = settings =>
+        Math.round(priceLines(settings).reduce((sum, [, value]) => sum + value, 0) * 100) / 100;
+ 
+    function updatePrice() {
+        const settings = getSettings();
+        const lines = priceLines(settings);
+        const total = priceOf(settings);
+ 
+        adoptButton.textContent = `🛒 Adotta questo criceto · ${euro(total)}`;
+ 
+        const row = (label, value, className = "") => {
+            const line = document.createElement("div");
+            line.className = `receipt-row ${className}`;
+            const name = document.createElement("span");
+            name.textContent = label;
+            const amount = document.createElement("span");
+            amount.textContent = value;
+            line.append(name, amount);
+            return line;
+        };
+ 
+        const title = document.createElement("span");
+        title.className = "creator-receipt-title";
+        title.textContent = "Scontrino";
+ 
+        receipt.replaceChildren(
+            title,
+            ...lines.map(([label, value], index) =>
+                row(label, `${index ? "+" : ""}${euro(value)}`)
+            ),
+            row("IVA (Imposta sul Valore Adorabile)", euro(0), "joke"),
+            row("Totale", euro(total), "total")
+        );
+    }
+ 
+    function snapshotImage() {
+        const snapshot = avatar.cloneNode(true);
+        snapshot.removeAttribute("class");
+        snapshot.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+ 
+        return "data:image/svg+xml;charset=utf-8," +
+            encodeURIComponent(new XMLSerializer().serializeToString(snapshot));
+    }
+ 
+    function loadGallery() {
+        try {
+            const list = JSON.parse(localStorage.getItem(GALLERY_KEY));
+            return Array.isArray(list)
+                ? list.filter(entry =>
+                    entry && entry.settings &&
+                    typeof entry.image === "string" &&
+                    entry.image.startsWith("data:image/svg+xml"))
+                : [];
+        } catch {
+            return [];
+        }
+    }
+ 
+    function saveGallery(list) {
+        try {
+            localStorage.setItem(GALLERY_KEY, JSON.stringify(list));
+            return true;
+        } catch {
+            return false;
+        }
+    }
+ 
+    function renderGallery() {
+        const list = loadGallery();
+        galleryGrid.replaceChildren();
+ 
+        if (!list.length) {
+            const empty = document.createElement("p");
+            empty.className = "creator-gallery-empty";
+            empty.textContent = "Ancora nessun criceto salvato. Premi «Salva il criceto» per iniziare la collezione!";
+            galleryGrid.append(empty);
+            return;
+        }
+ 
+        list.forEach(entry => {
+            const name = String(entry.settings.name || "Pasticcino");
+ 
+            const card = document.createElement("div");
+            card.className = "gallery-card";
+ 
+            const image = document.createElement("img");
+            image.src = entry.image;
+            image.alt = `Il criceto ${name}`;
+ 
+            const label = document.createElement("strong");
+            label.textContent = name;
+ 
+            const price = document.createElement("small");
+            price.textContent = euro(priceOf(entry.settings));
+ 
+            const load = document.createElement("button");
+            load.type = "button";
+            load.className = "secondary-button";
+            load.textContent = "Carica";
+            load.addEventListener("click", () => {
+                applySettings(entry.settings);
+                status.textContent = `Bentornato, ${name}!`;
+            });
+ 
+            const remove = document.createElement("button");
+            remove.type = "button";
+            remove.className = "gallery-remove";
+            remove.textContent = "✕";
+            remove.setAttribute("aria-label", `Elimina ${name}`);
+            remove.addEventListener("click", () => {
+                saveGallery(loadGallery().filter(item => item.id !== entry.id));
+                renderGallery();
+                status.textContent = `${name} è tornato nella ruota del destino.`;
+            });
+ 
+            card.append(remove, image, label, price, load);
+            galleryGrid.append(card);
+        });
+    }
+ 
+    function shareUrl(settings) {
+        const params = new URLSearchParams({
+            nome: settings.name,
+            pelo: settings.fur,
+            interno: settings.innerFur,
+            occhi: settings.eyes,
+            baffi: settings.whiskers
+        });
+ 
+        if (settings.accessories.length) {
+            params.set("accessori", settings.accessories.join(","));
+        }
+ 
+        return `${location.href.split("#")[0]}#crea-criceto?${params}`;
+    }
+ 
+    function applySharedFromHash() {
+        const [page, query] = location.hash.slice(1).split("?");
+        if (page !== "crea-criceto" || !query) return false;
+ 
+        const params = new URLSearchParams(query);
+ 
+        applySettings({
+            name: params.get("nome") || "Pasticcino",
+            fur: params.get("pelo"),
+            innerFur: params.get("interno"),
+            eyes: params.get("occhi"),
+            whiskers: params.get("baffi"),
+            accessories: (params.get("accessori") || "").split(",").filter(Boolean)
+        });
+ 
+        status.textContent = `Ti hanno mandato ${nameInput.value}! Salvalo o adottalo.`;
+        return true;
+    }
+ 
+    window.addEventListener("hashchange", applySharedFromHash);
+    nameInput.addEventListener("input", updatePrice);
+ 
     // Selezione delle card: pelo, occhi, baffi e accessori.
     document.querySelectorAll(
         "#crea-criceto .creator-option"
@@ -4037,21 +4371,101 @@ function updateEyes() {
     
     // Salva la creazione nel browser.
     document.getElementById("hamsterSave").addEventListener("click", () => {
+        const settings = getSettings();
+
         localStorage.setItem(
             "cricetiCerebraliHamster",
-            JSON.stringify(getSettings())
+            JSON.stringify(settings)
         );
 
-        status.textContent = "Criceto salvato! Lo ritroverai alla prossima visita.";
+        const list = loadGallery();
+ 
+        if (list.some(entry => JSON.stringify(entry.settings) === JSON.stringify(settings))) {
+            status.textContent = `${settings.name} è già nella tua collezione!`;
+            return;
+        }
+ 
+        if (list.length >= GALLERY_LIMIT) {
+            status.textContent = `La collezione è piena (${GALLERY_LIMIT} criceti). Eliminane uno per fare spazio.`;
+            return;
+        }
+ 
+        list.push({ id: `h-${Date.now()}`, settings, image: snapshotImage() });
+ 
+        if (!saveGallery(list)) {
+            status.textContent = "Il browser non ha più spazio per altri criceti.";
+            return;
+        }
+ 
+        renderGallery();
+        status.textContent = `${settings.name} è entrato nella collezione «I miei criceti»!`;
+    });
+ 
+    // Scarica il criceto come immagine PNG.
+    document.getElementById("hamsterDownload").addEventListener("click", () => {
+        const settings = getSettings();
+        const image = new Image();
+ 
+        image.onload = () => {
+            const canvas = document.createElement("canvas");
+            canvas.width = 800;
+            canvas.height = 900;
+ 
+            const context = canvas.getContext("2d");
+            context.fillStyle = "#fff7f0";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(image, 80, 50, 640, 640);
+ 
+            context.textAlign = "center";
+            context.fillStyle = "#33292a";
+            context.font = "900 64px Nunito, sans-serif";
+            context.fillText(settings.name, 400, 770);
+            context.fillStyle = "#c46f86";
+            context.font = "700 30px 'DM Sans', sans-serif";
+            context.fillText("Criceti Cerebrali", 400, 830);
+ 
+            canvas.toBlob(blob => {
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = `${settings.name.replace(/[\\/:*?"<>|]+/g, "").trim() || "criceto"}.png`;
+                link.click();
+                setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+                status.textContent = `${settings.name} è stato scaricato!`;
+            }, "image/png");
+        };
+ 
+        image.src = snapshotImage();
+    });
+ 
+    // Condivide un link che apre il creatore con questo criceto.
+    document.getElementById("hamsterShare").addEventListener("click", async () => {
+        const settings = getSettings();
+        const url = shareUrl(settings);
+ 
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: `${settings.name} · Criceti Cerebrali`,
+                    text: "Guarda il criceto che ho creato!",
+                    url
+                });
+                return;
+            } catch (error) {
+                if (error.name === "AbortError") return;
+            }
+        }
+ 
+        try {
+            await navigator.clipboard.writeText(url);
+            status.textContent = `Link copiato! Incollalo dove vuoi per mostrare ${settings.name}.`;
+        } catch {
+            window.prompt("Copia questo link:", url);
+        }
     });
 
         // Aggiunge al carrello il criceto appena creato.
     document.getElementById("hamsterAdopt").addEventListener("click", () => {
         const settings = getSettings();
-        const snapshot = avatar.cloneNode(true);
-        snapshot.removeAttribute("class");
-        snapshot.setAttribute("xmlns", "http://www.w3.org/2000/svg");
- 
         const id = `custom-${Date.now()}`;
  
         customProducts.push({
@@ -4060,9 +4474,11 @@ function updateEyes() {
             name: `${settings.name} (su misura)`,
             emoji: "🐹",
             color: "#fff1e6",
-            price: 14.99,
-            image: "data:image/svg+xml;charset=utf-8," +
-                encodeURIComponent(new XMLSerializer().serializeToString(snapshot))
+            price: priceOf(settings),
+            details: priceLines(settings)
+                .map(([label, value], index) => `${index ? `${label} +` : "Base "}${euro(value)}`)
+                .join(" · "),
+            image: snapshotImage()            
         });
  
         addToCart(id);
@@ -4086,6 +4502,13 @@ function updateEyes() {
         updateAvatar();
     }
 
+    if (savedSettings && localStorage.getItem(GALLERY_KEY) === null) {
+        saveGallery([{ id: "h-saved", settings: getSettings(), image: snapshotImage() }]);
+    }
+ 
+    applySharedFromHash();
+    renderGallery();
+ 
     // Genera una combinazione casuale.
     document.getElementById("hamsterRandom").addEventListener("click", () => {
         const pick = items => items[
