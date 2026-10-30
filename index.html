@@ -1227,7 +1227,6 @@ footer p {
     .hero-inner {grid-template-columns:1fr .8fr;gap:25px}
     .hero-art {min-height:270px}
     .hero-scene {transform:scale(.85)}
-    .hero-hamster {font-size:5rem}
     .product-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
     .summary-products {grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -1528,7 +1527,7 @@ footer p {
     flex: 1 1 120px;
 }
 
-    .creator-actions .creator-adopt {
+.creator-actions .creator-adopt {
     flex-basis: 100%;
 }
 
@@ -1686,7 +1685,8 @@ footer p {
     .creator-preview {
         padding: 10px;
     }
-     .creator-section {
+
+    .creator-section {
         padding: 16px;
     }
 
@@ -2165,7 +2165,7 @@ button.hero-scene:focus-visible {
             <button class="nav-link" data-page="restituzioni" onclick="showPage('restituzioni')">Resi</button>
         </div>
         
-            <div class="nav-actions">
+        <div class="nav-actions">
             <button class="cart-button" id="cartNavButton" onclick="showPage('carrello')">
                 🛒 Carrello
                 <span class="cart-count" id="cartCount">0</span>
@@ -2187,9 +2187,10 @@ button.hero-scene:focus-visible {
                     <button class="secondary-button" onclick="showPage('carrello')">🛒 Il mio carrello</button>
                 </div>
             </div>
+            
             <div class="hero-art">
                 <span class="floating-note note-one">⚡ Produttività discutibile</span>
-            <button class="hero-scene" id="heroScene" type="button" title="Cliccami!" aria-label="Fai correre il criceto più veloce">
+                <button class="hero-scene" id="heroScene" type="button" title="Cliccami!" aria-label="Fai correre il criceto più veloce">
                     <svg class="hero-stand" viewBox="0 0 260 300" aria-hidden="true">
                         <path d="M130 130 L62 288 M130 130 L198 288" stroke="#b9805e" stroke-width="12" stroke-linecap="round"/>
                         <rect x="40" y="280" width="180" height="14" rx="7" fill="#a86f4f"/>
@@ -2216,23 +2217,24 @@ button.hero-scene:focus-visible {
     <div class="container">
         <section class="trust-strip">
             <div class="trust-item">
-
-                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 10c-3-4-11-4-12 3-6 1-8 8-4 12-3 5 1 11 7 11 2 4 7 4 9 1 2 3 7 3 9-1 6 0 10-6 7-11 4-4 2-11-4-12-1-7-9-7-12-3z" fill="#f7b9c6" stroke="#b05f72" stroke-width="2.5" stroke-linejoin="round"/><path d="M24 10v28M16 20c3 2 5 2 8 0M32 27c-3-2-5-2-8 0" stroke="#b05f72" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></span>                <div>
+                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 10c-3-4-11-4-12 3-6 1-8 8-4 12-3 5 1 11 7 11 2 4 7 4 9 1 2 3 7 3 9-1 6 0 10-6 7-11 4-4 2-11-4-12-1-7-9-7-12-3z" fill="#f7b9c6" stroke="#b05f72" stroke-width="2.5" stroke-linejoin="round"/><path d="M24 10v28M16 20c3 2 5 2 8 0M32 27c-3-2-5-2-8 0" stroke="#b05f72" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></span>
+                <div>
                     <strong>Pensieri in movimento</strong>
                     <small>Almeno sulla carta.</small>
                 </div>
             </div>
 
             <div class="trust-item">
-                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="15" fill="#ffd66b" stroke="#c9962a" stroke-width="3"/><circle cx="24" cy="24" r="10.5" fill="none" stroke="#e8b543" stroke-width="2"/><text x="24" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="16" fill="#a8771a">€</text></svg></span>                <div>
+                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="15" fill="#ffd66b" stroke="#c9962a" stroke-width="3"/><circle cx="24" cy="24" r="10.5" fill="none" stroke="#e8b543" stroke-width="2"/><text x="24" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="16" fill="#a8771a">€</text></svg></span>
+                <div>
                     <strong>Prezzi scientifici*</strong>
                     <small>*Non verificati.</small>
                 </div>
             </div>
 
             <div class="trust-item">
-
-                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 17l16-8 16 8v16l-16 8-16-8z" fill="#f1c48f" stroke="#a8713f" stroke-width="2.5" stroke-linejoin="round"/><path d="M8 17l16 8 16-8M24 25v16" fill="none" stroke="#a8713f" stroke-width="2.5" stroke-linejoin="round"/><path d="M15 13l16 8v6" fill="none" stroke="#e8798a" stroke-width="3" stroke-linecap="round"/></svg></span>                <div>
+                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 17l16-8 16 8v16l-16 8-16-8z" fill="#f1c48f" stroke="#a8713f" stroke-width="2.5" stroke-linejoin="round"/><path d="M8 17l16 8 16-8M24 25v16" fill="none" stroke="#a8713f" stroke-width="2.5" stroke-linejoin="round"/><path d="M15 13l16 8v6" fill="none" stroke="#e8798a" stroke-width="3" stroke-linecap="round"/></svg></span>
+                <div>
                     <strong>Consegna ultraterrena</strong>
                     <small>Il corriere è un criceto.</small>
                 </div>
@@ -2271,25 +2273,24 @@ button.hero-scene:focus-visible {
 
             <div class="home-menu-grid">
                 <button class="home-menu-card" onclick="goToSection('criceti')">
-
-                    <span class="home-menu-icon hamster-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="13" cy="15" r="6" fill="#e8cfae" stroke="#9c7556" stroke-width="2.2"/><circle cx="35" cy="15" r="6" fill="#e8cfae" stroke="#9c7556" stroke-width="2.2"/><circle cx="13" cy="15" r="2.6" fill="#f6b5c0"/><circle cx="35" cy="15" r="2.6" fill="#f6b5c0"/><ellipse cx="24" cy="27" rx="16" ry="14" fill="#f1dcc0" stroke="#9c7556" stroke-width="2.4"/><circle cx="18" cy="25" r="2.4" fill="#3a2a25"/><circle cx="30" cy="25" r="2.4" fill="#3a2a25"/><circle cx="18.8" cy="24.2" r=".8" fill="#fff"/><circle cx="30.8" cy="24.2" r=".8" fill="#fff"/><ellipse cx="24" cy="29.5" rx="2" ry="1.4" fill="#e98a9b"/><circle cx="13" cy="30.5" r="2.6" fill="#f6b5c0" opacity=".8"/><circle cx="35" cy="30.5" r="2.6" fill="#f6b5c0" opacity=".8"/></svg></span>                    <span class="home-menu-title">I nostri criceti</span>
+                    <span class="home-menu-icon hamster-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="13" cy="15" r="6" fill="#e8cfae" stroke="#9c7556" stroke-width="2.2"/><circle cx="35" cy="15" r="6" fill="#e8cfae" stroke="#9c7556" stroke-width="2.2"/><circle cx="13" cy="15" r="2.6" fill="#f6b5c0"/><circle cx="35" cy="15" r="2.6" fill="#f6b5c0"/><ellipse cx="24" cy="27" rx="16" ry="14" fill="#f1dcc0" stroke="#9c7556" stroke-width="2.4"/><circle cx="18" cy="25" r="2.4" fill="#3a2a25"/><circle cx="30" cy="25" r="2.4" fill="#3a2a25"/><circle cx="18.8" cy="24.2" r=".8" fill="#fff"/><circle cx="30.8" cy="24.2" r=".8" fill="#fff"/><ellipse cx="24" cy="29.5" rx="2" ry="1.4" fill="#e98a9b"/><circle cx="13" cy="30.5" r="2.6" fill="#f6b5c0" opacity=".8"/><circle cx="35" cy="30.5" r="2.6" fill="#f6b5c0" opacity=".8"/></svg></span>
+                    <span class="home-menu-title">I nostri criceti</span>
                 </button>
 
                 <button class="home-menu-card" onclick="goToSection('extra')">
-
-                    <span class="home-menu-icon extra-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 22L13 42M24 22l11 20" stroke="#a86f4f" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="22" r="15" fill="#f7d3b4" stroke="#c88965" stroke-width="3.5"/><path d="M24 7v30M9 22h30M13.4 11.4l21.2 21.2M34.6 11.4L13.4 32.6" stroke="#dfa883" stroke-width="2"/><circle cx="24" cy="22" r="3.2" fill="#c88965"/></svg></span>                    <span class="home-menu-title">Extra e ricambi</span>
+                    <span class="home-menu-icon extra-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 22L13 42M24 22l11 20" stroke="#a86f4f" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="22" r="15" fill="#f7d3b4" stroke="#c88965" stroke-width="3.5"/><path d="M24 7v30M9 22h30M13.4 11.4l21.2 21.2M34.6 11.4L13.4 32.6" stroke="#dfa883" stroke-width="2"/><circle cx="24" cy="22" r="3.2" fill="#c88965"/></svg></span>
+                    <span class="home-menu-title">Extra e ricambi</span>
                 </button>
 
                 <button class="home-menu-card" onclick="showPage('crea-criceto')">
-
-                    <span class="home-menu-icon creator-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8C14 8 7 15 7 24s7 16 15 16c3 0 4-2 3-4s0-5 3-5h5c5 0 9-3 9-8 0-9-8-15-18-15z" fill="#fff4e6" stroke="#9c7556" stroke-width="2.5" stroke-linejoin="round"/><circle cx="16" cy="20" r="3" fill="#f28da0"/><circle cx="24" cy="15" r="3" fill="#ffd66b"/><circle cx="32" cy="19" r="3" fill="#8fcdf5"/><circle cx="15" cy="29" r="3" fill="#9bd1a8"/></svg></span>                    <span class="home-menu-title">Crea il tuo criceto</span>
+                    <span class="home-menu-icon creator-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8C14 8 7 15 7 24s7 16 15 16c3 0 4-2 3-4s0-5 3-5h5c5 0 9-3 9-8 0-9-8-15-18-15z" fill="#fff4e6" stroke="#9c7556" stroke-width="2.5" stroke-linejoin="round"/><circle cx="16" cy="20" r="3" fill="#f28da0"/><circle cx="24" cy="15" r="3" fill="#ffd66b"/><circle cx="32" cy="19" r="3" fill="#8fcdf5"/><circle cx="15" cy="29" r="3" fill="#9bd1a8"/></svg></span>
+                    <span class="home-menu-title">Crea il tuo criceto</span>
                 </button>
 
                 <button class="home-menu-card" onclick="showPage('assistenza')">
-
-                    <span class="home-menu-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><g transform="rotate(-35 24 24)"><rect x="5" y="16" width="38" height="16" rx="8" fill="#f6c9a8" stroke="#c99470" stroke-width="2.4"/><rect x="18" y="17.2" width="12" height="13.6" fill="#efb08a"/><g fill="#c99470"><circle cx="21.5" cy="21" r="1.2"/><circle cx="26.5" cy="21" r="1.2"/><circle cx="21.5" cy="27" r="1.2"/><circle cx="26.5" cy="27" r="1.2"/></g></g></svg></span>                    <span class="home-menu-title">Centro assistenza</span>
+                    <span class="home-menu-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><g transform="rotate(-35 24 24)"><rect x="5" y="16" width="38" height="16" rx="8" fill="#f6c9a8" stroke="#c99470" stroke-width="2.4"/><rect x="18" y="17.2" width="12" height="13.6" fill="#efb08a"/><g fill="#c99470"><circle cx="21.5" cy="21" r="1.2"/><circle cx="26.5" cy="21" r="1.2"/><circle cx="21.5" cy="27" r="1.2"/><circle cx="26.5" cy="27" r="1.2"/></g></g></svg></span>
+                    <span class="home-menu-title">Centro assistenza</span>
                 </button>
-
                 <button class="home-menu-card" onclick="showPage('restituzioni')">
 
                     <span class="home-menu-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#5f9a74" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 24a13 13 0 0 1 22-9.5"/><path d="M34 7v8h-8"/><path d="M37 24a13 13 0 0 1-22 9.5"/><path d="M14 41v-8h8"/></g></svg></span>
@@ -2560,7 +2561,7 @@ button.hero-scene:focus-visible {
 
         <section class="trust-strip">
             <div class="trust-item">
-                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="21" cy="21" r="11" fill="#d9eefc" stroke="#5c87a8" stroke-width="3.5"/><path d="M29 29l10 10" stroke="#5c87a8" stroke-width="5" stroke-linecap="round"/><path d="M15 19a7 7 0 0 1 5-5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span> 
+                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="21" cy="21" r="11" fill="#d9eefc" stroke="#5c87a8" stroke-width="3.5"/><path d="M29 29l10 10" stroke="#5c87a8" stroke-width="5" stroke-linecap="round"/><path d="M15 19a7 7 0 0 1 5-5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>
                 <div><strong>1. Valutazione</strong><small>Controlliamo il prodotto.</small></div>
             </div>
             <div class="trust-item">
@@ -2568,7 +2569,7 @@ button.hero-scene:focus-visible {
                 <div><strong>2. Ricondizionamento</strong><small>Se possibile, lo rimettiamo in sesto.</small></div>
             </div>
             <div class="trust-item">
-                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#5f9a74" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 24a13 13 0 0 1 22-9.5"/><path d="M34 7v8h-8"/><path d="M37 24a13 13 0 0 1-22 9.5"/><path d="M14 41v-8h8"/></g></svg></span> 
+                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#5f9a74" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 24a13 13 0 0 1 22-9.5"/><path d="M34 7v8h-8"/><path d="M37 24a13 13 0 0 1-22 9.5"/><path d="M14 41v-8h8"/></g></svg></span>
                 <div><strong>3. Nuova vita</strong><small>Potrebbe tornare in vendita.</small></div>
             </div>
         </section>
@@ -2717,7 +2718,8 @@ button.hero-scene:focus-visible {
                         </g>
  
                         <!-- Corpo a forma di mochi (testa e corpo uniti) -->
-                            <path id="hamsterBodyShape"
+                        <g id="hamsterBody">
+                        <path id="hamsterBodyShape"
                                   d="M160 76
                                      C214 76 240 108 243 146
                                      C262 170 270 222 250 252
@@ -2727,7 +2729,6 @@ button.hero-scene:focus-visible {
                                      C80 108 106 76 160 76 Z"
                                   fill="#DDB58F" stroke="#A77C5B"
                                   stroke-width="3.5" stroke-linejoin="round"/>
-                        <g id="hamsterBody">
                             <ellipse id="hamsterBelly"
                                      cx="160" cy="236" rx="60" ry="40"
                                      fill="#F8E6D0"/>
@@ -2813,7 +2814,6 @@ button.hero-scene:focus-visible {
                             <path d="M179 180 Q196 180 211 184"/>
                             <path d="M177 184 Q190 191 201 198"/>
                         </g>
-
                         
                         <defs>
                             <clipPath id="hamsterBodyClip">
@@ -2935,7 +2935,6 @@ button.hero-scene:focus-visible {
                                   stroke-linecap="round"/>
                         </g>
 
-
                         <!-- TESTA: fiocco -->
                         <g id="accessoryBow" style="display:none" transform="translate(126 84) rotate(-18)">
                             <path d="M-3 5 Q-9 18 -17 31 L-9 29 L-5 36 Q1 20 2 7 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="2.5" stroke-linejoin="round"/>
@@ -2977,7 +2976,7 @@ button.hero-scene:focus-visible {
                             <circle cx="-2" cy="-2" r="2" fill="#FFF1B8"/>
                         </g>
 
-<!-- TESTA: coroncina -->
+                        <!-- TESTA: coroncina -->
                         <g id="accessoryCrown" style="display:none"
                            transform="translate(160 84) rotate(-8)">
                             <path d="M-26 0 L-30 -24 L-14 -12 L0 -30 L14 -12 L30 -24 L26 0 Q0 6 -26 0 Z"
@@ -3272,6 +3271,7 @@ button.hero-scene:focus-visible {
                         </button>
                     </div>
                 </section>
+                
                 <section class="creator-section" data-tab="viso">
                     <h2>Gli occhi</h2>
                     <p>Un'espressione diversa cambia tutto.</p>
@@ -3339,7 +3339,7 @@ button.hero-scene:focus-visible {
                         <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="green" aria-pressed="false" title="Verde" aria-label="Verde"><span class="creator-swatch" style="background:#3C8D5A"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="violet" aria-pressed="false" title="Viola" aria-label="Viola"><span class="creator-swatch" style="background:#7B4FB0"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#B83A4A"></span></button>
-                        <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="amber" aria-pressed="false" title="Ambra" aria-label="Ambra"><span class="creator-swatch" style="background:#B7802A"></span></button>                        
+                        <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="amber" aria-pressed="false" title="Ambra" aria-label="Ambra"><span class="creator-swatch" style="background:#B7802A"></span></button>
                     </div>
                 </section>
 
@@ -3696,7 +3696,7 @@ button.hero-scene:focus-visible {
                             <span class="creator-preview-icon"></span>
                             Libro
                         </button>
-                        <button type="button" clas="creator-option"
+                        <button type="button" class="creator-option"
                                 data-group="held" data-value="mic"
                                 aria-pressed="false">
                             <span class="creator-preview-icon"></span>
@@ -3851,7 +3851,7 @@ button.hero-scene:focus-visible {
         <div class="creator-layout">
             <aside class="creator-preview">
                 <div class="creator-stage house-stage" id="houseStage"></div>
-                <input id="houseName" class="creator-name" type="text" maxlength="24" placeholder="Come si chiama la casa?" value="Villa Pasticcino" aria-label="Nome della casa">
+                <input id="houseName" class="creator-name" type="text" maxlength="24" placeholder="Come si chiama la casa?" value="Villa Saturno" aria-label="Nome della casa">
                 <p class="creator-caption">Dentro c'è il criceto che hai creato in «Crea il tuo criceto».</p>
             </aside>
  
@@ -4528,12 +4528,12 @@ function showPage(pageName,fromHistory = false) {
     if (pageName === "crea-casa" && window.refreshHouse) window.refreshHouse();    
 }
 
-
 window.addEventListener("popstate",() => showPage(pageFromHash(),true));
 
 function goToSection(sectionId) {
     showPage("catalogo");
     setTimeout(() => {
+        
         const section = document.getElementById(sectionId);
 
         if (section) {
@@ -4976,11 +4976,9 @@ function initHamsterCreator() {
         cheeks: "pink",
         held: "seed",
         background: "none",
-        hair: "none",
         ball: "none",
         eyeColor: "dark",
         whiskerColor: "brown",
-        hairColor: "brown",
         accColorHead: "original",
         accColorFace: "original",
         accColorNeck: "original"
@@ -5233,10 +5231,10 @@ function initHamsterCreator() {
     const lookOptions = Object.fromEntries(
         Object.entries(lookParts).map(([key, parts]) => [key, Object.keys(parts)])
     );
-    const lookTargets = {
     lookOptions.eyeColor = Object.keys(eyeColors);
     lookOptions.whiskerColor = Object.keys(whiskerColors);
-    ["accColorHead", "accColorFace", "accColorNeck"].forEach(key => lookOptions[key] = Object.keys(accPalette));        
+    ["accColorHead", "accColorFace", "accColorNeck"].forEach(key => lookOptions[key] = Object.keys(accPalette));
+    const lookTargets = {
         pattern: "hamsterPattern",
         mouth: "hamsterMouth",
         cheeks: "hamsterCheeks",
@@ -5481,7 +5479,7 @@ function updateEyes() {
             ? onePerZone(settings.accessories)
             : [];
 
-                Object.keys(lookDefaults).forEach(key => {
+        Object.keys(lookDefaults).forEach(key => {
             state[key] = lookOptions[key].includes(settings[key]) ? settings[key] : lookDefaults[key];
         });
 
@@ -5687,7 +5685,7 @@ function updateEyes() {
         }
  
         list.forEach(entry => {
-            const name = String(entry.settings.name || "Pasticcino");
+            const name = String(entry.settings.name || "Saturno");
  
             const card = document.createElement("div");
             card.className = "gallery-card";
@@ -5753,7 +5751,7 @@ function updateEyes() {
         const params = new URLSearchParams(query);
  
         applySettings({
-            name: params.get("nome") || "Pasticcino",
+            name: params.get("nome") || "Saturno",
             fur: params.get("pelo"),
             innerFur: params.get("interno"),
             eyes: params.get("occhi"),
@@ -5913,7 +5911,7 @@ function updateEyes() {
         }
     });
 
-        // Aggiunge al carrello il criceto appena creato.
+    // Aggiunge al carrello il criceto appena creato.
     document.getElementById("hamsterAdopt").addEventListener("click", () => {
         const settings = getSettings();
         const id = `custom-${Date.now()}`;
@@ -6625,7 +6623,7 @@ function initHouseCreator() {
     showTab("struttura");
  
     addButton.addEventListener("click", () => {
-        const name = nameInput.value.trim() || "Villa Pasticcino";
+        const name = nameInput.value.trim() || "Villa Saturno";
         const id = `house-${Date.now()}`;
         customProducts.push({
             id,
@@ -6642,7 +6640,7 @@ function initHouseCreator() {
     });
  
     document.getElementById("houseDownload").addEventListener("click", () => {
-        const name = nameInput.value.trim() || "Villa Pasticcino";
+        const name = nameInput.value.trim() || "Villa Saturno";
         const image = new Image();
         image.onload = () => {
             const canvas = document.createElement("canvas");
@@ -6670,7 +6668,7 @@ function initHouseCreator() {
  
     document.getElementById("houseReset").addEventListener("click", () => {
         state = structuredClone(defaults);
-        nameInput.value = "Villa Pasticcino";
+        nameInput.value = "Villa Saturno";
         render();
         status.textContent = "Cantiere azzerato. Si riparte dalle fondamenta!";
     });
