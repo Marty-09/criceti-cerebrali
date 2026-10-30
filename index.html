@@ -2095,6 +2095,54 @@ button.hero-scene:focus-visible {
 @media (max-width: 520px) {
     .creator-tab { padding: 9px 4px; font-size: .8rem; }
     .creator-preview-icon { width: 62px; height: 52px; }
+}   
+ 
+.creator-colors {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+ 
+.creator-colors-label {
+    margin-right: 4px;
+    color: var(--muted);
+    font-size: .78rem;
+    font-weight: 800;
+}
+ 
+.creator-option.creator-color {
+    min-height: 0;
+    padding: 3px;
+    border-radius: 50%;
+}
+ 
+.creator-color .creator-swatch {
+    width: 28px;
+    height: 28px;
+}
+ 
+.creator-promo-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+ 
+@media (max-width: 850px) {
+    .creator-promo-buttons { justify-content: center; }
+}
+ 
+.house-stage { padding: 10px; }
+.house-stage svg { display: block; width: 100%; max-width: 460px; height: auto; }
+ 
+@media (max-width: 850px) {
+    .creator-preview .house-stage svg { width: auto; height: 100%; }
+}
+ 
+@media (max-width: 420px) {
+    .nav-links { gap: 0; }
+    .nav-link { padding: 7px 6px; font-size: .72rem; }
 }    
 </style>   
 </head>
@@ -2108,11 +2156,11 @@ button.hero-scene:focus-visible {
             <span class="logo-icon">🐹</span>
             <span>Criceti Cerebrali</span>
         </button>
-
-        
+  
         <div class="nav-links" role="navigation" aria-label="Menu principale">
             <button class="nav-link current" data-page="catalogo" onclick="showPage('catalogo')">Negozio</button>
             <button class="nav-link" data-page="crea-criceto" onclick="showPage('crea-criceto')">Crea il tuo criceto</button>
+            <button class="nav-link" data-page="crea-casa" onclick="showPage('crea-casa')">Crea la casa</button>
             <button class="nav-link" data-page="assistenza" onclick="showPage('assistenza')">Assistenza</button>
             <button class="nav-link" data-page="restituzioni" onclick="showPage('restituzioni')">Resi</button>
         </div>
@@ -2203,7 +2251,10 @@ button.hero-scene:focus-visible {
                     <span class="tiny-label">Il tuo roditore, le tue regole</span>
                     <h2>Crea il tuo criceto</h2>
                     <p>Pelo, occhi, baffi e tredici accessori: progetta il collaboratore perfetto per il tuo caos mentale e adottalo da 12,99 €.</p>
-                    <button class="primary-button" onclick="showPage('crea-criceto')">Prova ora →</button>
+                    <div class="creator-promo-buttons">
+                        <button class="primary-button" onclick="showPage('crea-criceto')">Prova ora →</button>
+                        <button class="secondary-button" onclick="showPage('crea-casa')">Costruisci la sua casa</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2727,8 +2778,9 @@ button.hero-scene:focus-visible {
                             <circle id="hamsterEyeShineR"
                                     cx="200" cy="145" r="3.6"
                                     fill="white"/>
-                            <circle cx="121" cy="154" r="1.5" fill="white"/>
-                            <circle cx="193" cy="154" r="1.5" fill="white"/>
+                            <circle id="hamsterEyeDotL" cx="121" cy="154" r="1.5" fill="white"/>
+                            <circle id="hamsterEyeDotR" cx="193" cy="154" r="1.5" fill="white"/>
+                            <g id="hamsterEyeExtra"></g>
                         </g>
 
                         <!-- Guance rosa -->
@@ -2762,6 +2814,7 @@ button.hero-scene:focus-visible {
                             <path d="M177 184 Q190 191 201 198"/>
                         </g>
 
+                        
                         <defs>
                             <clipPath id="hamsterBodyClip">
                                 <use href="#hamsterBodyShape"/>
@@ -2771,7 +2824,7 @@ button.hero-scene:focus-visible {
                         <!-- COLLO: bandana a pois -->
                         <g id="accessoryBandana" style="display:none" clip-path="url(#hamsterBodyClip)">
                             <path d="M60 194 Q160 232 260 194 L226 220 L160 264 L94 220 Z"
-                                  fill="#F49AAE" stroke="#C9637B" stroke-width="3"
+                                  fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3"
                                   stroke-linejoin="round"/>
                             <g fill="#FFF3F5">
                                 <circle cx="128" cy="227" r="3.2"/>
@@ -2787,25 +2840,25 @@ button.hero-scene:focus-visible {
                         <!-- COLLO: sciarpa di lana -->
                         <g id="accessoryScarf" style="display:none">
                             <g clip-path="url(#hamsterBodyClip)" fill="none" stroke-linecap="round">
-                                <path d="M40 186 Q160 236 280 186" stroke="#5E9580" stroke-width="24"/>
-                                <path d="M40 186 Q160 236 280 186" stroke="#9DCBB6" stroke-width="18"/>
+                                <path d="M40 186 Q160 236 280 186" stroke="#5E9580" data-stroke="dark" stroke-width="24"/>
+                                <path d="M40 186 Q160 236 280 186" stroke="#9DCBB6" data-stroke="main" stroke-width="18"/>
                                 <path d="M40 186 Q160 236 280 186" stroke="#FFF4D6" stroke-width="18"
                                       stroke-dasharray="7 13" stroke-linecap="butt"/>
                             </g>
                             <path d="M194 212 L214 208 L222 252 L202 256 Z"
-                                  fill="#9DCBB6" stroke="#5E9580" stroke-width="3"
+                                  fill="#9DCBB6" data-fill="main" stroke="#5E9580" data-stroke="dark" stroke-width="3"
                                   stroke-linejoin="round"/>
                             <path d="M197 226 L217 222 M199 239 L219 235"
                                   stroke="#FFF4D6" stroke-width="5"/>
                             <path d="M205 257 L204 265 M211 256 L211 264 M217 254 L218 262"
-                                  stroke="#5E9580" stroke-width="2.5" stroke-linecap="round"/>
+                                  stroke="#5E9580" data-stroke="dark" stroke-width="2.5" stroke-linecap="round"/>
                         </g>
  
                         <!-- COLLO: collarino con campanella -->
                         <g id="accessoryCollar" style="display:none">
                             <g clip-path="url(#hamsterBodyClip)" fill="none" stroke-linecap="round">
-                                <path d="M40 186 Q160 232 280 186" stroke="#B4566A" stroke-width="12"/>
-                                <path d="M40 186 Q160 232 280 186" stroke="#F28DA0" stroke-width="7"/>
+                                <path d="M40 186 Q160 232 280 186" stroke="#B4566A" data-stroke="dark" stroke-width="12"/>
+                                <path d="M40 186 Q160 232 280 186" stroke="#F28DA0" data-stroke="main" stroke-width="7"/>
                             </g>
                             <path d="M160 209 V228" stroke="#C9973A" stroke-width="2.5"/>
                             <circle cx="160" cy="237" r="10" fill="#FFD66B"
@@ -2818,15 +2871,15 @@ button.hero-scene:focus-visible {
                         
                         <!-- COLLO: papillon -->
                         <g id="accessoryBowtie" style="display:none">
-                            <path d="M160 202 L124 186 Q116 202 124 218 Z" fill="#7FB3E8" stroke="#4E83BA" stroke-width="3" stroke-linejoin="round"/>
-                            <path d="M160 202 L196 186 Q204 202 196 218 Z" fill="#7FB3E8" stroke="#4E83BA" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M160 202 L124 186 Q116 202 124 218 Z" fill="#7FB3E8" data-fill="main" stroke="#4E83BA" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M160 202 L196 186 Q204 202 196 218 Z" fill="#7FB3E8" data-fill="main" stroke="#4E83BA" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
                             <g fill="#FFFFFF" opacity=".85"><circle cx="132" cy="196" r="2.6"/><circle cx="134" cy="209" r="2.6"/><circle cx="188" cy="196" r="2.6"/><circle cx="186" cy="209" r="2.6"/></g>
-                            <rect x="151" y="193" width="18" height="18" rx="6" fill="#5E95CF" stroke="#4E83BA" stroke-width="3"/>
+                            <rect x="151" y="193" width="18" height="18" rx="6" fill="#5E95CF" data-fill="main" stroke="#4E83BA" data-stroke="dark" stroke-width="3"/>
                         </g>
  
                         <!-- COLLO: collana di perle -->
                         <g id="accessoryPearls" style="display:none">
-                            <g fill="#FFF8F0" stroke="#D8C3B8" stroke-width="1.6"><circle cx="102.0" cy="190.0" r="5.5"/><circle cx="111.7" cy="196.1" r="5.5"/><circle cx="121.3" cy="201.1" r="5.5"/><circle cx="131.0" cy="205.0" r="5.5"/><circle cx="140.7" cy="207.8" r="5.5"/><circle cx="150.3" cy="209.4" r="5.5"/><circle cx="160.0" cy="210.0" r="5.5"/><circle cx="169.7" cy="209.4" r="5.5"/><circle cx="179.3" cy="207.8" r="5.5"/><circle cx="189.0" cy="205.0" r="5.5"/><circle cx="198.7" cy="201.1" r="5.5"/><circle cx="208.3" cy="196.1" r="5.5"/><circle cx="218.0" cy="190.0" r="5.5"/></g>
+                            <g fill="#FFF8F0" data-fill="main" stroke="#D8C3B8" data-stroke="dark" stroke-width="1.6"><circle cx="102.0" cy="190.0" r="5.5"/><circle cx="111.7" cy="196.1" r="5.5"/><circle cx="121.3" cy="201.1" r="5.5"/><circle cx="131.0" cy="205.0" r="5.5"/><circle cx="140.7" cy="207.8" r="5.5"/><circle cx="150.3" cy="209.4" r="5.5"/><circle cx="160.0" cy="210.0" r="5.5"/><circle cx="169.7" cy="209.4" r="5.5"/><circle cx="179.3" cy="207.8" r="5.5"/><circle cx="189.0" cy="205.0" r="5.5"/><circle cx="198.7" cy="201.1" r="5.5"/><circle cx="208.3" cy="196.1" r="5.5"/><circle cx="218.0" cy="190.0" r="5.5"/></g>
                             <g fill="#FFFFFF"><circle cx="100.2" cy="188.2" r="1.6"/><circle cx="109.9" cy="194.3" r="1.6"/><circle cx="119.5" cy="199.3" r="1.6"/><circle cx="129.2" cy="203.2" r="1.6"/><circle cx="138.9" cy="206.0" r="1.6"/><circle cx="148.5" cy="207.6" r="1.6"/><circle cx="158.2" cy="208.2" r="1.6"/><circle cx="167.9" cy="207.6" r="1.6"/><circle cx="177.5" cy="206.0" r="1.6"/><circle cx="187.2" cy="203.2" r="1.6"/><circle cx="196.9" cy="199.3" r="1.6"/><circle cx="206.5" cy="194.3" r="1.6"/><circle cx="216.2" cy="188.2" r="1.6"/></g>
                             <path transform="translate(160 236) scale(.42)" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z" fill="#F28DA0" stroke="#D9506F" stroke-width="3"/>
                         </g>
@@ -2853,12 +2906,12 @@ button.hero-scene:focus-visible {
 
                         <!-- VISO: occhiali tondi -->
                         <g id="accessoryGlasses" style="display:none">
-                            <g fill="#FFFFFF" fill-opacity=".22" stroke="#E07A8C" stroke-width="4">
+                            <g fill="#FFFFFF" fill-opacity=".22" stroke="#E07A8C" data-stroke="main" stroke-width="4">
                                 <circle cx="124" cy="150" r="18"/>
                                 <circle cx="196" cy="150" r="18"/>
                             </g>
                             <path d="M142 148 Q160 139 178 148 M106 146 L90 140 M214 146 L230 140"
-                                  fill="none" stroke="#E07A8C" stroke-width="4"
+                                  fill="none" stroke="#E07A8C" data-stroke="main" stroke-width="4"
                                   stroke-linecap="round"/>
                             <path d="M113 141 Q117 136 123 135 M185 141 Q189 136 195 135"
                                   fill="none" stroke="#FFFFFF" stroke-width="2.5"
@@ -2867,7 +2920,7 @@ button.hero-scene:focus-visible {
  
                         <!-- VISO: occhiali a cuore -->
                         <g id="accessoryHeartGlasses" style="display:none">
-                            <g fill="#FF7FA3" fill-opacity=".85" stroke="#D9506F" stroke-width="2.4"
+                            <g fill="#FF7FA3" data-fill="main" fill-opacity=".85" stroke="#D9506F" data-stroke="dark" stroke-width="2.4"
                                stroke-linejoin="round">
                                 <path transform="translate(124 154) scale(1.3)"
                                       d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"/>
@@ -2875,45 +2928,36 @@ button.hero-scene:focus-visible {
                                       d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"/>
                             </g>
                             <path d="M142 145 Q160 137 178 145 M106 143 L90 137 M214 143 L230 137"
-                                  fill="none" stroke="#D9506F" stroke-width="3.5"
+                                  fill="none" stroke="#D9506F" data-stroke="dark" stroke-width="3.5"
                                   stroke-linecap="round"/>
                             <path d="M112 141 Q114 137 119 136 M184 141 Q186 137 191 136"
                                   fill="none" stroke="#FFFFFF" stroke-width="2.5"
                                   stroke-linecap="round"/>
                         </g>
 
-                        <!-- TESTA: fiocco a pois -->
-                        <g id="accessoryBow" style="display:none"
-                           transform="translate(136 86) rotate(-16)">
-                            <path d="M-2 3 Q-8 12 -12 20 L-4 18 Z M2 3 Q8 12 12 20 L4 18 Z"
-                                  fill="#F7A1BC" stroke="#C76A88" stroke-width="2.5"
-                                  stroke-linejoin="round"/>
-                            <path d="M0 0 C-10 -15 -29 -13 -27 2 C-26 15 -10 12 0 0 Z"
-                                  fill="#F7A1BC" stroke="#C76A88" stroke-width="3"/>
-                            <path d="M0 0 C10 -15 29 -13 27 2 C26 15 10 12 0 0 Z"
-                                  fill="#F7A1BC" stroke="#C76A88" stroke-width="3"/>
-                            <g fill="#FFFFFF">
-                                <circle cx="-16" cy="-2" r="2.4"/>
-                                <circle cx="-21" cy="5" r="1.6"/>
-                                <circle cx="16" cy="-2" r="2.4"/>
-                                <circle cx="21" cy="5" r="1.6"/>
-                            </g>
-                            <circle r="6.5" fill="#FFB3C8" stroke="#C76A88" stroke-width="2.5"/>
+
+                        <!-- TESTA: fiocco -->
+                        <g id="accessoryBow" style="display:none" transform="translate(126 84) rotate(-18)">
+                            <path d="M-3 5 Q-9 18 -17 31 L-9 29 L-5 36 Q1 20 2 7 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="2.5" stroke-linejoin="round"/>
+                            <path d="M3 5 Q9 18 17 31 L9 29 L5 36 Q-1 20 -2 7 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="2.5" stroke-linejoin="round"/>
+                            <path d="M-4 0 C-14 -22 -40 -24 -40 -4 C-40 14 -16 15 -4 4 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M4 0 C14 -22 40 -24 40 -4 C40 14 16 15 4 4 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M-9 -2 C-16 -11 -27 -13 -32 -6 M9 -2 C16 -11 27 -13 32 -6" fill="none" stroke="#C76A88" data-stroke="dark" stroke-width="2" stroke-linecap="round" opacity=".45"/>
+                            <path d="M-33 -11 Q-29 -17 -22 -17 M22 -17 Q29 -17 33 -11" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="3" stroke-linecap="round"/>
+                            <g fill="#FFFFFF" opacity=".9"><circle cx="-25" cy="2" r="2.4"/><circle cx="-15" cy="-9" r="1.8"/><circle cx="25" cy="2" r="2.4"/><circle cx="15" cy="-9" r="1.8"/></g>
+                            <rect x="-8" y="-9" width="16" height="17" rx="6" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3"/>
+                            <path d="M-3 -5 Q0 -7 3 -5" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="2" stroke-linecap="round"/>
                         </g>
                         
                         <!-- TESTA: berretto con pon pon -->
                         <g id="accessoryHat" style="display:none">
-                            <path d="M106 106 Q108 62 160 58 Q212 62 214 106 Z"
-                                  fill="#A9D3C0" stroke="#5E9580" stroke-width="3.5"
-                                  stroke-linejoin="round"/>
-                            <path d="M140 64 Q136 84 138 102 M160 60 V102 M180 64 Q184 84 182 102"
-                                  fill="none" stroke="#8CC0AA" stroke-width="3"
-                                  stroke-linecap="round"/>
-                            <path d="M102 100 Q160 88 218 100 L218 114 Q160 102 102 114 Z"
-                                  fill="#FFF4D6" stroke="#5E9580" stroke-width="3.5"
-                                  stroke-linejoin="round"/>
-                            <circle cx="160" cy="54" r="11" fill="#F7A1BC"
-                                    stroke="#C76A88" stroke-width="3"/>
+                            <path d="M98 110 C94 64 126 44 160 44 C196 44 228 64 222 110 Z" fill="#A9D3C0" data-fill="main" stroke="#5E9580" data-stroke="dark" stroke-width="3.5" stroke-linejoin="round"/>
+                            <path d="M132 58 L136 63 L140 58 M144 58 L148 63 L152 58 M156 58 L160 63 L164 58 M168 58 L172 63 L176 58 M180 58 L184 63 L188 58 M114 72 L118 77 L122 72 M126 72 L130 77 L134 72 M138 72 L142 77 L146 72 M150 72 L154 77 L158 72 M162 72 L166 77 L170 72 M174 72 L178 77 L182 72 M186 72 L190 77 L194 72 M198 72 L202 77 L206 72 M104 86 L108 91 L112 86 M116 86 L120 91 L124 86 M128 86 L132 91 L136 86 M140 86 L144 91 L148 86 M152 86 L156 91 L160 86 M164 86 L168 91 L172 86 M176 86 L180 91 L184 86 M188 86 L192 91 L196 86 M200 86 L204 91 L208 86 M212 86 L216 91 L220 86" fill="none" stroke="#5E9580" data-stroke="dark" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".35"/>
+                            <rect x="92" y="96" width="136" height="26" rx="13" fill="#DDF1E8" data-fill="light" stroke="#5E9580" data-stroke="dark" stroke-width="3.5"/>
+                            <path d="M104 101 V117 M112 101 V117 M120 101 V117 M128 101 V117 M136 101 V117 M144 101 V117 M152 101 V117 M160 101 V117 M168 101 V117 M176 101 V117 M184 101 V117 M192 101 V117 M200 101 V117 M208 101 V117 M216 101 V117" stroke="#5E9580" data-stroke="dark" stroke-width="2" stroke-linecap="round" opacity=".35"/>
+                            <use href="#hamsterEarL"/><use href="#hamsterInnerEarL"/><use href="#hamsterEarR"/><use href="#hamsterInnerEarR"/>
+                            <g fill="#F7A1BC" stroke="#C76A88" stroke-width="2.5"><circle cx="160" cy="38" r="15"/></g>
+                            <g fill="#FFD3E0"><circle cx="154" cy="33" r="4"/><circle cx="165" cy="40" r="2.5"/></g>
                         </g>
 
                         <!-- TESTA: margherita sull'orecchio -->
@@ -2921,7 +2965,7 @@ button.hero-scene:focus-visible {
                            transform="translate(208 88)">
                             <ellipse cx="12" cy="13" rx="9" ry="5" transform="rotate(35 12 13)"
                                      fill="#9FD18B" stroke="#5F9A4D" stroke-width="2"/>
-                            <g fill="#FFFFFF" stroke="#EBB3C2" stroke-width="2">
+                            <g fill="#FFFFFF" data-fill="main" stroke="#EBB3C2" data-stroke="dark" stroke-width="2">
                                 <ellipse cy="-11" rx="6" ry="9"/>
                                 <ellipse cy="-11" rx="6" ry="9" transform="rotate(60)"/>
                                 <ellipse cy="-11" rx="6" ry="9" transform="rotate(120)"/>
@@ -2937,9 +2981,9 @@ button.hero-scene:focus-visible {
                         <g id="accessoryCrown" style="display:none"
                            transform="translate(160 84) rotate(-8)">
                             <path d="M-26 0 L-30 -24 L-14 -12 L0 -30 L14 -12 L30 -24 L26 0 Q0 6 -26 0 Z"
-                                  fill="#FFE08A" stroke="#C99A3E" stroke-width="3"
+                                  fill="#FFE08A" data-fill="main" stroke="#C99A3E" data-stroke="dark" stroke-width="3"
                                   stroke-linejoin="round"/>
-                            <g fill="#FFE08A" stroke="#C99A3E" stroke-width="2.5">
+                            <g fill="#FFE08A" data-fill="main" stroke="#C99A3E" data-stroke="dark" stroke-width="2.5">
                                 <circle cx="-30" cy="-25" r="4"/>
                                 <circle cx="0" cy="-31" r="4.5"/>
                                 <circle cx="30" cy="-25" r="4"/>
@@ -2953,7 +2997,7 @@ button.hero-scene:focus-visible {
                         <g id="accessoryPartyHat" style="display:none"
                            transform="translate(150 84) rotate(-14)">
                             <path d="M-21 0 L0 -48 L21 0 Q0 7 -21 0 Z"
-                                  fill="#A9CBF2" stroke="#5F8FBF" stroke-width="3"
+                                  fill="#A9CBF2" data-fill="main" stroke="#5F8FBF" data-stroke="dark" stroke-width="3"
                                   stroke-linejoin="round"/>
                             <circle cx="-8" cy="-9" r="3.2" fill="#FFE08A"/>
                             <circle cx="7" cy="-18" r="3.2" fill="#F7A1BC"/>
@@ -2965,37 +3009,25 @@ button.hero-scene:focus-visible {
  
                         <!-- TESTA: cappello fragola -->
                         <g id="accessoryStrawberryHat" style="display:none">
-                            <path d="M106 106 Q108 62 160 58 Q212 62 214 106 Q160 96 106 106 Z"
-                                  fill="#F27D86" stroke="#C24F5D" stroke-width="3.5"
-                                  stroke-linejoin="round"/>
-                            <g fill="#FFE9A8">
-                                <ellipse cx="130" cy="82" rx="2" ry="3"/>
-                                <ellipse cx="150" cy="74" rx="2" ry="3"/>
-                                <ellipse cx="172" cy="74" rx="2" ry="3"/>
-                                <ellipse cx="192" cy="84" rx="2" ry="3"/>
-                                <ellipse cx="140" cy="94" rx="2" ry="3"/>
-                                <ellipse cx="162" cy="88" rx="2" ry="3"/>
-                                <ellipse cx="182" cy="96" rx="2" ry="3"/>
-                                <ellipse cx="120" cy="98" rx="2" ry="3"/>
-                                <ellipse cx="202" cy="99" rx="2" ry="3"/>
-                            </g>
-                            <path d="M160 62 L144 54 L154 53 L146 42 L160 50 L174 42 L166 53 L176 54 Z"
-                                  fill="#8CC97A" stroke="#4F8F45" stroke-width="2.5"
-                                  stroke-linejoin="round"/>
-                            <path d="M160 48 Q161 39 167 35" fill="none" stroke="#4F8F45"
-                                  stroke-width="3" stroke-linecap="round"/>
+                            <defs><clipPath id="strawberryClip"><path d="M96 112 C90 66 124 42 160 42 C196 42 230 66 224 112 C200 100 120 100 96 112 Z"/></clipPath></defs>
+                            <path d="M96 112 C90 66 124 42 160 42 C196 42 230 66 224 112 C200 100 120 100 96 112 Z" fill="#F0606F" data-fill="main" stroke="#B83A4A" data-stroke="dark" stroke-width="3.5" stroke-linejoin="round"/>
+                            <g clip-path="url(#strawberryClip)" fill="#FFE9A8"><ellipse cx="104" cy="56" rx="2" ry="3.2"/><ellipse cx="122" cy="56" rx="2" ry="3.2"/><ellipse cx="140" cy="56" rx="2" ry="3.2"/><ellipse cx="158" cy="56" rx="2" ry="3.2"/><ellipse cx="176" cy="56" rx="2" ry="3.2"/><ellipse cx="194" cy="56" rx="2" ry="3.2"/><ellipse cx="212" cy="56" rx="2" ry="3.2"/><ellipse cx="113" cy="68" rx="2" ry="3.2"/><ellipse cx="131" cy="68" rx="2" ry="3.2"/><ellipse cx="149" cy="68" rx="2" ry="3.2"/><ellipse cx="167" cy="68" rx="2" ry="3.2"/><ellipse cx="185" cy="68" rx="2" ry="3.2"/><ellipse cx="203" cy="68" rx="2" ry="3.2"/><ellipse cx="104" cy="80" rx="2" ry="3.2"/><ellipse cx="122" cy="80" rx="2" ry="3.2"/><ellipse cx="140" cy="80" rx="2" ry="3.2"/><ellipse cx="158" cy="80" rx="2" ry="3.2"/><ellipse cx="176" cy="80" rx="2" ry="3.2"/><ellipse cx="194" cy="80" rx="2" ry="3.2"/><ellipse cx="212" cy="80" rx="2" ry="3.2"/><ellipse cx="113" cy="92" rx="2" ry="3.2"/><ellipse cx="131" cy="92" rx="2" ry="3.2"/><ellipse cx="149" cy="92" rx="2" ry="3.2"/><ellipse cx="167" cy="92" rx="2" ry="3.2"/><ellipse cx="185" cy="92" rx="2" ry="3.2"/><ellipse cx="203" cy="92" rx="2" ry="3.2"/><ellipse cx="104" cy="104" rx="2" ry="3.2"/><ellipse cx="122" cy="104" rx="2" ry="3.2"/><ellipse cx="140" cy="104" rx="2" ry="3.2"/><ellipse cx="158" cy="104" rx="2" ry="3.2"/><ellipse cx="176" cy="104" rx="2" ry="3.2"/><ellipse cx="194" cy="104" rx="2" ry="3.2"/><ellipse cx="212" cy="104" rx="2" ry="3.2"/></g>
+                            <path d="M110 70 Q120 56 136 50" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity=".5"/>
+                            <use href="#hamsterEarL"/><use href="#hamsterInnerEarL"/><use href="#hamsterEarR"/><use href="#hamsterInnerEarR"/>
+                            <g fill="#8CC97A" stroke="#4F8F45" stroke-width="2.2" stroke-linejoin="round"><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 46) rotate(-175)"/><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 46) rotate(-140)"/><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 46) rotate(-105)"/><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 46) rotate(-75)"/><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 46) rotate(-40)"/><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 46) rotate(-5)"/><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 46) rotate(25)"/><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 46) rotate(155)"/></g>
+                            <path d="M160 46 Q157 32 168 24" fill="none" stroke="#4F8F45" stroke-width="4.5" stroke-linecap="round"/>
                         </g>
  
                         <!-- TESTA: cappello da streghetta -->
                         <g id="accessoryWitchHat" style="display:none"
                            transform="translate(160 94) rotate(-6)">
-                            <ellipse rx="56" ry="11" fill="#9A88CF"
-                                     stroke="#5E4C93" stroke-width="3"/>
+                            <ellipse rx="56" ry="11" fill="#9A88CF" data-fill="main"
+                                     stroke="#5E4C93" data-stroke="dark" stroke-width="3"/>
                             <path d="M-30 -2 Q-20 -32 -6 -56 Q6 -74 24 -66 Q8 -60 8 -40 L30 -2 Q0 4 -30 -2 Z"
-                                  fill="#9A88CF" stroke="#5E4C93" stroke-width="3"
+                                  fill="#9A88CF" data-fill="main" stroke="#5E4C93" data-stroke="dark" stroke-width="3"
                                   stroke-linejoin="round"/>
                             <path d="M-28 -9 Q0 -3 28 -9 L30 -2 Q0 4 -30 -2 Z"
-                                  fill="#FFB86B" stroke="#5E4C93" stroke-width="2.5"
+                                  fill="#FFB86B" stroke="#5E4C93" data-stroke="dark" stroke-width="2.5"
                                   stroke-linejoin="round"/>
                             <path d="M2 -40 L4.4 -34.6 L10 -34 L5.8 -30.2 L7 -24.6 L2 -27.4 L-3 -24.6 L-1.8 -30.2 L-6 -34 L-0.4 -34.6 Z"
                                   fill="#FFE08A" stroke="#C99A3E" stroke-width="1.5"
@@ -3004,44 +3036,82 @@ button.hero-scene:focus-visible {
  
                         <!-- TESTA: cuffiette -->
                         <g id="accessoryHeadphones" style="display:none">
-                            <path d="M84 122 C78 40 242 40 236 122" fill="none"
-                                  stroke="#C76A88" stroke-width="13" stroke-linecap="round"/>
-                            <path d="M84 122 C78 40 242 40 236 122" fill="none"
-                                  stroke="#F7A1BC" stroke-width="7" stroke-linecap="round"/>
-                            <rect x="68" y="112" width="26" height="40" rx="13"
-                                  fill="#F7A1BC" stroke="#C76A88" stroke-width="3"/>
-                            <rect x="226" y="112" width="26" height="40" rx="13"
-                                  fill="#F7A1BC" stroke="#C76A88" stroke-width="3"/>
-                            <path transform="translate(81 133) scale(.45)"
-                                  d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"
-                                  fill="#FFFFFF"/>
-                            <path transform="translate(239 133) scale(.45)"
-                                  d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"
-                                  fill="#FFFFFF"/>
+                            <path d="M112 76 L118 44 L140 64 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/><path d="M 208 76 L 202 44 L 180 64 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M119 66 L122 53 L132 62 Z" fill="#FFFFFF" opacity=".75"/><path d="M 201 66 L 198 53 L 188 62 Z" fill="#FFFFFF" opacity=".75"/>
+                            <path d="M80 130 C74 50 246 50 240 130" fill="none" stroke="#C76A88" data-stroke="dark" stroke-width="16" stroke-linecap="round"/>
+                            <path d="M80 130 C74 50 246 50 240 130" fill="none" stroke="#F7A1BC" data-stroke="main" stroke-width="10" stroke-linecap="round"/>
+                            <path d="M128 66 Q160 56 192 66" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="7" stroke-linecap="round"/>
+                            <ellipse cx="78" cy="140" rx="20" ry="26" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3"/>
+                            <ellipse cx="242" cy="140" rx="20" ry="26" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3"/>
+                            <ellipse cx="93" cy="140" rx="8" ry="21" fill="#FFD3E0" data-fill="light" stroke="#C76A88" data-stroke="dark" stroke-width="2"/>
+                            <ellipse cx="227" cy="140" rx="8" ry="21" fill="#FFD3E0" data-fill="light" stroke="#C76A88" data-stroke="dark" stroke-width="2"/>
+                            <path transform="translate(76 143) scale(.5)" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z" fill="#FFFFFF"/>
+                            <path transform="translate(244 143) scale(.5)" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z" fill="#FFFFFF"/>
                         </g>
 
                         <!-- VISO: occhiali da sole -->
                         <g id="accessorySunglasses" style="display:none">
-                            <path d="M100 146 L82 140 M220 146 L238 140" stroke="#2F2A33" stroke-width="4" stroke-linecap="round"/>
-                            <path d="M146 146 Q160 138 174 146" fill="none" stroke="#2F2A33" stroke-width="4.5" stroke-linecap="round"/>
-                            <rect x="98" y="132" width="50" height="34" rx="15" fill="#2F2A33"/>
-                            <rect x="172" y="132" width="50" height="34" rx="15" fill="#2F2A33"/>
+                            <path d="M100 146 L82 140 M220 146 L238 140" stroke="#2F2A33" data-stroke="main" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M146 146 Q160 138 174 146" fill="none" stroke="#2F2A33" data-stroke="main" stroke-width="4.5" stroke-linecap="round"/>
+                            <rect x="98" y="132" width="50" height="34" rx="15" fill="#2F2A33" data-fill="main"/>
+                            <rect x="172" y="132" width="50" height="34" rx="15" fill="#2F2A33" data-fill="main"/>
                             <g stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity=".55"><path d="M108 144 L118 138"/><path d="M182 144 L192 138"/></g>
                         </g>
  
                         <!-- VISO: occhialini a stella -->
                         <g id="accessoryStarGlasses" style="display:none">
-                            <path d="M145 148 Q160 140 175 148" fill="none" stroke="#E0A325" stroke-width="3.5" stroke-linecap="round"/>
-                            <g fill="#FFD66B" fill-opacity=".5" stroke="#E0A325" stroke-width="3" stroke-linejoin="round">
+                            <path d="M145 148 Q160 140 175 148" fill="none" stroke="#E0A325" data-stroke="dark" stroke-width="3.5" stroke-linecap="round"/>
+                            <g fill="#FFD66B" data-fill="main" fill-opacity=".5" stroke="#E0A325" data-stroke="dark" stroke-width="3" stroke-linejoin="round">
                                 <polygon points="124.0,126.0 131.1,141.3 147.8,143.3 135.4,154.7 138.7,171.2 124.0,163.0 109.3,171.2 112.6,154.7 100.2,143.3 116.9,141.3"/>
                                 <polygon points="196.0,126.0 203.1,141.3 219.8,143.3 207.4,154.7 210.7,171.2 196.0,163.0 181.3,171.2 184.6,154.7 172.2,143.3 188.9,141.3"/>
                             </g>
                         </g>
  
+                        <!-- VISO: occhiali a gatto -->
+                        <g id="accessoryCatEye" style="display:none">
+                            <path d="M100 144 Q102 132 118 134 L142 138 Q146 152 136 162 Q120 168 106 160 Q98 152 100 144 Z" fill="#FFFFFF" fill-opacity=".25" stroke="#2F2A33" data-stroke="main" stroke-width="4.5" stroke-linejoin="round"/><path d="M 220 144 Q 218 132 202 134 L 178 138 Q 174 152 184 162 Q 200 168 214 160 Q 222 152 220 144 Z" fill="#FFFFFF" fill-opacity=".25" stroke="#2F2A33" data-stroke="main" stroke-width="4.5" stroke-linejoin="round"/>
+                            <path d="M101 140 L88 126 L110 135 Z" fill="#2F2A33" data-fill="main" stroke="#2F2A33" data-stroke="main" stroke-width="2" stroke-linejoin="round"/><path d="M 219 140 L 232 126 L 210 135 Z" fill="#2F2A33" data-fill="main" stroke="#2F2A33" data-stroke="main" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M142 146 Q160 138 178 146" fill="none" stroke="#2F2A33" data-stroke="main" stroke-width="4" stroke-linecap="round"/>
+                            <g fill="#FFFFFF"><circle cx="94" cy="130" r="2"/><circle cx="226" cy="130" r="2"/><circle cx="103" cy="136" r="1.4"/><circle cx="217" cy="136" r="1.4"/></g>
+                        </g>
+ 
+                        <!-- VISO: occhiali da secchione -->
+                        <g id="accessoryNerd" style="display:none">
+                            <path d="M98 146 L84 140 M222 146 L236 140" stroke="#3B3440" data-stroke="main" stroke-width="5" stroke-linecap="round"/>
+                            <rect x="100" y="134" width="48" height="33" rx="6" fill="#FFFFFF" fill-opacity=".2" stroke="#3B3440" data-stroke="main" stroke-width="6"/>
+                            <rect x="172" y="134" width="48" height="33" rx="6" fill="#FFFFFF" fill-opacity=".2" stroke="#3B3440" data-stroke="main" stroke-width="6"/>
+                            <path d="M148 146 H172" stroke="#3B3440" data-stroke="main" stroke-width="6"/>
+                            <rect x="152" y="140" width="16" height="13" rx="2" fill="#FFF6D8" stroke="#D8C8A8" stroke-width="1.5"/>
+                            <path d="M155 143 L165 150 M165 143 L155 150" stroke="#D8C8A8" stroke-width="1.2"/>
+                        </g>
+ 
+                        <!-- VISO: occhiali da aviatore -->
+                        <g id="accessoryAviator" style="display:none">
+                            <path d="M100 140 Q100 134 110 134 L138 134 Q148 134 146 144 Q142 164 124 166 Q104 166 100 140 Z" fill="#8FC1F0" fill-opacity=".55" stroke="#D9A43A" data-stroke="main" stroke-width="3.5" stroke-linejoin="round"/><path d="M 220 140 Q 220 134 210 134 L 182 134 Q 172 134 174 144 Q 178 164 196 166 Q 216 166 220 140 Z" fill="#8FC1F0" fill-opacity=".55" stroke="#D9A43A" data-stroke="main" stroke-width="3.5" stroke-linejoin="round"/>
+                            <path d="M146 140 Q160 134 174 140 M144 136 H176" fill="none" stroke="#D9A43A" data-stroke="main" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M100 140 L84 136 M220 140 L236 136" stroke="#D9A43A" data-stroke="main" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M108 142 L120 138 M180 142 L192 138" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+                        </g>
+ 
+                        <!-- VISO: monocolo -->
+                        <g id="accessoryMonocle" style="display:none">
+                            <path d="M209 166 Q226 196 206 222" fill="none" stroke="#C99A3E" data-stroke="dark" stroke-width="2.5" stroke-dasharray="4 3"/>
+                            <circle cx="196" cy="150" r="20" fill="#FFFFFF" fill-opacity=".2" stroke="#E2B44F" data-stroke="main" stroke-width="5"/>
+                            <path d="M184 140 Q189 134 197 133" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+                        </g>
+ 
+                        <!-- VISO: occhiali 3D -->
+                        <g id="accessoryGlasses3d" style="display:none">
+                            <path d="M96 136 L84 132 M224 136 L236 132" stroke="#BDB3AE" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M96 134 H224 V164 Q192 168 176 164 L166 154 Q160 150 154 154 L144 164 Q128 168 96 164 Z" fill="#FFFFFF" data-fill="main" stroke="#BDB3AE" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <rect x="104" y="139" width="38" height="20" rx="4" fill="#F0606F" fill-opacity=".85"/>
+                            <rect x="178" y="139" width="38" height="20" rx="4" fill="#5FC6E8" fill-opacity=".85"/>
+                        </g>
+ 
                         <!-- TESTA: tocco da laureato -->
                         <g id="accessoryGradCap" style="display:none">
-                            <path d="M116 64 V86 Q160 102 204 86 V64" fill="#4A4250" stroke="#24202A" stroke-width="3" stroke-linejoin="round"/>
-                            <path d="M160 36 L234 60 L160 84 L86 60 Z" fill="#3B3440" stroke="#24202A" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M116 64 V86 Q160 102 204 86 V64" fill="#4A4250" data-fill="main" stroke="#24202A" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M160 36 L234 60 L160 84 L86 60 Z" fill="#3B3440" data-fill="main" stroke="#24202A" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
                             <path d="M160 60 L224 74 V104" fill="none" stroke="#F5C542" stroke-width="3.5" stroke-linecap="round"/>
                             <path d="M218 102 h12 l-2 14 h-8 z" fill="#F5C542"/>
                             <circle cx="160" cy="60" r="4.5" fill="#F5C542"/>
@@ -3049,21 +3119,26 @@ button.hero-scene:focus-visible {
  
                         <!-- TESTA: aureola -->
                         <g id="accessoryHalo" style="display:none">
-                            <ellipse cx="160" cy="46" rx="48" ry="13" fill="none" stroke="#E9B83C" stroke-width="9"/>
-                            <ellipse cx="160" cy="46" rx="48" ry="13" fill="none" stroke="#FFE69A" stroke-width="3.5"/>
+                            <ellipse cx="160" cy="46" rx="48" ry="13" fill="none" stroke="#E9B83C" data-stroke="main" stroke-width="9"/>
+                            <ellipse cx="160" cy="46" rx="48" ry="13" fill="none" stroke="#FFE69A" data-stroke="light" stroke-width="3.5"/>
                             <path d="M222 26 Q222 34 230 34 Q222 34 222 42 Q222 34 214 34 Q222 34 222 26Z" fill="#FFD66B"/>
                             <path d="M98 30 Q98 36 104 36 Q98 36 98 42 Q98 36 92 36 Q98 36 98 30Z" fill="#FFD66B"/>
                         </g>
  
                         <!-- TESTA: orecchie da coniglio -->
                         <g id="accessoryBunnyEars" style="display:none">
-                            <path d="M128 86 C108 44 110 8 127 8 C143 8 148 46 142 86 Z" fill="#FFFFFF" stroke="#D9C2CC" stroke-width="3"/>
-                            <path d="M131 76 C120 48 121 22 128 21 C136 21 138 50 136 76 Z" fill="#F9BFCF"/>
-                            <path d="M192 86 C212 44 210 8 193 8 C177 8 172 46 178 86 Z" fill="#FFFFFF" stroke="#D9C2CC" stroke-width="3"/>
-                            <path d="M189 76 C200 48 199 22 192 21 C184 21 182 50 184 76 Z" fill="#F9BFCF"/>
-                            <path d="M98 100 Q160 62 222 100" fill="none" stroke="#F7A1BC" stroke-width="9" stroke-linecap="round"/>
+                            <path d="M124 90 C106 54 104 12 122 8 C140 4 148 48 142 90 Z" fill="#FFFFFF" data-fill="main" stroke="#D9C2CC" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M128 80 C117 52 116 24 123 21 C131 19 137 50 136 80 Z" fill="#F9BFCF" data-fill="light"/>
+                            <path d="M178 90 C176 66 180 46 192 38 C208 28 238 34 244 54 C246 60 240 64 234 60 C226 50 210 48 202 56 C196 62 194 76 196 90 Z" fill="#FFFFFF" data-fill="main" stroke="#D9C2CC" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M186 80 C185 64 188 52 196 46 C208 39 228 42 236 54 C226 47 212 46 204 52 C196 58 192 70 192 80 Z" fill="#F9BFCF" data-fill="light"/>
+                            <path d="M96 102 Q160 62 224 102" fill="none" stroke="#F7A1BC" stroke-width="9" stroke-linecap="round"/>
+                            <path d="M212 86 L201 79 V93 Z M212 86 L223 79 V93 Z" fill="#F28DA0" stroke="#D9506F" stroke-width="1.5" stroke-linejoin="round"/>
+                            <circle cx="212" cy="86" r="3.5" fill="#E0677F"/>
                         </g>
                         
+                        <!-- Palla per criceti (sopra a tutto) -->
+                        <g id="hamsterBall"></g>
+
                     </svg>
                 </div>
 
@@ -3197,7 +3272,6 @@ button.hero-scene:focus-visible {
                         </button>
                     </div>
                 </section>
- 
                 <section class="creator-section" data-tab="viso">
                     <h2>Gli occhi</h2>
                     <p>Un'espressione diversa cambia tutto.</p>
@@ -3213,6 +3287,59 @@ button.hero-scene:focus-visible {
                             aria-pressed="false"><span class="creator-preview-icon"></span>
                             Occhi piccoli
                         </button>
+                        <button type="button" class="creator-option"
+                                data-group="eyes" data-value="anime"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Occhioni anime
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="eyes" data-value="happy"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Felici
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="eyes" data-value="sleepy"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Assonnati
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="eyes" data-value="wink"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Occhiolino
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="eyes" data-value="hearts"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Cuoricini
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="eyes" data-value="stars"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Stelline
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="eyes" data-value="dots"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Puntini
+                        </button>
+                    </div>
+                
+                    <div class="creator-colors" role="group" aria-label="Colore degli occhi">
+                        <span class="creator-colors-label">Colore degli occhi</span>
+                        <button type="button" class="creator-option creator-color selected" data-group="eyeColor" data-value="dark" aria-pressed="true" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#30231F"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="brown" aria-pressed="false" title="Marrone" aria-label="Marrone"><span class="creator-swatch" style="background:#6B4226"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#3D6FB6"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="green" aria-pressed="false" title="Verde" aria-label="Verde"><span class="creator-swatch" style="background:#3C8D5A"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="violet" aria-pressed="false" title="Viola" aria-label="Viola"><span class="creator-swatch" style="background:#7B4FB0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#B83A4A"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="amber" aria-pressed="false" title="Ambra" aria-label="Ambra"><span class="creator-swatch" style="background:#B7802A"></span></button>                        
                     </div>
                 </section>
 
@@ -3319,6 +3446,16 @@ button.hero-scene:focus-visible {
                             Mini
                         </button>
                     </div>
+                    
+                    <div class="creator-colors" role="group" aria-label="Colore dei baffi">
+                        <span class="creator-colors-label">Colore dei baffi</span>
+                        <button type="button" class="creator-option creator-color selected" data-group="whiskerColor" data-value="brown" aria-pressed="true" title="Marrone" aria-label="Marrone"><span class="creator-swatch" style="background:#79554C"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="whiskerColor" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#2F2A33"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="whiskerColor" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="whiskerColor" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#E07A8C"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="whiskerColor" data-value="gold" aria-pressed="false" title="Oro" aria-label="Oro"><span class="creator-swatch" style="background:#D9A43A"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="whiskerColor" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#6F9FD8"></span></button>
+                    </div>                    
                 </section>
 
                 <section class="creator-section" data-tab="accessori">
@@ -3393,6 +3530,19 @@ button.hero-scene:focus-visible {
                             Orecchie da coniglio
                         </button>
                     </div>
+                    <div class="creator-colors" role="group" aria-label="Colore">
+                        <span class="creator-colors-label">Colore</span>
+                        <button type="button" class="creator-option creator-color selected" data-group="accColorHead" data-value="original" aria-pressed="true" title="Originale" aria-label="Originale"><span class="creator-swatch" style="background:conic-gradient(#F7A1BC 0 25%,#FFD66B 0 50%,#A9D3C0 0 75%,#8FC1F0 0)"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#F0606F"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="orange" aria-pressed="false" title="Arancio" aria-label="Arancio"><span class="creator-swatch" style="background:#FFB86B"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="yellow" aria-pressed="false" title="Giallo" aria-label="Giallo"><span class="creator-swatch" style="background:#FFD66B"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="mint" aria-pressed="false" title="Menta" aria-label="Menta"><span class="creator-swatch" style="background:#A9D3C0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#8FC1F0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="purple" aria-pressed="false" title="Lilla" aria-label="Lilla"><span class="creator-swatch" style="background:#B9A3E3"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#3B3440"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
+                    </div>
                     <h3 class="creator-subtitle">Viso</h3>
                     <div class="creator-options">
                         <button type="button" class="creator-option"
@@ -3418,7 +3568,50 @@ button.hero-scene:focus-visible {
                                 aria-pressed="false">
                             <span class="creator-preview-icon"></span>
                             Occhialini a stella
-                        </button>                        
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="catEye"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Occhiali a gatto
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="nerd"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Occhiali da secchione
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="aviator"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Occhiali da aviatore
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="monocle"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Monocolo
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="glasses3d"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Occhiali 3D
+                        </button>
+                    </div>
+                    <div class="creator-colors" role="group" aria-label="Colore">
+                        <span class="creator-colors-label">Colore</span>
+                        <button type="button" class="creator-option creator-color selected" data-group="accColorFace" data-value="original" aria-pressed="true" title="Originale" aria-label="Originale"><span class="creator-swatch" style="background:conic-gradient(#F7A1BC 0 25%,#FFD66B 0 50%,#A9D3C0 0 75%,#8FC1F0 0)"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#F0606F"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="orange" aria-pressed="false" title="Arancio" aria-label="Arancio"><span class="creator-swatch" style="background:#FFB86B"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="yellow" aria-pressed="false" title="Giallo" aria-label="Giallo"><span class="creator-swatch" style="background:#FFD66B"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="mint" aria-pressed="false" title="Menta" aria-label="Menta"><span class="creator-swatch" style="background:#A9D3C0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#8FC1F0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="purple" aria-pressed="false" title="Lilla" aria-label="Lilla"><span class="creator-swatch" style="background:#B9A3E3"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#3B3440"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
                     </div>
                     <h3 class="creator-subtitle">Collo</h3>
                     <div class="creator-options">
@@ -3453,6 +3646,20 @@ button.hero-scene:focus-visible {
                             Collana di perle
                         </button>
                     </div>
+                    
+                    <div class="creator-colors" role="group" aria-label="Colore">
+                        <span class="creator-colors-label">Colore</span>
+                        <button type="button" class="creator-option creator-color selected" data-group="accColorNeck" data-value="original" aria-pressed="true" title="Originale" aria-label="Originale"><span class="creator-swatch" style="background:conic-gradient(#F7A1BC 0 25%,#FFD66B 0 50%,#A9D3C0 0 75%,#8FC1F0 0)"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#F0606F"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="orange" aria-pressed="false" title="Arancio" aria-label="Arancio"><span class="creator-swatch" style="background:#FFB86B"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="yellow" aria-pressed="false" title="Giallo" aria-label="Giallo"><span class="creator-swatch" style="background:#FFD66B"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="mint" aria-pressed="false" title="Menta" aria-label="Menta"><span class="creator-swatch" style="background:#A9D3C0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#8FC1F0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="purple" aria-pressed="false" title="Lilla" aria-label="Lilla"><span class="creator-swatch" style="background:#B9A3E3"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#3B3440"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
+                    </div>                    
                 </section>
  
                 <section class="creator-section" data-tab="scena">
@@ -3489,7 +3696,19 @@ button.hero-scene:focus-visible {
                             <span class="creator-preview-icon"></span>
                             Libro
                         </button>
+                        <button type="button" clas="creator-option"
+                                data-group="held" data-value="mic"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Microfono
+                        </button>
                         <button type="button" class="creator-option"
+                                data-group="held" data-value="guitar"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Chitarrina
+                        </button>
+                        <button type="button" class="creator-option"                            
                                 data-group="held" data-value="none"
                                 aria-pressed="false">
                             <span class="creator-preview-icon"></span>
@@ -3499,6 +3718,49 @@ button.hero-scene:focus-visible {
                 </section>
  
                 <section class="creator-section" data-tab="scena">
+                    <h2>Palla per criceti</h2>
+                    <p>Per rotolare per casa senza perdersi. Rotolare dritto non è garantito.</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option selected"
+                                data-group="ball" data-value="none"
+                                aria-pressed="true">
+                            <span class="creator-preview-icon"></span>
+                            Senza palla
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="ball" data-value="clear"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Trasparente
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="ball" data-value="pink"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Rosa
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="ball" data-value="blue"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Azzurra
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="ball" data-value="mint"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Menta
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="ball" data-value="purple"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Lilla
+                        </button>
+                    </div>
+                </section>
+ 
+                <section class="creator-section" data-tab="scena">                    
                     <h2>Sfondo</h2>
                     <p>Dove vive il tuo criceto? Lo sfondo finisce anche nella foto scaricata.</p>
                     <div class="creator-options">
@@ -3573,6 +3835,158 @@ button.hero-scene:focus-visible {
         </div>
     </div>
 </section>
+<section class="page creator-page" id="crea-casa">
+    <div class="container">
+ 
+        <button class="creator-back-button" type="button" onclick="showPage('catalogo')">
+            ← Torna al negozio
+        </button>
+ 
+        <div class="creator-heading">
+            <span class="tiny-label">Un tetto sopra le orecchie</span>
+            <h1>Crea la casa del tuo criceto</h1>
+            <p>Struttura, colori, pavimento, arredamento e decorazioni. Dentro ci abita il criceto che hai creato tu: spese di trasloco non incluse.</p>
+        </div>
+ 
+        <div class="creator-layout">
+            <aside class="creator-preview">
+                <div class="creator-stage house-stage" id="houseStage"></div>
+                <input id="houseName" class="creator-name" type="text" maxlength="24" placeholder="Come si chiama la casa?" value="Villa Pasticcino" aria-label="Nome della casa">
+                <p class="creator-caption">Dentro c'è il criceto che hai creato in «Crea il tuo criceto».</p>
+            </aside>
+ 
+            <div class="creator-controls">
+                <div class="creator-tabs" role="tablist" aria-label="Categorie della casa">
+                    <button type="button" class="creator-tab active" data-tab="struttura" role="tab" aria-selected="true">Struttura</button>
+                    <button type="button" class="creator-tab" data-tab="interni" role="tab" aria-selected="false">Interni</button>
+                    <button type="button" class="creator-tab" data-tab="arredamento" role="tab" aria-selected="false">Arredi</button>
+                    <button type="button" class="creator-tab" data-tab="decorazioni" role="tab" aria-selected="false">Decori</button>
+                </div>
+ 
+                <section class="creator-section" data-tab="struttura">
+                    <h2>Tipo di casa</h2>
+                    <p>Da una gabbia classica a un castello con le torri.</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option" data-group="type" data-value="cage" aria-pressed="false"><span class="creator-preview-icon"></span>Gabbia classica</button>
+                        <button type="button" class="creator-option" data-group="type" data-value="wood" aria-pressed="false"><span class="creator-preview-icon"></span>Casetta di legno</button>
+                        <button type="button" class="creator-option" data-group="type" data-value="mushroom" aria-pressed="false"><span class="creator-preview-icon"></span>Casa fungo</button>
+                        <button type="button" class="creator-option" data-group="type" data-value="castle" aria-pressed="false"><span class="creator-preview-icon"></span>Castello</button>
+                        <button type="button" class="creator-option" data-group="type" data-value="modern" aria-pressed="false"><span class="creator-preview-icon"></span>Villa moderna</button>
+                    </div>
+                </section>
+ 
+                <section class="creator-section" data-tab="struttura">
+                    <h2>Colori</h2>
+                    <p>Pareti esterne e tetto (o vassoio, per la gabbia).</p>
+                    <div class="creator-colors" role="group" aria-label="Pareti">
+                        <span class="creator-colors-label">Pareti</span>
+                        <button type="button" class="creator-option creator-color" data-group="frame" data-value="wood" aria-pressed="false" title="Legno" aria-label="Legno"><span class="creator-swatch" style="background:#D9A066"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="frame" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="frame" data-value="mint" aria-pressed="false" title="Menta" aria-label="Menta"><span class="creator-swatch" style="background:#A9D3C0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="frame" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#8FC1F0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="frame" data-value="yellow" aria-pressed="false" title="Giallo" aria-label="Giallo"><span class="creator-swatch" style="background:#FFD66B"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="frame" data-value="lilac" aria-pressed="false" title="Lilla" aria-label="Lilla"><span class="creator-swatch" style="background:#B9A3E3"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="frame" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#F0606F"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="frame" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="frame" data-value="grey" aria-pressed="false" title="Grigio" aria-label="Grigio"><span class="creator-swatch" style="background:#A8A5A0"></span></button>
+                    </div>
+                    <div class="creator-colors" role="group" aria-label="Tetto">
+                        <span class="creator-colors-label">Tetto</span>
+                        <button type="button" class="creator-option creator-color" data-group="roof" data-value="wood" aria-pressed="false" title="Legno" aria-label="Legno"><span class="creator-swatch" style="background:#D9A066"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="roof" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="roof" data-value="mint" aria-pressed="false" title="Menta" aria-label="Menta"><span class="creator-swatch" style="background:#A9D3C0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="roof" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#8FC1F0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="roof" data-value="yellow" aria-pressed="false" title="Giallo" aria-label="Giallo"><span class="creator-swatch" style="background:#FFD66B"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="roof" data-value="lilac" aria-pressed="false" title="Lilla" aria-label="Lilla"><span class="creator-swatch" style="background:#B9A3E3"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="roof" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#F0606F"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="roof" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="roof" data-value="grey" aria-pressed="false" title="Grigio" aria-label="Grigio"><span class="creator-swatch" style="background:#A8A5A0"></span></button>
+                    </div>
+                </section> 
+ 
+                <section class="creator-section" data-tab="interni">
+                    <h2>Carta da parati</h2>
+                    <p>Lo sfondo delle sue giornate produttive.</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option" data-group="wallpaper" data-value="plain" aria-pressed="false"><span class="creator-preview-icon"></span>Tinta unita</button>
+                        <button type="button" class="creator-option" data-group="wallpaper" data-value="stripes" aria-pressed="false"><span class="creator-preview-icon"></span>Righe</button>
+                        <button type="button" class="creator-option" data-group="wallpaper" data-value="dots" aria-pressed="false"><span class="creator-preview-icon"></span>Pois</button>
+                        <button type="button" class="creator-option" data-group="wallpaper" data-value="hearts" aria-pressed="false"><span class="creator-preview-icon"></span>Cuori</button>
+                        <button type="button" class="creator-option" data-group="wallpaper" data-value="stars" aria-pressed="false"><span class="creator-preview-icon"></span>Stelle</button>
+                    </div>
+                    <div class="creator-colors" role="group" aria-label="Colore">
+                        <span class="creator-colors-label">Colore</span>
+                        <button type="button" class="creator-option creator-color" data-group="wall" data-value="wood" aria-pressed="false" title="Legno" aria-label="Legno"><span class="creator-swatch" style="background:#D9A066"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="wall" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="wall" data-value="mint" aria-pressed="false" title="Menta" aria-label="Menta"><span class="creator-swatch" style="background:#A9D3C0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="wall" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#8FC1F0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="wall" data-value="yellow" aria-pressed="false" title="Giallo" aria-label="Giallo"><span class="creator-swatch" style="background:#FFD66B"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="wall" data-value="lilac" aria-pressed="false" title="Lilla" aria-label="Lilla"><span class="creator-swatch" style="background:#B9A3E3"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="wall" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#F0606F"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="wall" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="wall" data-value="grey" aria-pressed="false" title="Grigio" aria-label="Grigio"><span class="creator-swatch" style="background:#A8A5A0"></span></button>
+                    </div>
+                </section>
+ 
+                <section class="creator-section" data-tab="interni">
+                    <h2>Pavimento</h2>
+                    <p>Morbido sotto le zampette, impossibile da pulire.</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option" data-group="floor" data-value="straw" aria-pressed="false"><span class="creator-preview-icon"></span>Paglia</button>
+                        <button type="button" class="creator-option" data-group="floor" data-value="shavings" aria-pressed="false"><span class="creator-preview-icon"></span>Trucioli</button>
+                        <button type="button" class="creator-option" data-group="floor" data-value="confetti" aria-pressed="false"><span class="creator-preview-icon"></span>Coriandoli</button>
+                        <button type="button" class="creator-option" data-group="floor" data-value="grass" aria-pressed="false"><span class="creator-preview-icon"></span>Erbetta</button>
+                    </div>
+                </section>
+ 
+                <section class="creator-section" data-tab="arredamento">
+                    <h2>Arredamento</h2>
+                    <p>Scegli tutto quello che vuoi: il criceto non paga l'affitto.</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option" data-group="furniture" data-value="wheel" aria-pressed="false"><span class="creator-preview-icon"></span>Ruota</button>
+                        <button type="button" class="creator-option" data-group="furniture" data-value="nest" aria-pressed="false"><span class="creator-preview-icon"></span>Casetta nido</button>
+                        <button type="button" class="creator-option" data-group="furniture" data-value="bowl" aria-pressed="false"><span class="creator-preview-icon"></span>Ciotola</button>
+                        <button type="button" class="creator-option" data-group="furniture" data-value="bottle" aria-pressed="false"><span class="creator-preview-icon"></span>Beverino</button>
+                        <button type="button" class="creator-option" data-group="furniture" data-value="hammock" aria-pressed="false"><span class="creator-preview-icon"></span>Amaca</button>
+                    </div>
+                </section>
+ 
+                <section class="creator-section" data-tab="decorazioni">
+                    <h2>Decorazioni</h2>
+                    <p>I dettagli che trasformano una casa in una tana.</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option" data-group="decor" data-value="lights" aria-pressed="false"><span class="creator-preview-icon"></span>Lucine</button>
+                        <button type="button" class="creator-option" data-group="decor" data-value="bunting" aria-pressed="false"><span class="creator-preview-icon"></span>Bandierine</button>
+                        <button type="button" class="creator-option" data-group="decor" data-value="picture" aria-pressed="false"><span class="creator-preview-icon"></span>Quadretto</button>
+                        <button type="button" class="creator-option" data-group="decor" data-value="rug" aria-pressed="false"><span class="creator-preview-icon"></span>Tappeto</button>
+                        <button type="button" class="creator-option" data-group="decor" data-value="plant" aria-pressed="false"><span class="creator-preview-icon"></span>Piantina</button>
+                    </div>
+                </section>
+ 
+                <section class="creator-section" data-tab="decorazioni">
+                    <h2>Il tuo criceto</h2>
+                    <p>Il criceto che hai creato può già trasferirsi.</p>
+                    <div class="creator-options">
+                        <button type="button" class="creator-option" data-group="hamster" data-value="yes" aria-pressed="false">In casa</button>
+                        <button type="button" class="creator-option" data-group="hamster" data-value="no" aria-pressed="false">Casa vuota</button>
+                    </div>
+                </section>
+ 
+                <div class="creator-section">
+                    <h2>Pronta per il trasloco?</h2>
+                    <p>Aggiungila al carrello, scaricala come immagine o ricomincia da capo.</p>
+                    <div class="creator-actions">
+                        <button type="button" class="primary-button creator-adopt" id="houseAdd">🛒 Aggiungi al carrello</button>
+                        <button type="button" class="secondary-button" id="houseDownload">Scarica</button>
+                        <button type="button" class="secondary-button" id="houseReset">Ricomincia</button>
+                    </div>
+                    <div class="creator-receipt" id="houseReceipt" aria-live="polite"></div>
+                    <p class="creator-status" id="houseStatus" role="status" aria-live="polite"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>                
 </main>
 <footer>
     <div class="footer-inner">
@@ -3586,6 +4000,7 @@ button.hero-scene:focus-visible {
             <button class="text-button" onclick="goToSection('criceti')">I nostri criceti</button>
             <button class="text-button" onclick="goToSection('extra')">Extra e ricambi</button>
             <button class="text-button" onclick="showPage('crea-criceto')">Crea il tuo criceto</button>
+            <button class="text-button" onclick="showPage('crea-casa')">Crea la casa</button>
         </nav>
         <nav class="footer-links" aria-label="Aiuto">
             <span class="footer-title">Aiuto</span>
@@ -3857,6 +4272,18 @@ const products = [
         price:499.99
     },
     {
+        id:"w7",
+        category:"ruota",
+        name:"Palla da criceto",
+        emoji:"🫧",
+        color:"#dcecfb",
+        tag:"Esplorazione libera",
+        description:"Una bolla trasparente per rotolare in giro per casa. Il criceto sceglie la direzione, tu scegli se seguirlo. Gli spigoli dei mobili non sono inclusi, ma li troverà lo stesso.",
+        speed:"Imprevedibile",
+        duration:"Finché non incontra il divano",
+        price:24.99
+    },
+    {        
         id:"e1",
         category:"extra",
         name:"Cibo per criceti",
@@ -4098,6 +4525,7 @@ function showPage(pageName,fromHistory = false) {
     window.scrollTo({top:0,behavior:"smooth"});
 
     if (pageName === "carrello") renderCart();
+    if (pageName === "crea-casa" && window.refreshHouse) window.refreshHouse();    
 }
 
 
@@ -4547,7 +4975,15 @@ function initHamsterCreator() {
         mouth: "smile",
         cheeks: "pink",
         held: "seed",
-        background: "none"
+        background: "none",
+        hair: "none",
+        ball: "none",
+        eyeColor: "dark",
+        whiskerColor: "brown",
+        hairColor: "brown",
+        accColorHead: "original",
+        accColorFace: "original",
+        accColorNeck: "original"
     };
 
     const furColors = {
@@ -4621,13 +5057,18 @@ function initHamsterCreator() {
         sunglasses: "accessorySunglasses",
         starGlasses: "accessoryStarGlasses",
         bowtie: "accessoryBowtie",
-        pearls: "accessoryPearls"
+        pearls: "accessoryPearls",
+        catEye: "accessoryCatEye",
+        nerd: "accessoryNerd",
+        aviator: "accessoryAviator",
+        monocle: "accessoryMonocle",
+        glasses3d: "accessoryGlasses3d"
     };
 
     // Un solo accessorio per zona: testa, viso e collo.
     const accessoryZones = {
         head: ["bow", "hat", "flower", "crown", "partyHat", "strawberryHat", "witchHat", "headphones", "gradCap", "halo", "bunnyEars"],
-        face: ["glasses", "heartGlasses", "sunglasses", "starGlasses"],
+        face: ["glasses", "heartGlasses", "sunglasses", "starGlasses", "catEye", "nerd", "aviator", "monocle", "glasses3d"],
         neck: ["bandana", "scarf", "collar", "bowtie", "pearls"]
     };
  
@@ -4643,6 +5084,37 @@ function initHamsterCreator() {
         return Object.values(picked);
     }
 
+    const eyeColors = {
+        dark: "#30231F",
+        brown: "#6B4226",
+        blue: "#3D6FB6",
+        green: "#3C8D5A",
+        violet: "#7B4FB0",
+        red: "#B83A4A",
+        amber: "#B7802A"
+    };
+    const whiskerColors = {
+        brown: "#79554C",
+        black: "#2F2A33",
+        white: "#FFFFFF",
+        pink: "#E07A8C",
+        gold: "#D9A43A",
+        blue: "#6F9FD8"
+    };
+    const accPalette = {
+        original: null,
+        pink: { main: "#F7A1BC", dark: "#C76A88", light: "#FFD6E2" },
+        red: { main: "#F0606F", dark: "#B83A4A", light: "#FFC2C8" },
+        orange: { main: "#FFB86B", dark: "#C9813A", light: "#FFE0BC" },
+        yellow: { main: "#FFD66B", dark: "#C99A2E", light: "#FFF1BF" },
+        mint: { main: "#A9D3C0", dark: "#5E9580", light: "#DDF1E8" },
+        blue: { main: "#8FC1F0", dark: "#4E83BA", light: "#D6E9FB" },
+        purple: { main: "#B9A3E3", dark: "#6E58A8", light: "#E7DDF8" },
+        black: { main: "#3B3440", dark: "#1F1B24", light: "#6B6275" },
+        white: { main: "#FFFFFF", dark: "#BDB3AE", light: "#F3EEEA" }
+    };
+    const zoneColorKey = { head: "accColorHead", face: "accColorFace", neck: "accColorNeck" };
+     
     // Parti del look disegnate al volo: motivo, bocca, guance, oggetto in mano e sfondo.
     const heartShape = (x, y, size, fill, extra = "") =>
         `<path transform="translate(${x} ${y}) scale(${size})" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z" fill="${fill}" ${extra}/>`;
@@ -4657,7 +5129,37 @@ function initHamsterCreator() {
     const flower = (x, y, petal) =>
         `<g fill="${petal}"><circle cx="${x - 5}" cy="${y}" r="4.5"/><circle cx="${x + 5}" cy="${y}" r="4.5"/><circle cx="${x}" cy="${y - 5}" r="4.5"/><circle cx="${x}" cy="${y + 5}" r="4.5"/></g><circle cx="${x}" cy="${y}" r="3.5" fill="#FFD66B"/>`;
     const confettiColors = ["#F28DA0", "#8FCDF5", "#FFD66B", "#9BD1A8", "#C7B2EE"];
+
+    const starPoints = (cx, cy, R, r) => Array.from({ length: 10 }, (_, i) => {
+        const angle = -Math.PI / 2 + i * Math.PI / 5;
+        const radius = i % 2 ? r : R;
+        return `${(cx + radius * Math.cos(angle)).toFixed(1)},${(cy + radius * Math.sin(angle)).toFixed(1)}`;
+    }).join(" ");
+    const heartD = "M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z";
+    const bothEyes = draw => [124, 196].map(draw).join("");
+    const eyeShapes = {
+        happy: c => bothEyes(x => `<path d="M${x - 12} 154 Q${x} 139 ${x + 12} 154" fill="none" stroke="${c}" stroke-width="4.5" stroke-linecap="round"/>`),
+        sleepy: c => bothEyes(x => `<path d="M${x - 11} 148 A11 9 0 0 0 ${x + 11} 148 Z" fill="${c}"/><path d="M${x - 13} 148 H${x + 13}" stroke="${c}" stroke-width="3.5" stroke-linecap="round"/><circle cx="${x + 3}" cy="152" r="2" fill="#FFFFFF"/>`),
+        wink: c => `<ellipse cx="124" cy="150" rx="11" ry="12.5" fill="${c}"/><circle cx="128" cy="145" r="3.6" fill="#FFFFFF"/><circle cx="121" cy="154" r="1.5" fill="#FFFFFF"/><path d="M184 153 Q196 140 208 153" fill="none" stroke="${c}" stroke-width="4.5" stroke-linecap="round"/>`,
+        hearts: c => bothEyes(x => `<path transform="translate(${x} 153) scale(.9)" d="${heartD}" fill="${c === eyeColors.dark ? "#E8506E" : c}"/><circle cx="${x - 5}" cy="143" r="2.4" fill="#FFFFFF"/>`),
+        stars: c => bothEyes(x => `<polygon points="${starPoints(x, 151, 14, 6.5)}" fill="${c === eyeColors.dark ? "#F2B53A" : c}" stroke="${c === eyeColors.dark ? "#C98A1E" : c}" stroke-width="1.5" stroke-linejoin="round"/><circle cx="${x - 3}" cy="147" r="2" fill="#FFFFFF"/>`),
+        dots: c => bothEyes(x => `<circle cx="${x}" cy="151" r="4.6" fill="${c}"/><circle cx="${x + 1.5}" cy="149.5" r="1.3" fill="#FFFFFF"/>`)
+    };
+    const roundEyes = { big: [11, 12.5, 3.6, 145], small: [7.5, 8.5, 2.4, 147], anime: [13, 15.5, 4.6, 143] };
  
+    const ballTints = {
+        clear: ["#CFE8FF", "#7FA9D6"], pink: ["#FFB3C8", "#D9758F"], blue: ["#8FC1F0", "#4E83BA"],
+        mint: ["#A9E2C6", "#5E9580"], purple: ["#C7B2EE", "#7B62B8"]
+    };
+    const ballPart = ([tint, rim]) =>
+        `<circle cx="160" cy="164" r="150" fill="${tint}" fill-opacity=".22" stroke="${rim}" stroke-width="5" stroke-opacity=".7"/>` +
+        `<path d="M12 170 Q160 214 308 170" fill="none" stroke="${rim}" stroke-width="4" stroke-opacity=".45"/>` +
+        [-125, -110, -95, -80, -65, -50].map(angle => {
+            const a = angle * Math.PI / 180;
+            return `<rect x="-3.5" y="-10" width="7" height="20" rx="3.5" fill="${rim}" opacity=".4" transform="translate(${(160 + 132 * Math.cos(a)).toFixed(1)} ${(164 + 132 * Math.sin(a)).toFixed(1)}) rotate(${angle + 90})"/>`;
+        }).join("") +
+        `<path d="M58 92 Q92 40 156 28" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-opacity=".75"/><circle cx="50" cy="118" r="6" fill="#FFFFFF" fill-opacity=".75"/>`;
+     
     const lookParts = {
         pattern: {
             none: () => "",
@@ -4685,9 +5187,19 @@ function initHamsterCreator() {
             strawberry: `<path d="M160 223 C145 215 143 197 150 193 C155 190 165 190 170 193 C177 197 175 215 160 223 Z" fill="#F0606F" stroke="#C2434F" stroke-width="2"/><g fill="#FFE7A0"><circle cx="154" cy="201" r="1.4"/><circle cx="165" cy="200" r="1.4"/><circle cx="160" cy="208" r="1.4"/><circle cx="153" cy="211" r="1.4"/><circle cx="167" cy="210" r="1.4"/></g><path d="M149 194 L155 186 L160 192 L165 186 L171 194 Q160 198 149 194 Z" fill="#7CC36E" stroke="#4F9447" stroke-width="1.5" stroke-linejoin="round"/>`,
             heart: heartShape(160, 208, 1.1, "#FF7FA3", 'stroke="#D9506F" stroke-width="2"') + `<circle cx="152" cy="197" r="2.6" fill="#FFFFFF" opacity=".8"/>`,
             coffee: `<path d="M147 195 H173 L170 220 Q160 224 150 220 Z" fill="#FFFFFF" stroke="#8B6A5A" stroke-width="2.2" stroke-linejoin="round"/><path d="M149 206 H171" stroke="#C98B5E" stroke-width="6"/><rect x="145" y="190" width="30" height="7" rx="3.5" fill="#F4A7B4" stroke="#C9707F" stroke-width="1.8"/>`,
+            mic: `<rect x="155" y="196" width="10" height="30" rx="4" fill="#3B3440" stroke="#24202A" stroke-width="1.5"/><circle cx="160" cy="191" r="11" fill="#C9CED6" stroke="#8C939E" stroke-width="2"/><path d="M152 187 H168 M151 192 H169 M153 197 H167" stroke="#8C939E" stroke-width="1.4"/><rect x="154" y="200" width="12" height="4" rx="2" fill="#B9A3E3"/>`,
+            guitar: `<g transform="rotate(35 160 205)"><rect x="157" y="166" width="6" height="32" rx="2" fill="#8B5A35"/><rect x="155" y="160" width="10" height="10" rx="2.5" fill="#6B4226"/><circle cx="160" cy="199" r="10" fill="#E8A160" stroke="#A86A35" stroke-width="2"/><circle cx="160" cy="214" r="13" fill="#E8A160" stroke="#A86A35" stroke-width="2"/><circle cx="160" cy="207" r="4" fill="#6B4226"/><path d="M158.5 170 V222 M161.5 170 V222" stroke="#FFF4D6" stroke-width=".8"/></g>`,
             book: `<g transform="rotate(-8 160 206)"><rect x="143" y="190" width="34" height="31" rx="3" fill="#8FB8E8" stroke="#5B82B5" stroke-width="2.2"/><path d="M150 190 V221" stroke="#5B82B5" stroke-width="2"/><rect x="155" y="197" width="16" height="5" rx="1.5" fill="#FFFFFF"/></g>`,
             none: ""
         },
+        ball: {
+            none: "",
+            clear: ballPart(ballTints.clear),
+            pink: ballPart(ballTints.pink),
+            blue: ballPart(ballTints.blue),
+            mint: ballPart(ballTints.mint),
+            purple: ballPart(ballTints.purple)
+        },        
         background: {
             none: () => "",
             hearts: () => backdrop("#FFE4EC", [[40, 52, 1.2], [272, 44, 1], [34, 252, 1], [284, 232, 1.3], [160, 30, .7], [64, 150, .8], [262, 140, .8]]
@@ -4698,9 +5210,13 @@ function initHamsterCreator() {
                 `<path d="M0 292 Q160 270 320 292 V320 H0 Z" fill="#2B3459"/>`),
             meadow: () => backdrop("#DDF1FF", `<circle cx="56" cy="56" r="26" fill="#FFE27A"/><g fill="#FFFFFF"><circle cx="242" cy="62" r="16"/><circle cx="264" cy="54" r="20"/><circle cx="286" cy="64" r="14"/></g><path d="M0 236 Q90 206 170 224 T320 214 V320 H0 Z" fill="#A8D98F"/>` +
                 flower(30, 270, "#FFFFFF") + flower(62, 300, "#F7B9C6") + flower(262, 296, "#FFFFFF") + flower(296, 264, "#C7B2EE")),
-            rainbow: () => backdrop("#FFF6EC", ["#F7A1B5", "#FFC98B", "#FFF09A", "#A9E2B1", "#A8CFF5", "#C7B2EE"]
-                .map((color, i) => `<path d="M${30 + i * 12} 250 A${130 - i * 12} ${130 - i * 12} 0 0 1 ${290 - i * 12} 250" fill="none" stroke="${color}" stroke-width="12"/>`).join("") +
-                `<g fill="#FFFFFF"><circle cx="30" cy="252" r="18"/><circle cx="54" cy="258" r="16"/><circle cx="12" cy="262" r="12"/><circle cx="290" cy="252" r="18"/><circle cx="266" cy="258" r="16"/><circle cx="308" cy="262" r="12"/></g>`),
+            rainbow: () => backdrop("#DDEFFF", ["#F48A9B", "#FFB36B", "#FFE27A", "#8FD39A", "#7FB8EE", "#B79BE8"]
+                .map((color, i) => {
+                    const r = 142 - i * 11;
+                    return `<path d="M${160 - r} 200 A${r} ${r} 0 0 1 ${160 + r} 200" fill="none" stroke="${color}" stroke-width="11"/>`;
+                }).join("") +
+                `<g fill="#FFFFFF"><circle cx="24" cy="202" r="20"/><circle cx="50" cy="210" r="16"/><circle cx="8" cy="214" r="14"/><circle cx="296" cy="202" r="20"/><circle cx="270" cy="210" r="16"/><circle cx="312" cy="214" r="14"/></g>` +
+                sparkle(40, 60, 8, "#FFFFFF") + sparkle(284, 70, 6, "#FFFFFF") + sparkle(250, 30, 5, "#FFFFFF")),
             party: () => backdrop("#F3E8FF", Array.from({ length: 22 }, (_, i) => {
                 const x = (i * 67) % 300 + 10;
                 const y = (i * 41) % 300 + 10;
@@ -4709,25 +5225,50 @@ function initHamsterCreator() {
         }
     };
  
-    const lookDefaults = { pattern: "none", mouth: "smile", cheeks: "pink", held: "seed", background: "none" };
+    const lookDefaults = {
+        pattern: "none", mouth: "smile", cheeks: "pink", held: "seed", background: "none", ball: "none",
+        eyeColor: "dark", whiskerColor: "brown",
+        accColorHead: "original", accColorFace: "original", accColorNeck: "original"
+    };
     const lookOptions = Object.fromEntries(
         Object.entries(lookParts).map(([key, parts]) => [key, Object.keys(parts)])
     );
     const lookTargets = {
+    lookOptions.eyeColor = Object.keys(eyeColors);
+    lookOptions.whiskerColor = Object.keys(whiskerColors);
+    ["accColorHead", "accColorFace", "accColorNeck"].forEach(key => lookOptions[key] = Object.keys(accPalette));        
         pattern: "hamsterPattern",
         mouth: "hamsterMouth",
         cheeks: "hamsterCheeks",
         held: "hamsterSeed",
-        background: "hamsterBackground"
+        background: "hamsterBackground",
+        ball: "hamsterBall"
     };
-    const shareKeys = { pattern: "motivo", mouth: "bocca", cheeks: "guance", held: "mano", background: "sfondo" };
+    const shareKeys = {
+        pattern: "motivo", mouth: "bocca", cheeks: "guance", held: "mano", background: "sfondo", ball: "palla",
+        eyeColor: "co", whiskerColor: "cb", accColorHead: "ct", accColorFace: "cv", accColorNeck: "cl"
+    };
  
+    avatar.querySelectorAll("[data-fill]").forEach(element => element.dataset.of = element.getAttribute("fill"));
+    avatar.querySelectorAll("[data-stroke]").forEach(element => element.dataset.os = element.getAttribute("stroke"));
+ 
+    function updateColors() {
+        avatar.querySelectorAll("[data-fill], [data-stroke]").forEach(element => {
+            const group = element.closest('[id^="accessory"]');
+            const key = group && Object.keys(accessoryIds).find(name => accessoryIds[name] === group.id);
+            if (!key) return;
+            const palette = accPalette[state[zoneColorKey[zoneOf(key)]]];
+            if (element.dataset.fill) element.setAttribute("fill", palette ? palette[element.dataset.fill] : element.dataset.of);
+            if (element.dataset.stroke) element.setAttribute("stroke", palette ? palette[element.dataset.stroke] : element.dataset.os);
+        });
+    } 
+    
     function updateLook() {
         const colors = furColors[state.fur] || furColors.cream;
         Object.entries(lookTargets).forEach(([key, id]) => {
             const element = document.getElementById(id);
             const part = lookParts[key][state[key]];
-            if (element) element.innerHTML = typeof part === "function" ? part(colors) : part;
+            if (element) element.innerHTML = typeof part === "function" ? part(colors, state) : part;
         });
     }
      
@@ -4784,25 +5325,34 @@ function initHamsterCreator() {
     }
 
 function updateEyes() {
-    const left = document.getElementById("hamsterEyeL");
-    const right = document.getElementById("hamsterEyeR");
-    const shineLeft = document.getElementById("hamsterEyeShineL");
-    const shineRight = document.getElementById("hamsterEyeShineR");
-
-    if (!left || !right) return;
-
-    const big = state.eyes === "big";
-
-    [left, right].forEach(eye => {
-        eye.setAttribute("rx", big ? "11" : "7.5");
-        eye.setAttribute("ry", big ? "12.5" : "8.5");
-        eye.setAttribute("cy", "150");
-    });
-
-    [shineLeft, shineRight].forEach(shine => {
-        shine.setAttribute("r", big ? "3.6" : "2.4");
-        shine.setAttribute("cy", big ? "145" : "147");
-    });
+    const ids = ["hamsterEyeL", "hamsterEyeR", "hamsterEyeShineL", "hamsterEyeShineR", "hamsterEyeDotL", "hamsterEyeDotR"];
+    const [left, right, shineLeft, shineRight] = ids.map(id => document.getElementById(id));
+    const extra = document.getElementById("hamsterEyeExtra");
+    if (!left || !right || !extra) return;
+ 
+    const color = eyeColors[state.eyeColor] || eyeColors.dark;
+    const size = roundEyes[state.eyes];
+ 
+    ids.forEach(id => document.getElementById(id).setAttribute("display", size ? "inline" : "none"));
+ 
+    if (size) {
+        const [rx, ry, shine, shineY] = size;
+        [left, right].forEach(eye => {
+            eye.setAttribute("rx", rx);
+            eye.setAttribute("ry", ry);
+            eye.setAttribute("cy", "150");
+            eye.setAttribute("fill", color);
+        });
+        [shineLeft, shineRight].forEach(dot => {
+            dot.setAttribute("r", shine);
+            dot.setAttribute("cy", shineY);
+        });
+        extra.innerHTML = state.eyes === "anime"
+            ? bothEyes(x => `<circle cx="${x - 4}" cy="157" r="2.4" fill="#FFFFFF"/><circle cx="${x + 6}" cy="155" r="1.4" fill="#FFFFFF"/>`)
+            : "";
+    } else {
+        extra.innerHTML = eyeShapes[state.eyes](color);
+    }
 }
 
     function updateWhiskers() {
@@ -4849,7 +5399,7 @@ function updateEyes() {
             .map(path => `
                 <path d="${path}"
                       fill="none"
-                      stroke="#79554C"
+                      stroke="${whiskerColors[state.whiskerColor] || "#79554C"}"
                       stroke-width="1.8"
                       stroke-linecap="round"/>
             `).join("");
@@ -4891,6 +5441,7 @@ function updateEyes() {
         updateWhiskers();
         updateAccessories();
         updateLook();
+        updateColors();        
         updateSelectedCards();
         updatePrice();
     }
@@ -4918,7 +5469,7 @@ function updateEyes() {
             state.innerFur = settings.innerFur;
         }
 
-        if (["big", "small"].includes(settings.eyes)) {
+        if (roundEyes[settings.eyes] || eyeShapes[settings.eyes]) {
             state.eyes = settings.eyes;
         }
 
@@ -4949,9 +5500,21 @@ function updateEyes() {
         bandana: 1, scarf: 1.5, collar: 1,
         gradCap: 2.5, halo: 2, bunnyEars: 1.5,
         sunglasses: 2, starGlasses: 1.5,
-        bowtie: 1, pearls: 3
+        bowtie: 1, pearls: 3,
+        catEye: 1.5, nerd: 1, aviator: 2.5, monocle: 2, glasses3d: 1
     };
-    const heldPrices = { seed: 0, strawberry: 1, heart: 1.5, coffee: 2, book: 1.5, none: 0 };
+    const heldPrices = { seed: 0, strawberry: 1, heart: 1.5, coffee: 2, book: 1.5, mic: 2, guitar: 3, none: 0 };
+    const ballPrices = { clear: 3, pink: 3.5, blue: 3.5, mint: 3.5, purple: 3.5 };
+    const ballNames = {};
+    document.querySelectorAll('#crea-criceto .creator-option[data-group="ball"]').forEach(button => {
+        const key = button.dataset.value;
+        ballNames[key] = `Palla ${[...button.childNodes].filter(node => node.nodeType === Node.TEXT_NODE).map(node => node.textContent).join("").trim().toLowerCase()}`;
+        if (!ballPrices[key]) return;
+        const price = document.createElement("small");
+        price.className = "creator-price";
+        price.textContent = `+${euro(ballPrices[key])}`;
+        button.append(price);
+    });
     const heldNames = {};
     const GALLERY_KEY = "cricetiCerebraliGallery";
     const GALLERY_LIMIT = 12;
@@ -5001,7 +5564,8 @@ function updateEyes() {
         return [
             ["Criceto base", BASE_PRICE],
             ...accessories.map(key => [accessoryNames[key] || key, accessoryPrices[key] || 0]),
-            ...(heldPrices[settings.held] ? [[heldNames[settings.held] || settings.held, heldPrices[settings.held]]] : [])
+            ...(heldPrices[settings.held] ? [[heldNames[settings.held] || settings.held, heldPrices[settings.held]]] : []),
+            ...(ballPrices[settings.ball] ? [[ballNames[settings.ball] || "Palla", ballPrices[settings.ball]]] : [])
         ];
     }
  
@@ -5047,7 +5611,7 @@ function updateEyes() {
         if (extras.viewBox) snapshot.setAttribute("viewBox", extras.viewBox);
  
         if (extras.sleeping || extras.dizzy) {
-            ["hamsterEyeL", "hamsterEyeR", "hamsterEyeShineL", "hamsterEyeShineR"].forEach(id => {
+            ["hamsterEyeL", "hamsterEyeR", "hamsterEyeShineL", "hamsterEyeShineR", "hamsterEyeDotL", "hamsterEyeDotR", "hamsterEyeExtra"].forEach(id => {
                 const eye = snapshot.querySelector(`#${id}`);
                 if (eye) eye.setAttribute("display", "none");
             });
@@ -5212,6 +5776,8 @@ function updateEyes() {
         applySettings(current);
         return image;
     };
+    window.currentHamsterSettings = getSettings;
+
     nameInput.addEventListener("input", updatePrice);
  
     // Selezione delle card: pelo, occhi, baffi e accessori.
@@ -5409,7 +5975,7 @@ function updateEyes() {
         }
         return {
             eyes: crops.face, mouth: crops.face, cheeks: crops.face, whiskers: crops.face,
-            held: crops.neck, pattern: crops.body, background: crops.full
+            held: crops.neck, pattern: crops.body, background: crops.full, ball: crops.full
         }[group] || crops.full;
     };
     document.querySelectorAll("#crea-criceto .creator-option").forEach(button => {
@@ -5460,10 +6026,16 @@ function updateEyes() {
         const pick = items => items[
             Math.floor(Math.random() * items.length)
         ];
-
+        
         state.fur = pick(Object.keys(furColors));
         state.innerFur = pick(Object.keys(furColors));
-        state.eyes = pick(["big", "small"]);
+        state.eyes = pick([...Object.keys(roundEyes), ...Object.keys(eyeShapes)]);
+        state.eyeColor = Math.random() < .6 ? "dark" : pick(lookOptions.eyeColor);
+        state.whiskerColor = Math.random() < .6 ? "brown" : pick(lookOptions.whiskerColor);
+        state.ball = Math.random() < .85 ? "none" : pick(lookOptions.ball);
+        ["accColorHead", "accColorFace", "accColorNeck"].forEach(key => {
+            state[key] = Math.random() < .7 ? "original" : pick(lookOptions[key]);
+        });
         state.whiskers = pick(["soft", "curly", "bold", "short"]);
 
         state.pattern = Math.random() < .5 ? "none" : pick(lookOptions.pattern);
@@ -5521,16 +6093,19 @@ function decorateWithHamsters() {
         h7: { fur: "honey", eyes: "small", mouth: "grin", accessories: ["gradCap", "glasses"] },
         h8: { fur: "caramel", whiskers: "bold", accessories: ["hat", "scarf"] },
         h9: { fur: "grey", eyes: "small", accessories: ["headphones", "scarf"] },
-        h10: { fur: "pink", accessories: ["bow", "heartGlasses"], held: "heart" },
-        h11: { fur: "black", eyes: "small", innerFur: "grey", mouth: "smug", accessories: ["witchHat"] },
-        h12: { fur: "honey", whiskers: "curly", accessories: ["flower", "collar"] }
+        h10: { fur: "cream", eyes: "anime", mouth: "grin", cheeks: "lilac", accessories: ["bow"], accColorHead: "purple", held: "mic" },
+        h11: { fur: "grey", innerFur: "white", mouth: "smug", accessories: ["hat", "sunglasses"], accColorHead: "mint" },
+        h12: { fur: "honey", eyes: "happy", mouth: "grin", accessories: ["scarf"], accColorNeck: "blue", held: "guitar" }
     };
  
     Object.entries(looks).forEach(([id, look]) => {
         const product = getProduct(id);
         if (product) product.image = window.hamsterImage(look, look);
     });
- 
+
+    const ballProduct = getProduct("w7");
+    if (ballProduct) ballProduct.image = window.hamsterImage({ ball: "clear", mouth: "grin", eyes: "happy" });
+     
     document.getElementById("heroHamster").src = window.hamsterImage({});
     document.getElementById("aboutHamster").src =
         window.hamsterImage({ fur: "honey" }, { sleeping: true });
@@ -5713,13 +6288,412 @@ function initHeroHamster() {
         coolDown = setTimeout(reset, 4000);
     });
 }
+
+function initHouseCreator() {
+    const stage = document.getElementById("houseStage");
+    if (!stage) return;
  
+    const page = document.getElementById("crea-casa");
+    const nameInput = document.getElementById("houseName");
+    const status = document.getElementById("houseStatus");
+    const receipt = document.getElementById("houseReceipt");
+    const addButton = document.getElementById("houseAdd");
+    const HOUSE_KEY = "cricetiCerebraliHouse";
+ 
+    const palette = {
+        wood: { main: "#D9A066", dark: "#9C6A3C", light: "#F2D3AE" },
+        pink: { main: "#F7A1BC", dark: "#C76A88", light: "#FFE1EA" },
+        mint: { main: "#A9D3C0", dark: "#5E9580", light: "#E3F3EC" },
+        blue: { main: "#8FC1F0", dark: "#4E83BA", light: "#DCEBFA" },
+        yellow: { main: "#FFD66B", dark: "#C99A2E", light: "#FFF3C4" },
+        lilac: { main: "#B9A3E3", dark: "#6E58A8", light: "#ECE4FA" },
+        red: { main: "#F0606F", dark: "#B83A4A", light: "#FFD0D5" },
+        white: { main: "#FFFFFF", dark: "#BDB3AE", light: "#F7F3EF" },
+        grey: { main: "#A8A5A0", dark: "#6F6C68", light: "#E4E2DF" }
+    };
+    const typePrices = { cage: 19.99, wood: 29.99, mushroom: 34.99, castle: 49.99, modern: 59.99 };
+    const floorPrices = { straw: 0, shavings: 1.5, confetti: 2.5, grass: 2 };
+    const itemPrices = {
+        wheel: 9.99, nest: 6.99, bowl: 2.99, bottle: 3.99, hammock: 4.99,
+        lights: 3.49, bunting: 1.99, picture: 2.49, rug: 2.99, plant: 1.99
+    };
+    const options = {
+        type: Object.keys(typePrices),
+        frame: Object.keys(palette),
+        roof: Object.keys(palette),
+        wall: Object.keys(palette),
+        wallpaper: ["plain", "stripes", "dots", "hearts", "stars"],
+        floor: Object.keys(floorPrices),
+        hamster: ["yes", "no"]
+    };
+    const multi = {
+        furniture: ["wheel", "nest", "bowl", "bottle", "hammock"],
+        decor: ["lights", "bunting", "picture", "rug", "plant"]
+    };
+    const defaults = {
+        type: "wood", frame: "wood", roof: "red", wall: "pink", wallpaper: "dots", floor: "straw",
+        hamster: "yes", furniture: ["wheel", "bowl", "bottle"], decor: ["lights"]
+    };
+    let state = structuredClone(defaults);
+    let hamsterSrc = "";
+ 
+    const names = {};
+    page.querySelectorAll(".creator-option:not(.creator-color)").forEach(button => {
+        names[`${button.dataset.group}:${button.dataset.value}`] = [...button.childNodes]
+            .filter(node => node.nodeType === Node.TEXT_NODE)
+            .map(node => node.textContent).join("").trim();
+        const { group, value } = button.dataset;
+        const price = group === "type" ? typePrices[value]
+            : group === "floor" ? floorPrices[value]
+            : multi[group] ? itemPrices[value] : null;
+        if (price === null || price === undefined) return;
+        const label = document.createElement("small");
+        label.className = "creator-price";
+        label.textContent = group === "type" ? euro(price) : price ? `+${euro(price)}` : "incluso";
+        button.append(label);
+    });
+ 
+    const heart = (x, y, size, fill, opacity = 1) =>
+        `<path transform="translate(${x} ${y}) scale(${size})" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z" fill="${fill}" opacity="${opacity}"/>`;
+    const sparkle = (x, y, r, fill, opacity = 1) =>
+        `<path d="M${x} ${y - r} Q${x} ${y} ${x + r} ${y} Q${x} ${y} ${x} ${y + r} Q${x} ${y} ${x - r} ${y} Q${x} ${y} ${x} ${y - r}Z" fill="${fill}" opacity="${opacity}"/>`;
+    const grid = (stepX, stepY, draw) => {
+        let out = "";
+        for (let y = 128, row = 0; y < 244; y += stepY, row++) {
+            for (let x = 74 + (row % 2) * stepX / 2; x < 330; x += stepX) out += draw(x, y);
+        }
+        return out;
+    };
+    const quadPoint = (t, a, b, c) => (1 - t) * (1 - t) * a + 2 * (1 - t) * t * b + t * t * c;
+ 
+    const wallpapers = {
+        plain: () => "",
+        stripes: c => Array.from({ length: 13 }, (_, i) => `<rect x="${70 + i * 20}" y="100" width="10" height="162" fill="${c.main}" opacity=".35"/>`).join(""),
+        dots: c => grid(22, 20, (x, y) => `<circle cx="${x}" cy="${y}" r="3" fill="${c.main}" opacity=".55"/>`),
+        hearts: c => grid(30, 26, (x, y) => heart(x, y, .35, c.main, .55)),
+        stars: c => grid(30, 26, (x, y) => sparkle(x, y, 5, c.main, .6))
+    };
+    const floors = {
+        straw: () => `<rect x="70" y="238" width="260" height="24" fill="#F5D27A"/>` +
+            Array.from({ length: 34 }, (_, i) => {
+                const x = 72 + (i * 37) % 256;
+                const y = 241 + (i * 13) % 18;
+                return `<path d="M${x} ${y} l${i % 2 ? 9 : -9} ${(i % 3) - 1}" stroke="${i % 3 ? "#D9AE52" : "#FBE39C"}" stroke-width="2" stroke-linecap="round"/>`;
+            }).join(""),
+        shavings: () => `<rect x="70" y="238" width="260" height="24" fill="#EBD3B0"/>` +
+            Array.from({ length: 30 }, (_, i) => `<ellipse cx="${72 + (i * 41) % 256}" cy="${242 + (i * 11) % 17}" rx="5" ry="2.5" fill="${i % 2 ? "#D4B48A" : "#F6E6CC"}" transform="rotate(${(i * 47) % 180} ${72 + (i * 41) % 256} ${242 + (i * 11) % 17})"/>`).join(""),
+        confetti: () => `<rect x="70" y="238" width="260" height="24" fill="#FFF4F8"/>` +
+            Array.from({ length: 36 }, (_, i) => `<rect x="${72 + (i * 43) % 254}" y="${241 + (i * 7) % 18}" width="5" height="3" rx="1" fill="${["#F28DA0", "#8FCDF5", "#FFD66B", "#9BD1A8", "#C7B2EE"][i % 5]}"/>`).join(""),
+        grass: () => `<rect x="70" y="238" width="260" height="24" fill="#A8D98F"/>` +
+            Array.from({ length: 40 }, (_, i) => `<path d="M${72 + i * 6.4} 262 l3 -${8 + (i * 5) % 9} l3 ${8 + (i * 5) % 9}" fill="#7FBF6A"/>`).join("")
+    };
+    const items = {
+        bottle: () => `<rect x="300" y="128" width="20" height="50" rx="8" fill="#EEF8FF" stroke="#7FB3D9" stroke-width="2.5"/><rect x="302.5" y="148" width="15" height="27" rx="6" fill="#8FCDF5"/><rect x="303" y="121" width="14" height="9" rx="3" fill="#F4A7B4"/><path d="M310 178 L304 194" stroke="#AAB6C2" stroke-width="4" stroke-linecap="round"/><circle cx="303" cy="199" r="2.5" fill="#8FCDF5"/>`,
+        picture: () => `<rect x="252" y="132" width="40" height="34" rx="3" fill="#FFF8F0" stroke="#C98B5E" stroke-width="4"/><circle cx="263" cy="144" r="4" fill="#E8D1B5"/><circle cx="281" cy="144" r="4" fill="#E8D1B5"/><ellipse cx="272" cy="153" rx="11" ry="9" fill="#E8D1B5"/><circle cx="268" cy="152" r="1.4" fill="#30231F"/><circle cx="276" cy="152" r="1.4" fill="#30231F"/>`,
+        lights: () => {
+            const bulbs = Array.from({ length: 11 }, (_, i) => {
+                const t = (i + .5) / 11;
+                const half = t < .5 ? t * 2 : (t - .5) * 2;
+                const x = 70 + t * 260;
+                const y = quadPoint(half, 124, 142, 124);
+                const color = ["#FFD66B", "#F28DA0", "#8FCDF5", "#9BD1A8"][i % 4];
+                return `<circle cx="${x.toFixed(1)}" cy="${(y + 5).toFixed(1)}" r="8" fill="${color}" opacity=".3"/><circle cx="${x.toFixed(1)}" cy="${(y + 5).toFixed(1)}" r="4" fill="${color}"/>`;
+            }).join("");
+            return `<path d="M70 124 Q135 142 200 124 Q265 142 330 124" fill="none" stroke="#6B5A52" stroke-width="1.5"/>${bulbs}`;
+        },
+        bunting: () => {
+            const flags = Array.from({ length: 10 }, (_, i) => {
+                const t = (i + .5) / 10;
+                const x = quadPoint(t, 70, 200, 330);
+                const y = quadPoint(t, 134, 166, 134);
+                const color = ["#F28DA0", "#FFD66B", "#8FCDF5", "#9BD1A8", "#C7B2EE"][i % 5];
+                return `<path d="M${(x - 9).toFixed(1)} ${(y - 1).toFixed(1)} L${(x + 9).toFixed(1)} ${(y - 1).toFixed(1)} L${x.toFixed(1)} ${(y + 15).toFixed(1)} Z" fill="${color}"/>`;
+            }).join("");
+            return `<path d="M70 134 Q200 166 330 134" fill="none" stroke="#B9875A" stroke-width="1.8"/>${flags}`;
+        },
+        hammock: () => `<path d="M156 120 L166 150 M244 120 L234 150" stroke="#B9875A" stroke-width="2"/><path d="M162 148 Q200 180 238 148 Q200 166 162 148 Z" fill="#B9A3E3" stroke="#6E58A8" stroke-width="2.5" stroke-linejoin="round"/><path d="M176 156 Q200 170 224 156" fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".6"/>`,
+        rug: () => `<ellipse cx="198" cy="257" rx="60" ry="9" fill="#F7A1BC"/><ellipse cx="198" cy="257" rx="48" ry="6" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="4 4"/>`,
+        wheel: () => `<path d="M122 194 L100 262 M122 194 L144 262" stroke="#A86F4F" stroke-width="6" stroke-linecap="round"/><circle cx="122" cy="194" r="36" fill="#F7D3B4" stroke="#C88965" stroke-width="7"/><circle cx="122" cy="194" r="29" fill="none" stroke="#E3A982" stroke-width="3" stroke-dasharray="3 6"/><path d="M122 158 V230 M86 194 H158 M96.5 168.5 L147.5 219.5 M147.5 168.5 L96.5 219.5" stroke="#DFA883" stroke-width="3"/><circle cx="122" cy="194" r="6" fill="#C88965"/>`,
+        nest: () => `<path d="M266 262 V238 Q292 210 318 238 V262 Z" fill="#F2D3AE" stroke="#B9875A" stroke-width="3" stroke-linejoin="round"/><path d="M282 262 V249 Q292 236 302 249 V262 Z" fill="#7A5236"/><path d="M274 236 Q292 218 310 236" fill="none" stroke="#B9875A" stroke-width="2" opacity=".5"/>` + heart(292, 230, .3, "#F28DA0"),
+        bowl: () => `<ellipse cx="246" cy="250" rx="16" ry="5" fill="#E9A2AE"/><path d="M233 251 Q246 236 259 251 Z" fill="#E9C58F"/><g fill="#5B4636"><ellipse cx="241" cy="246" rx="2" ry="3.2" transform="rotate(-30 241 246)"/><ellipse cx="248" cy="243" rx="2" ry="3.2" transform="rotate(20 248 243)"/><ellipse cx="253" cy="248" rx="2" ry="3.2"/></g><path d="M230 250 H262 Q259 262 246 263 Q233 262 230 250 Z" fill="#F4A7B4" stroke="#C9707F" stroke-width="2" stroke-linejoin="round"/>`,
+        plant: () => `<g fill="#8CC97A" stroke="#4F8F45" stroke-width="1.5"><ellipse cx="82" cy="224" rx="5" ry="15" transform="rotate(-25 82 224)"/><ellipse cx="96" cy="222" rx="5" ry="15" transform="rotate(25 96 222)"/><ellipse cx="89" cy="216" rx="5" ry="17"/></g><path d="M76 262 L79 240 H99 L102 262 Z" fill="#E8956B" stroke="#B86A45" stroke-width="2" stroke-linejoin="round"/>`
+    };    
+    const castleTop = (x1, x2, y, size = 12) => {
+        let d = `M${x1} ${y + size}`;
+        for (let x = x1; x < x2; x += size * 2) d += ` V${y} H${Math.min(x + size, x2)} V${y + size} H${Math.min(x + size * 2, x2)}`;
+        return d;
+    };
+    const frames = {
+        cage: (c, r) => {
+            const bars = Array.from({ length: 20 }, (_, i) => {
+                const x = 66 + i * 14;
+                const top = 120 - 66 * Math.sqrt(Math.max(0, 1 - ((x - 200) / 142) ** 2));
+                return `M${x} ${top.toFixed(1)} V256`;
+            }).join(" ");
+            return `<path d="${bars}" stroke="${c.dark}" stroke-width="3"/>` +
+                `<path d="M58 256 V120 A142 66 0 0 1 342 120 V256" fill="none" stroke="${c.dark}" stroke-width="5"/>` +
+                `<path d="M58 160 H342" stroke="${c.dark}" stroke-width="3"/>` +
+                `<path d="M178 58 Q200 34 222 58" fill="none" stroke="${c.dark}" stroke-width="5" stroke-linecap="round"/>` +
+                `<rect x="48" y="254" width="304" height="32" rx="10" fill="${r.main}" stroke="${r.dark}" stroke-width="3"/>` +
+                `<path d="M64 270 H336" stroke="${r.light}" stroke-width="3" stroke-linecap="round" opacity=".7"/>`;
+        },
+        wood: (c, r) => {
+            const shingles = [58, 78, 98].map(y => {
+                const half = (124 - y) / 96 * 164;
+                return `M${(200 - half).toFixed(1)} ${y} H${(200 + half).toFixed(1)}`;
+            }).join(" ");
+            return `<rect x="270" y="40" width="22" height="44" fill="${c.main}" stroke="${c.dark}" stroke-width="3"/>` +
+                `<path d="M56 120 H344 V272 H56 Z M70 120 V262 H330 V120 Z" fill-rule="evenodd" fill="${c.main}" stroke="${c.dark}" stroke-width="3"/>` +
+                `<path d="M56 150 H70 M56 180 H70 M56 210 H70 M56 240 H70 M330 150 H344 M330 180 H344 M330 210 H344 M330 240 H344" stroke="${c.dark}" stroke-width="2" opacity=".5"/>` +
+                `<path d="M36 124 L200 28 L364 124 Z" fill="${r.main}" stroke="${r.dark}" stroke-width="4" stroke-linejoin="round"/>` +
+                `<path d="${shingles}" stroke="${r.dark}" stroke-width="2.5" opacity=".35"/>` +
+                `<circle cx="200" cy="86" r="14" fill="#FFF6D8" stroke="${r.dark}" stroke-width="3"/>` + heart(200, 89, .38, "#F28DA0") +
+                `<rect x="44" y="268" width="312" height="14" rx="5" fill="${c.dark}"/>`;
+        },
+        mushroom: (c, r) => {
+            const dots = [[96, 76, 13], [166, 44, 10], [238, 52, 15], [308, 88, 11], [138, 102, 8], [206, 90, 9], [66, 112, 6], [268, 108, 7]]
+                .map(([x, y, rad]) => `<circle cx="${x}" cy="${y}" r="${rad}" fill="#FFFFFF" opacity=".95"/>`).join("");
+            return `<path d="M60 126 H340 V272 Q200 286 60 272 Z M72 126 V262 H328 V126 Z" fill-rule="evenodd" fill="${c.light}" stroke="${c.dark}" stroke-width="3" stroke-linejoin="round"/>` +
+                `<path d="M36 134 C36 48 118 18 200 18 C282 18 364 48 364 134 Q200 110 36 134 Z" fill="${r.main}" stroke="${r.dark}" stroke-width="4" stroke-linejoin="round"/>${dots}`;
+        },
+        castle: (c, r) => {
+            const tower = x => `<path d="${castleTop(x, x + 56, 74, 11)} V284 H${x} Z" fill="${c.main}" stroke="${c.dark}" stroke-width="3" stroke-linejoin="round"/>` +
+                `<path d="M${x + 22} 150 V136 Q${x + 28} 126 ${x + 34} 136 V150 Z" fill="${c.dark}" opacity=".8"/>` +
+                `<path d="M${x + 6} 112 H${x + 22} M${x + 34} 112 H${x + 50} M${x + 12} 190 H${x + 30} M${x + 26} 226 H${x + 46} M${x + 6} 256 H${x + 22}" stroke="${c.dark}" stroke-width="2" opacity=".4"/>` +
+                `<path d="M${x + 28} 74 V44" stroke="${c.dark}" stroke-width="3"/><path d="M${x + 28} 44 L${x + 52} 52 L${x + 28} 60 Z" fill="${r.main}" stroke="${r.dark}" stroke-width="2" stroke-linejoin="round"/>`;
+            return `<path d="${castleTop(70, 330, 100, 13)} V120 H70 Z" fill="${c.main}" stroke="${c.dark}" stroke-width="3" stroke-linejoin="round"/>` +
+                tower(22) + tower(322) + `<rect x="18" y="278" width="364" height="10" rx="4" fill="${c.dark}"/>`;
+        },
+        modern: (c, r) => `<path d="M52 112 H348 V272 H52 Z M70 120 V262 H330 V120 Z" fill-rule="evenodd" fill="${c.light}" stroke="${c.dark}" stroke-width="3"/>` +
+            `<path d="M238 98 L250 76 H318 L306 98 Z" fill="#5C7FA8" stroke="#3E5A7E" stroke-width="2"/><path d="M261 76 L249 98 M284 76 L272 98 M244 87 H312" stroke="#3E5A7E" stroke-width="1.5"/>` +
+            `<rect x="40" y="96" width="320" height="22" rx="4" fill="${r.main}" stroke="${r.dark}" stroke-width="3"/>` +
+            `<rect x="70" y="120" width="260" height="142" fill="#CFE8FF" opacity=".15"/><path d="M92 258 L152 124 M120 258 L180 124" stroke="#FFFFFF" stroke-width="8" opacity=".3"/>` +
+            `<rect x="44" y="268" width="312" height="12" rx="4" fill="${c.dark}"/>`
+    };
+ 
+    function houseSVG(settings, { hamster = true, viewBox = "0 0 400 300" } = {}) {
+        const c = palette[settings.frame], r = palette[settings.roof], w = palette[settings.wall];
+        const has = key => settings.furniture.includes(key) || settings.decor.includes(key);
+        const draw = key => has(key) ? items[key]() : "";
+        const interiorTop = settings.type === "cage" ? 60 : 100;
+        const resident = hamster && settings.hamster === "yes" && hamsterSrc
+            ? `<image href="${hamsterSrc}" x="154" y="182" width="86" height="86"/>` : "";
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}">` +
+            `<ellipse cx="200" cy="290" rx="176" ry="8" fill="rgba(80,40,25,.10)"/>` +
+            `<rect x="70" y="${interiorTop}" width="260" height="${262 - interiorTop}" fill="${w.light}"/>` +
+            (settings.type === "cage" ? "" : wallpapers[settings.wallpaper](w)) +
+            floors[settings.floor]() +
+            draw("rug") + draw("bottle") + draw("picture") + draw("lights") + draw("bunting") + draw("hammock") + draw("wheel") +
+            resident +
+            draw("nest") + draw("bowl") + draw("plant") +
+            frames[settings.type](c, r) +
+            `</svg>`;
+    }
+ 
+    function clean(saved) {
+        const next = structuredClone(defaults);
+        if (!saved || typeof saved !== "object") return next;
+        Object.keys(options).forEach(key => {
+            if (options[key].includes(saved[key])) next[key] = saved[key];
+        });
+        Object.keys(multi).forEach(key => {
+            if (Array.isArray(saved[key])) next[key] = saved[key].filter(item => multi[key].includes(item));
+        });
+        return next;
+    }
+ 
+    function priceLines() {
+        return [
+            [names[`type:${state.type}`], typePrices[state.type]],
+            ...(floorPrices[state.floor] ? [[names[`floor:${state.floor}`], floorPrices[state.floor]]] : []),
+            ...[...state.furniture, ...state.decor].map(key => [names[`${state.furniture.includes(key) ? "furniture" : "decor"}:${key}`], itemPrices[key]])
+        ];
+    }
+    const total = () => Math.round(priceLines().reduce((sum, [, value]) => sum + value, 0) * 100) / 100;
+ 
+    function render() {
+        stage.innerHTML = houseSVG(state);
+        page.querySelectorAll(".creator-option").forEach(button => {
+            const { group, value } = button.dataset;
+            const selected = multi[group] ? state[group].includes(value) : state[group] === value;
+            button.classList.toggle("selected", selected);
+            button.setAttribute("aria-pressed", String(selected));
+        });
+        addButton.textContent = `🛒 Aggiungi al carrello · ${euro(total())}`;
+ 
+        const row = (label, value, className = "") => {
+            const line = document.createElement("div");
+            line.className = `receipt-row ${className}`;
+            const name = document.createElement("span");
+            name.textContent = label;
+            const amount = document.createElement("span");
+            amount.textContent = value;
+            line.append(name, amount);
+            return line;
+        };
+        const title = document.createElement("span");
+        title.className = "creator-receipt-title";
+        title.textContent = "Preventivo";
+        receipt.replaceChildren(
+            title,
+            ...priceLines().map(([label, value], index) => row(label, `${index ? "+" : ""}${euro(value)}`)),
+            row("Caparra in semi di girasole", euro(0), "joke"),
+            row("Totale", euro(total()), "total")
+        );
+ 
+        try {
+            localStorage.setItem(HOUSE_KEY, JSON.stringify({ ...state, name: nameInput.value }));
+        } catch {}
+    }
+ 
+    const crops = {
+        wallpaper: "84 128 150 100", floor: "100 214 150 50",
+        wheel: "78 150 90 116", nest: "258 204 68 62", bowl: "224 230 46 36", bottle: "290 114 42 90", hammock: "148 114 104 70",
+        lights: "70 112 130 46", bunting: "70 124 130 52", picture: "244 124 56 50", rug: "132 242 132 26", plant: "64 196 50 70"
+    };
+    function renderThumbnails() {
+        page.querySelectorAll(".creator-option .creator-preview-icon").forEach(icon => {
+            const { group, value } = icon.parentElement.dataset;
+            const preview = { ...structuredClone(defaults), furniture: [], decor: [], hamster: "no" };
+            let viewBox = "0 0 400 300";
+            if (multi[group]) {
+                preview[group] = [value];
+                viewBox = crops[value];
+            } else {
+                preview[group] = value;
+                if (crops[group]) viewBox = crops[group];
+            }
+            const image = document.createElement("img");
+            image.alt = "";
+            image.src = svgDataUrl(houseSVG(preview, { hamster: false, viewBox }));
+            icon.replaceChildren(image);
+        });
+    }
+ 
+    window.refreshHouse = () => {
+        if (window.hamsterImage && window.currentHamsterSettings) {
+            hamsterSrc = window.hamsterImage({ ...window.currentHamsterSettings(), background: "none", ball: "none" });
+        }
+        render();
+    };
+ 
+    page.querySelectorAll(".creator-option").forEach(button => {
+        button.addEventListener("click", () => {
+            const { group, value } = button.dataset;
+            if (multi[group]) {
+                state[group] = state[group].includes(value)
+                    ? state[group].filter(item => item !== value)
+                    : [...state[group], value];
+            } else {
+                state[group] = value;
+            }
+            render();
+            stage.classList.remove("pop");
+            void stage.offsetWidth;
+            stage.classList.add("pop");
+            status.textContent = "Il cantiere procede a ritmo di criceto!";
+        });
+    });
+    nameInput.addEventListener("input", render);
+ 
+    const tabs = page.querySelectorAll(".creator-tab");
+    const controls = page.querySelector(".creator-controls");
+    const showTab = name => {
+        tabs.forEach(tab => {
+            const active = tab.dataset.tab === name;
+            tab.classList.toggle("active", active);
+            tab.setAttribute("aria-selected", String(active));
+        });    
+        page.querySelectorAll(".creator-section[data-tab]").forEach(section => section.hidden = section.dataset.tab !== name);
+    };
+    const goToTab = name => {
+        showTab(name);
+        if (controls.getBoundingClientRect().top < 0) controls.scrollIntoView({ behavior: "smooth" });
+    };
+    tabs.forEach(tab => tab.addEventListener("click", () => goToTab(tab.dataset.tab)));
+    [...tabs].forEach((tab, index) => {
+        const next = tabs[index + 1];
+        const sections = page.querySelectorAll(`.creator-section[data-tab="${tab.dataset.tab}"]`);
+        if (!next || !sections.length) return;
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "secondary-button creator-next";
+        button.textContent = `Avanti: ${next.textContent} →`;
+        button.addEventListener("click", () => goToTab(next.dataset.tab));
+        sections[sections.length - 1].append(button);
+    });
+    showTab("struttura");
+ 
+    addButton.addEventListener("click", () => {
+        const name = nameInput.value.trim() || "Villa Pasticcino";
+        const id = `house-${Date.now()}`;
+        customProducts.push({
+            id,
+            category: "custom",
+            name: `${name} (casa su misura)`,
+            emoji: "🏠",
+            color: "#fff1e6",
+            price: total(),
+            details: priceLines().map(([label, value]) => `${label} ${euro(value)}`).join(" · "),
+            image: svgDataUrl(houseSVG(state))
+        });
+        addToCart(id);
+        status.textContent = `${name} è nel carrello. Il criceto sta già facendo le valigie!`;
+    });
+ 
+    document.getElementById("houseDownload").addEventListener("click", () => {
+        const name = nameInput.value.trim() || "Villa Pasticcino";
+        const image = new Image();
+        image.onload = () => {
+            const canvas = document.createElement("canvas");
+            canvas.width = 800;
+            canvas.height = 720;
+            const context = canvas.getContext("2d");
+            context.fillStyle = "#fff7f0";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(image, 0, 20, 800, 600);
+            context.textAlign = "center";
+            context.fillStyle = "#33292a";
+            context.font = "900 52px Nunito, sans-serif";
+            context.fillText(name, 400, 670);
+            canvas.toBlob(blob => {
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = `${name.replace(/[\\/:*?"<>|]+/g, "").trim() || "casa"}.png`;
+                link.click();
+                setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+                status.textContent = `${name} è stata scaricata!`;
+            }, "image/png");
+        };
+        image.src = svgDataUrl(houseSVG(state));
+    });
+ 
+    document.getElementById("houseReset").addEventListener("click", () => {
+        state = structuredClone(defaults);
+        nameInput.value = "Villa Pasticcino";
+        render();
+        status.textContent = "Cantiere azzerato. Si riparte dalle fondamenta!";
+    });
+ 
+    let saved = null;
+    try {
+        saved = JSON.parse(localStorage.getItem(HOUSE_KEY) || "null");
+    } catch {
+        localStorage.removeItem(HOUSE_KEY);
+    }
+    state = clean(saved);
+    if (saved && typeof saved.name === "string") nameInput.value = saved.name.slice(0, 24);
+    renderThumbnails();
+    window.refreshHouse();
+}
+         
 loadCart();
 initHamsterCreator();
 drawProductArt();
 decorateWithHamsters();
 initHeroHamster();
-
+initHouseCreator();
+    
 renderProducts();
 updateCartCount();
 renderCart();
