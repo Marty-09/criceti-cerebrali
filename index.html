@@ -2144,6 +2144,83 @@ button.hero-scene:focus-visible {
     .nav-links { gap: 0; }
     .nav-link { padding: 7px 6px; font-size: .72rem; }
 }    
+
+.nav-link.halloween-link {
+    background: #ff8a3d;
+    color: #fff;
+    font-weight: 800;
+    box-shadow: 0 3px 0 #c9631a;
+    animation: spookyGlow 2.4s ease-in-out infinite;
+}
+.nav-link.halloween-link:hover { background: #f27522; color: #fff; }
+.nav-link.halloween-link.current { background: #3b2a4d; color: #ffb86b; box-shadow: 0 3px 0 #1f1529; }
+@keyframes spookyGlow {
+    0%, 100% { box-shadow: 0 3px 0 #c9631a, 0 0 0 0 rgba(255, 138, 61, .0); }
+    50% { box-shadow: 0 3px 0 #c9631a, 0 0 14px 2px rgba(255, 138, 61, .55); }
+}
+ 
+.halloween-banner { padding: 0 0 44px; }
+.halloween-banner-inner {
+    display: grid;
+    grid-template-columns: 150px 1fr auto;
+    align-items: center;
+    gap: 26px;
+    padding: 20px 30px;
+    border-radius: 28px;
+    background: linear-gradient(120deg, #2f2340 0%, #5b3a6e 100%);
+    color: #fff4e6;
+    position: relative;
+    overflow: hidden;
+}
+.halloween-banner img { width: 150px; height: 150px; }
+.halloween-banner h2 { margin: 6px 0; color: #ffb86b; font-size: clamp(1.6rem, 4vw, 2.3rem); }
+.halloween-banner p { margin: 0; color: #eadcf7; }
+.halloween-banner .tiny-label { color: #ffd66b; }
+.halloween-banner .primary-button { background: #ff8a3d; color: #fff; box-shadow: 0 4px 0 #c9631a; white-space: nowrap; }
+.halloween-banner .primary-button:hover { background: #f27522; }
+@media (max-width: 760px) {
+    .halloween-banner-inner { grid-template-columns: 1fr; text-align: center; padding: 22px; gap: 12px; }
+    .halloween-banner img { width: 120px; height: 120px; margin: auto; }
+}
+    
+.halloween-hero {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    align-items: center;
+    gap: 30px;
+    margin: 22px 0 34px;
+    padding: 30px 36px;
+    border-radius: 32px;
+    background: linear-gradient(120deg, #2f2340 0%, #5b3a6e 100%);
+    color: #fff4e6;
+}
+
+.halloween-hero { position: relative; overflow: hidden; }
+.halloween-hero > div, .halloween-hero > img { position: relative; z-index: 1; }
+.halloween-hero img { width: 220px; height: 220px; }
+.halloween-web { position: absolute; top: 0; right: 0; width: 170px; height: 170px; }
+.halloween-bats { position: absolute; top: 14px; right: 190px; width: 220px; animation: batFlap 3s ease-in-out infinite; }
+.halloween-pumpkins { position: absolute; bottom: -6px; right: 24px; width: 200px; }
+@keyframes batFlap { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+#halloween {
+    background-color: #f8f1fc;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cpath d='M40 40 C36 35 30 34 24 36 C28 38 28 42 30 45 C33 42 36 42 38 45 C39 42 41 42 42 45 C44 42 47 42 50 45 C52 42 52 38 56 36 C50 34 44 35 40 40 Z' fill='%23d9c8ea'/%3E%3Ccircle cx='130' cy='120' r='10' fill='%23ffd9b8'/%3E%3Cpath d='M128 110 q0 -6 5 -7' stroke='%23b5d6a7' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    padding-top: 24px;
+    padding-bottom: 40px;
+}
+@media (max-width: 650px) {
+    .halloween-bats { left: 8px; right: auto; top: 8px; width: 110px; opacity: .8; }
+    .halloween-pumpkins { display: none; }
+    .halloween-web { width: 110px; height: 110px; }
+}
+.halloween-hero h1 { margin: 8px 0 10px; color: #ffb86b; font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.05; }
+.halloween-hero p { margin: 0; color: #eadcf7; max-width: 560px; }
+.halloween-hero .tiny-label { color: #ffd66b; }
+ 
+@media (max-width: 650px) {
+    .halloween-hero { grid-template-columns: 1fr; text-align: center; padding: 24px; }
+    .halloween-hero img { width: 170px; height: 170px; margin: auto; }
+}    
 </style>   
 </head>
 
@@ -2158,6 +2235,7 @@ button.hero-scene:focus-visible {
         </button>
   
         <div class="nav-links" role="navigation" aria-label="Menu principale">
+            <button class="nav-link halloween-link" data-page="halloween" onclick="showPage('halloween')">🎃 Halloween</button>
             <button class="nav-link current" data-page="catalogo" onclick="showPage('catalogo')">Negozio</button>
             <button class="nav-link" data-page="crea-criceto" onclick="showPage('crea-criceto')">Crea il tuo criceto</button>
             <button class="nav-link" data-page="crea-casa" onclick="showPage('crea-casa')">Crea la casa</button>
@@ -2213,7 +2291,7 @@ button.hero-scene:focus-visible {
             </div>
         </div>
     </section>
-
+   
     <div class="container">
         <section class="trust-strip">
             <div class="trust-item">
@@ -2261,7 +2339,21 @@ button.hero-scene:focus-visible {
             </div>
         </div>
     </section>
- 
+
+    <section class="halloween-banner">
+        <div class="container">
+            <div class="halloween-banner-inner">
+                <img id="homeHalloweenHamster" alt="Criceto con il cappello da strega">
+                <div>
+                    <span class="tiny-label">Speciale Halloween · solo fino al 1° novembre</span>
+                    <h2>Dolcetto o criceto?</h2>
+                    <p>Criceti travestiti, una ruota zucca e semi leggermente maledetti. Poi tornano nella cripta.</p>
+                </div>
+                <button class="primary-button" type="button" onclick="showPage('halloween')">Entra se hai coraggio →</button>
+            </div>
+        </div>
+    </section>
+
     <section class="home-menu">
         <div class="container">
             <div class="section-heading">
@@ -2822,29 +2914,26 @@ button.hero-scene:focus-visible {
                         </defs>
  
                         <!-- COLLO: bandana a pois -->
-                        <g id="accessoryBandana" style="display:none" clip-path="url(#hamsterBodyClip)">
-                            <path d="M50 184 Q160 214 270 184 L270 200 Q160 230 50 200 Z" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
-                            <path d="M104 206 Q160 224 216 206 L166 252 Q160 257 154 252 Z" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
-                            <g fill="#FFF3F5"><circle cx="128" cy="220" r="3.2"/><circle cx="148" cy="232" r="3.2"/><circle cx="172" cy="232" r="3.2"/><circle cx="192" cy="220" r="3.2"/><circle cx="160" cy="244" r="3"/><circle cx="160" cy="221" r="3.2"/><circle cx="84" cy="200" r="3"/><circle cx="236" cy="200" r="3"/></g>
-                            <path d="M224 198 L246 226 L236 230 Z M226 198 L254 214 L248 222 Z" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="2.5" stroke-linejoin="round"/>
-                            <ellipse cx="226" cy="198" rx="9" ry="7" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3"/>
+                        <g id="accessoryBandana" style="display:none">
+                            <defs><clipPath id="bandanaClip"><path d="M84 124 C76 104 76 70 110 54 C130 46 190 46 210 54 C244 70 244 104 236 124 C206 115 114 115 84 124 Z"/></clipPath></defs>
+                            <path d="M232 112 L268 96 Q272 108 262 118 Z" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M232 118 L258 142 Q246 150 240 140 Z" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M84 124 C76 104 76 70 110 54 C130 46 190 46 210 54 C244 70 244 104 236 124 C206 115 114 115 84 124 Z" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3.5" stroke-linejoin="round"/>
+                            <g clip-path="url(#bandanaClip)" fill="#FFF3F5"><circle cx="92" cy="62" r="4"/><circle cx="116" cy="62" r="4"/><circle cx="140" cy="62" r="4"/><circle cx="164" cy="62" r="4"/><circle cx="188" cy="62" r="4"/><circle cx="212" cy="62" r="4"/><circle cx="104" cy="78" r="4"/><circle cx="128" cy="78" r="4"/><circle cx="152" cy="78" r="4"/><circle cx="176" cy="78" r="4"/><circle cx="200" cy="78" r="4"/><circle cx="224" cy="78" r="4"/><circle cx="92" cy="94" r="4"/><circle cx="116" cy="94" r="4"/><circle cx="140" cy="94" r="4"/><circle cx="164" cy="94" r="4"/><circle cx="188" cy="94" r="4"/><circle cx="212" cy="94" r="4"/><circle cx="104" cy="110" r="4"/><circle cx="128" cy="110" r="4"/><circle cx="152" cy="110" r="4"/><circle cx="176" cy="110" r="4"/><circle cx="200" cy="110" r="4"/><circle cx="224" cy="110" r="4"/></g>
+                            <path d="M88 116 C116 106 204 106 232 116" fill="none" stroke="#C9637B" data-stroke="dark" stroke-width="2.5" opacity=".6"/>
+                            <ellipse cx="234" cy="114" rx="10" ry="8" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3"/>
                         </g>
  
                         <!-- COLLO: sciarpa di lana -->
                         <g id="accessoryScarf" style="display:none">
+                            <path d="M192 212 L216 208 L224 256 L200 260 Z" fill="#9DCBB6" data-fill="main" stroke="#5E9580" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M198 230 L218 227 M200 244 L220 241" stroke="#FFF4D6" data-stroke="light" stroke-width="5" stroke-linecap="butt"/>
+                            <path d="M203 261 L202 269 M210 260 L210 268 M217 258 L218 266" stroke="#5E9580" data-stroke="dark" stroke-width="2.5" stroke-linecap="round"/>                          
                             <g clip-path="url(#hamsterBodyClip)" fill="none" stroke-linecap="round">
                                 <path d="M40 186 Q160 236 280 186" stroke="#5E9580" data-stroke="dark" stroke-width="24"/>
                                 <path d="M40 186 Q160 236 280 186" stroke="#9DCBB6" data-stroke="main" stroke-width="18"/>
-                                <path d="M40 186 Q160 236 280 186" stroke="#FFF4D6" stroke-width="18"
-                                      stroke-dasharray="7 13" stroke-linecap="butt"/>
+                                <path d="M40 186 Q160 236 280 186" stroke="#FFF4D6" data-stroke="light" stroke-width="18" stroke-dasharray="7 13" stroke-linecap="butt"/>
                             </g>
-                            <path d="M194 212 L214 208 L222 252 L202 256 Z"
-                                  fill="#9DCBB6" data-fill="main" stroke="#5E9580" data-stroke="dark" stroke-width="3"
-                                  stroke-linejoin="round"/>
-                            <path d="M197 226 L217 222 M199 239 L219 235"
-                                  stroke="#FFF4D6" stroke-width="5"/>
-                            <path d="M205 257 L204 265 M211 256 L211 264 M217 254 L218 262"
-                                  stroke="#5E9580" data-stroke="dark" stroke-width="2.5" stroke-linecap="round"/>
                         </g>
  
                         <!-- COLLO: collarino con campanella -->
@@ -3003,12 +3092,12 @@ button.hero-scene:focus-visible {
  
                         <!-- TESTA: cappello fragola -->
                         <g id="accessoryStrawberryHat" style="display:none">
-                            <defs><clipPath id="strawberryClip"><path d="M76 120 C70 60 118 34 160 34 C202 34 250 60 244 120 C210 106 110 106 76 120 Z"/></clipPath></defs>
-                            <path d="M76 120 C70 60 118 34 160 34 C202 34 250 60 244 120 C210 106 110 106 76 120 Z" fill="#F0606F" data-fill="main" stroke="#B83A4A" data-stroke="dark" stroke-width="3.5" stroke-linejoin="round"/>
-                            <g clip-path="url(#strawberryClip)" fill="#FFE9A8" data-fill="light"><ellipse cx="82" cy="50" rx="2.2" ry="3.4"/><ellipse cx="100" cy="50" rx="2.2" ry="3.4"/><ellipse cx="118" cy="50" rx="2.2" ry="3.4"/><ellipse cx="136" cy="50" rx="2.2" ry="3.4"/><ellipse cx="154" cy="50" rx="2.2" ry="3.4"/><ellipse cx="172" cy="50" rx="2.2" ry="3.4"/><ellipse cx="190" cy="50" rx="2.2" ry="3.4"/><ellipse cx="208" cy="50" rx="2.2" ry="3.4"/><ellipse cx="226" cy="50" rx="2.2" ry="3.4"/><ellipse cx="91" cy="62" rx="2.2" ry="3.4"/><ellipse cx="109" cy="62" rx="2.2" ry="3.4"/><ellipse cx="127" cy="62" rx="2.2" ry="3.4"/><ellipse cx="145" cy="62" rx="2.2" ry="3.4"/><ellipse cx="163" cy="62" rx="2.2" ry="3.4"/><ellipse cx="181" cy="62" rx="2.2" ry="3.4"/><ellipse cx="199" cy="62" rx="2.2" ry="3.4"/><ellipse cx="217" cy="62" rx="2.2" ry="3.4"/><ellipse cx="235" cy="62" rx="2.2" ry="3.4"/><ellipse cx="82" cy="74" rx="2.2" ry="3.4"/><ellipse cx="100" cy="74" rx="2.2" ry="3.4"/><ellipse cx="118" cy="74" rx="2.2" ry="3.4"/><ellipse cx="136" cy="74" rx="2.2" ry="3.4"/><ellipse cx="154" cy="74" rx="2.2" ry="3.4"/><ellipse cx="172" cy="74" rx="2.2" ry="3.4"/><ellipse cx="190" cy="74" rx="2.2" ry="3.4"/><ellipse cx="208" cy="74" rx="2.2" ry="3.4"/><ellipse cx="226" cy="74" rx="2.2" ry="3.4"/><ellipse cx="91" cy="86" rx="2.2" ry="3.4"/><ellipse cx="109" cy="86" rx="2.2" ry="3.4"/><ellipse cx="127" cy="86" rx="2.2" ry="3.4"/><ellipse cx="145" cy="86" rx="2.2" ry="3.4"/><ellipse cx="163" cy="86" rx="2.2" ry="3.4"/><ellipse cx="181" cy="86" rx="2.2" ry="3.4"/><ellipse cx="199" cy="86" rx="2.2" ry="3.4"/><ellipse cx="217" cy="86" rx="2.2" ry="3.4"/><ellipse cx="235" cy="86" rx="2.2" ry="3.4"/><ellipse cx="82" cy="98" rx="2.2" ry="3.4"/><ellipse cx="100" cy="98" rx="2.2" ry="3.4"/><ellipse cx="118" cy="98" rx="2.2" ry="3.4"/><ellipse cx="136" cy="98" rx="2.2" ry="3.4"/><ellipse cx="154" cy="98" rx="2.2" ry="3.4"/><ellipse cx="172" cy="98" rx="2.2" ry="3.4"/><ellipse cx="190" cy="98" rx="2.2" ry="3.4"/><ellipse cx="208" cy="98" rx="2.2" ry="3.4"/><ellipse cx="226" cy="98" rx="2.2" ry="3.4"/><ellipse cx="91" cy="110" rx="2.2" ry="3.4"/><ellipse cx="109" cy="110" rx="2.2" ry="3.4"/><ellipse cx="127" cy="110" rx="2.2" ry="3.4"/><ellipse cx="145" cy="110" rx="2.2" ry="3.4"/><ellipse cx="163" cy="110" rx="2.2" ry="3.4"/><ellipse cx="181" cy="110" rx="2.2" ry="3.4"/><ellipse cx="199" cy="110" rx="2.2" ry="3.4"/><ellipse cx="217" cy="110" rx="2.2" ry="3.4"/><ellipse cx="235" cy="110" rx="2.2" ry="3.4"/></g>
-                            <path d="M96 70 Q108 52 128 44" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity=".5"/>
-                            <g fill="#8CC97A" stroke="#4F8F45" stroke-width="2.2" stroke-linejoin="round"><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 38) rotate(-175)"/><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 38) rotate(-140)"/><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 38) rotate(-105)"/><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 38) rotate(-75)"/><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 38) rotate(-40)"/><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 38) rotate(-5)"/><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 38) rotate(25)"/><path d="M0 0 C8 -5 20 -3 28 6 C18 9 8 7 0 0 Z" transform="translate(160 38) rotate(155)"/></g>
-                            <path d="M160 38 Q157 24 168 16" fill="none" stroke="#4F8F45" stroke-width="4.5" stroke-linecap="round"/>
+                            <defs><clipPath id="strawberryClip"><path d="M84 124 C76 104 76 70 110 54 C130 46 190 46 210 54 C244 70 244 104 236 124 C206 115 114 115 84 124 Z"/></clipPath></defs>
+                            <path d="M84 124 C76 104 76 70 110 54 C130 46 190 46 210 54 C244 70 244 104 236 124 C206 115 114 115 84 124 Z" fill="#F0606F" data-fill="main" stroke="#B83A4A" data-stroke="dark" stroke-width="3.5" stroke-linejoin="round"/>
+                            <g clip-path="url(#strawberryClip)" fill="#FFE9A8" data-fill="light"><ellipse cx="84" cy="60" rx="2.1" ry="3.3"/><ellipse cx="100" cy="60" rx="2.1" ry="3.3"/><ellipse cx="116" cy="60" rx="2.1" ry="3.3"/><ellipse cx="132" cy="60" rx="2.1" ry="3.3"/><ellipse cx="148" cy="60" rx="2.1" ry="3.3"/><ellipse cx="164" cy="60" rx="2.1" ry="3.3"/><ellipse cx="180" cy="60" rx="2.1" ry="3.3"/><ellipse cx="196" cy="60" rx="2.1" ry="3.3"/><ellipse cx="212" cy="60" rx="2.1" ry="3.3"/><ellipse cx="228" cy="60" rx="2.1" ry="3.3"/><ellipse cx="92" cy="71" rx="2.1" ry="3.3"/><ellipse cx="108" cy="71" rx="2.1" ry="3.3"/><ellipse cx="124" cy="71" rx="2.1" ry="3.3"/><ellipse cx="140" cy="71" rx="2.1" ry="3.3"/><ellipse cx="156" cy="71" rx="2.1" ry="3.3"/><ellipse cx="172" cy="71" rx="2.1" ry="3.3"/><ellipse cx="188" cy="71" rx="2.1" ry="3.3"/><ellipse cx="204" cy="71" rx="2.1" ry="3.3"/><ellipse cx="220" cy="71" rx="2.1" ry="3.3"/><ellipse cx="236" cy="71" rx="2.1" ry="3.3"/><ellipse cx="84" cy="82" rx="2.1" ry="3.3"/><ellipse cx="100" cy="82" rx="2.1" ry="3.3"/><ellipse cx="116" cy="82" rx="2.1" ry="3.3"/><ellipse cx="132" cy="82" rx="2.1" ry="3.3"/><ellipse cx="148" cy="82" rx="2.1" ry="3.3"/><ellipse cx="164" cy="82" rx="2.1" ry="3.3"/><ellipse cx="180" cy="82" rx="2.1" ry="3.3"/><ellipse cx="196" cy="82" rx="2.1" ry="3.3"/><ellipse cx="212" cy="82" rx="2.1" ry="3.3"/><ellipse cx="228" cy="82" rx="2.1" ry="3.3"/><ellipse cx="92" cy="93" rx="2.1" ry="3.3"/><ellipse cx="108" cy="93" rx="2.1" ry="3.3"/><ellipse cx="124" cy="93" rx="2.1" ry="3.3"/><ellipse cx="140" cy="93" rx="2.1" ry="3.3"/><ellipse cx="156" cy="93" rx="2.1" ry="3.3"/><ellipse cx="172" cy="93" rx="2.1" ry="3.3"/><ellipse cx="188" cy="93" rx="2.1" ry="3.3"/><ellipse cx="204" cy="93" rx="2.1" ry="3.3"/><ellipse cx="220" cy="93" rx="2.1" ry="3.3"/><ellipse cx="236" cy="93" rx="2.1" ry="3.3"/><ellipse cx="84" cy="104" rx="2.1" ry="3.3"/><ellipse cx="100" cy="104" rx="2.1" ry="3.3"/><ellipse cx="116" cy="104" rx="2.1" ry="3.3"/><ellipse cx="132" cy="104" rx="2.1" ry="3.3"/><ellipse cx="148" cy="104" rx="2.1" ry="3.3"/><ellipse cx="164" cy="104" rx="2.1" ry="3.3"/><ellipse cx="180" cy="104" rx="2.1" ry="3.3"/><ellipse cx="196" cy="104" rx="2.1" ry="3.3"/><ellipse cx="212" cy="104" rx="2.1" ry="3.3"/><ellipse cx="228" cy="104" rx="2.1" ry="3.3"/><ellipse cx="92" cy="115" rx="2.1" ry="3.3"/><ellipse cx="108" cy="115" rx="2.1" ry="3.3"/><ellipse cx="124" cy="115" rx="2.1" ry="3.3"/><ellipse cx="140" cy="115" rx="2.1" ry="3.3"/><ellipse cx="156" cy="115" rx="2.1" ry="3.3"/><ellipse cx="172" cy="115" rx="2.1" ry="3.3"/><ellipse cx="188" cy="115" rx="2.1" ry="3.3"/><ellipse cx="204" cy="115" rx="2.1" ry="3.3"/><ellipse cx="220" cy="115" rx="2.1" ry="3.3"/><ellipse cx="236" cy="115" rx="2.1" ry="3.3"/></g>
+                            <path d="M98 88 Q106 68 128 58" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity=".5"/>
+                            <g fill="#8CC97A" stroke="#4F8F45" stroke-width="2.2" stroke-linejoin="round"><path d="M0 0 C8 -5 18 -3 25 5 C16 8 8 7 0 0 Z" transform="translate(160 50) rotate(-175)"/><path d="M0 0 C8 -5 18 -3 25 5 C16 8 8 7 0 0 Z" transform="translate(160 50) rotate(-140)"/><path d="M0 0 C8 -5 18 -3 25 5 C16 8 8 7 0 0 Z" transform="translate(160 50) rotate(-105)"/><path d="M0 0 C8 -5 18 -3 25 5 C16 8 8 7 0 0 Z" transform="translate(160 50) rotate(-75)"/><path d="M0 0 C8 -5 18 -3 25 5 C16 8 8 7 0 0 Z" transform="translate(160 50) rotate(-40)"/><path d="M0 0 C8 -5 18 -3 25 5 C16 8 8 7 0 0 Z" transform="translate(160 50) rotate(-5)"/><path d="M0 0 C8 -5 18 -3 25 5 C16 8 8 7 0 0 Z" transform="translate(160 50) rotate(25)"/><path d="M0 0 C8 -5 18 -3 25 5 C16 8 8 7 0 0 Z" transform="translate(160 50) rotate(155)"/></g>
+                            <path d="M160 50 Q158 37 168 30" fill="none" stroke="#4F8F45" stroke-width="4.5" stroke-linecap="round"/>
                         </g>
  
                         <!-- TESTA: cappello da streghetta -->
@@ -3504,6 +3593,12 @@ button.hero-scene:focus-visible {
                             <span class="creator-preview-icon"></span>
                             Orecchie da coniglio
                         </button>
+                        <button type="button" class="creator-option"
+                                data-group="accessory" data-value="bandana"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Bandana in testa
+                        </button>                        
                     </div>
                     <div class="creator-colors" role="group" aria-label="Colore">
                         <span class="creator-colors-label">Colore</span>
@@ -3578,12 +3673,6 @@ button.hero-scene:focus-visible {
                     </div>
                     <h3 class="creator-subtitle">Collo</h3>
                     <div class="creator-options">
-                        <button type="button" class="creator-option"
-                                data-group="accessory" data-value="bandana"
-                                aria-pressed="false">
-                            <span class="creator-preview-icon"></span>
-                            Bandana a pois
-                        </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="scarf"
                                 aria-pressed="false">
@@ -3812,6 +3901,26 @@ button.hero-scene:focus-visible {
         </div>
     </div>
 </section>
+<section class="page" id="halloween">
+    <div class="container">
+        <button class="creator-back-button" type="button" onclick="showPage('catalogo')">
+            ← Torna al negozio
+        </button>
+        <div class="halloween-hero">
+            <svg class="halloween-web" viewBox="0 0 170 170" aria-hidden="true"><path d="M170 0 L0 0 M170 0 L8 53 M170 0 L32 100 M170 0 L70 138 M170 0 L117 162 M170 0 L170 170 M130 0 Q135 6 132 12 Q139 16 138 24 Q145 25 146 32 Q154 31 158 38 Q164 35 170 40 M95 0 Q105 10 99 23 Q111 30 109 44 Q123 47 126 61 Q140 59 147 71 Q160 65 170 75 M60 0 Q74 15 65 34 Q84 44 81 65 Q102 68 105 89 Q126 86 136 105 Q155 96 170 110 M25 0 Q44 20 32 45 Q56 58 53 85 Q80 90 85 117 Q112 114 125 138 Q150 126 170 145 " fill="none" stroke="#FFFFFF" stroke-width="1.6" opacity=".45"/><path d="M120 0 V58" stroke="#FFFFFF" stroke-width="1" opacity=".6"/><g transform="translate(120 66)"><ellipse cx="0" cy="2" rx="6" ry="8" fill="#1F1529"/><circle cx="0" cy="-6" r="4.5" fill="#1F1529"/><path d="M-12 -6 L-4 -2 M-12 2 L-4 1 M-12 9 L-4 4 M12 -6 L4 -2 M12 2 L4 1 M12 9 L4 4" stroke="#1F1529" stroke-width="2" stroke-linecap="round"/></g></svg>
+            <svg class="halloween-bats" viewBox="0 0 220 110" aria-hidden="true"><g transform="translate(40 40) scale(1.2)"><path d="M0 0 C-6 -8 -16 -10 -26 -6 C-20 -2 -20 4 -16 8 C-12 4 -6 4 -4 8 C-2 4 2 4 4 8 C6 4 12 4 16 8 C20 4 20 -2 26 -6 C16 -10 6 -8 0 0 Z" fill="#1F1529"/><circle cx="-2" cy="-3" r="1" fill="#FFB86B"/><circle cx="2" cy="-3" r="1" fill="#FFB86B"/></g><g transform="translate(110 80) scale(0.8)"><path d="M0 0 C-6 -8 -16 -10 -26 -6 C-20 -2 -20 4 -16 8 C-12 4 -6 4 -4 8 C-2 4 2 4 4 8 C6 4 12 4 16 8 C20 4 20 -2 26 -6 C16 -10 6 -8 0 0 Z" fill="#1F1529"/><circle cx="-2" cy="-3" r="1" fill="#FFB86B"/><circle cx="2" cy="-3" r="1" fill="#FFB86B"/></g><g transform="translate(180 30) scale(1)"><path d="M0 0 C-6 -8 -16 -10 -26 -6 C-20 -2 -20 4 -16 8 C-12 4 -6 4 -4 8 C-2 4 2 4 4 8 C6 4 12 4 16 8 C20 4 20 -2 26 -6 C16 -10 6 -8 0 0 Z" fill="#1F1529"/><circle cx="-2" cy="-3" r="1" fill="#FFB86B"/><circle cx="2" cy="-3" r="1" fill="#FFB86B"/></g></svg>
+            <svg class="halloween-pumpkins" viewBox="0 0 200 70" aria-hidden="true"><g transform="translate(40 40) scale(1)"><ellipse cx="0" cy="0" rx="26" ry="21" fill="#FF8A3D" stroke="#C9631A" stroke-width="3"/><path d="M-9 -20 Q-14 0 -9 20 M9 -20 Q14 0 9 20" fill="none" stroke="#E07B22" stroke-width="2.5"/><path d="M-2 -20 Q-3 -28 4 -31" stroke="#4F8F45" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-13 -5 L-6 -10 L-4 -2 Z M13 -5 L6 -10 L4 -2 Z M-12 6 Q0 14 12 6 L6 8 L0 4 L-6 8 Z" fill="#3A2418"/></g><g transform="translate(100 40) scale(0.75)"><ellipse cx="0" cy="0" rx="26" ry="21" fill="#FF8A3D" stroke="#C9631A" stroke-width="3"/><path d="M-9 -20 Q-14 0 -9 20 M9 -20 Q14 0 9 20" fill="none" stroke="#E07B22" stroke-width="2.5"/><path d="M-2 -20 Q-3 -28 4 -31" stroke="#4F8F45" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-13 -5 L-6 -10 L-4 -2 Z M13 -5 L6 -10 L4 -2 Z M-12 6 Q0 14 12 6 L6 8 L0 4 L-6 8 Z" fill="#3A2418"/></g><g transform="translate(155 40) scale(1.1)"><ellipse cx="0" cy="0" rx="26" ry="21" fill="#FF8A3D" stroke="#C9631A" stroke-width="3"/><path d="M-9 -20 Q-14 0 -9 20 M9 -20 Q14 0 9 20" fill="none" stroke="#E07B22" stroke-width="2.5"/><path d="M-2 -20 Q-3 -28 4 -31" stroke="#4F8F45" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-13 -5 L-6 -10 L-4 -2 Z M13 -5 L6 -10 L4 -2 Z M-12 6 Q0 14 12 6 L6 8 L0 4 L-6 8 Z" fill="#3A2418"/></g></svg>            
+            <img id="halloweenHamster" alt="Un criceto con il cappello da strega">
+            <div>
+                <span class="tiny-label">Solo fino al 1° novembre</span>
+                <h1>Halloween Cerebrale</h1>
+                <p>Criceti travestiti, ruote stregate e snack spaventosamente croccanti. Disponibili solo per pochi giorni, poi tornano nella cripta.</p>
+            </div>
+        </div>
+        <div class="product-grid" id="halloweenGrid"></div>
+    </div>
+</section>
+
 <section class="page creator-page" id="crea-casa">
     <div class="container">
  
@@ -3978,6 +4087,7 @@ button.hero-scene:focus-visible {
             <button class="text-button" onclick="goToSection('extra')">Extra e ricambi</button>
             <button class="text-button" onclick="showPage('crea-criceto')">Crea il tuo criceto</button>
             <button class="text-button" onclick="showPage('crea-casa')">Crea la casa</button>
+            <button class="text-button" onclick="showPage('halloween')">Speciale Halloween</button>            
         </nav>
         <nav class="footer-links" aria-label="Aiuto">
             <span class="footer-title">Aiuto</span>
@@ -4260,6 +4370,36 @@ const products = [
         duration:"Finché non incontra il divano",
         price:24.99
     },
+    {     
+        id:"x1", category:"halloween", name:"Criceto Vampiro", emoji:"🧛", color:"#2f2340", tag:"Edizione limitata",
+        description:"Dorme di giorno, corre nella ruota di notte e ha paura dell'aglio nei semi. Morde solo i pensieri negativi.",
+        speed:"Solo dopo il tramonto", duration:"Fino all'alba", price:13.13
+    },
+    {
+        id:"x2", category:"halloween", name:"Criceto Streghetta", emoji:"🧙", color:"#e7dcf7", tag:"Incantesimi inclusi",
+        description:"Trasforma i compiti in coriandoli e le scadenze in zucche. Gli incantesimi non sono reversibili.",
+        speed:"Una scopa al minuto", duration:"Finché dura la luna piena", price:16.66
+    },
+    {
+        id:"x3", category:"halloween", name:"Criceto Fantasmino", emoji:"👻", color:"#eef0f7", tag:"Quasi invisibile",
+        description:"Fa 'buu' alle tue preoccupazioni finché non scappano. Attraversa i muri ma non la ruota.",
+        speed:"Fluttuante", duration:"Eterna (è un fantasma)", price:6.66
+    },
+    {
+        id:"x4", category:"halloween", name:"Ruota Zucca", emoji:"🎃", color:"#ffe1c2", tag:"Stregata",
+        description:"Una ruota a forma di zucca intagliata. Di notte si illumina e gira da sola: sconsigliata ai criceti fifoni.",
+        speed:"31 giri a ottobre", duration:"Fino a novembre", price:31.10
+    },
+    {
+        id:"x5", category:"halloween", name:"Semi di zucca stregati", emoji:"🌰", color:"#f6e3c8", tag:"Dolcetto o scherzetto",
+        description:"Croccanti, salati e leggermente maledetti. Ogni tanto uno è al gusto di calzino: fa parte dello scherzetto.",
+        speed:"Sgranocchiamento rapido", duration:"Una notte", price:3.31
+    },
+    {
+        id:"x6", category:"halloween", name:"Palla Ragnatela", emoji:"🕸️", color:"#e3dcef", tag:"Rotolamento spettrale",
+        description:"La palla per criceti in versione Halloween. Rotola da sola nei corridoi bui e fa scappare i gatti.",
+        speed:"Inquietante", duration:"Finché qualcuno urla", price:13.31
+    },
     {        
         id:"e1",
         category:"extra",
@@ -4459,12 +4599,18 @@ function renderProductCard(product) {
 function renderProducts() {
     const hamsterGrid = document.getElementById("hamsterGrid");
     const wheelGrid = document.getElementById("wheelGrid");
+    const halloweenGrid = document.getElementById("halloweenGrid");    
 
     hamsterGrid.replaceChildren();
     wheelGrid.replaceChildren();
+    if (halloweenGrid) halloweenGrid.replaceChildren();    
 
     products.forEach(product => {
         const card = renderProductCard(product);
+        if (product.category === "halloween") {
+            if (halloweenGrid) halloweenGrid.append(card);
+            return;
+        }        
         (product.category === "criceto" ? hamsterGrid : wheelGrid).append(card);
     });
 }
@@ -5041,9 +5187,9 @@ function initHamsterCreator() {
 
     // Un solo accessorio per zona: testa, viso e collo.
     const accessoryZones = {
-        head: ["bow", "hat", "flower", "crown", "partyHat", "strawberryHat", "witchHat", "headphones", "gradCap", "halo", "bunnyEars"],
+        head: ["bow", "hat", "flower", "crown", "partyHat", "strawberryHat", "witchHat", "headphones", "gradCap", "halo", "bunnyEars", "bandana"],
         face: ["glasses", "heartGlasses", "sunglasses", "starGlasses", "nerd", "monocle", "glasses3d"],
-        neck: ["bandana", "scarf", "collar", "bowtie", "pearls"]
+        neck: ["scarf", "collar", "bowtie", "pearls"]
     };
  
     const zoneOf = key => Object.keys(accessoryZones).find(
@@ -5144,10 +5290,10 @@ function initHamsterCreator() {
         },
         mouth: {
             smile: smileMouth,
-            grin: `<path d="M160 170 V173" ${mouthLine}/><path d="M147 174 Q160 176 173 174 Q171 191 160 191 Q149 191 147 174 Z" fill="#8A4B4B" stroke="#79554C" stroke-width="2" stroke-linejoin="round"/><path d="M152 185 Q160 179 168 185 Q165 191 160 191 Q155 191 152 185 Z" fill="#F08C9A"/>`,
-            surprised: `<path d="M160 170 V173" ${mouthLine}/><ellipse cx="160" cy="181" rx="5" ry="6.5" fill="#8A4B4B" stroke="#79554C" stroke-width="2"/>`,
-            tongue: `<path d="M155 175 Q155 188 160 188 Q165 188 165 175 Z" fill="#F08C9A" stroke="#C46E78" stroke-width="1.5"/>${smileMouth}`,
-            smug: `<path d="M160 170 V173" ${mouthLine}/><path d="M149 177 Q158 181 171 172" ${mouthLine}/>`
+            grin: `<path d="M147 174 Q160 176 173 174 Q171 191 160 191 Q149 191 147 174 Z" fill="#8A4B4B" stroke="#79554C" stroke-width="2" stroke-linejoin="round"/><path d="M152 185 Q160 179 168 185 Q165 191 160 191 Q155 191 152 185 Z" fill="#F08C9A"/>`,
+            surprised: `<ellipse cx="160" cy="181" rx="5" ry="6.5" fill="#8A4B4B" stroke="#79554C" stroke-width="2"/>`,
+            tongue: `<path d="M155 175 Q155 188 160 188 Q165 188 165 175 Z" fill="#F08C9A" stroke="#C46E78" stroke-width="1.5"/><path d="M150 175 Q155 180 160 175 Q165 180 170 175" ${mouthLine}/>`,
+            smug: `<path d="M149 177 Q158 181 171 172" ${mouthLine}/>`
         },
         cheeks: {
             pink: blush("#EFA5A8"),
@@ -5194,11 +5340,18 @@ function initHamsterCreator() {
                 }).join("") +
                 `<g fill="#FFFFFF"><circle cx="24" cy="202" r="20"/><circle cx="50" cy="210" r="16"/><circle cx="8" cy="214" r="14"/><circle cx="296" cy="202" r="20"/><circle cx="270" cy="210" r="16"/><circle cx="312" cy="214" r="14"/></g>` +
                 sparkle(40, 60, 8, "#FFFFFF") + sparkle(284, 70, 6, "#FFFFFF") + sparkle(250, 30, 5, "#FFFFFF")),
-            party: () => backdrop("#F3E8FF", `<path d="M0 256 H320 V320 H0 Z" fill="#E4D2F7"/><path d="M0 256 H320" stroke="#CDB6EA" stroke-width="3"/>` + Array.from({ length: 22 }, (_, i) => {
-                const x = (i * 67) % 300 + 10;
-                const y = (i * 41) % 300 + 10;
-                return `<rect x="${x}" y="${y}" width="8" height="14" rx="2.5" fill="${confettiColors[i % confettiColors.length]}" transform="rotate(${(i * 37) % 180} ${x + 4} ${y + 7})"/>`;
-            }).join("") + `<path d="M0 30 Q40 60 80 28 T160 30" fill="none" stroke="#F28DA0" stroke-width="4" stroke-linecap="round"/><path d="M180 24 Q230 56 270 26 T330 30" fill="none" stroke="#8FCDF5" stroke-width="4" stroke-linecap="round"/>`)
+            party: () => backdrop("#FDEBF4", `<path d="M0 256 H320 V320 H0 Z" fill="#F6D9E8"/><path d="M0 256 H320" stroke="#EBBFD6" stroke-width="3"/>` +
+                `<path d="M0 18 Q160 64 320 18" fill="none" stroke="#C9A0B8" stroke-width="2"/>` +
+                Array.from({ length: 9 }, (_, i) => {
+                    const t = (i + .5) / 9;
+                    const x = 320 * t;
+                    const y = (1 - t) * (1 - t) * 18 + 2 * (1 - t) * t * 64 + t * t * 18;
+                    return `<path d="M${(x - 11).toFixed(1)} ${(y - 1).toFixed(1)} H${(x + 11).toFixed(1)} L${x.toFixed(1)} ${(y + 20).toFixed(1)} Z" fill="${confettiColors[i % confettiColors.length]}"/>`;
+                }).join("") +
+                [[38, 104, "#F28DA0"], [282, 96, "#8FCDF5"], [262, 128, "#FFD66B"]].map(([x, y, c]) =>
+                    `<path d="M${x} ${y + 30} Q${x - 6} ${y + 70} ${x + 4} ${y + 120}" fill="none" stroke="#C9A0B8" stroke-width="1.5"/><ellipse cx="${x}" cy="${y}" rx="22" ry="27" fill="${c}"/><path d="M${x - 4} ${y + 26} L${x + 4} ${y + 26} L${x} ${y + 32} Z" fill="${c}"/><ellipse cx="${x - 8}" cy="${y - 10}" rx="5" ry="8" fill="#FFFFFF" opacity=".5"/>`
+                ).join("") +
+                Array.from({ length: 14 }, (_, i) => `<circle cx="${(i * 71) % 300 + 10}" cy="${(i * 47) % 160 + 80}" r="3" fill="${confettiColors[i % confettiColors.length]}" opacity=".8"/>`).join(""))
         }
     };
  
@@ -6071,7 +6224,7 @@ function decorateWithHamsters() {
         h8: { fur: "caramel", whiskers: "bold", accessories: ["hat", "scarf"] },
         h9: { fur: "grey", eyes: "small", accessories: ["headphones", "scarf"] },
         h10: { fur: "cream", eyes: "anime", mouth: "grin", cheeks: "lilac", accessories: ["bow"], accColorHead: "purple", held: "mic" },
-        h11: { fur: "grey", innerFur: "white", mouth: "smug", accessories: ["hat", "sunglasses"], accColorHead: "mint" },
+        h11: { fur: "black", innerFur: "white", pattern: "stripe", mouth: "smug", eyes: "big", eyeColor: "dark", cheeks: "none", whiskers: "soft", whiskerColor: "brown", accessories: ["crown", "bowtie"], accColorHead: "mint", accColorNeck: "mint", held: "mic" },
         h12: { fur: "honey", eyes: "happy", mouth: "grin", accessories: ["scarf"], accColorNeck: "blue", held: "guitar" }
     };
  
@@ -6080,6 +6233,27 @@ function decorateWithHamsters() {
         if (product) product.image = window.hamsterImage(look, look);
     });
 
+    const spooky = {
+        x1: { fur: "grey", eyeColor: "red", mouth: "grin", cheeks: "none", accessories: ["collar"], accColorNeck: "red" },
+        x2: { fur: "cream", accessories: ["witchHat"], held: "none" },
+        x3: { fur: "white", innerFur: "white", eyes: "dots", mouth: "surprised", cheeks: "none", whiskerColor: "white" }
+    };
+    Object.entries(spooky).forEach(([id, look]) => {
+        const product = getProduct(id);
+        if (product) product.image = window.hamsterImage(look);
+    });
+    const webBall = getProduct("x6");
+    if (webBall) webBall.image = svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 320 320"><ellipse cx="160" cy="306" rx="96" ry="8" fill="rgba(80,40,90,.15)"/><image href="${window.hamsterImage({ eyes: "wink", held: "none" })}" x="36" y="56" width="248" height="248"/><circle cx="160" cy="178" r="126" fill="#B9A3E3" fill-opacity=".18"/><path d="M160 178 L286.0 178.0 M160 178 L269.1 241.0 M160 178 L223.0 287.1 M160 178 L160.0 304.0 M160 178 L97.0 287.1 M160 178 L50.9 241.0 M160 178 L34.0 178.0 M160 178 L50.9 115.0 M160 178 L97.0 68.9 M160 178 L160.0 52.0 M160 178 L223.0 68.9 M160 178 L269.1 115.0 M190.0 178.0 Q184.9 184.7 186.0 193.0 Q178.2 196.2 175.0 204.0 Q166.7 202.9 160.0 208.0 Q153.3 202.9 145.0 204.0 Q141.8 196.2 134.0 193.0 Q135.1 184.7 130.0 178.0 Q135.1 171.3 134.0 163.0 Q141.8 159.8 145.0 152.0 Q153.3 153.1 160.0 148.0 Q166.7 153.1 175.0 152.0 Q178.2 159.8 186.0 163.0 Q184.9 171.3 190.0 178.0 M218.0 178.0 Q208.2 190.9 210.2 207.0 Q195.3 213.3 189.0 228.2 Q172.9 226.2 160.0 236.0 Q147.1 226.2 131.0 228.2 Q124.7 213.3 109.8 207.0 Q111.8 190.9 102.0 178.0 Q111.8 165.1 109.8 149.0 Q124.7 142.7 131.0 127.8 Q147.1 129.8 160.0 120.0 Q172.9 129.8 189.0 127.8 Q195.3 142.7 210.2 149.0 Q208.2 165.1 218.0 178.0 M246.0 178.0 Q231.4 197.1 234.5 221.0 Q212.3 230.3 203.0 252.5 Q179.1 249.4 160.0 264.0 Q140.9 249.4 117.0 252.5 Q107.7 230.3 85.5 221.0 Q88.6 197.1 74.0 178.0 Q88.6 158.9 85.5 135.0 Q107.7 125.7 117.0 103.5 Q140.9 106.6 160.0 92.0 Q179.1 106.6 203.0 103.5 Q212.3 125.7 234.5 135.0 Q231.4 158.9 246.0 178.0 M272.0 178.0 Q253.0 202.9 257.0 234.0 Q228.1 246.1 216.0 275.0 Q184.9 271.0 160.0 290.0 Q135.1 271.0 104.0 275.0 Q91.9 246.1 63.0 234.0 Q67.0 202.9 48.0 178.0 Q67.0 153.1 63.0 122.0 Q91.9 109.9 104.0 81.0 Q135.1 85.0 160.0 66.0 Q184.9 85.0 216.0 81.0 Q228.1 109.9 257.0 122.0 Q253.0 153.1 272.0 178.0 " fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".95"/><path d="M160 178 L286.0 178.0 M160 178 L269.1 241.0 M160 178 L223.0 287.1 M160 178 L160.0 304.0 M160 178 L97.0 287.1 M160 178 L50.9 241.0 M160 178 L34.0 178.0 M160 178 L50.9 115.0 M160 178 L97.0 68.9 M160 178 L160.0 52.0 M160 178 L223.0 68.9 M160 178 L269.1 115.0 M190.0 178.0 Q184.9 184.7 186.0 193.0 Q178.2 196.2 175.0 204.0 Q166.7 202.9 160.0 208.0 Q153.3 202.9 145.0 204.0 Q141.8 196.2 134.0 193.0 Q135.1 184.7 130.0 178.0 Q135.1 171.3 134.0 163.0 Q141.8 159.8 145.0 152.0 Q153.3 153.1 160.0 148.0 Q166.7 153.1 175.0 152.0 Q178.2 159.8 186.0 163.0 Q184.9 171.3 190.0 178.0 M218.0 178.0 Q208.2 190.9 210.2 207.0 Q195.3 213.3 189.0 228.2 Q172.9 226.2 160.0 236.0 Q147.1 226.2 131.0 228.2 Q124.7 213.3 109.8 207.0 Q111.8 190.9 102.0 178.0 Q111.8 165.1 109.8 149.0 Q124.7 142.7 131.0 127.8 Q147.1 129.8 160.0 120.0 Q172.9 129.8 189.0 127.8 Q195.3 142.7 210.2 149.0 Q208.2 165.1 218.0 178.0 M246.0 178.0 Q231.4 197.1 234.5 221.0 Q212.3 230.3 203.0 252.5 Q179.1 249.4 160.0 264.0 Q140.9 249.4 117.0 252.5 Q107.7 230.3 85.5 221.0 Q88.6 197.1 74.0 178.0 Q88.6 158.9 85.5 135.0 Q107.7 125.7 117.0 103.5 Q140.9 106.6 160.0 92.0 Q179.1 106.6 203.0 103.5 Q212.3 125.7 234.5 135.0 Q231.4 158.9 246.0 178.0 M272.0 178.0 Q253.0 202.9 257.0 234.0 Q228.1 246.1 216.0 275.0 Q184.9 271.0 160.0 290.0 Q135.1 271.0 104.0 275.0 Q91.9 246.1 63.0 234.0 Q67.0 202.9 48.0 178.0 Q67.0 153.1 63.0 122.0 Q91.9 109.9 104.0 81.0 Q135.1 85.0 160.0 66.0 Q184.9 85.0 216.0 81.0 Q228.1 109.9 257.0 122.0 Q253.0 153.1 272.0 178.0 " fill="none" stroke="#7B5BB0" stroke-width="1" opacity=".55"/><circle cx="160" cy="178" r="126" fill="none" stroke="#7B5BB0" stroke-width="4"/><path d="M110 76 Q122 66 134 72" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity=".6"/><path d="M238 52 V104" stroke="#3A2A3F" stroke-width="1.5"/><g transform="translate(238 112)"><path d="M-12 -6 L-4 -2 M-12 2 L-4 1 M-12 9 L-4 4 M12 -6 L4 -2 M12 2 L4 1 M12 9 L4 4" stroke="#3A2A3F" stroke-width="2" stroke-linecap="round"/><ellipse cx="0" cy="2" rx="6" ry="8" fill="#3A2A3F"/><circle cx="0" cy="-6" r="4.5" fill="#3A2A3F"/><circle cx="-1.6" cy="-6.5" r="1.1" fill="#fff"/><circle cx="1.6" cy="-6.5" r="1.1" fill="#fff"/></g></svg>`);
+    const pumpkinWheel = getProduct("x4");
+    if (pumpkinWheel) pumpkinWheel.image = svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><ellipse cx="100" cy="189" rx="72" ry="6" fill="rgba(80,40,25,.12)"/><path d="M100 92L55 180M100 92l45 88" stroke="#5B3A2A" stroke-width="9" stroke-linecap="round"/><rect x="35" y="175" width="130" height="10" rx="5" fill="#5B3A2A"/><ellipse cx="100" cy="94" rx="72" ry="64" fill="#FF9A3C" stroke="#C9631A" stroke-width="6"/><path d="M70 36 Q60 94 70 152 M130 36 Q140 94 130 152 M100 30 V158" fill="none" stroke="#E07B22" stroke-width="4"/><path d="M96 32 Q94 18 106 12" fill="none" stroke="#4F8F45" stroke-width="7" stroke-linecap="round"/><path d="M66 76 L82 64 L88 84 Z M134 76 L118 64 L112 84 Z" fill="#3A2418"/><path d="M62 108 Q100 138 138 108 L128 112 L120 104 L110 116 L100 106 L90 116 L80 104 L72 112 Z" fill="#3A2418"/><circle cx="100" cy="94" r="8" fill="#FFD66B" opacity=".0"/></svg>`);
+    const pumpkinSeeds = getProduct("x5");
+    if (pumpkinSeeds) pumpkinSeeds.image = svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><ellipse cx="100" cy="186" rx="70" ry="7" fill="rgba(80,40,25,.12)"/><ellipse cx="100" cy="122" rx="70" ry="12" fill="#5B3A6E"/><path d="M44 124Q100 56 156 124z" fill="#F3E2B8"/>${[[66,112,-30],[84,98,20],[102,90,-10],[120,98,35],[138,110,-25],[78,118,60],[96,108,-50],[114,112,15],[132,118,70],[104,76,5]].map(([x, y, a]) => `<ellipse cx="${x}" cy="${y}" rx="7" ry="11" fill="#F7EBCB" stroke="#CDB98A" stroke-width="2" transform="rotate(${a} ${x} ${y})"/>`).join("")}<path d="M30 122h140q-6 56-70 60-64-4-70-60z" fill="#7B4FB0" stroke="#4E2F7A" stroke-width="4" stroke-linejoin="round"/><path d="M60 146 l8 -6 l8 6 M124 146 l8 -6 l8 6" stroke="#FF9A3C" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M84 160 Q100 170 116 160" stroke="#FF9A3C" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`);
+    const halloweenHamster = document.getElementById("halloweenHamster");
+    const spookyHero = window.hamsterImage({ fur: "cream", accessories: ["witchHat"], accColorHead: "orange", mouth: "grin", held: "none", background: "night" });
+    if (halloweenHamster) halloweenHamster.src = spookyHero;
+    const homeHalloween = document.getElementById("homeHalloweenHamster");
+    if (homeHalloween) homeHalloween.src = spookyHero; 
+    
     const ballProduct = getProduct("w7");
     if (ballProduct) ballProduct.image = window.hamsterImage({ ball: "clear", mouth: "grin", eyes: "happy" });
      
@@ -6367,7 +6541,7 @@ function initHouseCreator() {
     const items = {
         bottle: () => `<rect x="300" y="128" width="20" height="50" rx="8" fill="#EEF8FF" stroke="#7FB3D9" stroke-width="2.5"/><rect x="302.5" y="148" width="15" height="27" rx="6" fill="#8FCDF5"/><rect x="303" y="121" width="14" height="9" rx="3" fill="#F4A7B4"/><path d="M310 178 L304 194" stroke="#AAB6C2" stroke-width="4" stroke-linecap="round"/><circle cx="303" cy="199" r="2.5" fill="#8FCDF5"/>`,
         picture: () => `<rect x="252" y="132" width="40" height="34" rx="3" fill="#FFF8F0" stroke="#C98B5E" stroke-width="4"/><circle cx="263" cy="144" r="4" fill="#E8D1B5"/><circle cx="281" cy="144" r="4" fill="#E8D1B5"/><ellipse cx="272" cy="153" rx="11" ry="9" fill="#E8D1B5"/><circle cx="268" cy="152" r="1.4" fill="#30231F"/><circle cx="276" cy="152" r="1.4" fill="#30231F"/>`,
-        lights: () => {
+        lights: type => {
             const bulbs = Array.from({ length: 11 }, (_, i) => {
                 const t = (i + .5) / 11;
                 const half = t < .5 ? t * 2 : (t - .5) * 2;
@@ -6376,9 +6550,9 @@ function initHouseCreator() {
                 const color = ["#FFD66B", "#F28DA0", "#8FCDF5", "#9BD1A8"][i % 4];
                 return `<circle cx="${x.toFixed(1)}" cy="${(y + 5).toFixed(1)}" r="8" fill="${color}" opacity=".3"/><circle cx="${x.toFixed(1)}" cy="${(y + 5).toFixed(1)}" r="4" fill="${color}"/>`;
             }).join("");
-            return `<path d="M70 124 Q135 142 200 124 Q265 142 330 124" fill="none" stroke="#6B5A52" stroke-width="1.5"/>${bulbs}`;
+            return `<g transform="translate(0 ${hangOffset[type] || 0})"><path d="M70 124 Q135 142 200 124 Q265 142 330 124" fill="none" stroke="#6B5A52" stroke-width="1.5"/>${bulbs}</g>`;
         },
-        bunting: () => {
+        bunting: type => {
             const flags = Array.from({ length: 10 }, (_, i) => {
                 const t = (i + .5) / 10;
                 const x = quadPoint(t, 70, 200, 330);
@@ -6386,15 +6560,20 @@ function initHouseCreator() {
                 const color = ["#F28DA0", "#FFD66B", "#8FCDF5", "#9BD1A8", "#C7B2EE"][i % 5];
                 return `<path d="M${(x - 9).toFixed(1)} ${(y - 1).toFixed(1)} L${(x + 9).toFixed(1)} ${(y - 1).toFixed(1)} L${x.toFixed(1)} ${(y + 15).toFixed(1)} Z" fill="${color}"/>`;
             }).join("");
-            return `<path d="M70 134 Q200 166 330 134" fill="none" stroke="#B9875A" stroke-width="1.8"/>${flags}`;
+            return `<g transform="translate(0 ${hangOffset[type] || 0})"><path d="M70 134 Q200 166 330 134" fill="none" stroke="#B9875A" stroke-width="1.8"/>${flags}</g>`;
         },
-        hammock: () => `<path d="M156 120 L166 150 M244 120 L234 150" stroke="#B9875A" stroke-width="2"/><path d="M162 148 Q200 180 238 148 Q200 166 162 148 Z" fill="#B9A3E3" stroke="#6E58A8" stroke-width="2.5" stroke-linejoin="round"/><path d="M176 156 Q200 170 224 156" fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".6"/>`,
+        hammock: type => {
+            const top = x => type === "cage" ? 120 - 64 * Math.sqrt(1 - ((x - 200) / 140) ** 2) + 4 : (ceiling[type] || 120);
+            return `<path d="M154 ${top(154).toFixed(1)} L166 196 M246 ${top(246).toFixed(1)} L234 196" stroke="#B9875A" stroke-width="2"/><path d="M162 194 Q200 230 238 194 Q200 212 162 194 Z" fill="#B9A3E3" stroke="#6E58A8" stroke-width="2.5" stroke-linejoin="round"/><path d="M176 202 Q200 218 224 202" fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".6"/>`;
+        },
         rug: () => `<ellipse cx="198" cy="257" rx="60" ry="9" fill="#F7A1BC"/><ellipse cx="198" cy="257" rx="48" ry="6" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="4 4"/>`,
         wheel: () => `<path d="M122 194 L100 262 M122 194 L144 262" stroke="#A86F4F" stroke-width="6" stroke-linecap="round"/><circle cx="122" cy="194" r="36" fill="#F7D3B4" stroke="#C88965" stroke-width="7"/><circle cx="122" cy="194" r="29" fill="none" stroke="#E3A982" stroke-width="3" stroke-dasharray="3 6"/><path d="M122 158 V230 M86 194 H158 M96.5 168.5 L147.5 219.5 M147.5 168.5 L96.5 219.5" stroke="#DFA883" stroke-width="3"/><circle cx="122" cy="194" r="6" fill="#C88965"/>`,
         nest: () => `<path d="M266 262 V238 Q292 210 318 238 V262 Z" fill="#F2D3AE" stroke="#B9875A" stroke-width="3" stroke-linejoin="round"/><path d="M282 262 V249 Q292 236 302 249 V262 Z" fill="#7A5236"/><path d="M274 236 Q292 218 310 236" fill="none" stroke="#B9875A" stroke-width="2" opacity=".5"/>` + heart(292, 230, .3, "#F28DA0"),
         bowl: () => `<ellipse cx="246" cy="250" rx="16" ry="5" fill="#E9A2AE"/><path d="M233 251 Q246 236 259 251 Z" fill="#E9C58F"/><g fill="#5B4636"><ellipse cx="241" cy="246" rx="2" ry="3.2" transform="rotate(-30 241 246)"/><ellipse cx="248" cy="243" rx="2" ry="3.2" transform="rotate(20 248 243)"/><ellipse cx="253" cy="248" rx="2" ry="3.2"/></g><path d="M230 250 H262 Q259 262 246 263 Q233 262 230 250 Z" fill="#F4A7B4" stroke="#C9707F" stroke-width="2" stroke-linejoin="round"/>`,
         plant: () => `<g fill="#8CC97A" stroke="#4F8F45" stroke-width="1.5"><ellipse cx="82" cy="224" rx="5" ry="15" transform="rotate(-25 82 224)"/><ellipse cx="96" cy="222" rx="5" ry="15" transform="rotate(25 96 222)"/><ellipse cx="89" cy="216" rx="5" ry="17"/></g><path d="M76 262 L79 240 H99 L102 262 Z" fill="#E8956B" stroke="#B86A45" stroke-width="2" stroke-linejoin="round"/>`
-    };    
+    };  
+    const hangOffset = { cage: 36, mushroom: 10 };
+    const ceiling = { mushroom: 128, castle: 120, wood: 120, modern: 120 };
     const castleTop = (x1, x2, y, size = 12) => {
         let d = `M${x1} ${y + size}`;
         for (let x = x1; x < x2; x += size * 2) d += ` V${y} H${Math.min(x + size, x2)} V${y + size} H${Math.min(x + size * 2, x2)}`;
@@ -6416,7 +6595,7 @@ function initHouseCreator() {
         },
         wood: (c, r) => {
             const shingles = [58, 78, 98].map(y => {
-                const half = (124 - y) / 96 * 164;
+                const half = (y - 28) / 96 * 164 - 8;
                 return `M${(200 - half).toFixed(1)} ${y} H${(200 + half).toFixed(1)}`;
             }).join(" ");
             return `<rect x="270" y="40" width="22" height="44" fill="${c.main}" stroke="${c.dark}" stroke-width="3"/>` +
@@ -6451,13 +6630,15 @@ function initHouseCreator() {
     function houseSVG(settings, { hamster = true, viewBox = "0 0 400 300" } = {}) {
         const c = palette[settings.frame], r = palette[settings.roof], w = palette[settings.wall];
         const has = key => settings.furniture.includes(key) || settings.decor.includes(key);
-        const draw = key => has(key) ? items[key]() : "";
+        const draw = key => has(key) ? items[key](settings.type) : "";
         const interiorTop = settings.type === "cage" ? 60 : 100;
         const resident = hamster && settings.hamster === "yes" && hamsterSrc
             ? `<image href="${hamsterSrc}" x="154" y="182" width="86" height="86"/>` : "";
         return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}">` +
             `<ellipse cx="200" cy="290" rx="176" ry="8" fill="rgba(80,40,25,.10)"/>` +
-            `<rect x="70" y="${interiorTop}" width="260" height="${262 - interiorTop}" fill="${w.light}"/>` +
+            (settings.type === "cage"
+                ? `<path d="M60 256 V120 A140 64 0 0 1 340 120 V256 Z" fill="${w.light}"/>`
+                : `<rect x="70" y="${interiorTop}" width="260" height="${262 - interiorTop}" fill="${w.light}"/>`) +
             (settings.type === "cage" ? "" : wallpapers[settings.wallpaper](w)) +
             floors[settings.floor]() +
             draw("rug") + draw("bottle") + draw("picture") + draw("lights") + draw("bunting") + draw("hammock") + draw("wheel") +
@@ -6525,7 +6706,7 @@ function initHouseCreator() {
  
     const crops = {
         wallpaper: "84 128 150 100", floor: "100 214 150 50",
-        wheel: "78 150 90 116", nest: "258 204 68 62", bowl: "224 230 46 36", bottle: "290 114 42 90", hammock: "148 114 104 70",
+        wheel: "78 150 90 116", nest: "258 204 68 62", bowl: "224 230 46 36", bottle: "290 114 42 90", hammock: "148 116 104 120",
         lights: "70 112 130 46", bunting: "70 124 130 52", picture: "244 124 56 50", rug: "132 242 132 26", plant: "64 196 50 70"
     };
     function renderThumbnails() {
