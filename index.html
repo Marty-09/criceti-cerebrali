@@ -1222,7 +1222,6 @@ footer p {
 }
 
 @media(max-width:900px) {
-    .nav {flex-wrap:wrap}
     .nav-actions {gap:3px}
     .nav-link {font-size:.78rem;padding:8px}
     .hero-inner {grid-template-columns:1fr .8fr;gap:25px}
@@ -1242,15 +1241,6 @@ footer p {
         font-size:1.2rem
     }
     .nav {gap:8px 12px}
-    .nav-links {
-        order:3;
-        width:100%;
-        margin:0 -4px;
-        flex-wrap:wrap;
-        justify-content:center;
-        row-gap:4px
-    }
-    .nav-links::-webkit-scrollbar {display:none}
     .nav-link {font-size:.76rem;white-space:nowrap}
     .cart-button {
         padding:8px 10px;
@@ -2143,8 +2133,7 @@ button.hero-scene:focus-visible {
 }
  
 @media (max-width: 420px) {
-    .nav-links { gap: 0; }
-    .nav-link { padding: 7px 6px; font-size: .72rem; }
+    .nav-season .nav-link { padding: 7px 8px; font-size: .74rem; }
 }    
 
 .nav-link.halloween-link {
@@ -2266,7 +2255,76 @@ body.modal-open { overflow: hidden; }
     .product-modal-body { padding: 8px 4px 4px; }
     .product-modal-body h2 { font-size: 1.5rem; }
 }
-  
+
+.shop-search { position: relative; flex: 1 1 240px; max-width: 340px; }
+.shop-search input { width: 100%; box-sizing: border-box; font: inherit; font-weight: 600; padding: 10px 38px 10px 40px; border-radius: 999px; border: 1px solid #ecdcd0; background: #fff; color: inherit; }
+.shop-search input:focus { outline: none; border-color: #b0636d; box-shadow: 0 0 0 3px rgba(176,99,109,.15); }
+.shop-search input::-webkit-search-cancel-button { display: none; }
+.shop-search-icon { position: absolute; left: 14px; top: 50%; width: 18px; height: 18px; transform: translateY(-50%); pointer-events: none; }
+.shop-search-clear { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border: 0; border-radius: 50%; background: #f5ebe4; color: inherit; font-size: 1.1rem; line-height: 1; cursor: pointer; }
+.shop-search-clear[hidden] { display: none; }
+.search-empty { margin: 26px auto 0; padding: 26px 20px; max-width: 560px; text-align: center; border: 2px dashed #ecdcd0; border-radius: 22px; background: #fffaf7; }
+.search-empty[hidden] { display: none; }
+.search-empty img { width: 110px; height: 110px; }
+.search-empty h3 { margin: 6px 0 6px; }
+.search-empty p { margin: 0 0 14px; color: var(--muted); }
+@media (max-width: 650px) { .shop-search { order: 3; flex-basis: 100%; max-width: none; } }
+ 
+.creator-stage { position: relative; }
+#hamsterAvatar #hamsterEyes { transform-box: fill-box; transform-origin: center; }
+#hamsterAvatar.blinking #hamsterEyes { animation: hamsterBlink .2s ease-in-out; }
+@keyframes hamsterBlink { 50% { transform: scaleY(.1); } }
+#hamsterAvatar #hamsterWhiskers { transform-box: fill-box; transform-origin: center; animation: whiskerTwitch 3.8s ease-in-out infinite; }
+@keyframes whiskerTwitch { 0%, 82%, 100% { transform: none; } 86% { transform: translateY(-1.5px) scaleX(1.04); } 90% { transform: translateY(1px) scaleX(.98); } 94% { transform: translateY(-1px) scaleX(1.03); } }
+#hamsterAvatar.waving { animation: hamsterHop .6s ease-in-out 2; }
+@keyframes hamsterHop { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-12px) rotate(-1.5deg); } }
+.avatar-hello { position: absolute; top: 18px; right: 16px; max-width: 46%; padding: 9px 14px; border-radius: 18px 18px 4px 18px; background: #302a28; color: #fff; font-weight: 800; font-size: .95rem; line-height: 1.25; text-align: center; opacity: 0; transform: translateY(6px) scale(.9); transition: opacity .25s, transform .25s; pointer-events: none; z-index: 3; }
+.avatar-hello.show { opacity: 1; transform: none; }
+@media (max-width: 650px) { .avatar-hello { top: 6px; right: auto; left: 132px; font-size: .78rem; padding: 6px 10px; max-width: none; } }
+@media (prefers-reduced-motion: reduce) { #hamsterAvatar #hamsterWhiskers, #hamsterAvatar.waving, #hamsterAvatar.blinking #hamsterEyes { animation: none; } }
+ 
+.race-card { margin-top: 26px; padding: 22px; border: 1px solid var(--line); border-radius: 28px; background: #fff; }
+.race-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 18px; margin-bottom: 14px; }
+.race-top p { margin: 0; font-weight: 700; }
+.race-score { font-size: .9rem; font-weight: 700; color: #b0636d; }
+.race-track { display: grid; gap: 8px; padding: 12px; border-radius: 20px; background: repeating-linear-gradient(180deg, #e9d3b5 0 2px, #f6e7d2 2px 64px); }
+.race-lane { display: grid; grid-template-columns: 150px 1fr; align-items: center; gap: 12px; width: 100%; min-height: 64px; padding: 4px 10px 4px 6px; border: 2px solid transparent; border-radius: 16px; background: rgba(255,255,255,.55); font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.race-lane:hover { background: rgba(255,255,255,.85); }
+.race-lane.picked { border-color: #b0636d; background: #fff; box-shadow: 0 3px 0 rgba(176,99,109,.25); }
+.race-lane:disabled { cursor: default; }
+.race-name { display: flex; flex-direction: column; font-weight: 800; font-size: .88rem; line-height: 1.2; }
+.race-name small { font-weight: 600; color: var(--muted); font-size: .76rem; }
+.race-lane.picked .race-name small { color: #b0636d; }
+.race-run { position: relative; height: 58px; }
+.race-run::after { content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 12px; border-radius: 3px; background: repeating-conic-gradient(#302a28 0 25%, #fff 0 50%) 0 0 / 12px 12px; }
+.race-runner { position: absolute; left: 0; top: 0; width: 58px; height: 58px; will-change: transform; }
+.race-runner img { width: 58px; height: 58px; }
+.race-runner.running img { animation: runnerBob .3s ease-in-out infinite; }
+@keyframes runnerBob { 50% { transform: translateY(-4px) rotate(-3deg); } }
+.race-bubble { position: absolute; bottom: 52px; left: 30px; padding: 4px 9px; border-radius: 12px 12px 12px 3px; background: #302a28; color: #fff; font-size: .74rem; font-weight: 800; white-space: nowrap; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 2; }
+.race-bubble.show { opacity: 1; }
+.race-bubble.flip { left: auto; right: 30px; border-radius: 12px 12px 3px 12px; }
+.race-track { overflow-x: clip; }
+.race-lane:first-child .race-bubble { bottom: auto; top: 46px; border-radius: 3px 12px 12px 12px; }
+.race-commentary { min-height: 1.6em; margin: 16px 0 12px; text-align: center; font-size: 1.15rem; font-weight: 800; }
+.race-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.race-results { max-width: 460px; margin: 18px auto 0; padding: 14px 18px 14px 40px; border-radius: 18px; background: #fffaf7; border: 1px solid var(--line); }
+.race-results[hidden] { display: none; }
+.race-results li { padding: 5px 0; font-weight: 600; }
+.race-results li span { color: var(--muted); font-weight: 500; }
+.race-results li.you { color: #b0636d; font-weight: 800; }
+@media (max-width: 650px) {
+    .race-card { padding: 14px 10px; }
+    .race-track { padding: 8px; }
+    .race-lane { grid-template-columns: 1fr; gap: 0; padding: 4px 8px; }
+    .race-name { flex-direction: row; gap: 6px; align-items: baseline; font-size: .82rem; }
+    .race-run { height: 50px; }
+    .race-runner, .race-runner img { width: 50px; height: 50px; }
+    .race-bubble { bottom: auto; top: 0; left: 52px; }
+    .race-bubble.flip { left: auto; right: 52px; }
+    .race-lane:first-child .race-bubble { top: 0; }
+}
+     
 .shop-filters { padding: 34px 0 0; }
 .shop-filters-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 18px; }
 .filter-chips { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -2337,6 +2395,39 @@ body.modal-open { overflow: hidden; }
     .halloween-hero { grid-template-columns: 1fr; text-align: center; padding: 24px; }
     .halloween-hero img { width: 170px; height: 170px; margin: auto; }
 }    
+ 
+/* Menu a tendina (tre lineette) */
+.nav { position: relative; flex-wrap: nowrap; }
+.nav-actions { flex-wrap: nowrap; gap: 8px; margin-left: auto; }
+.nav-season { display: flex; gap: 6px; }
+.nav-season .nav-link { white-space: nowrap; }
+.menu-toggle { width: 44px; height: 44px; flex: none; display: grid; place-content: center; gap: 4px; border: 0; border-radius: 15px; background: var(--pink-light); cursor: pointer; }
+.menu-toggle span { display: block; width: 20px; height: 2.6px; border-radius: 2px; background: var(--ink); transition: transform .25s, opacity .2s; }
+.menu-toggle:hover { background: #f8d9df; }
+header.menu-open .menu-toggle span:nth-child(1) { transform: translateY(6.6px) rotate(45deg); }
+header.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+header.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-6.6px) rotate(-45deg); }
+.nav-links { position: absolute; top: calc(100% + 6px); right: 24px; width: 270px; margin: 0; padding: 12px; flex-direction: column; align-items: stretch; gap: 2px; background: #fff; border: 1px solid var(--line); border-radius: 22px; box-shadow: 0 18px 40px rgba(48, 42, 40, .16); opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .2s, transform .2s, visibility 0s .2s; }
+header.menu-open .nav-links { opacity: 1; visibility: visible; transform: none; transition: opacity .2s, transform .2s; }
+.menu-title { padding: 4px 14px 8px; font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.nav-links .nav-link { padding: 12px 14px; font-size: .98rem; text-align: left; border-radius: 14px; }
+@media (max-width: 650px) {
+    .nav-links { left: 14px; right: 14px; width: auto; }
+}
+@media (max-width: 520px) {
+    .cart-label { display: none; }
+    .nav-actions { gap: 6px; }
+}
+@media (max-width: 520px) {
+    .nav { gap: 8px; }
+    .logo { gap: 7px; white-space: normal; line-height: 1.05; }
+    .logo > span:last-child { max-width: 72px; font-size: .86rem; }
+    .cart-button { padding: 8px 9px; }
+    .menu-toggle { width: 40px; height: 40px; }
+}
+@media (max-width: 350px) {
+    .logo > span:last-child { display: none; }
+}    
 </style>   
 </head>
 
@@ -2350,24 +2441,31 @@ body.modal-open { overflow: hidden; }
             <span>Criceti Cerebrali</span>
         </button>
   
-        <div class="nav-links" role="navigation" aria-label="Menu principale">
-            <button class="nav-link season-link sanvalentino-link" data-season="sanvalentino" data-page="sanvalentino" onclick="showPage('sanvalentino')">💘 San Valentino</button>
-            <button class="nav-link season-link pasqua-link" data-season="pasqua" data-page="pasqua" onclick="showPage('pasqua')">🐣 Pasqua</button>
-            <button class="nav-link season-link estate-link" data-season="estate" data-page="estate" onclick="showPage('estate')">☀️ Estate</button>            
-            <button class="nav-link natale-link" data-season="natale" data-page="natale" onclick="showPage('natale')">🎄 Natale</button>
-            <button class="nav-link halloween-link" data-season="halloween" data-page="halloween" onclick="showPage('halloween')">🎃 Halloween</button>
+        <div class="nav-links" id="mainMenu" role="navigation" aria-label="Menu principale">
+            <span class="menu-title">Dove andiamo?</span>
             <button class="nav-link current" data-page="catalogo" onclick="showPage('catalogo')">Negozio</button>
             <button class="nav-link" data-page="crea-criceto" onclick="showPage('crea-criceto')">Crea il tuo criceto</button>
             <button class="nav-link" data-page="crea-casa" onclick="showPage('crea-casa')">Crea la casa</button>
+            <button class="nav-link" data-page="gara" onclick="showPage('gara')">Gara</button>            
             <button class="nav-link" data-page="assistenza" onclick="showPage('assistenza')">Assistenza</button>
             <button class="nav-link" data-page="restituzioni" onclick="showPage('restituzioni')">Resi</button>
         </div>
         
         <div class="nav-actions">
+            <div class="nav-season">
+                <button class="nav-link season-link sanvalentino-link" data-season="sanvalentino" data-page="sanvalentino" onclick="showPage('sanvalentino')">💘 San Valentino</button>
+                <button class="nav-link season-link pasqua-link" data-season="pasqua" data-page="pasqua" onclick="showPage('pasqua')">🐣 Pasqua</button>
+                <button class="nav-link season-link estate-link" data-season="estate" data-page="estate" onclick="showPage('estate')">☀️ Estate</button>
+                <button class="nav-link natale-link" data-season="natale" data-page="natale" onclick="showPage('natale')">🎄 Natale</button>
+                <button class="nav-link halloween-link" data-season="halloween" data-page="halloween" onclick="showPage('halloween')">🎃 Halloween</button>
+            </div>            
             <button class="cart-button" id="cartNavButton" onclick="showPage('carrello')">
-                🛒 Carrello
+                🛒 <span class="cart-label">Carrello</span>
                 <span class="cart-count" id="cartCount">0</span>
             </button>
+            <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainMenu" aria-label="Apri il menu">
+                <span></span><span></span><span></span>
+            </button>            
         </div>
     </nav>
 </header>
@@ -2581,6 +2679,12 @@ body.modal-open { overflow: hidden; }
                 <button class="filter-chip" type="button" data-filter="ruota" aria-pressed="false">Ruote</button>
                 <button class="filter-chip" type="button" data-filter="extra" aria-pressed="false">Extra</button>
             </div>
+            <label class="shop-search">
+                <span class="visually-hidden-label" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Cerca nel negozio</span>
+                <svg class="shop-search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#9a8a84" stroke-width="2.4"/><path d="M15.5 15.5L21 21" stroke="#9a8a84" stroke-width="2.6" stroke-linecap="round"/></svg>
+                <input type="search" id="searchProducts" placeholder="Cerca: Billie, ruota, caffè…" autocomplete="off">
+                <button class="shop-search-clear" id="searchClear" type="button" aria-label="Cancella la ricerca" hidden>×</button>
+            </label>            
             <label class="sort-label">Ordina per
                 <select id="sortProducts">
                     <option value="evidenza">In evidenza</option>
@@ -2590,6 +2694,14 @@ body.modal-open { overflow: hidden; }
                 </select>
             </label>
         </div>
+        <div class="container">
+            <div class="search-empty" id="searchEmpty" hidden>
+                <img id="searchEmptyHamster" alt="">
+                <h3>Nessun criceto trovato</h3>
+                <p id="searchEmptyText">Abbiamo cercato anche sotto la paglia.</p>
+                <button class="secondary-button" type="button" id="searchReset">Mostra tutto il negozio</button>
+            </div>
+        </div>        
     </section>
     
     <section class="catalog-section" id="criceti">
@@ -4190,6 +4302,32 @@ body.modal-open { overflow: hidden; }
     </div>
 </section>
 
+<section class="page creator-page" id="gara">
+    <div class="container">
+        <button class="creator-back-button" type="button" onclick="showPage('catalogo')">
+            ← Torna al negozio
+        </button>
+        <div class="creator-heading">
+            <span class="tiny-label">Mini-gioco · nessun criceto è stato maltrattato</span>
+            <h1>Gara di criceti</h1>
+            <p>Scegli il tuo campione, premi «Via!» e incrocia le zampe. Il tuo criceto è quello che hai creato in «Crea il tuo criceto». Attenzione: alcuni concorrenti hanno abitudini discutibili.</p>
+        </div>
+        <div class="race-card">
+            <div class="race-top">
+                <p id="raceHint">Clicca su una corsia per scegliere su chi puntare.</p>
+                <span class="race-score" id="raceScore"></span>
+            </div>
+            <div class="race-track" id="raceTrack" role="group" aria-label="Corsie della gara"></div>
+            <p class="race-commentary" id="raceCommentary" aria-live="polite"></p>
+            <div class="race-actions">
+                <button class="primary-button" type="button" id="raceStart">Via!</button>
+                <button class="secondary-button" type="button" id="raceShuffle">Nuovi sfidanti</button>
+            </div>
+            <ol class="race-results" id="raceResults" hidden></ol>
+        </div>
+    </div>
+</section>
+     
 <section class="page creator-page" id="crea-casa">
     <div class="container">
  
@@ -4358,6 +4496,7 @@ body.modal-open { overflow: hidden; }
             <button class="text-button" onclick="goToSection('extra')">Extra e ricambi</button>
             <button class="text-button" onclick="showPage('crea-criceto')">Crea il tuo criceto</button>
             <button class="text-button" onclick="showPage('crea-casa')">Crea la casa</button>
+            <button class="text-button" onclick="showPage('gara')">Gara di criceti</button>            
             <button class="text-button" data-season="halloween" onclick="showPage('halloween')">Speciale Halloween</button>
             <button class="text-button" data-season="natale" onclick="showPage('natale')">Speciale Natale</button>
             <button class="text-button" data-season="sanvalentino" onclick="showPage('sanvalentino')">Speciale San Valentino</button>
@@ -5181,13 +5320,17 @@ function renderProducts() {
             if (seasonGrid) seasonGrid.append(card);
             return;
         }
-        if (shopFilter !== "tutto" && product.category !== shopFilter) return;        
+        if (shopFilter !== "tutto" && product.category !== shopFilter) return;  
+        if (!matchesQuery(product)) return;        
         (product.category === "criceto" ? hamsterGrid : wheelGrid).append(card);
     });
     updateCatalogSections();
 }
  
 let shopFilter = "tutto";
+let shopQuery = "";
+const normalizeText = text => String(text).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const matchesQuery = product => !shopQuery || normalizeText(`${product.name} ${product.tag} ${product.description}`).includes(shopQuery);    
 let shopSort = "evidenza";
  
 function sortedProducts() {
@@ -5204,9 +5347,36 @@ function updateCatalogSections() {
     [["criceti", "hamsterGrid"], ["extra", "wheelGrid"]].forEach(([section, grid]) => {
         const n = document.getElementById(grid).children.length;
         document.querySelector(`#${section} .section-heading .eyebrow`).textContent = n === 1 ? "1 modello" : `${n} modelli`;
-    });    
+    });   
+    const empty = document.getElementById("searchEmpty");
+    const nothing = !document.getElementById("hamsterGrid").children.length && !document.getElementById("wheelGrid").children.length;
+    empty.hidden = !nothing;
+    if (nothing) {
+        const typed = document.getElementById("searchProducts").value.trim();
+        document.getElementById("searchEmptyText").textContent = typed
+            ? `Niente per «${typed}». Abbiamo cercato anche sotto la paglia. Prova con «criceto», «ruota» o «semi».`
+            : "In questo reparto non c'è niente. Strano, ieri c'era.";
+    }    
 }
 
+const searchInput = document.getElementById("searchProducts");
+searchInput.addEventListener("input", () => {
+    shopQuery = normalizeText(searchInput.value.trim());
+    document.getElementById("searchClear").hidden = !searchInput.value;
+    renderProducts();
+});
+document.getElementById("searchClear").addEventListener("click", () => {
+    searchInput.value = "";
+    searchInput.dispatchEvent(new Event("input"));
+    searchInput.focus();
+});
+document.getElementById("searchReset").addEventListener("click", () => {
+    searchInput.value = "";
+    shopQuery = "";
+    document.getElementById("searchClear").hidden = true;
+    document.querySelector('.filter-chip[data-filter="tutto"]').click();
+});
+     
 document.querySelectorAll(".filter-chip").forEach(chip => {
     chip.addEventListener("click", () => {
         shopFilter = chip.dataset.filter;
@@ -5290,6 +5460,8 @@ function showPage(pageName,fromHistory = false) {
 
     page.classList.add("active");
     document.body.dataset.page = pageName;    
+    document.querySelector("header").classList.remove("menu-open");
+    document.getElementById("menuToggle")?.setAttribute("aria-expanded", "false");    
 
     document.querySelectorAll(".nav-link").forEach(button => {
         button.classList.toggle(
@@ -5308,7 +5480,8 @@ function showPage(pageName,fromHistory = false) {
     window.scrollTo({top:0,behavior:"smooth"});
 
     if (pageName === "carrello") renderCart();
-    if (pageName === "crea-casa" && window.refreshHouse) window.refreshHouse();    
+    if (pageName === "crea-casa" && window.refreshHouse) window.refreshHouse();   
+    if (pageName === "gara" && window.refreshRace) window.refreshRace();    
 }
 
 window.addEventListener("popstate",() => showPage(pageFromHash(),true));
@@ -6568,6 +6741,57 @@ function updateEyes() {
     };
     window.currentHamsterSettings = getSettings;
 
+    const hello = document.createElement("span");
+    hello.className = "avatar-hello";
+    hello.setAttribute("aria-hidden", "true");
+    avatar.closest(".creator-stage").append(hello);
+    let helloTimer;
+    const wavingPaw = document.getElementById("hamsterFrontPawR");
+    let waveFrame;
+    function wavePaw() {
+        if (!wavingPaw || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        cancelAnimationFrame(waveFrame);
+        const start = performance.now();
+        const step = now => {
+            const t = (now - start) / 1800;
+            if (t >= 1) { wavingPaw.setAttribute("transform", "rotate(25 174 217)"); return; }
+            const lift = Math.min(1, t * 6, (1 - t) * 6);
+            const angle = 25 + lift * (-55 + Math.sin(t * Math.PI * 6) * 28);
+            wavingPaw.setAttribute("transform", `translate(${(50 * lift).toFixed(1)} ${(-30 * lift).toFixed(1)}) rotate(${angle.toFixed(1)} 174 217)`);
+            waveFrame = requestAnimationFrame(step);
+        };
+        waveFrame = requestAnimationFrame(step);
+    }
+    function celebrateHamster(text) {
+        hello.textContent = text;
+        hello.classList.add("show");
+        avatar.classList.remove("waving");
+        void avatar.getBoundingClientRect();
+        avatar.classList.add("waving");
+        wavePaw();
+        clearTimeout(helloTimer);
+        helloTimer = setTimeout(() => {
+            hello.classList.remove("show");
+            avatar.classList.remove("waving");
+        }, 2200);
+    }
+    [["hamsterAdopt", ["Evviva, si va a casa!", "Prometto di correre (forse)!"]],
+     ["hamsterSave", ["Sono in collezione!", "Che bello, mi hai salvato!"]],
+     ["hamsterDownload", ["Cheese!", "Vengo bene in foto?"]],
+     ["hamsterShare", ["Ciao a tutti!", "Sono famoso!"]]].forEach(([id, lines]) => {
+        document.getElementById(id).addEventListener("click", () =>
+            celebrateHamster(lines[Math.floor(Math.random() * lines.length)]));
+    });
+    (function blinkLoop() {
+        setTimeout(() => {
+            if (document.getElementById("crea-criceto").classList.contains("active")) {
+                avatar.classList.add("blinking");
+                setTimeout(() => avatar.classList.remove("blinking"), 220);
+            }
+            blinkLoop();
+        }, 2400 + Math.random() * 3200);
+    })();
+     
     nameInput.addEventListener("input", updatePrice);
  
     // Selezione delle card: pelo, occhi, baffi e accessori.
@@ -7596,6 +7820,240 @@ renderCart();
 updateReturnFields();
 updateSupportFields();
      
+(function initRace() {
+    const emptyImg = document.getElementById("searchEmptyHamster");
+    if (emptyImg && window.hamsterImage) emptyImg.src = window.hamsterImage({ eyes: "big", mouth: "surprised", held: "none", accessories: ["glasses"] });
+ 
+    const track = document.getElementById("raceTrack");
+    if (!track) return;
+    const commentary = document.getElementById("raceCommentary");
+    const startBtn = document.getElementById("raceStart");
+    const shuffleBtn = document.getElementById("raceShuffle");
+    const results = document.getElementById("raceResults");
+    const hint = document.getElementById("raceHint");
+    const scoreEl = document.getElementById("raceScore");
+    const RACE_KEY = "cricetiCerebraliGara";
+ 
+    const quirks = {
+        h5: { lazy: true, lines: ["Parto domani…", "Ancora 5 minuti", "Zzz…"] },
+        h2: { burst: true },
+        h3: { stopAt: .3, stopFor: 1300, say: "Mi si è staccato un bullone" },
+        h4: { stopAt: .45, stopFor: 1700, say: "Ma perché corro?" },
+        h6: { cheatAt: .4, say: "Scorciatoia!" },
+        h7: { stopAt: .6, stopFor: 1100, say: "Tecnicamente ho già vinto" },
+        h8: { stopAt: .55, stopFor: 1300, say: "Fallo! Arbitro!" },
+        h9: { stopAt: .7, stopFor: 1300, say: "Ancora un episodio…" },
+        h10: { stopAt: .5, stopFor: 1000, say: "Che dramma, questa gara" },
+        h11: { stopAt: .35, stopFor: 900, say: "…" },
+        h12: { stopAt: .65, stopFor: 1000, say: "Una canzone e riparto" }
+    };
+ 
+    let lineup = [];
+    let picked = 0;
+    let racing = false;
+    let firstLineup = true;
+    let score = { played: 0, won: 0 };
+    try { score = { ...score, ...JSON.parse(localStorage.getItem(RACE_KEY) || "{}") }; } catch { localStorage.removeItem(RACE_KEY); }
+ 
+    const shuffle = list => list.map(item => [Math.random(), item]).sort((a, b) => a[0] - b[0]).map(([, item]) => item);
+    const seconds = ms => (ms / 1000).toFixed(1).replace(".", ",") + " s";
+ 
+    function showScore() {
+        scoreEl.textContent = score.played ? `Gare: ${score.played} · Indovinate: ${score.won}` : "";
+    }
+ 
+    function yourRunner() {
+        const settings = window.currentHamsterSettings ? window.currentHamsterSettings() : { name: "Saturno" };
+        return { id: "tuo", name: settings.name, note: "Il tuo criceto", image: window.hamsterImage ? window.hamsterImage(settings) : "", you: true };
+    }
+ 
+    function newLineup() {
+        const pool = products.filter(p => p.category === "criceto" && p.image);
+        let rivals = shuffle(pool).slice(0, 4);
+        if (firstLineup && !rivals.some(p => p.id === "h5")) rivals[3] = pool.find(p => p.id === "h5") || rivals[3];
+        firstLineup = false;
+        lineup = [yourRunner(), ...rivals.map(p => ({ id: p.id, name: p.name.replace(/^Criceto /, ""), note: p.tag, image: p.image }))];
+        picked = 0;
+        drawTrack();
+        commentary.textContent = "";
+        results.hidden = true;
+    }
+ 
+    function drawTrack() {
+        track.replaceChildren();
+        lineup.forEach((runner, index) => {
+            const lane = document.createElement("button");
+            lane.type = "button";
+            lane.className = "race-lane";
+            lane.setAttribute("aria-pressed", index === picked);
+            lane.classList.toggle("picked", index === picked);
+            lane.innerHTML = `<span class="race-name"><span></span><small></small></span><span class="race-run"><span class="race-runner"><img alt=""><span class="race-bubble"></span></span></span>`;
+            lane.querySelector(".race-name span").textContent = runner.name;
+            lane.querySelector(".race-name small").textContent = index === picked ? "La tua puntata" : runner.note;
+            lane.querySelector("img").src = runner.image;
+            lane.addEventListener("click", () => {
+                if (racing) return;
+                picked = index;
+                drawTrack();
+                hint.textContent = `Hai puntato su ${runner.name}. Premi «Via!»`;
+            });
+            runner.lane = lane;
+            runner.el = lane.querySelector(".race-runner");
+            runner.bubble = lane.querySelector(".race-bubble");
+            track.append(lane);
+        });
+    }
+ 
+    function say(runner, text, ms = 1400) {
+        runner.bubble.textContent = text;
+        runner.bubble.classList.toggle("flip", (runner.p || 0) > .5);
+        runner.bubble.classList.add("show");
+        clearTimeout(runner.bubbleTimer);
+        runner.bubbleTimer = setTimeout(() => runner.bubble.classList.remove("show"), ms);
+    }
+ 
+    function place(runner) {
+        const room = runner.el.parentElement.clientWidth - runner.el.offsetWidth - 14;
+        runner.el.style.transform = `translateX(${Math.max(0, room * runner.p)}px)`;
+    }
+ 
+    function startRace() {
+        if (racing) return;
+        racing = true;
+        startBtn.disabled = shuffleBtn.disabled = true;
+        track.querySelectorAll(".race-lane").forEach(lane => lane.disabled = true);
+        results.hidden = true;
+        lineup.forEach(r => {
+            Object.assign(r, { p: 0, finish: null, dq: false, pausedUntil: 0, stopped: false, cheated: false, tired: false, base: .15 + Math.random() * .07, noise: 1, nextNoise: 0 });
+            r.q = quirks[r.id] || {};
+            if (r.you && Math.random() < .5) r.q = { stopAt: .25 + Math.random() * .5, stopFor: 700 + Math.random() * 700, say: ["Ho visto un seme!", "Un attimo, mi lego la zampa", "Ciao mamma!"][Math.floor(Math.random() * 3)] };
+            place(r);
+        });
+        const steps = ["3…", "2…", "1…", "Via!"];
+        steps.forEach((text, i) => setTimeout(() => {
+            commentary.textContent = text;
+            if (i === steps.length - 1) run();
+        }, i * 650));
+    }
+ 
+    function run() {
+        const t0 = performance.now();
+        let last = t0;
+        let midCalled = false;
+        lineup.forEach(r => r.el.classList.toggle("running", !r.q.lazy));
+        const lazy = lineup.find(r => r.q.lazy);
+        if (lazy) say(lazy, lazy.q.lines[0], 2000);
+ 
+        function frame(now) {
+            const dt = Math.min(.05, (now - last) / 1000);
+            const t = now - t0;
+            last = now;
+            lineup.forEach(r => {
+                if (r.finish !== null || r.q.lazy) return;
+                if (now > r.nextNoise) { r.noise = .7 + Math.random() * .6; r.nextNoise = now + 350; }
+                if (now < r.pausedUntil) return;
+                if (r.q.stopAt && !r.stopped && r.p >= r.q.stopAt) {
+                    r.stopped = true;
+                    r.pausedUntil = now + r.q.stopFor;
+                    r.el.classList.remove("running");
+                    setTimeout(() => r.finish === null && r.el.classList.add("running"), r.q.stopFor);
+                    say(r, r.q.say, r.q.stopFor);
+                    return;
+                }
+                if (r.q.cheatAt && !r.cheated && r.p >= r.q.cheatAt) {
+                    r.cheated = true;
+                    r.dq = true;
+                    r.p = Math.min(.92, r.p + .35);
+                    say(r, r.q.say);
+                }
+                let speed = r.base * r.noise;
+                if (r.q.burst) {
+                    if (r.p < .55) speed *= 1.75;
+                    else { speed *= .45; if (!r.tired) { r.tired = true; say(r, "Caffè finito!"); } }
+                }
+                r.p = Math.min(1, r.p + speed * dt);
+                if (r.p >= 1) { r.finish = t; r.el.classList.remove("running"); }
+                place(r);
+            });
+            if (!midCalled && t > 2500) {
+                midCalled = true;
+                const lead = lineup.filter(r => !r.q.lazy).sort((a, b) => b.p - a.p);
+                commentary.textContent = lead[1] && lead[0].p - lead[1].p < .06 ? "Testa a testa!" : `${lead[0].name} è in testa!`;
+            }
+            if (lazy && Math.random() < dt / 2.5) say(lazy, lazy.q.lines[Math.floor(Math.random() * lazy.q.lines.length)], 1600);
+            if (lineup.every(r => r.q.lazy || r.finish !== null)) finishRace();
+            else requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+    }
+ 
+    function finishRace() {
+        racing = false;
+        startBtn.disabled = shuffleBtn.disabled = false;
+        startBtn.textContent = "Rivincita!";
+        track.querySelectorAll(".race-lane").forEach(lane => lane.disabled = false);
+        const valid = lineup.filter(r => r.finish !== null && !r.dq).sort((a, b) => a.finish - b.finish);
+        const order = [...valid, ...lineup.filter(r => r.dq), ...lineup.filter(r => r.q.lazy)];
+        const winner = valid[0];
+        const mine = lineup[picked];
+        const won = winner === mine;
+        score.played += 1;
+        if (won) score.won += 1;
+        localStorage.setItem(RACE_KEY, JSON.stringify({ played: score.played, won: score.won }));
+        showScore();
+ 
+        results.replaceChildren();
+        order.forEach(r => {
+            const li = document.createElement("li");
+            li.classList.toggle("you", r === mine);
+            li.textContent = r.name + " ";
+            const note = document.createElement("span");
+            note.textContent = r.q.lazy ? "· non è mai partito" : r.dq ? "· squalificato per scorciatoia" : `· ${seconds(r.finish)}`;
+            li.append(note);
+            results.append(li);
+        });
+        results.hidden = false;
+ 
+        if (won) commentary.textContent = `Vince ${winner.name}! Hai indovinato!`;
+        else if (mine.q.lazy) commentary.textContent = `Vince ${winner.name}. Hai puntato sul Procrastinatore: coraggioso.`;
+        else if (mine.dq) commentary.textContent = `Vince ${winner.name}. Il tuo è stato squalificato: te l'avevamo detto.`;
+        else commentary.textContent = `Vince ${winner.name}! ${mine.name} è arrivato ${order.indexOf(mine) + 1}°.`;
+        say(winner, "Ho vinto!", 2500);
+    }
+ 
+    startBtn.addEventListener("click", startRace);
+    shuffleBtn.addEventListener("click", () => {
+        newLineup();
+        startBtn.textContent = "Via!";
+        hint.textContent = "Clicca su una corsia per scegliere su chi puntare.";
+    });
+    window.addEventListener("resize", () => lineup.forEach(r => r.p !== undefined && place(r)));
+    window.refreshRace = () => {
+        if (racing) return;
+        if (!lineup.length) return newLineup();
+        const you = yourRunner();
+        Object.assign(lineup[0], { name: you.name, image: you.image });
+        drawTrack();
+        lineup.forEach(r => r.p !== undefined && place(r));
+    };
+    showScore();
+})();
+
+ 
+const menuToggle = document.getElementById("menuToggle");
+const siteHeader = document.querySelector("header");
+function setMenu(open) {
+    siteHeader.classList.toggle("menu-open", open);
+    menuToggle.setAttribute("aria-expanded", open);
+    menuToggle.setAttribute("aria-label", open ? "Chiudi il menu" : "Apri il menu");
+}
+menuToggle.addEventListener("click", () => setMenu(!siteHeader.classList.contains("menu-open")));
+document.addEventListener("click", event => {
+    if (siteHeader.classList.contains("menu-open") && !event.target.closest("#mainMenu, #menuToggle")) setMenu(false);
+});
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && siteHeader.classList.contains("menu-open")) { setMenu(false); menuToggle.focus(); }
+});    
 if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
 </script>
 </body>
