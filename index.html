@@ -12,7 +12,8 @@
 <meta property="og:site_name" content="Criceti Cerebrali">
 <meta property="og:title" content="Criceti Cerebrali — La ruota non gira da sola">
 <meta property="og:description" content="Criceti, ruote e soluzioni per ogni emergenza cerebrale. Crea il tuo criceto su misura!">
-<meta property="og:image" content="og-image.png">
+<meta property="og:image" content="https://marty-09.github.io/criceti-cerebrali/og-image.png">
+<meta property="og:url" content="https://marty-09.github.io/criceti-cerebrali/">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -1245,8 +1246,9 @@ footer p {
         order:3;
         width:100%;
         margin:0 -4px;
-        overflow-x:auto;
-        scrollbar-width:none
+        flex-wrap:wrap;
+        justify-content:center;
+        row-gap:4px
     }
     .nav-links::-webkit-scrollbar {display:none}
     .nav-link {font-size:.76rem;white-space:nowrap}
@@ -2160,6 +2162,120 @@ button.hero-scene:focus-visible {
 }
  
 .halloween-banner { padding: 0 0 44px; }
+[data-season][hidden] { display: none !important; }
+.nav-link.natale-link { background: #d94848; color: #fff; font-weight: 800; box-shadow: 0 3px 0 #a12f2f; }
+.nav-link.natale-link:hover { background: #c43a3a; color: #fff; }
+.nav-link.natale-link.current { background: #1f5a40; color: #ffe08a; box-shadow: 0 3px 0 #123a29; }
+.natale-banner .halloween-banner-inner { background: linear-gradient(120deg, #1f5a40 0%, #2f7a55 100%); }
+.natale-banner h2 { color: #ffe08a; }
+.natale-banner p { color: #e3f3e8; }
+.natale-banner .tiny-label { color: #ffc2c8; }
+.natale-banner .primary-button { background: #d94848; box-shadow: 0 4px 0 #a12f2f; }
+.natale-banner .primary-button:hover { background: #c43a3a; }
+.halloween-hero.natale-hero { background: linear-gradient(120deg, #1f5a40 0%, #2f7a55 100%); padding-top: 52px; }
+.natale-hero h1 { color: #ffe08a; }
+.natale-hero p { color: #e3f3e8; }
+.natale-hero .tiny-label { color: #ffc2c8; }
+.natale-lights { position: absolute; top: 0; left: 0; width: 100%; height: 56px; }
+.natale-snow { position: absolute; top: 40px; right: 0; width: 400px; height: 190px; }
+.natale-gifts { position: absolute; bottom: -2px; right: 24px; width: 170px; }
+#natale {
+    padding-top: 24px;
+    padding-bottom: 40px;
+    background-color: #f2f8f4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg stroke='%23cfe3d6' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M40 30v20M31 35l18 10M31 45l18-10'/%3E%3Cpath d='M120 110v14M114 113l12 8M114 121l12-8'/%3E%3C/g%3E%3C/svg%3E");
+}
+@media (max-width: 650px) {
+    .natale-snow { width: 220px; opacity: .6; }
+    .natale-gifts { display: none; }
+}
+    
+.nav-link.sanvalentino-link { background: #e0527a; color: #fff; font-weight: 800; box-shadow: 0 3px 0 #a8335a; }
+.nav-link.sanvalentino-link:hover { background: #a8335a; color: #fff; }
+.nav-link.sanvalentino-link.current { background: #7a1f3d; color: #fff0b8; }
+.sanvalentino-banner .halloween-banner-inner, .halloween-hero.sanvalentino-hero { background: linear-gradient(120deg, #b8325a 0%, #e8648a 100%); }
+.halloween-banner.sanvalentino-banner h2, .halloween-hero.sanvalentino-hero h1 { color: #fff0b8; }
+.halloween-banner.sanvalentino-banner p, .halloween-hero.sanvalentino-hero p { color: #ffe9f0; }
+.halloween-banner.sanvalentino-banner .tiny-label, .halloween-hero.sanvalentino-hero .tiny-label { color: #ffd0dc; }
+.halloween-banner.sanvalentino-banner .primary-button { background: #ffd66b; color: #5b2a3a; box-shadow: 0 4px 0 #c99a2e; }
+.sanvalentino-banner .primary-button:hover { background: #ffd66b; filter: brightness(.95); }
+#sanvalentino { padding-top: 24px; padding-bottom: 40px; background-color: #fff4f7; background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22150%22%20height%3D%22150%22%3E%3Cpath%20transform%3D%22translate%2836%2040%29%20scale%281.4%29%22%20d%3D%22M0%207%20C-11%20-1%20-13%20-9%20-7%20-13%20C-3%20-15.5%200%20-13%200%20-10%20C0%20-13%203%20-15.5%207%20-13%20C13%20-9%2011%20-1%200%207%20Z%22%20fill%3D%22%23ffd3e0%22/%3E%3Cpath%20transform%3D%22translate%28110%20108%29%20scale%281%29%22%20d%3D%22M0%207%20C-11%20-1%20-13%20-9%20-7%20-13%20C-3%20-15.5%200%20-13%200%20-10%20C0%20-13%203%20-15.5%207%20-13%20C13%20-9%2011%20-1%200%207%20Z%22%20fill%3D%22%23ffe0ea%22/%3E%3C/svg%3E"); }
+.nav-link.pasqua-link { background: #9b7fd1; color: #fff; font-weight: 800; box-shadow: 0 3px 0 #6e58a8; }
+.nav-link.pasqua-link:hover { background: #6e58a8; color: #fff; }
+.nav-link.pasqua-link.current { background: #4c3a85; color: #fff1a8; }
+.pasqua-banner .halloween-banner-inner, .halloween-hero.pasqua-hero { background: linear-gradient(120deg, #7d63c4 0%, #a98ee0 100%); }
+.halloween-banner.pasqua-banner h2, .halloween-hero.pasqua-hero h1 { color: #fff1a8; }
+.halloween-banner.pasqua-banner p, .halloween-hero.pasqua-hero p { color: #f3ecff; }
+.halloween-banner.pasqua-banner .tiny-label, .halloween-hero.pasqua-hero .tiny-label { color: #ffe0ea; }
+.halloween-banner.pasqua-banner .primary-button { background: #ffd66b; color: #4c3a85; box-shadow: 0 4px 0 #c99a2e; }
+.pasqua-banner .primary-button:hover { background: #ffd66b; filter: brightness(.95); }
+#pasqua { padding-top: 24px; padding-bottom: 40px; background-color: #fbf8ee; background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22160%22%20height%3D%22160%22%3E%3Cellipse%20cx%3D%2240%22%20cy%3D%2244%22%20rx%3D%2211%22%20ry%3D%2214%22%20fill%3D%22%23f3e3ef%22/%3E%3Cellipse%20cx%3D%22118%22%20cy%3D%22116%22%20rx%3D%229%22%20ry%3D%2212%22%20fill%3D%22%23e4f0dc%22/%3E%3C/svg%3E"); }
+.nav-link.estate-link { background: #2fa6c9; color: #fff; font-weight: 800; box-shadow: 0 3px 0 #1d7491; }
+.nav-link.estate-link:hover { background: #1d7491; color: #fff; }
+.nav-link.estate-link.current { background: #155a72; color: #fff1a8; }
+.estate-banner .halloween-banner-inner, .halloween-hero.estate-hero { background: linear-gradient(120deg, #1f8fb8 0%, #46c0d8 100%); }
+.halloween-banner.estate-banner h2, .halloween-hero.estate-hero h1 { color: #fff1a8; }
+.halloween-banner.estate-banner p, .halloween-hero.estate-hero p { color: #e6f8fd; }
+.halloween-banner.estate-banner .tiny-label, .halloween-hero.estate-hero .tiny-label { color: #ffe9b8; }
+.halloween-banner.estate-banner .primary-button { background: #ff8a3d; color: #ffffff; box-shadow: 0 4px 0 #c9631a; }
+.estate-banner .primary-button:hover { background: #ff8a3d; filter: brightness(.95); }
+#estate { padding-top: 24px; padding-bottom: 40px; background-color: #eef9fc; background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22170%22%20height%3D%22170%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2210%22%20fill%3D%22%23fdeec0%22/%3E%3Cpath%20d%3D%22M110%20120%20c0%20-14%2022%20-14%2022%200%20z%22%20fill%3D%22%23fde0e6%22/%3E%3C/svg%3E"); }
+.season-deco-top { position: absolute; top: 30px; right: 0; width: 400px; height: 190px; }
+.season-deco-bottom { position: absolute; bottom: -2px; right: 24px; width: 220px; }
+.season-deco-waves { position: absolute; bottom: 0; left: 0; width: 100%; height: 40px; }
+@media (max-width: 650px) {
+    .season-deco-top { width: 220px; opacity: .6; }
+    .season-deco-bottom { display: none; }
+}
+.snowfall { display: none; position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 15; }
+body[data-page="natale"] .snowfall { display: block; }
+.snowflake { position: absolute; top: -24px; width: 8px; height: 8px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1.5px #c3dbec; animation: snowFall linear infinite; }
+.snowflake.big { width: 18px; height: 18px; border-radius: 0; box-shadow: none; background: center / contain no-repeat url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22-12%20-12%2024%2024%22%3E%3Cpath%20d%3D%22M0%20-10%20V10%20M-8.7%20-5%20L8.7%205%20M-8.7%205%20L8.7%20-5%20M0%20-10%20L-3%20-13%20M0%20-10%20L3%20-13%20M0%2010%20L-3%2013%20M0%2010%20L3%2013%22%20stroke%3D%22%23a9cde6%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%3C/svg%3E"); }
+@keyframes snowFall { from { transform: translate(0, -24px) rotate(0deg); } to { transform: translate(var(--drift, 0px), 105vh) rotate(260deg); } }
+@media (prefers-reduced-motion: reduce) { .snowfall { display: none !important; } }
+ 
+.product-art.is-clickable, .product-title-row h3.is-clickable { cursor: pointer; }
+.product-art.is-clickable:focus-visible { outline: 3px solid #b0636d; outline-offset: 3px; }
+.details-link { align-self: flex-start; margin: -4px 0 12px; padding: 0; border: 0; background: none; font: inherit; font-weight: 700; font-size: .9rem; color: #b0636d; cursor: pointer; }
+.details-link:hover { text-decoration: underline; }
+.product-modal { position: fixed; inset: 0; z-index: 9998; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(48,36,34,.48); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
+.product-modal.show { display: flex; animation: overlayIn .2s ease both; }
+.product-modal-card { position: relative; width: 100%; max-width: 880px; max-height: calc(100vh - 40px); overflow: auto; display: grid; grid-template-columns: 360px 1fr; gap: 26px; padding: 18px; border-radius: 28px; background: #fffaf7; box-shadow: 0 22px 70px rgba(48,36,34,.25); animation: popupIn .3s cubic-bezier(.2,.8,.2,1) both; }
+.product-modal-art { position: relative; display: grid; place-items: center; min-height: 360px; border-radius: 20px; }
+.product-modal-art img { width: 290px; height: 290px; filter: drop-shadow(0 10px 8px rgba(80,40,25,.1)); }
+.product-modal-art .emoji { font-size: 8rem; }
+.product-modal-body { display: flex; flex-direction: column; padding: 18px 12px 6px 0; }
+.product-modal-body .product-title-row { padding-right: 44px; }
+.product-modal-body h2 { margin: 0; font-size: 1.9rem; line-height: 1.1; }
+.pm-lead { margin: 14px 0 8px; font-weight: 600; line-height: 1.55; }
+.pm-story { margin: 0 0 18px; color: var(--muted); line-height: 1.65; }
+.pm-specs-title { margin: 0 0 6px; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: #b0636d; }
+.pm-specs { margin: 0 0 20px; }
+.pm-specs div { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: .92rem; }
+.pm-specs dt { color: var(--muted); }
+.pm-specs dd { margin: 0; font-weight: 700; text-align: right; }
+.product-modal-body .add-button { margin-top: auto; }
+.product-modal-close { position: absolute; top: 14px; right: 14px; z-index: 2; width: 42px; height: 42px; border: 0; border-radius: 50%; background: #fff; box-shadow: 0 2px 10px rgba(48,36,34,.15); font-size: 1.5rem; line-height: 1; color: inherit; cursor: pointer; }
+.product-modal-close:hover { background: #fdf0ea; }
+body.modal-open { overflow: hidden; }
+@media (max-width: 760px) {
+    .product-modal { padding: 10px; }
+    .product-modal-card { grid-template-columns: 1fr; gap: 6px; padding: 12px; max-height: calc(100vh - 20px); }
+    .product-modal-art { min-height: 220px; }
+    .product-modal-art img { width: 200px; height: 200px; }
+    .product-modal-body { padding: 8px 4px 4px; }
+    .product-modal-body h2 { font-size: 1.5rem; }
+}
+  
+.shop-filters { padding: 34px 0 0; }
+.shop-filters-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 18px; }
+.filter-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter-chip { border: 1px solid #ecdcd0; border-radius: 999px; padding: 9px 18px; background: #fff; font: inherit; font-weight: 700; color: inherit; cursor: pointer; }
+.filter-chip:hover { background: #fdf0ea; }
+.filter-chip.active { background: #302a28; border-color: #302a28; color: #fff; }
+.sort-label { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: .92rem; }
+.sort-label select { font: inherit; font-weight: 600; padding: 9px 12px; border-radius: 14px; border: 1px solid #ecdcd0; background: #fff; color: inherit; }
+.catalog-section[hidden] { display: none; }    
 .halloween-banner-inner {
     display: grid;
     grid-template-columns: 150px 1fr auto;
@@ -2235,7 +2351,11 @@ button.hero-scene:focus-visible {
         </button>
   
         <div class="nav-links" role="navigation" aria-label="Menu principale">
-            <button class="nav-link halloween-link" data-page="halloween" onclick="showPage('halloween')">🎃 Halloween</button>
+            <button class="nav-link season-link sanvalentino-link" data-season="sanvalentino" data-page="sanvalentino" onclick="showPage('sanvalentino')">💘 San Valentino</button>
+            <button class="nav-link season-link pasqua-link" data-season="pasqua" data-page="pasqua" onclick="showPage('pasqua')">🐣 Pasqua</button>
+            <button class="nav-link season-link estate-link" data-season="estate" data-page="estate" onclick="showPage('estate')">☀️ Estate</button>            
+            <button class="nav-link natale-link" data-season="natale" data-page="natale" onclick="showPage('natale')">🎄 Natale</button>
+            <button class="nav-link halloween-link" data-season="halloween" data-page="halloween" onclick="showPage('halloween')">🎃 Halloween</button>
             <button class="nav-link current" data-page="catalogo" onclick="showPage('catalogo')">Negozio</button>
             <button class="nav-link" data-page="crea-criceto" onclick="showPage('crea-criceto')">Crea il tuo criceto</button>
             <button class="nav-link" data-page="crea-casa" onclick="showPage('crea-casa')">Crea la casa</button>
@@ -2330,7 +2450,7 @@ button.hero-scene:focus-visible {
                 <div>
                     <span class="tiny-label">Il tuo roditore, le tue regole</span>
                     <h2>Crea il tuo criceto</h2>
-                    <p>Pelo, occhi, baffi e tredici accessori: progetta il collaboratore perfetto per il tuo caos mentale e adottalo da 12,99 €.</p>
+                    <p>Pelo, occhi, baffi, accessori e sfondi: progetta il collaboratore perfetto per il tuo caos mentale e adottalo da 12,99 €.</p>
                     <div class="creator-promo-buttons">
                         <button class="primary-button" onclick="showPage('crea-criceto')">Prova ora →</button>
                         <button class="secondary-button" onclick="showPage('crea-casa')">Costruisci la sua casa</button>
@@ -2340,7 +2460,63 @@ button.hero-scene:focus-visible {
         </div>
     </section>
 
-    <section class="halloween-banner">
+    <section class="halloween-banner sanvalentino-banner" data-season="sanvalentino">
+        <div class="container">
+            <div class="halloween-banner-inner">
+                <img id="homeSanvalentinoHamster" alt="Criceto innamorato con gli occhi a cuore">
+                <div>
+                    <span class="tiny-label">Speciale San Valentino · dal 1° al 14 febbraio</span>
+                    <h2>Mi fai girare la ruota</h2>
+                    <p>Un Cupido dalla mira discutibile, un criceto single felicissimo e una ruota a forma di cuore.</p>
+                </div>
+                <button class="primary-button" type="button" onclick="showPage('sanvalentino')">Lasciati colpire →</button>
+            </div>
+        </div>
+    </section>
+ 
+    <section class="halloween-banner pasqua-banner" data-season="pasqua">
+        <div class="container">
+            <div class="halloween-banner-inner">
+                <img id="homePasquaHamster" alt="Criceto con le orecchie da coniglio e una carota">
+                <div>
+                    <span class="tiny-label">Speciale Pasqua · fino a Pasquetta</span>
+                    <h2>Uova, orecchie e criceti</h2>
+                    <p>Un coniglietto un po' confuso, un criceto uscito da un uovo e una caccia ai semi colorati.</p>
+                </div>
+                <button class="primary-button" type="button" onclick="showPage('pasqua')">Cerca le uova →</button>
+            </div>
+        </div>
+    </section>
+ 
+    <section class="halloween-banner estate-banner" data-season="estate">
+        <div class="container">
+            <div class="halloween-banner-inner">
+                <img id="homeEstateHamster" alt="Criceto con gli occhiali da sole e una noce di cocco">
+                <div>
+                    <span class="tiny-label">Speciale Estate · dal 21 giugno al 31 agosto</span>
+                    <h2>Criceti in ferie</h2>
+                    <p>Occhiali da sole, un bagnino molto serio e una ruota vista mare.</p>
+                </div>
+                <button class="primary-button" type="button" onclick="showPage('estate')">Vai in spiaggia →</button>
+            </div>
+        </div>
+    </section>
+     
+    <section class="halloween-banner natale-banner" data-season="natale">
+        <div class="container">
+            <div class="halloween-banner-inner">
+                <img id="homeNataleHamster" alt="Criceto con il cappello di Babbo Natale">
+                <div>
+                    <span class="tiny-label">Speciale Natale · dal 1° dicembre all'Epifania</span>
+                    <h2>Ho ho… criceto!</h2>
+                    <p>Un Babbo Natale peloso, una renna col naso luminoso e un calendario dell'Avvento fatto di semi.</p>
+                </div>
+                <button class="primary-button" type="button" onclick="showPage('natale')">Apri i regali →</button>
+            </div>
+        </div>
+    </section>
+ 
+    <section class="halloween-banner" data-season="halloween">
         <div class="container">
             <div class="halloween-banner-inner">
                 <img id="homeHalloweenHamster" alt="Criceto con il cappello da strega">
@@ -2397,6 +2573,25 @@ button.hero-scene:focus-visible {
         </div>
     </section>
 
+    <section class="shop-filters">
+        <div class="container shop-filters-inner">
+            <div class="filter-chips" role="group" aria-label="Filtra i prodotti">
+                <button class="filter-chip active" type="button" data-filter="tutto" aria-pressed="true">Tutto</button>
+                <button class="filter-chip" type="button" data-filter="criceto" aria-pressed="false">Criceti</button>
+                <button class="filter-chip" type="button" data-filter="ruota" aria-pressed="false">Ruote</button>
+                <button class="filter-chip" type="button" data-filter="extra" aria-pressed="false">Extra</button>
+            </div>
+            <label class="sort-label">Ordina per
+                <select id="sortProducts">
+                    <option value="evidenza">In evidenza</option>
+                    <option value="prezzo-su">Prezzo: dal più basso</option>
+                    <option value="prezzo-giu">Prezzo: dal più alto</option>
+                    <option value="nome">Nome (A–Z)</option>
+                </select>
+            </label>
+        </div>
+    </section>
+    
     <section class="catalog-section" id="criceti">
         <div class="container">
             <div class="section-heading">
@@ -3901,6 +4096,80 @@ button.hero-scene:focus-visible {
         </div>
     </div>
 </section>
+<section class="page season-page" id="sanvalentino">
+    <div class="container">
+        <button class="creator-back-button" type="button" onclick="showPage('catalogo')">
+            ← Torna al negozio
+        </button>
+        <div class="halloween-hero sanvalentino-hero">
+            <svg class="season-deco-top" viewBox="0 0 400 190" aria-hidden="true"><path transform="translate(220 40) scale(2.2)" d="M0 7 C-11 -1 -13 -9 -7 -13 C-3 -15.5 0 -13 0 -10 C0 -13 3 -15.5 7 -13 C13 -9 11 -1 0 7 Z" fill="#FF9AB8"/><path transform="translate(330 70) scale(3)" d="M0 7 C-11 -1 -13 -9 -7 -13 C-3 -15.5 0 -13 0 -10 C0 -13 3 -15.5 7 -13 C13 -9 11 -1 0 7 Z" fill="#FFC1D3"/><path transform="translate(270 140) scale(1.6)" d="M0 7 C-11 -1 -13 -9 -7 -13 C-3 -15.5 0 -13 0 -10 C0 -13 3 -15.5 7 -13 C13 -9 11 -1 0 7 Z" fill="#FFFFFF"/><path transform="translate(370 160) scale(2)" d="M0 7 C-11 -1 -13 -9 -7 -13 C-3 -15.5 0 -13 0 -10 C0 -13 3 -15.5 7 -13 C13 -9 11 -1 0 7 Z" fill="#FF9AB8"/><path transform="translate(180 120) scale(1.3)" d="M0 7 C-11 -1 -13 -9 -7 -13 C-3 -15.5 0 -13 0 -10 C0 -13 3 -15.5 7 -13 C13 -9 11 -1 0 7 Z" fill="#FFC1D3"/></svg>
+            <img id="sanvalentinoHamster" alt="Criceto innamorato con gli occhi a cuore">
+            <div>
+                <span class="tiny-label">Dal 1° al 14 febbraio</span>
+                <h1>San Valentino Cerebrale</h1>
+                <p>Criceti innamorati, regali a forma di cuore e un Cupido che sbaglia sempre bersaglio. Disponibili solo fino al 14 febbraio.</p>
+            </div>
+        </div>
+        <div class="product-grid" id="sanvalentinoGrid" data-season-grid></div>
+    </div>
+</section>
+ 
+<section class="page season-page" id="pasqua">
+    <div class="container">
+        <button class="creator-back-button" type="button" onclick="showPage('catalogo')">
+            ← Torna al negozio
+        </button>
+        <div class="halloween-hero pasqua-hero">
+            <svg class="season-deco-top" viewBox="0 0 400 190" aria-hidden="true"><g transform="translate(240 50)"><g fill="#FFFFFF"><circle cx="8.0" cy="0.0" r="6"/><circle cx="2.5" cy="7.6" r="6"/><circle cx="-6.5" cy="4.7" r="6"/><circle cx="-6.5" cy="-4.7" r="6"/><circle cx="2.5" cy="-7.6" r="6"/></g><circle r="4.5" fill="#FFD66B"/></g><g transform="translate(350 90)"><g fill="#F7B9C6"><circle cx="8.0" cy="0.0" r="6"/><circle cx="2.5" cy="7.6" r="6"/><circle cx="-6.5" cy="4.7" r="6"/><circle cx="-6.5" cy="-4.7" r="6"/><circle cx="2.5" cy="-7.6" r="6"/></g><circle r="4.5" fill="#FFD66B"/></g><g transform="translate(300 30)"><g fill="#FFE27A"><circle cx="8.0" cy="0.0" r="6"/><circle cx="2.5" cy="7.6" r="6"/><circle cx="-6.5" cy="4.7" r="6"/><circle cx="-6.5" cy="-4.7" r="6"/><circle cx="2.5" cy="-7.6" r="6"/></g><circle r="4.5" fill="#FFD66B"/></g><g transform="translate(200 130)"><g fill="#FFFFFF"><circle cx="8.0" cy="0.0" r="6"/><circle cx="2.5" cy="7.6" r="6"/><circle cx="-6.5" cy="4.7" r="6"/><circle cx="-6.5" cy="-4.7" r="6"/><circle cx="2.5" cy="-7.6" r="6"/></g><circle r="4.5" fill="#FFD66B"/></g></svg><svg class="season-deco-bottom" viewBox="0 0 220 80" aria-hidden="true"><path d="M0 62 Q55 48 110 60 T220 56 V80 H0 Z" fill="#8FD39A"/><g transform="translate(50 52)"><ellipse rx="18" ry="23" fill="#F7A1BC" stroke="rgba(80,60,90,.3)" stroke-width="2"/><path d="M-16.2 2 L-8.1 -4.6000000000000005 L0 2 L8.1 -4.6000000000000005 L16.2 2" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/></g><g transform="translate(104 48)"><ellipse rx="20" ry="26" fill="#FFE27A" stroke="rgba(80,60,90,.3)" stroke-width="2"/><path d="M-18.0 2 L-9.0 -5.2 L0 2 L9.0 -5.2 L18.0 2" fill="none" stroke="#F0A040" stroke-width="3" stroke-linejoin="round"/></g><g transform="translate(160 54)"><ellipse rx="17" ry="22" fill="#8FC1F0" stroke="rgba(80,60,90,.3)" stroke-width="2"/><path d="M-15.3 2 L-7.65 -4.4 L0 2 L7.65 -4.4 L15.3 2" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/></g><path d="M0 70 L10 60 L18 72 L28 60 L36 72 L46 60 L54 72 L64 60 L72 72 L82 60 L90 72 L100 60 L108 72 L118 60 L126 72 L136 60 L144 72 L154 60 L162 72 L172 60 L180 72 L190 60 L198 72 L208 60 L220 70 V80 H0 Z" fill="#6BBF59"/></svg>
+            <img id="pasquaHamster" alt="Criceto con le orecchie da coniglio e una carota">
+            <div>
+                <span class="tiny-label">Fino a Pasquetta</span>
+                <h1>Pasqua Cerebrale</h1>
+                <p>Criceti travestiti da coniglietti, uova a sorpresa e semi colorati da nascondere. Disponibili solo fino a Pasquetta.</p>
+            </div>
+        </div>
+        <div class="product-grid" id="pasquaGrid" data-season-grid></div>
+    </div>
+</section>
+ 
+<section class="page season-page" id="estate">
+    <div class="container">
+        <button class="creator-back-button" type="button" onclick="showPage('catalogo')">
+            ← Torna al negozio
+        </button>
+        <div class="halloween-hero estate-hero">
+            <svg class="season-deco-top" viewBox="0 0 400 190" aria-hidden="true"><circle cx="340" cy="60" r="34" fill="#FFE27A"/><g stroke="#FFE27A" stroke-width="6" stroke-linecap="round"><path transform="rotate(0 340 60)" d="M340 12 V2"/><path transform="rotate(45 340 60)" d="M340 12 V2"/><path transform="rotate(90 340 60)" d="M340 12 V2"/><path transform="rotate(135 340 60)" d="M340 12 V2"/><path transform="rotate(180 340 60)" d="M340 12 V2"/><path transform="rotate(225 340 60)" d="M340 12 V2"/><path transform="rotate(270 340 60)" d="M340 12 V2"/><path transform="rotate(315 340 60)" d="M340 12 V2"/></g><path d="M200 80 q10 -8 20 0 q10 -8 20 0" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/><path d="M250 120 q8 -6 16 0 q8 -6 16 0" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/></svg><svg class="season-deco-waves" viewBox="0 0 800 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 14 Q50 0 100 14 T200 14 T300 14 T400 14 T500 14 T600 14 T700 14 T800 14 V40 H0 Z" fill="#7FD4EA" opacity=".7"/><path d="M0 26 Q50 14 100 26 T200 26 T300 26 T400 26 T500 26 T600 26 T700 26 T800 26 V40 H0 Z" fill="#F6DFA6"/></svg>
+            <img id="estateHamster" alt="Criceto con gli occhiali da sole e una noce di cocco">
+            <div>
+                <span class="tiny-label">Dal 21 giugno al 31 agosto</span>
+                <h1>Estate Cerebrale</h1>
+                <p>Criceti in ferie, una ruota con la sabbia e un'anguria grande come loro. Disponibili solo finché fa caldo.</p>
+            </div>
+        </div>
+        <div class="product-grid" id="estateGrid" data-season-grid></div>
+    </div>
+</section>
+     
+<section class="page" id="natale">
+    <div class="container">
+        <button class="creator-back-button" type="button" onclick="showPage('catalogo')">
+            ← Torna al negozio
+        </button>
+        <div class="halloween-hero natale-hero">
+            <svg class="natale-lights" viewBox="0 0 780 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 14 Q75 40 150 30 T300 34 T450 24 T600 36 T780 16" fill="none" stroke="#4b5a52" stroke-width="2.5"/><g transform="translate(40 22)"><rect x="-3" y="-4" width="6" height="6" fill="#4b5a52"/><ellipse cx="0" cy="8" rx="6" ry="9" fill="#F0606F"/></g><g transform="translate(110 34)"><rect x="-3" y="-4" width="6" height="6" fill="#4b5a52"/><ellipse cx="0" cy="8" rx="6" ry="9" fill="#FFD66B"/></g><g transform="translate(180 40)"><rect x="-3" y="-4" width="6" height="6" fill="#4b5a52"/><ellipse cx="0" cy="8" rx="6" ry="9" fill="#8FC1F0"/></g><g transform="translate(250 38)"><rect x="-3" y="-4" width="6" height="6" fill="#4b5a52"/><ellipse cx="0" cy="8" rx="6" ry="9" fill="#A9D3C0"/></g><g transform="translate(320 30)"><rect x="-3" y="-4" width="6" height="6" fill="#4b5a52"/><ellipse cx="0" cy="8" rx="6" ry="9" fill="#F7A1BC"/></g><g transform="translate(390 20)"><rect x="-3" y="-4" width="6" height="6" fill="#4b5a52"/><ellipse cx="0" cy="8" rx="6" ry="9" fill="#FFB86B"/></g><g transform="translate(460 30)"><rect x="-3" y="-4" width="6" height="6" fill="#4b5a52"/><ellipse cx="0" cy="8" rx="6" ry="9" fill="#F0606F"/></g><g transform="translate(530 38)"><rect x="-3" y="-4" width="6" height="6" fill="#4b5a52"/><ellipse cx="0" cy="8" rx="6" ry="9" fill="#FFD66B"/></g><g transform="translate(600 38)"><rect x="-3" y="-4" width="6" height="6" fill="#4b5a52"/><ellipse cx="0" cy="8" rx="6" ry="9" fill="#8FC1F0"/></g><g transform="translate(670 30)"><rect x="-3" y="-4" width="6" height="6" fill="#4b5a52"/><ellipse cx="0" cy="8" rx="6" ry="9" fill="#A9D3C0"/></g><g transform="translate(740 20)"><rect x="-3" y="-4" width="6" height="6" fill="#4b5a52"/><ellipse cx="0" cy="8" rx="6" ry="9" fill="#F7A1BC"/></g></svg>
+            <svg class="natale-snow" viewBox="0 0 400 190" aria-hidden="true"><g transform="translate(120 90) scale(0.9)" opacity="0.7"><path d="M0 -10 V10 M-8.7 -5 L8.7 5 M-8.7 5 L8.7 -5 M0 -10 L-3 -13 M0 -10 L3 -13 M0 10 L-3 13 M0 10 L3 13" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none"/></g><g transform="translate(200 30) scale(1.1)" opacity="0.8"><path d="M0 -10 V10 M-8.7 -5 L8.7 5 M-8.7 5 L8.7 -5 M0 -10 L-3 -13 M0 -10 L3 -13 M0 10 L-3 13 M0 10 L3 13" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none"/></g><g transform="translate(280 110) scale(0.7)" opacity="0.6"><path d="M0 -10 V10 M-8.7 -5 L8.7 5 M-8.7 5 L8.7 -5 M0 -10 L-3 -13 M0 -10 L3 -13 M0 10 L-3 13 M0 10 L3 13" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none"/></g><g transform="translate(350 50) scale(1.3)" opacity="0.85"><path d="M0 -10 V10 M-8.7 -5 L8.7 5 M-8.7 5 L8.7 -5 M0 -10 L-3 -13 M0 -10 L3 -13 M0 10 L-3 13 M0 10 L3 13" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none"/></g><g transform="translate(240 160) scale(1)" opacity="0.7"><path d="M0 -10 V10 M-8.7 -5 L8.7 5 M-8.7 5 L8.7 -5 M0 -10 L-3 -13 M0 -10 L3 -13 M0 10 L-3 13 M0 10 L3 13" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none"/></g></svg>
+            <svg class="natale-gifts" viewBox="0 0 170 72" aria-hidden="true"><g transform="translate(10 30)"><rect width="46" height="40" rx="4" fill="#F0606F"/><rect x="19.0" width="8" height="40" fill="#FFD66B"/><rect y="12.0" width="46" height="7" fill="#FFD66B"/><path d="M23.0 0 C9.0 -14 3.0 2 23.0 0 C37.0 -14 43.0 2 23.0 0" fill="none" stroke="#FFD66B" stroke-width="4"/></g><g transform="translate(64 40)"><rect width="36" height="30" rx="4" fill="#A9D3C0"/><rect x="14.0" width="8" height="30" fill="#F0606F"/><rect y="9.0" width="36" height="7" fill="#F0606F"/><path d="M18.0 0 C4.0 -14 -2.0 2 18.0 0 C32.0 -14 38.0 2 18.0 0" fill="none" stroke="#F0606F" stroke-width="4"/></g><g transform="translate(108 22)"><rect width="52" height="48" rx="4" fill="#8FC1F0"/><rect x="22.0" width="8" height="48" fill="#FFFFFF"/><rect y="14.399999999999999" width="52" height="7" fill="#FFFFFF"/><path d="M26.0 0 C12.0 -14 6.0 2 26.0 0 C40.0 -14 46.0 2 26.0 0" fill="none" stroke="#FFFFFF" stroke-width="4"/></g></svg>
+            <img id="nataleHamster" alt="Un criceto con il cappello di Babbo Natale">
+            <div>
+                <span class="tiny-label">Dal 1° dicembre all'Epifania</span>
+                <h1>Natale Cerebrale</h1>
+                <p>Criceti in costume, una ruota coperta di neve e un calendario dell'Avvento che dura un giorno. Disponibili solo durante le feste.</p>
+            </div>
+        </div>
+        <div class="product-grid" id="nataleGrid" data-season-grid></div>
+    </div>
+</section>
+     
 <section class="page" id="halloween">
     <div class="container">
         <button class="creator-back-button" type="button" onclick="showPage('catalogo')">
@@ -3917,7 +4186,7 @@ button.hero-scene:focus-visible {
                 <p>Criceti travestiti, ruote stregate e snack spaventosamente croccanti. Disponibili solo per pochi giorni, poi tornano nella cripta.</p>
             </div>
         </div>
-        <div class="product-grid" id="halloweenGrid"></div>
+        <div class="product-grid" id="halloweenGrid" data-season-grid></div>
     </div>
 </section>
 
@@ -4074,6 +4343,8 @@ button.hero-scene:focus-visible {
     </div>
 </section>                
 </main>
+<div class="snowfall" aria-hidden="true"></div>
+    
 <footer>
     <div class="footer-inner">
         <div class="footer-brand">
@@ -4087,7 +4358,11 @@ button.hero-scene:focus-visible {
             <button class="text-button" onclick="goToSection('extra')">Extra e ricambi</button>
             <button class="text-button" onclick="showPage('crea-criceto')">Crea il tuo criceto</button>
             <button class="text-button" onclick="showPage('crea-casa')">Crea la casa</button>
-            <button class="text-button" onclick="showPage('halloween')">Speciale Halloween</button>            
+            <button class="text-button" data-season="halloween" onclick="showPage('halloween')">Speciale Halloween</button>
+            <button class="text-button" data-season="natale" onclick="showPage('natale')">Speciale Natale</button>
+            <button class="text-button" data-season="sanvalentino" onclick="showPage('sanvalentino')">Speciale San Valentino</button>
+            <button class="text-button" data-season="pasqua" onclick="showPage('pasqua')">Speciale Pasqua</button>
+            <button class="text-button" data-season="estate" onclick="showPage('estate')">Speciale Estate</button>            
         </nav>
         <nav class="footer-links" aria-label="Aiuto">
             <span class="footer-title">Aiuto</span>
@@ -4116,6 +4391,28 @@ button.hero-scene:focus-visible {
     </div>
 </div>
 
+<div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="pmName" aria-hidden="true">
+    <div class="product-modal-card">
+        <button class="product-modal-close" id="pmClose" type="button" aria-label="Chiudi">×</button>
+        <div class="product-modal-art" id="pmArt">
+            <span class="product-tag" id="pmTag"></span>
+            <img id="pmImg" alt="">
+            <span class="emoji" id="pmEmoji" aria-hidden="true" hidden></span>
+        </div>
+        <div class="product-modal-body">
+            <div class="product-title-row">
+                <h2 id="pmName"></h2>
+                <span class="price" id="pmPrice"></span>
+            </div>
+            <p class="pm-lead" id="pmLead"></p>
+            <p class="pm-story" id="pmStory"></p>
+            <h3 class="pm-specs-title">Scheda tecnica</h3>
+            <dl class="pm-specs" id="pmSpecs"></dl>
+            <button class="add-button" id="pmAdd" type="button"><span class="button-symbol">＋</span><span class="button-label">Aggiungi al carrello</span></button>
+        </div>
+    </div>
+</div>
+     
 <script>
 const products = [
     {
@@ -4125,10 +4422,10 @@ const products = [
         emoji:"🐹",
         color:"#f9e4d5",
         tag:"Il classico",
-        description:"Fa girare la ruota. A volte si dimentica perché, ma fa il suo lavoro.",
+        description:"Fa girare la ruota. A volte si dimentica perché, ma il suo lavoro lo fa. Ideale per pensieri semplici, tipo «cosa mangio stasera?».",
         personality:"Distratto ma volenteroso",
         speed:"30 giri al minuto",
-        intelligence:"Base",
+        intelligence:"Nella media (dei criceti)",
         duration:"30 giorni",
         price:4.99
     },
@@ -4139,12 +4436,12 @@ const products = [
         emoji:"⚡",
         color:"#ffe5a8",
         tag:"Alta velocità",
-        description:"Corre come se avesse appena bevuto sette caffè. Perfetto per le sessioni di studio disperato notturno prima di un esame o di una verifica.",
-        personality:"Ansioso e produttivo",
+        description:"Corre come se avesse bevuto sette caffè. Perfetto per lo studio disperato della notte prima di un esame o di una verifica.",
+        personality:"Ansioso ma produttivo",
         speed:"9.000 giri al minuto",
-        intelligence:"Alta",
-        duration:"8 ore",
-        price:24.99
+        intelligence:"Alta (ma va di fretta)",
+        duration:"8 ore, poi crolla",
+        price:29.99
     },
     {
         id:"h3",
@@ -4153,12 +4450,12 @@ const products = [
         emoji:"🩹",
         color:"#dce9d6",
         tag:"Usato garantito*",
-        description:"È sopravvissuto a livelli estremi di stress. Non ci assumiamo alcuna responsabilità sul suo funzionamento.",
-        personality:"Traumatizzato",
+        description:"È sopravvissuto a livelli estremi di stress e a tre proprietari. Funziona, più o meno: non ci assumiamo alcuna responsabilità.",
+        personality:"Traumatizzato ma resiliente",
         speed:"1 giro al minuto",
         intelligence:"Media",
-        duration:"Dai 10 giorni ai 10 minuti",
-        price:2.99
+        duration:"Da 10 giorni a 10 minuti",
+        price:4.99
     },
     {
         id:"h4",
@@ -4167,12 +4464,12 @@ const products = [
         emoji:"🧐",
         color:"#e8def8",
         tag:"Edizione esistenziale",
-        description:"Si chiede se la ruota esista davvero o se sia lui stesso a esistere.",
+        description:"Si chiede se la ruota esista davvero o se sia lui a esistere. Non corre: riflette sul concetto di correre.",
         personality:"Esistenzialista",
         speed:"Tra 10 e 30 giri al minuto",
         intelligence:"Troppo consapevole",
-        duration:"Insostituibile",
-        price:19.99
+        duration:"Eterna, come le sue domande",
+        price:34.99
     },
     {
         id:"h5",
@@ -4185,7 +4482,7 @@ const products = [
         personality:"Rimanda tutto",
         speed:"0 giri al secondo",
         intelligence:"Potenziale inesplorato",
-        duration:"Insostituibile",
+        duration:"Da domani",
         price:0
     },
     {
@@ -4209,12 +4506,12 @@ const products = [
         emoji:"🎓",
         color:"#e6ddf5",
         tag:"Eccellenza accademica",
-        description:"Ha tre lauree, cinque master e ti giudica. Ideale per chi ha una bassa autostima e vuole vederla finire sottoterra.",
+        description:"Ha tre lauree, cinque master e ti giudica in silenzio. Ideale se la tua autostima era un po' troppo alta.",
         personality:"Antipatico ma geniale",
         speed:"500 giri al minuto",
-        intelligence:"Molto alta",
-        duration:"50 giorni",
-        price:74.99
+        intelligence:"Accademica",
+        duration:"Fino al prossimo dottorato",
+        price:59.99
     },
     {
         id:"h8",
@@ -4223,12 +4520,12 @@ const products = [
         emoji:"⚽",
         color:"#d8e8d1",
         tag:"Talento infortunato",
-        description:"Ama correre, ma al primo infortunio si lamenta e smette di correre. Si è rotto il crociato, altrimenti ora sarebbe in Serie A.",
-        personality:"Egocentrico e narcisista",
+        description:"Ama correre, ma al primo contatto si butta a terra e chiede il VAR. Si è rotto il crociato, altrimenti adesso giocherebbe in Serie A.",
+        personality:"Egocentrico e teatrale",
         speed:"250 giri al minuto",
-        intelligence:"Bassa",
-        duration:"Tra i 2 e i 10 giorni",
-        price:49.99
+        intelligence:"Tattica, non scolastica",
+        duration:"Fino al prossimo infortunio",
+        price:39.99
     },
     {
         id:"h9",
@@ -4237,12 +4534,12 @@ const products = [
         emoji:"📺",
         color:"#ffe4a3",
         tag:"Una puntata ancora",
-        description:"Detesta correre. Corre solo se in presenza di uno schermo dal quale guardare le sue serie TV preferite.",
+        description:"Detesta correre. Lo fa solo davanti a uno schermo con le sue serie preferite, e si ferma a ogni «episodio successivo tra 5 secondi».",
         personality:"Pigro e testardo",
         speed:"10 giri al minuto",
         intelligence:"Dipende dalla serie",
-        duration:"100 giorni",
-        price:24.99
+        duration:"Una stagione intera",
+        price:19.99
     },
     {
         id:"h10",
@@ -4256,7 +4553,7 @@ const products = [
         speed:"1 drivers license al minuto",
         intelligence:"Emotivamente devastante",
         duration:"Finché non supera la rottura",
-        price:99.99
+        price:44.99
     },
     {
         id:"h11",
@@ -4270,7 +4567,7 @@ const products = [
         speed:"1.000 sussurri al minuto",
         intelligence:"Fuori scala",
         duration:"Finché dura l'ispirazione",
-        price:199.99
+        price:49.99
     },
     {
         id:"h12",
@@ -4282,9 +4579,9 @@ const products = [
         description:"Parte tranquillo, poi trasforma una corsetta in un videoclip pieno di emozioni. Attenzione: potrebbe farti rivalutare tutta la tua vita durante una pausa merenda.",
         personality:"Sentimentale e teatrale",
         speed:"500 ritornelli al minuto",
-        intelligence:"Basso livello di preservazione fisica",
+        intelligence:"Istinto di sopravvivenza: basso",
         duration:"Finché qualcuno ascolta",
-        price:39.99
+        price:42.99
     },
     {
         id:"w1",
@@ -4293,10 +4590,10 @@ const products = [
         emoji:"🎡",
         color:"#f9e4d5",
         tag:"Fa il suo lavoro",
-        description:"Gira con qualche difficoltà e ogni tanto si inceppa, ma alla fine funziona.",
+        description:"Gira con qualche cigolio e ogni tanto si inceppa, ma alla fine fa il suo lavoro. Proprio come il criceto.",
         speed:"100 giri al minuto",
         duration:"120 giorni",
-        price:10.00
+        price:14.99
     },
     {
         id:"w2",
@@ -4305,10 +4602,10 @@ const products = [
         emoji:"⚙️",
         color:"#dce9d6",
         tag:"Prestazioni premium",
-        description:"Gira in modo estremamente fluido, senza incepparsi. Il sogno di ogni criceto ambizioso.",
+        description:"Gira fluida e silenziosa, senza mai incepparsi. Cuscinetti premium e brillantini inclusi: il sogno di ogni criceto ambizioso.",
         speed:"10.000 giri al minuto",
-        duration:"365 giorni",
-        price:50.00
+        duration:"1 anno",
+        price:49.99
     },
     {
         id:"w3",
@@ -4317,10 +4614,10 @@ const products = [
         emoji:"♻️",
         color:"#e8def8",
         tag:"Seconda vita",
-        description:"Una ruota usata, restituita dai nostri clienti e ricondizionata. In condizioni quasi perfette.",
+        description:"Restituita da un cliente e sistemata con qualche cerotto. Quasi perfetta: cigola solo quando la guardi.",
         speed:"500 giri al minuto",
-        duration:"50 giorni",
-        price:25.00
+        duration:"50 giorni (forse)",
+        price:7.99
     },
     {
         id:"w4",
@@ -4329,10 +4626,10 @@ const products = [
         emoji:"💪",
         color:"#d8e8d1",
         tag:"Non mollare mai",
-        description:"Include scritte motivazionali per incitare il tuo criceto a continuare a correre.",
+        description:"Con scritte motivazionali che incitano il criceto a non mollare mai. Dopo un po' inizierai a crederci anche tu.",
         speed:"250 giri al minuto",
         duration:"200 giorni",
-        price:79.99
+        price:24.99
     },
     {
         id:"w5",
@@ -4340,11 +4637,11 @@ const products = [
         name:"Ruota Cinema",
         emoji:"🎬",
         color:"#e6ddf5",
-        tag:"Popcorn non inclusi",
-        description:"Adatta a tutti i criceti che correrebbero molto più volentieri guardando un film.",
-        speed:"50 giri al minuto",
+        tag:"Prima fila",
+        description:"Per i criceti che correrebbero molto più volentieri guardando un film. I popcorn sono inclusi, ma il criceto non li divide.",
+        speed:"50 giri al minuto (dipende dal film)",
         duration:"30 giorni",
-        price:119.99
+        price:59.99
     },
     {
         id:"w6",
@@ -4353,10 +4650,10 @@ const products = [
         emoji:"🏟️",
         color:"#f8d9de",
         tag:"Tour mondiale",
-        description:"Adatta ai vostri criceti sportivi e a tutti i criceti che desiderano vedere in tour i loro cantanti preferiti internazionali. L'impianto stereo non è incluso.",
+        description:"Riflettori, coriandoli e un pubblico immaginario in delirio. Per i criceti sportivi e per quelli che sognano un tour mondiale. L'impianto stereo non è incluso.",
         speed:"1.000 giri al minuto",
         duration:"30 giorni",
-        price:499.99
+        price:299.99
     },
     {
         id:"w7",
@@ -4368,7 +4665,7 @@ const products = [
         description:"Una bolla trasparente per rotolare in giro per casa. Il criceto sceglie la direzione, tu scegli se seguirlo. Gli spigoli dei mobili non sono inclusi, ma li troverà lo stesso.",
         speed:"Imprevedibile",
         duration:"Finché non incontra il divano",
-        price:24.99
+        price:19.99
     },
     {     
         id:"x1", category:"halloween", name:"Criceto Vampiro", emoji:"🧛", color:"#2f2340", tag:"Edizione limitata",
@@ -4400,6 +4697,126 @@ const products = [
         description:"La palla per criceti in versione Halloween. Rotola da sola nei corridoi bui e fa scappare i gatti.",
         speed:"Inquietante", duration:"Finché qualcuno urla", price:13.31
     },
+    { 
+        id:"y1", category:"natale", name:"Criceto Babbo Natale", emoji:"🎅", color:"#f9dcdc", tag:"Ho ho ho",
+        description:"Consegna tutti i regali in una notte sola, poi dorme fino a marzo. Ha una lista dei criceti buoni e una di quelli che non fanno girare la ruota.",
+        speed:"Una notte, tutto il mondo", duration:"Fino all'Epifania", price:24.99
+    },
+    {
+        id:"y2", category:"natale", name:"Criceto Renna", emoji:"🦌", color:"#f3e5d3", tag:"Naso luminoso",
+        description:"Traina la slitta, ma solo in discesa. Il naso rosso si accende quando ha un'idea, quindi raramente.",
+        speed:"Velocità slitta", duration:"Fino all'Epifania", price:19.99
+    },
+    {
+        id:"y3", category:"natale", name:"Criceto Elfo", emoji:"🧝", color:"#dcefdf", tag:"Aiutante ufficiale",
+        description:"Incarta i regali a una velocità impressionante. Purtroppo incarta anche il telecomando, il gatto e se stesso.",
+        speed:"300 pacchetti all'ora", duration:"Tutto dicembre", price:12.99
+    },
+    {
+        id:"y4", category:"natale", name:"Ruota Innevata", emoji:"❄️", color:"#e3f0fb", tag:"Edizione invernale",
+        description:"Coperta di neve finta e ghiaccioli di zucchero. Gira benissimo, ma il criceto pretende una cioccolata calda ogni dieci giri.",
+        speed:"Scivolosa", duration:"Fino al disgelo", price:34.99
+    },
+    {
+        id:"y5", category:"natale", name:"Calendario dell'Avvento di semi", emoji:"📅", color:"#fbe7c6", tag:"24 sorprese",
+        description:"Ventiquattro finestrelle, ventiquattro semi. Il criceto le apre tutte il primo dicembre, come chiunque.",
+        speed:"Un seme al giorno (in teoria)", duration:"24 giorni", price:9.99
+    },
+    {
+        id:"y6", category:"natale", name:"Palla di Neve", emoji:"🔮", color:"#dfeaf7", tag:"Agitare con cura",
+        description:"La palla per criceti trasformata in una sfera di neve. Dentro c'è sempre una piccola tempesta, e il criceto ne è stranamente felice.",
+        speed:"Dipende da quanto agiti", duration:"Finché nevica", price:22.99
+    },
+    {   
+        id:"v1", category:"sanvalentino", name:"Criceto Cupido", emoji:"💘", color:"#ffe1ea", tag:"Mira infallibile*",
+        description:"Scocca frecce a forma di cuore su chiunque passi vicino alla gabbia. *Non ha mai colpito il bersaglio giusto.",
+        speed:"Una freccia al minuto", duration:"Fino al 14 febbraio", price:14.14
+    },
+    {
+        id:"v2", category:"sanvalentino", name:"Criceto Innamorato", emoji:"😍", color:"#fbe3e8", tag:"Cuore in mano",
+        description:"Ha gli occhi a cuoricino da tre settimane e non ricorda più di chi si sia innamorato. Ti porterà comunque un cuore ogni mattina.",
+        speed:"Batticuore a 200 giri", duration:"Per sempre (cioè una settimana)", price:12.99
+    },
+    {
+        id:"v3", category:"sanvalentino", name:"Criceto Single", emoji:"😎", color:"#e9e4f7", tag:"Felice così",
+        description:"Il 14 febbraio si regala un fiore, si prepara una cena e non deve dividere la ruota con nessuno. Un esempio per tutti.",
+        speed:"Al proprio ritmo", duration:"Indipendente", price:9.99
+    },
+    {
+        id:"v4", category:"sanvalentino", name:"Ruota a cuore", emoji:"💗", color:"#ffe8ef", tag:"Gira d'amore",
+        description:"Una ruota a forma di cuore. Gira un po' a scatti per via della forma, ma il criceto dice che anche l'amore è così.",
+        speed:"Batte, più che girare", duration:"Fino al primo litigio", price:41.40
+    },
+    {
+        id:"v5", category:"sanvalentino", name:"Semi a cuore", emoji:"💝", color:"#fde6e0", tag:"Senza cioccolato",
+        description:"Una scatola a forma di cuore piena di semi. Niente cioccolato, perché il veterinario ha detto di no e il criceto non l'ha presa bene.",
+        speed:"Sgranocchiamento romantico", duration:"Mezza giornata", price:4.99
+    },
+    {
+        id:"v6", category:"sanvalentino", name:"Palla dell'amore", emoji:"💞", color:"#f8e0ec", tag:"Rotola verso di te",
+        description:"Una palla rosa piena di cuoricini. Il criceto ci rotola dentro sempre verso di te, anche quando cerchi di uscire dalla stanza.",
+        speed:"Dritta al cuore", duration:"Fino al 15 febbraio", price:19.99
+    },
+    {
+        id:"p1", category:"pasqua", name:"Criceto Coniglietto", emoji:"🐰", color:"#e8f4dc", tag:"Orecchie lunghe",
+        description:"Si è convinto di essere il coniglio pasquale. Salta goffo, nasconde le uova in posti assurdi e pretende carote al posto dei semi.",
+        speed:"Un saltello ogni tanto", duration:"Fino a Pasquetta", price:12.99
+    },
+    {
+        id:"p2", category:"pasqua", name:"Criceto Sorpresa", emoji:"🥚", color:"#fff3d1", tag:"Dentro l'uovo",
+        description:"Lo abbiamo trovato in un uovo di Pasqua al posto della sorpresa. Non sa fare niente di utile, ma è molto fiero di sé.",
+        speed:"Appena nato", duration:"Finché non esce dal guscio", price:15.99
+    },
+    {
+        id:"p3", category:"pasqua", name:"Criceto Fondente", emoji:"🍫", color:"#f3e6d8", tag:"Al 70%",
+        description:"Ha il pelo color cioccolato fondente e un fiocco giallo da uovo di Pasqua. Non si mangia, ma si scioglie quando gli fai i complimenti.",
+        speed:"Lento, per non sciogliersi", duration:"Al fresco dura di più", price:11.99
+    },
+    {
+        id:"p4", category:"pasqua", name:"Ruota-uovo", emoji:"🥚", color:"#ece5f8", tag:"Dipinta a mano",
+        description:"Una ruota a forma di uovo, dipinta con zigzag e pallini pastello. Gira un po' ovale, ma è la più elegante della primavera.",
+        speed:"Ovale, ma con stile", duration:"Tutta la primavera", price:34.99
+    },
+    {
+        id:"p5", category:"pasqua", name:"Cestino di semi colorati", emoji:"🧺", color:"#fdf0d8", tag:"Caccia alle uova",
+        description:"Un cestino con l'erba finta e tanti semi dipinti come piccole uova. Il criceto li nasconde in giro e la caccia la fai tu.",
+        speed:"Da trovare", duration:"Finché li trovi", price:5.99
+    },
+    {
+        id:"p6", category:"pasqua", name:"Palla Uovo", emoji:"🪺", color:"#e2f1ec", tag:"Rotola storto",
+        description:"La palla per criceti a forma di uovo di Pasqua. Rotola in direzioni imprevedibili, che è un po' il punto.",
+        speed:"Imprevedibile, ovale", duration:"Fino a Pasquetta", price:21.99
+    },
+    {
+        id:"s1", category:"estate", name:"Criceto in vacanza", emoji:"🏖️", color:"#fff0c9", tag:"Fuori ufficio",
+        description:"Ha messo la risposta automatica e non tornerà prima di settembre. Occhiali da sole, fiore in testa e una noce di cocco sempre in mano.",
+        speed:"Zero, è in ferie", duration:"Fino a settembre", price:19.99
+    },
+    {
+        id:"s2", category:"estate", name:"Criceto Bagnino", emoji:"🛟", color:"#dff2fb", tag:"Sempre di guardia",
+        description:"Sorveglia la ciotola dell'acqua tutto il giorno con il salvagente pronto. Non ha mai salvato nessuno, ma fischia benissimo.",
+        speed:"Scatto in 2 secondi (dice)", duration:"Turno dalle 9 alle 19", price:16.99
+    },
+    {
+        id:"s3", category:"estate", name:"Criceto Gelato", emoji:"🍦", color:"#ffe3ec", tag:"Gusto fragola",
+        description:"Ha il pelo rosa fragola e un cono gelato che non finisce mai. Lo lecca da giugno, è ancora intero e nessuno sa come.",
+        speed:"Lento, per non far cadere il gelato", duration:"Finché non si scioglie", price:8.99
+    },
+    {
+        id:"s4", category:"estate", name:"Ruota da spiaggia", emoji:"⛱️", color:"#fdf1d6", tag:"Vista mare",
+        description:"Una ruota a righe come un ombrellone, con la sabbia alla base. Ogni giro sa di crema solare e di vacanza.",
+        speed:"Da passeggiata sul lungomare", duration:"Tutta l'estate", price:39.99
+    },
+    {
+        id:"s5", category:"estate", name:"Fetta d'anguria", emoji:"🍉", color:"#e6f5df", tag:"Fresca fresca",
+        description:"Una fetta d'anguria grande come il criceto. La mangia in tre giorni e poi nasconde i semi dove vuole.",
+        speed:"Rinfrescamento immediato", duration:"Tre giorni", price:3.99
+    },
+    {
+        id:"s6", category:"estate", name:"Palla da spiaggia", emoji:"🏐", color:"#dcf0f7", tag:"Rotola sulla sabbia",
+        description:"La palla per criceti travestita da pallone da spiaggia, a spicchi colorati. Rotola benissimo sulla sabbia e un po' meno in acqua.",
+        speed:"Da bagnasciuga", duration:"Fino a fine agosto", price:22.99
+    },
     {        
         id:"e1",
         category:"extra",
@@ -4410,7 +4827,7 @@ const products = [
         description:"Una miscela nutriente per mantenere il criceto operativo. Non garantisce che smetta di procrastinare.",
         speed:"Energia per la giornata",
         duration:"Confezione da 30 giorni",
-        price:5.99
+        price:3.99
     },
     {
         id:"e2",
@@ -4422,7 +4839,7 @@ const products = [
         description:"Acqua fresca e pulita. Il criceto potrebbe comunque preferire bere dalla ciotola sbagliata.",
         speed:"Sempre disponibile",
         duration:"Scorta da 7 giorni",
-        price:2.99
+        price:1.99
     },
     {
         id:"e3",
@@ -4434,7 +4851,7 @@ const products = [
         description:"Paglia soffice per un nido accogliente. Ideale per riposare dopo una giornata estenuante passata a non fare niente.",
         speed:"Comfort massimo",
         duration:"Confezione da 30 giorni",
-        price:4.49
+        price:3.49
     }
 ];
 
@@ -4499,6 +4916,156 @@ const cartTotal = () =>
         0
     );
 
+const productDetails = {
+    h1: ["Il modello da cui è partito tutto. Non ha superpoteri, non ha manie e non ha un profilo social: si sveglia, mangia un seme e corre finché non si ricorda di una cosa che doveva fare. Poi corre lo stesso.", [["Livello di rumore", "Un cigolio rassicurante"], ["Passatempo", "Fissare il muro con convinzione"], ["Compatibile con", "Lunedì mattina"]]],
+    h2: ["Si è fatto assumere da una startup e non si è più fermato. Risponde alle email mentre corre, corre mentre dorme e dorme solo quando finisce il caffè. Consigliato in periodo di esami, sconsigliato al tuo battito cardiaco.", [["Caffeina nel sangue", "Il 70%"], ["Passatempo", "Fare tre cose insieme, male"], ["Effetti collaterali", "Tremolio delle vibrisse"]]],
+    h3: ["Tre proprietari, due traslochi e un'esperienza traumatica con un aspirapolvere. Lo abbiamo lavato, pettinato e rimesso in vendita con una toppa nuova di zecca. *La garanzia copre solo la toppa.", [["Condizioni", "Come nuovo (se strizzi gli occhi)"], ["Ricordi", "Preferisce non parlarne"], ["Garanzia", "Solo sulla toppa"]]],
+    h4: ["Ha letto tutto Nietzsche in una notte e da allora guarda la ruota con sospetto. Quando finalmente corre, lo fa per dimostrare qualcosa all'universo. L'universo non ha ancora risposto.", [["Autore preferito", "Socrate (le parti col formaggio)"], ["Domanda ricorrente", "Ma la ruota gira o sono io?"], ["Risposte trovate", "Nessuna, per ora"]]],
+    h5: ["È in offerta a zero euro perché il prezzo doveva deciderlo lui. Lo farà domani. Nel frattempo ha riordinato la cuccia quattro volte e guardato tutorial su come iniziare a correre.", [["Lista delle cose da fare", "Lunghissima, mai aperta"], ["Parola preferita", "Dopo"], ["Prossima corsa", "Lunedì (di quale anno non si sa)"]]],
+    h6: ["Ti paga lui per portarlo a casa, ed è proprio questo che dovrebbe insospettirti. Entro una settimana avrai una ruota in meno, un amico in più e la sensazione di essere stato fregato con grande simpatia.", [["Specialità", "Smontare ruote in 30 secondi"], ["Recensioni", "Tutte a 5 stelle (scritte da lui)"], ["Ultima posizione nota", "Sconosciuta"]]],
+    h7: ["Laurea in Ingegneria della Ruota, master in Semi Applicati e un dottorato sul sonnellino pomeridiano. Corregge i tuoi congiuntivi e ti ricorda ogni giorno che il suo curriculum è più lungo del tuo.", [["Titoli di studio", "Troppi per la cuccia"], ["Lingue parlate", "Latino, squittese, LinkedIn"], ["Frase tipica", "«Tecnicamente…»"]]],
+    h8: ["Ha iniziato nelle giovanili di una gabbia di provincia e sogna la Champions. Fa tre giri, si accascia a terra, rotola due volte e chiede il cambio. Esulta anche quando segna l'avversario.", [["Ruolo", "Attaccante (di nervi)"], ["Infortuni a stagione", "11 e mezzo"], ["Esultanza", "Scivolata sulla paglia"]]],
+    h9: ["Ha un abbonamento a sei piattaforme e nessuna intenzione di uscire. Corre solo se la ruota è davanti allo schermo e si ferma a ogni colpo di scena per fissarti scioccato.", [["Serie in corso", "14 contemporaneamente"], ["Spoiler fatti", "Tutti, involontariamente"], ["Frase tipica", "«Ancora una e vado a letto»"]]],
+    h10: ["Ha scritto un intero album sul giorno in cui ha perso il suo seme preferito. Canta nella ruota a squarciagola e ogni giro è una strofa: tieni i fazzoletti a portata di zampa.", [["Canzone preferita", "vampire (versione criceto)"], ["Colore preferito", "Viola, ovviamente"], ["Fazzoletti consumati", "Una scatola a ritornello"]]],
+    h11: ["Pelo nero, sguardo da copertina e un bisbiglio che riempie gli stadi. Odia i riflettori, adora il verde e risponde alle domande alzando un sopracciglio.", [["Volume della voce", "Sussurro professionale"], ["Colori preferiti", "Verde e nero, non trattabili"], ["Premi vinti", "Tanti, li usa come cuccia"]]],
+    h12: ["Imbraccia la chitarrina e trasforma qualsiasi momento in un video emozionante con la musica di sottofondo. Dopo il terzo ritornello piangerete entrambi senza sapere bene perché.", [["Strumento", "Chitarrina (una corda rotta)"], ["Pubblico", "Tu e il gatto"], ["Lacrime per canzone", "Almeno tre"]]],
+    w1: ["La ruota più venduta nella storia dei criceti: plastica onesta, un cigolio familiare e la promessa di girare quasi sempre. Montaggio facile, se trovi tutte le viti.", [["Materiale", "Plastica di carattere"], ["Viti incluse", "11 su 12"], ["Rumorosità", "Media, soprattutto di notte"]]],
+    w2: ["Progettata in una galleria del vento per criceti, con cuscinetti silenziosi e un rivestimento menta antistress. I brillantini non servono a niente, ma fanno sentire il criceto un atleta.", [["Cuscinetti", "Svizzeri, dicono"], ["Brillantini", "Quantità ingiustificata"], ["Silenziosità", "Senti solo il criceto pensare"]]],
+    w3: ["Un cliente l'ha restituita dicendo che «girava al contrario». L'abbiamo riparata con cerotti e buona volontà: adesso gira nel verso giusto quasi sempre.", [["Cerotti", "Sei, tutti strutturali"], ["Verso di rotazione", "Prevalentemente orario"], ["Storia", "Meglio non chiedere"]]],
+    w4: ["Ogni giro un messaggio di incoraggiamento: «DAI CHE CE LA FAI!», «UN ALTRO GIRO!», «SEI UNA MACCHINA!». Dopo una settimana il criceto ha aperto un podcast.", [["Frasi motivazionali", "48, ripetute all'infinito"], ["Effetto sull'umore", "+200% di autostima"], ["Effetto sui vicini", "Discutibile"]]],
+    w5: ["Uno schermo davanti, popcorn di lato e una poltroncina per i titoli di coda. Il criceto corre più veloce nelle scene d'azione e si ferma del tutto nei film romantici.", [["Schermo", "4K (4 Kriceti di larghezza)"], ["Genere preferito", "Azione, mai romantici"], ["Popcorn", "Inclusi, non condivisi"]]],
+    w6: ["Riflettori, coriandoli, maxischermo e una curva immaginaria che canta il nome del tuo criceto. È la ruota più costosa del negozio, ed è l'unica con un servizio di sicurezza.", [["Posti a sedere", "Zero, ma il tifo è assicurato"], ["Riflettori", "4, abbaglianti"], ["Biglietti venduti", "Tutti (al criceto)"]]],
+    w7: ["Una bolla trasparente per esplorare la casa senza perdersi. Il criceto la usa per andare in cucina, ispezionare sotto il divano e fissare il gatto da una posizione di assoluta sicurezza.", [["Materiale", "Plastica trasparente antiurto"], ["Meta preferita", "Sotto il divano"], ["Rapporti con il gatto", "Tesi ma rispettosi"]]],
+    e1: ["Semi selezionati, cereali croccanti e un pizzico di ottimismo. Una formula studiata per tenere il criceto attivo, sveglio e lontano dai tuoi biscotti.", [["Ingredienti", "Semi, cereali, ottimismo"], ["Gusto preferito", "Quello che stai mangiando tu"], ["Durata reale", "Meno di quella scritta"]]],
+    e2: ["Acqua fresca in una bottiglia con beccuccio antigoccia. Il criceto la ignorerà per tre giorni e poi la finirà tutta in un minuto davanti a te.", [["Provenienza", "Sorgente di montagna (il rubinetto)"], ["Beccuccio", "Antigoccia (quasi)"], ["Sorsi al giorno", "Imprevedibili"]]],
+    e3: ["Paglia soffice raccolta a mano e sistemata in un nido a forma di cuore. Il criceto la sposterà comunque tutta nell'angolo opposto, perché ha gusti precisi.", [["Morbidezza", "Nuvola certificata"], ["Forma del nido", "Cuore, per circa un'ora"], ["Riposini garantiti", "Illimitati"]]],
+    x1: ["Si sveglia al tramonto, si pettina davanti a uno specchio che non lo riflette e beve solo succo di fragola. Molto elegante, un po' melodrammatico.", [["Cibo preferito", "Fragole (solo il succo)"], ["Riflesso nello specchio", "Assente"], ["Orario di apertura", "Dal tramonto all'alba"]]],
+    x2: ["Ha frequentato un corso online di magia e ora prova incantesimi su tutto. La ruota gira al contrario e i semi sanno di liquirizia, ma lei è molto soddisfatta.", [["Incantesimi riusciti", "Il 40%"], ["Scopa", "Modello da corsa"], ["Ingrediente segreto", "Una vibrissa di gatto"]]],
+    x3: ["Bianchissimo, silenziosissimo e quasi invisibile. Ti accorgi che c'è solo quando i semi spariscono dalla ciotola.", [["Visibilità", "Il 12% circa"], ["Verso", "«Buu», ma educato"], ["Ha paura di", "Aspirapolvere"]]],
+    x4: ["Intagliata a mano da un criceto armato di cucchiaino. Dentro c'è una lucina che fa paura solo se la guardi di lato.", [["Materiale", "Zucca vera (per ora)"], ["Profumo", "Torta di zucca"], ["Livello di paura", "Medio-tenero"]]],
+    x5: ["Raccolti a mezzanotte da una strega in pensione. Croccanti, salati e con uno scherzetto nascosto ogni dieci semi.", [["Gusto", "Salato, a volte calzino"], ["Scherzetti per busta", "Almeno tre"], ["Maledizione", "Leggera, scade a novembre"]]],
+    x6: ["La classica palla per criceti, ma con un ragno coinquilino che tesse decorazioni a ogni giro. Il ragno non paga l'affitto.", [["Coinquilini", "1 ragno (simpatico)"], ["Effetto speciale", "Rotola da sola"], ["Gatti spaventati", "Tutti"]]],
+    y1: ["Ha una barba finta, una pancia vera e una lista dei regali più lunga della gabbia. Consegna tutto la notte del 24, poi va in letargo fino a primavera.", [["Regali consegnati", "Tutti, con un giorno di ritardo"], ["Slitta", "Una ciabatta con le renne"], ["Biscotti mangiati", "Quelli di tutti"]]],
+    y2: ["Traina la slitta di Babbo Criceto, ma solo quando la strada è in discesa. Il naso rosso si accende con le buone idee: si è acceso due volte in tutto.", [["Naso", "Rosso, a basso consumo"], ["Corna", "Decorative, non aerodinamiche"], ["Percorso preferito", "In discesa"]]],
+    y3: ["Lavora nel laboratorio di Babbo Natale da tre stagioni. Imbattibile con carta e nastro: purtroppo incarta tutto quello che trova, compreso se stesso.", [["Rotoli di nastro", "Infiniti"], ["Pacchi sbagliati", "Circa la metà"], ["Cappello", "Con pompon d'ordinanza"]]],
+    y4: ["Una ruota ricoperta di neve finta e ghiaccioli di zucchero. Ogni giro solleva una piccola bufera, e il criceto si sente dentro una cartolina.", [["Temperatura", "Fresca ma piacevole"], ["Ghiaccioli", "Di zucchero, non leccare"], ["Pupazzo di neve", "Da costruire a parte"]]],
+    y5: ["Ventiquattro finestrelle numerate, ognuna con un seme diverso. In teoria è un calendario. In pratica è uno spuntino da un giorno solo.", [["Finestrelle", "24 (aperte in 4 minuti)"], ["Seme del 24", "Dorato, leggendario"], ["Autocontrollo richiesto", "Molto"]]],
+    y6: ["Una palla per criceti con una nevicata perenne dentro. Agitala con delicatezza: il criceto ama la tempesta, ma non le montagne russe.", [["Fiocchi di neve", "Circa 3.000"], ["Base", "Legno dorato"], ["Mal di mare", "Solo se agiti troppo"]]],
+    v1: ["Ha ali piccolissime, un arco giocattolo e un'autostima enorme. Fa innamorare tra loro le persone sbagliate e poi si stupisce del caos.", [["Frecce", "Con ventosa a cuore, innocue"], ["Precisione", "Discutibile"], ["Coppie formate", "Il postino e il frigorifero"]]],
+    v2: ["Scrive poesie sulla paglia, sospira guardando la ciotola e si commuove davanti alla ruota. Non è chiaro chi sia la sua anima gemella, ma è sicuro che sia speciale.", [["Poesie scritte", "41, tutte su un seme"], ["Sospiri al giorno", "Innumerevoli"], ["Oggetto d'amore", "Non pervenuto"]]],
+    v3: ["Ha un'agenda piena di cose che gli piacciono: maratone di serie, bagni di sabbia e lunghe corse in solitaria. Agli auguri di San Valentino risponde «grazie, anche a me».", [["Programma per il 14", "Divano e fragole"], ["Stato sentimentale", "Innamorato di sé"], ["Fiori ricevuti", "Uno, da se stesso"]]],
+    v4: ["Disegnata da un ingegnere romantico che non conosceva bene la geometria. A ogni giro fa un piccolo sobbalzo, come un cuore che perde un colpo.", [["Forma", "Cuore (poco rotondo)"], ["Sobbalzi per giro", "2"], ["Colore", "Rosa confetto"]]],
+    v5: ["La scatola sembra quella dei cioccolatini, ma dentro ci sono semi scelti con amore. Il criceto finge di essere deluso, poi li mangia tutti.", [["Contenuto", "20 semi scelti a mano"], ["Cioccolato", "Zero, per legge"], ["Biglietto", "«Sei il mio seme preferito»"]]],
+    v6: ["La versione romantica della palla per criceti: rosa, lucida e con cuoricini che fluttuano intorno. Ha un'unica direzione: la tua.", [["Colore", "Rosa innamorato"], ["Direzione", "Sempre verso di te"], ["Cuoricini", "In omaggio"]]],
+    p1: ["Ha ordinato delle orecchie finte online e non se le toglie più. Nasconde uova ovunque, poi dimentica dove: ne troverai una nella scarpa a luglio.", [["Uova nascoste", "37"], ["Uova ritrovate", "4"], ["Cibo preferito", "Carote (finge)"]]],
+    p2: ["Doveva essere un portachiavi, invece è uscito lui. Indossa ancora mezzo guscio come cappello e si guarda intorno sorpreso da tutto.", [["Guscio", "Mezzo in testa, mezzo addosso"], ["Espressione", "Perennemente sorpresa"], ["La sorpresa", "È lui"]]],
+    p3: ["Passa le giornate in posa come una decorazione pasquale. Se la temperatura supera i 25 gradi va a sdraiarsi in frigorifero e si rifiuta di uscire.", [["Percentuale di cacao", "0% (è un criceto)"], ["Temperatura ideale", "18 gradi"], ["Fiocco", "Giallo d'ordinanza"]]],
+    p4: ["Ogni ruota è decorata a mano da un criceto artista con un pennello di una sola setola. Ci vogliono tre settimane per finirne una.", [["Forma", "Uovo, leggermente schiacciato"], ["Decorazioni", "Zigzag e pallini"], ["Pennello", "Una setola sola"]]],
+    p5: ["Semi colorati con tinte alimentari pastello, sistemati su un letto d'erba di carta. Perfetti per una caccia alle uova in miniatura.", [["Semi colorati", "15, in 5 colori"], ["Erba", "Di carta, non commestibile"], ["Difficoltà della caccia", "Alta"]]],
+    p6: ["Dentro c'è il tuo criceto, fuori le decorazioni di primavera. Per via della forma ovale non va mai dritta: perfetta per una gita fuori porta in salotto.", [["Forma", "Uovo"], ["Traiettoria", "A zigzag"], ["Sorpresa dentro", "Il criceto"]]],
+    s1: ["Si è trasferito su un'amaca e risponde ai messaggi solo con foto di tramonti. Se gli chiedi di correre ti ricorda che è in ferie da contratto.", [["Risposta automatica", "«Ne parliamo a settembre»"], ["Crema solare", "Fattore 50"], ["Bevanda", "Cocco con l'ombrellino"]]],
+    s2: ["Ha un fischietto, un salvagente e una certa idea di sé. Nessuno ha mai rischiato di annegare nella ciotola, ma lui è pronto a ogni evenienza.", [["Salvataggi", "Zero, ma con impegno"], ["Fischietto", "Usato ogni 30 secondi"], ["Abbronzatura", "Solo sul naso"]]],
+    s3: ["Adora il gelato alla fragola più di ogni altra cosa al mondo. Ha assaggiato tutti gli altri gusti una volta sola, per sicurezza, poi è tornato alla fragola.", [["Gusti", "Fragola e menta"], ["Leccate al minuto", "60"], ["Mal di testa da gelato", "Spesso"]]],
+    s4: ["Ispirata agli ombrelloni della riviera: righe colorate, sabbia vera e una conchiglia in omaggio. La sabbia la ritroverai in casa fino a Natale.", [["Righe", "Colorate, come l'ombrellone"], ["Sabbia inclusa", "Fin troppa"], ["Conchiglia", "Una, in omaggio"]]],
+    s5: ["Succosa, dolce e tagliata a misura di criceto. Arriva già con i semi, che il criceto conserva ordinatamente sotto il cuscino.", [["Peso", "Quanto il criceto"], ["Semi", "Conservati sotto il cuscino"], ["Freschezza", "Da frigo"]]],
+    s6: ["Leggera, colorata e a prova di sabbia. Il criceto la usa per andare dall'ombrellone al bar dei semi senza scottarsi le zampe.", [["Spicchi", "6 colori"], ["Galleggia", "Sì, ma non è consigliato"], ["Meta preferita", "Il bar dei semi"]]]
+};
+ 
+function productStats(product) {
+    if (product.category === "criceto") return [
+        ["Personalità", product.personality],
+        ["Velocità", product.speed],
+        ["Intelligenza", product.intelligence],
+        ["Durata", product.duration]
+    ];
+    if (product.category === "extra") return [
+        ["Disponibilità", product.speed],
+        ["Confezione", product.duration]
+    ];
+    return [
+        ["Velocità massima", product.speed],
+        ["Durata", product.duration]
+    ];
+}
+ 
+const productModal = document.getElementById("productModal");
+let productModalReturn = null;
+let productModalId = null;
+ 
+function openProductModal(id) {
+    const product = getProduct(id);
+    if (!product) return;
+    const [story, specs] = productDetails[id] || ["", []];
+    productModalId = id;
+    productModalReturn = document.activeElement;
+ 
+    const art = document.getElementById("pmArt");
+    art.style.background = product.color;
+    document.getElementById("pmTag").textContent = product.tag;
+    const img = document.getElementById("pmImg");
+    const emoji = document.getElementById("pmEmoji");
+    img.hidden = !product.image;
+    emoji.hidden = !!product.image;
+    if (product.image) img.src = product.image;
+    else emoji.textContent = product.emoji;
+ 
+    document.getElementById("pmName").textContent = product.name;
+    document.getElementById("pmPrice").textContent = euro(product.price);
+    document.getElementById("pmLead").textContent = product.description;
+    const storyEl = document.getElementById("pmStory");
+    storyEl.textContent = story;
+    storyEl.hidden = !story;
+ 
+    const list = document.getElementById("pmSpecs");
+    list.replaceChildren();
+    [...productStats(product), ...specs].forEach(([label, value]) => {
+        const row = document.createElement("div");
+        const dt = document.createElement("dt");
+        const dd = document.createElement("dd");
+        dt.textContent = label;
+        dd.textContent = value;
+        row.append(dt, dd);
+        list.append(row);
+    });
+ 
+    const add = document.getElementById("pmAdd");
+    add.classList.remove("added");
+    add.querySelector(".button-symbol").textContent = "＋";
+    add.querySelector(".button-label").textContent = "Aggiungi al carrello";
+ 
+    productModal.classList.add("show");
+    productModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    productModal.querySelector(".product-modal-card").scrollTop = 0;
+    document.getElementById("pmClose").focus();
+}
+ 
+function closeProductModal() {
+    if (!productModal.classList.contains("show")) return;
+    productModal.classList.remove("show");
+    productModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    if (productModalReturn && productModalReturn.isConnected) productModalReturn.focus();
+}
+ 
+document.getElementById("pmClose").addEventListener("click", closeProductModal);
+productModal.addEventListener("click", event => {
+    if (event.target === productModal) closeProductModal();
+});
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeProductModal();
+});
+document.getElementById("pmAdd").addEventListener("click", () => {
+    if (!productModalId) return;
+    addToCart(productModalId);
+    const add = document.getElementById("pmAdd");
+    add.classList.remove("added");
+    void add.offsetWidth;
+    add.classList.add("added");
+    add.querySelector(".button-symbol").textContent = "✓";
+    add.querySelector(".button-label").textContent = "Aggiunto!";
+});
+     
 function renderProductCard(product) {
     const card = document.createElement("article");
     card.className = "product-card";
@@ -4526,7 +5093,18 @@ function renderProductCard(product) {
     }
 
     art.append(tag,emoji);
-
+    art.classList.add("is-clickable");
+    art.tabIndex = 0;
+    art.setAttribute("role","button");
+    art.setAttribute("aria-label",`Scopri di più su ${product.name}`);
+    art.addEventListener("click",() => openProductModal(product.id));
+    art.addEventListener("keydown",event => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openProductModal(product.id);
+        }
+    });    
+    
     const body = document.createElement("div");
     body.className = "product-body";
 
@@ -4541,6 +5119,8 @@ function renderProductCard(product) {
     price.textContent = euro(product.price);
 
     titleRow.append(title,price);
+    title.classList.add("is-clickable");
+    title.addEventListener("click",() => openProductModal(product.id));    
 
     const description = document.createElement("p");
     description.className = "product-description";
@@ -4549,22 +5129,7 @@ function renderProductCard(product) {
     const stats = document.createElement("div");
     stats.className = "stats";
 
-    const statData = product.category === "criceto"
-        ? [
-            ["Personalità",product.personality],
-            ["Velocità",product.speed],
-            ["Intelligenza",product.intelligence],
-            ["Durata",product.duration]
-        ]
-        : product.category === "extra"
-        ? [
-            ["Disponibilità",product.speed],
-            ["Confezione",product.duration]
-        ]
-        : [
-            ["Velocità massima",product.speed],
-            ["Durata",product.duration]
-        ];
+    const statData = productStats(product);
 
     statData.forEach(([label,value]) => {
         const row = document.createElement("div");
@@ -4590,31 +5155,125 @@ function renderProductCard(product) {
 
     button.addEventListener("click",() => addToCart(product.id));
 
-    body.append(titleRow,description,stats,button);
+    const more = document.createElement("button");
+    more.className = "details-link";
+    more.type = "button";
+    more.textContent = "Scopri di più →";
+    more.addEventListener("click",() => openProductModal(product.id));
+ 
+    body.append(titleRow,description,more,stats,button);
     card.append(art,body);
-
+    
     return card;
 }
 
 function renderProducts() {
     const hamsterGrid = document.getElementById("hamsterGrid");
     const wheelGrid = document.getElementById("wheelGrid");
-    const halloweenGrid = document.getElementById("halloweenGrid");    
-
     hamsterGrid.replaceChildren();
     wheelGrid.replaceChildren();
-    if (halloweenGrid) halloweenGrid.replaceChildren();    
+    document.querySelectorAll("[data-season-grid]").forEach(grid => grid.replaceChildren());
 
-    products.forEach(product => {
+    sortedProducts().forEach(product => {
         const card = renderProductCard(product);
-        if (product.category === "halloween") {
-            if (halloweenGrid) halloweenGrid.append(card);
+        if (!["criceto", "ruota", "extra"].includes(product.category)) {
+            const seasonGrid = document.getElementById(`${product.category}Grid`);
+            if (seasonGrid) seasonGrid.append(card);
             return;
-        }        
+        }
+        if (shopFilter !== "tutto" && product.category !== shopFilter) return;        
         (product.category === "criceto" ? hamsterGrid : wheelGrid).append(card);
     });
+    updateCatalogSections();
+}
+ 
+let shopFilter = "tutto";
+let shopSort = "evidenza";
+ 
+function sortedProducts() {
+    const list = [...products];
+    if (shopSort === "prezzo-su") list.sort((a, b) => a.price - b.price);
+    if (shopSort === "prezzo-giu") list.sort((a, b) => b.price - a.price);
+    if (shopSort === "nome") list.sort((a, b) => a.name.localeCompare(b.name, "it"));
+    return list;
+}
+ 
+function updateCatalogSections() {
+    document.getElementById("criceti").hidden = !document.getElementById("hamsterGrid").children.length;
+    document.getElementById("extra").hidden = !document.getElementById("wheelGrid").children.length;
+    [["criceti", "hamsterGrid"], ["extra", "wheelGrid"]].forEach(([section, grid]) => {
+        const n = document.getElementById(grid).children.length;
+        document.querySelector(`#${section} .section-heading .eyebrow`).textContent = n === 1 ? "1 modello" : `${n} modelli`;
+    });    
 }
 
+document.querySelectorAll(".filter-chip").forEach(chip => {
+    chip.addEventListener("click", () => {
+        shopFilter = chip.dataset.filter;
+        document.querySelectorAll(".filter-chip").forEach(other => {
+            other.classList.toggle("active", other === chip);
+            other.setAttribute("aria-pressed", other === chip);
+        });
+        renderProducts();
+    });
+});
+document.getElementById("sortProducts").addEventListener("change", event => {
+    shopSort = event.target.value;
+    renderProducts();
+});
+ 
+const monthDay = date => String(date.getMonth() + 1).padStart(2, "0") + "-" + String(date.getDate()).padStart(2, "0");
+ 
+function easterSunday(year) {
+    const a = year % 19, b = Math.floor(year / 100), c = year % 100;
+    const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3);
+    const h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4;
+    const l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const month = Math.floor((h + l - 7 * m + 114) / 31), day = ((h + l - 7 * m + 114) % 31) + 1;
+    return new Date(year, month - 1, day);
+}
+ 
+const SEASONS = {
+    sanvalentino: ["02-01", "02-14"],
+    pasqua: year => {
+        const easter = easterSunday(year);
+        return [monthDay(new Date(year, easter.getMonth(), easter.getDate() - 14)), monthDay(new Date(year, easter.getMonth(), easter.getDate() + 1))];
+    },
+    estate: ["06-21", "08-31"],
+    halloween: ["10-15", "11-01"],
+    natale: ["12-01", "01-06"]
+};
+    
+function seasonActive(id, today = new Date()) {
+    const range = SEASONS[id];
+    const [from, to] = typeof range === "function" ? range(today.getFullYear()) : range;
+    const md = monthDay(today);
+    return from <= to ? md >= from && md <= to : md >= from || md <= to;
+}
+ 
+function applySeasons() {
+    const forced = new URLSearchParams(location.search).get("stagione");
+    document.querySelectorAll("[data-season]").forEach(el => {
+        el.hidden = forced ? el.dataset.season !== forced : !seasonActive(el.dataset.season);
+    });
+}
+applySeasons();
+
+(function initSnowfall() {
+    const layer = document.querySelector(".snowfall");
+    if (!layer) return;
+    for (let i = 0; i < 40; i++) {
+        const flake = document.createElement("span");
+        flake.className = i % 4 === 0 ? "snowflake big" : "snowflake";
+        flake.style.left = `${Math.random() * 100}%`;
+        flake.style.animationDuration = `${9 + Math.random() * 9}s`;
+        flake.style.animationDelay = `${-Math.random() * 18}s`;
+        flake.style.opacity = (.55 + Math.random() * .45).toFixed(2);
+        flake.style.setProperty("--drift", `${Math.round(Math.random() * 80 - 40)}px`);
+        layer.append(flake);
+    }
+})();
+     
 function pageFromHash() {
     const id = decodeURIComponent(location.hash.slice(1).split("?")[0]);
     const page = id && document.getElementById(id);
@@ -4630,6 +5289,7 @@ function showPage(pageName,fromHistory = false) {
     if (!page) return;
 
     page.classList.add("active");
+    document.body.dataset.page = pageName;    
 
     document.querySelectorAll(".nav-link").forEach(button => {
         button.classList.toggle(
@@ -6242,6 +6902,84 @@ function decorateWithHamsters() {
         const product = getProduct(id);
         if (product) product.image = window.hamsterImage(look);
     });
+ 
+    const overlayImage = (look, overlay, back = "") => svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">${back}<image href="${window.hamsterImage(look)}" width="320" height="320"/>${overlay}</svg>`);
+    const festiveHat = (main, dark, band, ball) => `<path d="M86 112 C82 82 104 56 140 48 C176 40 214 36 248 58 C262 68 270 82 272 96 C258 84 240 80 226 84 C236 94 238 104 234 112 Z" fill="${main}" stroke="${dark}" stroke-width="3.5" stroke-linejoin="round"/><path d="M82 108 C112 98 208 98 238 108 C243 114 243 123 236 128 C206 118 114 118 84 128 C77 123 77 114 82 108 Z" fill="${band}" stroke="#D8CEC8" stroke-width="2.5"/><circle cx="272" cy="100" r="14" fill="${ball}" stroke="#D8CEC8" stroke-width="2.5"/>`;
+    const santaHat = festiveHat("#E04B4B", "#A12F2F", "#FFFFFF", "#FFFFFF");
+    const antlers = `<g fill="none" stroke="#8A5A3B" stroke-width="9" stroke-linecap="round"><path d="M128 80 C122 58 110 44 96 30 M114 56 C102 52 90 56 82 66 M104 42 C108 32 108 22 104 12"/><path d="M192 80 C198 58 210 44 224 30 M206 56 C218 52 230 56 238 66 M216 42 C212 32 212 22 216 12"/></g>`;
+    const snowFlake = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})"><path d="M0 -10 V10 M-8.7 -5 L8.7 5 M-8.7 5 L8.7 -5" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/></g>`;
+    const xmas = {
+        y1: overlayImage({ mouth: "grin", accessories: [], held: "none" }, santaHat),
+        y2: overlayImage({ fur: "honey", innerFur: "cream", mouth: "smile", accessories: [], held: "none" }, antlers + `<circle cx="160" cy="165" r="9" fill="#E8353F" stroke="#A12F2F" stroke-width="2"/><circle cx="157" cy="162" r="2.5" fill="#FFFFFF"/>`),
+        y3: overlayImage({ eyes: "happy", mouth: "grin", accessories: [], held: "none" }, festiveHat("#4FA36B", "#2F6E45", "#E04B4B", "#FFD66B")),
+        y6: overlayImage({ eyes: "wink", accessories: [], held: "none" },
+            `<circle cx="160" cy="160" r="128" fill="#CFE6FA" fill-opacity=".28" stroke="#8FB7DA" stroke-width="5"/><path d="M96 76 Q116 58 142 54" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity=".7"/>` +
+            [[90,120,.9],[220,100,1.1],[250,190,.8],[80,210,1],[150,70,.7],[200,250,.8],[110,260,.6]].map(f => snowFlake(...f)).join("") +
+            `<path d="M70 268 Q160 300 250 268 L262 304 Q160 318 58 304 Z" fill="#B5764A" stroke="#7E4F2E" stroke-width="4" stroke-linejoin="round"/><path d="M76 286 Q160 306 244 286" fill="none" stroke="#FFD66B" stroke-width="4"/>`,
+            `<circle cx="160" cy="160" r="126" fill="#EAF4FC"/><path d="M40 210 Q160 180 280 210 L280 300 L40 300 Z" fill="#FFFFFF"/>`)
+    };
+    xmas.y4 = svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><ellipse cx="100" cy="189" rx="72" ry="6" fill="rgba(40,70,100,.14)"/><path d="M100 92L55 180M100 92l45 88" stroke="#6E8FAE" stroke-width="9" stroke-linecap="round"/><rect x="35" y="175" width="130" height="10" rx="5" fill="#6E8FAE"/><circle cx="100" cy="94" r="68" fill="#EAF4FC" stroke="#8FC1F0" stroke-width="10"/><g stroke="#B9D7F2" stroke-width="4">${[0,30,60,90,120,150].map(a => `<line x1="100" y1="94" x2="${100 + 62 * Math.cos(a * Math.PI / 180)}" y2="${94 + 62 * Math.sin(a * Math.PI / 180)}"/><line x1="100" y1="94" x2="${100 - 62 * Math.cos(a * Math.PI / 180)}" y2="${94 - 62 * Math.sin(a * Math.PI / 180)}"/>`).join("")}</g><circle cx="100" cy="94" r="10" fill="#8FC1F0"/><path d="M38 70 C48 34 80 18 100 20 C124 18 154 34 162 70 C150 60 140 66 132 58 C120 66 110 54 100 60 C88 52 80 66 68 58 C58 66 50 60 38 70 Z" fill="#FFFFFF" stroke="#C9DDF0" stroke-width="3" stroke-linejoin="round"/><path d="M56 66 L60 84 L64 64 M84 60 L88 80 L92 60 M118 60 L122 78 L126 60 M144 64 L148 82 L150 66" fill="#D6ECFB" stroke="#9CC7EC" stroke-width="2" stroke-linejoin="round"/>${[[30,40,1],[172,44,.8],[176,130,1.1],[24,140,.9]].map(([x,y,k]) => `<g transform="translate(${x} ${y}) scale(${k})"><path d="M0 -10 V10 M-8.7 -5 L8.7 5 M-8.7 5 L8.7 -5" stroke="#8FC1F0" stroke-width="2.4" stroke-linecap="round"/></g>`).join("")}</svg>`);
+    xmas.y5 = svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><ellipse cx="100" cy="186" rx="70" ry="6" fill="rgba(80,40,25,.12)"/><rect x="30" y="40" width="140" height="140" rx="14" fill="#D94848" stroke="#A12F2F" stroke-width="5"/>${[0,1,2,3].map(r => [0,1,2].map(c => { const n = [1,8,15,22,3,12,19,5,24,10,17,7][r * 3 + c]; const open = n === 1; return `<g transform="translate(${44 + c * 40} ${54 + r * 30})"><rect width="32" height="24" rx="5" fill="${open ? "#7E4F2E" : "#FFF3E0"}" stroke="#A12F2F" stroke-width="2"/>${open ? `<ellipse cx="16" cy="12" rx="5" ry="8" fill="#F3DDB3" stroke="#B5864F" stroke-width="2" transform="rotate(20 16 12)"/>` : `<text x="16" y="17" font-family="Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle" fill="#A12F2F">${n}</text>`}</g>`; }).join("")).join("")}<rect x="92" y="34" width="16" height="152" fill="#4FA36B" opacity=".0"/><path d="M100 40 C80 16 64 30 84 40 Z M100 40 C120 16 136 30 116 40 Z" fill="#4FA36B" stroke="#2F6E45" stroke-width="3" stroke-linejoin="round"/><circle cx="100" cy="40" r="7" fill="#4FA36B" stroke="#2F6E45" stroke-width="3"/></svg>`);
+    Object.entries(xmas).forEach(([id, image]) => {
+        const product = getProduct(id);
+        if (product) product.image = image;
+    });
+    const xmasHero = overlayImage({ mouth: "grin", accessories: [], held: "none", background: "night" }, santaHat);
+    ["nataleHamster", "homeNataleHamster"].forEach(id => {
+        const img = document.getElementById(id);
+        if (img) img.src = xmasHero;
+    }); 
+    const heart = (x, y, k, fill, stroke = "none") => `<path transform="translate(${x} ${y}) scale(${k})" d="M0 7 C-11 -1 -13 -9 -7 -13 C-3 -15.5 0 -13 0 -10 C0 -13 3 -15.5 7 -13 C13 -9 11 -1 0 7 Z" fill="${fill}" stroke="${stroke}" stroke-width="${stroke === "none" ? 0 : 2 / k}" stroke-linejoin="round"/>`;
+    const egg = (x, y, rx, ry, fill, deco) => `<g transform="translate(${x} ${y})"><path d="M0 ${-ry} C${rx * .62} ${-ry} ${rx} ${-ry * .2} ${rx} ${ry * .25} C${rx} ${ry * .75} ${rx * .55} ${ry} 0 ${ry} C${-rx * .55} ${ry} ${-rx} ${ry * .75} ${-rx} ${ry * .25} C${-rx} ${-ry * .2} ${-rx * .62} ${-ry} 0 ${-ry} Z" fill="${fill}" stroke="rgba(80,60,90,.35)" stroke-width="2"/><path d="M${-rx * .9} ${ry * .15} L${-rx * .6} ${-ry * .05} L${-rx * .3} ${ry * .15} L0 ${-ry * .05} L${rx * .3} ${ry * .15} L${rx * .6} ${-ry * .05} L${rx * .9} ${ry * .15}" fill="none" stroke="${deco}" stroke-width="${Math.max(2, rx / 7)}" stroke-linejoin="round" stroke-linecap="round"/><circle cx="${-rx * .35}" cy="${ry * .55}" r="${rx / 8}" fill="${deco}"/><circle cx="${rx * .35}" cy="${ry * .55}" r="${rx / 8}" fill="${deco}"/><circle cx="0" cy="${-ry * .5}" r="${rx / 8}" fill="${deco}"/></g>`;
+    const stand200 = (color) => `<path d="M100 92L55 180M100 92l45 88" stroke="${color}" stroke-width="9" stroke-linecap="round"/><rect x="35" y="175" width="130" height="10" rx="5" fill="${color}"/>`;
+    const carrot = `<g transform="translate(160 200) rotate(-12)"><path d="M-12 -4 C-12 -14 12 -14 12 -4 L2 44 C1 48 -1 48 -2 44 Z" fill="#FF9A3D" stroke="#C9631A" stroke-width="3" stroke-linejoin="round"/><path d="M-7 8 H-1 M3 18 H8 M-5 28 H0" stroke="#C9631A" stroke-width="2.5" stroke-linecap="round"/><path d="M0 -12 C-8 -26 -16 -28 -18 -24 C-14 -18 -8 -14 0 -12 Z M0 -12 C0 -28 4 -34 8 -32 C8 -24 4 -16 0 -12 Z M0 -12 C10 -24 18 -24 19 -20 C14 -14 8 -12 0 -12 Z" fill="#6BBF59" stroke="#3F8A3A" stroke-width="2" stroke-linejoin="round"/></g>`;
+    const coconut = `<g transform="translate(160 214)"><path d="M14 -6 L30 -46" stroke="#F0606F" stroke-width="4" stroke-linecap="round"/><path d="M-30 -2 C-30 -36 30 -36 30 -2 C30 28 -30 28 -30 -2 Z" fill="#8A5A3B" stroke="#5B3A2A" stroke-width="3"/><ellipse cx="0" cy="-12" rx="24" ry="8" fill="#FFF6E6" stroke="#5B3A2A" stroke-width="2.5"/><path d="M-14 -24 L-6 -52" stroke="#5B3A2A" stroke-width="2"/><path d="M-30 -48 Q-6 -66 18 -48 Z" fill="#FFD66B" stroke="#C99A2E" stroke-width="2.5" stroke-linejoin="round"/><path d="M-6 -60 V-48 M-20 -52 L-14 -49 M8 -52 L2 -49" stroke="#C99A2E" stroke-width="2"/></g>`;
+    const beachBack = `<rect width="320" height="320" rx="40" fill="#BFE8FA"/><circle cx="262" cy="62" r="30" fill="#FFE27A"/><g stroke="#FFE27A" stroke-width="5" stroke-linecap="round">${[0, 45, 90, 135, 180, 225, 270, 315].map(a => `<path transform="rotate(${a} 262 62)" d="M262 18 V8"/>`).join("")}</g><path d="M0 222 Q40 210 80 222 T160 222 T240 222 T320 222 V250 H0 Z" fill="#5CC4E0"/><path d="M0 246 Q80 236 160 246 T320 246 V320 H0 Z" fill="#F6DFA6"/>`;
+ 
+    const seasonal = {
+        v1: overlayImage({ fur: "cream", cheeks: "hearts", mouth: "grin", accessories: ["halo"], held: "none" },
+            `<g transform="rotate(-28 160 222)"><path d="M98 222 H222" stroke="#8A5A3B" stroke-width="5" stroke-linecap="round"/><path d="M214 212 L232 222 L214 232" fill="none" stroke="#8A5A3B" stroke-width="4"/>${heart(104, 222, 1.1, "#FF7EA0", "#C94A6E").replace("translate(104 222)", "translate(96 222) rotate(90)")}</g><path d="M128 252 Q160 176 196 196" fill="none" stroke="#C94A6E" stroke-width="5" stroke-linecap="round"/>`,
+            `<g fill="#FFFFFF" stroke="#E7B3C4" stroke-width="3" stroke-linejoin="round"><path d="M78 160 C40 120 14 140 22 168 C10 184 30 204 52 196 C60 212 84 210 86 190 Z"/><path d="M242 160 C280 120 306 140 298 168 C310 184 290 204 268 196 C260 212 236 210 234 190 Z"/></g>`),
+        v2: window.hamsterImage({ fur: "honey", eyes: "hearts", cheeks: "hearts", mouth: "grin", held: "heart", accessories: [] }),
+        v3: window.hamsterImage({ fur: "grey", mouth: "smug", accessories: ["sunglasses", "flower"], held: "strawberry" }),
+        v4: svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><ellipse cx="100" cy="189" rx="72" ry="6" fill="rgba(120,40,70,.14)"/>${stand200("#C94A6E")}<path d="M100 160 C40 122 22 78 46 52 C66 32 92 40 100 62 C108 40 134 32 154 52 C178 78 160 122 100 160 Z" fill="#FFE1EA" stroke="#E0527A" stroke-width="10" stroke-linejoin="round"/><path d="M100 140 C56 112 44 82 60 64 C74 50 92 56 100 74 C108 56 126 50 140 64 C156 82 144 112 100 140 Z" fill="none" stroke="#FF9AB8" stroke-width="4" stroke-dasharray="6 7"/><g stroke="#E0527A" stroke-width="3.5" stroke-linecap="round"><path d="M100 92 L100 150 M100 92 L52 70 M100 92 L148 70 M100 92 L66 124 M100 92 L134 124 M100 92 L100 64"/></g><circle cx="100" cy="92" r="11" fill="#FFFFFF" stroke="#E0527A" stroke-width="4"/>${heart(100, 92, .45, "#E0527A")}${heart(42, 30, .8, "#FF9AB8")}${heart(162, 24, .6, "#FF9AB8")}</svg>`),
+        v5: svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><ellipse cx="100" cy="186" rx="70" ry="6" fill="rgba(120,40,70,.12)"/><path d="M100 180 C34 140 16 96 40 70 C60 50 88 56 100 78 C112 56 140 50 160 70 C184 96 166 140 100 180 Z" fill="#E0527A" stroke="#A8335A" stroke-width="5" stroke-linejoin="round"/><path d="M100 164 C50 132 38 100 54 82 C68 68 88 72 100 92 C112 72 132 68 146 82 C162 100 150 132 100 164 Z" fill="#FFE8EF"/>${[[78, 98, -30], [100, 110, 10], [122, 98, 30], [86, 126, 60], [114, 126, -50], [100, 142, 0], [68, 116, 20], [132, 116, -20]].map(([x, y, r]) => `<g transform="translate(${x} ${y}) rotate(${r})"><ellipse rx="5" ry="9" fill="#5B4A44"/><path d="M0 -6 V6" stroke="#EDE3D6" stroke-width="1.6"/></g>`).join("")}<path d="M100 78 C92 40 60 30 52 44 C46 56 72 66 100 78 C128 66 154 56 148 44 C140 30 108 40 100 78 Z" fill="#FFD66B" stroke="#C99A2E" stroke-width="3" stroke-linejoin="round"/><circle cx="100" cy="76" r="7" fill="#FFD66B" stroke="#C99A2E" stroke-width="3"/></svg>`),
+        v6: overlayImage({ ball: "pink", eyes: "hearts", mouth: "grin", held: "none", accessories: [] }, heart(52, 70, 1.3, "#FF7EA0") + heart(270, 96, 1, "#FF9AB8") + heart(278, 250, 1.2, "#FF7EA0") + heart(40, 234, .9, "#FF9AB8")),
+        p1: overlayImage({ fur: "white", cheeks: "pink", mouth: "grin", accessories: ["bunnyEars"], held: "none" }, carrot),
+        p2: overlayImage({ fur: "cream", mouth: "surprised", eyes: "big", accessories: [], held: "none" },
+            `<path d="M42 212 L66 194 L90 214 L114 192 L138 214 L160 192 L182 214 L206 192 L230 214 L254 194 L278 212 C284 278 236 314 160 314 C84 314 36 278 42 212 Z" fill="#FFF7E8" stroke="#D8C3A5" stroke-width="4" stroke-linejoin="round"/><path d="M50 258 Q105 240 160 258 T270 258" fill="none" stroke="#B9A3E3" stroke-width="7" stroke-linecap="round"/><g fill="#A9D3C0"><circle cx="90" cy="288" r="7"/><circle cx="160" cy="294" r="7"/><circle cx="230" cy="288" r="7"/></g><g transform="rotate(-10 160 70)"><path d="M112 88 C112 50 208 50 208 88 L194 78 L182 92 L170 78 L158 92 L146 78 L134 92 L122 78 Z" fill="#FFF7E8" stroke="#D8C3A5" stroke-width="4" stroke-linejoin="round"/><circle cx="160" cy="66" r="6" fill="#F7A1BC"/></g>`),
+        p3: window.hamsterImage({ fur: "cocoa", mouth: "grin", accessories: ["bow"], accColorHead: "yellow", held: "none" }),
+        p4: svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><ellipse cx="100" cy="189" rx="72" ry="6" fill="rgba(80,60,110,.14)"/>${stand200("#8A73C9")}${egg(100, 94, 60, 76, "#F3EDFF", "#B9A3E3").replace('stroke="rgba(80,60,90,.35)" stroke-width="2"', 'stroke="#8A73C9" stroke-width="8"')}<g stroke="#8A73C9" stroke-width="3" stroke-linecap="round" opacity=".7"><path d="M100 94 L100 24 M100 94 L100 166 M100 94 L44 94 M100 94 L156 94 M100 94 L58 50 M100 94 L142 50 M100 94 L60 140 M100 94 L140 140"/></g><circle cx="100" cy="94" r="10" fill="#FFD66B" stroke="#C99A2E" stroke-width="3"/></svg>`),
+        p5: svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><ellipse cx="100" cy="186" rx="72" ry="6" fill="rgba(80,40,25,.12)"/><path d="M40 108 C40 40 160 40 160 108" fill="none" stroke="#B5764A" stroke-width="9" stroke-linecap="round"/><path d="M34 106 Q100 92 166 106 L162 108 Z" fill="#8FD39A"/><path d="M38 100 L46 90 L52 102 L60 88 L66 100 L74 90 L80 102 L88 88 L94 100 L102 90 L108 102 L116 88 L122 100 L130 90 L136 102 L144 88 L150 100 L158 90 L162 104" fill="#8FD39A" stroke="#5DA86A" stroke-width="2" stroke-linejoin="round"/>${egg(70, 98, 14, 18, "#F7A1BC", "#FFFFFF")}${egg(100, 92, 15, 19, "#FFE27A", "#F0A040")}${egg(130, 98, 14, 18, "#8FC1F0", "#FFFFFF")}${egg(86, 106, 12, 15, "#B9A3E3", "#FFFFFF")}${egg(116, 106, 12, 15, "#A9D3C0", "#FFFFFF")}<path d="M30 108 H170 L154 180 H46 Z" fill="#D9A066" stroke="#9C6A3C" stroke-width="5" stroke-linejoin="round"/><g stroke="#B5804C" stroke-width="3"><path d="M36 128 H164 M41 150 H159"/><path d="M60 108 L64 180 M84 108 L86 180 M108 108 L108 180 M132 108 L130 180 M154 108 L148 180"/></g><path d="M74 118 C66 104 50 112 60 122 Z M74 118 C82 104 98 112 88 122 Z" fill="#F7A1BC" stroke="#C76A88" stroke-width="2"/></svg>`),
+        p6: overlayImage({ eyes: "happy", mouth: "grin", accessories: [], held: "none" },
+            `<path d="M160 18 C244 18 292 120 292 196 C292 268 236 312 160 312 C84 312 28 268 28 196 C28 120 76 18 160 18 Z" fill="#DDF1E8" fill-opacity=".25" stroke="#7FB8A2" stroke-width="5"/><path d="M84 70 Q104 44 132 36" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity=".8"/><path d="M34 236 L62 220 L90 238 L118 220 L146 238 L174 220 L202 238 L230 220 L258 238 L286 222" fill="none" stroke="#B9A3E3" stroke-width="6" stroke-linejoin="round" opacity=".8"/><g fill="#F7A1BC" opacity=".85"><circle cx="70" cy="140" r="7"/><circle cx="250" cy="140" r="7"/><circle cx="160" cy="44" r="6"/></g>`,
+            `<path d="M160 18 C244 18 292 120 292 196 C292 268 236 312 160 312 C84 312 28 268 28 196 C28 120 76 18 160 18 Z" fill="#F4FBF7"/>`),
+        s1: overlayImage({ fur: "honey", mouth: "grin", accessories: ["sunglasses", "flower"], held: "none" }, coconut),
+        s2: overlayImage({ fur: "caramel", mouth: "smile", accessories: [], held: "none" },
+            `<g transform="translate(160 238)"><ellipse rx="86" ry="30" fill="none" stroke="#F0606F" stroke-width="24"/><ellipse rx="86" ry="30" fill="none" stroke="#FFFFFF" stroke-width="24" stroke-dasharray="34 34" stroke-dashoffset="10"/><ellipse rx="86" ry="30" fill="none" stroke="rgba(120,30,40,.35)" stroke-width="2"/><ellipse rx="98" ry="42" fill="none" stroke="rgba(120,30,40,.35)" stroke-width="2"/><ellipse rx="74" ry="18" fill="none" stroke="rgba(120,30,40,.35)" stroke-width="2"/></g><g transform="translate(206 196)"><path d="M-30 -24 Q-10 -6 0 0" fill="none" stroke="#3B3440" stroke-width="2.5"/><rect x="-2" y="-8" width="22" height="14" rx="6" fill="#FFD66B" stroke="#C99A2E" stroke-width="2.5"/></g>`),
+        s3: overlayImage({ fur: "pink", mouth: "tongue", accessories: [], held: "none" },
+            `<path d="M146 222 L174 222 L160 268 Z" fill="#E8B46A" stroke="#B5804C" stroke-width="3" stroke-linejoin="round"/><path d="M151 232 L170 244 M167 230 L154 252" stroke="#B5804C" stroke-width="2"/><circle cx="150" cy="214" r="14" fill="#FFB3C8" stroke="#E07A98" stroke-width="3"/><circle cx="170" cy="214" r="14" fill="#BFE8D2" stroke="#6FB892" stroke-width="3"/><circle cx="160" cy="200" r="13" fill="#FFB3C8" stroke="#E07A98" stroke-width="3"/><circle cx="160" cy="186" r="4" fill="#E8353F"/>`),
+        s4: svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M10 176 Q100 160 190 176 V196 H10 Z" fill="#F6DFA6"/>${stand200("#2F8FB0")}${["#F0606F", "#FFFFFF", "#FFD66B", "#FFFFFF", "#5CC4E0", "#FFFFFF", "#8FD39A", "#FFFFFF"].map((c, i) => { const a1 = (i * 45 - 90) * Math.PI / 180, a2 = ((i + 1) * 45 - 90) * Math.PI / 180; return `<path d="M100 92 L${(100 + 68 * Math.cos(a1)).toFixed(1)} ${(92 + 68 * Math.sin(a1)).toFixed(1)} A68 68 0 0 1 ${(100 + 68 * Math.cos(a2)).toFixed(1)} ${(92 + 68 * Math.sin(a2)).toFixed(1)} Z" fill="${c}"/>`; }).join("")}<circle cx="100" cy="92" r="68" fill="none" stroke="#2F8FB0" stroke-width="9"/><circle cx="100" cy="92" r="10" fill="#FFFFFF" stroke="#2F8FB0" stroke-width="4"/><path d="M150 186 C150 174 168 174 168 186 Z" fill="#F7A1BC" stroke="#C76A88" stroke-width="2"/><path d="M159 176 V186 M154 178 L156 186 M164 178 L162 186" stroke="#C76A88" stroke-width="1.5"/></svg>`),
+        s5: svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><ellipse cx="100" cy="176" rx="76" ry="7" fill="rgba(40,90,40,.14)"/><path d="M20 80 A80 80 0 0 0 180 80 Z" fill="#5DA86A" stroke="#3F7A48" stroke-width="4" stroke-linejoin="round"/><path d="M30 80 A70 70 0 0 0 170 80 Z" fill="#E8F5D0"/><path d="M36 80 A64 64 0 0 0 164 80 Z" fill="#F0606F"/>${[[70, 96, 20], [100, 104, 0], [130, 96, -20], [84, 122, 30], [116, 122, -30], [100, 138, 0], [56, 88, 40], [144, 88, -40]].map(([x, y, r]) => `<ellipse cx="${x}" cy="${y}" rx="3.5" ry="6" transform="rotate(${r} ${x} ${y})" fill="#3B3440"/>`).join("")}<path d="M24 80 H176" stroke="#3F7A48" stroke-width="4" stroke-linecap="round"/></svg>`),
+        s6: overlayImage({ eyes: "happy", mouth: "grin", accessories: [], held: "none" },
+            `<g opacity=".28">${["#F0606F", "#FFD66B", "#5CC4E0", "#8FD39A", "#FFB86B", "#B9A3E3"].map((c, i) => { const a1 = i * 60 * Math.PI / 180, a2 = (i + 1) * 60 * Math.PI / 180; return `<path d="M160 172 L${(160 + 132 * Math.cos(a1)).toFixed(1)} ${(172 + 132 * Math.sin(a1)).toFixed(1)} A132 132 0 0 1 ${(160 + 132 * Math.cos(a2)).toFixed(1)} ${(172 + 132 * Math.sin(a2)).toFixed(1)} Z" fill="${c}"/>`; }).join("")}</g><circle cx="160" cy="172" r="132" fill="none" stroke="#2F8FB0" stroke-width="5"/><circle cx="160" cy="172" r="14" fill="#FFFFFF" opacity=".7"/><path d="M84 82 Q110 56 140 50" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity=".8"/>`,
+            `<circle cx="160" cy="172" r="132" fill="#F2FAFD"/>`)
+    };
+    Object.entries(seasonal).forEach(([id, image]) => {
+        const product = getProduct(id);
+        if (product) product.image = image;
+    });
+    const seasonHeroes = {
+        sanvalentino: window.hamsterImage({ fur: "cream", eyes: "hearts", cheeks: "hearts", mouth: "grin", held: "heart", accessories: [], background: "hearts" }),
+        pasqua: overlayImage({ fur: "white", cheeks: "pink", mouth: "grin", accessories: ["bunnyEars"], held: "none", background: "meadow" }, carrot),
+        estate: overlayImage({ fur: "honey", mouth: "grin", accessories: ["sunglasses", "flower"], held: "none" }, coconut, beachBack)
+    };
+    Object.entries(seasonHeroes).forEach(([season, image]) => {
+        [season + "Hamster", "home" + season[0].toUpperCase() + season.slice(1) + "Hamster"].forEach(id => {
+            const img = document.getElementById(id);
+            if (img) img.src = image;
+        });
+    });    
     const webBall = getProduct("x6");
     if (webBall) webBall.image = svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 320 320"><ellipse cx="160" cy="306" rx="96" ry="8" fill="rgba(80,40,90,.15)"/><image href="${window.hamsterImage({ eyes: "wink", held: "none" })}" x="36" y="56" width="248" height="248"/><circle cx="160" cy="178" r="126" fill="#B9A3E3" fill-opacity=".18"/><path d="M160 178 L286.0 178.0 M160 178 L269.1 241.0 M160 178 L223.0 287.1 M160 178 L160.0 304.0 M160 178 L97.0 287.1 M160 178 L50.9 241.0 M160 178 L34.0 178.0 M160 178 L50.9 115.0 M160 178 L97.0 68.9 M160 178 L160.0 52.0 M160 178 L223.0 68.9 M160 178 L269.1 115.0 M190.0 178.0 Q184.9 184.7 186.0 193.0 Q178.2 196.2 175.0 204.0 Q166.7 202.9 160.0 208.0 Q153.3 202.9 145.0 204.0 Q141.8 196.2 134.0 193.0 Q135.1 184.7 130.0 178.0 Q135.1 171.3 134.0 163.0 Q141.8 159.8 145.0 152.0 Q153.3 153.1 160.0 148.0 Q166.7 153.1 175.0 152.0 Q178.2 159.8 186.0 163.0 Q184.9 171.3 190.0 178.0 M218.0 178.0 Q208.2 190.9 210.2 207.0 Q195.3 213.3 189.0 228.2 Q172.9 226.2 160.0 236.0 Q147.1 226.2 131.0 228.2 Q124.7 213.3 109.8 207.0 Q111.8 190.9 102.0 178.0 Q111.8 165.1 109.8 149.0 Q124.7 142.7 131.0 127.8 Q147.1 129.8 160.0 120.0 Q172.9 129.8 189.0 127.8 Q195.3 142.7 210.2 149.0 Q208.2 165.1 218.0 178.0 M246.0 178.0 Q231.4 197.1 234.5 221.0 Q212.3 230.3 203.0 252.5 Q179.1 249.4 160.0 264.0 Q140.9 249.4 117.0 252.5 Q107.7 230.3 85.5 221.0 Q88.6 197.1 74.0 178.0 Q88.6 158.9 85.5 135.0 Q107.7 125.7 117.0 103.5 Q140.9 106.6 160.0 92.0 Q179.1 106.6 203.0 103.5 Q212.3 125.7 234.5 135.0 Q231.4 158.9 246.0 178.0 M272.0 178.0 Q253.0 202.9 257.0 234.0 Q228.1 246.1 216.0 275.0 Q184.9 271.0 160.0 290.0 Q135.1 271.0 104.0 275.0 Q91.9 246.1 63.0 234.0 Q67.0 202.9 48.0 178.0 Q67.0 153.1 63.0 122.0 Q91.9 109.9 104.0 81.0 Q135.1 85.0 160.0 66.0 Q184.9 85.0 216.0 81.0 Q228.1 109.9 257.0 122.0 Q253.0 153.1 272.0 178.0 " fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".95"/><path d="M160 178 L286.0 178.0 M160 178 L269.1 241.0 M160 178 L223.0 287.1 M160 178 L160.0 304.0 M160 178 L97.0 287.1 M160 178 L50.9 241.0 M160 178 L34.0 178.0 M160 178 L50.9 115.0 M160 178 L97.0 68.9 M160 178 L160.0 52.0 M160 178 L223.0 68.9 M160 178 L269.1 115.0 M190.0 178.0 Q184.9 184.7 186.0 193.0 Q178.2 196.2 175.0 204.0 Q166.7 202.9 160.0 208.0 Q153.3 202.9 145.0 204.0 Q141.8 196.2 134.0 193.0 Q135.1 184.7 130.0 178.0 Q135.1 171.3 134.0 163.0 Q141.8 159.8 145.0 152.0 Q153.3 153.1 160.0 148.0 Q166.7 153.1 175.0 152.0 Q178.2 159.8 186.0 163.0 Q184.9 171.3 190.0 178.0 M218.0 178.0 Q208.2 190.9 210.2 207.0 Q195.3 213.3 189.0 228.2 Q172.9 226.2 160.0 236.0 Q147.1 226.2 131.0 228.2 Q124.7 213.3 109.8 207.0 Q111.8 190.9 102.0 178.0 Q111.8 165.1 109.8 149.0 Q124.7 142.7 131.0 127.8 Q147.1 129.8 160.0 120.0 Q172.9 129.8 189.0 127.8 Q195.3 142.7 210.2 149.0 Q208.2 165.1 218.0 178.0 M246.0 178.0 Q231.4 197.1 234.5 221.0 Q212.3 230.3 203.0 252.5 Q179.1 249.4 160.0 264.0 Q140.9 249.4 117.0 252.5 Q107.7 230.3 85.5 221.0 Q88.6 197.1 74.0 178.0 Q88.6 158.9 85.5 135.0 Q107.7 125.7 117.0 103.5 Q140.9 106.6 160.0 92.0 Q179.1 106.6 203.0 103.5 Q212.3 125.7 234.5 135.0 Q231.4 158.9 246.0 178.0 M272.0 178.0 Q253.0 202.9 257.0 234.0 Q228.1 246.1 216.0 275.0 Q184.9 271.0 160.0 290.0 Q135.1 271.0 104.0 275.0 Q91.9 246.1 63.0 234.0 Q67.0 202.9 48.0 178.0 Q67.0 153.1 63.0 122.0 Q91.9 109.9 104.0 81.0 Q135.1 85.0 160.0 66.0 Q184.9 85.0 216.0 81.0 Q228.1 109.9 257.0 122.0 Q253.0 153.1 272.0 178.0 " fill="none" stroke="#7B5BB0" stroke-width="1" opacity=".55"/><circle cx="160" cy="178" r="126" fill="none" stroke="#7B5BB0" stroke-width="4"/><path d="M110 76 Q122 66 134 72" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity=".6"/><path d="M238 52 V104" stroke="#3A2A3F" stroke-width="1.5"/><g transform="translate(238 112)"><path d="M-12 -6 L-4 -2 M-12 2 L-4 1 M-12 9 L-4 4 M12 -6 L4 -2 M12 2 L4 1 M12 9 L4 4" stroke="#3A2A3F" stroke-width="2" stroke-linecap="round"/><ellipse cx="0" cy="2" rx="6" ry="8" fill="#3A2A3F"/><circle cx="0" cy="-6" r="4.5" fill="#3A2A3F"/><circle cx="-1.6" cy="-6.5" r="1.1" fill="#fff"/><circle cx="1.6" cy="-6.5" r="1.1" fill="#fff"/></g></svg>`);
     const pumpkinWheel = getProduct("x4");
