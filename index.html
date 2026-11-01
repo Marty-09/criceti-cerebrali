@@ -2428,6 +2428,40 @@ header.menu-open .nav-links { opacity: 1; visibility: visible; transform: none; 
 @media (max-width: 350px) {
     .logo > span:last-child { display: none; }
 }
+/* ===== Polish v2 ===== */
+:root{--shadow:0 1px 2px rgba(70,45,35,.04),0 14px 40px -12px rgba(70,45,35,.14);--shadow-hover:0 2px 4px rgba(70,45,35,.05),0 24px 50px -16px rgba(70,45,35,.24);--ease:cubic-bezier(.2,.8,.2,1)}
+body{-webkit-font-smoothing:antialiased;background:radial-gradient(1200px 600px at 85% -10%,#ffeef0 0,transparent 60%),radial-gradient(900px 500px at -10% 20%,#fff3e0 0,transparent 55%),var(--bg);background-attachment:fixed}
+::selection{background:var(--pink);color:var(--ink)}
+.announcement{background:linear-gradient(90deg,#302a28,#4a3a36,#302a28);letter-spacing:.08em}
+header{background:rgba(255,250,245,.78);backdrop-filter:saturate(160%) blur(18px)}
+.logo-icon{box-shadow:0 6px 16px -6px rgba(242,166,111,.6);transition:transform .4s var(--ease)}
+.logo:hover .logo-icon{transform:rotate(8deg) scale(1.06)}
+h1{text-wrap:balance}h2,h3{text-wrap:balance}p{text-wrap:pretty}
+.primary-button{box-shadow:0 10px 24px -10px rgba(48,42,40,.55);transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s}
+.primary-button:hover{transform:translateY(-2px);box-shadow:0 16px 30px -12px rgba(48,42,40,.6);background:#463c39}
+.primary-button:active,.secondary-button:active,.add-button:active{transform:translateY(0) scale(.98)}
+.secondary-button{transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s}
+.secondary-button:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.product-card,.home-menu-card,.trust-item,.panel,.gallery-card,.cart-item{box-shadow:var(--shadow);transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s}
+.product-card:hover,.home-menu-card:hover,.gallery-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover);border-color:#f0d9d6}
+.product-card .product-art{transition:transform .5s var(--ease)}
+.product-card:hover .product-art{transform:scale(1.04)}
+.product-card{overflow:hidden}
+.home-menu-icon,.trust-icon{transition:transform .4s var(--ease)}
+.home-menu-card:hover .home-menu-icon{transform:translateY(-3px) rotate(-6deg) scale(1.08)}
+.price{font-family:"Nunito",sans-serif;font-weight:900;letter-spacing:-.02em}
+.filter-chip{transition:background .2s,transform .2s,box-shadow .2s}
+.filter-chip:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.shop-search input,select{transition:border-color .2s,box-shadow .2s}
+.shop-search input:focus,select:focus,.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--pink);box-shadow:0 0 0 4px var(--pink-light);outline:none}
+.hero-art{box-shadow:var(--shadow-hover)}
+.hero-wheel{animation-timing-function:linear}
+.floating-note{box-shadow:0 10px 24px -10px rgba(70,45,35,.3)}
+.halloween-banner-inner{box-shadow:var(--shadow)}
+.section-heading h2,.page-heading h1{letter-spacing:-.035em}
+.toast{box-shadow:var(--shadow-hover)}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@media (max-width:640px){.container{width:calc(100% - 28px)}h1{font-size:clamp(2.2rem,10vw,3rem)}.primary-button,.secondary-button{padding:13px 16px}}
 </style>
 </head>
 
