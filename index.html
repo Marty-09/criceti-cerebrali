@@ -8470,5 +8470,128 @@ document.addEventListener("keydown", event => {
 });
 if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
 </script>
+<style>
+.skip-link{position:fixed;left:12px;top:-60px;z-index:10000;padding:10px 16px;border-radius:12px;background:var(--ink);color:#fff;font-weight:800;transition:top .2s}
+.skip-link:focus{top:12px}
+.to-top{position:fixed;left:18px;bottom:18px;z-index:30;width:46px;height:46px;border:0;border-radius:50%;background:var(--ink);color:#fff;font-size:1.3rem;box-shadow:var(--shadow-hover);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s,transform .25s,visibility 0s .25s}
+.to-top.show{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .25s}
+.to-top:hover{background:#463c39}
+.product-art img,.product-modal-art img,.cart-item-art img{content-visibility:auto}
+.cart-button.bump .cart-count{background:var(--orange)}
+.nav-link.current{box-shadow:inset 0 -3px 0 var(--pink)}
+@media print{.announcement,header,footer,.toast,.to-top,.snowfall{display:none!important}}
+</style>
+
+<script>
+(function () {
+    // 1. Skip link + main landmark target
+    const main = document.querySelector("main");
+    if (main && !main.id) main.id = "contenuto";
+    if (main) main.setAttribute("tabindex", "-1");
+    const skip = document.createElement("a");
+    skip.className = "skip-link";
+    skip.href = "#contenuto";
+    skip.textContent = "Vai al contenuto";
+    skip.addEventListener("click", e => { e.preventDefault(); main && main.focus(); });
+    document.body.prepend(skip);
+
+    // 2. Per-page document title, aria-current and focus management
+    const titles = {
+        catalogo: "La ruota non gira da sola", carrello: "Il tuo carrello", restituzioni: "Resi e restituzioni",
+        assistenza: "Centro assistenza", "crea-criceto": "Crea il tuo criceto", "crea-casa": "Crea la casa",
+        gara: "Gara di criceti", halloween: "Speciale Halloween", natale: "Speciale Natale",
+        sanvalentino: "Speciale San Valentino", pasqua: "Speciale Pasqua", estate: "Speciale Estate"
+    };
+    const baseShowPage = window.showPage;
+    window.showPage = function (name, fromHistory) {
+        baseShowPage.apply(this, arguments);
+        document.title = "Criceti Cerebrali — " + (titles[name] || titles.catalogo);
+        document.querySelectorAll(".nav-link").forEach(b =>
+            b.dataset.page === name ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current"));
+        if (!fromHistory) {
+            const heading = document.querySelector("#" + name + " h1");
+            if (heading) { heading.setAttribute("tabindex", "-1"); heading.focus({ preventScroll: true }); }
+        }
+    };
+    document.title = "Criceti Cerebrali — " + (titles[document.body.dataset.page] || titles.catalogo);
+
+    // 3. Focus trap for the two modals
+    function trap(overlaySel) {
+        const overlay = document.querySelector(overlaySel);
+        if (!overlay) return;
+        overlay.addEventListener("keydown", e => {
+            if (e.key !== "Tab") return;
+            const f = [...overlay.querySelectorAll("button,[href],input,select,textarea,[tabindex]:not([tabindex='-1'])")]
+                .filter(el => !el.disabled && el.offsetParent !== null);
+            if (!f.length) return;
+            const first = f[0], last = f[f.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        });
+    }
+    trap("#productModal");
+    trap("#confirmOverlay");
+
+    // 4. Arrow-key navigation for the creator tabs (proper tablist behaviour)
+    document.querySelectorAll(".creator-tabs").forEach(list => {
+        list.addEventListener("keydown", e => {
+            if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
+            const tabs = [...list.querySelectorAll(".creator-tab")];
+            let i = tabs.indexOf(document.activeElement);
+            if (i < 0) return;
+            if (e.key === "ArrowRight") i = (i + 1) % tabs.length;
+            if (e.key === "ArrowLeft") i = (i - 1 + tabs.length) % tabs.length;
+            if (e.key === "Home") i = 0;
+            if (e.key === "End") i = tabs.length - 1;
+            e.preventDefault();
+            tabs[i].focus();
+            tabs[i].click();
+        });
+        list.querySelectorAll(".creator-tab").forEach(t => t.setAttribute("tabindex", t.classList.contains("active") ? "0" : "-1"));
+        list.addEventListener("click", () => list.querySelectorAll(".creator-tab").forEach(t =>
+            t.setAttribute("tabindex", t.classList.contains("active") ? "0" : "-1")));
+    });
+
+    // 5. Lazy-load and async-decode every image added to the page (product art is heavy inline SVG)
+    const tune = img => { img.loading = "lazy"; img.decoding = "async"; };
+    document.querySelectorAll("img").forEach(tune);
+    new MutationObserver(muts => muts.forEach(m => m.addedNodes.forEach(n => {
+        if (n.nodeType !== 1) return;
+        if (n.tagName === "IMG") tune(n);
+        n.querySelectorAll && n.querySelectorAll("img").forEach(tune);
+    }))).observe(document.body, { childList: true, subtree: true });
+
+    // 6. Back-to-top button
+    const top = document.createElement("button");
+    top.className = "to-top";
+    top.type = "button";
+    top.setAttribute("aria-label", "Torna su");
+    top.textContent = "↑";
+    top.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    document.body.append(top);
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => { top.classList.toggle("show", window.scrollY > 700); ticking = false; });
+    }, { passive: true });
+
+    // 7. Keep the cart in sync across browser tabs
+    window.addEventListener("storage", e => {
+        if (e.key !== CART_KEY) return;
+        cart = {}; customProducts = [];
+        loadCart();
+        updateCartCount();
+        renderCart();
+    });
+
+    // 8. Pause snowfall and the promo carousel when the tab is hidden (saves battery)
+    document.addEventListener("visibilitychange", () => {
+        const snow = document.querySelector(".snowfall");
+        if (snow) snow.style.animationPlayState = document.hidden ? "paused" : "running";
+        document.querySelectorAll(".snowflake").forEach(s => s.style.animationPlayState = document.hidden ? "paused" : "running");
+    });
+})();
+</script>    
 </body>
 </html>
