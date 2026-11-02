@@ -2572,10 +2572,18 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
 #crea-criceto .creator-option:active{transform:scale(.97)}
 #crea-criceto .creator-option.selected{background:linear-gradient(180deg,#fff6f7,#ffe9ec);box-shadow:0 10px 20px -14px rgba(176,72,95,.7),0 0 0 3px rgba(217,149,152,.16)}
 #crea-criceto .creator-option.selected::after{content:"✓";position:absolute;top:7px;right:7px;width:20px;height:20px;display:grid;place-items:center;border-radius:50%;background:#d77f81;color:#fff;font-size:.7rem;font-weight:900;line-height:1;animation:checkPop .3s var(--ease)}
-#crea-criceto .creator-swatch{width:44px;height:44px;box-shadow:inset -5px -6px 0 rgba(48,42,40,.08),inset 4px 5px 0 rgba(255,255,255,.3);transition:transform .3s var(--ease),box-shadow .25s}
+/* Swatches are flat: the dot is exactly the colour the hamster (or item) will get */
+#crea-criceto .creator-swatch{width:44px;height:44px;border:0;box-shadow:inset 0 0 0 1px rgba(48,42,40,.16);transition:transform .3s var(--ease),box-shadow .25s}
 #crea-criceto .creator-option:hover .creator-swatch{transform:scale(1.1)}
-#crea-criceto .creator-option.selected .creator-swatch{box-shadow:inset -5px -6px 0 rgba(48,42,40,.08),inset 4px 5px 0 rgba(255,255,255,.3),0 0 0 3px #fff,0 0 0 5px #d99598}
-#crea-criceto .creator-preview-icon{box-shadow:inset 0 0 0 1px #f4e7df}
+#crea-criceto .creator-option.selected .creator-swatch{box-shadow:inset 0 0 0 1px rgba(48,42,40,.16),0 0 0 3px #fff,0 0 0 5px #d99598}
+/* Round colour dots (the generic option min-height must not stretch them) */
+#crea-criceto .creator-option.creator-color{min-height:0;width:auto;padding:4px;border-radius:50%;background:#fffdfb}
+#crea-criceto .creator-option.creator-color.selected{background:#fffdfb;box-shadow:none}
+#crea-criceto .creator-color .creator-swatch{width:30px;height:30px}
+#crea-criceto .creator-option.creator-color.selected::after{top:-5px;right:-5px;width:16px;height:16px;font-size:.55rem}
+#crea-criceto .creator-colors{gap:10px;padding:6px 4px}
+#crea-criceto .creator-preview-icon{width:68px;height:68px;border-radius:18px;background:radial-gradient(circle at 50% 30%,#fff,#fff1e8);box-shadow:inset 0 0 0 1px #f1e1d8;overflow:hidden}
+#crea-criceto .creator-preview-icon img{width:100%;height:100%;object-fit:cover;display:block}
 #crea-criceto .creator-next{border-radius:999px;font-weight:800}
 
 /* Actions */
@@ -2604,6 +2612,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
   #crea-criceto .creator-name{padding-right:38px}
 }
 @media (max-width:430px){
+  #crea-criceto .creator-preview-icon{width:58px;height:58px;border-radius:15px}
   #crea-criceto .creator-tab .tab-ico{display:none}
   #crea-criceto .creator-actions{gap:8px}
   #crea-criceto .creator-actions button{font-size:.88rem;padding-left:8px;padding-right:8px}
@@ -4465,7 +4474,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                     </div>
                 
                     <div class="creator-colors" role="group" aria-label="Colore del libro">
-                        <span class="creator-colors-label">Colore del libro</span>
+                        <span class="creator-colors-label">Colore dell'oggetto</span>
                         <button type="button" class="creator-option creator-color selected" data-group="heldColor" data-value="original" aria-pressed="true" title="Originale" aria-label="Originale"><span class="creator-swatch" style="background:conic-gradient(#F7A1BC 0 25%,#FFD66B 0 50%,#A9D3C0 0 75%,#8FC1F0 0)"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heldColor" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heldColor" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#F0606F"></span></button>
@@ -6536,6 +6545,9 @@ function initHamsterCreator() {
         white: { main: "#FFFFFF", dark: "#BDB3AE", light: "#F3EEEA" }
     };
     const zoneColorKey = { head: "accColorHead", face: "accColorFace", neck: "accColorNeck" };
+    // Held items: the chosen palette, or the item's own default colours when "original" is selected.
+    const heldCustom = state => !!accPalette[state.heldColor];
+    const heldPal = (state, fallback) => accPalette[state.heldColor] || fallback;
 
     // Parti del look disegnate al volo: motivo, bocca, guance, oggetto in mano e sfondo.
     const heartShape = (x, y, size, fill, extra = "") =>
@@ -6616,20 +6628,57 @@ function initHamsterCreator() {
             none: ""
         },
         held: {
-            seed: `<path d="M160 190 Q172 202 167 216 Q160 223 153 216 Q148 202 160 190 Z" fill="#5B4A44" stroke="#3C302C" stroke-width="2"/><path d="M160 195 V214" stroke="#EDE3D6" stroke-width="2.5" stroke-linecap="round"/>`,
-            strawberry: `<path d="M160 223 C145 215 143 197 150 193 C155 190 165 190 170 193 C177 197 175 215 160 223 Z" fill="#F0606F" stroke="#C2434F" stroke-width="2"/><g fill="#FFE7A0"><circle cx="154" cy="201" r="1.4"/><circle cx="165" cy="200" r="1.4"/><circle cx="160" cy="208" r="1.4"/><circle cx="153" cy="211" r="1.4"/><circle cx="167" cy="210" r="1.4"/></g><path d="M149 194 L155 186 L160 192 L165 186 L171 194 Q160 198 149 194 Z" fill="#7CC36E" stroke="#4F9447" stroke-width="1.5" stroke-linejoin="round"/>`,
-            heart: heartShape(160, 208, 1.1, "#FF7FA3", 'stroke="#D9506F" stroke-width="2"') + `<circle cx="152" cy="197" r="2.6" fill="#FFFFFF" opacity=".8"/>`,
-            coffee: `<path d="M147 195 H173 L170 220 Q160 224 150 220 Z" fill="#FFFFFF" stroke="#8B6A5A" stroke-width="2.2" stroke-linejoin="round"/><path d="M149 206 H171" stroke="#C98B5E" stroke-width="6"/><rect x="145" y="190" width="30" height="7" rx="3.5" fill="#F4A7B4" stroke="#C9707F" stroke-width="1.8"/>`,
-            mic: `<rect x="155" y="196" width="10" height="30" rx="4" fill="#3B3440" stroke="#24202A" stroke-width="1.5"/><circle cx="160" cy="191" r="11" fill="#C9CED6" stroke="#8C939E" stroke-width="2"/><path d="M152 187 H168 M151 192 H169 M153 197 H167" stroke="#8C939E" stroke-width="1.4"/><rect x="154" y="200" width="12" height="4" rx="2" fill="#B9A3E3"/>`,
-            guitar: `<g transform="translate(160 208) rotate(60) scale(1.45) translate(-160 -205)"><rect x="157" y="166" width="6" height="32" rx="2" fill="#8B5A35"/><rect x="155" y="160" width="10" height="10" rx="2.5" fill="#6B4226"/><circle cx="160" cy="199" r="10" fill="#E8A160" stroke="#A86A35" stroke-width="2"/><circle cx="160" cy="214" r="13" fill="#E8A160" stroke="#A86A35" stroke-width="2"/><circle cx="160" cy="207" r="4" fill="#6B4226"/><path d="M158.5 170 V222 M161.5 170 V222" stroke="#FFF4D6" stroke-width=".8"/></g>`,
+            // Every held item follows the "Colore" picker; "original" keeps each item's own default look.
+            seed: (c, s) => {
+                const p = heldPal(s, { main: "#5B4A44", dark: "#3C302C", light: "#EDE3D6" });
+                const stripe = heldCustom(s) ? (p === accPalette.black ? p.light : p.dark) : p.light;
+                return `<path d="M160 190 Q172 202 167 216 Q160 223 153 216 Q148 202 160 190 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="2"/><path d="M160 195 V214" stroke="${stripe}" stroke-width="2.5" stroke-linecap="round"/>`;
+            },
+            strawberry: (c, s) => {
+                const p = heldPal(s, { main: "#F0606F", dark: "#C2434F", light: "#FFE7A0" });
+                return `<path d="M160 223 C145 215 143 197 150 193 C155 190 165 190 170 193 C177 197 175 215 160 223 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="2"/><g fill="${heldCustom(s) ? p.light : "#FFE7A0"}"><circle cx="154" cy="201" r="1.4"/><circle cx="165" cy="200" r="1.4"/><circle cx="160" cy="208" r="1.4"/><circle cx="153" cy="211" r="1.4"/><circle cx="167" cy="210" r="1.4"/></g><path d="M149 194 L155 186 L160 192 L165 186 L171 194 Q160 198 149 194 Z" fill="#7CC36E" stroke="#4F9447" stroke-width="1.5" stroke-linejoin="round"/>`;
+            },
+            heart: (c, s) => {
+                const p = heldPal(s, { main: "#FF7FA3", dark: "#D9506F" });
+                return heartShape(160, 208, 1.1, p.main, `stroke="${p.dark}" stroke-width="2"`) + `<circle cx="152" cy="197" r="2.6" fill="#FFFFFF" opacity=".8"/>`;
+            },
+            coffee: (c, s) => {
+                const p = heldPal(s, { main: "#FFFFFF", dark: "#8B6A5A", light: "#F4A7B4", lid: "#C9707F" });
+                const lidStroke = heldCustom(s) ? p.dark : p.lid;
+                return `<path d="M147 195 H173 L170 220 Q160 224 150 220 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="2.2" stroke-linejoin="round"/><path d="M149 206 H171" stroke="#C98B5E" stroke-width="6"/><rect x="145" y="190" width="30" height="7" rx="3.5" fill="${p.light}" stroke="${lidStroke}" stroke-width="1.8"/>`;
+            },
             book: (c, s) => {
                 const p = accPalette[s.heldColor] || { main: "#8FB8E8", dark: "#5B82B5" };
                 return `<g transform="rotate(-8 160 206)"><rect x="143" y="190" width="34" height="31" rx="3" fill="${p.main}" stroke="${p.dark}" stroke-width="2.2"/><path d="M150 190 V221" stroke="${p.dark}" stroke-width="2"/><rect x="155" y="197" width="16" height="5" rx="1.5" fill="#FFFFFF"/></g>`;
             },
-            umbrella: `<path d="M130 200 Q160 170 190 200 Q180 194 172 200 Q165 194 160 200 Q155 194 148 200 Q140 194 130 200 Z" fill="#F48A9B" stroke="#C2434F" stroke-width="2" stroke-linejoin="round"/><path d="M160 200 V222" stroke="#8B5A35" stroke-width="3" stroke-linecap="round"/><path d="M160 222 q0 8 -8 6" fill="none" stroke="#8B5A35" stroke-width="3" stroke-linecap="round"/>`,
-            iceCream: `<path d="M149 205 L171 205 L160 228 Z" fill="#E8A160" stroke="#A86A35" stroke-width="2" stroke-linejoin="round"/><path d="M152 208 L168 208 M154 215 L166 215" stroke="#A86A35" stroke-width="1.3"/><circle cx="160" cy="193" r="12" fill="#F7A1BC" stroke="#C76A88" stroke-width="2"/><circle cx="154" cy="189" r="3" fill="#FFD6E2"/>`,
-            balloon: `<circle cx="160" cy="196" r="16" fill="#F7A1BC" stroke="#C76A88" stroke-width="2.4"/><path d="M156 211 L164 211 L160 217 Z" fill="#C76A88"/><path d="M160 217 q6 5 0 11" fill="none" stroke="#C76A88" stroke-width="2"/><ellipse cx="153" cy="190" rx="4" ry="6" fill="#FFFFFF" opacity=".7"/>`,
-            bouquet: `<path d="M160 214 V202 M151 214 V198 M169 214 V200" fill="none" stroke="#5FA54B" stroke-width="2.2" stroke-linecap="round"/><path d="M152 212 L168 212 L164 228 L156 228 Z" fill="#F3D9C0" stroke="#C0A184" stroke-width="1.8" stroke-linejoin="round"/><circle cx="151" cy="194" r="6" fill="#F48A9B" stroke="#C2434F" stroke-width="1.6"/><circle cx="169" cy="196" r="6" fill="#FFD66B" stroke="#C9973A" stroke-width="1.6"/><circle cx="160" cy="188" r="6.5" fill="#FFFFFF" stroke="#D8C3B8" stroke-width="1.6"/><circle cx="160" cy="188" r="2.6" fill="#FFD66B"/>`,
+            mic: (c, s) => {
+                const p = heldPal(s, { main: "#3B3440", dark: "#24202A", light: "#B9A3E3" });
+                const head = heldCustom(s) ? { fill: p.light, stroke: p.dark } : { fill: "#C9CED6", stroke: "#8C939E" };
+                return `<rect x="155" y="196" width="10" height="30" rx="4" fill="${p.main}" stroke="${p.dark}" stroke-width="1.5"/><circle cx="160" cy="191" r="11" fill="${head.fill}" stroke="${head.stroke}" stroke-width="2"/><path d="M152 187 H168 M151 192 H169 M153 197 H167" stroke="${head.stroke}" stroke-width="1.4"/><rect x="154" y="200" width="12" height="4" rx="2" fill="${heldCustom(s) ? p.light : "#B9A3E3"}"/>`;
+            },
+            guitar: (c, s) => {
+                const p = heldPal(s, { main: "#E8A160", dark: "#A86A35" });
+                return `<g transform="translate(160 208) rotate(60) scale(1.45) translate(-160 -205)"><rect x="157" y="166" width="6" height="32" rx="2" fill="#8B5A35"/><rect x="155" y="160" width="10" height="10" rx="2.5" fill="#6B4226"/><circle cx="160" cy="199" r="10" fill="${p.main}" stroke="${p.dark}" stroke-width="2"/><circle cx="160" cy="214" r="13" fill="${p.main}" stroke="${p.dark}" stroke-width="2"/><circle cx="160" cy="207" r="4" fill="#6B4226"/><path d="M158.5 170 V222 M161.5 170 V222" stroke="#FFF4D6" stroke-width=".8"/></g>`;
+            },
+            umbrella: (c, s) => {
+                const p = heldPal(s, { main: "#F48A9B", dark: "#C2434F" });
+                return `<path d="M130 200 Q160 170 190 200 Q180 194 172 200 Q165 194 160 200 Q155 194 148 200 Q140 194 130 200 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="2" stroke-linejoin="round"/><path d="M160 200 V222" stroke="#8B5A35" stroke-width="3" stroke-linecap="round"/><path d="M160 222 q0 8 -8 6" fill="none" stroke="#8B5A35" stroke-width="3" stroke-linecap="round"/>`;
+            },
+            iceCream: (c, s) => {
+                const p = heldPal(s, accPalette.pink);
+                return `<path d="M149 205 L171 205 L160 228 Z" fill="#E8A160" stroke="#A86A35" stroke-width="2" stroke-linejoin="round"/><path d="M152 208 L168 208 M154 215 L166 215" stroke="#A86A35" stroke-width="1.3"/><circle cx="160" cy="193" r="12" fill="${p.main}" stroke="${p.dark}" stroke-width="2"/><circle cx="154" cy="189" r="3" fill="${p.light}"/>`;
+            },
+            balloon: (c, s) => {
+                const p = heldPal(s, accPalette.pink);
+                return `<circle cx="160" cy="196" r="16" fill="${p.main}" stroke="${p.dark}" stroke-width="2.4"/><path d="M156 211 L164 211 L160 217 Z" fill="${p.dark}"/><path d="M160 217 q6 5 0 11" fill="none" stroke="${p.dark}" stroke-width="2"/><ellipse cx="153" cy="190" rx="4" ry="6" fill="#FFFFFF" opacity=".7"/>`;
+            },
+            bouquet: (c, s) => {
+                const custom = heldCustom(s);
+                const p = heldPal(s, { main: "#F48A9B", dark: "#C2434F", light: "#FFD66B" });
+                const right = custom ? { fill: p.light, stroke: p.dark } : { fill: "#FFD66B", stroke: "#C9973A" };
+                const top = custom ? { fill: p.light, stroke: p.dark, centre: p.dark } : { fill: "#FFFFFF", stroke: "#D8C3B8", centre: "#FFD66B" };
+                return `<path d="M160 214 V202 M151 214 V198 M169 214 V200" fill="none" stroke="#5FA54B" stroke-width="2.2" stroke-linecap="round"/><path d="M152 212 L168 212 L164 228 L156 228 Z" fill="#F3D9C0" stroke="#C0A184" stroke-width="1.8" stroke-linejoin="round"/><circle cx="151" cy="194" r="6" fill="${p.main}" stroke="${p.dark}" stroke-width="1.6"/><circle cx="169" cy="196" r="6" fill="${right.fill}" stroke="${right.stroke}" stroke-width="1.6"/><circle cx="160" cy="188" r="6.5" fill="${top.fill}" stroke="${top.stroke}" stroke-width="1.6"/><circle cx="160" cy="188" r="2.6" fill="${top.centre}"/>`;
+            },
             none: ""
         },
         ball: {
@@ -6643,7 +6692,7 @@ function initHamsterCreator() {
             red: ballPart(ballTints.red)
         },
         tail: {
-            puff: c => `<circle cx="246" cy="252" r="10" fill="${c.main}" stroke="${c.dark}" stroke-width="3"/>`,
+            puff: c => `<circle cx="256" cy="246" r="13" fill="${c.main}" stroke="${c.dark}" stroke-width="3"/>`,
             none: "",
             curl: c => `<path d="M250 248 Q282 242 286 218 Q288 200 273 201 Q261 203 266 216" fill="none" stroke="${c.dark}" stroke-width="5.5" stroke-linecap="round"/>`
         },
@@ -6877,6 +6926,11 @@ function updateEyes() {
     function updateWhiskers() {
         const group = document.getElementById("hamsterWhiskers");
         if (!group) return;
+
+        // The default brown stays soft; any colour the user picks is shown at full strength
+        // (white also gets a faint outline so it is visible on light fur).
+        group.setAttribute("opacity", state.whiskerColor === "brown" ? ".7" : ".95");
+        group.style.filter = state.whiskerColor === "white" ? "drop-shadow(0 0 .7px rgba(70,45,35,.7))" : "";
 
         group.innerHTML = (whiskerStyles[state.whiskers] || [])
             .map(path => `
@@ -7507,23 +7561,26 @@ function updateEyes() {
     renderGallery();
 
     // Anteprime delle opzioni disegnate con il criceto vero.
+    // Square crops (the thumbnail boxes are square) centred on the part each option changes.
     const crops = {
-        face: "78 104 164 104",
-        head: "40 0 240 200",
-        faceAccessory: "70 96 180 112",
-        neck: "60 150 200 140",
-        body: "30 40 260 260",
+        eyes: "88 100 144 144",
+        mouth: "108 128 104 104",
+        cheeks: "76 108 168 168",
+        whiskers: "92 118 136 136",
+        headAccessory: "44 0 232 232",
+        faceAccessory: "64 62 192 192",
+        neckAccessory: "54 96 212 212",
+        held: "108 158 104 104",
+        pattern: "36 46 248 248",
+        tail: "196 186 110 110",
         full: "0 0 320 320"
     };
     const cropFor = (group, value) => {
         if (group === "accessory") {
             const zone = zoneOf(value);
-            return zone === "head" ? crops.head : zone === "face" ? crops.faceAccessory : crops.neck;
+            return zone === "head" ? crops.headAccessory : zone === "face" ? crops.faceAccessory : crops.neckAccessory;
         }
-        return {
-            eyes: crops.face, mouth: crops.face, cheeks: crops.face, whiskers: crops.face,
-            held: crops.neck, pattern: crops.body, background: crops.full, ball: crops.full, tail: crops.body
-        }[group] || crops.full;
+        return crops[group] || crops.full;
     };
     document.querySelectorAll("#crea-criceto .creator-option").forEach(button => {
         const icon = button.querySelector(".creator-preview-icon");
