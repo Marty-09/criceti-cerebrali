@@ -18,6 +18,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
@@ -44,7 +45,7 @@ body {
     margin:0;
     background:var(--bg);
     color:var(--ink);
-    font-family:"DM Sans",sans-serif;
+    font-family:"DM Sans","Avenir Next","Segoe UI",system-ui,sans-serif;
     line-height:1.6
 }
 
@@ -97,7 +98,7 @@ header {
     border:0;
     background:none;
     color:var(--ink);
-    font-family:"Nunito",sans-serif;
+    font-family:"Nunito","Avenir Next","Segoe UI",system-ui,sans-serif;
     font-weight:900;
     font-size:1.1rem;
     text-align:left;
@@ -191,7 +192,7 @@ main {min-height:65vh}
 }
 
 h1,h2,h3,p {margin-top:0}
-h1,h2,h3 {font-family:"Nunito",sans-serif}
+h1,h2,h3 {font-family:"Nunito","Avenir Next","Segoe UI",system-ui,sans-serif}
 
 h1 {
     font-size:clamp(2.5rem,5vw,4.4rem);
@@ -530,7 +531,7 @@ h2 {letter-spacing:-.025em}
 .price {
     flex-shrink:0;
     color:#b76568;
-    font-family:"Nunito",sans-serif;
+    font-family:"Nunito","Avenir Next","Segoe UI",system-ui,sans-serif;
     font-size:1.03rem;
     font-weight:900;
     white-space:nowrap
@@ -833,7 +834,7 @@ h2 {letter-spacing:-.025em}
 .checkout-totals span {color:var(--muted)}
 
 .checkout-totals strong {
-    font-family:"Nunito",sans-serif;
+    font-family:"Nunito","Avenir Next","Segoe UI",system-ui,sans-serif;
     font-size:1.55rem;
     font-weight:900
 }
@@ -1075,7 +1076,7 @@ footer .footer-bottom {
 }
 
 footer strong {
-    font-family:"Nunito",sans-serif;
+    font-family:"Nunito","Avenir Next","Segoe UI",system-ui,sans-serif;
     font-size:1rem
 }
 
@@ -1724,24 +1725,6 @@ footer p {
     outline: 3px solid #b88765;
     outline-offset: 4px;
 }
-
-.home-menu-icon {
-    width: 76px;
-    height: 76px;
-    display: grid;
-    place-items: center;
-    font-size: 2.5rem;
-    border-radius: 24px;
-    background: var(--pink-light);
-    transition: transform .2s;
-}
-
-.home-menu-card:hover .home-menu-icon {
-    transform: rotate(-5deg) scale(1.06);
-}
-
-.extra-icon { background: #ffede6; }
-.creator-icon { background: var(--purple); }
 
 .home-menu-title {
     font-size: 1.15rem;
@@ -2429,6 +2412,7 @@ header.menu-open .nav-links { opacity: 1; visibility: visible; transform: none; 
     .logo > span:last-child { display: none; }
 }
 /* ===== Polish v2 ===== */
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 :root{--shadow:0 1px 2px rgba(70,45,35,.04),0 14px 40px -12px rgba(70,45,35,.14);--shadow-hover:0 2px 4px rgba(70,45,35,.05),0 24px 50px -16px rgba(70,45,35,.24);--ease:cubic-bezier(.2,.8,.2,1)}
 body{-webkit-font-smoothing:antialiased;background:radial-gradient(1200px 600px at 85% -10%,#ffeef0 0,transparent 60%),radial-gradient(900px 500px at -10% 20%,#fff3e0 0,transparent 55%),var(--bg);background-attachment:fixed}
 ::selection{background:var(--pink);color:var(--ink)}
@@ -2449,7 +2433,7 @@ h1{text-wrap:balance}h2,h3{text-wrap:balance}p{text-wrap:pretty}
 .product-card{overflow:hidden}
 .home-menu-icon,.trust-icon{transition:transform .4s var(--ease)}
 .home-menu-card:hover .home-menu-icon{transform:translateY(-3px) rotate(-6deg) scale(1.08)}
-.price{font-family:"Nunito",sans-serif;font-weight:900;letter-spacing:-.02em}
+.price{font-family:"Nunito","Avenir Next","Segoe UI",system-ui,sans-serif;font-weight:900;letter-spacing:-.02em}
 .filter-chip{transition:background .2s,transform .2s,box-shadow .2s}
 .filter-chip:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
 .shop-search input,select{transition:border-color .2s,box-shadow .2s}
@@ -2462,6 +2446,169 @@ h1{text-wrap:balance}h2,h3{text-wrap:balance}p{text-wrap:pretty}
 .toast{box-shadow:var(--shadow-hover)}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 @media (max-width:640px){.container{width:calc(100% - 28px)}h1{font-size:clamp(2.2rem,10vw,3rem)}.primary-button,.secondary-button{padding:13px 16px}}
+</style>
+<style>
+/* ===== Design v3: depth, motion and finishing touches ===== */
+/* Background: gradients live on a fixed layer (no more seam, and cheaper than background-attachment:fixed) */
+body{background:var(--bg)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(1100px 560px at 88% -8%,#ffe9ec 0,transparent 62%),radial-gradient(900px 520px at -8% 24%,#fff1de 0,transparent 58%),radial-gradient(700px 420px at 60% 110%,#f3ecfa 0,transparent 60%)}
+body{background-attachment:scroll}
+
+/* Page transition */
+.page.active{animation:pageIn .5s var(--ease) both}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* Scroll progress + header shadow */
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--pink),var(--orange),#e6a6d4);pointer-events:none}
+header{transition:box-shadow .3s var(--ease),background .3s}
+header.scrolled{box-shadow:0 10px 30px -18px rgba(70,45,35,.35)}
+
+/* Hero */
+.hero{position:relative;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:radial-gradient(rgba(215,127,129,.30) 1.4px,transparent 1.7px);background-size:26px 26px;
+  -webkit-mask-image:radial-gradient(55% 75% at 82% 35%,#000 0,transparent 72%);mask-image:radial-gradient(55% 75% at 82% 35%,#000 0,transparent 72%)}
+.hero .eyebrow{box-shadow:0 6px 16px -10px rgba(157,94,98,.5)}
+.highlight{background:linear-gradient(100deg,#d77f81 10%,#f2a66f 90%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#d77f81}
+.hero-art{background:radial-gradient(circle at 28% 18%,#fff6ee 0,transparent 52%),radial-gradient(circle at 85% 90%,#f7cbb3 0,transparent 50%),linear-gradient(160deg,#fbeadc,#f5d3bd);
+  box-shadow:var(--shadow-hover),inset 0 0 0 1px rgba(255,255,255,.7)}
+.floating-note{animation:floaty 5.5s ease-in-out infinite}
+.floating-note:nth-of-type(even){animation-duration:6.5s;animation-delay:-2s}
+@keyframes floaty{0%,100%{translate:0 0}50%{translate:0 -9px}}
+
+/* Section labels */
+.section-heading .tiny-label::before,.page-heading .tiny-label::before{content:"";display:inline-block;width:22px;height:2px;margin-right:9px;vertical-align:middle;border-radius:2px;background:currentColor;opacity:.55}
+
+/* Trust strip */
+.trust-item{background:linear-gradient(180deg,#fff,#fffaf7)}
+.trust-item:hover{transform:translateY(-3px)}
+.trust-item:hover .trust-icon{transform:rotate(-6deg) scale(1.08)}
+
+/* Home menu cards: accent bar on hover */
+.home-menu-card{position:relative;overflow:hidden}
+.home-menu-card::after{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--pink),var(--orange));transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.home-menu-card:hover::after,.home-menu-card:focus-visible::after{transform:scaleX(1)}
+
+/* Filter chips */
+.filter-chip.active{box-shadow:0 8px 18px -8px rgba(48,42,40,.6)}
+
+/* Product cards */
+.product-art::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(65% 60% at 50% 38%,rgba(255,255,255,.6),transparent 72%),radial-gradient(40% 12% at 50% 88%,rgba(80,40,25,.10),transparent 80%)}
+.product-art>:not(.product-tag){position:relative;z-index:1}
+.product-tag{z-index:2;box-shadow:0 4px 10px -6px rgba(70,45,35,.4);backdrop-filter:blur(6px)}
+.product-title-row .price{align-self:start;white-space:nowrap;padding:3px 11px;border-radius:999px;background:var(--pink-light);color:#a8505f;font-size:.95rem}
+.product-title-row .price.free{background:#e8f2e5;color:#3f6a47}
+.product-title-row .price.owed{background:#fde8ec;color:#a13a52}
+.stat{border-bottom:1px dashed #efe4dd}
+.stat:last-child{border-bottom:0}
+.add-button{position:relative;overflow:hidden;background:linear-gradient(180deg,#3c3431,#292322);box-shadow:0 10px 20px -12px rgba(48,42,40,.7)}
+.add-button::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.22),transparent);transform:skewX(-20deg);transition:left .6s var(--ease)}
+.add-button:hover{background:linear-gradient(180deg,#4a403c,#322a28)}
+.add-button:hover::after{left:130%}
+.add-button.added{background:linear-gradient(180deg,#5f8a65,#4a7050)}
+
+/* Cart badge pop */
+.cart-count{transition:transform .3s var(--ease),background .3s}
+.cart-button.bump .cart-count{transform:scale(1.3)}
+
+/* Footer: dark finish */
+footer{position:relative;border-top:0;background:radial-gradient(700px 260px at 15% 0,#4a3b37 0,transparent 70%),linear-gradient(180deg,#352d2b,#272120);color:#efe3dd}
+footer::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--pink),var(--orange),#e6a6d4)}
+footer strong{color:#fff}
+footer p{color:#c4b6af}
+footer .footer-title{color:#a99b93}
+footer .footer-links .text-button{color:#f4c3c8;transition:color .2s,transform .2s}
+footer .footer-links .text-button:hover{color:#fff;transform:translateX(3px)}
+footer .footer-bottom{border-top-color:rgba(255,255,255,.12)}
+footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
+
+/* Small screens */
+@media (max-width:640px){
+  .hero{padding-top:38px}
+  .hero-buttons .primary-button,.hero-buttons .secondary-button{flex:1 1 100%;text-align:center;justify-content:center}
+  .hero-art{border-radius:30px}
+}
+@media (prefers-reduced-motion:reduce){.floating-note,.page.active{animation:none}.scroll-progress{display:none}}
+@media print{.scroll-progress{display:none!important}footer{background:#fff!important;color:#000!important}}
+</style>
+<style>
+/* ===== Creator page ("Crea il tuo criceto") polish ===== */
+#crea-criceto .creator-heading{position:relative}
+#crea-criceto .creator-heading h1{background:linear-gradient(100deg,#302a28 55%,#a8505f);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#302a28}
+
+/* Preview card */
+#crea-criceto .creator-preview{background:linear-gradient(180deg,#fff,#fff9f6);border-radius:28px;box-shadow:var(--shadow-hover)}
+#crea-criceto .creator-stage{position:relative;border-radius:22px;
+  background:radial-gradient(58% 48% at 50% 44%,#fff 0,rgba(255,255,255,0) 72%),radial-gradient(46% 12% at 50% 90%,rgba(80,40,25,.10),transparent 80%),linear-gradient(180deg,#fff6ee,#ffe8e4);
+  box-shadow:inset 0 0 0 1px #f6e3dc}
+#crea-criceto .creator-stage::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(215,127,129,.22) 1.2px,transparent 1.5px);background-size:22px 22px;-webkit-mask-image:radial-gradient(70% 70% at 50% 50%,transparent 38%,#000 100%);mask-image:radial-gradient(70% 70% at 50% 50%,transparent 38%,#000 100%)}
+#crea-criceto .hamster-avatar{position:relative;filter:drop-shadow(0 14px 14px rgba(80,40,25,.12))}
+.stage-dice{position:absolute;top:12px;right:12px;z-index:3;width:42px;height:42px;border:0;border-radius:50%;background:#fff;font-size:1.3rem;line-height:1;box-shadow:0 8px 18px -8px rgba(70,45,35,.45);transition:transform .35s var(--ease),box-shadow .3s}
+.stage-dice:hover{transform:rotate(180deg) scale(1.08);box-shadow:0 12px 22px -8px rgba(70,45,35,.55)}
+.stage-dice:active{transform:rotate(180deg) scale(.94)}
+
+/* Name field */
+.creator-name-label{display:block;margin:18px 0 6px;color:#9d5e62;font-size:.72rem;font-weight:900;letter-spacing:.09em;text-align:left;text-transform:uppercase}
+#crea-criceto .creator-name{margin-top:0;padding-right:40px;transition:border-color .2s,box-shadow .2s,background-color .2s;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23b76582' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center}
+#crea-criceto .creator-name:hover{border-color:#e8a9bb}
+#crea-criceto .creator-name:focus{background-color:#fff;border-color:#d77f81;box-shadow:0 0 0 4px var(--pink-light)}
+
+/* Tabs */
+#crea-criceto .creator-tab{display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:background .25s var(--ease),color .2s,box-shadow .25s,transform .2s}
+#crea-criceto .creator-tab .tab-ico{font-size:1.05em;filter:grayscale(.7);opacity:.75;transition:filter .2s,opacity .2s,transform .3s var(--ease)}
+#crea-criceto .creator-tab.active{background:linear-gradient(135deg,#fde4ea,#fdd3dc);color:#a23d56;box-shadow:0 6px 14px -8px rgba(176,72,95,.6)}
+#crea-criceto .creator-tab.active .tab-ico{filter:none;opacity:1;transform:scale(1.15) rotate(-6deg)}
+#crea-criceto .creator-tab:active{transform:scale(.97)}
+
+/* Sections + options */
+#crea-criceto .creator-section{border-radius:24px;box-shadow:var(--shadow)}
+#crea-criceto .creator-section:not([hidden]){animation:pageIn .4s var(--ease) both}
+#crea-criceto .creator-section h2{letter-spacing:-.02em}
+#crea-criceto .creator-option{position:relative;min-height:104px;transition:border-color .2s,background .2s,transform .25s var(--ease),box-shadow .25s}
+#crea-criceto .creator-option:hover{box-shadow:0 12px 22px -14px rgba(70,45,35,.4)}
+#crea-criceto .creator-option:active{transform:scale(.97)}
+#crea-criceto .creator-option.selected{background:linear-gradient(180deg,#fff6f7,#ffe9ec);box-shadow:0 10px 20px -14px rgba(176,72,95,.7),0 0 0 3px rgba(217,149,152,.16)}
+#crea-criceto .creator-option.selected::after{content:"✓";position:absolute;top:7px;right:7px;width:20px;height:20px;display:grid;place-items:center;border-radius:50%;background:#d77f81;color:#fff;font-size:.7rem;font-weight:900;line-height:1;animation:checkPop .3s var(--ease)}
+#crea-criceto .creator-swatch{width:44px;height:44px;box-shadow:inset -5px -6px 0 rgba(48,42,40,.08),inset 4px 5px 0 rgba(255,255,255,.3);transition:transform .3s var(--ease),box-shadow .25s}
+#crea-criceto .creator-option:hover .creator-swatch{transform:scale(1.1)}
+#crea-criceto .creator-option.selected .creator-swatch{box-shadow:inset -5px -6px 0 rgba(48,42,40,.08),inset 4px 5px 0 rgba(255,255,255,.3),0 0 0 3px #fff,0 0 0 5px #d99598}
+#crea-criceto .creator-preview-icon{box-shadow:inset 0 0 0 1px #f4e7df}
+#crea-criceto .creator-next{border-radius:999px;font-weight:800}
+
+/* Actions */
+#crea-criceto .creator-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#crea-criceto .creator-actions button{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap}
+#crea-criceto .creator-actions .creator-adopt{grid-column:1/-1;padding:16px 18px;font-size:1.02rem;border-radius:16px}
+#crea-criceto #hamsterReset{grid-column:1/-1;border-style:dashed;color:var(--muted)}
+#crea-criceto #hamsterReset:hover{color:var(--ink)}
+
+/* Receipt as a paper slip */
+#crea-criceto .creator-receipt{position:relative;margin:18px 0 14px;padding:16px 18px 18px;border:0;border-radius:12px 12px 0 0;background:#fffdf7;box-shadow:0 10px 24px -16px rgba(70,45,35,.45),inset 0 0 0 1px #f3e8d8}
+#crea-criceto .creator-receipt::after{content:"";position:absolute;left:0;right:0;top:100%;height:8px;background:linear-gradient(135deg,#fffdf7 50%,transparent 50%) 0 0/12px 8px,linear-gradient(225deg,#fffdf7 50%,transparent 50%) 0 0/12px 8px;filter:drop-shadow(0 4px 3px rgba(70,45,35,.06))}
+
+/* Gallery */
+#crea-criceto .creator-gallery{gap:14px}
+#crea-criceto .gallery-card{transition:transform .3s var(--ease),box-shadow .3s,border-color .2s;background:linear-gradient(180deg,#fffdfb,#fff7f3)}
+#crea-criceto .gallery-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#f0c9cf}
+#crea-criceto .gallery-card img{border-radius:16px;background:#fff1ea}
+#crea-criceto .creator-gallery-empty{padding:26px 16px;border:2px dashed #ecd9cf;border-radius:18px;background:#fffaf7;text-align:center}
+#crea-criceto .creator-gallery-empty::before{content:"🐹";display:block;margin-bottom:6px;font-size:1.8rem}
+#crea-criceto .creator-status:not(:empty){padding:9px 14px;border-radius:12px;background:#eef6ec}
+
+@media (max-width:850px){
+  #crea-criceto .creator-preview{border-radius:22px;box-shadow:0 14px 30px -14px rgba(70,45,35,.35)}
+  #crea-criceto .creator-name-label,#crea-criceto .stage-dice{display:none}
+  #crea-criceto .creator-name{padding-right:38px}
+}
+@media (max-width:430px){
+  #crea-criceto .creator-tab .tab-ico{display:none}
+  #crea-criceto .creator-actions{gap:8px}
+  #crea-criceto .creator-actions button{font-size:.88rem;padding-left:8px;padding-right:8px}
+}
+@media (prefers-reduced-motion:reduce){#crea-criceto .creator-section:not([hidden]){animation:none}.stage-dice:hover{transform:none}}
 </style>
 </head>
 
@@ -2504,6 +2651,7 @@ h1{text-wrap:balance}h2,h3{text-wrap:balance}p{text-wrap:pretty}
     </nav>
 </header>
 
+<noscript><p style="padding:40px 20px;text-align:center">Criceti Cerebrali ha bisogno di JavaScript per far girare la ruota. Abilitalo e riprova!</p></noscript>
 <main>
 <div class="page active" id="catalogo">
     <section class="hero">
@@ -2714,7 +2862,7 @@ h1{text-wrap:balance}h2,h3{text-wrap:balance}p{text-wrap:pretty}
                 <button class="filter-chip" type="button" data-filter="extra" aria-pressed="false">Extra</button>
             </div>
             <label class="shop-search">
-                <span class="visually-hidden-label" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Cerca nel negozio</span>
+                <span class="visually-hidden">Cerca nel negozio</span>
                 <svg class="shop-search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#9a8a84" stroke-width="2.4"/><path d="M15.5 15.5L21 21" stroke="#9a8a84" stroke-width="2.6" stroke-linecap="round"/></svg>
                 <input type="search" id="searchProducts" placeholder="Cerca: Billie, ruota, caffè…" autocomplete="off">
                 <button class="shop-search-clear" id="searchClear" type="button" aria-label="Cancella la ricerca" hidden>×</button>
@@ -3578,8 +3726,10 @@ h1{text-wrap:balance}h2,h3{text-wrap:balance}p{text-wrap:pretty}
                         <g id="hamsterBall"></g>
 
                     </svg>
+                    <button type="button" class="stage-dice" id="hamsterDice" aria-label="Sorprendimi: crea un criceto a caso" title="Sorprendimi!">🎲</button>
                 </div>
 
+                <label class="creator-name-label" for="hamsterName">Nome del criceto</label>
                 <input id="hamsterName"
                        class="creator-name"
                        type="text"
@@ -3595,10 +3745,10 @@ h1{text-wrap:balance}h2,h3{text-wrap:balance}p{text-wrap:pretty}
 
             <div class="creator-controls">
                 <div class="creator-tabs" role="tablist" aria-label="Categorie del creatore">
-                    <button type="button" class="creator-tab active" data-tab="pelo" role="tab" aria-selected="true">Pelo</button>
-                    <button type="button" class="creator-tab" data-tab="viso" role="tab" aria-selected="false">Viso</button>
-                    <button type="button" class="creator-tab" data-tab="accessori" role="tab" aria-selected="false">Accessori</button>
-                    <button type="button" class="creator-tab" data-tab="scena" role="tab" aria-selected="false">Scena</button>
+                    <button type="button" class="creator-tab active" data-tab="pelo" role="tab" aria-selected="true"><span class="tab-ico" aria-hidden="true">🎨</span> Pelo</button>
+                    <button type="button" class="creator-tab" data-tab="viso" role="tab" aria-selected="false"><span class="tab-ico" aria-hidden="true">👀</span> Viso</button>
+                    <button type="button" class="creator-tab" data-tab="accessori" role="tab" aria-selected="false"><span class="tab-ico" aria-hidden="true">🎩</span> Accessori</button>
+                    <button type="button" class="creator-tab" data-tab="scena" role="tab" aria-selected="false"><span class="tab-ico" aria-hidden="true">🌅</span> Scena</button>
                 </div>
 
                 <section class="creator-section" data-tab="pelo">
@@ -4456,17 +4606,17 @@ h1{text-wrap:balance}h2,h3{text-wrap:balance}p{text-wrap:pretty}
                     <p>Adottalo, salvalo nella collezione, scaricalo o mandalo a un amico.</p>
                     <div class="creator-actions">
                         <button type="button" class="primary-button creator-adopt"
-                                id="hamsterAdopt">🛒 Adotta questo criceto · 14,99 €</button>
+                                id="hamsterAdopt">🛒 Adotta questo criceto · 12,99 €</button>
                         <button type="button" class="secondary-button"
-                                id="hamsterRandom">Sorprendimi</button>
+                                id="hamsterRandom"><span aria-hidden="true">🎲</span> Sorprendimi</button>
                         <button type="button" class="secondary-button"
-                                id="hamsterSave">Salva il criceto</button>
+                                id="hamsterSave"><span aria-hidden="true">💾</span> Salva</button>
                         <button type="button" class="secondary-button"
-                                id="hamsterDownload">Scarica</button>
+                                id="hamsterDownload"><span aria-hidden="true">⬇️</span> Scarica</button>
                         <button type="button" class="secondary-button"
-                                id="hamsterShare">Condividi</button>
+                                id="hamsterShare"><span aria-hidden="true">🔗</span> Condividi</button>
                         <button type="button" class="secondary-button"
-                                id="hamsterReset">Ricomincia</button>
+                                id="hamsterReset"><span aria-hidden="true">↺</span> Ricomincia da capo</button>
                     </div>
                     <div class="creator-receipt" id="hamsterReceipt" aria-live="polite"></div>
                     <p class="creator-status" id="hamsterStatus"
@@ -5290,7 +5440,14 @@ function saveCart() {
 
     try {
         localStorage.setItem(CART_KEY, JSON.stringify({cart, customProducts}));
-    } catch {}
+    } catch {
+        // Storage full (custom hamsters carry big inline images): retry without the images.
+        try {
+            const light = customProducts.map(product => ({...product, image: undefined}));
+            localStorage.setItem(CART_KEY, JSON.stringify({cart, customProducts: light}));
+            showToast("⚠️","Carrello salvato in versione leggera","Le anteprime dei prodotti su misura non sono state conservate.");
+        } catch {}
+    }
 }
 
 function loadCart() {
@@ -8478,7 +8635,7 @@ if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
 .to-top:hover{background:#463c39}
 .product-art img,.product-modal-art img,.cart-item-art img{content-visibility:auto}
 .cart-button.bump .cart-count{background:var(--orange)}
-.nav-link.current{box-shadow:inset 0 -3px 0 var(--pink)}
+.nav-links .nav-link.current{box-shadow:inset 0 -3px 0 var(--pink)}
 @media print{.announcement,header,footer,.toast,.to-top,.snowfall{display:none!important}}
 </style>
 
@@ -8603,23 +8760,7 @@ if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
 
 <script>
 (function () {
-    // 1. Cart saving that survives a full localStorage.
-    //    Custom hamsters/houses carry big inline images; if the browser runs out of space,
-    //    retry without the images instead of silently losing the whole cart.
-    window.saveCart = function () {
-        customProducts = customProducts.filter(p => cart[p.id]);
-        try {
-            localStorage.setItem(CART_KEY, JSON.stringify({ cart, customProducts }));
-        } catch {
-            try {
-                const light = customProducts.map(p => ({ ...p, image: undefined }));
-                localStorage.setItem(CART_KEY, JSON.stringify({ cart, customProducts: light }));
-                showToast("⚠️", "Carrello salvato in versione leggera", "Le anteprime dei prodotti su misura non sono state conservate.");
-            } catch {}
-        }
-    };
-
-    // 2. Honest price labels for the joke products (€0 and negative)
+    // 1. Honest price labels for the joke products (€0 and negative)
     function labelPrices() {
         document.querySelectorAll(".product-card").forEach(card => {
             const price = card.querySelector(".price");
@@ -8631,9 +8772,14 @@ if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
         });
     }
 
-    // 3. Gentle scroll-reveal for product cards
+    // 2. Gentle scroll-reveal for product cards
     const io = "IntersectionObserver" in window ? new IntersectionObserver(entries => entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+        if (e.isIntersecting) {
+            const card = e.target;
+            card.classList.add("in");
+            io.unobserve(card);
+            setTimeout(() => { card.classList.remove("reveal","in"); card.style.transitionDelay = ""; }, 900);
+        }
     }), { rootMargin: "0px 0px -8% 0px" }) : null;
     function reveal() {
         document.querySelectorAll(".product-card:not(.reveal)").forEach((card, i) => {
@@ -8653,7 +8799,7 @@ if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
     labelPrices();
     reveal();
 
-    // 4. Remember the chosen filter and sort across visits
+    // 3. Remember the chosen filter and sort across visits
     const PREF = "cricetiCerebraliPrefs";
     try {
         const p = JSON.parse(localStorage.getItem(PREF) || "{}");
@@ -8671,7 +8817,7 @@ if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
     document.getElementById("sortProducts").addEventListener("change", savePrefs);
     document.querySelectorAll(".filter-chip").forEach(c => c.addEventListener("click", savePrefs));
 
-    // 5. Quick-add shortcut: press "/" to jump to the search box
+    // 4. Shortcut: press "/" to jump to the search box
     document.addEventListener("keydown", e => {
         if (e.key !== "/" || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
         e.preventDefault();
@@ -8680,5 +8826,41 @@ if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
     });
 })();
 </script>    
+
+<script>
+// Design v3: scroll progress bar + header shadow
+(function () {
+    const bar = document.createElement("div");
+    bar.className = "scroll-progress";
+    bar.setAttribute("aria-hidden", "true");
+    document.body.prepend(bar);
+    const header = document.querySelector("header");
+    let queued = false;
+    function update() {
+        queued = false;
+        const max = document.documentElement.scrollHeight - innerHeight;
+        bar.style.transform = "scaleX(" + (max > 0 ? Math.min(1, scrollY / max) : 0) + ")";
+        header && header.classList.toggle("scrolled", scrollY > 8);
+    }
+    addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+    addEventListener("resize", update);
+    update();
+})();
+</script>
+
+<script>
+// Creator page: the dice on the preview triggers the existing "Sorprendimi" button;
+// opening a #page link lands at the top instead of under the sticky header.
+(function () {
+    const dice = document.getElementById("hamsterDice");
+    const random = document.getElementById("hamsterRandom");
+    if (dice && random) dice.addEventListener("click", () => random.click());
+    addEventListener("load", () => {
+        const target = location.hash && document.getElementById(location.hash.slice(1).split("?")[0]);
+        // the browser's own jump-to-#id can still be animating (html has smooth scrolling), so cancel it explicitly
+        if (target && target.classList.contains("page")) setTimeout(() => scrollTo({ top: 0, behavior: "instant" }), 150);
+    });
+})();
+</script>
 </body>
 </html>
