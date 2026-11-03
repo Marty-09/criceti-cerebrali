@@ -2257,6 +2257,8 @@ body.modal-open { overflow: hidden; }
 #hamsterAvatar #hamsterEyes { transform-box: fill-box; transform-origin: center; }
 #hamsterAvatar.blinking #hamsterEyes { animation: hamsterBlink .2s ease-in-out; }
 @keyframes hamsterBlink { 50% { transform: scaleY(.1); } }
+#hamsterAvatar .wink-open { transform-box: fill-box; transform-origin: center; }
+#hamsterAvatar.blinking-open .wink-open { animation: hamsterBlink .2s ease-in-out; }
 #hamsterAvatar #hamsterWhiskers { transform-box: fill-box; transform-origin: center; animation: whiskerTwitch 3.8s ease-in-out infinite; }
 @keyframes whiskerTwitch { 0%, 82%, 100% { transform: none; } 86% { transform: translateY(-1.5px) scaleX(1.04); } 90% { transform: translateY(1px) scaleX(.98); } 94% { transform: translateY(-1px) scaleX(1.03); } }
 #hamsterAvatar.waving { animation: hamsterHop .6s ease-in-out 2; }
@@ -2264,7 +2266,7 @@ body.modal-open { overflow: hidden; }
 .avatar-hello { position: absolute; top: 18px; right: 16px; max-width: 46%; padding: 9px 14px; border-radius: 18px 18px 4px 18px; background: #302a28; color: #fff; font-weight: 800; font-size: .95rem; line-height: 1.25; text-align: center; opacity: 0; transform: translateY(6px) scale(.9); transition: opacity .25s, transform .25s; pointer-events: none; z-index: 3; }
 .avatar-hello.show { opacity: 1; transform: none; }
 @media (max-width: 650px) { .avatar-hello { top: 6px; right: auto; left: 132px; font-size: .78rem; padding: 6px 10px; max-width: none; } }
-@media (prefers-reduced-motion: reduce) { #hamsterAvatar #hamsterWhiskers, #hamsterAvatar.waving, #hamsterAvatar.blinking #hamsterEyes { animation: none; } }
+@media (prefers-reduced-motion: reduce) { #hamsterAvatar #hamsterWhiskers, #hamsterAvatar.waving, #hamsterAvatar.blinking #hamsterEyes, #hamsterAvatar.blinking-open .wink-open { animation: none; } }
 
 .race-card { margin-top: 26px; padding: 22px; border: 1px solid var(--line); border-radius: 28px; background: #fff; }
 .race-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 18px; margin-bottom: 14px; }
@@ -3421,13 +3423,13 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                         <!-- TESTA: bandana a pois annodata di lato -->
                         <!-- TESTA: cuffia da notte con pompon -->
                         <g id="accessorySleepCap" style="display:none">
-                            <path d="M90 108 C90 76 116 52 158 47 C198 43 238 62 256 104 C264 124 262 142 254 154 C250 134 240 118 232 109 C200 98 126 98 90 108 Z" fill="#9DB4EA" data-fill="main" stroke="#5F78B8" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
-                            <path d="M112 78 a11 11 0 1 0 13 13 a8.5 8.5 0 1 1 -13 -13Z" fill="#FFF3B8" stroke="none"/>
+                            <path d="M78 114 C76 76 100 50 138 42 C176 34 224 52 252 96 C262 112 262 134 252 152 C246 134 238 122 240 114 C190 100 128 100 78 114 Z" fill="#9DB4EA" data-fill="main" stroke="#5F78B8" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M110 72 a11 11 0 1 0 13 13 a8.5 8.5 0 1 1 -13 -13Z" fill="#FFF3B8" stroke="none"/>
                             <path d="M158 62 Q158 68 164 68 Q158 68 158 74 Q158 68 152 68 Q158 68 158 62Z" fill="#FFFFFF"/>
-                            <path d="M196 70 Q196 75 201 75 Q196 75 196 80 Q196 75 191 75 Q196 75 196 70Z" fill="#FFFFFF"/>
-                            <path d="M222 100 Q222 104 226 104 Q222 104 222 108 Q222 104 218 104 Q222 104 222 100Z" fill="#FFFFFF"/>
-                            <path d="M82 113 C84 99 100 93 120 95 C150 99 170 99 200 95 C222 93 236 99 238 113 C238 125 228 129 218 125 C190 117 130 117 102 125 C92 129 82 125 82 113 Z" fill="#FFFFFF" data-fill="light" stroke="#5F78B8" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
-                            <circle cx="255" cy="158" r="11" fill="#FFFFFF" data-fill="light" stroke="#5F78B8" data-stroke="dark" stroke-width="3"/>
+                            <path d="M196 68 Q196 73 201 73 Q196 73 196 78 Q196 73 191 73 Q196 73 196 68Z" fill="#FFFFFF"/>
+                            <path d="M226 96 Q226 100 230 100 Q226 100 226 104 Q226 100 222 100 Q226 100 226 96Z" fill="#FFFFFF"/>
+                            <path d="M72 113 C72 98 100 90 160 90 C220 90 248 98 248 113 C248 127 234 131 222 127 C192 119 128 119 98 127 C86 131 72 127 72 113 Z" fill="#FFFFFF" data-fill="light" stroke="#5F78B8" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <circle cx="253" cy="157" r="11" fill="#FFFFFF" data-fill="light" stroke="#5F78B8" data-stroke="dark" stroke-width="3"/>
                         </g>
 
                         <g id="accessoryBandana" style="display:none">
@@ -3444,11 +3446,12 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
 
                         <!-- COLLO: bandana al collo -->
                         <g id="accessoryBandanaNeck" style="display:none">
-                            <defs><clipPath id="bandanaNeckClip"><path d="M116 202 Q160 212 204 202 C200 228 182 250 162 264 Q160 266 158 264 C138 250 120 228 116 202 Z"/></clipPath></defs>
-                            <g clip-path="url(#hamsterBodyClip)" fill="none"><path d="M40 184 Q160 228 280 184" stroke="#C9637B" data-stroke="dark" stroke-width="16"/><path d="M40 184 Q160 228 280 184" stroke="#F49AAE" data-stroke="main" stroke-width="11"/></g>
-                            <path d="M116 202 Q160 212 204 202 C200 228 182 250 162 264 Q160 266 158 264 C138 250 120 228 116 202 Z" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
-                            <g clip-path="url(#bandanaNeckClip)" fill="#FFF3F5"><circle cx="128" cy="214" r="3.2"/><circle cx="148" cy="214" r="3.2"/><circle cx="168" cy="214" r="3.2"/><circle cx="188" cy="214" r="3.2"/><circle cx="118" cy="228" r="3.2"/><circle cx="138" cy="228" r="3.2"/><circle cx="158" cy="228" r="3.2"/><circle cx="178" cy="228" r="3.2"/><circle cx="198" cy="228" r="3.2"/><circle cx="128" cy="242" r="3.2"/><circle cx="148" cy="242" r="3.2"/><circle cx="168" cy="242" r="3.2"/><circle cx="188" cy="242" r="3.2"/><circle cx="118" cy="256" r="3.2"/><circle cx="138" cy="256" r="3.2"/><circle cx="158" cy="256" r="3.2"/><circle cx="178" cy="256" r="3.2"/><circle cx="198" cy="256" r="3.2"/></g>
-                            <path d="M132 214 Q150 232 160 256" fill="none" stroke="#C9637B" data-stroke="dark" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+                            <defs><clipPath id="bandanaNeckClip"><path d="M117 203 Q160 214 203 203 L163 250 Q160 254 157 250 Z"/></clipPath></defs>
+                            <g clip-path="url(#hamsterBodyClip)" fill="none"><path d="M40 184 Q160 228 280 184" stroke="#C9637B" data-stroke="dark" stroke-width="15"/><path d="M40 184 Q160 228 280 184" stroke="#F49AAE" data-stroke="main" stroke-width="10"/></g>
+                            <path d="M117 203 Q160 214 203 203 L163 250 Q160 254 157 250 Z" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <g clip-path="url(#bandanaNeckClip)" fill="#FFF3F5"><circle cx="136" cy="214" r="3"/><circle cx="160" cy="218" r="3"/><circle cx="184" cy="214" r="3"/><circle cx="148" cy="229" r="3"/><circle cx="172" cy="229" r="3"/><circle cx="160" cy="241" r="3"/></g>
+                            <path d="M123 206 Q160 216 197 206" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="2.4" stroke-linecap="round"/>
+                            <path d="M178 211 L163 244" fill="none" stroke="#C9637B" data-stroke="dark" stroke-width="2" stroke-linecap="round" opacity=".3"/>
                         </g>
 
                         <!-- COLLO: sciarpa di lana -->
@@ -3518,46 +3521,37 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
 
                         <!-- VISO: occhiali tondi -->
                         <g id="accessoryGlasses" style="display:none">
+                            <path d="M105 147 L79 142 M215 147 L241 142 M143 148 Q160 139 177 148" fill="none" stroke="#E07A8C" data-stroke="main" stroke-width="4" stroke-linecap="round"/>
                             <g fill="#FFFFFF" fill-opacity=".22" stroke="#E07A8C" data-stroke="main" stroke-width="4">
-                                <circle cx="124" cy="150" r="18"/>
-                                <circle cx="196" cy="150" r="18"/>
+                                <circle cx="124" cy="150" r="19"/>
+                                <circle cx="196" cy="150" r="19"/>
                             </g>
-                            <path d="M142 148 Q160 139 178 148 M106 146 L90 140 M214 146 L230 140"
-                                  fill="none" stroke="#E07A8C" data-stroke="main" stroke-width="4"
-                                  stroke-linecap="round"/>
-                            <path d="M113 141 Q117 136 123 135 M185 141 Q189 136 195 135"
-                                  fill="none" stroke="#FFFFFF" stroke-width="2.5"
-                                  stroke-linecap="round" opacity=".9"/>
+                            <path d="M112 141 Q116 135 123 134 M184 141 Q188 135 195 134" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" opacity=".9"/>
                         </g>
 
                         <!-- VISO: occhiali a cuore -->
                         <g id="accessoryHeartGlasses" style="display:none">
-                            <g fill="#FF7FA3" data-fill="main" fill-opacity=".85" stroke="#D9506F" data-stroke="dark" stroke-width="2.4"
-                               stroke-linejoin="round">
-                                <path transform="translate(124 154) scale(1.3)"
-                                      d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"/>
-                                <path transform="translate(196 154) scale(1.3)"
-                                      d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"/>
+                            <path d="M104 147 L79 142 M216 147 L241 142 M144 146 Q160 138 176 146" fill="none" stroke="#D9506F" data-stroke="dark" stroke-width="3.6" stroke-linecap="round"/>
+                            <g fill="#FF7FA3" data-fill="main" fill-opacity=".85" stroke="#D9506F" data-stroke="dark" stroke-width="2.4" stroke-linejoin="round">
+                                <path transform="translate(124 153.5) scale(1.15)" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"/>
+                                <path transform="translate(196 153.5) scale(1.15)" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"/>
                             </g>
-                            <path d="M142 145 Q160 137 178 145 M106 143 L90 137 M214 143 L230 137"
-                                  fill="none" stroke="#D9506F" data-stroke="dark" stroke-width="3.5"
-                                  stroke-linecap="round"/>
-                            <path d="M112 141 Q114 137 119 136 M184 141 Q186 137 191 136"
-                                  fill="none" stroke="#FFFFFF" stroke-width="2.5"
-                                  stroke-linecap="round"/>
+                            <path d="M110 143 Q111 138 117 137 M182 143 Q183 138 189 137" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" opacity=".9"/>
                         </g>
 
                         <!-- TESTA: fiocco -->
                         <g id="accessoryBow" style="display:none" transform="translate(126 84) rotate(-18)">
                             <path d="M-3 5 Q-9 18 -17 31 L-9 29 L-5 36 Q1 20 2 7 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="2.5" stroke-linejoin="round"/>
                             <path d="M3 5 Q9 18 17 31 L9 29 L5 36 Q-1 20 -2 7 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="2.5" stroke-linejoin="round"/>
+                            <path d="M3 8 Q9 20 15 30 L9 29 L5 36 Q-1 20 -2 7 Z" fill="#C76A88" data-fill="dark" opacity=".28"/>
                             <path d="M-4 0 C-14 -22 -40 -24 -40 -4 C-40 14 -16 15 -4 4 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
                             <path d="M4 0 C14 -22 40 -24 40 -4 C40 14 16 15 4 4 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
-                            <path d="M-9 -2 C-16 -11 -27 -13 -32 -6 M9 -2 C16 -11 27 -13 32 -6" fill="none" stroke="#C76A88" data-stroke="dark" stroke-width="2" stroke-linecap="round" opacity=".45"/>
-                            <path d="M-33 -11 Q-29 -17 -22 -17 M22 -17 Q29 -17 33 -11" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="3" stroke-linecap="round"/>
-                            <g fill="#FFFFFF" opacity=".9"><circle cx="-25" cy="2" r="2.4"/><circle cx="-15" cy="-9" r="1.8"/><circle cx="25" cy="2" r="2.4"/><circle cx="15" cy="-9" r="1.8"/></g>
+                            <path d="M-38 -1 C-37 12 -16 14 -5 4 C-15 9 -30 8 -38 -1 Z M38 -1 C37 12 16 14 5 4 C15 9 30 8 38 -1 Z" fill="#C76A88" data-fill="dark" opacity=".25"/>
+                            <path d="M-9 -2 C-16 -11 -27 -13 -32 -6 M9 -2 C16 -11 27 -13 32 -6" fill="none" stroke="#C76A88" data-stroke="dark" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+                            <path d="M-35 -9 Q-30 -17 -21 -18 M12 -17 Q22 -20 30 -15" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="3" stroke-linecap="round"/>
                             <rect x="-8" y="-9" width="16" height="17" rx="6" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3"/>
-                            <path d="M-3 -5 Q0 -7 3 -5" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M3 6 Q7 3 7 -3" fill="none" stroke="#C76A88" data-stroke="dark" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+                            <path d="M-4 -5 Q-2 -7 2 -6" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="2" stroke-linecap="round"/>
                         </g>
 
                         <!-- TESTA: berretto con pon pon -->
@@ -3660,30 +3654,31 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
 
                         <!-- VISO: occhiali da sole -->
                         <g id="accessorySunglasses" style="display:none">
-                            <path d="M98 138 L82 132 M222 138 L238 132" stroke="#2F2A33" data-stroke="main" stroke-width="4.5" stroke-linecap="round"/>
-                            <path d="M98 134 H148 Q150 134 149 139 Q146 167 124 168 Q101 167 98 139 Q97 134 98 134 Z" fill="#2F2A33" data-fill="main"/>
-                            <path d="M172 134 H222 Q223 134 222 139 Q219 167 196 168 Q174 167 171 139 Q170 134 172 134 Z" fill="#2F2A33" data-fill="main"/>
-                            <path d="M96 135 H224" stroke="#2F2A33" data-stroke="main" stroke-width="6" stroke-linecap="round"/>
-                            <g stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity=".55"><path d="M108 146 Q112 156 120 160"/><path d="M182 146 Q186 156 194 160"/></g>
+                            <path d="M102 139 L79 135 M218 139 L241 135" stroke="#2F2A33" data-stroke="main" stroke-width="4.5" stroke-linecap="round"/>
+                            <path d="M146 141 Q160 134 174 141" fill="none" stroke="#2F2A33" data-stroke="main" stroke-width="4.5" stroke-linecap="round"/>
+                            <path d="M103 136 H146 Q148 136 147.4 141 Q144 166 125 167 Q105 166 101.6 141 Q101 136 103 136 Z" fill="#2F2A33" data-fill="main" stroke="#2F2A33" data-stroke="main" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M174 136 H217 Q219 136 218.4 141 Q215 166 195 167 Q176 166 172.6 141 Q172 136 174 136 Z" fill="#2F2A33" data-fill="main" stroke="#2F2A33" data-stroke="main" stroke-width="2" stroke-linejoin="round"/>
+                            <g stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity=".55" fill="none"><path d="M109 144 Q112 154 119 158"/><path d="M181 144 Q184 154 191 158"/></g>
                         </g>
 
                         <!-- VISO: occhialini a stella -->
                         <g id="accessoryStarGlasses" style="display:none">
-                            <path d="M151 146 Q160 140 169 146" fill="none" stroke="#E0A325" data-stroke="dark" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M103 145 L79 140 M217 145 L241 140 M145 145 Q160 138 175 145" fill="none" stroke="#E0A325" data-stroke="dark" stroke-width="3.5" stroke-linecap="round"/>
                             <g fill="#FFD66B" data-fill="main" fill-opacity=".5" stroke="#E0A325" data-stroke="dark" stroke-width="3" stroke-linejoin="round">
-                                <polygon points="124.0,120.0 132.8,138.9 153.5,141.4 138.3,155.6 142.2,176.1 124.0,166.0 105.8,176.1 109.7,155.6 94.5,141.4 115.2,138.9"/>
-                                <polygon points="196.0,120.0 204.8,138.9 225.5,141.4 210.3,155.6 214.2,176.1 196.0,166.0 177.8,176.1 181.7,155.6 166.5,141.4 187.2,138.9"/>
+                                <polygon points="124.0,130.0 129.9,143.9 144.9,145.2 133.5,155.1 136.9,169.8 124.0,162.0 111.1,169.8 114.5,155.1 103.1,145.2 118.1,143.9"/>
+                                <polygon points="196.0,130.0 201.9,143.9 216.9,145.2 205.5,155.1 208.9,169.8 196.0,162.0 183.1,169.8 186.5,155.1 175.1,145.2 190.1,143.9"/>
                             </g>
                         </g>
 
                         <!-- VISO: occhiali da secchione -->
                         <g id="accessoryNerd" style="display:none">
-                            <path d="M98 146 L84 140 M222 146 L236 140" stroke="#3B3440" data-stroke="main" stroke-width="5" stroke-linecap="round"/>
-                            <rect x="100" y="134" width="48" height="33" rx="6" fill="#FFFFFF" fill-opacity=".2" stroke="#3B3440" data-stroke="main" stroke-width="6"/>
-                            <rect x="172" y="134" width="48" height="33" rx="6" fill="#FFFFFF" fill-opacity=".2" stroke="#3B3440" data-stroke="main" stroke-width="6"/>
-                            <path d="M148 146 H172" stroke="#3B3440" data-stroke="main" stroke-width="6"/>
+                            <path d="M102 145 L79 141 M218 145 L241 141" stroke="#3B3440" data-stroke="main" stroke-width="5" stroke-linecap="round"/>
+                            <rect x="102" y="134" width="44" height="33" rx="7" fill="#FFFFFF" fill-opacity=".2" stroke="#3B3440" data-stroke="main" stroke-width="5.5"/>
+                            <rect x="174" y="134" width="44" height="33" rx="7" fill="#FFFFFF" fill-opacity=".2" stroke="#3B3440" data-stroke="main" stroke-width="5.5"/>
+                            <path d="M146 146 H174" stroke="#3B3440" data-stroke="main" stroke-width="5.5"/>
                             <rect x="152" y="140" width="16" height="13" rx="2" fill="#FFF6D8" stroke="#D8C8A8" stroke-width="1.5"/>
                             <path d="M155 143 L165 150 M165 143 L155 150" stroke="#D8C8A8" stroke-width="1.2"/>
+                            <path d="M108 140 Q111 138 116 138 M180 140 Q183 138 188 138" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity=".7"/>
                         </g>
 
                         <!-- VISO: monocolo -->
@@ -3695,10 +3690,11 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
 
                         <!-- VISO: occhiali 3D -->
                         <g id="accessoryGlasses3d" style="display:none">
-                            <path d="M96 136 L84 132 M224 136 L236 132" stroke="#BDB3AE" stroke-width="5" stroke-linecap="round"/>
-                            <path d="M96 134 H224 V164 Q192 168 176 164 L166 154 Q160 150 154 154 L144 164 Q128 168 96 164 Z" fill="#FFFFFF" data-fill="main" stroke="#BDB3AE" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
-                            <rect x="104" y="139" width="38" height="20" rx="4" fill="#F0606F" fill-opacity=".85"/>
-                            <rect x="178" y="139" width="38" height="20" rx="4" fill="#5FC6E8" fill-opacity=".85"/>
+                            <path d="M101 140 L79 136 M219 140 L241 136" stroke="#BDB3AE" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M101 134 H219 V162 Q190 167 176 162 L166 153 Q160 149 154 153 L144 162 Q130 167 101 162 Z" fill="#FFFFFF" data-fill="main" stroke="#BDB3AE" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <rect x="105" y="139" width="36" height="19" rx="4" fill="#F0606F" fill-opacity=".85"/>
+                            <rect x="179" y="139" width="36" height="19" rx="4" fill="#5FC6E8" fill-opacity=".85"/>
+                            <path d="M109 143 H120 M183 143 H194" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" opacity=".6"/>
                         </g>
 
                         <!-- TESTA: tocco da laureato -->
@@ -3728,10 +3724,11 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
 
                         <!-- TESTA: orecchie da gatto -->
                         <g id="accessoryCatEars" style="display:none">
-                            <path d="M112 84 Q108 52 122 34 Q142 52 152 78 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3.5" stroke-linejoin="round"/>
-                            <path d="M208 84 Q212 52 198 34 Q178 52 168 78 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3.5" stroke-linejoin="round"/>
-                            <path d="M119 74 Q117 55 124 46 Q135 57 142 70 Z" fill="#FFD6E2" data-fill="light"/>
-                            <path d="M201 74 Q203 55 196 46 Q185 57 178 70 Z" fill="#FFD6E2" data-fill="light"/>
+                            <path d="M88 106 Q88 64 106 34 Q132 56 152 90 Q120 102 88 106 Z" fill="#C9BFB8" data-fill="main" stroke="#8F8580" data-stroke="dark" stroke-width="3.5" stroke-linejoin="round"/>
+                            <path d="M232 106 Q232 64 214 34 Q188 56 168 90 Q200 102 232 106 Z" fill="#C9BFB8" data-fill="main" stroke="#8F8580" data-stroke="dark" stroke-width="3.5" stroke-linejoin="round"/>
+                            <path d="M101 94 Q101 64 109 48 Q127 62 140 88 Q122 96 101 94 Z" fill="#F7B3C4" data-fill="light"/>
+                            <path d="M219 94 Q219 64 211 48 Q193 62 180 88 Q198 96 219 94 Z" fill="#F7B3C4" data-fill="light"/>
+                            <path d="M110 86 Q113 70 117 62 M122 88 Q126 76 129 70 M210 86 Q207 70 203 62 M198 88 Q194 76 191 70" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" opacity=".55"/>
                         </g>
 
                         <!-- TESTA: antenne da alieno -->
@@ -3746,9 +3743,9 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
 
                         <!-- VISO: benda -->
                         <g id="accessoryEyePatch" style="display:none">
-                            <path d="M228 114 L104 172" fill="none" stroke="#3B3440" data-stroke="dark" stroke-width="5" stroke-linecap="round"/>
-                            <path d="M124 128 Q147 132 149 152 Q147 175 124 177 Q101 175 99 152 Q101 132 124 128 Z" fill="#3B3440" data-fill="main" stroke="#1F1B24" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
-                            <path d="M109 141 Q118 136 131 139" fill="none" stroke="#6B6275" data-stroke="light" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+                            <path d="M106 148 L78 142 M140 138 L243 114" fill="none" stroke="#3B3440" data-stroke="dark" stroke-width="5" stroke-linecap="round"/>
+                            <circle cx="124" cy="151" r="20" fill="#3B3440" data-fill="main" stroke="#1F1B24" data-stroke="dark" stroke-width="3"/>
+                            <path d="M111 142 Q117 136 128 137" fill="none" stroke="#6B6275" data-stroke="light" stroke-width="3" stroke-linecap="round" opacity=".85"/>
                         </g>
 
                         <!-- Palla per criceti (sopra a tutto) -->
@@ -3782,7 +3779,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                 </div>
 
                 <section class="creator-section" data-tab="corpo">
-                    <h2>L'età</h2>
+                    <h2>Scegli l'età</h2>
                     <p>Quanti mesi ha il tuo criceto? Con gli anni cambia anche lo sguardo.</p>
                     <div class="creator-options two" id="ageOptions">
                         <button type="button" class="creator-option"
@@ -3817,7 +3814,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                 </section>
 
                 <section class="creator-section" data-tab="corpo">
-                    <h2>La taglia</h2>
+                    <h2>Scegli la taglia</h2>
                     <p>Dal criceto tascabile a quello che occupa tutto il divano.</p>
                     <div class="creator-options" id="sizeOptions">
                         <button type="button" class="creator-option"
@@ -3859,7 +3856,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                 </section>
 
                 <section class="creator-section" data-tab="pelo">
-                    <h2>Il colore del pelo</h2>
+                    <h2>Scegli il colore del pelo</h2>
                     <p>Il colore principale: pancino e musetto si scelgono nel passo dopo.</p>
                     <div class="creator-options" id="furOptions">
                         <button type="button" class="creator-option selected"
@@ -3904,7 +3901,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                                 aria-pressed="false">
                             <span class="creator-swatch"
                                   style="background:#F8F4EF"></span>
-                            Panna
+                            Angel
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="fur" data-value="pink"
@@ -3945,7 +3942,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                 </section>
 
                 <section class="creator-section" data-tab="pelo">
-                    <h2>Pancino e musetto</h2>
+                    <h2>Scegli il colore di pancino e musetto</h2>
                     <p>Il colore chiaro di pancino e musetto, scelto a parte dal resto.</p>
                     <div class="creator-options" id="innerFurOptions">
                         <button type="button" class="creator-option selected" data-group="innerFur" data-value="cream" aria-pressed="true"><span class="creator-swatch" style="background:#E8D1B5"></span>Crema</button>
@@ -3954,7 +3951,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                         <button type="button" class="creator-option" data-group="innerFur" data-value="caramel" aria-pressed="false"><span class="creator-swatch" style="background:#C58B68"></span>Caramello</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="grey" aria-pressed="false"><span class="creator-swatch" style="background:#A8A5A0"></span>Nuvola</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="black" aria-pressed="false"><span class="creator-swatch" style="background:#48434A"></span>Carbone</button>
-                        <button type="button" class="creator-option" data-group="innerFur" data-value="white" aria-pressed="false"><span class="creator-swatch" style="background:#F8F4EF"></span>Panna</button>
+                        <button type="button" class="creator-option" data-group="innerFur" data-value="white" aria-pressed="false"><span class="creator-swatch" style="background:#F8F4EF"></span>Angel</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="pink" aria-pressed="false"><span class="creator-swatch" style="background:#E5A0AE"></span>Confetto</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="cinnamon" aria-pressed="false"><span class="creator-swatch" style="background:#C97B4A"></span>Cannella</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="apricot" aria-pressed="false"><span class="creator-swatch" style="background:#EFA97C"></span>Albicocca</button>
@@ -3964,7 +3961,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                 </section>
 
                 <section class="creator-section" data-tab="pelo">
-                    <h2>Il motivo del pelo</h2>
+                    <h2>Scegli il motivo del pelo</h2>
                     <p>Macchie, strisce, cuori o un look da piccolo bandito.</p>
                     <div class="creator-options">
                         <button type="button" class="creator-option selected"
@@ -4013,7 +4010,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                 </section>
 
                 <section class="creator-section" data-tab="corpo">
-                    <h2>La coda</h2>
+                    <h2>Scegli la coda</h2>
                     <p>A pallina, a ricciolo o nascosta del tutto.</p>
                     <div class="creator-options">
                         <button type="button" class="creator-option selected"
@@ -4038,7 +4035,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                 </section>
 
                 <section class="creator-section" data-tab="viso">
-                    <h2>Gli occhi</h2>
+                    <h2>Scegli gli occhi</h2>
                     <p>Lo sguardo cambia tutto: scegli la forma e il colore.</p>
                     <div class="creator-options">
                        <button type="button" class="creator-option selected"
@@ -4121,7 +4118,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                 </section>
 
                 <section class="creator-section" data-tab="viso">
-                    <h2>La bocca</h2>
+                    <h2>Scegli la bocca</h2>
                     <p>Che faccia fa quando pensa al lunedì?</p>
                     <div class="creator-options">
                         <button type="button" class="creator-option selected"
@@ -4176,7 +4173,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                 </section>
 
                 <section class="creator-section" data-tab="viso">
-                    <h2>Le guance</h2>
+                    <h2>Scegli le guance</h2>
                     <p>Un tocco di colore (o di lentiggini) per le guanciotte.</p>
                     <div class="creator-options">
                         <button type="button" class="creator-option selected"
@@ -4242,7 +4239,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                 </section>
 
                 <section class="creator-section" data-tab="viso">
-                    <h2>I baffi</h2>
+                    <h2>Scegli i baffi</h2>
                     <p>Scegli lo stile e il colore dei suoi baffi da roditore.</p>
                     <div class="creator-options">
                         <button type="button" class="creator-option selected"
@@ -4289,9 +4286,9 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                 </section>
 
                 <section class="creator-section" data-tab="accessori">
-                    <h2>Gli accessori</h2>
+                    <h2>Scegli gli accessori</h2>
                     <p>Uno per la testa, uno per il viso e uno per il collo: combinali come vuoi.</p>
-                    <h3 class="creator-subtitle">Testa</h3>
+                    <h3 class="creator-subtitle">Sulla testa</h3>
                     <div class="creator-options">
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="bow"
@@ -4397,7 +4394,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                         <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#3B3440"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
                     </div>
-                    <h3 class="creator-subtitle">Viso</h3>
+                    <h3 class="creator-subtitle">Sul viso</h3>
                     <div class="creator-options">
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="glasses"
@@ -4461,7 +4458,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                         <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#3B3440"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
                     </div>
-                    <h3 class="creator-subtitle">Collo</h3>
+                    <h3 class="creator-subtitle">Al collo</h3>
                     <div class="creator-options">
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="scarf"
@@ -4511,7 +4508,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                 </section>
 
                 <section class="creator-section" data-tab="scena">
-                    <h2>In mano</h2>
+                    <h2>Scegli cosa tiene in mano</h2>
                     <p>Cosa stringe tra le zampette? Qualcosa costa un pochino di più.</p>
                     <div class="creator-options">
                         <button type="button" class="creator-option selected"
@@ -4584,7 +4581,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                                 data-group="held" data-value="juice"
                                 aria-pressed="false">
                             <span class="creator-preview-icon"></span>
-                            Succo
+                            Bibita
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="held" data-value="pizza"
@@ -4616,7 +4613,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                 </section>
 
                 <section class="creator-section" data-tab="scena">
-                    <h2>La palla</h2>
+                    <h2>Scegli la palla</h2>
                     <p>Per rotolare per casa senza perdersi. Rotolare dritto non è garantito.</p>
                     <div class="creator-options">
                         <button type="button" class="creator-option selected"
@@ -4671,7 +4668,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                 </section>
 
                 <section class="creator-section" data-tab="scena">
-                    <h2>Lo sfondo</h2>
+                    <h2>Scegli lo sfondo</h2>
                     <p>Dove vive il tuo criceto? Finisce anche nella foto scaricata.</p>
                     <div class="creator-options">
                         <button type="button" class="creator-option selected"
@@ -6701,7 +6698,7 @@ function initHamsterCreator() {
     const eyeShapes = {
         happy: c => bothEyes(x => `<path d="M${x - 12} 154 Q${x} 139 ${x + 12} 154" fill="none" stroke="${c}" stroke-width="4.5" stroke-linecap="round"/>`),
         sleepy: c => bothEyes(x => `<path d="M${x - 11} 148 A11 9 0 0 0 ${x + 11} 148 Z" fill="${c}"/><path d="M${x - 13} 148 H${x + 13}" stroke="${c}" stroke-width="3.5" stroke-linecap="round"/><circle cx="${x + 3}" cy="152" r="2" fill="#FFFFFF"/>`),
-        wink: c => `<ellipse cx="124" cy="150" rx="11" ry="12.5" fill="${c}"/><circle cx="128" cy="145" r="3.6" fill="#FFFFFF"/><circle cx="121" cy="154" r="1.5" fill="#FFFFFF"/><path d="M184 153 Q196 140 208 153" fill="none" stroke="${c}" stroke-width="4.5" stroke-linecap="round"/>`,
+        wink: c => `<g class="wink-open"><ellipse cx="124" cy="150" rx="11" ry="12.5" fill="${c}"/><circle cx="128" cy="145" r="3.6" fill="#FFFFFF"/><circle cx="121" cy="154" r="1.5" fill="#FFFFFF"/></g><path d="M184 153 Q196 140 208 153" fill="none" stroke="${c}" stroke-width="4.5" stroke-linecap="round"/>`,
         hearts: c => bothEyes(x => `<path transform="translate(${x} 153) scale(.9)" d="${heartD}" fill="${c === eyeColors.dark ? "#E8506E" : c}"/><circle cx="${x - 5}" cy="143" r="2.4" fill="#FFFFFF"/>`),
         stars: c => bothEyes(x => `<polygon points="${starPoints(x, 151, 14, 6.5)}" fill="${c === eyeColors.dark ? "#F2B53A" : c}" stroke="${c === eyeColors.dark ? "#C98A1E" : c}" stroke-width="1.5" stroke-linejoin="round"/><circle cx="${x - 3}" cy="147" r="2" fill="#FFFFFF"/>`),
         dots: c => bothEyes(x => `<circle cx="${x}" cy="151" r="4.6" fill="${c}"/><circle cx="${x + 1.5}" cy="149.5" r="1.3" fill="#FFFFFF"/>`),
@@ -6792,27 +6789,29 @@ function initHamsterCreator() {
                 return `<rect x="155" y="196" width="10" height="30" rx="4" fill="${p.main}" stroke="${p.dark}" stroke-width="1.5"/><circle cx="160" cy="191" r="11" fill="${head.fill}" stroke="${head.stroke}" stroke-width="2"/><path d="M152 187 H168 M151 192 H169 M153 197 H167" stroke="${head.stroke}" stroke-width="1.4"/><rect x="154" y="200" width="12" height="4" rx="2" fill="${heldCustom(s) ? p.light : "#B9A3E3"}"/>`;
             },
             guitar: (c, s) => {
-                const p = heldPal(s, { main: "#E8A160", dark: "#A86A35" });
-                return `<g transform="translate(160 208) rotate(60) scale(1.45) translate(-160 -205)"><rect x="157" y="166" width="6" height="32" rx="2" fill="#8B5A35"/><rect x="155" y="160" width="10" height="10" rx="2.5" fill="#6B4226"/><circle cx="160" cy="199" r="10" fill="${p.main}" stroke="${p.dark}" stroke-width="2"/><circle cx="160" cy="214" r="13" fill="${p.main}" stroke="${p.dark}" stroke-width="2"/><circle cx="160" cy="207" r="4" fill="#6B4226"/><path d="M158.5 170 V222 M161.5 170 V222" stroke="#FFF4D6" stroke-width=".8"/></g>`;
+                const p = heldPal(s, { main: "#E8A160", dark: "#A86A35", light: "#F6C98F" });
+                return `<g transform="translate(160 209) rotate(38) scale(.95) translate(-160 -200)"><rect x="157" y="128" width="6" height="46" rx="1.5" fill="#6B4226"/><path d="M157 138 H163 M157 147 H163 M157 156 H163 M157 165 H163" stroke="#D9C7A6" stroke-width="1"/><rect x="153" y="116" width="14" height="14" rx="3.5" fill="#4A2E1B"/><g fill="#E9E1D2"><circle cx="151" cy="120" r="2"/><circle cx="151" cy="127" r="2"/><circle cx="169" cy="120" r="2"/><circle cx="169" cy="127" r="2"/></g><path d="M160 170 C148 166 142 176 146 186 C139 191 136 203 140 213 C132 224 140 238 160 238 C180 238 188 224 180 213 C184 203 181 191 174 186 C178 176 172 166 160 170 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="2.4" stroke-linejoin="round"/><path d="M160 176 C151 174 148 180 150 186 C144 192 142 202 145 210" fill="none" stroke="${p.light}" stroke-width="3" stroke-linecap="round" opacity=".7"/><circle cx="160" cy="199" r="7" fill="#3A2415" stroke="${p.dark}" stroke-width="1.6"/><rect x="152" y="219" width="16" height="4.5" rx="2" fill="#4A2E1B"/><path d="M158.6 130 V221 M161.4 130 V221" stroke="#FFF4D6" stroke-width=".7"/></g>`;
             },
             umbrella: (c, s) => {
-                const p = heldPal(s, { main: "#F48A9B", dark: "#C2434F" });
-                return `<path d="M130 200 Q160 170 190 200 Q180 194 172 200 Q165 194 160 200 Q155 194 148 200 Q140 194 130 200 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="2" stroke-linejoin="round"/><path d="M160 200 V222" stroke="#8B5A35" stroke-width="3" stroke-linecap="round"/><path d="M160 222 q0 8 -8 6" fill="none" stroke="#8B5A35" stroke-width="3" stroke-linecap="round"/>`;
+                const p = heldPal(s, { main: "#F48A9B", dark: "#C2434F", light: "#FFD3DA" });
+                return `<path d="M160 228 V198" stroke="#8B5A35" stroke-width="3" stroke-linecap="round"/><path d="M160 228 q0 8 -8 6" fill="none" stroke="#8B5A35" stroke-width="3" stroke-linecap="round" transform="translate(0 -4)"/><path d="M126 200 C128 178 144 168 160 168 C176 168 192 178 194 200 Q186 193 177 200 Q168 193 160 200 Q152 193 143 200 Q134 193 126 200 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="2.2" stroke-linejoin="round"/><path d="M160 168 Q150 182 143 199 M160 168 Q170 182 177 199 M160 168 V199" fill="none" stroke="${p.dark}" stroke-width="1.5" opacity=".55"/><path d="M137 186 Q143 176 152 173" fill="none" stroke="${p.light}" stroke-width="3" stroke-linecap="round" opacity=".85"/><circle cx="160" cy="167" r="2.6" fill="${p.dark}"/>`;
             },
             iceCream: (c, s) => {
                 const p = heldPal(s, accPalette.pink);
-                return `<path d="M149 205 L171 205 L160 228 Z" fill="#E8A160" stroke="#A86A35" stroke-width="2" stroke-linejoin="round"/><path d="M152 208 L168 208 M154 215 L166 215" stroke="#A86A35" stroke-width="1.3"/><circle cx="160" cy="193" r="12" fill="${p.main}" stroke="${p.dark}" stroke-width="2"/><circle cx="154" cy="189" r="3" fill="${p.light}"/>`;
+                const top = heldCustom(s) ? p.light : "#FFF3D6";
+                return `<path d="M147 203 L173 203 L160 233 Z" fill="#E8A160" stroke="#A86A35" stroke-width="2" stroke-linejoin="round"/><g stroke="#A86A35" stroke-width="1.1" opacity=".75"><path d="M151 209 L164 222 M157 205 L168 216 M169 209 L156 222 M163 205 L152 216"/></g><path d="M143 204 C139 194 147 190 152 192 C154 184 166 184 168 192 C173 190 181 194 177 204 C168 208 152 208 143 204 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="2" stroke-linejoin="round"/><path d="M149 197 Q151 191 157 190" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" opacity=".75"/><path d="M147 188 C145 178 155 174 160 177 C166 174 175 178 172 188 C166 191 153 191 147 188 Z" fill="${top}" stroke="${p.dark}" stroke-width="2" stroke-linejoin="round"/><circle cx="160" cy="173" r="4" fill="#E0534F" stroke="#B83A38" stroke-width="1.3"/><path d="M160 169 Q162 163 167 161" fill="none" stroke="#5FA54B" stroke-width="1.6" stroke-linecap="round"/>`;
             },
             balloon: (c, s) => {
                 const p = heldPal(s, accPalette.pink);
-                return `<circle cx="160" cy="196" r="16" fill="${p.main}" stroke="${p.dark}" stroke-width="2.4"/><path d="M156 211 L164 211 L160 217 Z" fill="${p.dark}"/><path d="M160 217 q6 5 0 11" fill="none" stroke="${p.dark}" stroke-width="2"/><ellipse cx="153" cy="190" rx="4" ry="6" fill="#FFFFFF" opacity=".7"/>`;
+                return `<path d="M160 222 C155 228 165 232 160 238 C157 242 160 244 160 244" fill="none" stroke="#9A8F88" stroke-width="1.6" stroke-linecap="round" transform="translate(0 -6)"/><path d="M160 214 C140 208 130 186 138 170 C145 156 175 156 182 170 C190 186 180 208 160 214 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="2.4" stroke-linejoin="round"/><path d="M155 216 L165 216 L160 211 Z" fill="${p.dark}" stroke="${p.dark}" stroke-width="1.6" stroke-linejoin="round"/><path d="M146 182 C144 174 148 168 155 165" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity=".75"/><path d="M170 198 Q177 192 179 183" fill="none" stroke="${p.dark}" stroke-width="2" stroke-linecap="round" opacity=".3"/>`;
             },
             bouquet: (c, s) => {
                 const custom = heldCustom(s);
                 const p = heldPal(s, { main: "#F48A9B", dark: "#C2434F", light: "#FFD66B" });
-                const right = custom ? { fill: p.light, stroke: p.dark } : { fill: "#FFD66B", stroke: "#C9973A" };
-                const top = custom ? { fill: p.light, stroke: p.dark, centre: p.dark } : { fill: "#FFFFFF", stroke: "#D8C3B8", centre: "#FFD66B" };
-                return `<path d="M160 214 V202 M151 214 V198 M169 214 V200" fill="none" stroke="#5FA54B" stroke-width="2.2" stroke-linecap="round"/><path d="M152 212 L168 212 L164 228 L156 228 Z" fill="#F3D9C0" stroke="#C0A184" stroke-width="1.8" stroke-linejoin="round"/><circle cx="151" cy="194" r="6" fill="${p.main}" stroke="${p.dark}" stroke-width="1.6"/><circle cx="169" cy="196" r="6" fill="${right.fill}" stroke="${right.stroke}" stroke-width="1.6"/><circle cx="160" cy="188" r="6.5" fill="${top.fill}" stroke="${top.stroke}" stroke-width="1.6"/><circle cx="160" cy="188" r="2.6" fill="${top.centre}"/>`;
+                const yel = custom ? { fill: p.light, stroke: p.dark } : { fill: "#FFD66B", stroke: "#C9973A" };
+                const wht = custom ? { fill: p.light, stroke: p.dark, mid: p.dark } : { fill: "#FFFFFF", stroke: "#D8C3B8", mid: "#FFD66B" };
+                const flower = (x, y, r, f, st, mid) => `<g stroke="${st}" stroke-width="1.3">` + [0, 72, 144, 216, 288].map(a => `<circle cx="${(x + Math.cos(a * Math.PI / 180) * r * .62).toFixed(1)}" cy="${(y + Math.sin(a * Math.PI / 180) * r * .62).toFixed(1)}" r="${(r * .52).toFixed(1)}" fill="${f}"/>`).join("") + `</g><circle cx="${x}" cy="${y}" r="${(r * .36).toFixed(1)}" fill="${mid}"/>`;
+                return `<path d="M160 212 V196 M152 212 L148 192 M168 212 L173 194" fill="none" stroke="#5FA54B" stroke-width="2.2" stroke-linecap="round"/><path d="M158 206 Q148 204 144 198 Q152 196 158 206 Z M162 204 Q172 200 176 194 Q166 194 162 204 Z" fill="#7CC36E" stroke="#4F9447" stroke-width="1"/>` + flower(148, 190, 9, p.main, p.dark, p.light) + flower(174, 192, 9, yel.fill, yel.stroke, p.dark) + flower(160, 184, 10, wht.fill, wht.stroke, wht.mid) + `<path d="M142 208 L178 208 L166 233 L154 233 Z" fill="#F3D9C0" stroke="#C0A184" stroke-width="1.8" stroke-linejoin="round"/><path d="M146 213 L174 213" stroke="${custom ? p.dark : "#E07A8C"}" stroke-width="3.2" stroke-linecap="round"/><path d="M160 213 q-6 5 -9 2 M160 213 q6 5 9 2" fill="none" stroke="${custom ? p.dark : "#E07A8C"}" stroke-width="2.2" stroke-linecap="round"/>`;
             },
             juice: (c, s) => {
                 const p = heldPal(s, { main: "#FFA94D", dark: "#D9822B", light: "#FFE0A8" });
@@ -6836,13 +6835,16 @@ function initHamsterCreator() {
             red: ballPart(ballTints.red)
         },
         age: {
-            baby: (c, s) => `<g fill="none" stroke="${c.dark}" stroke-width="3" stroke-linecap="round"><path d="M148 78 Q142 62 150 55"/><path d="M160 76 Q160 58 168 52"/><path d="M172 79 Q180 64 175 57"/></g>` +
+            baby: (c, s) =>
                 (roundEyes[s.eyes] ? bothEyes(x => `<circle cx="${x - 5}" cy="157" r="2.6" fill="#FFFFFF" opacity=".95"/><circle cx="${x + 6}" cy="145" r="1.6" fill="#FFFFFF"/>`) : ""),
             young: "",
             adult: "",
-            senior: (c, s) => `<ellipse cx="160" cy="104" rx="38" ry="17" fill="#FFFFFF" opacity=".3"/>` +
-                `<g fill="none" stroke-linecap="round"><path d="M103 133 Q119 118 143 130 M177 130 Q201 118 217 133" stroke="#8A7468" stroke-opacity=".55" stroke-width="9.5"/><path d="M103 133 Q119 118 143 130 M177 130 Q201 118 217 133" stroke="#FFFFFF" stroke-width="6.5"/></g>` +
-                `<g stroke="${c.dark}" stroke-width="2" stroke-linecap="round" opacity=".55" fill="none"><path d="M104 148 Q98 146 95 141"/><path d="M104 154 Q97 155 94 160"/><path d="M216 148 Q222 146 225 141"/><path d="M216 154 Q223 155 226 160"/></g>`
+            senior: (c, s) => `<ellipse cx="160" cy="100" rx="40" ry="16" fill="#FFFFFF" opacity=".28"/>` +
+                `<ellipse cx="142" cy="178" rx="26" ry="17" fill="#FFFFFF" opacity=".32"/><ellipse cx="178" cy="178" rx="26" ry="17" fill="#FFFFFF" opacity=".32"/>` +
+                `<g fill="#FFFFFF" stroke="#CFC6BD" stroke-width=".9"><ellipse cx="111" cy="136" rx="9" ry="4.8" transform="rotate(-24 111 136)"/><ellipse cx="124" cy="131" rx="11" ry="5.4" transform="rotate(-10 124 131)"/><ellipse cx="138" cy="132" rx="9" ry="4.8" transform="rotate(10 138 132)"/>` +
+                `<ellipse cx="209" cy="136" rx="9" ry="4.8" transform="rotate(24 209 136)"/><ellipse cx="196" cy="131" rx="11" ry="5.4" transform="rotate(10 196 131)"/><ellipse cx="182" cy="132" rx="9" ry="4.8" transform="rotate(-10 182 132)"/></g>` +
+                `<g fill="none" stroke="${c.dark}" stroke-width="1.7" stroke-linecap="round" opacity=".4"><path d="M113 167 Q124 173 135 167"/><path d="M185 167 Q196 173 207 167"/></g>` +
+                `<g fill="${c.dark}" opacity=".3"><circle cx="138" cy="104" r="2"/><circle cx="154" cy="96" r="1.7"/><circle cx="181" cy="102" r="2.1"/><circle cx="196" cy="110" r="1.6"/></g>`
         },
         tail: {
             puff: c => `<circle cx="256" cy="246" r="13" fill="${c.main}" stroke="${c.dark}" stroke-width="3"/>`,
@@ -6887,7 +6889,7 @@ function initHamsterCreator() {
                 Array.from({ length: 14 }, (_, i) => `<circle cx="${(i * 71) % 300 + 10}" cy="${(i * 47) % 160 + 80}" r="3" fill="${confettiColors[i % confettiColors.length]}" opacity=".8"/>`).join("")),
             sea: () => backdrop("#8FD6EE", `<defs><linearGradient id="seaWater" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A9E4F7"/><stop offset="1" stop-color="#2E86B8"/></linearGradient></defs><rect width="320" height="320" fill="url(#seaWater)"/>` +
                 `<g fill="#FFFFFF" opacity=".45"><ellipse cx="60" cy="34" rx="36" ry="12"/><ellipse cx="248" cy="56" rx="26" ry="9"/><ellipse cx="150" cy="22" rx="20" ry="7"/></g>` +
-                `<path d="M0 296 Q80 280 160 292 T320 288 V320 H0 Z" fill="#F5DDAE"/>` +
+                `<path d="M0 276 Q80 262 160 272 T320 268 V320 H0 Z" fill="#F5DDAE"/><path d="M0 276 Q80 262 160 272 T320 268" fill="none" stroke="#E8CB93" stroke-width="3"/>` +
                 `<g fill="none" stroke="#3E9C6E" stroke-width="5" stroke-linecap="round"><path d="M30 316 Q20 286 34 260"/><path d="M52 318 Q62 292 48 266"/><path d="M286 314 Q276 288 292 262"/></g>` +
                 [[46, 236, 7], [70, 272, 4], [280, 240, 6], [252, 286, 4], [120, 296, 5], [210, 300, 3], [96, 258, 3]]
                     .map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#FFFFFF" opacity=".45"/>`).join("") +
@@ -6899,7 +6901,7 @@ function initHamsterCreator() {
             snow: () => backdrop("#D8E9F7", `<defs><linearGradient id="snowSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C7E0F5"/><stop offset="1" stop-color="#F2F8FF"/></linearGradient></defs><rect width="320" height="320" fill="url(#snowSky)"/>` +
                 `<g fill="#FFFFFF"><circle cx="46" cy="60" r="2.6"/><circle cx="110" cy="36" r="2"/><circle cx="176" cy="52" r="2.8"/><circle cx="240" cy="30" r="2.2"/><circle cx="286" cy="70" r="2.6"/><circle cx="70" cy="112" r="2"/><circle cx="200" cy="96" r="2.4"/><circle cx="140" cy="128" r="2"/><circle cx="262" cy="132" r="2.6"/><circle cx="30" cy="160" r="2.2"/><circle cx="300" cy="180" r="2"/><circle cx="90" cy="182" r="2.4"/></g>` +
                 `<path d="M0 244 Q80 216 170 238 T320 230 V320 H0 Z" fill="#FFFFFF"/><path d="M0 278 Q120 260 210 276 T320 270 V320 H0 Z" fill="#EDF5FF"/>` +
-                `<g fill="#4E8C63"><path d="M40 246 L24 212 H56 Z"/><path d="M40 224 L28 196 H52 Z"/><path d="M282 242 L264 206 H300 Z"/><path d="M282 218 L270 190 H294 Z"/></g>` +
+                `<g fill="#4E8C63"><path d="M40 212 L24 246 H56 Z"/><path d="M40 190 L28 224 H52 Z"/><path d="M282 206 L264 242 H300 Z"/><path d="M282 184 L270 218 H294 Z"/></g>` +
                 `<g fill="#7A5236"><rect x="37" y="244" width="6" height="12"/><rect x="279" y="240" width="6" height="12"/></g>`),
             sunset: () => backdrop("#FFC48C", `<defs><linearGradient id="sunsetSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F9A5C0"/><stop offset=".55" stop-color="#FFC48C"/><stop offset="1" stop-color="#FFE6B8"/></linearGradient></defs><rect width="320" height="320" fill="url(#sunsetSky)"/>` +
                 `<circle cx="240" cy="206" r="38" fill="#FF9E6B"/>` +
@@ -7536,8 +7538,12 @@ function updateEyes() {
     (function blinkLoop() {
         setTimeout(() => {
             if (document.getElementById("crea-criceto").classList.contains("active")) {
-                avatar.classList.add("blinking");
-                setTimeout(() => avatar.classList.remove("blinking"), 220);
+                // Eyes that are already closed (felici, assonnati) do not blink; on a wink only the open eye does.
+                const cls = state.eyes === "wink" ? "blinking-open" : (state.eyes === "happy" || state.eyes === "sleepy") ? null : "blinking";
+                if (cls) {
+                    avatar.classList.add(cls);
+                    setTimeout(() => avatar.classList.remove(cls), 220);
+                }
             }
             blinkLoop();
         }, 2400 + Math.random() * 3200);
