@@ -2673,12 +2673,15 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
         </button>
 
         <div class="nav-links" id="mainMenu" role="navigation" aria-label="Menu principale">
-            <span class="menu-title">Dove andiamo?</span>
+            <span class="menu-title">Compra</span>
             <button class="nav-link current" data-page="catalogo" onclick="showPage('catalogo')">Negozio</button>
+            <span class="menu-title">Crea</span>
             <button class="nav-link" data-page="crea-criceto" onclick="showPage('crea-criceto')">Crea il tuo criceto</button>
             <button class="nav-link" data-page="crea-casa" onclick="showPage('crea-casa')">Crea la casa</button>
-            <button class="nav-link" data-page="gara" onclick="showPage('gara')">Gara</button>
-            <button class="nav-link" data-page="tracking" onclick="showPage('tracking')">Il mio ordine</button>
+            <span class="menu-title">Gioca</span>
+            <button class="nav-link" data-page="gara" onclick="showPage('gara')">Gara di criceti</button>
+            <span class="menu-title">Aiuto</span>
+            <button class="nav-link" data-page="tracking" onclick="showPage('tracking')">Traccia il tuo ordine</button>
             <button class="nav-link" data-page="assistenza" onclick="showPage('assistenza')">Assistenza</button>
             <button class="nav-link" data-page="restituzioni" onclick="showPage('restituzioni')">Resi</button>
         </div>
@@ -2739,54 +2742,6 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                     <img class="hero-hamster" id="heroHamster" alt="">
                 </button>
                 <span class="floating-note note-two">🧠 Pensieri in corso...</span>
-            </div>
-        </div>
-    </section>
-
-    <div class="container">
-        <section class="trust-strip">
-            <div class="trust-item">
-                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 10c-3-4-11-4-12 3-6 1-8 8-4 12-3 5 1 11 7 11 2 4 7 4 9 1 2 3 7 3 9-1 6 0 10-6 7-11 4-4 2-11-4-12-1-7-9-7-12-3z" fill="#f7b9c6" stroke="#b05f72" stroke-width="2.5" stroke-linejoin="round"/><path d="M24 10v28M16 20c3 2 5 2 8 0M32 27c-3-2-5-2-8 0" stroke="#b05f72" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></span>
-                <div>
-                    <strong>Pensieri in movimento</strong>
-                    <small>Almeno sulla carta.</small>
-                </div>
-            </div>
-
-            <div class="trust-item">
-                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="15" fill="#ffd66b" stroke="#c9962a" stroke-width="3"/><circle cx="24" cy="24" r="10.5" fill="none" stroke="#e8b543" stroke-width="2"/><text x="24" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="16" fill="#a8771a">€</text></svg></span>
-                <div>
-                    <strong>Prezzi scientifici*</strong>
-                    <small>*Non verificati.</small>
-                </div>
-            </div>
-
-            <div class="trust-item">
-                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 17l16-8 16 8v16l-16 8-16-8z" fill="#f1c48f" stroke="#a8713f" stroke-width="2.5" stroke-linejoin="round"/><path d="M8 17l16 8 16-8M24 25v16" fill="none" stroke="#a8713f" stroke-width="2.5" stroke-linejoin="round"/><path d="M15 13l16 8v6" fill="none" stroke="#e8798a" stroke-width="3" stroke-linecap="round"/></svg></span>
-                <div>
-                    <strong>Consegna ultraterrena</strong>
-                    <small>Il corriere è un criceto.</small>
-                </div>
-            </div>
-        </section>
-    </div>
-
-
-    <section class="creator-promo">
-        <div class="container">
-            <div class="creator-promo-inner">
-                <div class="creator-promo-art">
-                    <img id="promoHamster" alt="Un criceto che cambia look">
-                </div>
-                <div>
-                    <span class="tiny-label">Il tuo roditore, le tue regole</span>
-                    <h2>Crea il tuo criceto</h2>
-                    <p>Pelo, occhi, baffi, accessori e sfondi: progetta il collaboratore perfetto per il tuo caos mentale e adottalo da 12,99 €.</p>
-                    <div class="creator-promo-buttons">
-                        <button class="primary-button" onclick="showPage('crea-criceto')">Prova ora →</button>
-                        <button class="secondary-button" onclick="showPage('crea-casa')">Costruisci la sua casa</button>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -2869,41 +2824,49 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                     <h2>Da dove cominciamo?</h2>
                 </div>
             </div>
-
             <div class="home-menu-grid">
+                <h3 class="home-menu-group">Compra</h3>
                 <button class="home-menu-card" onclick="goToSection('criceti')">
-                    <span class="home-menu-icon hamster-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="13" cy="15" r="6" fill="#e8cfae" stroke="#9c7556" stroke-width="2.2"/><circle cx="35" cy="15" r="6" fill="#e8cfae" stroke="#9c7556" stroke-width="2.2"/><circle cx="13" cy="15" r="2.6" fill="#f6b5c0"/><circle cx="35" cy="15" r="2.6" fill="#f6b5c0"/><ellipse cx="24" cy="27" rx="16" ry="14" fill="#f1dcc0" stroke="#9c7556" stroke-width="2.4"/><circle cx="18" cy="25" r="2.4" fill="#3a2a25"/><circle cx="30" cy="25" r="2.4" fill="#3a2a25"/><circle cx="18.8" cy="24.2" r=".8" fill="#fff"/><circle cx="30.8" cy="24.2" r=".8" fill="#fff"/><ellipse cx="24" cy="29.5" rx="2" ry="1.4" fill="#e98a9b"/><circle cx="13" cy="30.5" r="2.6" fill="#f6b5c0" opacity=".8"/><circle cx="35" cy="30.5" r="2.6" fill="#f6b5c0" opacity=".8"/></svg></span>
-                    <span class="home-menu-title">I nostri criceti</span>
+                    <span class="home-menu-icon">🐹</span>
+                    <span class="home-menu-text"><span class="home-menu-title">I nostri criceti</span><span class="home-menu-sub">12 modelli, nessuno produttivo</span></span>
                 </button>
-
+                <button class="home-menu-card" onclick="goToSection('ruote')">
+                    <span class="home-menu-icon">🎡</span>
+                    <span class="home-menu-text"><span class="home-menu-title">Ruote</span><span class="home-menu-sub">Dalla base allo stadio</span></span>
+                </button>
                 <button class="home-menu-card" onclick="goToSection('extra')">
-                    <span class="home-menu-icon extra-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 22L13 42M24 22l11 20" stroke="#a86f4f" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="22" r="15" fill="#f7d3b4" stroke="#c88965" stroke-width="3.5"/><path d="M24 7v30M9 22h30M13.4 11.4l21.2 21.2M34.6 11.4L13.4 32.6" stroke="#dfa883" stroke-width="2"/><circle cx="24" cy="22" r="3.2" fill="#c88965"/></svg></span>
-                    <span class="home-menu-title">Extra e ricambi</span>
+                    <span class="home-menu-icon">🌾</span>
+                    <span class="home-menu-text"><span class="home-menu-title">Extra e ricambi</span><span class="home-menu-sub">Cibo, acqua, paglia, palle</span></span>
                 </button>
-
+                <h3 class="home-menu-group">Crea e gioca</h3>
                 <button class="home-menu-card" onclick="showPage('crea-criceto')">
-                    <span class="home-menu-icon creator-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8C14 8 7 15 7 24s7 16 15 16c3 0 4-2 3-4s0-5 3-5h5c5 0 9-3 9-8 0-9-8-15-18-15z" fill="#fff4e6" stroke="#9c7556" stroke-width="2.5" stroke-linejoin="round"/><circle cx="16" cy="20" r="3" fill="#f28da0"/><circle cx="24" cy="15" r="3" fill="#ffd66b"/><circle cx="32" cy="19" r="3" fill="#8fcdf5"/><circle cx="15" cy="29" r="3" fill="#9bd1a8"/></svg></span>
-                    <span class="home-menu-title">Crea il tuo criceto</span>
+                    <span class="home-menu-icon">🎨</span>
+                    <span class="home-menu-text"><span class="home-menu-title">Crea il tuo criceto</span><span class="home-menu-sub">Pelo, occhi, accessori</span></span>
                 </button>
-
+                <button class="home-menu-card" onclick="showPage('crea-casa')">
+                    <span class="home-menu-icon">🏠</span>
+                    <span class="home-menu-text"><span class="home-menu-title">Crea la casa</span><span class="home-menu-sub">Dalla gabbia al castello</span></span>
+                </button>
+                <button class="home-menu-card" onclick="showPage('gara')">
+                    <span class="home-menu-icon">🏁</span>
+                    <span class="home-menu-text"><span class="home-menu-title">Gara di criceti</span><span class="home-menu-sub">Scommetti sul più veloce</span></span>
+                </button>
+                <h3 class="home-menu-group">Dopo l'acquisto</h3>
+                <button class="home-menu-card" onclick="showPage('tracking')">
+                    <span class="home-menu-icon">📦</span>
+                    <span class="home-menu-text"><span class="home-menu-title">Traccia il tuo ordine</span><span class="home-menu-sub">Dov'è finito il pacco?</span></span>
+                </button>
                 <button class="home-menu-card" onclick="showPage('assistenza')">
-                    <span class="home-menu-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><g transform="rotate(-35 24 24)"><rect x="5" y="16" width="38" height="16" rx="8" fill="#f6c9a8" stroke="#c99470" stroke-width="2.4"/><rect x="18" y="17.2" width="12" height="13.6" fill="#efb08a"/><g fill="#c99470"><circle cx="21.5" cy="21" r="1.2"/><circle cx="26.5" cy="21" r="1.2"/><circle cx="21.5" cy="27" r="1.2"/><circle cx="26.5" cy="27" r="1.2"/></g></g></svg></span>
-                    <span class="home-menu-title">Centro assistenza</span>
+                    <span class="home-menu-icon">🛠️</span>
+                    <span class="home-menu-text"><span class="home-menu-title">Centro assistenza</span><span class="home-menu-sub">Segnala un problema</span></span>
                 </button>
-
                 <button class="home-menu-card" onclick="showPage('restituzioni')">
-                    <span class="home-menu-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#5f9a74" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 24a13 13 0 0 1 22-9.5"/><path d="M34 7v8h-8"/><path d="M37 24a13 13 0 0 1-22 9.5"/><path d="M14 41v-8h8"/></g></svg></span>
-                    <span class="home-menu-title">Resi e restituzioni</span>
-                </button>
-
-                <button class="home-menu-card" onclick="showPage('carrello')">
-                    <span class="home-menu-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M15 16h26l-4 14H18z" fill="#f7b9c6"/><path d="M6 10h6l5 20h20l4-14H14" fill="none" stroke="#6b4a3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="37" r="3" fill="#6b4a3a"/><circle cx="34" cy="37" r="3" fill="#6b4a3a"/></svg></span>
-                    <span class="home-menu-title">Il tuo carrello</span>
+                    <span class="home-menu-icon">♻️</span>
+                    <span class="home-menu-text"><span class="home-menu-title">Resi e restituzioni</span><span class="home-menu-sub">Seconda vita per la ruota</span></span>
                 </button>
             </div>
         </div>
     </section>
-
     <section class="shop-filters">
         <div class="container shop-filters-inner">
             <div class="filter-chips" role="group" aria-label="Filtra i prodotti">
@@ -2951,19 +2914,80 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
         </div>
     </section>
 
+    <section class="catalog-section" id="ruote">
+        <div class="container">
+            <div class="section-heading">
+                <div>
+                    <span class="tiny-label">Reparto fitness</span>
+                    <h2>Ruote</h2>
+                    <p>Dalla ruota base al tour mondiale: più sali di prezzo, più il criceto fa finta di allenarsi.</p>
+                </div>
+                <span class="eyebrow">0 modelli</span>
+            </div>
+            <div class="product-grid" id="wheelGrid"></div>
+        </div>
+    </section>
     <section class="catalog-section" id="extra" style="background:#f7eee7">
         <div class="container">
             <div class="section-heading">
                 <div>
                     <span class="tiny-label">Reparto accessori</span>
                     <h2>Extra e ricambi</h2>
-                    <p>Perché anche i criceti hanno diritto a strumenti decenti.</p>
+                    <p>Cibo, acqua, paglia e palle: perché anche i criceti hanno diritto a strumenti decenti.</p>
                 </div>
-                <span class="eyebrow">9 modelli</span>
+                <span class="eyebrow">0 modelli</span>
             </div>
-            <div class="product-grid" id="wheelGrid"></div>
+            <div class="product-grid" id="extraGrid"></div>
         </div>
     </section>
+    <section class="creator-promo">
+        <div class="container">
+            <div class="creator-promo-inner">
+                <div class="creator-promo-art">
+                    <img id="promoHamster" alt="Un criceto che cambia look">
+                </div>
+                <div>
+                    <span class="tiny-label">Il tuo roditore, le tue regole</span>
+                    <h2>Crea il tuo criceto</h2>
+                    <p>Pelo, occhi, baffi, accessori e sfondi: progetta il collaboratore perfetto per il tuo caos mentale e adottalo da 12,99 €.</p>
+                    <div class="creator-promo-buttons">
+                        <button class="primary-button" onclick="showPage('crea-criceto')">Prova ora →</button>
+                        <button class="secondary-button" onclick="showPage('crea-casa')">Costruisci la sua casa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="trust-strip">
+            <div class="trust-item">
+                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 10c-3-4-11-4-12 3-6 1-8 8-4 12-3 5 1 11 7 11 2 4 7 4 9 1 2 3 7 3 9-1 6 0 10-6 7-11 4-4 2-11-4-12-1-7-9-7-12-3z" fill="#f7b9c6" stroke="#b05f72" stroke-width="2.5" stroke-linejoin="round"/><path d="M24 10v28M16 20c3 2 5 2 8 0M32 27c-3-2-5-2-8 0" stroke="#b05f72" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></span>
+                <div>
+                    <strong>Pensieri in movimento</strong>
+                    <small>Almeno sulla carta.</small>
+                </div>
+            </div>
+
+            <div class="trust-item">
+                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="15" fill="#ffd66b" stroke="#c9962a" stroke-width="3"/><circle cx="24" cy="24" r="10.5" fill="none" stroke="#e8b543" stroke-width="2"/><text x="24" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="16" fill="#a8771a">€</text></svg></span>
+                <div>
+                    <strong>Prezzi scientifici*</strong>
+                    <small>*Non verificati.</small>
+                </div>
+            </div>
+
+            <div class="trust-item">
+                <span class="trust-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 17l16-8 16 8v16l-16 8-16-8z" fill="#f1c48f" stroke="#a8713f" stroke-width="2.5" stroke-linejoin="round"/><path d="M8 17l16 8 16-8M24 25v16" fill="none" stroke="#a8713f" stroke-width="2.5" stroke-linejoin="round"/><path d="M15 13l16 8v6" fill="none" stroke="#e8798a" stroke-width="3" stroke-linecap="round"/></svg></span>
+                <div>
+                    <strong>Consegna ultraterrena</strong>
+                    <small>Il corriere è un criceto.</small>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
 
     <section class="about">
         <div class="container about-inner">
@@ -3492,25 +3516,31 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                         </g>
 
                         <g id="accessoryBandana" style="display:none">
-                            <defs><clipPath id="bandanaClip"><path d="M86 122 C78 100 82 70 110 56 C132 46 188 46 210 56 C238 70 242 100 234 122 C204 112 116 112 86 122 Z"/></clipPath></defs>
-                            <path d="M80 122 C70 136 66 152 70 170 L83 163 C81 150 83 138 89 128 Z" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
-                            <path d="M78 118 C62 124 52 138 50 156 L63 155 C65 143 71 133 82 126 Z" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
-                            <path d="M86 122 C78 100 82 70 110 56 C132 46 188 46 210 56 C238 70 242 100 234 122 C204 112 116 112 86 122 Z" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3.5" stroke-linejoin="round"/>
-                            <g clip-path="url(#bandanaClip)" fill="#FFF3F5"><circle cx="92" cy="60" r="3.6"/><circle cx="116" cy="60" r="3.6"/><circle cx="140" cy="60" r="3.6"/><circle cx="164" cy="60" r="3.6"/><circle cx="188" cy="60" r="3.6"/><circle cx="212" cy="60" r="3.6"/><circle cx="104" cy="76" r="3.6"/><circle cx="128" cy="76" r="3.6"/><circle cx="152" cy="76" r="3.6"/><circle cx="176" cy="76" r="3.6"/><circle cx="200" cy="76" r="3.6"/><circle cx="224" cy="76" r="3.6"/><circle cx="92" cy="92" r="3.6"/><circle cx="116" cy="92" r="3.6"/><circle cx="140" cy="92" r="3.6"/><circle cx="164" cy="92" r="3.6"/><circle cx="188" cy="92" r="3.6"/><circle cx="212" cy="92" r="3.6"/><circle cx="104" cy="108" r="3.6"/><circle cx="128" cy="108" r="3.6"/><circle cx="152" cy="108" r="3.6"/><circle cx="176" cy="108" r="3.6"/><circle cx="200" cy="108" r="3.6"/><circle cx="224" cy="108" r="3.6"/></g>
-                            <g clip-path="url(#bandanaClip)" fill="none" stroke="#C9637B" data-stroke="dark" stroke-width="2.2" stroke-linecap="round" opacity=".45"><path d="M96 104 C112 82 140 66 176 60"/><path d="M98 112 C130 94 172 84 222 84"/></g>
-                            <path d="M84 112 C114 102 206 102 236 112 L234 122 C204 112 116 112 86 122 Z" fill="#E07C95" data-fill="dark" stroke="#C9637B" data-stroke="dark" stroke-width="2.5" stroke-linejoin="round"/>
-                            <ellipse cx="80" cy="112" rx="10" ry="8" transform="rotate(-30 80 112)" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3"/>
-                            <ellipse cx="83" cy="124" rx="9" ry="7" transform="rotate(20 83 124)" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3"/>
+                            <defs><clipPath id="bandanaClip"><path d="M82 126 C82 100 100 80 130 74 C150 70 170 70 190 74 C220 80 238 100 238 126 C208 114 112 114 82 126 Z"/></clipPath></defs>
+                            <path d="M84 124 C70 132 58 146 56 166 L70 164 C72 150 78 140 90 132 Z" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M82 120 C64 122 50 130 42 146 L56 150 C62 140 72 134 88 130 Z" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M82 126 C82 100 100 80 130 74 C150 70 170 70 190 74 C220 80 238 100 238 126 C208 114 112 114 82 126 Z" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3.5" stroke-linejoin="round"/>
+                            <g clip-path="url(#bandanaClip)">
+                                <g fill="#FFF3F5"><circle cx="100" cy="100" r="3.4"/><circle cx="124" cy="92" r="3.4"/><circle cx="148" cy="86" r="3.4"/><circle cx="172" cy="86" r="3.4"/><circle cx="196" cy="92" r="3.4"/><circle cx="220" cy="100" r="3.4"/><circle cx="112" cy="108" r="3.4"/><circle cx="136" cy="102" r="3.4"/><circle cx="160" cy="98" r="3.4"/><circle cx="184" cy="102" r="3.4"/><circle cx="208" cy="108" r="3.4"/><circle cx="92" cy="114" r="3.4"/><circle cx="228" cy="114" r="3.4"/></g>
+                                <path d="M82 126 C112 114 208 114 238 126" fill="none" stroke="#C9637B" data-stroke="dark" stroke-width="7" opacity=".35"/>
+                                <path d="M104 92 C118 80 140 75 160 75" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="4" stroke-linecap="round" opacity=".9"/>
+                            </g>
+                            <circle cx="84" cy="124" r="8.5" fill="#F49AAE" data-fill="main" stroke="#C9637B" data-stroke="dark" stroke-width="3"/>
+                            <path d="M80 121 Q84 118 88 121" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="2" stroke-linecap="round"/>
                         </g>
 
                         <!-- COLLO: bandana al collo -->
                         <g id="accessoryBandanaNeck" style="display:none">
-                            <g clip-path="url(#hamsterBodyClip)" fill="none"><path d="M40 182 Q160 226 280 182" stroke="#26407A" data-stroke="dark" stroke-width="16"/><path d="M40 182 Q160 226 280 182" stroke="#3F63B5" data-stroke="main" stroke-width="11"/><path d="M40 178 Q160 222 280 178" stroke="#FFFFFF" stroke-width="1.8" opacity=".9"/><path d="M40 187 Q160 231 280 187" stroke="#FFFFFF" stroke-width="1.8" opacity=".9"/></g>
-                            <path d="M117 206 Q160 217 203 206 L168 244 L152 244 Z" fill="#3F63B5" data-fill="main" stroke="#26407A" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
-                            <path d="M124 211 L154 241 M196 211 L166 241" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M152 243 Q142 252 138 262 L150 258 L156 250 Z M168 243 Q178 252 182 262 L170 258 L164 250 Z" fill="#3F63B5" data-fill="main" stroke="#26407A" data-stroke="dark" stroke-width="2.4" stroke-linejoin="round"/>
-                            <rect x="150" y="236" width="20" height="14" rx="6" fill="#3F63B5" data-fill="main" stroke="#26407A" data-stroke="dark" stroke-width="3"/>
-                            <path d="M155 240 Q160 238 165 240" fill="none" stroke="#8FA8E0" data-stroke="light" stroke-width="2" stroke-linecap="round"/>
+                            <g clip-path="url(#hamsterBodyClip)" fill="none">
+                                <path d="M40 190 Q160 224 280 190" stroke="#26407A" data-stroke="dark" stroke-width="15"/>
+                                <path d="M40 190 Q160 224 280 190" stroke="#3F63B5" data-stroke="main" stroke-width="10.5"/>
+                                <path d="M40 186.8 Q160 220.8 280 186.8 M40 193.2 Q160 227.2 280 193.2" stroke="#FFFFFF" stroke-width="1.7"/>
+                            </g>
+                            <path d="M112 204 Q160 218 208 204 L170 246 L150 246 Z" fill="#3F63B5" data-fill="main" stroke="#26407A" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M124 210 L154 241 M196 210 L166 241" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+                            <path d="M151 245 Q141 256 137 268 L151 263 L158 253 Z M169 245 Q179 256 183 268 L169 263 L162 253 Z" fill="#3F63B5" data-fill="main" stroke="#26407A" data-stroke="dark" stroke-width="2.4" stroke-linejoin="round"/>
+                            <rect x="149" y="236" width="22" height="15" rx="6.5" fill="#3F63B5" data-fill="main" stroke="#26407A" data-stroke="dark" stroke-width="3"/>
+                            <path d="M154 240 Q160 237.5 166 240" fill="none" stroke="#8FA8E0" data-stroke="light" stroke-width="2" stroke-linecap="round"/>
                         </g>
 
                         <!-- COLLO: sciarpa di lana -->
@@ -3580,22 +3610,22 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
 
                         <!-- VISO: occhiali tondi -->
                         <g id="accessoryGlasses" style="display:none">
-                            <path d="M100 150 Q88 150 78 159 M220 150 Q232 150 242 159 M146 150 Q160 142 174 150" fill="none" stroke="#E07A8C" data-stroke="main" stroke-width="4" stroke-linecap="round"/>
-                            <g fill="#FFFFFF" fill-opacity=".22" stroke="#E07A8C" data-stroke="main" stroke-width="4.5">
-                                <circle cx="123" cy="152" r="23"/>
-                                <circle cx="197" cy="152" r="23"/>
+                            <path d="M146 150 Q160 141 174 150" fill="none" stroke="#E07A8C" data-stroke="main" stroke-width="4.5" stroke-linecap="round"/>
+                            <g fill="#FFFFFF" fill-opacity=".22" stroke="#E07A8C" data-stroke="main" stroke-width="5">
+                                <circle cx="118" cy="152" r="28"/>
+                                <circle cx="202" cy="152" r="28"/>
                             </g>
-                            <path d="M108 142 Q112 134 121 132 M182 142 Q186 134 195 132" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+                            <path d="M99 141 Q103 131 114 128 M183 141 Q187 131 198 128" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" opacity=".9"/>
                         </g>
 
                         <!-- VISO: occhiali a cuore -->
                         <g id="accessoryHeartGlasses" style="display:none">
-                            <path d="M100 148 Q88 148 78 157 M220 148 Q232 148 242 157 M146 146 Q160 138 174 146" fill="none" stroke="#D9506F" data-stroke="dark" stroke-width="3.6" stroke-linecap="round"/>
-                            <g fill="#FF7FA3" data-fill="main" fill-opacity=".85" stroke="#D9506F" data-stroke="dark" stroke-width="2.6" stroke-linejoin="round">
-                                <path transform="translate(123 156) scale(1.4)" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"/>
-                                <path transform="translate(197 156) scale(1.4)" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"/>
+                            <path d="M148 146 Q160 139 172 146" fill="none" stroke="#D9506F" data-stroke="dark" stroke-width="4" stroke-linecap="round"/>
+                            <g fill="#FF7FA3" data-fill="main" fill-opacity=".85" stroke="#D9506F" data-stroke="dark" stroke-width="2.8" stroke-linejoin="round">
+                                <path transform="translate(117 158) scale(1.7)" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"/>
+                                <path transform="translate(203 158) scale(1.7)" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z"/>
                             </g>
-                            <path d="M107 142 Q108 136 116 134 M181 142 Q182 136 190 134" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+                            <path d="M97 142 Q98 134 108 131 M183 142 Q184 134 194 131" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" opacity=".9"/>
                         </g>
 
                         <!-- TESTA: fiocco -->
@@ -3604,7 +3634,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                             <path d="M4 0 C14 -22 40 -24 40 -4 C40 14 16 15 4 4 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
                             <path d="M-38 -1 C-37 12 -16 14 -5 4 C-15 9 -30 8 -38 -1 Z M38 -1 C37 12 16 14 5 4 C15 9 30 8 38 -1 Z" fill="#C76A88" data-fill="dark" opacity=".25"/>
                             <path d="M-9 -2 C-16 -11 -27 -13 -32 -6 M9 -2 C16 -11 27 -13 32 -6" fill="none" stroke="#C76A88" data-stroke="dark" stroke-width="2" stroke-linecap="round" opacity=".4"/>
-                            <path d="M-35 -9 Q-30 -17 -21 -18 M12 -17 Q22 -20 30 -15" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M-30 -8 Q-27 -13 -20 -13.5 M30 -8 Q27 -13 20 -13.5" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="3" stroke-linecap="round"/>
                             <rect x="-8" y="-9" width="16" height="17" rx="6" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3"/>
                             <path d="M3 6 Q7 3 7 -3" fill="none" stroke="#C76A88" data-stroke="dark" stroke-width="2" stroke-linecap="round" opacity=".4"/>
                             <path d="M-4 -5 Q-2 -7 2 -6" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="2" stroke-linecap="round"/>
@@ -3693,63 +3723,63 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                                   stroke-linejoin="round"/>
                         </g>
 
-                        <!-- TESTA: cuffiette -->
+                        <!-- TESTA: cuffie -->
                         <g id="accessoryHeadphones" style="display:none">
-                            <path d="M112 76 L118 44 L140 64 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/><path d="M 208 76 L 202 44 L 180 64 Z" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
-                            <path d="M119 66 L122 53 L132 62 Z" fill="#FFFFFF" opacity=".75"/><path d="M 201 66 L 198 53 L 188 62 Z" fill="#FFFFFF" opacity=".75"/>
-                            <path d="M80 130 C74 50 246 50 240 130" fill="none" stroke="#C76A88" data-stroke="dark" stroke-width="16" stroke-linecap="round"/>
-                            <path d="M80 130 C74 50 246 50 240 130" fill="none" stroke="#F7A1BC" data-stroke="main" stroke-width="10" stroke-linecap="round"/>
-                            <path d="M128 66 Q160 56 192 66" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="7" stroke-linecap="round"/>
-                            <ellipse cx="78" cy="140" rx="20" ry="26" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3"/>
-                            <ellipse cx="242" cy="140" rx="20" ry="26" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3"/>
-                            <ellipse cx="93" cy="140" rx="8" ry="21" fill="#FFD3E0" data-fill="light" stroke="#C76A88" data-stroke="dark" stroke-width="2"/>
-                            <ellipse cx="227" cy="140" rx="8" ry="21" fill="#FFD3E0" data-fill="light" stroke="#C76A88" data-stroke="dark" stroke-width="2"/>
-                            <path transform="translate(76 143) scale(.5)" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z" fill="#FFFFFF"/>
-                            <path transform="translate(244 143) scale(.5)" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z" fill="#FFFFFF"/>
+                            <path d="M82 132 C78 88 112 62 160 62 C208 62 242 88 238 132" fill="none" stroke="#C76A88" data-stroke="dark" stroke-width="15" stroke-linecap="round"/>
+                            <path d="M82 132 C78 88 112 62 160 62 C208 62 242 88 238 132" fill="none" stroke="#F7A1BC" data-stroke="main" stroke-width="9" stroke-linecap="round"/>
+                            <path d="M108 80 Q130 67 158 65" fill="none" stroke="#FFD3E0" data-stroke="light" stroke-width="3.5" stroke-linecap="round" opacity=".9"/>
+                            <rect x="63" y="112" width="31" height="48" rx="15" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3.2"/>
+                            <rect x="226" y="112" width="31" height="48" rx="15" fill="#F7A1BC" data-fill="main" stroke="#C76A88" data-stroke="dark" stroke-width="3.2"/>
+                            <rect x="86" y="120" width="9" height="32" rx="4.5" fill="#FFD3E0" data-fill="light" stroke="#C76A88" data-stroke="dark" stroke-width="2"/>
+                            <rect x="225" y="120" width="9" height="32" rx="4.5" fill="#FFD3E0" data-fill="light" stroke="#C76A88" data-stroke="dark" stroke-width="2"/>
+                            <circle cx="76" cy="136" r="7.5" fill="#FFD3E0" data-fill="light" stroke="#C76A88" data-stroke="dark" stroke-width="2"/>
+                            <circle cx="244" cy="136" r="7.5" fill="#FFD3E0" data-fill="light" stroke="#C76A88" data-stroke="dark" stroke-width="2"/>
+                            <path transform="translate(76 138) scale(.34)" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z" fill="#C76A88" data-fill="dark"/>
+                            <path transform="translate(244 138) scale(.34)" d="M0 10 C-18 -2 -18 -16 -8 -16 C-3 -16 0 -12 0 -9 C0 -12 3 -16 8 -16 C18 -16 18 -2 0 10 Z" fill="#C76A88" data-fill="dark"/>
+                            <path d="M68 121 Q70 116 77 115" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" opacity=".7"/>
+                            <path d="M252 121 Q250 116 243 115" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" opacity=".7"/>
                         </g>
 
                         <!-- VISO: occhiali da sole -->
                         <g id="accessorySunglasses" style="display:none">
-                            <path d="M100 138 Q88 138 78 147 M220 138 Q232 138 242 147 M148 140 Q160 133 172 140" fill="none" stroke="#2F2A33" data-stroke="main" stroke-width="4.5" stroke-linecap="round"/>
-                            <path d="M102 132 H145 Q148 132 147.5 138 Q144 172 123.5 173 Q103 172 99.5 138 Q99 132 102 132 Z" fill="#2F2A33" data-fill="main" stroke="#2F2A33" data-stroke="main" stroke-width="2" stroke-linejoin="round"/>
-                            <path d="M175 132 H218 Q221 132 220.5 138 Q217 172 196.5 173 Q176 172 172.5 138 Q172 132 175 132 Z" fill="#2F2A33" data-fill="main" stroke="#2F2A33" data-stroke="main" stroke-width="2" stroke-linejoin="round"/>
-                            <g stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity=".55" fill="none"><path d="M106 143 Q109 156 117 162"/><path d="M179 143 Q182 156 190 162"/></g>
+                            <path d="M147 138 Q160 131 173 138" fill="none" stroke="#2F2A33" data-stroke="main" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M96 128 H144 Q148 128 147.4 135 Q144 176 120.0 177 Q96 176 92.6 135 Q92 128 96 128 Z" fill="#2F2A33" data-fill="main" stroke="#2F2A33" data-stroke="main" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M176 128 H224 Q228 128 227.4 135 Q224 176 200.0 177 Q176 176 172.6 135 Q172 128 176 128 Z" fill="#2F2A33" data-fill="main" stroke="#2F2A33" data-stroke="main" stroke-width="2" stroke-linejoin="round"/>
+                            <g stroke="#FFFFFF" stroke-width="3.8" stroke-linecap="round" opacity=".55" fill="none"><path d="M101 141 Q104 156 113 164"/><path d="M181 141 Q184 156 193 164"/></g>
                         </g>
 
                         <!-- VISO: occhialini a stella -->
                         <g id="accessoryStarGlasses" style="display:none">
-                            <path d="M101 148 Q90 148 79 157 M219 148 Q230 148 241 157 M146 148 Q160 140 174 148" fill="none" stroke="#E0A325" data-stroke="dark" stroke-width="3.5" stroke-linecap="round"/>
-                            <g fill="#FFD66B" data-fill="main" fill-opacity=".5" stroke="#E0A325" data-stroke="dark" stroke-width="3" stroke-linejoin="round">
-                                <polygon points="123.0,129.0 129.5,144.1 145.8,145.6 133.5,156.4 137.1,172.4 123.0,164.0 108.9,172.4 112.5,156.4 100.2,145.6 116.5,144.1"/>
-                                <polygon points="197.0,129.0 203.5,144.1 219.8,145.6 207.5,156.4 211.1,172.4 197.0,164.0 182.9,172.4 186.5,156.4 174.2,145.6 190.5,144.1"/>
+                            <path d="M142 148 Q160 139 178 148" fill="none" stroke="#E0A325" data-stroke="dark" stroke-width="4" stroke-linecap="round"/>
+                            <g fill="#FFD66B" data-fill="main" fill-opacity=".5" stroke="#E0A325" data-stroke="dark" stroke-width="3.2" stroke-linejoin="round">
+                                <polygon points="118.0,123.0 126.2,142.7 147.5,144.4 131.3,158.3 136.2,179.1 118.0,168.0 99.8,179.1 104.7,158.3 88.5,144.4 109.8,142.7"/>
+                                <polygon points="202.0,123.0 210.2,142.7 231.5,144.4 215.3,158.3 220.2,179.1 202.0,168.0 183.8,179.1 188.7,158.3 172.5,144.4 193.8,142.7"/>
                             </g>
                         </g>
 
                         <!-- VISO: occhiali da secchione -->
                         <g id="accessoryNerd" style="display:none">
-                            <path d="M100 146 Q88 146 78 155 M220 146 Q232 146 242 155" fill="none" stroke="#3B3440" data-stroke="main" stroke-width="5" stroke-linecap="round"/>
-                            <rect x="99" y="130" width="50" height="40" rx="8" fill="#FFFFFF" fill-opacity=".2" stroke="#3B3440" data-stroke="main" stroke-width="5.5"/>
-                            <rect x="171" y="130" width="50" height="40" rx="8" fill="#FFFFFF" fill-opacity=".2" stroke="#3B3440" data-stroke="main" stroke-width="5.5"/>
-                            <path d="M149 144 Q160 138 171 144" fill="none" stroke="#3B3440" data-stroke="main" stroke-width="5.5"/>
+                            <rect x="91" y="127" width="58" height="46" rx="9" fill="#FFFFFF" fill-opacity=".2" stroke="#3B3440" data-stroke="main" stroke-width="6"/>
+                            <rect x="171" y="127" width="58" height="46" rx="9" fill="#FFFFFF" fill-opacity=".2" stroke="#3B3440" data-stroke="main" stroke-width="6"/>
+                            <path d="M149 143 Q160 137 171 143" fill="none" stroke="#3B3440" data-stroke="main" stroke-width="6"/>
                             <rect x="153" y="148" width="14" height="11" rx="2" fill="#FFF6D8" stroke="#D8C8A8" stroke-width="1.5"/>
                             <path d="M156 150 L164 157 M164 150 L156 157" stroke="#D8C8A8" stroke-width="1.2"/>
-                            <path d="M106 138 Q109 135 115 135 M178 138 Q181 135 187 135" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" opacity=".7"/>
+                            <path d="M99 138 Q103 134 110 134 M179 138 Q183 134 190 134" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" opacity=".7"/>
                         </g>
 
                         <!-- VISO: monocolo -->
                         <g id="accessoryMonocle" style="display:none">
-                            <path d="M214 172 Q228 198 208 226" fill="none" stroke="#C99A3E" data-stroke="dark" stroke-width="2.5" stroke-dasharray="4 3"/>
-                            <circle cx="197" cy="152" r="23" fill="#FFFFFF" fill-opacity=".2" stroke="#E2B44F" data-stroke="main" stroke-width="5"/>
-                            <path d="M183 141 Q188 134 197 132" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+                            <path d="M214 176 Q232 202 210 230" fill="none" stroke="#C99A3E" data-stroke="dark" stroke-width="2.5" stroke-dasharray="4 3"/>
+                            <circle cx="202" cy="152" r="28" fill="#FFFFFF" fill-opacity=".2" stroke="#E2B44F" data-stroke="main" stroke-width="5.5"/>
+                            <path d="M185 140 Q190 132 202 128" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" opacity=".9"/>
                         </g>
 
                         <!-- VISO: occhiali 3D -->
                         <g id="accessoryGlasses3d" style="display:none">
-                            <path d="M99 142 Q88 142 78 151 M221 142 Q232 142 242 151" fill="none" stroke="#BDB3AE" stroke-width="5" stroke-linecap="round"/>
-                            <path d="M98 130 H222 V166 Q192 172 177 166 L167 156 Q160 151 153 156 L143 166 Q128 172 98 166 Z" fill="#FFFFFF" data-fill="main" stroke="#BDB3AE" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
-                            <rect x="103" y="136" width="40" height="25" rx="4" fill="#F0606F" fill-opacity=".85"/>
-                            <rect x="177" y="136" width="40" height="25" rx="4" fill="#5FC6E8" fill-opacity=".85"/>
-                            <path d="M108 141 H121 M182 141 H195" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" opacity=".6"/>
+                            <path d="M90 126 H230 V170 Q196 177 178 170 L168 158 Q160 152 152 158 L142 170 Q124 177 90 170 Z" fill="#FFFFFF" data-fill="main" stroke="#BDB3AE" data-stroke="dark" stroke-width="3" stroke-linejoin="round"/>
+                            <rect x="96" y="133" width="46" height="29" rx="5" fill="#F0606F" fill-opacity=".85"/>
+                            <rect x="178" y="133" width="46" height="29" rx="5" fill="#5FC6E8" fill-opacity=".85"/>
+                            <path d="M102 139 H117 M184 139 H199" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" opacity=".6"/>
                         </g>
 
                         <!-- TESTA: tocco da laureato -->
@@ -3779,11 +3809,14 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
 
                         <!-- TESTA: orecchie da gatto -->
                         <g id="accessoryCatEars" style="display:none">
+                            <path d="M84 124 C88 100 108 84 135 79 C150 76 170 76 185 79 C212 84 232 100 236 124" fill="none" stroke="#6F6762" data-stroke="dark" stroke-width="9" stroke-linecap="round"/>
+                            <path d="M84 124 C88 100 108 84 135 79 C150 76 170 76 185 79 C212 84 232 100 236 124" fill="none" stroke="#C9BFB8" data-stroke="main" stroke-width="5" stroke-linecap="round"/>
                             <path d="M91 110 C90 88 93 70 100 54 C115 61 128 71 136 82 C119 83 101 94 91 110 Z" fill="#C9BFB8" data-fill="main"/>
                             <path d="M229 110 C230 88 227 70 220 54 C205 61 192 71 184 82 C201 83 219 94 229 110 Z" fill="#C9BFB8" data-fill="main"/>
                             <path d="M91 110 C90 88 93 70 100 54 C115 61 128 71 136 82 M229 110 C230 88 227 70 220 54 C205 61 192 71 184 82" fill="none" stroke="#8F8580" data-stroke="dark" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M100 96 C100 84 102 75 106 66 C114 71 120 77 124 84 C115 85 106 89 100 96 Z" fill="#F7B3C4" data-fill="light"/>
                             <path d="M220 96 C220 84 218 75 214 66 C206 71 200 77 196 84 C205 85 214 89 220 96 Z" fill="#F7B3C4" data-fill="light"/>
+                            <path d="M96 118 Q104 104 118 95 M224 118 Q216 104 202 95" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity=".45"/>
                         </g>
 
                         <!-- TESTA: antenne da alieno -->
@@ -3798,9 +3831,12 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
 
                         <!-- VISO: benda -->
                         <g id="accessoryEyePatch" style="display:none">
-                            <path d="M103 150 Q90 148 78 156 M143 140 Q190 122 242 128" fill="none" stroke="#3B3440" data-stroke="dark" stroke-width="5" stroke-linecap="round"/>
-                            <circle cx="123" cy="152" r="23" fill="#3B3440" data-fill="main" stroke="#1F1B24" data-stroke="dark" stroke-width="3"/>
-                            <path d="M108 142 Q114 134 126 134" fill="none" stroke="#6B6275" data-stroke="light" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+                            <g clip-path="url(#hamsterBodyClip)" fill="none" stroke="#3B3440" data-stroke="dark" stroke-width="5" stroke-linecap="round">
+                                <path d="M96 151 Q82 150 60 158"/>
+                                <path d="M142 138 Q196 118 262 126"/>
+                            </g>
+                            <circle cx="118" cy="152" r="28" fill="#3B3440" data-fill="main" stroke="#1F1B24" data-stroke="dark" stroke-width="3"/>
+                            <path d="M100 141 Q106 130 120 129" fill="none" stroke="#6B6275" data-stroke="light" stroke-width="3.2" stroke-linecap="round" opacity=".85"/>
                         </g>
 
                         <!-- Palla per criceti (sopra a tutto) -->
@@ -4397,7 +4433,7 @@ footer button:focus-visible,footer a:focus-visible{outline-color:#f4b7bd}
                                 data-group="accessory" data-value="headphones"
                                 aria-pressed="false">
                             <span class="creator-preview-icon"></span>
-                            Cuffiette
+                            Cuffie
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="accessory" data-value="gradCap"
@@ -6002,8 +6038,10 @@ function renderProductCard(product) {
 function renderProducts() {
     const hamsterGrid = document.getElementById("hamsterGrid");
     const wheelGrid = document.getElementById("wheelGrid");
+    const extraGrid = document.getElementById("extraGrid");
     hamsterGrid.replaceChildren();
     wheelGrid.replaceChildren();
+    extraGrid.replaceChildren();
     document.querySelectorAll("[data-season-grid]").forEach(grid => grid.replaceChildren());
 
     sortedProducts().forEach(product => {
@@ -6013,9 +6051,10 @@ function renderProducts() {
             if (seasonGrid) seasonGrid.append(card);
             return;
         }
-        if (shopFilter !== "tutto" && product.category !== shopFilter) return;
+        const group = shopGroup(product);
+        if (shopFilter !== "tutto" && group !== shopFilter) return;
         if (!matchesQuery(product)) return;
-        (product.category === "criceto" ? hamsterGrid : wheelGrid).append(card);
+        (group === "criceto" ? hamsterGrid : group === "ruota" ? wheelGrid : extraGrid).append(card);
     });
     updateCatalogSections();
 }
@@ -6026,8 +6065,16 @@ const normalizeText = text => String(text).normalize("NFD").replace(/[\u0300-\u0
 const matchesQuery = product => !shopQuery || normalizeText(`${product.name} ${product.tag} ${product.description}`).includes(shopQuery);
 let shopSort = "evidenza";
 
+// A ball is not a wheel: it lives with the extras.
+const shopGroup = product => product.id === "w7" ? "extra" : product.category;
+// Default order: hamsters from basic to famous, wheels from cheap to premium to famous, then extras.
+const SHOP_ORDER = ["h1", "h3", "h2", "h5", "h4", "h7", "h8", "h9", "h6", "h10", "h11", "h12",
+    "w3", "w1", "w4", "w2", "w5", "w6", "w8", "w9", "w10",
+    "e1", "e2", "e3", "w7"];
+const shopRank = id => { const i = SHOP_ORDER.indexOf(id); return i < 0 ? 999 : i; };
+
 function sortedProducts() {
-    const list = [...products];
+    const list = [...products].sort((a, b) => shopRank(a.id) - shopRank(b.id));
     if (shopSort === "prezzo-su") list.sort((a, b) => a.price - b.price);
     if (shopSort === "prezzo-giu") list.sort((a, b) => b.price - a.price);
     if (shopSort === "nome") list.sort((a, b) => a.name.localeCompare(b.name, "it"));
@@ -6035,14 +6082,14 @@ function sortedProducts() {
 }
 
 function updateCatalogSections() {
-    document.getElementById("criceti").hidden = !document.getElementById("hamsterGrid").children.length;
-    document.getElementById("extra").hidden = !document.getElementById("wheelGrid").children.length;
-    [["criceti", "hamsterGrid"], ["extra", "wheelGrid"]].forEach(([section, grid]) => {
+    const sections = [["criceti", "hamsterGrid"], ["ruote", "wheelGrid"], ["extra", "extraGrid"]];
+    sections.forEach(([section, grid]) => {
         const n = document.getElementById(grid).children.length;
+        document.getElementById(section).hidden = !n;
         document.querySelector(`#${section} .section-heading .eyebrow`).textContent = n === 1 ? "1 modello" : `${n} modelli`;
     });
     const empty = document.getElementById("searchEmpty");
-    const nothing = !document.getElementById("hamsterGrid").children.length && !document.getElementById("wheelGrid").children.length;
+    const nothing = sections.every(([, grid]) => !document.getElementById(grid).children.length);
     empty.hidden = !nothing;
     if (nothing) {
         const typed = document.getElementById("searchProducts").value.trim();
@@ -7106,21 +7153,15 @@ function initHamsterCreator() {
             },
             guitar: (c, s) => {
                 const p = heldPal(s, { main: "#E8A160", dark: "#A86A35", light: "#F6C98F" });
-                return `<g transform="translate(160 207) rotate(48) scale(1.3) translate(-160 -196)"><rect x="157" y="132" width="6" height="38" fill="#6B4226"/><path d="M157 141 H163 M157 150 H163 M157 159 H163" stroke="#D9C7A6" stroke-width="1"/><rect x="154" y="120" width="12" height="14" rx="3" fill="#4A2E1B"/><g fill="#E9E1D2"><circle cx="152" cy="124" r="1.8"/><circle cx="152" cy="130" r="1.8"/><circle cx="168" cy="124" r="1.8"/><circle cx="168" cy="130" r="1.8"/></g><path d="M160 166 C167 166 171 171 171 177 C171 183 168.5 186 168.5 190 C168.5 194 175 197 175 206 C175 215 169 220 160 220 C151 220 145 215 145 206 C145 197 151.5 194 151.5 190 C151.5 186 149 183 149 177 C149 171 153 166 160 166 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="2.4" stroke-linejoin="round"/><path d="M152 172 Q150 178 153 184" fill="none" stroke="${p.light}" stroke-width="2.6" stroke-linecap="round" opacity=".8"/><circle cx="160" cy="200" r="6" fill="#3A2415" stroke="${p.dark}" stroke-width="1.6"/><rect x="153" y="211" width="14" height="3.6" rx="1.8" fill="#4A2E1B"/><path d="M158.6 134 V212 M161.4 134 V212" stroke="#FFF4D6" stroke-width=".7"/></g>`;
+                return `<g transform="translate(160 208) rotate(46) translate(-160 -200)"><rect x="156.5" y="124" width="7" height="30" fill="#6B4226"/><path d="M156.5 133 H163.5 M156.5 142 H163.5" stroke="#D9C7A6" stroke-width="1"/><rect x="153" y="112" width="14" height="15" rx="3.5" fill="#4A2E1B"/><g fill="#E9E1D2"><circle cx="150.5" cy="116" r="2"/><circle cx="150.5" cy="123" r="2"/><circle cx="169.5" cy="116" r="2"/><circle cx="169.5" cy="123" r="2"/></g><g transform="translate(160 193) scale(1.6) translate(-160 -193)"><path d="M160 166 C167 166 171 171 171 177 C171 183 168.5 186 168.5 190 C168.5 194 175 197 175 206 C175 215 169 220 160 220 C151 220 145 215 145 206 C145 197 151.5 194 151.5 190 C151.5 186 149 183 149 177 C149 171 153 166 160 166 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="1.6" stroke-linejoin="round"/><path d="M152 172 Q150 178 153 184" fill="none" stroke="${p.light}" stroke-width="1.8" stroke-linecap="round" opacity=".8"/><circle cx="160" cy="200" r="6" fill="#3A2415" stroke="${p.dark}" stroke-width="1.1"/><rect x="153" y="211" width="14" height="3.6" rx="1.8" fill="#4A2E1B"/></g><path d="M158.6 126 V223 M161.4 126 V223" stroke="#FFF4D6" stroke-width=".8"/></g>`;
             },
-            umbrella: (c, s) => {
-                const p = heldPal(s, { main: "#F48A9B", dark: "#C2434F", light: "#FFD3DA" });
-                return `<path d="M160 222 V236 q0 9 -9 8" fill="none" stroke="#8B5A35" stroke-width="3.6" stroke-linecap="round"/><path d="M160 204 V222" stroke="#8B5A35" stroke-width="3.6" stroke-linecap="round"/>`;
-            },
+            umbrella: (c, s) => "",
             iceCream: (c, s) => {
                 const p = heldPal(s, accPalette.pink);
                 const top = heldCustom(s) ? p.light : "#FFF3D6";
                 return `<path d="M144 203 H176 L160 235 Z" fill="#E8A160" stroke="#A86A35" stroke-width="2" stroke-linejoin="round"/><path d="M150 209 L165 225 M158 205 L171 218 M170 209 L155 225 M162 205 L149 218" stroke="#A86A35" stroke-width="1.1" opacity=".7"/><circle cx="160" cy="183" r="12" fill="${top}" stroke="${p.dark}" stroke-width="2"/><path d="M141 205 C139 193 148 187 160 187 C172 187 181 193 179 205 Q176 210 172 206 Q168 211 164 206 Q160 211 156 206 Q152 211 148 206 Q144 210 141 205 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="2" stroke-linejoin="round"/><path d="M148 196 Q150 191 156 190" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" opacity=".75"/><circle cx="160" cy="170" r="4" fill="#E0534F" stroke="#B83A38" stroke-width="1.3"/><path d="M160 166 Q162 160 167 158" fill="none" stroke="#5FA54B" stroke-width="1.6" stroke-linecap="round"/>`;
             },
-            balloon: (c, s) => {
-                const p = heldPal(s, accPalette.pink);
-                return `<path d="M172 212 Q250 192 245 142 Q241 112 234 98" fill="none" stroke="#9A8F88" stroke-width="2" stroke-linecap="round"/><path d="M160 224 q4 9 -2 14" fill="none" stroke="#9A8F88" stroke-width="2" stroke-linecap="round"/>`;
-            },
+            balloon: (c, s) => "",
             bouquet: (c, s) => {
                 const custom = heldCustom(s);
                 const p = heldPal(s, { main: "#F48A9B", dark: "#C2434F", light: "#FFD66B" });
@@ -7242,11 +7283,14 @@ function initHamsterCreator() {
     const heldTop = {
         umbrella: (c, s) => {
             const p = heldPal(s, { main: "#F48A9B", dark: "#C2434F", light: "#FFD3DA" });
-            return `<path d="M160 40 V32" stroke="${p.dark}" stroke-width="3.4" stroke-linecap="round"/><path d="M82 100 C84 64 116 42 160 40 C204 42 236 64 238 100 Q219 86 199 100 Q180 86 160 100 Q140 86 121 100 Q101 86 82 100 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="3" stroke-linejoin="round"/><path d="M160 41 Q125 58 121 99 M160 41 Q195 58 199 99 M160 41 V99" fill="none" stroke="${p.dark}" stroke-width="1.8" opacity=".5"/><path d="M104 78 Q112 58 134 49" fill="none" stroke="${p.light}" stroke-width="4.5" stroke-linecap="round" opacity=".85"/>`;
+            return `<path d="M256 232 L228 76" stroke="#8B5A35" stroke-width="3.6" stroke-linecap="round"/><path d="M259 228 q2 10 -8 8" fill="none" stroke="#8B5A35" stroke-width="3.6" stroke-linecap="round"/>` +
+                `<g transform="translate(228 76) rotate(-10)"><path d="M0 -50 V-58" stroke="${p.dark}" stroke-width="3.4" stroke-linecap="round"/><path d="M-76 0 C-74 -34 -42 -50 0 -50 C42 -50 74 -34 76 0 Q57 -14 38 0 Q19 -14 0 0 Q-19 -14 -38 0 Q-57 -14 -76 0 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="3" stroke-linejoin="round"/><path d="M0 -49 Q-34 -34 -38 -1 M0 -49 Q34 -34 38 -1 M0 -49 V-2" fill="none" stroke="${p.dark}" stroke-width="1.8" opacity=".5"/><path d="M-58 -22 Q-48 -38 -26 -44" fill="none" stroke="${p.light}" stroke-width="4.5" stroke-linecap="round" opacity=".85"/></g>` +
+                `<ellipse cx="249" cy="204" rx="11" ry="9.5" fill="${c.main}" stroke="${c.dark}" stroke-width="2.4"/><path d="M243 201 Q249 197 255 201" fill="none" stroke="${c.dark}" stroke-width="1.6" stroke-linecap="round" opacity=".6"/>`;
         },
         balloon: (c, s) => {
             const p = heldPal(s, accPalette.pink);
-            return `<path d="M232 94 C206 88 198 60 208 44 C217 30 248 30 257 44 C267 60 258 88 232 94 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="2.6" stroke-linejoin="round"/><path d="M226 99 L238 99 L232 92 Z" fill="${p.dark}" stroke="${p.dark}" stroke-width="1.8" stroke-linejoin="round"/><path d="M215 62 C212 52 216 44 224 40" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity=".75"/><path d="M246 76 Q254 68 255 56" fill="none" stroke="${p.dark}" stroke-width="2.2" stroke-linecap="round" opacity=".3"/>`;
+            return `<path d="M232 99 C236 130 258 150 256 178 C255 196 226 206 182 212" fill="none" stroke="#9A8F88" stroke-width="2" stroke-linecap="round"/>` +
+                `<path d="M232 94 C206 88 198 60 208 44 C217 30 248 30 257 44 C267 60 258 88 232 94 Z" fill="${p.main}" stroke="${p.dark}" stroke-width="2.6" stroke-linejoin="round"/><path d="M226 100 L238 100 L232 92 Z" fill="${p.dark}" stroke="${p.dark}" stroke-width="1.8" stroke-linejoin="round"/><path d="M215 62 C212 52 216 44 224 40" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity=".75"/><path d="M246 76 Q254 68 255 56" fill="none" stroke="${p.dark}" stroke-width="2.2" stroke-linecap="round" opacity=".3"/>`;
         }
     };
     const lookTargets = {
@@ -7457,11 +7501,12 @@ function updateEyes() {
         });
     }
 
-    const accessoryTops = { sleepCap: 36, hat: 17, crown: 44, partyHat: 23, strawberryHat: 24, witchHat: 6, headphones: 44, gradCap: 36, halo: 26, bunnyEars: 1, bandana: 49, bow: 55, catEars: 32, alienAntennae: 14 };
+    const accessoryTops = { sleepCap: 36, hat: 17, crown: 44, partyHat: 23, strawberryHat: 24, witchHat: 6, headphones: 52, gradCap: 36, halo: 26, bunnyEars: 1, bandana: 49, bow: 55, catEars: 32, alienAntennae: 14 };
     const sizeScales = { xs: .72, s: .86, m: 1, l: 1.07, xl: 1.13 };
     const ageScales = { baby: .84, young: .94, adult: 1, senior: .98 };
     function fitInBall() {
-        const top = Math.min(68, ...state.accessories.map(key => accessoryTops[key] ?? 68));
+        const heldTops = { umbrella: 22, balloon: 30 };
+        const top = Math.min(68, heldTops[state.held] ?? 68, ...state.accessories.map(key => accessoryTops[key] ?? 68));
         const wanted = (sizeScales[state.size] || 1) * (ageScales[state.age] || 1);
         const room = 292 / (296 - top); // tall hats must stay inside the picture
         const inBall = state.ball && state.ball !== "none" ? Math.min(1, 256 / (296 - top)) : 1;
@@ -8067,7 +8112,7 @@ function updateEyes() {
         faceAccessory: "64 62 192 192",
         neckAccessory: "54 96 212 212",
         held: "108 158 104 104",
-        heldTall: "30 10 260 260",
+        heldTall: "60 6 262 262",
         pattern: "36 46 248 248",
         age: "30 30 260 260",
         size: "0 0 320 320",
@@ -9391,6 +9436,22 @@ if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
 .price.free{color:#537b59}
 .price.owed{color:#b0485f}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* Home organisation */
+.home-menu{padding:34px 0 40px}
+.home-menu-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 14px}
+.home-menu-group{grid-column:1/-1;margin:10px 0 0;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.home-menu-group:first-child{margin-top:0}
+.home-menu-card{flex-direction:row;align-items:center;text-align:left;gap:14px;padding:14px 18px}
+.home-menu-icon{flex:none;width:48px;height:48px;font-size:1.5rem;border-radius:15px;display:grid;place-items:center;background:#fdf0ea}
+.home-menu-text{display:grid;gap:2px}
+.home-menu-title{font-size:1rem}
+.home-menu-sub{font-size:.82rem;color:var(--muted);font-weight:600}
+@media(max-width:860px){.home-menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.home-menu-grid{grid-template-columns:1fr}}
+.nav-links .menu-title:not(:first-child){margin-top:6px;padding-top:12px;border-top:1px solid var(--line)}
+#catalogo .shop-filters{padding-top:46px}
+#catalogo .catalog-section + .catalog-section{padding-top:20px}
 </style>
 
 <script>
