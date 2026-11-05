@@ -1131,7 +1131,6 @@ footer p {
     font-size:.78rem
 }
 
-.cart-button.bump {animation:cartBump .4s ease}
 
 @keyframes cartBump {
     0%,100% {transform:scale(1)}
@@ -2678,24 +2677,8 @@ header::after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:10p
 @keyframes logoWiggle{0%,100%{transform:rotate(-5deg)}25%{transform:rotate(12deg) scale(1.1)}50%{transform:rotate(-12deg) scale(1.1)}75%{transform:rotate(8deg) scale(1.05)}}
 @keyframes logoBlink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
 .cart-button.bump{animation:cartBump .55s var(--ease)}
-@keyframes cartBump{0%{transform:scale(1)}30%{transform:scale(1.18) rotate(-6deg)}60%{transform:scale(.95) rotate(4deg)}100%{transform:scale(1)}}
-.cart-count.pop{animation:countPop .5s var(--ease)}
-@keyframes countPop{0%{transform:scale(1)}40%{transform:scale(1.7)}100%{transform:scale(1)}}
-/* hero floaters */
 .hero{position:relative;overflow:hidden}
-.float-deco{position:absolute;pointer-events:none;font-size:1.5rem;opacity:.75;z-index:0;animation:floaty 7s ease-in-out infinite;filter:drop-shadow(0 4px 6px rgba(120,70,40,.15))}
-.float-deco:nth-of-type(2n){animation-duration:9s;animation-delay:-3s}
-.float-deco:nth-of-type(3n){animation-duration:11s;animation-delay:-6s}
-@keyframes floaty{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-16px) rotate(8deg)}}
-.hero>*:not(.float-deco){position:relative;z-index:1}
 /* headings */
-.section-heading h2{position:relative;display:inline-block}
-.section-heading h2::after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:9px;
- background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='9' viewBox='0 0 28 9'%3E%3Cpath d='M0 5q7-7 14 0t14 0' fill='none' stroke='%23f2a66f' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;background-size:28px 9px;opacity:.85}
-#ruote .section-heading h2::after{filter:hue-rotate(-30deg)}
-#peluche .section-heading h2::after{filter:hue-rotate(110deg)}
-#extra .section-heading h2::after{filter:hue-rotate(80deg)}
-.tiny-label{background:linear-gradient(90deg,var(--butter),var(--peach));padding:3px 12px;border-radius:99px;width:fit-content}
 .catalog-section{position:relative}
 .catalog-section::before{content:"";position:absolute;left:0;right:0;top:-1px;height:18px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='18' viewBox='0 0 60 18'%3E%3Cpath d='M0 0h60v4c-10 14-20 14-30 0S10 18 0 4z' fill='%23fffaf5'/%3E%3C/svg%3E") repeat-x;background-size:60px 18px;z-index:1}
 #criceti{background:linear-gradient(180deg,#fffaf5,#fff1ed)}
@@ -2714,7 +2697,6 @@ header::after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:10p
 footer::before{content:"";position:absolute;left:0;right:0;top:-12px;height:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='14' viewBox='0 0 40 14'%3E%3Cpath d='M0 14V8c5-8 15-8 20 0s15 8 20 0v6z' fill='%23352d2b'/%3E%3C/svg%3E") repeat-x;background-size:40px 14px}
 .footer-paw{display:inline-block;animation:pawTap 2.6s ease-in-out infinite}
 @keyframes pawTap{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-18deg) scale(1.2)}92%{transform:rotate(12deg)}}
-.footer-bottom::after{content:" 🌻 🌰 🐾 ❤️ 🌰 🌻";letter-spacing:.2em;opacity:.7;display:block;margin-top:6px;font-size:.8rem}
 /* cart minus */
 .quantity-controls button:disabled{opacity:.35;cursor:not-allowed;filter:grayscale(.6);transform:none!important}
 /* interactions */
@@ -2736,7 +2718,6 @@ footer::before{content:"";position:absolute;left:0;right:0;top:-12px;height:14px
 @keyframes spinOnce{to{transform:rotate(360deg)}}
 .emoji-rain{position:fixed;top:-40px;z-index:9998;pointer-events:none;font-size:28px;animation:rainFall var(--d,3s) linear forwards}
 @keyframes rainFall{to{transform:translateY(110vh) rotate(var(--r,360deg))}}
-button:active:not(:disabled){transform:scale(.96)}
 @media (prefers-reduced-motion:reduce){.float-deco,.logo-icon,.logo-eye,.footer-paw,.runner{animation:none!important}.runner{display:none}.fx-particle,.emoji-rain{display:none}}
 </style>
 </head>
@@ -2789,7 +2770,6 @@ button:active:not(:disabled){transform:scale(.96)}
 <main>
 <div class="page active" id="catalogo">
     <section class="hero">
-        <span class="float-deco" style="left:4%;top:12%">🌻</span><span class="float-deco" style="left:46%;top:6%;font-size:1.1rem">✨</span><span class="float-deco" style="right:5%;top:10%">💗</span><span class="float-deco" style="left:9%;bottom:10%;font-size:1.2rem">🌰</span><span class="float-deco" style="right:9%;bottom:8%;font-size:1.3rem">🐾</span><span class="float-deco" style="left:52%;bottom:4%;font-size:1.1rem">🌰</span>
         <div class="container hero-inner">
             <div>
                 <span class="eyebrow">🐹 Il tuo cervello ci ringrazierà</span>
@@ -5373,10 +5353,14 @@ window.plushSVG=function(kind,p){
     `<ellipse cx="0" cy="12" rx="25" ry="24" fill="${p.main}" ${sw}/><ellipse cx="0" cy="18" rx="14" ry="15" fill="${p.light}" opacity=".8"/><ellipse cx="-23" cy="14" rx="6" ry="10" transform="rotate(18 -23 14)" fill="${p.main}" ${sw}/><ellipse cx="23" cy="14" rx="6" ry="10" transform="rotate(-18 23 14)" fill="${p.main}" ${sw}/>`+
     `<path d="M-4 -14 Q-6 -24 -1 -22 M1 -14 Q2 -26 6 -22 M5 -13 Q9 -21 11 -17" fill="none" stroke="${p.dark}" stroke-width="1.8" stroke-linecap="round"/>`+
     `<circle cx="-9" cy="2" r="2.3" fill="${E}"/><circle cx="9" cy="2" r="2.3" fill="${E}"/><circle cx="-8.2" cy="1.2" r=".8" fill="#fff"/><circle cx="9.8" cy="1.2" r=".8" fill="#fff"/><ellipse cx="-15" cy="8" rx="3.6" ry="2.4" fill="#F59BA8" opacity=".6"/><ellipse cx="15" cy="8" rx="3.6" ry="2.4" fill="#F59BA8" opacity=".6"/><path d="M-5 6 H5 L0 13 Z" fill="#F28C3C" stroke="#C86A22" stroke-width="1.3" stroke-linejoin="round"/>`;
-  /* hamster */
-  return feet+body+arms+
-    `<circle cx="-15" cy="-21" r="6.5" fill="${p.main}" ${sw}/><circle cx="15" cy="-21" r="6.5" fill="${p.main}" ${sw}/><circle cx="-15" cy="-21" r="3.4" fill="${pk}"/><circle cx="15" cy="-21" r="3.4" fill="${pk}"/>`+
-    head+`<path d="M-9 -22 Q0 -30 9 -22 Q0 -14 -9 -22Z" fill="${p.light}" opacity=".9"/><ellipse cx="-13" cy="1" rx="6" ry="4.6" fill="${p.light}" stroke="${p.dark}" stroke-width="1"/><ellipse cx="13" cy="1" rx="6" ry="4.6" fill="${p.light}" stroke="${p.dark}" stroke-width="1"/>`+eyes+`<ellipse cx="0" cy="-3.4" rx="2.4" ry="1.8" fill="${pk}" stroke="${E}" stroke-width=".8"/><path d="M0 -1.5 V1" stroke="${E}" stroke-width="1.1" stroke-linecap="round"/><rect x="-2.6" y="1" width="5.2" height="4.4" rx="1.2" fill="#fff" stroke="${p.dark}" stroke-width=".9"/><path d="M0 1 V5.4" stroke="${p.dark}" stroke-width=".7"/>`+bow;
+  /* hamster: round ball body, tiny ears, chubby cheeks, back stripe */
+  return `<ellipse cx="-11" cy="36" rx="6.5" ry="4" fill="${p.main}" ${sw}/><ellipse cx="11" cy="36" rx="6.5" ry="4" fill="${p.main}" ${sw}/>`+
+    `<ellipse cx="0" cy="12" rx="27" ry="26" fill="${p.main}" ${sw}/><path d="M-12 -12 Q0 -3 12 -12 Q8 8 0 10 Q-8 8 -12 -12Z" fill="${p.dark}" opacity=".35"/><ellipse cx="0" cy="20" rx="15" ry="13" fill="${p.light}"/>`+
+    `<circle cx="-18" cy="-12" r="6" fill="${p.main}" ${sw}/><circle cx="18" cy="-12" r="6" fill="${p.main}" ${sw}/><circle cx="-18" cy="-12" r="3" fill="${pk}"/><circle cx="18" cy="-12" r="3" fill="${pk}"/>`+
+    `<ellipse cx="-17" cy="10" rx="8" ry="6.5" fill="${p.light}" stroke="${p.dark}" stroke-width="1"/><ellipse cx="17" cy="10" rx="8" ry="6.5" fill="${p.light}" stroke="${p.dark}" stroke-width="1"/>`+
+    `<circle cx="-8.5" cy="0" r="2.4" fill="${E}"/><circle cx="8.5" cy="0" r="2.4" fill="${E}"/><circle cx="-7.7" cy="-.9" r=".9" fill="#fff"/><circle cx="9.3" cy="-.9" r=".9" fill="#fff"/>`+
+    `<ellipse cx="0" cy="6" rx="2.6" ry="2" fill="${pk}" stroke="${E}" stroke-width=".8"/><path d="M0 8 V10 M-3 11 Q0 13.5 3 11" fill="none" stroke="${E}" stroke-width="1.1" stroke-linecap="round"/><rect x="-2.4" y="11" width="4.8" height="4" rx="1.2" fill="#fff" stroke="${p.dark}" stroke-width=".9"/>`+
+    `<path d="M-16 6 L-26 4 M-16 9 L-27 10 M16 6 L26 4 M16 9 L27 10" stroke="${p.dark}" stroke-width=".9" stroke-linecap="round"/>`;
 };
 </script>
 
@@ -7367,7 +7351,7 @@ function initHamsterCreator() {
             },
             ...Object.fromEntries(["bear","bunny","cat","chick","hamster"].map(k => ["plush" + k[0].toUpperCase() + k.slice(1), (c, s) => {
                 const p = heldPal(s, window.plushDef[k]);
-                return `<g transform="translate(160 213) scale(.82)">${window.plushSVG(k, p)}</g>`;
+                return `<g transform="translate(160 186) scale(.88)">${window.plushSVG(k, p)}</g>`;
             }])),
             pizza: (c, s) => {
                 const p = heldPal(s, { main: "#E0534F", dark: "#B83A38" });
@@ -9839,38 +9823,7 @@ if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
     }
   }
   window.cuteBurst=burst;
-  let last=0;
-  document.addEventListener("click",e=>{
-    const now=Date.now();if(now-last<120)return;last=now;
-    if(e.target.closest("input,textarea,select,.runner"))return;
-    burst(e.clientX,e.clientY,["❤️","🌻","✨","🌰","💗"],e.target.closest("button,a")?4:3);
-  },true);
-  // add to cart: flying seed
-  document.addEventListener("click",e=>{
-    const b=e.target.closest('button[id^="add-"]');if(!b||reduce)return;
-    const cart=document.getElementById("cartNavButton");if(!cart)return;
-    const a=b.getBoundingClientRect(),c=cart.getBoundingClientRect();
-    const f=document.createElement("span");f.className="fx-flyer";f.textContent="🌰";
-    f.style.left=(a.left+a.width/2-11)+"px";f.style.top=(a.top+a.height/2-11)+"px";
-    document.body.append(f);
-    requestAnimationFrame(()=>{f.style.transform=`translate(${c.left+c.width/2-a.left-a.width/2}px,${c.top+c.height/2-a.top-a.height/2}px) scale(.5) rotate(540deg)`;});
-    setTimeout(()=>{f.remove();cart.classList.remove("bump");void cart.offsetWidth;cart.classList.add("bump");const n=document.getElementById("cartCount");if(n){n.classList.remove("pop");void n.offsetWidth;n.classList.add("pop");}},800);
-  },true);
-  // logo: squeak + 5 clicks = hamster rain
-  let logoClicks=0,logoT;
   function rain(set){if(reduce)return;for(let i=0;i<28;i++){const el=document.createElement("span");el.className="emoji-rain";el.textContent=set[i%set.length];el.style.left=rnd(0,98)+"vw";el.style.setProperty("--d",rnd(2.2,4)+"s");el.style.setProperty("--r",rnd(-540,540)+"deg");el.style.animationDelay=rnd(0,1.2)+"s";document.body.append(el);setTimeout(()=>el.remove(),5500);}}
-  window.cuteRain=rain;
-  document.addEventListener("click",e=>{
-    if(!e.target.closest(".logo"))return;
-    logoClicks++;clearTimeout(logoT);logoT=setTimeout(()=>logoClicks=0,1500);
-    if(logoClicks>=5){logoClicks=0;rain(["🐹","🌻","🌰","💗"]);}
-  });
-  // avatar / hero hamster squish
-  document.addEventListener("click",e=>{
-    const t=e.target.closest("#hamsterAvatar,#heroHamster,.product-art img");if(!t)return;
-    t.classList.remove("squish");void t.offsetWidth;t.classList.add("squish");
-    setTimeout(()=>t.classList.remove("squish"),600);
-  });
   // running hamster
   function initRunner(){
     if(reduce)return;
@@ -9878,7 +9831,7 @@ if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
     r.innerHTML='<span class="r-say"></span><span class="r-body">🐹</span>';
     document.body.append(r);
     const say=r.querySelector(".r-say");
-    const lines=["Squit!","Ho fretta!","Semi? 🌰","Non guardarmi!","Corro per hobby","Cucù!"];
+    const lines=["Squit!","Ho fretta!","Semi?","Non guardarmi!","Corro per hobby","Cucù!"];
     let hopping=false;
     function run(){
       const dur=rnd(11,17);r.style.setProperty("--rt",dur+"s");
@@ -9888,7 +9841,6 @@ if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
     r.addEventListener("click",ev=>{
       ev.stopPropagation();
       const rc=r.getBoundingClientRect();
-      burst(rc.left+rc.width/2,rc.top,["❤️","💗","✨"],6);
       say.textContent=lines[Math.floor(Math.random()*lines.length)];r.classList.add("talk");setTimeout(()=>r.classList.remove("talk"),1300);
       if(!hopping){hopping=true;r.classList.add("hop");setTimeout(()=>{r.classList.remove("hop");hopping=false},750);}
     });
@@ -9897,7 +9849,7 @@ if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
   // order confirmation confetti
   const notice=document.getElementById("orderNotice");
   if(notice&&window.MutationObserver){
-    new MutationObserver(()=>{if(!notice.hidden&&notice.textContent.includes("Ordine confermato")){rain(["🎉","🌻","💗","🌰","✨"]);}}).observe(notice,{childList:true,subtree:true,attributes:true});
+    new MutationObserver(()=>{if(!notice.hidden&&notice.textContent.includes("Ordine confermato")){rain(["🎉","🌻","💗","✨"]);}}).observe(notice,{childList:true,subtree:true,attributes:true});
   }
   initRunner();
 })();
