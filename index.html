@@ -2708,6 +2708,214 @@ footer::before{content:"";position:absolute;left:0;right:0;top:-12px;height:14px
 .hole.up span{bottom:6%}
 .hole.hit span{bottom:2%;filter:grayscale(.3)}
 </style>
+    <style id="polish-v5">
+/* ===== Criceti Cerebrali — customer polish layer (v5) =====
+   Paste this block right before </head>, AFTER the last <style>.
+   It only overrides looks: no HTML or JS changes needed. */
+
+:root{
+  --cta:linear-gradient(135deg,#f08c8f 0%,#f2a66f 100%);
+  --cta-shadow:0 12px 24px -12px rgba(224,120,110,.75);
+  --card-radius:26px;
+  --soft-border:#f1e4dc;
+}
+
+/* ---------- Base typography & rhythm ---------- */
+body{font-size:16.5px;letter-spacing:.005em}
+body h1,body h2,body h3{letter-spacing:-.03em}
+body .container{width:min(1160px,calc(100% - 48px))}
+body .tiny-label{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 12px;border-radius:999px;
+  background:#fff0f1;color:#b4616a;letter-spacing:.09em;font-size:.7rem
+}
+body .section-heading .tiny-label::before,
+body .page-heading .tiny-label::before{display:none}
+
+/* ---------- Announcement bar ---------- */
+body .announcement{
+  padding:10px 16px;font-size:.72rem;font-weight:700;letter-spacing:.14em;
+  background:linear-gradient(90deg,#302a28,#5a4540 50%,#302a28)
+}
+
+/* ---------- Header ---------- */
+body header{background:rgba(255,250,245,.86);backdrop-filter:saturate(180%) blur(20px)}
+body .nav{min-height:72px}
+body .logo{font-size:1.15rem;letter-spacing:-.02em}
+body .logo-icon{
+  background:linear-gradient(135deg,#ffe4a3,#ffc9a0);
+  box-shadow:0 8px 18px -8px rgba(242,166,111,.8)
+}
+body .cart-button{
+  background:var(--ink);border-radius:999px;padding:10px 16px;
+  box-shadow:0 10px 20px -12px rgba(48,42,40,.8)
+}
+body .cart-count{background:var(--cta);color:#fff;min-width:22px;height:22px}
+body .menu-toggle{border-radius:50%;background:#fff;border:1px solid var(--soft-border);box-shadow:0 6px 14px -10px rgba(70,45,35,.5)}
+body .menu-toggle:hover{background:var(--pink-light)}
+body .nav-links{border-radius:24px;padding:14px;box-shadow:0 24px 50px -18px rgba(48,42,40,.3)}
+body .nav-links .nav-link{border-radius:14px;font-weight:700}
+body .nav-links .nav-link:hover{background:var(--pink-light);transform:translateX(3px);transition:.2s}
+body .nav-season .nav-link{border-radius:999px;padding:8px 14px;font-size:.8rem}
+
+/* ---------- Buttons ---------- */
+body .primary-button{
+  background:var(--cta);color:#fff;border-radius:999px;padding:14px 26px;
+  box-shadow:var(--cta-shadow);text-shadow:0 1px 0 rgba(0,0,0,.08)
+}
+body .primary-button:hover{background:var(--cta);filter:brightness(1.05);transform:translateY(-3px);box-shadow:0 18px 30px -14px rgba(224,120,110,.85)}
+body .primary-button:disabled{filter:grayscale(.5)}
+body .secondary-button{border-radius:999px;padding:14px 24px;background:#fff;border:1.5px solid #ecd9cf}
+body .secondary-button:hover{border-color:#e3aaa9;background:#fffaf8}
+
+/* ---------- Hero ---------- */
+body .hero{padding:72px 0 56px}
+body .hero h1{font-size:clamp(2.7rem,5.4vw,4.8rem);line-height:1.02;margin:22px 0 20px}
+body .hero-copy{font-size:1.14rem;line-height:1.7;max-width:540px}
+body .eyebrow{
+  padding:8px 16px;border:1px solid #f4d9d6;background:#fff;
+  box-shadow:0 8px 18px -12px rgba(157,94,98,.6)
+}
+body .hero-buttons{margin-top:30px;gap:14px}
+body .hero-art{
+  min-height:380px;border-radius:44px;
+  background:
+    radial-gradient(circle at 25% 15%,#fffaf3 0,transparent 50%),
+    radial-gradient(circle at 90% 95%,#f6c3a6 0,transparent 55%),
+    linear-gradient(160deg,#fde9da,#f6d2bb);
+  box-shadow:0 40px 70px -36px rgba(160,90,60,.55),inset 0 0 0 1px rgba(255,255,255,.8)
+}
+body .floating-note{border-radius:999px;padding:10px 16px;font-size:.78rem;backdrop-filter:blur(8px);background:rgba(255,255,255,.92)}
+
+/* ---------- Trust strip & promo banners ---------- */
+body .trust-item{border-radius:20px;background:#fff;border:1px solid var(--soft-border)}
+body .trust-icon{background:linear-gradient(135deg,#fff0f1,#ffe9d9)}
+body .creator-promo-inner{
+  border-radius:40px;padding:42px 52px;
+  background:linear-gradient(120deg,#fde1e8 0%,#f1e3fb 100%);
+  box-shadow:0 30px 60px -36px rgba(150,90,150,.5)
+}
+body .creator-promo-art{border-radius:30px;background:rgba(255,255,255,.7);box-shadow:inset 0 0 0 1px rgba(255,255,255,.9)}
+body .creator-promo h2{font-size:clamp(1.9rem,3.6vw,2.7rem)}
+body .halloween-banner-inner{border-radius:34px}
+
+/* ---------- Home menu cards ---------- */
+body .home-menu{padding:48px 0 30px}
+body .home-menu-group{
+  font-size:.72rem;color:#b4616a;letter-spacing:.14em;
+  display:flex;align-items:center;gap:12px
+}
+body .home-menu-group::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--soft-border),transparent)}
+body .home-menu-card{border-radius:22px;border:1px solid var(--soft-border);background:#fff;padding:16px 18px}
+body .home-menu-icon{border-radius:16px;width:52px;height:52px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.04)}
+body .home-menu-title{font-weight:800}
+
+/* ---------- Shop toolbar ---------- */
+body .shop-filters{padding:34px 0 26px}
+body .filter-chip{padding:10px 20px;border:1.5px solid #ecdcd0;font-weight:800;font-size:.9rem}
+body .filter-chip.active{background:var(--ink);border-color:var(--ink)}
+body .shop-search input{padding:12px 40px 12px 44px;border:1.5px solid #ecdcd0;box-shadow:0 6px 16px -12px rgba(70,45,35,.4)}
+body .sort-label select{border:1.5px solid #ecdcd0;border-radius:999px;padding:10px 16px}
+
+/* ---------- Section headings ---------- */
+body .section-heading{margin-bottom:32px}
+body .section-heading h2{font-size:clamp(2rem,4vw,3.1rem);margin:12px 0 8px}
+body .section-heading .eyebrow{background:#fff;font-size:.72rem}
+body .catalog-section{padding:44px 0 70px}
+
+/* ---------- Product cards ---------- */
+body .product-grid{gap:26px}
+body .product-card{
+  padding:12px;border-radius:var(--card-radius);border:1px solid var(--soft-border);
+  background:#fff;box-shadow:0 1px 2px rgba(70,45,35,.04),0 18px 40px -26px rgba(70,45,35,.35)
+}
+body .product-card:hover{box-shadow:0 2px 4px rgba(70,45,35,.05),0 34px 60px -28px rgba(70,45,35,.45)}
+body .product-art{min-height:210px;border-radius:20px}
+body .product-art .product-hamster{width:172px;height:172px}
+body .product-tag{
+  top:12px;left:12px;padding:6px 11px;border-radius:999px;
+  background:rgba(255,255,255,.95);font-size:.68rem;letter-spacing:.02em;color:#6d5a52
+}
+body .product-body{padding:18px 10px 8px}
+body .product-title-row h3{font-size:1.2rem;line-height:1.2}
+body .product-title-row .price{
+  font-size:1rem;padding:5px 13px;border-radius:999px;
+  background:linear-gradient(135deg,#fff0f1,#ffe9d9);color:#a8505f
+}
+body .product-title-row .price.free{background:#e8f2e5;color:#3f6a47}
+body .product-title-row .price.owed{background:#fde8ec;color:#a13a52}
+body .product-description{font-size:.9rem;line-height:1.6}
+body .details-link{font-size:.86rem;margin:-6px 0 14px;color:#b0485f}
+body .stats{background:#fffaf6;border:1px solid #f6ece5;border-radius:16px;padding:12px 14px;gap:9px}
+body .stat{border:0;font-size:.78rem}
+body .add-button{
+  background:var(--ink);border-radius:999px;padding:14px;font-size:.92rem;margin-top:14px;
+  box-shadow:0 12px 22px -14px rgba(48,42,40,.9)
+}
+body .add-button:hover{background:var(--cta)}
+body .add-button.added{background:linear-gradient(180deg,#5f8a65,#4a7050)}
+
+/* ---------- Product modal ---------- */
+body .product-modal-card{border-radius:32px;padding:20px}
+body .product-modal-art{border-radius:24px}
+body .product-modal-close{box-shadow:0 8px 20px -8px rgba(48,42,40,.35)}
+body .pm-specs div{padding:11px 0}
+
+/* ---------- About ---------- */
+body .about{background:linear-gradient(180deg,#f7eee7,#fbf2ea)}
+body .about-emoji{border-radius:36px;background:linear-gradient(135deg,#ffe9ad,#ffd9b8)}
+body .about h2{font-size:clamp(1.9rem,3.6vw,2.6rem)}
+
+/* ---------- Inner pages, forms, panels ---------- */
+body .page-heading h1{font-size:clamp(2.1rem,4.4vw,3.3rem)}
+body .panel{border-radius:30px;border:1px solid var(--soft-border);box-shadow:0 24px 50px -34px rgba(70,45,35,.35)}
+body .field label{font-size:.82rem;letter-spacing:.01em;color:#4a3f3b}
+body .field input,body .field select,body .field textarea{
+  border:1.5px solid #eadcd3;border-radius:14px;padding:14px 16px;background:#fff;transition:.2s
+}
+body .field input:hover,body .field select:hover,body .field textarea:hover{border-color:#e0b9b4}
+body .payment-option{border:1.5px solid #eadcd3;border-radius:16px;background:#fff;transition:.2s}
+body .payment-option:hover{border-color:#e0b9b4}
+body .payment-option:has(input:checked){border-color:#e07f84;background:#fff3f4;box-shadow:0 8px 18px -12px rgba(224,100,110,.6)}
+body .cart-item{border-radius:20px;border:1px solid var(--soft-border);background:#fff}
+body .checkout-totals strong{font-size:1.8rem}
+body .summary-product{border-radius:18px;background:#fffaf6}
+body .empty-cart .empty-emoji{filter:drop-shadow(0 8px 10px rgba(80,40,25,.12))}
+
+/* ---------- Creator / games pages ---------- */
+body .creator-tabs{border-radius:999px;padding:6px;box-shadow:0 10px 24px -16px rgba(70,45,35,.5)}
+body .creator-option{border-radius:18px}
+body .creator-section{border-radius:26px;border:1px solid var(--soft-border)}
+body .creator-preview{border-radius:32px}
+body .race-card{border-radius:32px;border:1px solid var(--soft-border);box-shadow:0 24px 50px -34px rgba(70,45,35,.35)}
+body .creator-back-button{border-radius:999px;padding:10px 18px}
+
+/* ---------- Toast & confirm popup ---------- */
+body .toast{border-radius:20px;border:1px solid var(--soft-border)}
+body .confirm-popup{border-radius:30px;padding:38px 30px 30px}
+body .confirm-close{background:var(--cta);border-radius:999px;box-shadow:var(--cta-shadow)}
+
+/* ---------- Footer ---------- */
+body footer{padding:56px 24px 28px}
+body footer .footer-title{letter-spacing:.14em}
+body footer .footer-links .text-button{font-weight:600}
+body footer strong{font-size:1.15rem}
+
+/* ---------- Accessibility & small screens ---------- */
+body :focus-visible{outline:3px solid #e0868b;outline-offset:3px;border-radius:10px}
+@media (max-width:900px){
+  body .hero{padding:48px 0 40px}
+  body .hero-art{min-height:320px}
+  body .creator-promo-inner{padding:28px}
+}
+@media (max-width:650px){
+  body .container{width:calc(100% - 32px)}
+  body .product-art{min-height:200px}
+  body .hero-buttons .primary-button,body .hero-buttons .secondary-button{width:100%}
+  body .section-heading h2{font-size:2rem}
+  body .catalog-section{padding:30px 0 50px}
+}
+</style>
 </head>
 
 <body>
