@@ -77,6 +77,11 @@
 .slot-zone{margin-top:18px}
 .slot-zone:first-of-type{margin-top:14px}
 .slot-title{margin:0 0 8px;font-size:.78rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:#b4616a}
+
+.rot-canvas{position:absolute;pointer-events:none;display:none}
+.stage-rotating .rot-canvas{display:block}
+.stage-rotating #hamsterAvatar{visibility:hidden}
+#crea-criceto .creator-stage{position:relative}
 </style>
 </head>
 
@@ -5025,116 +5030,212 @@ function updateEyes() {
         if (Math.abs(scale - 1) > .001) hamsterFigure.setAttribute("transform", `translate(160 296) scale(${scale.toFixed(3)}) translate(-160 -296)`);
         else hamsterFigure.removeAttribute("transform");
     }
-    /* ---- 360° rotation (sphere-like projection of each layer) ---- */
+    /* ---- 360° rotation: the body is a globe (front texture wrapped around a sphere),
+       small parts (ears, tail, bow, held items...) are sprites moving on 3D orbits ---- */
     let yaw = 0;
-    let yawSuspended = false;
-    const faceAcc = "#accessoryGlasses,#accessoryHeartGlasses,#accessorySunglasses,#accessoryStarGlasses,#accessoryNerd,#accessoryMonocle,#accessoryGlasses3d,#accessoryEyePatch";
-    const yawSpecs = [
-        ["#hamsterEarL,#hamsterInnerEarL,#hamsterEarR,#hamsterInnerEarR", { z: 55, min: .45 }],
-        ["#hamsterBelly", { z: 60, min: 0, hide: true }],
-        ["#hamsterFacePatchL,#hamsterFacePatchR,.yaw-wrap,#hamsterCheeks,#hamsterMuzzle,#hamsterAgeArt", { z: 72, min: .26, hide: true }],
-        [faceAcc, { z: 72, min: .12, hide: true }],
-        ["#hamsterBackPawL,#hamsterBackPawR,#hamsterBackPawR + path", { z: 30, min: .6 }],
-        ["#hamsterFrontPawL,#hamsterFrontPawR,#hamsterSeed,#hamsterHeldTop,#hamsterHeldBack", { z: 62, min: 0, hide: true }],
-        ["#hamsterTailArt", { z: -96, min: 1, tail: true }],
-        ["#accessoryBowtie,#accessoryPearls,#accessoryBandanaNeck", { z: 70, min: 0, hide: true }],
-        ["#accessoryShirtTee,#accessoryShirtStripe,#accessoryShirtHoodie,#accessoryShirtButton,#accessoryShirtNapoli,#accessoryScarf,#accessoryCollar", { z: 0, min: .62 }],
-        ["#accessoryBow,#accessoryFlower", { z: 40, min: .5 }],
-        ["#accessoryBunnyEars,#accessoryCatEars,#accessoryAlienAntennae", { z: 20, min: .5 }],
-        ["#accessoryHeadphones", { z: 0, min: .16 }]
+    const ROT_N = 640;
+    const rot = { ready: false, dirty: true, building: false, timer: 0, drawQueued: false, cvs: null, ctx: null, body: null, bodyCtx: null, out: null };
+    const faceAccSel = ["Glasses", "HeartGlasses", "Sunglasses", "StarGlasses", "Nerd", "Monocle", "Glasses3d", "EyePatch"].map(n => "#accessory" + n);
+    const faceOnlySel = ["#hamsterBelly", "#hamsterFacePatchL", "#hamsterFacePatchR", "#hamsterEyes", "#hamsterCheeks", "#hamsterMuzzle", "#hamsterWhiskers", "#hamsterAgeArt", "#hamsterFrontPawL", "#hamsterFrontPawR", "#accessoryBowtie", "#accessoryPearls", "#accessoryBandanaNeck", ...faceAccSel];
+    const surfaceSel = ["#hamsterBody", "#hamsterPattern", "#hamsterHead", "#hamsterBackPawL", "#hamsterBackPawR", "#hamsterBackPawR + path", ...["Tee", "Stripe", "Hoodie", "Button", "Napoli"].map(n => "#accessoryShirt" + n), "#accessoryScarf", "#accessoryCollar", ...faceOnlySel];
+    const spriteDefs = [
+        { sel: ["#hamsterTailArt"], z: -92, min: 1, mode: "auto", lateral: true },
+        { sel: ["#hamsterEarL", "#hamsterInnerEarL"], z: 55, min: .55, mode: "auto" },
+        { sel: ["#hamsterEarR", "#hamsterInnerEarR"], z: 55, min: .55, mode: "auto" },
+        { sel: ["#accessoryBow"], z: 40, min: .6, mode: "front" },
+        { sel: ["#accessoryFlower"], z: 40, min: .6, mode: "front" },
+        { sel: ["#accessoryHeadphones"], z: 0, min: .16, mode: "front" },
+        { sel: ["#accessoryBunnyEars", "#accessoryCatEars", "#accessoryAlienAntennae"], z: 20, min: .5, mode: "front" },
+        { sel: ["#hamsterHeldBack"], z: 62, min: .5, mode: "behindIfFront" },
+        { sel: ["#hamsterHeldTop", "#hamsterSeed"], z: 62, min: .5, mode: "onlyFront" }
     ];
-    ["hamsterEyes", "hamsterWhiskers"].forEach(id => {
-        const node = avatar.querySelector("#" + id);
-        if (!node || node.parentNode.classList.contains("yaw-wrap")) return;
-        const wrap = document.createElementNS("http://www.w3.org/2000/svg", "g");
-        wrap.setAttribute("class", "yaw-wrap");
-        wrap.dataset.yawFor = id;
-        node.before(wrap);
-        wrap.append(node);
-    });
-    const yawItems = [];
-    yawSpecs.forEach(([selector, spec]) => avatar.querySelectorAll(selector).forEach(el => yawItems.push({ el, spec })));
-    const tailHome = (() => { const t = avatar.querySelector("#hamsterTailArt"); return t ? { parent: t.parentNode, next: t.nextSibling } : null; })();
-    function yawRender() {
-        const angle = yawSuspended ? 0 : yaw;
-        const rad = angle * Math.PI / 180;
-        const c = Math.cos(rad), s = Math.sin(rad);
-        yawPattern(angle, c, s);
-        yawShirts(angle, c);
-        yawItems.forEach(({ el, spec }) => {
-            const cur = el.getAttribute("transform") || "";
-            if (el._yl === undefined || cur !== el._yl) el._t0 = cur;
-            let next = el._t0;
-            if (angle !== 0) {
-                const sx = spec.tail ? 1 : (c < 0 ? -1 : 1) * Math.max(Math.abs(c), spec.min);
-                const lateral = spec.tail ? (el._dx === undefined ? (el._dx = (Number((el.firstElementChild || el).getAttribute("cx")) || 195) - 160) : el._dx) * (1 - Math.max(c, 0)) : 0;
-                next = `translate(${(160 + spec.z * s - lateral).toFixed(2)} 0) scale(${sx.toFixed(3)} 1) translate(-160 0)` + (el._t0 ? " " + el._t0 : "");
-            }
-            if (next) el.setAttribute("transform", next); else el.removeAttribute("transform");
-            el._yl = next;
-            el.style.visibility = spec.hide && c < -0.04 ? "hidden" : "";
-            if (spec.tail && tailHome) {
-                const back = c < 0 && angle !== 0;
-                const anchor = avatar.querySelector("#hamsterBackPawR + path");
-                if (back && anchor && el.previousElementSibling !== anchor) anchor.after(el);
-                else if (!back && el.parentNode === tailHome.parent && el.previousElementSibling === anchor && anchor) tailHome.parent.insertBefore(el, tailHome.next);
-            }
+    const joinSel = list => list.join(",");
+    const isShown = el => { if (!el || getComputedStyle(el).display === "none") return false; try { const box = el.getBBox(); return box.width > 0 && box.height > 0; } catch { return false; } };
+    function renderLayer(selectors, post) {
+        return new Promise(resolve => {
+            const clone = avatar.cloneNode(true);
+            clone.removeAttribute("class");
+            clone.removeAttribute("id");
+            clone.setAttribute("xmlns", svgNS);
+            clone.setAttribute("width", ROT_N);
+            clone.setAttribute("height", ROT_N);
+            clone.setAttribute("style", "visibility:hidden");
+            clone.querySelectorAll("defs, clipPath, mask, linearGradient, radialGradient").forEach(node => { node.style.visibility = "visible"; });
+            selectors.forEach(sel => clone.querySelectorAll(sel).forEach(node => { node.style.visibility = "visible"; }));
+            if (post) post(clone);
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement("canvas");
+                canvas.width = canvas.height = ROT_N;
+                canvas.getContext("2d", { willReadFrequently: true }).drawImage(img, 0, 0, ROT_N, ROT_N);
+                resolve(canvas);
+            };
+            img.onerror = () => resolve(null);
+            img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(new XMLSerializer().serializeToString(clone));
         });
+    }
+    function spriteCenter(el) {
+        const box = el.getBBox();
+        const toRoot = avatar.getScreenCTM().inverse().multiply(el.getScreenCTM());
+        const point = new DOMPoint(box.x + box.width / 2, box.y + box.height / 2).matrixTransform(toRoot);
+        return point.x;
+    }
+    async function rotBuild() {
+        if (rot.building) { rot.dirty = true; return; }
+        rot.building = true;
+        rot.dirty = false;
+        const hidePerSurface = clone => {
+            clone.querySelectorAll("#hamsterBelly").forEach(n => { n.style.visibility = "hidden"; });
+            const pat = clone.querySelector("#hamsterPattern");
+            if (pat && pat.firstElementChild && !pat.firstElementChild.hasAttribute("mask")) pat.style.display = "none";
+            clone.querySelectorAll('[id^="accessoryShirt"] > g > *').forEach(node => {
+                const isNeck = node.tagName === "path" && (node.getAttribute("d") || "").startsWith("M121 201 C133");
+                const isPrint = node.tagName === "g" && !node.parentNode.parentNode.id.includes("Stripe");
+                if (isNeck || isPrint) node.style.display = "none";
+            });
+        };
+        const spriteSel = new Set(spriteDefs.flatMap(d => d.sel));
+        const knownAcc = [...surfaceSel, ...spriteSel];
+        const topSel = ["#hamsterBall", ...[...avatar.querySelectorAll('[id^="accessory"]')].filter(el => !knownAcc.some(sel => el.matches(sel))).map(el => "#" + el.id)];
+        const active = spriteDefs.filter(def => def.sel.some(sel => isShown(avatar.querySelector(sel))));
+        const tasks = [
+            renderLayer(surfaceSel),
+            renderLayer(surfaceSel.filter(sel => !faceOnlySel.includes(sel)), hidePerSurface),
+            renderLayer(["#hamsterBodyShape", "#hamsterHead"]),
+            renderLayer(["#hamsterBackground", "#hamsterFigure > ellipse:not([id])"]),
+            renderLayer(topSel),
+            ...active.map(def => renderLayer(def.sel))
+        ];
+        const centers = active.map(def => spriteCenter(avatar.querySelector(def.sel.find(sel => isShown(avatar.querySelector(sel))))));
+        const images = await Promise.all(tasks);
+        rot.building = false;
+        if (images.slice(0, 5).some(img => !img)) return;
+        const [front, back, mask, bg, top, ...sprites] = images;
+        const N = ROT_N;
+        const alpha = mask.getContext("2d").getImageData(0, 0, N, N).data;
+        const cx = new Float32Array(N), rad = new Float32Array(N);
+        for (let y = 0; y < N; y++) {
+            let l = -1, r = -1;
+            for (let x = 0; x < N; x++) if (alpha[(y * N + x) * 4 + 3] > 60) { if (l < 0) l = x; r = x; }
+            if (l >= 0 && r - l > 6) { cx[y] = (l + r + 1) / 2; rad[y] = (r - l + 1) / 2; }
+        }
+        rot.front = front.getContext("2d").getImageData(0, 0, N, N).data;
+        rot.back = back.getContext("2d").getImageData(0, 0, N, N).data;
+        rot.cx = cx; rot.rad = rad;
+        rot.bg = bg; rot.top = top;
+        rot.sprites = active.map((def, i) => ({ ...def, img: sprites[i], x0: centers[i] * N / 320, z0: def.z * N / 320 }));
+        if (!rot.cvs) {
+            rot.cvs = document.createElement("canvas");
+            rot.cvs.width = rot.cvs.height = N;
+            rot.cvs.className = "rot-canvas";
+            rot.ctx = rot.cvs.getContext("2d");
+            rot.body = document.createElement("canvas");
+            rot.body.width = rot.body.height = N;
+            rot.bodyCtx = rot.body.getContext("2d");
+            rot.out = rot.bodyCtx.createImageData(N, N);
+            avatar.after(rot.cvs);
+        }
+        rot.ready = true;
+        if (rot.dirty && yaw !== 0) rotSchedule();
+        rotUpdate();
+    }
+    function rotBody(theta) {
+        const N = ROT_N, out = rot.out, o = out.data;
+        o.fill(0);
+        const { front, back, cx, rad } = rot;
+        for (let y = 0; y < N; y++) {
+            const R = rad[y];
+            if (!R) continue;
+            const c0 = cx[y];
+            const ring = 7, Rs = R - ring;
+            const ek = (y * N + Math.min(N - 1, Math.max(0, Math.round(c0 - R + 2)))) * 4;
+            const xa = Math.max(0, Math.floor(c0 - R)), xb = Math.min(N - 1, Math.ceil(c0 + R));
+            for (let x = xa; x <= xb; x++) {
+                const dist = Math.abs(x + .5 - c0);
+                if (dist > R - 1) continue;
+                if (dist > Rs) {
+                    const k = (y * N + x) * 4;
+                    o[k] = front[ek]; o[k + 1] = front[ek + 1]; o[k + 2] = front[ek + 2]; o[k + 3] = 255;
+                    continue;
+                }
+                const u = (x + .5 - c0) / Rs;
+                let phi = Math.asin(u) - theta;
+                phi = ((phi + Math.PI) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI) - Math.PI;
+                const src = Math.abs(phi) <= Math.PI / 2 ? front : back;
+                const sx = c0 + Rs * Math.sin(phi) - .5;
+                let x1 = Math.floor(sx);
+                const t = sx - x1;
+                const i0 = (y * N + Math.min(N - 1, Math.max(0, x1))) * 4, i1 = (y * N + Math.min(N - 1, Math.max(0, x1 + 1))) * 4;
+                const a0 = src[i0 + 3] * (1 - t), a1 = src[i1 + 3] * t, a = a0 + a1;
+                if (a < 1) continue;
+                const k = (y * N + x) * 4;
+                o[k] = (src[i0] * a0 + src[i1] * a1) / a;
+                o[k + 1] = (src[i0 + 1] * a0 + src[i1 + 1] * a1) / a;
+                o[k + 2] = (src[i0 + 2] * a0 + src[i1 + 2] * a1) / a;
+                o[k + 3] = a;
+            }
+        }
+        rot.bodyCtx.putImageData(out, 0, 0);
+    }
+    function rotDraw() {
+        if (!rot.ready || yaw === 0) return;
+        const N = ROT_N, ctx = rot.ctx, theta = yaw * Math.PI / 180;
+        const c = Math.cos(theta), s = Math.sin(theta), mid = N / 2;
+        rotBody(theta);
+        ctx.clearRect(0, 0, N, N);
+        ctx.drawImage(rot.bg, 0, 0);
+        const place = [];
+        rot.sprites.forEach(sp => {
+            const dx = sp.x0 - mid;
+            const x = mid + dx * (sp.lateral ? Math.max(c, 0) : c) + sp.z0 * s;
+            const depth = sp.z0 * c - (sp.lateral ? 0 : dx * s);
+            const f = sp.min + (1 - sp.min) * Math.abs(c);
+            let layer = depth >= 0 ? "front" : "behind";
+            if (sp.mode === "front") layer = "front";
+            if (sp.mode === "behindIfFront") layer = depth >= 0 ? "behind" : "none";
+            if (sp.mode === "onlyFront") layer = depth >= 0 ? "front" : "none";
+            place.push({ sp, x, f, layer });
+        });
+        const paint = ({ sp, x, f }) => { ctx.save(); ctx.translate(x, 0); ctx.scale(f, 1); ctx.translate(-sp.x0, 0); ctx.drawImage(sp.img, 0, 0); ctx.restore(); };
+        place.filter(p => p.layer === "behind").forEach(paint);
+        ctx.drawImage(rot.body, 0, 0);
+        place.filter(p => p.layer === "front").forEach(paint);
+        ctx.drawImage(rot.top, 0, 0);
+    }
+    function rotPlace() {
+        if (!rot.cvs) return;
+        const box = avatar.getBoundingClientRect(), host = avatar.parentElement.getBoundingClientRect();
+        rot.cvs.style.left = (box.left - host.left) + "px";
+        rot.cvs.style.top = (box.top - host.top) + "px";
+        rot.cvs.style.width = box.width + "px";
+        rot.cvs.style.height = box.height + "px";
+    }
+    function rotSchedule() {
+        clearTimeout(rot.timer);
+        rot.timer = setTimeout(rotBuild, 140);
+    }
+    function rotUpdate() {
+        const stage = avatar.parentElement;
+        if (yaw === 0) { stage.classList.remove("stage-rotating"); return; }
+        if (!rot.ready || rot.dirty) {
+            if (!rot.building) rotBuild();
+        }
+        if (rot.ready) {
+            rotPlace();
+            stage.classList.add("stage-rotating");
+            if (!rot.drawQueued) {
+                rot.drawQueued = true;
+                requestAnimationFrame(() => { rot.drawQueued = false; rotDraw(); });
+            }
+        }
+    }
+    function rotInvalidate() {
+        rot.dirty = true;
+        if (yaw !== 0) rotSchedule();
     }
     const svgNS = "http://www.w3.org/2000/svg";
-    function yawPattern(angle, c, s) {
-        const pat = avatar.querySelector("#hamsterPattern");
-        if (!pat) return;
-        let wrap = pat.querySelector(":scope > .yaw-pat");
-        if (!wrap) {
-            wrap = document.createElementNS(svgNS, "g");
-            wrap.setAttribute("class", "yaw-pat");
-            while (pat.firstChild) wrap.append(pat.firstChild);
-            pat.append(wrap);
-        }
-        const masked = wrap.firstElementChild && wrap.firstElementChild.hasAttribute("mask");
-        pat.querySelectorAll(".yaw-clone").forEach(node => node.remove());
-        if (masked) {
-            const holder = wrap.firstElementChild;
-            let tex = holder.querySelector(":scope > .yaw-tex");
-            if (!tex) {
-                tex = document.createElementNS(svgNS, "g");
-                tex.setAttribute("class", "yaw-tex");
-                while (holder.firstChild) tex.append(holder.firstChild);
-                holder.append(tex);
-            }
-            wrap.removeAttribute("transform");
-            wrap.style.visibility = "";
-            if (angle === 0) { tex.removeAttribute("transform"); return; }
-            const d = angle / 360 * 200;
-            tex.setAttribute("transform", `translate(${d.toFixed(2)} 0)`);
-            [-200, 200].forEach(off => {
-                const copy = tex.cloneNode(true);
-                copy.setAttribute("class", "yaw-clone");
-                copy.setAttribute("transform", `translate(${(d + off).toFixed(2)} 0)`);
-                holder.append(copy);
-            });
-        } else {
-            if (angle === 0) { wrap.removeAttribute("transform"); wrap.style.visibility = ""; return; }
-            const sx = (c < 0 ? -1 : 1) * Math.max(Math.abs(c), .26);
-            wrap.setAttribute("transform", `translate(${(160 + 72 * s).toFixed(2)} 0) scale(${sx.toFixed(3)} 1) translate(-160 0)`);
-            wrap.style.visibility = c < -0.04 ? "hidden" : "";
-        }
-    }
-    function yawShirts(angle, c) {
-        const back = angle !== 0 && c < 0.25;
-        avatar.querySelectorAll('[id^="accessoryShirt"] > g > *').forEach(node => {
-            const isNeck = node.tagName === "path" && (node.getAttribute("d") || "").startsWith("M121 201 C133");
-            const isPrint = node.tagName === "g" && !node.parentNode.parentNode.id.includes("Stripe");
-            node.style.visibility = back && (isNeck || isPrint) ? "hidden" : "";
-        });
-    }
-    function yawSuspend() {
-        if (yaw === 0 && !yawSuspended) return () => {};
-        yawSuspended = true;
-        yawRender();
-        return () => { yawSuspended = false; yawRender(); };
-    }
+    const yawSuspend = () => () => {};
+    window.addEventListener("resize", () => { rotPlace(); });
     const rotRange = document.getElementById("rotRange");
     const rotLabel = document.getElementById("rotLabel");
     const rotAuto = document.getElementById("rotAuto");
@@ -5144,7 +5245,7 @@ function updateEyes() {
         if (!fromSlider && rotRange) rotRange.value = yaw;
         const a = Math.abs(yaw);
         if (rotLabel) rotLabel.textContent = a < 20 ? "Di fronte" : a > 160 ? "Di schiena" : a > 70 && a < 110 ? (yaw > 0 ? "Profilo destro" : "Profilo sinistro") : `${a}° ${yaw > 0 ? "a destra" : "a sinistra"}`;
-        yawRender();
+        rotUpdate();
     }
     function stopSpin() {
         cancelAnimationFrame(spinFrame);
@@ -5202,7 +5303,7 @@ function updateEyes() {
         if (freckleRow) freckleRow.hidden = state.cheeks !== "freckles";
         updateSelectedCards();
         updatePrice();
-        yawRender();
+        rotInvalidate();
     }
     function getSettings() {
         return {
@@ -6178,7 +6279,7 @@ function initHouseCreator() {
         lights: 3.49, bunting: 1.99, picture: 2.49, rug: 2.99, plant: 1.99,
         tunnel: 5.49, swing: 4.49, ball: 1.49, window: 3.99, clock: 2.99, mobile: 2.49,
         sign: 2.49, mailbox: 3.49, fence: 4.99, flowerbed: 3.99, lamp: 5.49,
-        slide: 7.99, bed: 5.99, log: 3.49, ladder: 3.99, sandbath: 4.49, bookshelf: 8.49,
+        slide: 7.99, bed: 5.99, log: 3.49, ladder: 3.99, bookshelf: 8.49,
         shelf: 4.99, mirror: 3.99, pennant: 1.99, lantern: 3.49, trophy: 2.99, curtains: 3.99, garland: 2.99,
         tree: 9.99, pond: 6.99, bench: 6.49, balloons: 2.99, path: 3.49, pumpkins: 2.99
     };
@@ -6195,7 +6296,7 @@ function initHouseCreator() {
         hamster: ["yes", "no"]
     };
     const multi = {
-        furniture: ["wheel", "nest", "bowl", "bottle", "hammock", "tunnel", "swing", "ball", "slide", "bed", "log", "ladder", "sandbath", "bookshelf"],
+        furniture: ["wheel", "nest", "bowl", "bottle", "hammock", "tunnel", "swing", "ball", "slide", "bed", "log", "ladder", "bookshelf"],
         decor: ["lights", "bunting", "picture", "rug", "plant", "window", "clock", "mobile", "shelf", "mirror", "pennant", "lantern", "trophy", "curtains", "garland"],
         outside: ["sign", "mailbox", "fence", "flowerbed", "lamp", "tree", "pond", "bench", "balloons", "path", "pumpkins"]
     };
@@ -6206,7 +6307,7 @@ function initHouseCreator() {
     const slots = {
         furniture: [
             ["Angolo sinistro", ["wheel", "bookshelf", "tunnel", "bed"]],
-            ["Al centro del pavimento", ["ball", "slide", "ladder", "log", "sandbath"]],
+            ["Al centro del pavimento", ["ball", "slide", "ladder", "log"]],
             ["Angolo destro", ["nest", "bowl"]],
             ["Appeso al soffitto", ["hammock", "swing"]],
             ["Sulla parete di destra", ["bottle"]]
@@ -6227,7 +6328,7 @@ function initHouseCreator() {
         ]
     };
     const labels = {
-        wheel: "Ruota", nest: "Casetta nido", bowl: "Ciotola", bottle: "Beverino", hammock: "Amaca", tunnel: "Tunnel", swing: "Altalena", ball: "Pallina", slide: "Scivolo", bed: "Lettino", log: "Tronchetto", ladder: "Scaletta", sandbath: "Bagno di sabbia", bookshelf: "Libreria",
+        wheel: "Ruota", nest: "Casetta nido", bowl: "Ciotola", bottle: "Beverino", hammock: "Amaca", tunnel: "Tunnel", swing: "Altalena", ball: "Pallina", slide: "Scivolo", bed: "Lettino", log: "Tronchetto", ladder: "Scaletta", bookshelf: "Libreria",
         lights: "Lucine", bunting: "Bandierine", picture: "Quadretto", rug: "Tappeto", plant: "Piantina", window: "Finestrella", clock: "Orologio", mobile: "Stelline appese", shelf: "Mensola coi libri", mirror: "Specchio", pennant: "Stendardo", lantern: "Lanterna", trophy: "Coppa del campione", curtains: "Finestra con tendine", garland: "Ghirlanda di fiori",
         sign: "Targa col nome", mailbox: "Cassetta lettere", fence: "Staccionata", flowerbed: "Aiuola", lamp: "Lampione", tree: "Albero", pond: "Laghetto", bench: "Panchina", balloons: "Palloncini", path: "Vialetto di sassi", pumpkins: "Zucche"
     };
@@ -6393,7 +6494,6 @@ function initHouseCreator() {
         bed: (type, k) => { const d = dflt(k, { main: "#9BC4E2", dark: "#5E8FB3", light: "#E5F2FB" }); return `<rect x="96" y="244" width="86" height="14" rx="4" fill="#C98B5E" stroke="#8B5A35" stroke-width="2"/><path d="M100 258 V264 M178 258 V264" stroke="#8B5A35" stroke-width="4" stroke-linecap="round"/><rect x="98" y="236" width="86" height="11" rx="5" fill="${d.main}" stroke="${d.dark}" stroke-width="2"/><rect x="100" y="228" width="26" height="12" rx="6" fill="${d.light}" stroke="${d.dark}" stroke-width="2"/><path d="M134 238 V246 M148 238 V246 M162 238 V246" stroke="${d.dark}" stroke-width="1.4" opacity=".5"/>`; },
         log: (type, k) => { const d = dflt(k, { main: "#C99A6B", dark: "#8B5E3C", light: "#E6C79C" }); return `<rect x="186" y="242" width="64" height="20" rx="9" fill="${d.main}" stroke="${d.dark}" stroke-width="2.5"/><path d="M198 247 H236 M194 255 H242" stroke="${d.dark}" stroke-width="1.4" opacity=".5"/><ellipse cx="188" cy="252" rx="8" ry="10" fill="${d.light}" stroke="${d.dark}" stroke-width="2.5"/><ellipse cx="188" cy="252" rx="4" ry="5.5" fill="none" stroke="${d.dark}" stroke-width="1.4"/>`; },
         ladder: (type, k) => { const d = dflt(k, { main: "#D9A066", dark: "#9C6A3C" }); return `<path d="M214 138 L204 262 M238 138 L248 262" stroke="${d.dark}" stroke-width="4.5" stroke-linecap="round"/>` + [0, 1, 2, 3, 4, 5].map(i => { const y = 152 + i * 20, t = (y - 138) / 124; return `<path d="M${(214 - t * 10).toFixed(1)} ${y} H${(238 + t * 10).toFixed(1)}" stroke="${d.main}" stroke-width="4" stroke-linecap="round"/>`; }).join(""); },
-        sandbath: (type, k) => { const d = dflt(k, { main: "#F2D9A0", dark: "#C9A55E", light: "#FFF0C8" }); return `<path d="M200 244 H262 Q264 262 252 262 H210 Q198 262 200 244 Z" fill="#E8F2F8" stroke="#8FB3C9" stroke-width="2.5" stroke-linejoin="round"/><path d="M203 246 Q231 238 259 246 L258 254 H204 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="1.5"/><circle cx="215" cy="248" r="1.4" fill="${d.dark}"/><circle cx="238" cy="250" r="1.4" fill="${d.dark}"/><circle cx="250" cy="247" r="1.4" fill="${d.dark}"/>`; },
         bookshelf: (type, k) => { const d = dflt(k, { main: "#D9A066", dark: "#9C6A3C", light: "#F2D3AE" }); const rows = [158, 188, 218]; const bookCols = ["#F28DA0", "#8FCDF5", "#FFD66B", "#9BD1A8", "#C7B2EE"]; return `<rect x="74" y="140" width="40" height="124" rx="3" fill="${d.light}" stroke="${d.dark}" stroke-width="3"/>` + rows.map((y, r) => `<path d="M76 ${y + 10} H112" stroke="${d.dark}" stroke-width="3"/>` + [0, 1, 2, 3, 4].map(i => `<rect x="${79 + i * 6.5}" y="${y - (i * 3 + r) % 5}" width="5.2" height="${10 + (i * 3 + r) % 5}" fill="${bookCols[(i + r) % 5]}" stroke="#00000022" stroke-width=".6"/>`).join("")).join("") + `<path d="M76 258 H112" stroke="${d.dark}" stroke-width="3"/><circle cx="94" cy="246" r="5" fill="#FFFFFF" stroke="${d.dark}" stroke-width="1.5"/>`; },
         shelf: (type, k) => { const d = dflt(k, { main: "#D9A066", dark: "#9C6A3C" }); const cols = ["#F28DA0", "#8FCDF5", "#FFD66B", "#9BD1A8"]; return `<rect x="116" y="164" width="76" height="6" rx="2" fill="${d.main}" stroke="${d.dark}" stroke-width="2"/><path d="M122 170 V178 M186 170 V178" stroke="${d.dark}" stroke-width="2.5"/>` + cols.map((c, i) => `<rect x="${122 + i * 8}" y="${148 - (i % 2) * 3}" width="6.5" height="${16 + (i % 2) * 3}" fill="${c}" stroke="#00000022" stroke-width=".7"/>`).join("") + `<rect x="162" y="150" width="14" height="14" rx="3" fill="#FFF8F0" stroke="${d.dark}" stroke-width="1.6"/><path d="M169 150 q-4 -8 -8 -6 M169 150 q4 -8 8 -6" fill="none" stroke="#4F8F45" stroke-width="2" stroke-linecap="round"/>`; },
         mirror: (type, k) => { const d = dflt(k, { main: "#E8D1B5", dark: "#C98B5E", light: "#DDF1FF" }); return `<ellipse cx="124" cy="152" rx="15" ry="21" fill="${d.light}" stroke="${d.dark}" stroke-width="4"/><path d="M116 143 q4 -5 9 -4" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity=".8"/>`; },
@@ -6405,7 +6505,6 @@ function initHouseCreator() {
     });
     const shifted = (key, dx) => { const original = items[key]; items[key] = (type, k) => `<g transform="translate(${dx} 0)">${original(type, k)}</g>`; };
     shifted("bed", -14);
-    shifted("sandbath", -18);
     const esc = text => String(text).replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
     const houseName = () => (nameInput.value.trim() || "Villa Saturno").slice(0, 24);
     const scenes = {
@@ -6530,7 +6629,7 @@ function initHouseCreator() {
             draw("rug") + draw("tunnel") + draw("window") + draw("curtains") + draw("clock") + draw("mirror") + draw("shelf") + draw("pennant") + draw("bookshelf") + draw("bottle") + draw("picture") + draw("lights") + draw("bunting") + draw("garland") + draw("mobile") + draw("lantern") + draw("hammock") + draw("swing") + draw("ladder") + draw("slide") + draw("wheel") +
             draw("bed") + draw("log") +
             resident +
-            draw("nest") + draw("bowl") + draw("sandbath") + draw("trophy") + draw("plant") + draw("ball") +
+            draw("nest") + draw("bowl") + draw("trophy") + draw("plant") + draw("ball") +
             lightOverlay +
             frames[settings.type](c, r) +
             outBack +
