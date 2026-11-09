@@ -71,6 +71,10 @@
 #crea-ruota .slot-zone .creator-options{margin-top:0}
 #crea-ruota .creator-section .item-colors{margin-top:6px}
 #crea-ruota .creator-name-label+.creator-name{margin-top:0;text-align:left}
+
+@media (pointer:coarse),(max-width:760px){.text-button,.details-link{display:inline-flex;align-items:center;min-height:44px;padding-top:8px;padding-bottom:8px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important}}
+.page h1[tabindex="-1"]:focus,.page h1[tabindex="-1"]:focus-visible{outline:none}
 </style>
 </head>
 
@@ -7081,6 +7085,34 @@ decorateWithHamsters();
 initHeroHamster();
 initHouseCreator();
 initWheelCreator();
+(function addSurprise() {
+    const pick = list => list[Math.floor(Math.random() * list.length)];
+    [["crea-criceto", "hamsterReset"], ["crea-casa", "houseReset"], ["crea-ruota", "wheelReset"]].forEach(([pageId, resetId]) => {
+        const page = document.getElementById(pageId);
+        const reset = document.getElementById(resetId);
+        if (!page || !reset) return;
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = reset.className;
+        button.textContent = "🎲 Sorprendimi";
+        button.addEventListener("click", () => {
+            const groups = {};
+            page.querySelectorAll(".creator-option[data-group]").forEach(option => {
+                (groups[option.dataset.group] ||= []).push(option);
+            });
+            Object.entries(groups).forEach(([group, options]) => {
+                if (group === "rider") return;
+                const free = options.filter(option => option.getAttribute("aria-pressed") !== "true");
+                if (free.length && options.length > 1) pick(free).click();
+            });
+            page.querySelectorAll(".item-color-row").forEach((row, index) => {
+                const dots = page.querySelectorAll(".item-color-row")[index].querySelectorAll(".item-dot");
+                if (dots.length) pick([...dots]).click();
+            });
+        });
+        reset.before(button);
+    });
+})();
 renderProducts();
 updateCartCount();
 renderCart();
