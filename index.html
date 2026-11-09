@@ -72,6 +72,11 @@
 .rotate-label{flex-basis:100%;text-align:center;font-size:.8rem;font-weight:800;color:var(--muted)}
 .creator-stage{cursor:grab}
 .creator-stage.dragging{cursor:grabbing;user-select:none}
+
+/* r5: slot zones */
+.slot-zone{margin-top:18px}
+.slot-zone:first-of-type{margin-top:14px}
+.slot-title{margin:0 0 8px;font-size:.78rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:#b4616a}
 </style>
 </head>
 
@@ -2679,77 +2684,38 @@
                     </div>
                 </section>
 
-                <section class="creator-section" data-tab="arredamento">
-                    <h2>Scegli l'arredamento</h2>
-                    <p>Scegli tutto quello che vuoi: il criceto non paga l'affitto.</p>
-                    <div class="creator-options">
-                        <button type="button" class="creator-option" data-group="furniture" data-value="wheel" aria-pressed="false"><span class="creator-preview-icon"></span>Ruota</button>
-                        <button type="button" class="creator-option" data-group="furniture" data-value="nest" aria-pressed="false"><span class="creator-preview-icon"></span>Casetta nido</button>
-                        <button type="button" class="creator-option" data-group="furniture" data-value="bowl" aria-pressed="false"><span class="creator-preview-icon"></span>Ciotola</button>
-                        <button type="button" class="creator-option" data-group="furniture" data-value="bottle" aria-pressed="false"><span class="creator-preview-icon"></span>Beverino</button>
-                        <button type="button" class="creator-option" data-group="furniture" data-value="hammock" aria-pressed="false"><span class="creator-preview-icon"></span>Amaca</button>
-                        <button type="button" class="creator-option" data-group="furniture" data-value="tunnel" aria-pressed="false"><span class="creator-preview-icon"></span>Tunnel</button>
-                        <button type="button" class="creator-option" data-group="furniture" data-value="swing" aria-pressed="false"><span class="creator-preview-icon"></span>Altalena</button>
-                        <button type="button" class="creator-option" data-group="furniture" data-value="ball" aria-pressed="false"><span class="creator-preview-icon"></span>Pallina</button>
-                        <button type="button" class="creator-option" data-group="furniture" data-value="slide" aria-pressed="false"><span class="creator-preview-icon"></span>Scivolo</button>
-                        <button type="button" class="creator-option" data-group="furniture" data-value="bed" aria-pressed="false"><span class="creator-preview-icon"></span>Lettino</button>
-                        <button type="button" class="creator-option" data-group="furniture" data-value="log" aria-pressed="false"><span class="creator-preview-icon"></span>Tronchetto</button>
-                        <button type="button" class="creator-option" data-group="furniture" data-value="ladder" aria-pressed="false"><span class="creator-preview-icon"></span>Scaletta</button>
-                        <button type="button" class="creator-option" data-group="furniture" data-value="sandbath" aria-pressed="false"><span class="creator-preview-icon"></span>Bagno di sabbia</button>
-                        <button type="button" class="creator-option" data-group="furniture" data-value="bookshelf" aria-pressed="false"><span class="creator-preview-icon"></span>Libreria</button>
-                    </div>
-                </section>
+                <section class="creator-section slot-section" data-tab="arredamento" data-slot-mount="furniture" data-title="Scegli l'arredamento" data-text="Una scelta per zona: se due cose starebbero nello stesso punto, ne scegli una sola. Tocca di nuovo per toglierla."></section>
 
                 <section class="creator-section" data-tab="arredamento">
                     <h2>Scegli i colori degli oggetti</h2>
                     <p>Ogni oggetto che hai messo può avere il suo colore.</p>
                     <div class="item-colors" data-item-colors="furniture"></div>
                 </section>
-                <section class="creator-section" data-tab="decorazioni">
-                    <h2>Scegli le decorazioni</h2>
-                    <p>I dettagli che trasformano una casa in una tana.</p>
-                    <div class="creator-options">
-                        <button type="button" class="creator-option" data-group="decor" data-value="lights" aria-pressed="false"><span class="creator-preview-icon"></span>Lucine</button>
-                        <button type="button" class="creator-option" data-group="decor" data-value="bunting" aria-pressed="false"><span class="creator-preview-icon"></span>Bandierine</button>
-                        <button type="button" class="creator-option" data-group="decor" data-value="picture" aria-pressed="false"><span class="creator-preview-icon"></span>Quadretto</button>
-                        <button type="button" class="creator-option" data-group="decor" data-value="rug" aria-pressed="false"><span class="creator-preview-icon"></span>Tappeto</button>
-                        <button type="button" class="creator-option" data-group="decor" data-value="plant" aria-pressed="false"><span class="creator-preview-icon"></span>Piantina</button>
-                        <button type="button" class="creator-option" data-group="decor" data-value="window" aria-pressed="false"><span class="creator-preview-icon"></span>Finestrella</button>
-                        <button type="button" class="creator-option" data-group="decor" data-value="clock" aria-pressed="false"><span class="creator-preview-icon"></span>Orologio</button>
-                        <button type="button" class="creator-option" data-group="decor" data-value="mobile" aria-pressed="false"><span class="creator-preview-icon"></span>Stelline appese</button>
-                        <button type="button" class="creator-option" data-group="decor" data-value="shelf" aria-pressed="false"><span class="creator-preview-icon"></span>Mensola coi libri</button>
-                        <button type="button" class="creator-option" data-group="decor" data-value="mirror" aria-pressed="false"><span class="creator-preview-icon"></span>Specchio</button>
-                        <button type="button" class="creator-option" data-group="decor" data-value="pennant" aria-pressed="false"><span class="creator-preview-icon"></span>Stendardo</button>
-                        <button type="button" class="creator-option" data-group="decor" data-value="lantern" aria-pressed="false"><span class="creator-preview-icon"></span>Lanterna</button>
-                        <button type="button" class="creator-option" data-group="decor" data-value="trophy" aria-pressed="false"><span class="creator-preview-icon"></span>Coppa del campione</button>
-                        <button type="button" class="creator-option" data-group="decor" data-value="curtains" aria-pressed="false"><span class="creator-preview-icon"></span>Tendine</button>
-                        <button type="button" class="creator-option" data-group="decor" data-value="garland" aria-pressed="false"><span class="creator-preview-icon"></span>Ghirlanda di fiori</button>
-                    </div>
-                </section>
-
-                <section class="creator-section" data-tab="decorazioni">
-                    <h2>Scegli i colori degli oggetti</h2>
-                    <p>Ogni oggetto che hai messo può avere il suo colore.</p>
-                    <div class="item-colors" data-item-colors="decor"></div>
-                </section>
-                <section class="creator-section" data-tab="decorazioni">
-                    <h2>Scegli se il criceto abita qui</h2>
+<section class="creator-section" data-tab="arredamento">
+                    <h2>Il criceto abita qui?</h2>
                     <p>Il criceto che hai creato può già trasferirsi.</p>
                     <div class="creator-options">
                         <button type="button" class="creator-option" data-group="hamster" data-value="yes" aria-pressed="false">In casa</button>
                         <button type="button" class="creator-option" data-group="hamster" data-value="no" aria-pressed="false">Casa vuota</button>
                     </div>
                 </section>
-                <section class="creator-section" data-tab="decorazioni">
-                    <h2>Scegli dove sta il criceto</h2>
-                    <p>A sinistra vicino alla ruota, al centro o a destra vicino al nido.</p>
+<section class="creator-section" data-tab="arredamento">
+                    <h2>Dove sta il criceto?</h2>
+                    <p>A sinistra, al centro o a destra della casa.</p>
                     <div class="creator-options">
                         <button type="button" class="creator-option" data-group="pos" data-value="left" aria-pressed="false">A sinistra</button>
                         <button type="button" class="creator-option" data-group="pos" data-value="center" aria-pressed="false">Al centro</button>
                         <button type="button" class="creator-option" data-group="pos" data-value="right" aria-pressed="false">A destra</button>
                     </div>
                 </section>
+                <section class="creator-section slot-section" data-tab="decorazioni" data-slot-mount="decor" data-title="Scegli le decorazioni" data-text="Anche qui una scelta per zona: un solo oggetto per ogni parete o angolo. Tocca di nuovo per toglierlo."></section>
 
+                <section class="creator-section" data-tab="decorazioni">
+                    <h2>Scegli i colori degli oggetti</h2>
+                    <p>Ogni oggetto che hai messo può avere il suo colore.</p>
+                    <div class="item-colors" data-item-colors="decor"></div>
+                </section>
+                                
                 <section class="creator-section" data-tab="esterno">
                     <h2>Scegli lo scenario</h2>
                     <p>Dove abita la casa: giardino, notte, neve, spiaggia, tramonto, spazio o pioggia.</p>
@@ -2764,23 +2730,7 @@
                         <button type="button" class="creator-option" data-group="scene" data-value="rain" aria-pressed="false"><span class="creator-preview-icon"></span>Pioggerella</button>
                     </div>
                 </section>
-                <section class="creator-section" data-tab="esterno">
-                    <h2>Scegli cosa c'è fuori</h2>
-                    <p>Targa, cassetta, staccionata, albero, laghetto, panchina e altri dettagli per i vicini.</p>
-                    <div class="creator-options">
-                        <button type="button" class="creator-option" data-group="outside" data-value="sign" aria-pressed="false"><span class="creator-preview-icon"></span>Targa col nome</button>
-                        <button type="button" class="creator-option" data-group="outside" data-value="mailbox" aria-pressed="false"><span class="creator-preview-icon"></span>Cassetta lettere</button>
-                        <button type="button" class="creator-option" data-group="outside" data-value="fence" aria-pressed="false"><span class="creator-preview-icon"></span>Staccionata</button>
-                        <button type="button" class="creator-option" data-group="outside" data-value="flowerbed" aria-pressed="false"><span class="creator-preview-icon"></span>Aiuola</button>
-                        <button type="button" class="creator-option" data-group="outside" data-value="lamp" aria-pressed="false"><span class="creator-preview-icon"></span>Lampione</button>
-                        <button type="button" class="creator-option" data-group="outside" data-value="tree" aria-pressed="false"><span class="creator-preview-icon"></span>Albero</button>
-                        <button type="button" class="creator-option" data-group="outside" data-value="pond" aria-pressed="false"><span class="creator-preview-icon"></span>Laghetto</button>
-                        <button type="button" class="creator-option" data-group="outside" data-value="bench" aria-pressed="false"><span class="creator-preview-icon"></span>Panchina</button>
-                        <button type="button" class="creator-option" data-group="outside" data-value="balloons" aria-pressed="false"><span class="creator-preview-icon"></span>Palloncini</button>
-                        <button type="button" class="creator-option" data-group="outside" data-value="path" aria-pressed="false"><span class="creator-preview-icon"></span>Vialetto di sassi</button>
-                        <button type="button" class="creator-option" data-group="outside" data-value="pumpkins" aria-pressed="false"><span class="creator-preview-icon"></span>Zucche</button>
-                    </div>
-                </section>
+                <section class="creator-section slot-section" data-tab="esterno" data-slot-mount="outside" data-title="Scegli cosa c'è fuori" data-text="Una scelta per zona del giardino. Tocca di nuovo per togliere un oggetto."></section>
                 <section class="creator-section" data-tab="esterno">
                     <h2>Scegli i colori degli oggetti</h2>
                     <p>Ogni oggetto che hai messo può avere il suo colore.</p>
@@ -5109,12 +5059,14 @@ function updateEyes() {
         const angle = yawSuspended ? 0 : yaw;
         const rad = angle * Math.PI / 180;
         const c = Math.cos(rad), s = Math.sin(rad);
+        yawPattern(angle, c, s);
+        yawShirts(angle, c);
         yawItems.forEach(({ el, spec }) => {
             const cur = el.getAttribute("transform") || "";
             if (el._yl === undefined || cur !== el._yl) el._t0 = cur;
             let next = el._t0;
             if (angle !== 0) {
-                const sx = (c < 0 ? -1 : 1) * Math.max(Math.abs(c), spec.min);
+                const sx = spec.tail ? 1 : (c < 0 ? -1 : 1) * Math.max(Math.abs(c), spec.min);
                 const lateral = spec.tail ? (el._dx === undefined ? (el._dx = (Number((el.firstElementChild || el).getAttribute("cx")) || 195) - 160) : el._dx) * (1 - Math.max(c, 0)) : 0;
                 next = `translate(${(160 + spec.z * s - lateral).toFixed(2)} 0) scale(${sx.toFixed(3)} 1) translate(-160 0)` + (el._t0 ? " " + el._t0 : "");
             }
@@ -5127,6 +5079,54 @@ function updateEyes() {
                 if (back && anchor && el.previousElementSibling !== anchor) anchor.after(el);
                 else if (!back && el.parentNode === tailHome.parent && el.previousElementSibling === anchor && anchor) tailHome.parent.insertBefore(el, tailHome.next);
             }
+        });
+    }
+    const svgNS = "http://www.w3.org/2000/svg";
+    function yawPattern(angle, c, s) {
+        const pat = avatar.querySelector("#hamsterPattern");
+        if (!pat) return;
+        let wrap = pat.querySelector(":scope > .yaw-pat");
+        if (!wrap) {
+            wrap = document.createElementNS(svgNS, "g");
+            wrap.setAttribute("class", "yaw-pat");
+            while (pat.firstChild) wrap.append(pat.firstChild);
+            pat.append(wrap);
+        }
+        const masked = wrap.firstElementChild && wrap.firstElementChild.hasAttribute("mask");
+        pat.querySelectorAll(".yaw-clone").forEach(node => node.remove());
+        if (masked) {
+            const holder = wrap.firstElementChild;
+            let tex = holder.querySelector(":scope > .yaw-tex");
+            if (!tex) {
+                tex = document.createElementNS(svgNS, "g");
+                tex.setAttribute("class", "yaw-tex");
+                while (holder.firstChild) tex.append(holder.firstChild);
+                holder.append(tex);
+            }
+            wrap.removeAttribute("transform");
+            wrap.style.visibility = "";
+            if (angle === 0) { tex.removeAttribute("transform"); return; }
+            const d = angle / 360 * 200;
+            tex.setAttribute("transform", `translate(${d.toFixed(2)} 0)`);
+            [-200, 200].forEach(off => {
+                const copy = tex.cloneNode(true);
+                copy.setAttribute("class", "yaw-clone");
+                copy.setAttribute("transform", `translate(${(d + off).toFixed(2)} 0)`);
+                holder.append(copy);
+            });
+        } else {
+            if (angle === 0) { wrap.removeAttribute("transform"); wrap.style.visibility = ""; return; }
+            const sx = (c < 0 ? -1 : 1) * Math.max(Math.abs(c), .26);
+            wrap.setAttribute("transform", `translate(${(160 + 72 * s).toFixed(2)} 0) scale(${sx.toFixed(3)} 1) translate(-160 0)`);
+            wrap.style.visibility = c < -0.04 ? "hidden" : "";
+        }
+    }
+    function yawShirts(angle, c) {
+        const back = angle !== 0 && c < 0.25;
+        avatar.querySelectorAll('[id^="accessoryShirt"] > g > *').forEach(node => {
+            const isNeck = node.tagName === "path" && (node.getAttribute("d") || "").startsWith("M121 201 C133");
+            const isPrint = node.tagName === "g" && !node.parentNode.parentNode.id.includes("Stripe");
+            node.style.visibility = back && (isNeck || isPrint) ? "hidden" : "";
         });
     }
     function yawSuspend() {
@@ -6203,6 +6203,66 @@ function initHouseCreator() {
         type: "wood", frame: "wood", roof: "red", wall: "pink", wallpaper: "dots", floor: "straw",
         hamster: "yes", light: "day", pos: "center", scene: "garden", furniture: ["wheel", "bowl", "bottle"], decor: ["lights"], outside: [], itemColors: {}
     };
+    const slots = {
+        furniture: [
+            ["Angolo sinistro", ["wheel", "bookshelf", "tunnel", "bed"]],
+            ["Al centro del pavimento", ["ball", "slide", "ladder", "log", "sandbath"]],
+            ["Angolo destro", ["nest", "bowl"]],
+            ["Appeso al soffitto", ["hammock", "swing"]],
+            ["Sulla parete di destra", ["bottle"]]
+        ],
+        decor: [
+            ["Soffitto", ["lights", "bunting", "garland", "mobile", "lantern"]],
+            ["Parete sinistra", ["clock", "mirror"]],
+            ["Parete centrale", ["window", "curtains", "shelf"]],
+            ["Parete destra", ["picture", "pennant"]],
+            ["A terra", ["plant", "trophy"]],
+            ["Sul pavimento", ["rug"]]
+        ],
+        outside: [
+            ["Davanti alla casa", ["sign", "flowerbed", "pond", "path"]],
+            ["Lato sinistro", ["lamp", "fence"]],
+            ["Lato destro", ["tree", "mailbox", "bench", "pumpkins"]],
+            ["In cielo", ["balloons"]]
+        ]
+    };
+    const labels = {
+        wheel: "Ruota", nest: "Casetta nido", bowl: "Ciotola", bottle: "Beverino", hammock: "Amaca", tunnel: "Tunnel", swing: "Altalena", ball: "Pallina", slide: "Scivolo", bed: "Lettino", log: "Tronchetto", ladder: "Scaletta", sandbath: "Bagno di sabbia", bookshelf: "Libreria",
+        lights: "Lucine", bunting: "Bandierine", picture: "Quadretto", rug: "Tappeto", plant: "Piantina", window: "Finestrella", clock: "Orologio", mobile: "Stelline appese", shelf: "Mensola coi libri", mirror: "Specchio", pennant: "Stendardo", lantern: "Lanterna", trophy: "Coppa del campione", curtains: "Finestra con tendine", garland: "Ghirlanda di fiori",
+        sign: "Targa col nome", mailbox: "Cassetta lettere", fence: "Staccionata", flowerbed: "Aiuola", lamp: "Lampione", tree: "Albero", pond: "Laghetto", bench: "Panchina", balloons: "Palloncini", path: "Vialetto di sassi", pumpkins: "Zucche"
+    };
+    const slotOf = {};
+    Object.entries(slots).forEach(([group, list]) => list.forEach(([, itemsList], index) => itemsList.forEach(key => { slotOf[`${group}:${key}`] = { index, items: itemsList }; })));
+    page.querySelectorAll("[data-slot-mount]").forEach(mount => {
+        const group = mount.dataset.slotMount;
+        const head = document.createElement("div");
+        head.innerHTML = `<h2></h2><p></p>`;
+        head.querySelector("h2").textContent = mount.dataset.title;
+        head.querySelector("p").textContent = mount.dataset.text;
+        mount.append(...head.children);
+        slots[group].forEach(([title, list]) => {
+            const zone = document.createElement("div");
+            zone.className = "slot-zone";
+            const heading = document.createElement("h3");
+            heading.className = "slot-title";
+            heading.textContent = title;
+            const box = document.createElement("div");
+            box.className = "creator-options";
+            list.forEach(key => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "creator-option";
+                button.dataset.group = group;
+                button.dataset.value = key;
+                button.setAttribute("aria-pressed", "false");
+                button.innerHTML = `<span class="creator-preview-icon"></span>`;
+                button.append(labels[key]);
+                box.append(button);
+            });
+            zone.append(heading, box);
+            mount.append(zone);
+        });
+    });
     let state = structuredClone(defaults);
     let hamsterSrc = "";
     const names = {};
@@ -6340,9 +6400,12 @@ function initHouseCreator() {
         pennant: (type, k) => { const d = dflt(k, { main: "#F0606F", dark: "#B83A4A", light: "#FFD66B" }); return `<path d="M290 104 H326" stroke="${d.dark}" stroke-width="3" stroke-linecap="round"/><path d="M294 106 H322 V140 L308 150 L294 140 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="2.4" stroke-linejoin="round"/>` + sparkle(308, 124, 8, d.light); },
         lantern: (type, k) => { const d = dflt(k, { main: "#FFD66B", dark: "#B9875A", light: "#FFF3B0" }); const top = ceilTop(type, 104) + 2; return `<path d="M104 ${top.toFixed(1)} V148" stroke="${d.dark}" stroke-width="1.8"/><circle cx="104" cy="164" r="20" fill="${d.light}" opacity=".35"/><path d="M96 148 H112 L115 156 V172 L112 178 H96 L93 172 V156 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="2.4" stroke-linejoin="round"/><path d="M104 150 V176 M95 164 H113" stroke="${d.dark}" stroke-width="1.2" opacity=".6"/><path d="M98 148 q6 -8 12 0" fill="none" stroke="${d.dark}" stroke-width="2"/>`; },
         trophy: (type, k) => { const d = dflt(k, { main: "#FFD66B", dark: "#C99A2E", light: "#FFF3B0" }); return `<rect x="122" y="254" width="22" height="8" rx="2" fill="${d.dark}"/><rect x="129" y="244" width="8" height="12" fill="${d.main}" stroke="${d.dark}" stroke-width="1.6"/><path d="M118 224 H148 Q148 246 133 246 Q118 246 118 224 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="2.4" stroke-linejoin="round"/><path d="M118 228 Q108 228 110 236 Q112 242 120 241 M148 228 Q158 228 156 236 Q154 242 146 241" fill="none" stroke="${d.dark}" stroke-width="2.4"/>` + sparkle(133, 234, 5, "#FFFFFF", .9); },
-        curtains: (type, k) => { const d = dflt(k, { main: "#F7A1BC", dark: "#C76A88", light: "#FFE1EA" }); return `<path d="M172 128 H228" stroke="${d.dark}" stroke-width="3" stroke-linecap="round"/><path d="M174 130 Q186 150 180 178 H172 Z M226 130 Q214 150 220 178 H228 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="2.2" stroke-linejoin="round"/><path d="M178 136 Q182 156 178 174 M222 136 Q218 156 222 174" fill="none" stroke="${d.light}" stroke-width="1.6" opacity=".8"/>`; },
+        curtains: (type, k) => { const d = dflt(k, { main: "#F7A1BC", dark: "#C76A88", light: "#FFE1EA" }); return items.window(type, null) + `<path d="M172 128 H228" stroke="${d.dark}" stroke-width="3" stroke-linecap="round"/><path d="M174 130 Q186 150 180 178 H172 Z M226 130 Q214 150 220 178 H228 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="2.2" stroke-linejoin="round"/><path d="M178 136 Q182 156 178 174 M222 136 Q218 156 222 174" fill="none" stroke="${d.light}" stroke-width="1.6" opacity=".8"/>`; },
         garland: (type, k) => { const d = dflt(k, null); const flowers = Array.from({ length: 12 }, (_, i) => { const t = (i + .5) / 12; const half = t < .5 ? t * 2 : (t - .5) * 2; const x = 70 + t * 260; const y = quadPoint(half, 112, 150, 112); const col = d ? (i % 2 ? d.light : d.main) : ["#F28DA0", "#FFD66B", "#FFFFFF", "#C7B2EE"][i % 4]; return `<g fill="${col}" stroke="#00000018" stroke-width=".6">${[0, 72, 144, 216, 288].map(a => `<circle cx="${(x + Math.cos(a * Math.PI / 180) * 4).toFixed(1)}" cy="${(y + 4 + Math.sin(a * Math.PI / 180) * 4).toFixed(1)}" r="3"/>`).join("")}</g><circle cx="${x.toFixed(1)}" cy="${(y + 4).toFixed(1)}" r="1.8" fill="#FFD66B"/><ellipse cx="${(x + 7).toFixed(1)}" cy="${(y + 3).toFixed(1)}" rx="4" ry="2" fill="#7FBF6A"/>`; }).join(""); return `<g transform="translate(0 ${hangOffset[type] || 0})"><path d="M70 112 Q135 150 200 112 Q265 150 330 112" fill="none" stroke="${d ? d.dark : "#4F8F45"}" stroke-width="2"/>${flowers}</g>`; }
     });
+    const shifted = (key, dx) => { const original = items[key]; items[key] = (type, k) => `<g transform="translate(${dx} 0)">${original(type, k)}</g>`; };
+    shifted("bed", -14);
+    shifted("sandbath", -18);
     const esc = text => String(text).replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
     const houseName = () => (nameInput.value.trim() || "Villa Saturno").slice(0, 24);
     const scenes = {
@@ -6362,7 +6425,7 @@ function initHouseCreator() {
             return `<rect x="150" y="277" width="100" height="19" rx="6" fill="${d.light}" stroke="${d.dark}" stroke-width="2.4"/><text x="200" y="291" text-anchor="middle" font-family="Nunito, Arial, sans-serif" font-weight="800" font-size="12" fill="#5B3A2A"${name.length > 14 ? ' textLength="88" lengthAdjust="spacingAndGlyphs"' : ""}>${esc(name)}</text>`;
         },
         mailbox: k => { const d = dflt(k, { main: "#F0606F", dark: "#B83A4A" }); return `<rect x="366" y="258" width="5" height="36" rx="2" fill="#8B5A35"/><path d="M356 258 V248 Q356 238 368.5 238 Q381 238 381 248 V258 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="2.4" stroke-linejoin="round"/><rect x="364" y="246" width="9" height="5" rx="1.5" fill="#FFFFFF"/><path d="M381 246 H390 V236 H384" fill="none" stroke="${d.dark}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`; },
-        fence: k => { const d = dflt(k, { main: "#FFFFFF", dark: "#C9B28F" }); return [[6, 4], [348, 4]].map(([x0]) => `<path d="M${x0} 276 H${x0 + 46} M${x0} 286 H${x0 + 46}" stroke="${k ? d.dark : "#E8D5B8"}" stroke-width="3"/>` + Array.from({ length: 5 }, (_, i) => `<path d="M${x0 + i * 11} 296 V274 L${x0 + i * 11 + 4.5} 267 L${x0 + i * 11 + 9} 274 V296 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="2" stroke-linejoin="round"/>`).join("")).join(""); },
+        fence: k => { const d = dflt(k, { main: "#FFFFFF", dark: "#C9B28F" }); return [[6, 4]].map(([x0]) => `<path d="M${x0} 276 H${x0 + 46} M${x0} 286 H${x0 + 46}" stroke="${k ? d.dark : "#E8D5B8"}" stroke-width="3"/>` + Array.from({ length: 5 }, (_, i) => `<path d="M${x0 + i * 11} 296 V274 L${x0 + i * 11 + 4.5} 267 L${x0 + i * 11 + 9} 274 V296 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="2" stroke-linejoin="round"/>`).join("")).join(""); },
         flowerbed: k => { const d = dflt(k, null); return `<path d="M60 296 Q200 284 340 296 Z" fill="#7FBF6A"/>` + Array.from({ length: 10 }, (_, i) => {
             const x = 74 + i * 28, y = 288 - (i % 3) * 3, col = d ? (i % 2 ? d.light : d.main) : ["#F28DA0", "#FFD66B", "#FFFFFF", "#C7B2EE", "#8FCDF5"][i % 5];
             return `<path d="M${x} 296 V${y + 2}" stroke="#4F9447" stroke-width="2"/><g fill="${col}" stroke="#00000014" stroke-width=".6">${[0, 72, 144, 216, 288].map(a => `<circle cx="${(x + Math.cos(a * Math.PI / 180) * 4.2).toFixed(1)}" cy="${(y + Math.sin(a * Math.PI / 180) * 4.2).toFixed(1)}" r="3"/>`).join("")}</g><circle cx="${x}" cy="${y}" r="2.2" fill="${d ? d.dark : "#FFB84D"}"/>`;
@@ -6481,7 +6544,16 @@ function initHouseCreator() {
             if (options[key].includes(saved[key])) next[key] = saved[key];
         });
         Object.keys(multi).forEach(key => {
-            if (Array.isArray(saved[key])) next[key] = saved[key].filter(item => multi[key].includes(item));
+            if (Array.isArray(saved[key])) {
+                const used = new Set();
+                next[key] = saved[key].filter(item => {
+                    if (!multi[key].includes(item)) return false;
+                    const zone = slotOf[`${key}:${item}`].index;
+                    if (used.has(zone)) return false;
+                    used.add(zone);
+                    return true;
+                });
+            }
         });
         if (saved.itemColors && typeof saved.itemColors === "object") {
             const known = Object.values(multi).flat();
@@ -6614,9 +6686,10 @@ function initHouseCreator() {
         button.addEventListener("click", () => {
             const { group, value } = button.dataset;
             if (multi[group]) {
-                state[group] = state[group].includes(value)
-                    ? state[group].filter(item => item !== value)
-                    : [...state[group], value];
+                const zone = slotOf[`${group}:${value}`].items;
+                const wasOn = state[group].includes(value);
+                state[group] = state[group].filter(item => !zone.includes(item));
+                if (!wasOn) state[group].push(value);
             } else {
                 state[group] = value;
             }
