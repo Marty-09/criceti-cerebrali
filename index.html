@@ -66,6 +66,11 @@
 .slot-zone{margin-top:18px}
 .slot-zone:first-of-type{margin-top:14px}
 .slot-title{margin:0 0 8px;font-size:.78rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:#b4616a}
+
+#crea-ruota .creator-options{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))}
+#crea-ruota .slot-zone .creator-options{margin-top:0}
+#crea-ruota .creator-section .item-colors{margin-top:6px}
+#crea-ruota .creator-name-label+.creator-name{margin-top:0;text-align:left}
 </style>
 </head>
 
@@ -86,6 +91,7 @@
             <span class="menu-title">Crea</span>
             <button class="nav-link" data-page="crea-criceto" onclick="showPage('crea-criceto')">Crea il tuo criceto</button>
             <button class="nav-link" data-page="crea-casa" onclick="showPage('crea-casa')">Crea la casa</button>
+            <button class="nav-link" data-page="crea-ruota" onclick="showPage('crea-ruota')">Crea la ruota</button>
             <span class="menu-title">Gioca</span>
             <button class="nav-link" data-page="gara" onclick="showPage('gara')">Gara di criceti</button>
             <button class="nav-link" data-page="memory" onclick="showPage('memory')">Memory dei criceti</button>
@@ -278,6 +284,10 @@
                 <button class="home-menu-card" onclick="showPage('crea-casa')">
                     <span class="home-menu-icon">🏠</span>
                     <span class="home-menu-text"><span class="home-menu-title">Crea la casa</span><span class="home-menu-sub">Dalla gabbia al castello</span></span>
+                </button>
+                <button class="home-menu-card" onclick="showPage('crea-ruota')">
+                    <span class="home-menu-icon">🎡</span>
+                    <span class="home-menu-text"><span class="home-menu-title">Crea la ruota</span><span class="home-menu-sub">Raggi, luci e contachilometri</span></span>
                 </button>
                 <button class="home-menu-card" onclick="showPage('gara')">
                     <span class="home-menu-icon">🏁</span>
@@ -2732,6 +2742,68 @@
         </div>
     </div>
 </section>
+
+<section class="page creator-page" id="crea-ruota">
+    <div class="container">
+        <button class="creator-back-button" type="button" onclick="showPage('catalogo')">
+            ← Torna al negozio
+        </button>
+        <div class="creator-heading">
+            <span class="tiny-label">Cardio su misura</span>
+            <h1>Crea la ruota del tuo criceto</h1>
+            <p>Misura, forma, supporto, colori e decorazioni: la ruota perfetta per correre tutta la notte senza andare da nessuna parte. Il criceto che hai creato è già in pista.</p>
+        </div>
+        <div class="creator-layout">
+            <aside class="creator-preview">
+                <div class="creator-stage house-stage" id="wheelStage"></div>
+                <input id="wheelName" class="creator-name" type="text" maxlength="24" placeholder="Come si chiama la ruota?" value="Ruota Saturno" aria-label="Nome della ruota">
+                <p class="creator-caption">Chilometri percorsi dal criceto: tanti. Chilometri avanzati: zero.</p>
+            </aside>
+            <div class="creator-controls">
+                <div class="creator-tabs" role="tablist" aria-label="Categorie della ruota">
+                    <button type="button" class="creator-tab active" data-tab="struttura" role="tab" aria-selected="true">Struttura</button>
+                    <button type="button" class="creator-tab" data-tab="colori" role="tab" aria-selected="false">Colori</button>
+                    <button type="button" class="creator-tab" data-tab="decori" role="tab" aria-selected="false">Decori</button>
+                </div>
+                <section class="creator-section" data-tab="struttura">
+                    <h2>Scegli la ruota</h2>
+                    <p>Prima la misura, poi la forma, poi come sta in piedi. Una scelta per volta.</p>
+                    <div class="slot-zone" data-mount="size"></div>
+                    <div class="slot-zone" data-mount="type"></div>
+                    <div class="slot-zone" data-mount="stand"></div>
+                    <div class="slot-zone" data-mount="rider"></div>
+                </section>
+                <section class="creator-section" data-tab="colori">
+                    <h2>Scegli i colori</h2>
+                    <p>Ogni parte ha il suo colore. La vernice dorata costa un po' di più: il criceto lo sa e se ne vanta.</p>
+                    <div class="item-colors" id="wheelColors"></div>
+                </section>
+                <section class="creator-section" data-tab="decori">
+                    <h2>Scegli le decorazioni</h2>
+                    <p>Una sola scelta per zona: non si può mettere tutto nello stesso punto. Tocca di nuovo per toglierla.</p>
+                    <div class="slot-zone" data-mount="rim"></div>
+                    <div class="slot-zone" data-mount="hub"></div>
+                    <div class="slot-zone" data-mount="back"></div>
+                    <div class="slot-zone" data-mount="tech"></div>
+                    <div class="slot-zone" data-mount="banner"></div>
+                    <label class="creator-name-label" for="wheelText">Scritta (per targhetta o striscione)</label>
+                    <input id="wheelText" class="creator-name" type="text" maxlength="18" value="Sprint" aria-label="Scritta sulla ruota">
+                </section>
+                <div class="creator-section">
+                    <h2>Pronta per la corsa?</h2>
+                    <p>Aggiungila al carrello, scaricala come immagine o ricomincia da capo.</p>
+                    <div class="creator-actions">
+                        <button type="button" class="primary-button creator-adopt" id="wheelAdd">🛒 Aggiungi al carrello</button>
+                        <button type="button" class="secondary-button" id="wheelDownload">Scarica</button>
+                        <button type="button" class="secondary-button" id="wheelReset">Ricomincia</button>
+                    </div>
+                    <div class="creator-receipt" id="wheelReceipt" aria-live="polite"></div>
+                    <p class="creator-status" id="wheelStatus" role="status" aria-live="polite"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 </main>
 <div class="snowfall" aria-hidden="true"></div>
 
@@ -2749,6 +2821,7 @@
             <button class="text-button" onclick="goToSection('extra')">Extra e ricambi</button>
             <button class="text-button" onclick="showPage('crea-criceto')">Crea il tuo criceto</button>
             <button class="text-button" onclick="showPage('crea-casa')">Crea la casa</button>
+            <button class="text-button" onclick="showPage('crea-ruota')">Crea la ruota</button>
             <button class="text-button" onclick="showPage('gara')">Gara di criceti</button>
             <button class="text-button" onclick="showPage('memory')">Memory dei criceti</button>
             <button class="text-button" onclick="showPage('acchiappa')">Acchiappa il criceto</button>
@@ -3815,6 +3888,7 @@ function showPage(pageName,fromHistory = false) {
     window.scrollTo({top:0,behavior:"smooth"});
     if (pageName === "carrello") renderCart();
     if (pageName === "crea-casa" && window.refreshHouse) window.refreshHouse();
+    if (pageName === "crea-ruota" && window.refreshWheel) window.refreshWheel();
     if (pageName === "gara" && window.refreshRace) window.refreshRace();
     if (pageName === "tracking") renderRecentOrders();
 }
@@ -5964,6 +6038,406 @@ function initHeroHamster() {
         coolDown = setTimeout(reset, 4000);
     });
 }
+
+function initWheelCreator() {
+    const stage = document.getElementById("wheelStage");
+    if (!stage) return;
+    const page = document.getElementById("crea-ruota");
+    const nameInput = document.getElementById("wheelName");
+    const textInput = document.getElementById("wheelText");
+    const status = document.getElementById("wheelStatus");
+    const receipt = document.getElementById("wheelReceipt");
+    const addButton = document.getElementById("wheelAdd");
+    const KEY = "cricetiCerebraliWheel";
+    const colors = {
+        pink: ["#F7A1BC", "Rosa"], red: ["#F0606F", "Rosso"], orange: ["#F5A25D", "Arancio"], yellow: ["#FFD66B", "Giallo"],
+        mint: ["#A9D3C0", "Menta"], blue: ["#8FC1F0", "Azzurro"], lilac: ["#B9A3E3", "Lilla"], white: ["#FFFFFF", "Bianco"],
+        grey: ["#A8A5A0", "Grigio"], black: ["#4A4446", "Nero"], gold: ["#E3B54A", "Oro"]
+    };
+    const parts = { rim: "Cerchio", fill: "Fondo", rungs: "Raggi e gradini", hub: "Mozzo", stand: "Supporto" };
+    const groups = {
+        size: { title: "Misura", items: {
+            mini: ["Mini", 9.99, "criceti nani"], classic: ["Classica", 14.99, "criceti medi"], maxi: ["Maxi", 22.99, "grandi ambizioni"] } },
+        type: { title: "Forma", items: {
+            spokes: ["A raggi", 0], solid: ["Piena silenziosa", 3], saucer: ["Disco volante", 4], ring: ["Ad anello", 2] } },
+        stand: { title: "Supporto", items: {
+            tripod: ["Cavalletto", 0], base: ["Base rotonda", 2], clip: ["Clip da gabbia", 1.5], hang: ["Sospesa", 4.5] } },
+        rider: { title: "Chi la usa", items: { yes: ["Il tuo criceto", 0], no: ["Ruota vuota", 0] } },
+        rim: { title: "Sul cerchio", items: { none: ["Niente", 0], led: ["Luci LED", 3.5], flowers: ["Fiori", 2.5], stars: ["Stelle", 2], hearts: ["Cuori", 2] } },
+        hub: { title: "Sul mozzo", items: { none: ["Niente", 0], heart: ["Cuore", .5], star: ["Stella", .5], smile: ["Faccina", .5], paw: ["Zampetta", .5] } },
+        back: { title: "Sullo sfondo", items: { none: ["Niente", 0], rays: ["Raggi di sole", 1.5], clouds: ["Nuvolette", 1.5], rainbow: ["Arcobaleno", 2.5], hearts: ["Cuoricini", 1.5] } },
+        tech: { title: "Extra tecnico", items: { none: ["Niente", 0], odometer: ["Contachilometri", 5.99], lamp: ["Lampadina", 3.99], flag: ["Bandierina", 1.99] } },
+        banner: { title: "Scritta", items: { none: ["Niente", 0], plate: ["Targhetta", 2.5], ribbon: ["Striscione", 3.5] } }
+    };
+    const defaults = {
+        size: "classic", type: "spokes", stand: "tripod", rider: "yes",
+        rim: "none", hub: "none", back: "none", tech: "none", banner: "none",
+        colors: { rim: "pink", fill: "white", rungs: "red", hub: "yellow", stand: "grey" },
+        text: "Sprint"
+    };
+    let state = structuredClone(defaults);
+    let hamsterSrc = "";
+    const esc = t => String(t).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const sizeR = { mini: 52, classic: 66, maxi: 80 };
+    const shade = hex => {
+        const n = parseInt(hex.slice(1), 16);
+        const f = v => Math.max(0, Math.round(v * .78));
+        return `rgb(${f(n >> 16)},${f((n >> 8) & 255)},${f(n & 255)})`;
+    };
+    const heartPath = (x, y, r) => `<path transform="translate(${x} ${y}) scale(${r / 10})" d="M0 9C-13 0 -9 -10 -4 -9C-1.5 -8.6 0 -6 0 -5C0 -6 1.5 -8.6 4 -9C9 -10 13 0 0 9Z"/>`;
+    const starPath = (x, y, r) => {
+        let d = "";
+        for (let i = 0; i < 10; i++) {
+            const rr = i % 2 ? r * .45 : r, a = -Math.PI / 2 + i * Math.PI / 5;
+            d += `${i ? "L" : "M"}${(x + rr * Math.cos(a)).toFixed(1)} ${(y + rr * Math.sin(a)).toFixed(1)}`;
+        }
+        return `<path d="${d}Z"/>`;
+    };
+    const cloud = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})" fill="#fff" stroke="#cfe3f3" stroke-width="2"><path d="M-22 8a9 9 0 0 1 3-17a13 13 0 0 1 25-3a11 11 0 0 1 16 8a8 8 0 0 1-2 12z"/></g>`;
+    function wheelSVG(st, opts = {}) {
+        const c = Object.fromEntries(Object.entries(st.colors).map(([k, v]) => [k, colors[v][1] ? colors[v][0] : "#ccc"]));
+        const R = sizeR[st.size], cx = 124, ground = 196;
+        const saucer = st.type === "saucer";
+        let cy = st.stand === "hang" ? 118 : st.stand === "clip" ? 112 : ground - R - 16;
+        const hy = saucer ? cy + R * .3 : cy;
+        const rx = R, ry = saucer ? R * .46 : R;
+        const sw = Math.max(8, R * .16);
+        const pt = a => [cx + rx * Math.cos(a), hy + ry * Math.sin(a)];
+        const dark = shade(c.stand);
+        let out = "";
+        // sfondo
+        if (st.back === "rays") {
+            out += `<circle cx="${cx}" cy="${hy}" r="${R + 24}" fill="#FFF3C4" opacity=".7"/><g stroke="#FFD66B" stroke-width="6" stroke-linecap="round">`;
+            for (let i = 0; i < 14; i++) { const a = i * Math.PI / 7; out += `<path d="M${cx + (R + 14) * Math.cos(a)} ${hy + (R + 14) * Math.sin(a)}L${cx + (R + 34) * Math.cos(a)} ${hy + (R + 34) * Math.sin(a)}"/>`; }
+            out += `</g>`;
+        } else if (st.back === "clouds") {
+            out += cloud(34, 54, 1) + cloud(206, 86, .8) + cloud(54, 150, .7);
+        } else if (st.back === "rainbow") {
+            ["#F0606F", "#F5A25D", "#FFD66B", "#A9D3C0", "#8FC1F0", "#B9A3E3"].forEach((col, i) => {
+                const r = R + 34 - i * 6;
+                out += `<path d="M${cx - r} ${hy + 6}A${r} ${r} 0 0 1 ${cx + r} ${hy + 6}" fill="none" stroke="${col}" stroke-width="6.5"/>`;
+            });
+        } else if (st.back === "hearts") {
+            out += `<g fill="#F7A1BC" opacity=".8">${heartPath(30, 50, 9)}${heartPath(208, 62, 11)}${heartPath(40, 140, 7)}${heartPath(214, 140, 8)}${heartPath(176, 24, 6)}</g>`;
+        }
+        // supporto
+        if (st.stand === "tripod") {
+            out += `<path d="M${cx} ${hy}L${cx - R * .72} ${ground - 6}M${cx} ${hy}L${cx + R * .72} ${ground - 6}" stroke="${c.stand}" stroke-width="9" stroke-linecap="round"/><rect x="${cx - R * .85}" y="${ground - 10}" width="${R * 1.7}" height="10" rx="5" fill="${c.stand}"/>`;
+        } else if (st.stand === "base") {
+            out += `<rect x="${cx - 5}" y="${hy}" width="10" height="${ground - hy - 4}" fill="${c.stand}"/><ellipse cx="${cx}" cy="${ground - 4}" rx="${R * .6}" ry="9" fill="${c.stand}"/><ellipse cx="${cx}" cy="${ground - 7}" rx="${R * .6}" ry="8" fill="${c.stand}" stroke="${dark}" stroke-width="1.5"/>`;
+        } else if (st.stand === "clip") {
+            out += `<g stroke="${dark}" stroke-width="5" stroke-linecap="round" opacity=".55"><path d="M10 20V${ground}M28 20V${ground}"/></g><path d="M20 ${hy}H${cx}" stroke="${c.stand}" stroke-width="9" stroke-linecap="round"/><rect x="6" y="${hy - 13}" width="30" height="26" rx="8" fill="${c.stand}" stroke="${dark}" stroke-width="2"/>`;
+        } else {
+            out += `<rect x="${cx - 54}" y="0" width="108" height="7" rx="3.5" fill="${c.stand}"/><path d="M${cx - 34} 7L${cx} ${hy}M${cx + 34} 7L${cx} ${hy}" stroke="${dark}" stroke-width="3" stroke-dasharray="3 4" stroke-linecap="round"/><circle cx="${cx - 34}" cy="8" r="4" fill="${dark}"/><circle cx="${cx + 34}" cy="8" r="4" fill="${dark}"/>`;
+        }
+        if (st.stand !== "hang" && st.stand !== "clip") out += `<ellipse cx="${cx}" cy="${ground + 2}" rx="${R * 1.05}" ry="3.5" fill="rgba(80,40,25,.10)"/>`;
+        // ruota
+        const hamster = () => {
+            if (st.rider !== "yes" || !hamsterSrc) return "";
+            const sz = saucer ? R * 1.05 : R * 1.02;
+            const y = saucer ? hy - sz * .7 : hy + R * .86 - sz * .92;
+            return `<image href="${hamsterSrc}" x="${cx - sz / 2}" y="${y}" width="${sz}" height="${sz}" preserveAspectRatio="xMidYMid meet"/>`;
+        };
+        const spokes = (n, r1, r2) => { let d = ""; for (let i = 0; i < n; i++) { const a = i * 2 * Math.PI / n; d += `M${cx + r1 * Math.cos(a)} ${hy + r1 * Math.sin(a)}L${cx + r2 * Math.cos(a)} ${hy + r2 * Math.sin(a)}`; } return d; };
+        const hub = () => `<circle cx="${cx}" cy="${hy}" r="${R * .16}" fill="${c.hub}" stroke="${shade(c.hub)}" stroke-width="1.5"/>`;
+        if (saucer) {
+            out += `<ellipse cx="${cx}" cy="${hy + 9}" rx="${rx}" ry="${ry}" fill="${shade(c.rim)}"/>`;
+            out += `<ellipse cx="${cx}" cy="${hy}" rx="${rx}" ry="${ry}" fill="${c.fill}" stroke="${c.rim}" stroke-width="${sw * .8}"/>`;
+            out += `<ellipse cx="${cx}" cy="${hy}" rx="${rx * .72}" ry="${ry * .72}" fill="none" stroke="${c.rungs}" stroke-width="3.5" stroke-dasharray="4 8" stroke-linecap="round"/>`;
+            out += hub() + hamster();
+        } else if (st.type === "solid") {
+            out += `<circle cx="${cx}" cy="${hy}" r="${R}" fill="${c.fill}" stroke="${c.rim}" stroke-width="${sw}"/>`;
+            out += `<circle cx="${cx}" cy="${hy}" r="${R * .8}" fill="none" stroke="${c.rungs}" stroke-width="3.5" stroke-dasharray="4 8" stroke-linecap="round"/>`;
+            out += `<circle cx="${cx}" cy="${hy}" r="${R * .5}" fill="none" stroke="${c.rungs}" stroke-width="2.5" opacity=".6"/>`;
+            out += hub() + hamster();
+        } else if (st.type === "ring") {
+            out += `<circle cx="${cx}" cy="${hy}" r="${R}" fill="${c.fill}" fill-opacity=".35" stroke="${c.rim}" stroke-width="${sw * .8}"/>`;
+            out += `<circle cx="${cx}" cy="${hy}" r="${R * .66}" fill="none" stroke="${c.rim}" stroke-width="${sw * .5}"/>`;
+            out += hamster();
+            out += `<path d="${spokes(24, R * .66, R * .94)}" stroke="${c.rungs}" stroke-width="3.5" stroke-linecap="round"/>`;
+            out += hub();
+        } else {
+            out += `<circle cx="${cx}" cy="${hy}" r="${R}" fill="${c.fill}" fill-opacity=".45" stroke="${c.rim}" stroke-width="${sw}"/>`;
+            out += `<circle cx="${cx}" cy="${hy}" r="${R * .84}" fill="none" stroke="${c.rungs}" stroke-width="3.5" stroke-dasharray="3 9" stroke-linecap="round"/>`;
+            out += hamster();
+            out += `<path d="${spokes(8, R * .12, R * .86)}" stroke="${c.rungs}" stroke-width="3.5" stroke-linecap="round"/>`;
+            out += hub();
+        }
+        // mozzo
+        const hr = R * .16;
+        if (st.hub === "heart") out += `<g fill="#fff">${heartPath(cx, hy + .5, hr * .95)}</g>`;
+        else if (st.hub === "star") out += `<g fill="#fff">${starPath(cx, hy, hr * 1.05)}</g>`;
+        else if (st.hub === "smile") out += `<g stroke="#4A4446" stroke-width="1.6" fill="#4A4446" stroke-linecap="round"><circle cx="${cx - hr * .38}" cy="${hy - hr * .25}" r="1.2"/><circle cx="${cx + hr * .38}" cy="${hy - hr * .25}" r="1.2"/><path d="M${cx - hr * .5} ${hy + hr * .2}Q${cx} ${hy + hr * .75} ${cx + hr * .5} ${hy + hr * .2}" fill="none"/></g>`;
+        else if (st.hub === "paw") out += `<g fill="#fff"><ellipse cx="${cx}" cy="${hy + hr * .25}" rx="${hr * .42}" ry="${hr * .34}"/><circle cx="${cx - hr * .5}" cy="${hy - hr * .2}" r="${hr * .16}"/><circle cx="${cx - hr * .17}" cy="${hy - hr * .5}" r="${hr * .16}"/><circle cx="${cx + hr * .17}" cy="${hy - hr * .5}" r="${hr * .16}"/><circle cx="${cx + hr * .5}" cy="${hy - hr * .2}" r="${hr * .16}"/></g>`;
+        // cerchio
+        const k = R / 66;
+        if (st.rim === "led") {
+            const cols = ["#FFD93D", "#FF6B81", "#6BD6FF", "#9BFF8A"];
+            for (let i = 0; i < 16; i++) { const [x, y] = pt(i * Math.PI / 8); out += `<circle cx="${x}" cy="${y}" r="${7 * k}" fill="${cols[i % 4]}" opacity=".3"/><circle cx="${x}" cy="${y}" r="${3.4 * k}" fill="${cols[i % 4]}" stroke="#fff" stroke-width="1"/>`; }
+        } else if (st.rim === "flowers") {
+            for (let i = 0; i < 8; i++) {
+                const [x, y] = pt(i * Math.PI / 4 + .2);
+                out += `<g transform="translate(${x} ${y}) scale(${k})" fill="${i % 2 ? "#F7A1BC" : "#fff"}" stroke="#d98aa4" stroke-width=".8">`;
+                for (let p = 0; p < 5; p++) { const a = p * 2 * Math.PI / 5; out += `<circle cx="${(4.2 * Math.cos(a)).toFixed(1)}" cy="${(4.2 * Math.sin(a)).toFixed(1)}" r="3.2"/>`; }
+                out += `<circle r="2.4" fill="#FFD66B" stroke="none"/></g>`;
+            }
+        } else if (st.rim === "stars") {
+            for (let i = 0; i < 8; i++) { const [x, y] = pt(i * Math.PI / 4 + .2); out += `<g fill="#FFD66B" stroke="#d9a62e" stroke-width="1">${starPath(x, y, 8 * k)}</g>`; }
+        } else if (st.rim === "hearts") {
+            for (let i = 0; i < 8; i++) { const [x, y] = pt(i * Math.PI / 4 + .2); out += `<g fill="#F0606F" stroke="#fff" stroke-width="1">${heartPath(x, y, 8 * k)}</g>`; }
+        }
+        // extra tecnico
+        if (st.tech === "odometer") {
+            out += `<g><rect x="172" y="8" width="58" height="26" rx="6" fill="#33292a"/><rect x="176" y="12" width="50" height="18" rx="3" fill="#b9f2b0"/><text x="201" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#2d5a2a">12,3 km</text></g>`;
+        } else if (st.tech === "lamp") {
+            out += `<path d="M206 0V24" stroke="#6f6c68" stroke-width="2"/><circle cx="206" cy="38" r="22" fill="#FFF3C4" opacity=".65"/><rect x="200" y="22" width="12" height="7" rx="2" fill="#6f6c68"/><circle cx="206" cy="36" r="9" fill="#FFD66B" stroke="#d9a62e" stroke-width="1.5"/>`;
+        } else if (st.tech === "flag") {
+            out += `<path d="M208 ${ground + 2}V150" stroke="#6f6c68" stroke-width="3" stroke-linecap="round"/><path d="M209 150L232 158L209 166Z" fill="#F0606F"/><ellipse cx="208" cy="${ground + 3}" rx="12" ry="3.5" fill="rgba(80,40,25,.12)"/>`;
+        }
+        // scritta
+        const label = esc((st.text || "").trim() || "Sprint");
+        if (st.banner === "plate") {
+            out += `<rect x="52" y="206" width="144" height="23" rx="7" fill="#FFF3C4" stroke="#C99A2E" stroke-width="2"/><circle cx="60" cy="217.5" r="2" fill="#C99A2E"/><circle cx="188" cy="217.5" r="2" fill="#C99A2E"/><text x="124" y="222.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="14" fill="#6b4b12">${label}</text>`;
+        } else if (st.banner === "ribbon") {
+            out += `<path d="M30 212L48 217L30 224L40 220Z" fill="${shade(c.rim)}"/><path d="M218 212L200 217L218 224L208 220Z" fill="${shade(c.rim)}"/><path d="M40 208Q124 220 208 208V228Q124 240 40 228Z" fill="${c.rim}" stroke="${shade(c.rim)}" stroke-width="1.5"/><text x="124" y="226" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="13" fill="${["white","yellow","mint","pink","orange","gold"].includes(st.colors.rim) ? "#4A4446" : "#fff"}">${label}</text>`;
+        }
+        const vb = opts.viewBox || "0 0 248 236";
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}">${out}</svg>`;
+    }
+    window.wheelImage = (settings = state) => svgDataUrl(wheelSVG(settings));
+
+    // --- controlli ---
+    const mounts = {};
+    page.querySelectorAll("[data-mount]").forEach(zone => {
+        const g = zone.dataset.mount;
+        mounts[g] = zone;
+        const title = document.createElement("div");
+        title.className = "slot-title";
+        title.textContent = groups[g].title;
+        const box = document.createElement("div");
+        box.className = "creator-options";
+        Object.entries(groups[g].items).forEach(([value, [label, price, sub]]) => {
+            const b = document.createElement("button");
+            b.type = "button";
+            b.className = "creator-option";
+            b.dataset.group = g;
+            b.dataset.value = value;
+            b.setAttribute("aria-pressed", "false");
+            const icon = document.createElement("span");
+            icon.className = "creator-preview-icon";
+            b.append(icon, document.createTextNode(label));
+            if (price || sub) {
+                const small = document.createElement("small");
+                small.textContent = sub && !price ? sub : (sub ? `${sub} · ` : "") + euro(price);
+                b.append(small);
+            }
+            box.append(b);
+        });
+        zone.append(title, box);
+    });
+    const colorBox = document.getElementById("wheelColors");
+    function renderColors() {
+        colorBox.replaceChildren();
+        Object.entries(parts).forEach(([part, label]) => {
+            const row = document.createElement("div");
+            row.className = "item-color-row";
+            const strong = document.createElement("strong");
+            strong.textContent = label;
+            const dots = document.createElement("div");
+            dots.className = "item-color-dots";
+            dots.setAttribute("role", "group");
+            dots.setAttribute("aria-label", `Colore: ${label}`);
+            Object.entries(colors).forEach(([key, [hex, name]]) => {
+                const dot = document.createElement("button");
+                const on = state.colors[part] === key;
+                dot.type = "button";
+                dot.className = "item-dot" + (on ? " selected" : "");
+                dot.style.background = hex;
+                dot.title = name;
+                dot.setAttribute("aria-label", name);
+                dot.setAttribute("aria-pressed", String(on));
+                dot.addEventListener("click", () => { state.colors[part] = key; render(); });
+                dots.append(dot);
+            });
+            row.append(strong, dots);
+            colorBox.append(row);
+        });
+    }
+    function priceLines() {
+        const lines = [];
+        const [sl, sp] = groups.size.items[state.size];
+        lines.push([`Ruota ${sl}`, sp]);
+        ["type", "stand", "hub", "rim", "back", "tech", "banner"].forEach(g => {
+            const [label, price] = groups[g].items[state[g]];
+            if (price) lines.push([`${groups[g].title}: ${label}`, price]);
+        });
+        const golds = Object.values(state.colors).filter(v => v === "gold").length;
+        if (golds) lines.push([`Vernice dorata (${golds} ${golds === 1 ? "parte" : "parti"})`, golds * 1.5]);
+        return lines;
+    }
+    const total = () => Math.round(priceLines().reduce((sum, [, v]) => sum + v, 0) * 100) / 100;
+    function render() {
+        state.text = textInput.value.slice(0, 18);
+        stage.innerHTML = wheelSVG(state);
+        renderColors();
+        page.querySelectorAll(".creator-option").forEach(b => {
+            const on = state[b.dataset.group] === b.dataset.value;
+            b.classList.toggle("selected", on);
+            b.setAttribute("aria-pressed", String(on));
+        });
+        addButton.textContent = `🛒 Aggiungi al carrello · ${euro(total())}`;
+        const row = (label, value, cls = "") => {
+            const line = document.createElement("div");
+            line.className = `receipt-row ${cls}`;
+            const a = document.createElement("span"), b = document.createElement("span");
+            a.textContent = label; b.textContent = value;
+            line.append(a, b);
+            return line;
+        };
+        const title = document.createElement("span");
+        title.className = "creator-receipt-title";
+        title.textContent = "Preventivo";
+        receipt.replaceChildren(
+            title,
+            ...priceLines().map(([l, v], i) => row(l, `${i ? "+" : ""}${euro(v)}`)),
+            row("Caparra in semi di girasole", euro(0), "joke"),
+            row("Totale", euro(total()), "total")
+        );
+        try { localStorage.setItem(KEY, JSON.stringify({ ...state, name: nameInput.value })); } catch {}
+    }
+    const crops = { hub: "86 70 76 76", tech: "150 0 98 60", banner: "20 196 208 40", rim: "0 0 248 236", back: "0 0 248 236" };
+    function renderThumbnails() {
+        page.querySelectorAll(".creator-option .creator-preview-icon").forEach(icon => {
+            const { group, value } = icon.parentElement.dataset;
+            const prev = { ...structuredClone(defaults), rider: "no", text: "Sprint" };
+            prev[group] = value;
+            let vb = crops[group] || "0 0 248 236";
+            if (group === "hub") { prev.hub = value; prev.size = "maxi"; vb = "88 72 72 72"; }
+            if (group === "rider") { prev.rider = value; }
+            if (group === "banner" && value === "none") vb = "0 0 248 236";
+            if (group === "tech" && value === "none") vb = "0 0 248 236";
+            if (group === "stand") prev.stand = value;
+            const img = document.createElement("img");
+            img.alt = "";
+            const saved = hamsterSrc;
+            if (group === "rider" && value === "yes") hamsterSrc = saved;
+            img.src = svgDataUrl(wheelSVG(prev, { viewBox: vb }));
+            icon.replaceChildren(img);
+        });
+    }
+    function pickHamster() {
+        if (window.hamsterImage && window.currentHamsterSettings) {
+            hamsterSrc = window.hamsterImage({ ...window.currentHamsterSettings(), background: "none", ball: "none" });
+        }
+    }
+    window.refreshWheel = () => { pickHamster(); render(); renderThumbnails(); };
+    page.querySelectorAll(".creator-option").forEach(b => {
+        b.addEventListener("click", () => {
+            const { group, value } = b.dataset;
+            const optional = ["rim", "hub", "back", "tech", "banner"].includes(group);
+            state[group] = optional && state[group] === value ? "none" : value;
+            render();
+            stage.classList.remove("pop");
+            void stage.offsetWidth;
+            stage.classList.add("pop");
+            status.textContent = "La ruota gira, il criceto pure!";
+        });
+    });
+    nameInput.addEventListener("input", render);
+    textInput.addEventListener("input", () => {
+        if (state.banner === "none" && textInput.value.trim()) state.banner = "plate";
+        render();
+    });
+    // schede
+    const tabs = page.querySelectorAll(".creator-tab");
+    const controls = page.querySelector(".creator-controls");
+    const showTab = name => {
+        tabs.forEach(tab => {
+            const active = tab.dataset.tab === name;
+            tab.classList.toggle("active", active);
+            tab.setAttribute("aria-selected", String(active));
+        });
+        page.querySelectorAll(".creator-section[data-tab]").forEach(sec => sec.hidden = sec.dataset.tab !== name);
+    };
+    const goToTab = name => {
+        showTab(name);
+        if (controls.getBoundingClientRect().top < 0) controls.scrollIntoView({ behavior: "smooth" });
+    };
+    tabs.forEach(tab => tab.addEventListener("click", () => goToTab(tab.dataset.tab)));
+    [...tabs].forEach((tab, i) => {
+        const next = tabs[i + 1];
+        const secs = page.querySelectorAll(`.creator-section[data-tab="${tab.dataset.tab}"]`);
+        if (!next || !secs.length) return;
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "secondary-button creator-next";
+        btn.textContent = `Avanti: ${next.textContent} →`;
+        btn.addEventListener("click", () => goToTab(next.dataset.tab));
+        secs[secs.length - 1].append(btn);
+    });
+    showTab("struttura");
+    addButton.addEventListener("click", () => {
+        const name = nameInput.value.trim() || "Ruota Saturno";
+        const id = `wheel-${Date.now()}`;
+        customProducts.push({
+            id, category: "custom",
+            name: `${name} (ruota su misura)`,
+            emoji: "🎡", color: "#fff1e6",
+            price: total(),
+            details: priceLines().map(([l, v]) => `${l} ${euro(v)}`).join(" · "),
+            image: svgDataUrl(wheelSVG(state))
+        });
+        addToCart(id);
+        status.textContent = `${name} è nel carrello. Il criceto ha già prenotato il primo giro!`;
+    });
+    document.getElementById("wheelDownload").addEventListener("click", () => {
+        const name = nameInput.value.trim() || "Ruota Saturno";
+        const image = new Image();
+        image.onload = () => {
+            const canvas = document.createElement("canvas");
+            canvas.width = 800; canvas.height = 860;
+            const ctx = canvas.getContext("2d");
+            ctx.fillStyle = "#fff7f0";
+            ctx.fillRect(0, 0, 800, 860);
+            ctx.drawImage(image, 0, 20, 800, 762);
+            ctx.textAlign = "center";
+            ctx.fillStyle = "#33292a";
+            ctx.font = "900 52px Nunito, sans-serif";
+            ctx.fillText(name, 400, 830);
+            canvas.toBlob(blob => {
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = `${name.replace(/[\\/:*?"<>|]+/g, "").trim() || "ruota"}.png`;
+                link.click();
+                setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+                status.textContent = `${name} è stata scaricata!`;
+            }, "image/png");
+        };
+        image.src = svgDataUrl(wheelSVG(state));
+    });
+    document.getElementById("wheelReset").addEventListener("click", () => {
+        state = structuredClone(defaults);
+        nameInput.value = "Ruota Saturno";
+        textInput.value = defaults.text;
+        render();
+        status.textContent = "Ruota smontata. Si riparte da zero (giri)!";
+    });
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(KEY) || "null"); } catch { try { localStorage.removeItem(KEY); } catch {} }
+    if (saved && typeof saved === "object") {
+        const next = structuredClone(defaults);
+        Object.keys(groups).forEach(g => { if (typeof saved[g] === "string" && groups[g].items[saved[g]]) next[g] = saved[g]; });
+        Object.keys(parts).forEach(p => { if (saved.colors && colors[saved.colors[p]]) next.colors[p] = saved.colors[p]; });
+        if (typeof saved.text === "string") next.text = saved.text.slice(0, 18);
+        state = next;
+        textInput.value = state.text;
+        if (typeof saved.name === "string") nameInput.value = saved.name.slice(0, 24);
+    }
+    pickHamster();
+    renderThumbnails();
+    render();
+}
+
 function initHouseCreator() {
     const stage = document.getElementById("houseStage");
     if (!stage) return;
@@ -6606,6 +7080,7 @@ drawProductArt();
 decorateWithHamsters();
 initHeroHamster();
 initHouseCreator();
+initWheelCreator();
 renderProducts();
 updateCartCount();
 renderCart();
@@ -7016,7 +7491,7 @@ if (pageFromHash() !== "catalogo") showPage(pageFromHash(),true);
     document.body.prepend(skip);
     const titles = {
         catalogo: "La ruota non gira da sola", carrello: "Il tuo carrello", restituzioni: "Resi e restituzioni",
-        assistenza: "Centro assistenza", "crea-criceto": "Crea il tuo criceto", "crea-casa": "Crea la casa",
+        assistenza: "Centro assistenza", "crea-criceto": "Crea il tuo criceto", "crea-casa": "Crea la casa", "crea-ruota": "Crea la tua ruota",
         gara: "Gara di criceti", memory: "Memory dei criceti", acchiappa: "Acchiappa il criceto", halloween: "Speciale Halloween", natale: "Speciale Natale",
         sanvalentino: "Speciale San Valentino", pasqua: "Speciale Pasqua", estate: "Speciale Estate"
     };
