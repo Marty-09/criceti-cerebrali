@@ -92,6 +92,12 @@
 .page-heading,.creator-heading{margin-bottom:20px}
 :root{--card-radius:24px}
 }
+
+.product-art.hop{animation:artHop .6s cubic-bezier(.3,.7,.3,1)}
+@keyframes artHop{0%{transform:scale(1)}25%{transform:translateY(-10px) scale(1.04,.97)}50%{transform:translateY(0) scale(.97,1.04)}75%{transform:translateY(-4px) scale(1.01)}100%{transform:scale(1)}}
+.logo-icon.wiggle{display:inline-block;animation:logoWiggle .7s ease-in-out}
+@keyframes logoWiggle{0%,100%{transform:rotate(0)}20%{transform:rotate(-16deg) scale(1.12)}45%{transform:rotate(14deg) scale(1.12)}70%{transform:rotate(-8deg)}}
+@media (prefers-reduced-motion:reduce){.product-art.hop,.logo-icon.wiggle{animation:none}}
 </style>
 </head>
 
@@ -7105,6 +7111,93 @@ decorateWithHamsters();
 initHeroHamster();
 initHouseCreator();
 initWheelCreator();
+(function initAlive() {
+    const calm = matchMedia("(prefers-reduced-motion: reduce)");
+    const last = { x: innerWidth / 2, y: innerHeight / 2 };
+    document.addEventListener("pointerdown", event => { last.x = event.clientX; last.y = event.clientY; }, { passive: true });
+    function sparkle(x, y, chars, count = 6, spread = 46) {
+        if (calm.matches || !document.body.animate) return;
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement("span");
+            el.setAttribute("aria-hidden", "true");
+            el.textContent = chars[Math.floor(Math.random() * chars.length)];
+            el.style.cssText = `position:fixed;left:${x}px;top:${y}px;z-index:900;pointer-events:none;font-size:${12 + Math.random() * 10}px;line-height:1;will-change:transform,opacity`;
+            document.body.append(el);
+            const angle = -Math.PI / 2 + (Math.random() - .5) * 2.2;
+            const dist = spread * (.6 + Math.random() * .8);
+            const dx = Math.cos(angle) * dist, dy = Math.sin(angle) * dist - 8;
+            el.animate([
+                { transform: "translate(-50%,-50%) scale(.3)", opacity: 0 },
+                { transform: `translate(calc(-50% + ${dx * .5}px),calc(-50% + ${dy * .5}px)) scale(1.1)`, opacity: 1, offset: .35 },
+                { transform: `translate(calc(-50% + ${dx}px),calc(-50% + ${dy - 14}px)) scale(.7) rotate(${(Math.random() - .5) * 60}deg)`, opacity: 0 }
+            ], { duration: 800 + Math.random() * 400, easing: "cubic-bezier(.2,.7,.3,1)", delay: i * 35 }).onfinish = () => el.remove();
+        }
+    }
+    window.sparkle = sparkle;
+    // piccole gioie al tocco
+    document.addEventListener("click", event => {
+        const logo = event.target.closest(".logo");
+        if (logo && !calm.matches) {
+            const icon = logo.querySelector(".logo-icon");
+            icon.classList.remove("wiggle");
+            void icon.offsetWidth;
+            icon.classList.add("wiggle");
+            sparkle(event.clientX, event.clientY, ["✨", "🌻"], 4, 40);
+        }
+        if (event.target.closest("#heroScene")) sparkle(event.clientX, event.clientY, ["✨", "💭", "💗"], 4, 50);
+        const surprise = event.target.closest(".creator-actions button");
+        if (surprise && surprise.textContent.includes("Sorprendimi")) {
+            const r = surprise.getBoundingClientRect();
+            sparkle(r.left + r.width / 2, r.top, ["✨", "🎲", "⭐"], 8, 60);
+        }
+    });
+    // il semino vola nel carrello
+    const originalAdd = window.addToCart;
+    window.addToCart = function (id) {
+        const before = JSON.stringify(cart);
+        const result = originalAdd.apply(this, arguments);
+        const target = document.getElementById("cartNavButton");
+        if (target && before !== JSON.stringify(cart) && !calm.matches && document.body.animate) {
+            const rect = target.getBoundingClientRect();
+            const el = document.createElement("span");
+            el.setAttribute("aria-hidden", "true");
+            el.textContent = "🌻";
+            el.style.cssText = `position:fixed;left:${last.x}px;top:${last.y}px;z-index:900;pointer-events:none;font-size:22px;line-height:1`;
+            document.body.append(el);
+            const dx = rect.left + rect.width / 2 - last.x, dy = rect.top + rect.height / 2 - last.y;
+            el.animate([
+                { transform: "translate(-50%,-50%) scale(.6)", opacity: 1 },
+                { transform: `translate(calc(-50% + ${dx * .45}px),calc(-50% + ${dy * .45 - 60}px)) scale(1.3) rotate(160deg)`, opacity: 1, offset: .45 },
+                { transform: `translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) scale(.3) rotate(360deg)`, opacity: .2 }
+            ], { duration: 750, easing: "cubic-bezier(.4,.1,.3,1)" }).onfinish = () => { el.remove(); sparkle(rect.left + rect.width / 2, rect.top + rect.height / 2, ["✨"], 3, 24); };
+        }
+        return result;
+    };
+    // ogni tanto passa un criceto in fondo alla pagina
+    function stroll() {
+        if (calm.matches || document.hidden || !document.body.animate) return;
+        if (document.querySelector(".product-modal.show, .overlay:not([hidden]), dialog[open]")) return;
+        const hamster = document.createElement("div");
+        hamster.setAttribute("aria-hidden", "true");
+        const mini = window.hamsterImage && window.currentHamsterSettings
+            ? window.hamsterImage({ ...window.currentHamsterSettings(), background: "none", ball: "none" }) : "";
+        hamster.innerHTML = mini ? `<img src="${mini}" alt="" style="width:100%;height:100%;display:block">` : "🐹";
+        const ltr = Math.random() > .5;
+        hamster.style.cssText = "position:fixed;bottom:6px;left:0;z-index:30;pointer-events:none;width:52px;height:52px;font-size:40px;line-height:52px;text-align:center;filter:drop-shadow(0 4px 4px rgba(80,40,25,.15))";
+        document.body.append(hamster);
+        const from = ltr ? -70 : innerWidth + 20, to = ltr ? innerWidth + 20 : -70;
+        const flip = ltr ? 1 : -1;
+        const frames = [];
+        const steps = 24;
+        for (let i = 0; i <= steps; i++) {
+            const x = from + (to - from) * i / steps;
+            frames.push({ transform: `translate(${x}px,${i % 2 ? -7 : 0}px) scaleX(${flip})` });
+        }
+        hamster.animate(frames, { duration: 9000, easing: "linear" }).onfinish = () => hamster.remove();
+    }
+    const schedule = delay => setTimeout(() => { stroll(); schedule(50000 + Math.random() * 40000); }, delay);
+    schedule(22000);
+})();
 (function addSurprise() {
     const pick = list => list[Math.floor(Math.random() * list.length)];
     [["crea-criceto", "hamsterReset"], ["crea-casa", "houseReset"], ["crea-ruota", "wheelReset"]].forEach(([pageId, resetId]) => {
