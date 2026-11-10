@@ -98,6 +98,18 @@
 .logo-icon.wiggle{display:inline-block;animation:logoWiggle .7s ease-in-out}
 @keyframes logoWiggle{0%,100%{transform:rotate(0)}20%{transform:rotate(-16deg) scale(1.12)}45%{transform:rotate(14deg) scale(1.12)}70%{transform:rotate(-8deg)}}
 @media (prefers-reduced-motion:reduce){.product-art.hop,.logo-icon.wiggle{animation:none}}
+
+#crea-ruota .creator-options{grid-template-columns:repeat(3,minmax(0,1fr))}
+#crea-ruota .creator-options[data-count="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+#crea-ruota .creator-options[data-count="4"]{grid-template-columns:repeat(4,minmax(0,1fr))}
+#crea-ruota .creator-option{height:100%;min-height:108px;font-size:.76rem;overflow-wrap:anywhere}
+#crea-ruota .creator-option .creator-preview-icon{width:58px;height:58px}
+#crea-ruota .slot-zone{margin-bottom:6px}
+@media (max-width:760px){
+#crea-ruota .creator-options[data-count="4"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+#crea-ruota .creator-preview{grid-template-columns:150px 1fr}
+#crea-ruota .creator-preview .creator-stage{height:140px}
+}
 </style>
 </head>
 
@@ -6164,8 +6176,8 @@ function initWheelCreator() {
         // ruota
         const hamster = () => {
             if (st.rider !== "yes" || !hamsterSrc) return "";
-            const sz = saucer ? R * 1.05 : R * 1.02;
-            const y = saucer ? hy - sz * .7 : hy + R * .86 - sz * .92;
+            const sz = saucer ? R * 1.0 : R * .86;
+            const y = saucer ? hy - sz * .7 : hy + R * .9 - sz * .92;
             return `<image href="${hamsterSrc}" x="${cx - sz / 2}" y="${y}" width="${sz}" height="${sz}" preserveAspectRatio="xMidYMid meet"/>`;
         };
         const spokes = (n, r1, r2) => { let d = ""; for (let i = 0; i < n; i++) { const a = i * 2 * Math.PI / n; d += `M${cx + r1 * Math.cos(a)} ${hy + r1 * Math.sin(a)}L${cx + r2 * Math.cos(a)} ${hy + r2 * Math.sin(a)}`; } return d; };
@@ -6231,7 +6243,14 @@ function initWheelCreator() {
         } else if (st.banner === "ribbon") {
             out += `<path d="M30 212L48 217L30 224L40 220Z" fill="${shade(c.rim)}"/><path d="M218 212L200 217L218 224L208 220Z" fill="${shade(c.rim)}"/><path d="M40 208Q124 220 208 208V228Q124 240 40 228Z" fill="${c.rim}" stroke="${shade(c.rim)}" stroke-width="1.5"/><text x="124" y="226" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="13" fill="${["white","yellow","mint","pink","orange","gold"].includes(st.colors.rim) ? "#4A4446" : "#fff"}">${label}</text>`;
         }
-        const vb = opts.viewBox || "0 0 248 236";
+        let vb = opts.viewBox;
+        if (!vb) {
+            const wide = st.banner !== "none" || st.stand === "clip" || st.tech !== "none" || st.back !== "none";
+            const top = st.stand === "hang" || st.tech !== "none" || st.back !== "none" ? 0 : Math.max(0, Math.floor(hy - ry - 16));
+            const bottom = st.banner !== "none" ? 236 : ground + 10;
+            const x0 = wide ? 0 : Math.round(cx - R - 18);
+            vb = `${x0} ${top} ${wide ? 248 : Math.round(2 * R + 36)} ${bottom - top}`;
+        }
         return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}">${out}</svg>`;
     }
     window.wheelImage = (settings = state) => svgDataUrl(wheelSVG(settings));
@@ -6246,6 +6265,7 @@ function initWheelCreator() {
         title.textContent = groups[g].title;
         const box = document.createElement("div");
         box.className = "creator-options";
+        box.dataset.count = Object.keys(groups[g].items).length;
         Object.entries(groups[g].items).forEach(([value, [label, price, sub]]) => {
             const b = document.createElement("button");
             b.type = "button";
@@ -6256,9 +6276,10 @@ function initWheelCreator() {
             const icon = document.createElement("span");
             icon.className = "creator-preview-icon";
             b.append(icon, document.createTextNode(label));
-            if (price || sub) {
+            if (sub) b.title = `${label}: ${sub}`;
+            if (price) {
                 const small = document.createElement("small");
-                small.textContent = sub && !price ? sub : (sub ? `${sub} · ` : "") + euro(price);
+                small.textContent = euro(price);
                 b.append(small);
             }
             box.append(b);
