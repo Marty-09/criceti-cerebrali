@@ -162,6 +162,16 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
 .game-card p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.5}
 .game-card .game-go{margin-top:auto;padding-top:10px;font-weight:800;color:#b8566a}
 @media (prefers-reduced-motion:reduce){.game-card{transition:none}}
+
+.gallery-hint{grid-column:1/-1;margin:0 0 4px}
+.gallery-card[draggable="true"]{cursor:grab}
+.gallery-card.dragging{opacity:.45}
+.gallery-card.drag-over{outline:3px dashed var(--pink);outline-offset:3px}
+.gallery-move{display:flex;gap:8px;justify-content:center;margin-top:6px}
+.gallery-move button{width:36px;height:30px;border:1.5px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font:inherit;font-weight:800;cursor:pointer;transition:background .2s,border-color .2s}
+.gallery-move button:hover:not(:disabled){background:var(--pink-light);border-color:var(--pink)}
+.gallery-move button:disabled{opacity:.35;cursor:default}
+.tile-colors{margin-top:12px}
 </style>
 </head>
 
@@ -1188,16 +1198,14 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
 
                         <!-- TESTA: berretto con pon pon -->
                         <g id="accessoryHat" style="display:none">
-                            <path d="M82 118 C78 62 118 40 160 40 C202 40 242 62 238 118 Z" fill="#A9D3C0" data-fill="main" stroke="#5E9580" data-stroke="dark" stroke-width="3.5" stroke-linejoin="round"/>
-                            <path d="M140 45 Q108 72 88 101 M145 45 Q121 72 106 101 M150 45 Q134 72 124 101 M155 45 Q147 72 142 101 M160 45 Q160 72 160 101 M165 45 Q173 72 178 101 M170 45 Q186 72 196 101 M175 45 Q199 72 214 101 M180 45 Q212 72 232 101" fill="none" stroke="#5E9580" data-stroke="dark" stroke-width="2.2" stroke-linecap="round" opacity=".3"/>
-                            <path d="M104 92 C108 68 128 52 152 48" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity=".28"/>
-                            <rect x="72" y="100" width="176" height="28" rx="14" fill="#DDF1E8" data-fill="light" stroke="#5E9580" data-stroke="dark" stroke-width="3.5"/>
-                            <path d="M88 106 V124 M96 106 V124 M104 106 V124 M112 106 V124 M120 106 V124 M128 106 V124 M136 106 V124 M144 106 V124 M152 106 V124 M160 106 V124 M168 106 V124 M176 106 V124 M184 106 V124 M192 106 V124 M200 106 V124 M208 106 V124 M216 106 V124 M224 106 V124 M232 106 V124 M240 106 V124" stroke="#5E9580" data-stroke="dark" stroke-width="2" stroke-linecap="round" opacity=".32"/>
-                            <path d="M84 106 Q160 98 236 106" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity=".5"/>
-                            <path d="M172.5 30.0 L176.5 30.0 M171.7 34.3 L175.5 35.6 M169.6 38.0 L172.6 40.6 M166.2 40.8 L168.2 44.3 M162.2 42.3 L162.9 46.2 M157.8 42.3 L157.1 46.2 M153.8 40.8 L151.8 44.3 M150.4 38.0 L147.4 40.6 M148.3 34.3 L144.5 35.6 M147.5 30.0 L143.5 30.0 M148.3 25.7 L144.5 24.4 M150.4 22.0 L147.4 19.4 M153.8 19.2 L151.8 15.7 M157.8 17.7 L157.1 13.8 M162.2 17.7 L162.9 13.8 M166.2 19.2 L168.2 15.7 M169.6 22.0 L172.6 19.4 M171.7 25.7 L175.5 24.4" fill="none" stroke="#C76A88" data-stroke="dark" stroke-width="2.2" stroke-linecap="round"/>
-                            <circle cx="160" cy="30" r="13.5" fill="#F7A1BC" data-fill="light" stroke="#C76A88" data-stroke="dark" stroke-width="2.5"/>
-                            <path d="M165.9 31.0 l0.6 2.9 M164.2 34.3 l-1.3 2.7 M160.8 35.9 l-2.6 1.5 M157.2 35.3 l-3.0 -0.4 M154.6 32.6 l-2.2 -2.0 M154.1 29.0 l-0.6 -2.9 M155.8 25.7 l1.3 -2.7 M159.2 24.1 l2.6 -1.5 M162.8 24.7 l3.0 0.4 M165.4 27.4 l2.2 2.0" fill="none" stroke="#C76A88" data-stroke="dark" stroke-width="1.2" stroke-linecap="round" opacity=".4"/>
-                            <g fill="#FFFFFF" opacity=".6"><circle cx="154" cy="26" r="3.6"/><circle cx="166" cy="34" r="2.2"/></g>
+                            <path d="M86 112 C82 68 114 50 160 50 C206 50 238 68 234 112 Z" fill="#A9D3C0" data-fill="main" stroke="#5E9580" data-stroke="dark" stroke-width="3.5" stroke-linejoin="round"/>
+                            <path d="M83.6 90 Q160 74 236.4 90 L235.4 100 Q160 85 84.6 100 Z" fill="#5E9580" data-fill="dark" opacity=".28"/>
+                            <path d="M110 84 C114 68 130 58 148 56" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" opacity=".3"/>
+                            <rect x="78" y="98" width="164" height="26" rx="13" fill="#DDF1E8" data-fill="light" stroke="#5E9580" data-stroke="dark" stroke-width="3.5"/>
+                            <path d="M92 106 V122 M100 106 V122 M108 106 V122 M116 106 V122 M124 106 V122 M132 106 V122 M140 106 V122 M148 106 V122 M156 106 V122 M164 106 V122 M172 106 V122 M180 106 V122 M188 106 V122 M196 106 V122 M204 106 V122 M212 106 V122 M220 106 V122 M228 106 V122" stroke="#5E9580" data-stroke="dark" stroke-width="2" stroke-linecap="round" opacity=".32"/>
+                            <path d="M92 103 Q160 96 228 103" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" opacity=".5"/>
+                            <circle cx="160" cy="38" r="12" fill="#F7A1BC" data-fill="light" stroke="#C76A88" data-stroke="dark" stroke-width="2.5"/><path d="M152 34 q2 -3 4 0 M161 31 q2 -3 4 0 M166 40 q2 -3 4 0 M153 43 q2 -3 4 0 M160 45 q2 -3 4 0" fill="none" stroke="#C76A88" data-stroke="dark" stroke-width="1.3" stroke-linecap="round" opacity=".45"/>
+                            <g fill="#FFFFFF" opacity=".6"><circle cx="155.5" cy="33.5" r="3"/><circle cx="165" cy="41" r="1.8"/></g>
                         </g>
 
                         <!-- TESTA: margherita sull'orecchio -->
@@ -1652,7 +1660,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                     </div>
                     <div class="creator-colors" id="patternColors" role="group" aria-label="Colore del motivo" hidden>
                         <span class="creator-colors-label">Colore del motivo</span>
-                        <button type="button" class="creator-option creator-color selected" data-group="patternColor" data-value="original" aria-pressed="true" title="Tono del pelo" aria-label="Tono del pelo"><span class="creator-swatch" style="background:#8C6A4A"></span></button>
+                        <button type="button" class="creator-option creator-color selected" data-group="patternColor" data-value="original" aria-pressed="true" title="Originale" aria-label="Originale"><span class="creator-swatch"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="patternColor" data-value="cocoa" aria-pressed="false" title="Cacao" aria-label="Cacao"><span class="creator-swatch" style="background:#6B4226"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="patternColor" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#2F2A33"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="patternColor" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
@@ -1853,7 +1861,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                     </div>
                     <div class="creator-colors" id="cheekColors" role="group" aria-label="Colore delle guance">
                         <span class="creator-colors-label">Colore delle guance</span>
-                        <button type="button" class="creator-option creator-color selected" data-group="cheekColor" data-value="original" aria-pressed="true" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#EFA5A8"></span></button>
+                        <button type="button" class="creator-option creator-color selected" data-group="cheekColor" data-value="original" aria-pressed="true" title="Originale" aria-label="Originale"><span class="creator-swatch"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="cheekColor" data-value="peach" aria-pressed="false" title="Pesca" aria-label="Pesca"><span class="creator-swatch" style="background:#F7B58A"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="cheekColor" data-value="rose" aria-pressed="false" title="Rosa vivo" aria-label="Rosa vivo"><span class="creator-swatch" style="background:#F28DA0"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="cheekColor" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#E8606F"></span></button>
@@ -1864,7 +1872,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                     </div>
                     <div class="creator-colors" id="freckleColors" role="group" aria-label="Colore delle lentiggini" hidden>
                         <span class="creator-colors-label">Colore delle lentiggini</span>
-                        <button type="button" class="creator-option creator-color selected" data-group="freckleColor" data-value="original" aria-pressed="true" title="Nocciola" aria-label="Nocciola"><span class="creator-swatch" style="background:#C08A6A"></span></button>
+                        <button type="button" class="creator-option creator-color selected" data-group="freckleColor" data-value="original" aria-pressed="true" title="Originale" aria-label="Originale"><span class="creator-swatch"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="freckleColor" data-value="cocoa" aria-pressed="false" title="Cacao" aria-label="Cacao"><span class="creator-swatch" style="background:#8A5A3C"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="freckleColor" data-value="ginger" aria-pressed="false" title="Zenzero" aria-label="Zenzero"><span class="creator-swatch" style="background:#D9803A"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="freckleColor" data-value="rose" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#E07A8C"></span></button>
@@ -2289,37 +2297,43 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                                 data-group="held" data-value="plushBear"
                                 aria-pressed="false">
                             <span class="creator-preview-icon"></span>
-                            Peluche: Orsetto
+                            Orsetto
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="held" data-value="plushBunny"
                                 aria-pressed="false">
                             <span class="creator-preview-icon"></span>
-                            Peluche: Coniglietto
+                            Coniglietto
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="held" data-value="plushCat"
                                 aria-pressed="false">
                             <span class="creator-preview-icon"></span>
-                            Peluche: Gattino
+                            Gattino
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="held" data-value="plushChick"
                                 aria-pressed="false">
                             <span class="creator-preview-icon"></span>
-                            Peluche: Pulcino
+                            Pulcino
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="held" data-value="plushHamster"
                                 aria-pressed="false">
                             <span class="creator-preview-icon"></span>
-                            Peluche: Criceto di pezza
+                            Criceto di pezza
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="held" data-value="plushHeart"
                                 aria-pressed="false">
                             <span class="creator-preview-icon"></span>
-                            Peluche: Cuore
+                            Cuore
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="held" data-value="plushStar"
+                                aria-pressed="false">
+                            <span class="creator-preview-icon"></span>
+                            Stellina
                         </button>
                     </div>
                 
@@ -2786,8 +2800,16 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                         <button type="button" class="creator-option" data-group="floor" data-value="wood" aria-pressed="false"><span class="creator-preview-icon"></span>Parquet</button>
                         <button type="button" class="creator-option" data-group="floor" data-value="tiles" aria-pressed="false"><span class="creator-preview-icon"></span>Piastrelle</button>
                         <button type="button" class="creator-option" data-group="floor" data-value="sand" aria-pressed="false"><span class="creator-preview-icon"></span>Sabbia</button>
-                        <button type="button" class="creator-option" data-group="floor" data-value="checker" aria-pressed="false"><span class="creator-preview-icon"></span>Scacchi</button>
                         <button type="button" class="creator-option" data-group="floor" data-value="marble" aria-pressed="false"><span class="creator-preview-icon"></span>Marmo</button>
+                    </div>
+                    <div class="creator-colors tile-colors" id="tileColors" role="group" aria-label="Colore delle piastrelle" hidden>
+                        <span class="creator-colors-label">Colore delle piastrelle</span>
+                        <button type="button" class="creator-option creator-color selected" data-group="tileColor" data-value="blue" aria-pressed="true" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#CFE3F0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="tileColor" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F8D3DC"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="tileColor" data-value="mint" aria-pressed="false" title="Menta" aria-label="Menta"><span class="creator-swatch" style="background:#CFE8D0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="tileColor" data-value="yellow" aria-pressed="false" title="Giallo" aria-label="Giallo"><span class="creator-swatch" style="background:#FBE5A8"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="tileColor" data-value="lilac" aria-pressed="false" title="Lilla" aria-label="Lilla"><span class="creator-swatch" style="background:#DCD0F0"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="tileColor" data-value="grey" aria-pressed="false" title="Grigio" aria-label="Grigio"><span class="creator-swatch" style="background:#D3D3D6"></span></button>
                     </div>
                 </section>
                 <section class="creator-section" data-tab="interni">
@@ -3008,7 +3030,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
 </div>
 
 <script>
-window.plushDef={bear:{main:"#C98B5E",dark:"#8F5A35",light:"#F0D2B0"},bunny:{main:"#F6EDE8",dark:"#C9B2AA",light:"#FFD3DC"},cat:{main:"#A9AEB8",dark:"#6F7480",light:"#E4E6EA"},chick:{main:"#FFD84D",dark:"#D9A520",light:"#FFF0A0"},hamster:{main:"#F2C48D",dark:"#B9824A",light:"#FFF1DC"},heart:{main:"#FF86A6",dark:"#D4506F",light:"#FFD3DE"}};
+window.plushDef={bear:{main:"#C98B5E",dark:"#8F5A35",light:"#F0D2B0"},bunny:{main:"#F6EDE8",dark:"#C9B2AA",light:"#FFD3DC"},cat:{main:"#A9AEB8",dark:"#6F7480",light:"#E4E6EA"},chick:{main:"#FFD84D",dark:"#D9A520",light:"#FFF0A0"},hamster:{main:"#F2C48D",dark:"#B9824A",light:"#FFF1DC"},heart:{main:"#FF86A6",dark:"#D4506F",light:"#FFD3DE"},star:{main:"#FFD666",dark:"#D9A03A",light:"#FFF0B5"}};
 window.plushSVG=function(kind,p){
   const sw=`stroke="${p.dark}" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"`;
   const E="#3A2415", pk="#F59BA8";
@@ -3040,6 +3062,16 @@ window.plushSVG=function(kind,p){
     `<path d="M-4 -13 Q-7 -25 -1 -22 M1 -13 Q2 -27 7 -22 M5.5 -12 Q10 -22 12 -17" fill="none" stroke="${p.dark}" stroke-width="1.8" stroke-linecap="round"/>`+
     `<ellipse cx="-9" cy="2" rx="2.6" ry="3" fill="${E}"/><ellipse cx="9" cy="2" rx="2.6" ry="3" fill="${E}"/><circle cx="-8.2" cy=".7" r="1.1" fill="#fff"/><circle cx="9.8" cy=".7" r="1.1" fill="#fff"/><ellipse cx="-15.5" cy="9" rx="3.8" ry="2.5" fill="${pk}" opacity=".65"/><ellipse cx="15.5" cy="9" rx="3.8" ry="2.5" fill="${pk}" opacity=".65"/><path d="M-5.5 6 Q0 4 5.5 6 L0 13.5 Z" fill="#F28C3C" stroke="#C86A22" stroke-width="1.3" stroke-linejoin="round"/><path d="M-3 7.4 Q0 6.6 3 7.4" stroke="#fff" stroke-width=".9" stroke-linecap="round" opacity=".6" fill="none"/>`+
     `<path d="M0 28 q-4.4 -3 -4.4 -6 a2.7 2.7 0 0 1 4.4 -1.3 a2.7 2.7 0 0 1 4.4 1.3 q0 3 -4.4 6Z" fill="#F0606F" opacity=".8"/>`;
+  if(kind==="star"){
+    const pts=[];for(let i=0;i<10;i++){const a=(-90+i*36)*Math.PI/180,R=i%2?15:29;pts.push((R*Math.cos(a)).toFixed(1)+" "+(3+R*Math.sin(a)).toFixed(1));}
+    const d="M"+pts.join(" L")+" Z";
+    return `<path d="${d}" fill="${p.dark}" stroke="${p.dark}" stroke-width="12" stroke-linejoin="round"/><path d="${d}" fill="${p.main}" stroke="${p.main}" stroke-width="8" stroke-linejoin="round"/>`+
+      `<path d="${d}" fill="none" stroke="${p.dark}" stroke-width=".9" stroke-dasharray="2 2.2" opacity=".5" transform="translate(0 3) scale(.8) translate(0 -3)"/>`+
+      `<path d="M-15 -9 Q-11 -18 -3 -21" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".45"/>`+
+      `<ellipse cx="-7.5" cy="1" rx="2.4" ry="3" fill="${E}"/><ellipse cx="7.5" cy="1" rx="2.4" ry="3" fill="${E}"/><circle cx="-6.8" cy="-.2" r="1" fill="#fff"/><circle cx="8.2" cy="-.2" r="1" fill="#fff"/>`+
+      `<ellipse cx="-13" cy="8" rx="3.6" ry="2.3" fill="${pk}" opacity=".65"/><ellipse cx="13" cy="8" rx="3.6" ry="2.3" fill="${pk}" opacity=".65"/>`+
+      `<path d="M-3.4 6.4 Q0 10.2 3.4 6.4" fill="none" stroke="${E}" stroke-width="1.3" stroke-linecap="round"/>`;
+  }
   if(kind==="heart"){
     const H="M0 37 C-30 17 -35 -5 -29 -18 C-23 -31 -6 -29 0 -17 C6 -29 23 -31 29 -18 C35 -5 30 17 0 37 Z";
     return `<path d="${H}" fill="${p.main}" ${sw}/><path d="M-22 -22 Q-26 -13 -22 -4" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" opacity=".38"/>`+
@@ -3103,13 +3135,13 @@ const products = [
         name:"Criceto Ricondizionato",
         emoji:"🩹",
         color:"#dce9d6",
-        tag:"Usato garantito*",
-        description:"È sopravvissuto a livelli estremi di stress e a tre proprietari. Funziona, più o meno: non ci assumiamo alcuna responsabilità.",
-        personality:"Traumatizzato ma resiliente",
-        speed:"1 giro al minuto",
-        intelligence:"Media",
-        duration:"Da 10 giorni a 10 minuti",
-        price:4.99
+        tag:"Seconda vita",
+        description:"È sopravvissuto a livelli estremi di stress e ad almeno tre proprietari. Funziona ma non ci assumiamo alcuna responsabilità in caso di problemi.",
+        personality:"Traumatizzato",
+        speed:"25 m/s",
+        intelligence:"Bassa",
+        duration:"10 giorni",
+        price:2.99
     },
     {
         id:"h4",
@@ -3604,6 +3636,12 @@ const products = [
         tag:"Batte solo per te",
         description:"Un cuore morbido con occhietti, guance rosa e un sorriso cucito a mano. È lo stesso che i criceti stringono nel creatore.",
         speed:"Morbido come un abbraccio", duration:"Non si spezza mai", price:8.99
+    },
+    {
+        id:"pl7", category:"peluche", name:"Stellina di Pezza", emoji:"⭐", color:"#fff4cf",
+        tag:"Desiderio incluso",
+        description:"Una stellina imbottita con occhietti dolci e guance rosa. Non cade dal cielo: l'abbiamo cucita noi, punto per punto.",
+        speed:"Brilla anche al buio (nell'immaginazione)", duration:"Per tutte le notti", price:7.49
     }
 ];
 let cart = {};
@@ -3663,7 +3701,7 @@ const cartTotal = () =>
 const productDetails = {
     h1: ["Il modello da cui è partito tutto. Non ha superpoteri, non ha manie e non ha un profilo social: si sveglia, mangia un seme e corre finché non si ricorda di una cosa che doveva fare.", [["Livello di rumore", "Medio"], ["Passatempo", "Fissare il muro"], ["Compatibile con", "Tutto"]]],
     h2: ["Si è fatto assumere da una startup e non si è più fermato. Risponde alle email mentre corre, corre mentre dorme e dorme solo quando finisce il caffè. Consigliato in periodo di esami, sconsigliato al tuo battito cardiaco.", [["Caffeina nel sangue", "Il 70%"], ["Passatempo", "Fare tre cose insieme, male"], ["Effetti collaterali", "Tremolio delle vibrisse"]]],
-    h3: ["Tre proprietari, due traslochi e un'esperienza traumatica con un aspirapolvere. Lo abbiamo lavato, pettinato e rimesso in vendita con una toppa nuova di zecca. *La garanzia copre solo la toppa.", [["Condizioni", "Come nuovo (se strizzi gli occhi)"], ["Ricordi", "Preferisce non parlarne"], ["Garanzia", "Solo sulla toppa"]]],
+    h3: ["Tre proprietari, due traslochi e un'esperienza traumatica con un aspirapolvere. Lo abbiamo lavato, pettinato e rimesso in vendita come nuova di zecca.", [["Livello di rumore", "Medio"], ["Passatempo", "Giocare coi cacciaviti"], ["Compatibile con", "Tutto"]]],
     h4: ["Ha letto tutto Nietzsche in una notte e da allora guarda la ruota con sospetto. Quando finalmente corre, lo fa per dimostrare qualcosa all'universo. L'universo non ha ancora risposto.", [["Autore preferito", "Socrate (le parti col formaggio)"], ["Domanda ricorrente", "Ma la ruota gira o sono io?"], ["Risposte trovate", "Nessuna, per ora"]]],
     h5: ["È in offerta a zero euro perché il prezzo doveva deciderlo lui. Lo farà domani. Nel frattempo ha riordinato la cuccia quattro volte e guardato tutorial su come iniziare a correre.", [["Lista delle cose da fare", "Lunghissima, mai aperta"], ["Parola preferita", "Dopo"], ["Prossima corsa", "Lunedì (di quale anno non si sa)"]]],
     h6: ["Ti paga lui per portarlo a casa, ed è proprio questo che dovrebbe insospettirti. Entro una settimana avrai una ruota in meno, un amico in più e la sensazione di essere stato fregato con grande simpatia.", [["Specialità", "Smontare ruote in 30 secondi"], ["Recensioni", "Tutte a 5 stelle (scritte da lui)"], ["Ultima posizione nota", "Sconosciuta"]]],
@@ -3693,6 +3731,7 @@ const productDetails = {
     pl4: ["È nato tondo e ha deciso di rimanere così. Ti segue con lo sguardo ovunque vada e ogni tanto sembra stia per dire qualcosa di profondo.", [["Piumaggio", "Sintetico e adorabile"], ["Becco", "Arancione, ricamato"], ["Peso", "Meno di un seme di girasole"]]],
     pl5: ["La replica di pezza del nostro criceto standard. Ha le guance piene, i dentini in fuori e nessuna intenzione di scappare dalla gabbia, il che lo rende migliore di molti colleghi.", [["Guance", "Imbottite fino al limite"], ["Fuga dalla gabbia", "Mai tentata"], ["Ruota", "Non la usa, ma la rispetta"]]],
     pl6: ["Il cuore che i nostri criceti tengono stretto nel creatore, ora disponibile anche per te. Imbottito, cucito a mano e con un'espressione perennemente innamorata: non chiede niente, abbraccia tutto.", [["Imbottitura", "Fiocchi di nuvola"], ["Occhi", "Due, entrambi dolcissimi"], ["Cuore", "Ovviamente sì"]]],
+    pl7: ["La stellina che i criceti stringono nel creatore, ora disponibile anche per te. Cinque punte tonde, imbottitura soffice e un'espressione serena da chi ha già espresso il suo desiderio.", [["Punte", "Cinque, tutte arrotondate"], ["Brillantezza", "Soltanto emotiva"], ["Desideri", "Esauditi a metà"]]],
     e3: ["Paglia soffice raccolta a mano e sistemata in un nido a forma di cuore. Il criceto la sposterà comunque tutta nell'angolo opposto, perché ha gusti precisi.", [["Morbidezza", "Nuvola certificata"], ["Forma del nido", "Cuore, per circa un'ora"], ["Riposini garantiti", "Illimitati"]]],
     x1: ["Si sveglia al tramonto, si pettina davanti a uno specchio che non lo riflette e beve solo succo di fragola. Molto elegante, un po' melodrammatico.", [["Cibo preferito", "Fragole (solo il succo)"], ["Riflesso nello specchio", "Assente"], ["Orario di apertura", "Dal tramonto all'alba"]]],
     x2: ["Ha frequentato un corso online di magia e ora prova incantesimi su tutto. La ruota gira al contrario e i semi sanno di liquirizia, ma lei è molto soddisfatta.", [["Incantesimi riusciti", "Il 40%"], ["Scopa", "Modello da corsa"], ["Ingrediente segreto", "Una vibrissa di gatto"]]],
@@ -4938,7 +4977,7 @@ function initHamsterCreator() {
                 const straw = heldCustom(s) ? p.dark : "#F0606F";
                 return `<path d="M148 196 H172 L169.5 220 Q160 224 150.5 220 Z" fill="#FFFFFF" fill-opacity=".6"/><path d="M149.3 205 Q154.5 202 160 205 T170.7 205 L169.4 219 Q160 222.5 150.6 219 Z" fill="${p.main}"/><path d="M162 213 L171 181" stroke="${straw}" stroke-width="3.4" stroke-linecap="round"/><path d="M167.6 194 L169.4 187.5" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" opacity=".85"/><path d="M148 196 H172 L169.5 220 Q160 224 150.5 220 Z" fill="none" stroke="${p.dark}" stroke-width="2.2" stroke-linejoin="round"/><g transform="translate(149 196)"><circle r="7.5" fill="${p.light}" stroke="${p.dark}" stroke-width="1.8"/><path d="M0 -7 V7 M-7 0 H7 M-5 -5 L5 5 M5 -5 L-5 5" stroke="${p.dark}" stroke-width=".9" opacity=".7"/></g>`;
             },
-            ...Object.fromEntries(["bear", "bunny", "cat", "chick", "hamster", "heart"].map(k => ["plush" + k[0].toUpperCase() + k.slice(1), () => ""])),
+            ...Object.fromEntries(["bear", "bunny", "cat", "chick", "hamster", "heart", "star"].map(k => ["plush" + k[0].toUpperCase() + k.slice(1), () => ""])),
             pizza: (c, s) => {
                 const p = heldPal(s, { main: "#E0534F", dark: "#B83A38" });
                 return `<path d="M139 214 L181 214 L160 248 Z" fill="#FFD36B" stroke="#D9A03A" stroke-width="2" stroke-linejoin="round"/><path d="M138 214 Q160 202 182 214" fill="none" stroke="#E7AE62" stroke-width="8" stroke-linecap="round"/><path d="M141 211 Q160 200 179 211" fill="none" stroke="#F6D29B" stroke-width="2" stroke-linecap="round" opacity=".8"/><g fill="${p.main}" stroke="${p.dark}" stroke-width="1.4"><circle cx="151" cy="226" r="4.4"/><circle cx="169" cy="227" r="4.2"/><circle cx="160" cy="238" r="3.6"/></g><path d="M157 222 q4 -4 7 0 q-3 4 -7 0Z" fill="#6DBB5E" stroke="#4F9447" stroke-width="1"/>`;
@@ -5046,9 +5085,9 @@ function initHamsterCreator() {
         umbrella: () => ""
     };
     const heldTop = {
-        ...Object.fromEntries(["bear", "bunny", "cat", "chick", "hamster", "heart"].map(k => ["plush" + k[0].toUpperCase() + k.slice(1), (c, s) => {
+        ...Object.fromEntries(["bear", "bunny", "cat", "chick", "hamster", "heart", "star"].map(k => ["plush" + k[0].toUpperCase() + k.slice(1), (c, s) => {
             const p = heldPal(s, window.plushDef[k]);
-            const fit = { bear: [.77, 216.9], bunny: [.59, 224.5], cat: [.74, 218.4], chick: [.88, 214.5], hamster: [.8, 215.6], heart: [.85, 212] }[k];
+            const fit = { bear: [.77, 216.9], bunny: [.59, 224.5], cat: [.74, 218.4], chick: [.88, 214.5], hamster: [.8, 215.6], heart: [.85, 212], star: [.85, 214] }[k];
             const paw = (x, r) => `<ellipse cx="${x}" cy="228" rx="11" ry="8.5" transform="rotate(${r} ${x} 228)" fill="${c.main}" stroke="${c.dark}" stroke-width="3"/>`;
             return `<g transform="translate(160 ${fit[1]}) scale(${fit[0]})">${window.plushSVG(k, p)}</g>` + paw(143, 25) + paw(177, -25);
         }])),
@@ -5248,7 +5287,7 @@ function updateEyes() {
             button.setAttribute("aria-pressed", String(selected));
         });
     }
-    const accessoryTops = { sleepCap: 36, hat: 17, crown: 44, partyHat: 23, strawberryHat: 24, witchHat: 6, headphones: 52, gradCap: 36, halo: 26, bunnyEars: 1, bandana: 46, bow: 55, catEars: 32, alienAntennae: 14 };
+    const accessoryTops = { sleepCap: 36, hat: 22, crown: 44, partyHat: 23, strawberryHat: 24, witchHat: 6, headphones: 52, gradCap: 36, halo: 26, bunnyEars: 1, bandana: 46, bow: 55, catEars: 32, alienAntennae: 14 };
     const sizeScales = { xs: .72, s: .86, m: 1, l: 1.07, xl: 1.13 };
     const ageScales = { baby: .84, young: .94, adult: 1 };
     function fitInBall() {
@@ -5331,7 +5370,7 @@ function updateEyes() {
         eyePatch: 1.5,
         shirtTee: 2.5, shirtStripe: 3, shirtHoodie: 4, shirtButton: 3.5, shirtNapoli: 4
     };
-    const heldPrices = { seed: 0, strawberry: 1, coffee: 2, book: 1.5, mic: 2, guitar: 3, umbrella: 2.5, iceCream: 2, balloon: 1, bouquet: 3, juice: 1.5, pizza: 2, plushBear: 3.5, plushBunny: 3.5, plushCat: 3.5, plushChick: 3, plushHamster: 4, plushHeart: 3.5, none: 0 };
+    const heldPrices = { seed: 0, strawberry: 1, coffee: 2, book: 1.5, mic: 2, guitar: 3, umbrella: 2.5, iceCream: 2, balloon: 1, bouquet: 3, juice: 1.5, pizza: 2, plushBear: 3.5, plushBunny: 3.5, plushCat: 3.5, plushChick: 3, plushHamster: 4, plushHeart: 3.5, plushStar: 3.5, none: 0 };
     const shopBall = products.find(product => product.name === "Palla da criceto");
     const ballBase = shopBall ? shopBall.price : 19.99;
     const ballPrices = { clear: ballBase, pink: ballBase + 2, blue: ballBase + 2, mint: ballBase + 2, purple: ballBase + 2, yellow: ballBase + 2, red: ballBase + 2, rainbow: ballBase + 3 };
@@ -5493,10 +5532,42 @@ function updateEyes() {
             galleryGrid.append(empty);
             return;
         }
-        list.forEach(entry => {
+        if (list.length > 1) {
+            const hint = document.createElement("p");
+            hint.className = "form-note gallery-hint";
+            hint.textContent = "Trascina i criceti (o usa le frecce) per metterli nell'ordine che preferisci.";
+            galleryGrid.append(hint);
+        }
+        const moveEntry = (id, delta) => {
+            const items = loadGallery(), from = items.findIndex(item => item.id === id), to = from + delta;
+            if (from < 0 || to < 0 || to >= items.length) return;
+            items.splice(to, 0, items.splice(from, 1)[0]);
+            saveGallery(items);
+            renderGallery();
+            const again = galleryGrid.querySelector(`[data-id="${CSS.escape(id)}"] .${delta < 0 ? "gallery-prev" : "gallery-next"}:not(:disabled)`) || galleryGrid.querySelector(`[data-id="${CSS.escape(id)}"] .gallery-move button:not(:disabled)`);
+            if (again) again.focus();
+        };
+        list.forEach((entry, position) => {
             const name = String(entry.settings.name || "Saturno");
             const card = document.createElement("div");
             card.className = "gallery-card";
+            card.dataset.id = entry.id;
+            if (list.length > 1) {
+                card.draggable = true;
+                card.addEventListener("dragstart", event => { event.dataTransfer.setData("text/plain", entry.id); event.dataTransfer.effectAllowed = "move"; card.classList.add("dragging"); });
+                card.addEventListener("dragend", () => { card.classList.remove("dragging"); galleryGrid.querySelectorAll(".drag-over").forEach(el => el.classList.remove("drag-over")); });
+                card.addEventListener("dragover", event => { event.preventDefault(); card.classList.add("drag-over"); });
+                card.addEventListener("dragleave", () => card.classList.remove("drag-over"));
+                card.addEventListener("drop", event => {
+                    event.preventDefault();
+                    const id = event.dataTransfer.getData("text/plain");
+                    const items = loadGallery(), from = items.findIndex(item => item.id === id), to = items.findIndex(item => item.id === entry.id);
+                    if (from < 0 || to < 0 || from === to) return;
+                    items.splice(to, 0, items.splice(from, 1)[0]);
+                    saveGallery(items);
+                    renderGallery();
+                });
+            }
             const image = document.createElement("img");
             image.src = entry.image;
             image.alt = `Il criceto ${name}`;
@@ -5522,7 +5593,19 @@ function updateEyes() {
                 renderGallery();
                 status.textContent = `${name} è tornato nella ruota del destino.`;
             });
+            const move = document.createElement("div");
+            move.className = "gallery-move";
+            const prev = document.createElement("button");
+            prev.type = "button"; prev.className = "gallery-prev"; prev.textContent = "←"; prev.disabled = position === 0;
+            prev.setAttribute("aria-label", `Sposta ${name} prima`);
+            prev.addEventListener("click", () => moveEntry(entry.id, -1));
+            const next = document.createElement("button");
+            next.type = "button"; next.className = "gallery-next"; next.textContent = "→"; next.disabled = position === list.length - 1;
+            next.setAttribute("aria-label", `Sposta ${name} dopo`);
+            next.addEventListener("click", () => moveEntry(entry.id, 1));
+            move.append(prev, next);
             card.append(remove, image, label, price, load);
+            if (list.length > 1) card.append(move);
             galleryGrid.append(card);
         });
     }
@@ -5887,7 +5970,7 @@ function decorateWithHamsters() {
     const looks = {
         h1: {},
         h2: { fur: "honey", whiskers: "bold", accessories: ["headphones"], held: "coffee" },
-        h3: { fur: "grey", eyes: "small", whiskers: "curly", accessories: ["bandana"], pattern: "patch" },
+        h3: { fur: "grey", innerFur: "white", pattern: "marble", eyes: "sleepy", mouth: "wavy", cheeks: "pink", whiskers: "short", whiskerColor: "brown", accessories: ["bandana", "eyePatch"], accColorHead: "blue", accColorFace: "black", held: "seed" },
         h4: { fur: "white", eyes: "small", whiskers: "short", accessories: ["glasses", "scarf"], held: "book" },
         h5: { fur: "caramel", accessories: ["sleepCap"], sleeping: true },
         h6: { fur: "cocoa", eyes: "wink", mouth: "smug", whiskers: "curly", cheeks: "none", accessories: ["shirtNapoli"], held: "pizza" },
@@ -6179,10 +6262,10 @@ function drawProductArt() {
         const product = getProduct(id);
         if (product) product.image = svgDataUrl(svg);
     });
-    const PLUSH_SHOP = { pl1: "bear", pl2: "bunny", pl3: "cat", pl4: "chick", pl5: "hamster", pl6: "heart" };
+    const PLUSH_SHOP = { pl1: "bear", pl2: "bunny", pl3: "cat", pl4: "chick", pl5: "hamster", pl6: "heart", pl7: "star" };
     Object.entries(PLUSH_SHOP).forEach(([id, kind]) => {
         const product = getProduct(id);
-        if (product) product.image = svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><ellipse cx="100" cy="182" rx="52" ry="7" fill="rgba(80,40,25,.12)"/><g transform="${kind === "hamster" ? "translate(100 101) scale(2.15)" : kind === "heart" ? "translate(100 98) scale(2.2)" : "translate(100 106) scale(2.05)"}">${window.plushSVG(kind, window.plushDef[kind])}</g></svg>`);
+        if (product) product.image = svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><ellipse cx="100" cy="182" rx="52" ry="7" fill="rgba(80,40,25,.12)"/><g transform="${kind === "hamster" ? "translate(100 101) scale(2.15)" : kind === "heart" ? "translate(100 98) scale(2.2)" : kind === "star" ? "translate(100 100) scale(2.3)" : "translate(100 106) scale(2.05)"}">${window.plushSVG(kind, window.plushDef[kind])}</g></svg>`);
     });
 }
 function initHeroHamster() {
@@ -6664,7 +6747,7 @@ function initHouseCreator() {
         grey: { main: "#A8A5A0", dark: "#6F6C68", light: "#E4E2DF" }
     };
     const typePrices = { cage: 19.99, wood: 29.99, mushroom: 34.99, castle: 49.99, modern: 59.99, pagoda: 44.99 };
-    const floorPrices = { straw: 0, shavings: 1.5, confetti: 2.5, grass: 2, wood: 3, tiles: 2, sand: 1.5, checker: 3.5, marble: 4.5 };
+    const floorPrices = { straw: 0, shavings: 1.5, confetti: 2.5, grass: 2, wood: 3, tiles: 2, sand: 1.5, marble: 4.5 };
     const lightPrices = { day: 0, warm: 1.49, cool: 1.49, rosy: 1.99, night: 2.49 };
     const scenePrices = { garden: 0, night: 0, snow: 0, beach: 0, sunset: 0, space: 0, rain: 0, none: 0 };
     const itemPrices = {
@@ -6686,6 +6769,7 @@ function initHouseCreator() {
         pos: ["left", "center", "right"],
         scene: Object.keys(scenePrices),
         floor: Object.keys(floorPrices),
+        tileColor: ["blue", "pink", "mint", "yellow", "lilac", "grey"],
         hamster: ["yes", "no"]
     };
     const multi = {
@@ -6694,7 +6778,7 @@ function initHouseCreator() {
         outside: ["sign", "mailbox", "fence", "flowerbed", "lamp", "tree", "pond", "bench", "balloons", "path", "pumpkins"]
     };
     const defaults = {
-        type: "wood", frame: "wood", roof: "red", wall: "pink", wallpaper: "dots", floor: "straw",
+        type: "wood", frame: "wood", roof: "red", wall: "pink", wallpaper: "dots", floor: "straw", tileColor: "blue",
         hamster: "yes", light: "day", pos: "center", scene: "garden", furniture: ["wheel", "bowl", "bottle"], decor: ["lights"], outside: [], itemColors: {}
     };
     const slots = {
@@ -6924,6 +7008,17 @@ function initHouseCreator() {
             return fclip(o + `<rect x="70" y="258" width="260" height="4" fill="#7a5a30" opacity=".12"/>`);
         }
     });
+    const tilePairs = { blue: ["#F4F8FB", "#CFE3F0", "#A9C9DD"], pink: ["#FFF5F7", "#F8D3DC", "#E5A9B8"], mint: ["#F4FAF4", "#CFE8D0", "#A3CCA6"], yellow: ["#FFFBEA", "#FBE5A8", "#E0C070"], lilac: ["#F7F4FC", "#DCD0F0", "#B8A6DA"], grey: ["#F5F5F5", "#D3D3D6", "#ABABB2"] };
+    Object.assign(floors, {
+        tiles: st => {
+            const [a, b, g] = tilePairs[(st && st.tileColor) || "blue"] || tilePairs.blue;
+            let o = `<rect x="70" y="238" width="260" height="24" fill="${a}"/>`;
+            for (let i = 0; i < 13; i++) for (let j = 0; j < 2; j++) o += `<rect x="${70 + i * 20}" y="${238 + j * 12}" width="20" height="12" fill="${(i + j) % 2 ? b : a}"/>`;
+            o += `<path d="M70 250 H330` + Array.from({ length: 12 }, (_, i) => ` M${90 + i * 20} 238 V262`).join("") + `" stroke="${g}" stroke-width="1.2" opacity=".85"/>`;
+            o += `<rect x="70" y="238" width="260" height="2.4" fill="#fff" opacity=".5"/><rect x="70" y="259" width="260" height="3" fill="#000" opacity=".06"/>`;
+            return o;
+        }
+    });
     const dflt = (k, d) => k ? { main: k.main, dark: k.dark, light: k.light } : d;
     const ceilTop = (type, x) => {
         if (type === "cage") return 118 - 66 * Math.sqrt(Math.max(0, 1 - ((x - 200) / 142) ** 2));
@@ -6976,7 +7071,14 @@ function initHouseCreator() {
         },
         rug: (type, k) => { const d = dflt(k, { main: "#F7A1BC" }); return `<ellipse cx="198" cy="257" rx="60" ry="9" fill="${d.main}"/><ellipse cx="198" cy="257" rx="48" ry="6" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="4 4"/>`; },
         wheel: (type, k) => { const d = dflt(k, { main: "#DFA883", dark: "#C88965", light: "#F7D3B4" }); return `<path d="M122 194 L100 262 M122 194 L144 262" stroke="${k ? d.dark : "#A86F4F"}" stroke-width="6" stroke-linecap="round"/><circle cx="122" cy="194" r="36" fill="${d.light}" stroke="${d.dark}" stroke-width="7"/><circle cx="122" cy="194" r="29" fill="none" stroke="${k ? d.main : "#E3A982"}" stroke-width="3" stroke-dasharray="3 6"/><path d="M122 158 V230 M86 194 H158 M96.5 168.5 L147.5 219.5 M147.5 168.5 L96.5 219.5" stroke="${d.main}" stroke-width="3"/><circle cx="122" cy="194" r="6" fill="${d.dark}"/>`; },
-        nest: (type, k) => { const d = dflt(k, { light: "#F2D3AE", dark: "#B9875A" }); return `<path d="M266 262 V238 Q292 210 318 238 V262 Z" fill="${d.light}" stroke="${d.dark}" stroke-width="3" stroke-linejoin="round"/><path d="M282 262 V249 Q292 236 302 249 V262 Z" fill="${k ? d.dark : "#7A5236"}"/><path d="M274 236 Q292 218 310 236" fill="none" stroke="${d.dark}" stroke-width="2" opacity=".5"/>` + heart(292, 230, .3, "#F28DA0"); },
+        nest: (type, k) => { const d = dflt(k, { main: "#E58F6B", light: "#F8E1BE", dark: "#9B6844" });
+            return `<path d="M269 262 V232 H319 V262 Z" fill="${d.light}" stroke="${d.dark}" stroke-width="3" stroke-linejoin="round"/>` +
+                `<path d="M269 241 H319 M269 250 H319 M269 259 H319" stroke="${d.dark}" stroke-width="1.2" opacity=".28"/>` +
+                `<path d="M262 234 L294 205 L326 234 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="3" stroke-linejoin="round"/>` +
+                `<path d="M274 228 L294 210 L314 228 M268 232 H320" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity=".35"/>` +
+                `<path d="M284 262 V251 Q294 238 304 251 V262 Z" fill="#5B3A26" stroke="${d.dark}" stroke-width="2"/>` +
+                `<path d="M287 262 Q290 256 294 259 Q298 255 301 262 Z" fill="#F2CF70"/><path d="M288 262 L292 257 M295 262 L297 256 M300 262 L299 258" stroke="#D9A83E" stroke-width="1.2" stroke-linecap="round"/>` +
+                heart(294, 221, .26, "#FFFFFF"); },
         bowl: (type, k) => { const d = dflt(k, { main: "#F4A7B4", dark: "#C9707F", light: "#E9A2AE" }); return `<ellipse cx="246" cy="264" rx="21" ry="3" fill="rgba(80,40,25,.14)"/><path d="M231 251 Q233 237 246 237 Q259 237 261 251 Z" fill="#E9C58F" stroke="#C9A06A" stroke-width="1.2" stroke-linejoin="round"/><g fill="#5B4636"><ellipse cx="240.5" cy="246" rx="1.7" ry="3.2" transform="rotate(-40 240.5 246)"/><ellipse cx="246" cy="242.5" rx="1.7" ry="3.2"/><ellipse cx="251.5" cy="246" rx="1.7" ry="3.2" transform="rotate(40 251.5 246)"/></g><g fill="#B98B5E"><circle cx="236.5" cy="249" r="1.6"/><circle cx="256" cy="249" r="1.6"/><circle cx="246" cy="249.5" r="1.6"/></g><path d="M228 250 H264 Q262 264 246 264.6 Q230 264 228 250 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="2" stroke-linejoin="round"/><path d="M230 253.5 H262" stroke="${d.light}" stroke-width="2" stroke-linecap="round"/><path transform="translate(246 259.4) scale(.28)" d="M0 7 C-12 -2 -12 -11 -5.5 -11 C-2 -11 0 -8 0 -6 C0 -8 2 -11 5.5 -11 C12 -11 12 -2 0 7Z" fill="${d.light}"/>`; },
         plant: (type, k) => { const d = dflt(k, { main: "#E8956B", dark: "#B86A45" }); return `<g fill="#8CC97A" stroke="#4F8F45" stroke-width="1.5"><ellipse cx="82" cy="224" rx="5" ry="15" transform="rotate(-25 82 224)"/><ellipse cx="96" cy="222" rx="5" ry="15" transform="rotate(25 96 222)"/><ellipse cx="89" cy="216" rx="5" ry="17"/></g><path d="M76 262 L79 240 H99 L102 262 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="2" stroke-linejoin="round"/>`; }
     };
@@ -6997,19 +7099,21 @@ function initHouseCreator() {
     const shifted = (key, dx) => { const original = items[key]; items[key] = (type, k) => `<g transform="translate(${dx} 0)">${original(type, k)}</g>`; };
     Object.assign(items, {
         tunnel: (type, k) => { const d = dflt(k, { main: "#9BD1A8", dark: "#5FA06E" });
-            return `<path d="M88 232 H146 Q160 232 160 247 Q160 262 146 262 H88 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="3" stroke-linejoin="round"/>` +
+            const hole = cx => `<ellipse cx="${cx}" cy="247" rx="8" ry="15" fill="${d.main}" stroke="${d.dark}" stroke-width="3"/><ellipse cx="${cx}" cy="247" rx="4.6" ry="10.6" fill="#2F4A38"/><path d="M${cx - 2.2} 240 Q${cx - 3.2} 247 ${cx - 2.2} 254" fill="none" stroke="#fff" stroke-width="1" opacity=".25" stroke-linecap="round"/>`;
+            return `<rect x="88" y="232" width="64" height="30" fill="${d.main}" stroke="${d.dark}" stroke-width="3"/>` +
                 `<path d="M102 233 Q108 247 102 261 M116 233 Q122 247 116 261 M130 233 Q136 247 130 261" fill="none" stroke="${d.dark}" stroke-width="2.4" stroke-linecap="round" opacity=".5"/>` +
-                `<path d="M92 238 H142" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity=".45"/>` +
-                `<ellipse cx="88" cy="247" rx="8" ry="15" fill="${d.main}" stroke="${d.dark}" stroke-width="3"/><ellipse cx="88" cy="247" rx="4.5" ry="10.5" fill="#2F4A38" opacity=".85"/>` +
-                `<ellipse cx="160" cy="247" rx="2" ry="9" fill="${d.dark}" opacity=".18"/>`; },
+                `<path d="M94 238 H146" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity=".45"/>` + hole(88) + hole(152); },
         ladder: (type, k) => { const d = dflt(k, { main: "#D9A066", dark: "#9C6A3C" });
             return `<path d="M217 138 L211 262 M239 138 L245 262" stroke="${d.dark}" stroke-width="4.5" stroke-linecap="round"/>` + [0, 1, 2, 3, 4, 5].map(i => { const y = 152 + i * 20, t = (y - 138) / 124; return `<path d="M${(217 - t * 6).toFixed(1)} ${y} H${(239 + t * 6).toFixed(1)}" stroke="${d.main}" stroke-width="4" stroke-linecap="round"/>`; }).join(""); },
         bed: (type, k) => { const d = dflt(k, { main: "#9BC4E2", dark: "#5E8FB3", light: "#E5F2FB" }); const wd = "#C98B5E", wk = "#8B5A35";
-            return `<path d="M70 214 H77 Q82 214 82 219 V262 H70 Z" fill="${wd}" stroke="${wk}" stroke-width="2" stroke-linejoin="round"/><path d="M73 218 V258" stroke="#E2B28A" stroke-width="2" stroke-linecap="round" opacity=".7"/>` +
-                `<rect x="82" y="249" width="68" height="9" rx="2.5" fill="${wd}" stroke="${wk}" stroke-width="2"/><rect x="146" y="240" width="9" height="22" rx="3" fill="${wd}" stroke="${wk}" stroke-width="2"/>` +
-                `<rect x="82" y="238" width="64" height="12" rx="5" fill="#FBF6EE" stroke="${d.dark}" stroke-width="2"/>` +
-                `<rect x="84" y="230" width="22" height="11" rx="5.5" fill="${d.light}" stroke="${d.dark}" stroke-width="2"/><path d="M89 234 Q95 232 101 234" fill="none" stroke="${d.dark}" stroke-width="1" opacity=".4"/>` +
-                `<path d="M110 240 Q110 236 115 236 H142 Q146 236 146 240 V250 H110 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="2" stroke-linejoin="round"/><rect x="110" y="236" width="9" height="14" rx="2" fill="${d.light}" stroke="${d.dark}" stroke-width="1.6"/><path d="M126 241 V248 M134 241 V248" stroke="${d.dark}" stroke-width="1.3" opacity=".45" stroke-linecap="round"/>`; },
+            return `<rect x="84" y="254" width="5" height="8" rx="1.5" fill="${wk}"/><rect x="146" y="254" width="5" height="8" rx="1.5" fill="${wk}"/>` +
+                `<path d="M70 212 H78 Q82 212 82 216 V262 H70 Z" fill="${wd}" stroke="${wk}" stroke-width="2" stroke-linejoin="round"/><path d="M73.5 217 V256" stroke="#E2B28A" stroke-width="2" stroke-linecap="round" opacity=".7"/>` +
+                `<rect x="82" y="245" width="70" height="10" rx="2" fill="${wd}" stroke="${wk}" stroke-width="2"/>` +
+                `<rect x="150" y="236" width="8" height="26" rx="3" fill="${wd}" stroke="${wk}" stroke-width="2"/>` +
+                `<rect x="82" y="233" width="68" height="15" rx="5" fill="#FBF6EE" stroke="${d.dark}" stroke-width="2"/>` +
+                `<rect x="85" y="225" width="23" height="13" rx="6.5" fill="${d.light}" stroke="${d.dark}" stroke-width="2"/><path d="M90 230 Q96 227.5 103 230" fill="none" stroke="${d.dark}" stroke-width="1" opacity=".4" stroke-linecap="round"/>` +
+                `<path d="M106 235 H147 Q150 235 150 238 V252 Q144 249 138 252 Q132 249 126 252 Q120 249 114 252 Q110 250 106 252 Z" fill="${d.main}" stroke="${d.dark}" stroke-width="2" stroke-linejoin="round"/>` +
+                `<path d="M106 235 H118 L116 251 Q110 249 106 252 Z" fill="${d.light}" stroke="${d.dark}" stroke-width="1.6" stroke-linejoin="round"/><path d="M126 241 V247 M134 241 V247 M142 241 V247" stroke="${d.dark}" stroke-width="1.3" opacity=".4" stroke-linecap="round"/>`; },
         slide: (type, k) => { const d = dflt(k, { main: "#F4A261", dark: "#C9783A", light: "#FFD9B0" });
             return `<path d="M298 226 V262 M326 226 V262" stroke="${d.dark}" stroke-width="4" stroke-linecap="round"/><path d="M313 262 L316 226 M326 262 V226" stroke="${d.dark}" stroke-width="3.4" stroke-linecap="round"/><path d="M314 255 H326 M314.6 246 H326 M315 237 H326" stroke="${d.dark}" stroke-width="2.6" stroke-linecap="round"/>` +
                 `<path d="M296 232 Q262 236 238 248 Q224 256 204 259" fill="none" stroke="${d.dark}" stroke-width="12" stroke-linecap="round"/><path d="M296 232 Q262 236 238 248 Q224 256 204 259" fill="none" stroke="${d.main}" stroke-width="8" stroke-linecap="round"/><path d="M292 230 Q262 234 240 245" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".5"/>` +
@@ -7135,7 +7239,7 @@ function initHouseCreator() {
                 : `<rect x="70" y="${interiorTop}" width="260" height="${262 - interiorTop}" fill="${w.light}"/>`) +
             (settings.type === "cage" ? "" : `<clipPath id="wpOuter"><rect x="70" y="${interiorTop}" width="260" height="${262 - interiorTop}"/></clipPath><g clip-path="url(#wpOuter)">${wallpapers[settings.wallpaper](w)}</g>`) +
             (settings.type === "cage" ? "" : `<defs><linearGradient id="houseShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2418" stop-opacity=".2"/><stop offset=".4" stop-color="#3a2418" stop-opacity="0"/></linearGradient></defs><rect x="70" y="${interiorTop}" width="260" height="${262 - interiorTop}" fill="url(#houseShade)"/>`) +
-            floors[settings.floor]() +
+            floors[settings.floor](settings) +
             draw("rug") + draw("tunnel") + draw("window") + draw("curtains") + draw("clock") + draw("mirror") + draw("shelf") + draw("pennant") + draw("bookshelf") + draw("bottle") + draw("picture") + draw("lights") + draw("bunting") + draw("garland") + draw("mobile") + draw("lantern") + draw("hammock") + draw("swing") + draw("ladder") + draw("slide") + draw("wheel") +
             draw("bed") + draw("log") +
             resident +
@@ -7226,6 +7330,8 @@ function initHouseCreator() {
     function render() {
         stage.innerHTML = houseSVG(state);
         renderItemColors();
+        const tileRow = document.getElementById("tileColors");
+        if (tileRow) tileRow.hidden = state.floor !== "tiles";
         page.querySelectorAll(".creator-option").forEach(button => {
             const { group, value } = button.dataset;
             const selected = multi[group] ? state[group].includes(value) : state[group] === value;
