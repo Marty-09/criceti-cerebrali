@@ -356,7 +356,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                 <h3 class="home-menu-group">Compra</h3>
                 <button class="home-menu-card" onclick="goToSection('criceti')">
                     <span class="home-menu-icon">🐹</span>
-                    <span class="home-menu-text"><span class="home-menu-title">I nostri criceti</span><span class="home-menu-sub">12 modelli, nessuno produttivo</span></span>
+                    <span class="home-menu-text"><span class="home-menu-title">I nostri criceti</span><span class="home-menu-sub">Nessuno produttivo, tutti adorabili</span></span>
                 </button>
                 <button class="home-menu-card" onclick="goToSection('ruote')">
                     <span class="home-menu-icon">🎡</span>
@@ -447,7 +447,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                 <div>
                     <span class="tiny-label">Reparto roditori</span>
                     <h2>Criceti cerebrali</h2>
-                    <p>Dodici modelli. Dodici modi diversi di perdere il controllo.</p>
+                    <p>Tredici modelli. Tredici modi diversi di perdere il controllo.</p>
                 </div>
                 <span class="eyebrow">12 modelli</span>
             </div>
@@ -943,6 +943,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                                  cx="204" cy="274" rx="21" ry="11"
                                  fill="#DDB58F" stroke="#A77C5B"
                                  stroke-width="3"/>
+                        <g id="hamsterPatternFeet" clip-path="url(#hamsterFeetClip)"></g>
                         <path d="M108 270 V276 M116 269 V277 M124 270 V276
                                  M196 270 V276 M204 269 V277 M212 270 V276"
                               stroke="#ECA6A9" stroke-width="2.5"
@@ -1010,6 +1011,8 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                         <g id="hamsterAgeArt"></g>
 
                         <defs>
+                            <clipPath id="hamsterFeetClip"><ellipse cx="116" cy="274" rx="21" ry="11"/><ellipse cx="204" cy="274" rx="21" ry="11"/></clipPath>
+                            <linearGradient id="furRainbow" gradientUnits="userSpaceOnUse" x1="86" y1="70" x2="234" y2="285"><stop offset="0" stop-color="#FF8FA3"/><stop offset=".2" stop-color="#FFB36B"/><stop offset=".4" stop-color="#FFE27A"/><stop offset=".6" stop-color="#9ADB9A"/><stop offset=".8" stop-color="#7FC4F2"/><stop offset="1" stop-color="#B79CEB"/></linearGradient>
                             <clipPath id="hamsterBodyClip">
                                 <use href="#hamsterBodyShape"/>
                             </clipPath>
@@ -1490,11 +1493,25 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                     <h2>Scegli il colore del pelo</h2>
                     <p>Il colore principale: pancino e musetto si scelgono nel passo dopo.</p>
                     <div class="creator-options" id="furOptions">
+                        <button type="button" class="creator-option"
+                                data-group="fur" data-value="white"
+                                aria-pressed="false">
+                            <span class="creator-swatch"
+                                  style="background:#F8F4EF"></span>
+                            Angel
+                        </button>
                         <button type="button" class="creator-option selected"
                                 data-group="fur" data-value="cream"
                                 aria-pressed="true">
                             <span class="creator-swatch" style="background:#E8D1B5"></span>
                             Crema
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="fur" data-value="apricot"
+                                aria-pressed="false">
+                            <span class="creator-swatch"
+                                  style="background:#EFA97C"></span>
+                            Albicocca
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="fur" data-value="honey"
@@ -1503,16 +1520,23 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                             Miele
                         </button>
                         <button type="button" class="creator-option"
-                                data-group="fur" data-value="cocoa"
-                                aria-pressed="false">
-                            <span class="creator-swatch" style="background:#A87858"></span>
-                            Cacao
-                        </button>
-                        <button type="button" class="creator-option"
                                 data-group="fur" data-value="caramel"
                                 aria-pressed="false">
                             <span class="creator-swatch" style="background:#C58B68"></span>
                             Caramello
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="fur" data-value="cinnamon"
+                                aria-pressed="false">
+                            <span class="creator-swatch"
+                                  style="background:#C97B4A"></span>
+                            Cannella
+                        </button>
+                        <button type="button" class="creator-option"
+                                data-group="fur" data-value="cocoa"
+                                aria-pressed="false">
+                            <span class="creator-swatch" style="background:#A87858"></span>
+                            Cacao
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="fur" data-value="grey"
@@ -1528,32 +1552,11 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                             Carbone
                         </button>
                         <button type="button" class="creator-option"
-                                data-group="fur" data-value="white"
-                                aria-pressed="false">
-                            <span class="creator-swatch"
-                                  style="background:#F8F4EF"></span>
-                            Angel
-                        </button>
-                        <button type="button" class="creator-option"
                                 data-group="fur" data-value="pink"
                                 aria-pressed="false">
                             <span class="creator-swatch"
                                   style="background:#E5A0AE"></span>
                             Confetto
-                        </button>
-                        <button type="button" class="creator-option"
-                                data-group="fur" data-value="cinnamon"
-                                aria-pressed="false">
-                            <span class="creator-swatch"
-                                  style="background:#C97B4A"></span>
-                            Cannella
-                        </button>
-                        <button type="button" class="creator-option"
-                                data-group="fur" data-value="apricot"
-                                aria-pressed="false">
-                            <span class="creator-swatch"
-                                  style="background:#EFA97C"></span>
-                            Albicocca
                         </button>
                         <button type="button" class="creator-option"
                                 data-group="fur" data-value="lavender"
@@ -1569,6 +1572,12 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                                   style="background:#AFC98F"></span>
                             Matcha
                         </button>
+                        <button type="button" class="creator-option"
+                                data-group="fur" data-value="rainbow"
+                                aria-pressed="false">
+                            <span class="creator-swatch" style="background:linear-gradient(135deg,#FF8FA3,#FFB36B,#FFE27A,#9ADB9A,#7FC4F2,#B79CEB)"></span>
+                            Arcobaleno
+                        </button>
                     </div>
                 </section>
 
@@ -1576,16 +1585,16 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                     <h2>Scegli il colore di pancino e musetto</h2>
                     <p>Il colore chiaro di pancino e musetto, scelto a parte dal resto.</p>
                     <div class="creator-options" id="innerFurOptions">
+                        <button type="button" class="creator-option" data-group="innerFur" data-value="white" aria-pressed="false"><span class="creator-swatch" style="background:#F8F4EF"></span>Angel</button>
                         <button type="button" class="creator-option selected" data-group="innerFur" data-value="cream" aria-pressed="true"><span class="creator-swatch" style="background:#E8D1B5"></span>Crema</button>
+                        <button type="button" class="creator-option" data-group="innerFur" data-value="apricot" aria-pressed="false"><span class="creator-swatch" style="background:#EFA97C"></span>Albicocca</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="honey" aria-pressed="false"><span class="creator-swatch" style="background:#D8A15D"></span>Miele</button>
-                        <button type="button" class="creator-option" data-group="innerFur" data-value="cocoa" aria-pressed="false"><span class="creator-swatch" style="background:#A87858"></span>Cacao</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="caramel" aria-pressed="false"><span class="creator-swatch" style="background:#C58B68"></span>Caramello</button>
+                        <button type="button" class="creator-option" data-group="innerFur" data-value="cinnamon" aria-pressed="false"><span class="creator-swatch" style="background:#C97B4A"></span>Cannella</button>
+                        <button type="button" class="creator-option" data-group="innerFur" data-value="cocoa" aria-pressed="false"><span class="creator-swatch" style="background:#A87858"></span>Cacao</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="grey" aria-pressed="false"><span class="creator-swatch" style="background:#A8A5A0"></span>Nuvola</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="black" aria-pressed="false"><span class="creator-swatch" style="background:#48434A"></span>Carbone</button>
-                        <button type="button" class="creator-option" data-group="innerFur" data-value="white" aria-pressed="false"><span class="creator-swatch" style="background:#F8F4EF"></span>Angel</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="pink" aria-pressed="false"><span class="creator-swatch" style="background:#E5A0AE"></span>Confetto</button>
-                        <button type="button" class="creator-option" data-group="innerFur" data-value="cinnamon" aria-pressed="false"><span class="creator-swatch" style="background:#C97B4A"></span>Cannella</button>
-                        <button type="button" class="creator-option" data-group="innerFur" data-value="apricot" aria-pressed="false"><span class="creator-swatch" style="background:#EFA97C"></span>Albicocca</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="lavender" aria-pressed="false"><span class="creator-swatch" style="background:#C3B2E0"></span>Lavanda</button>
                         <button type="button" class="creator-option" data-group="innerFur" data-value="matcha" aria-pressed="false"><span class="creator-swatch" style="background:#AFC98F"></span>Matcha</button>
                     </div>
@@ -1740,11 +1749,11 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                         <span class="creator-colors-label">Colore degli occhi</span>
                         <button type="button" class="creator-option creator-color selected" data-group="eyeColor" data-value="dark" aria-pressed="true" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#30231F"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="brown" aria-pressed="false" title="Marrone" aria-label="Marrone"><span class="creator-swatch" style="background:#6B4226"></span></button>
-                        <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#3D6FB6"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="amber" aria-pressed="false" title="Ambra" aria-label="Ambra"><span class="creator-swatch" style="background:#B7802A"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="green" aria-pressed="false" title="Verde" aria-label="Verde"><span class="creator-swatch" style="background:#5B8A45"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#3D6FB6"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="violet" aria-pressed="false" title="Viola" aria-label="Viola"><span class="creator-swatch" style="background:#7B4FB0"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#B83A4A"></span></button>
-                        <button type="button" class="creator-option creator-color" data-group="eyeColor" data-value="amber" aria-pressed="false" title="Ambra" aria-label="Ambra"><span class="creator-swatch" style="background:#B7802A"></span></button>
                     </div>
                 </section>
 
@@ -1862,9 +1871,9 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                         <button type="button" class="creator-option creator-color" data-group="freckleColor" data-value="cocoa" aria-pressed="false" title="Cacao" aria-label="Cacao"><span class="creator-swatch" style="background:#8A5A3C"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="freckleColor" data-value="ginger" aria-pressed="false" title="Zenzero" aria-label="Zenzero"><span class="creator-swatch" style="background:#D9803A"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="freckleColor" data-value="rose" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#E07A8C"></span></button>
-                        <button type="button" class="creator-option creator-color" data-group="freckleColor" data-value="violet" aria-pressed="false" title="Viola" aria-label="Viola"><span class="creator-swatch" style="background:#8E6BC0"></span></button>
-                        <button type="button" class="creator-option creator-color" data-group="freckleColor" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#4F86C6"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="freckleColor" data-value="matcha" aria-pressed="false" title="Matcha" aria-label="Matcha"><span class="creator-swatch" style="background:#7C9A60"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="freckleColor" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#4F86C6"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="freckleColor" data-value="violet" aria-pressed="false" title="Viola" aria-label="Viola"><span class="creator-swatch" style="background:#8E6BC0"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="freckleColor" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#3B3440"></span></button>
                     </div>
                 </section>
@@ -1910,8 +1919,8 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                         <button type="button" class="creator-option creator-color selected" data-group="whiskerColor" data-value="brown" aria-pressed="true" title="Marrone" aria-label="Marrone"><span class="creator-swatch" style="background:#79554C"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="whiskerColor" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#2F2A33"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="whiskerColor" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
-                        <button type="button" class="creator-option creator-color" data-group="whiskerColor" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#E07A8C"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="whiskerColor" data-value="gold" aria-pressed="false" title="Oro" aria-label="Oro"><span class="creator-swatch" style="background:#D9A43A"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="whiskerColor" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#E07A8C"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="whiskerColor" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#6F9FD8"></span></button>
                     </div>
                 </section>
@@ -2015,13 +2024,13 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                     <div class="creator-colors" role="group" aria-label="Colore">
                         <span class="creator-colors-label">Colore accessorio</span>
                         <button type="button" class="creator-option creator-color selected" data-group="accColorHead" data-value="original" aria-pressed="true" title="Originale" aria-label="Originale"><span class="creator-swatch"></span></button>
-                        <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#F0606F"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="orange" aria-pressed="false" title="Arancio" aria-label="Arancio"><span class="creator-swatch" style="background:#FFB86B"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="yellow" aria-pressed="false" title="Giallo" aria-label="Giallo"><span class="creator-swatch" style="background:#FFD66B"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="mint" aria-pressed="false" title="Matcha" aria-label="Matcha"><span class="creator-swatch" style="background:#AFC98F"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#8FC1F0"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="purple" aria-pressed="false" title="Lilla" aria-label="Lilla"><span class="creator-swatch" style="background:#B9A3E3"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#3B3440"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorHead" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
                     </div>
@@ -2079,13 +2088,13 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                     <div class="creator-colors" role="group" aria-label="Colore">
                         <span class="creator-colors-label">Colore accessorio</span>
                         <button type="button" class="creator-option creator-color selected" data-group="accColorFace" data-value="original" aria-pressed="true" title="Originale" aria-label="Originale"><span class="creator-swatch"></span></button>
-                        <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#F0606F"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="orange" aria-pressed="false" title="Arancio" aria-label="Arancio"><span class="creator-swatch" style="background:#FFB86B"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="yellow" aria-pressed="false" title="Giallo" aria-label="Giallo"><span class="creator-swatch" style="background:#FFD66B"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="mint" aria-pressed="false" title="Matcha" aria-label="Matcha"><span class="creator-swatch" style="background:#AFC98F"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#8FC1F0"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="purple" aria-pressed="false" title="Lilla" aria-label="Lilla"><span class="creator-swatch" style="background:#B9A3E3"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#3B3440"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorFace" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
                     </div>
@@ -2126,26 +2135,26 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                     <div class="creator-colors" role="group" aria-label="Colore">
                         <span class="creator-colors-label">Colore accessorio</span>
                         <button type="button" class="creator-option creator-color selected" data-group="accColorNeck" data-value="original" aria-pressed="true" title="Originale" aria-label="Originale"><span class="creator-swatch"></span></button>
-                        <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#F0606F"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="orange" aria-pressed="false" title="Arancio" aria-label="Arancio"><span class="creator-swatch" style="background:#FFB86B"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="yellow" aria-pressed="false" title="Giallo" aria-label="Giallo"><span class="creator-swatch" style="background:#FFD66B"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="mint" aria-pressed="false" title="Matcha" aria-label="Matcha"><span class="creator-swatch" style="background:#AFC98F"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#8FC1F0"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="purple" aria-pressed="false" title="Lilla" aria-label="Lilla"><span class="creator-swatch" style="background:#B9A3E3"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#3B3440"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorNeck" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
                     </div>
                     <div class="creator-colors" id="heartColorRow" role="group" aria-label="Colore del cuore" style="display:none">
                         <span class="creator-colors-label">Colore del cuore della collana</span>
                         <button type="button" class="creator-option creator-color selected" data-group="heartColor" data-value="original" aria-pressed="true" title="Originale" aria-label="Originale"><span class="creator-swatch"></span></button>
-                        <button type="button" class="creator-option creator-color" data-group="heartColor" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heartColor" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#F0606F"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heartColor" data-value="orange" aria-pressed="false" title="Arancio" aria-label="Arancio"><span class="creator-swatch" style="background:#FFB86B"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heartColor" data-value="yellow" aria-pressed="false" title="Giallo" aria-label="Giallo"><span class="creator-swatch" style="background:#FFD66B"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heartColor" data-value="mint" aria-pressed="false" title="Matcha" aria-label="Matcha"><span class="creator-swatch" style="background:#AFC98F"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heartColor" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#8FC1F0"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heartColor" data-value="purple" aria-pressed="false" title="Lilla" aria-label="Lilla"><span class="creator-swatch" style="background:#B9A3E3"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="heartColor" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heartColor" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#3B3440"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heartColor" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
                     </div>
@@ -2185,13 +2194,13 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                     <div class="creator-colors" role="group" aria-label="Colore">
                         <span class="creator-colors-label">Colore accessorio</span>
                         <button type="button" class="creator-option creator-color selected" data-group="accColorShirt" data-value="original" aria-pressed="true" title="Originale" aria-label="Originale"><span class="creator-swatch"></span></button>
-                        <button type="button" class="creator-option creator-color" data-group="accColorShirt" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorShirt" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#F0606F"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorShirt" data-value="orange" aria-pressed="false" title="Arancio" aria-label="Arancio"><span class="creator-swatch" style="background:#FFB86B"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorShirt" data-value="yellow" aria-pressed="false" title="Giallo" aria-label="Giallo"><span class="creator-swatch" style="background:#FFD66B"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorShirt" data-value="mint" aria-pressed="false" title="Matcha" aria-label="Matcha"><span class="creator-swatch" style="background:#AFC98F"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorShirt" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#8FC1F0"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorShirt" data-value="purple" aria-pressed="false" title="Lilla" aria-label="Lilla"><span class="creator-swatch" style="background:#B9A3E3"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="accColorShirt" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorShirt" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#3B3440"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="accColorShirt" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
                     </div>
@@ -2320,13 +2329,13 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                     <div class="creator-colors" role="group" aria-label="Colore del libro">
                         <span class="creator-colors-label">Colore dell'oggetto</span>
                         <button type="button" class="creator-option creator-color selected" data-group="heldColor" data-value="original" aria-pressed="true" title="Originale" aria-label="Originale"><span class="creator-swatch"></span></button>
-                        <button type="button" class="creator-option creator-color" data-group="heldColor" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heldColor" data-value="red" aria-pressed="false" title="Rosso" aria-label="Rosso"><span class="creator-swatch" style="background:#F0606F"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heldColor" data-value="orange" aria-pressed="false" title="Arancio" aria-label="Arancio"><span class="creator-swatch" style="background:#FFB86B"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heldColor" data-value="yellow" aria-pressed="false" title="Giallo" aria-label="Giallo"><span class="creator-swatch" style="background:#FFD66B"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heldColor" data-value="mint" aria-pressed="false" title="Matcha" aria-label="Matcha"><span class="creator-swatch" style="background:#AFC98F"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heldColor" data-value="blue" aria-pressed="false" title="Azzurro" aria-label="Azzurro"><span class="creator-swatch" style="background:#8FC1F0"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heldColor" data-value="purple" aria-pressed="false" title="Lilla" aria-label="Lilla"><span class="creator-swatch" style="background:#B9A3E3"></span></button>
+                        <button type="button" class="creator-option creator-color" data-group="heldColor" data-value="pink" aria-pressed="false" title="Rosa" aria-label="Rosa"><span class="creator-swatch" style="background:#F7A1BC"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heldColor" data-value="black" aria-pressed="false" title="Nero" aria-label="Nero"><span class="creator-swatch" style="background:#3B3440"></span></button>
                         <button type="button" class="creator-option creator-color" data-group="heldColor" data-value="white" aria-pressed="false" title="Bianco" aria-label="Bianco"><span class="creator-swatch" style="background:#FFFFFF"></span></button>
                     </div>
@@ -3064,10 +3073,10 @@ const products = [
         emoji:"🐹",
         color:"#f9e4d5",
         tag:"Il classico",
-        description:"Fa girare la ruota. A volte si dimentica perché, ma il suo lavoro lo fa. Ideale per pensieri semplici, tipo «cosa mangio stasera?».",
+        description:"Fa girare la ruota. A volte si dimentica perché, ma il suo lavoro lo fa. Ideale per pensieri semplici.",
         personality:"Distratto ma volenteroso",
-        speed:"30 giri al minuto",
-        intelligence:"Nella media (dei criceti)",
+        speed:"50 m/s",
+        intelligence:"Media",
         duration:"30 giorni",
         price:4.99
     },
@@ -3226,6 +3235,20 @@ const products = [
         price:42.99
     },
     {
+        id:"h13",
+        category:"criceto",
+        name:"Criceto Arcobaleno",
+        emoji:"🌈",
+        color:"#f3e8fb",
+        tag:"Dopo la pioggia",
+        description:"Sette colori, zero spiegazioni. Dove passa lascia un po' di buonumore e qualche pelo multicolore sul divano.",
+        personality:"Solare, vanitoso e irresistibile",
+        speed:"7 colori al secondo",
+        intelligence:"Brillante a ogni angolo",
+        duration:"Finché c'è sole (e anche dopo)",
+        price:24.99
+    },
+    {
         id:"w1",
         category:"ruota",
         name:"Ruota Base",
@@ -3344,6 +3367,18 @@ const products = [
         speed:"500 ritornelli al minuto",
         duration:"Finché qualcuno ascolta",
         price:52.99
+    },
+    {
+        id:"w11",
+        category:"ruota",
+        name:"Ruota Arcobaleno",
+        emoji:"🌈",
+        color:"#f3e8fb",
+        tag:"Giri a colori",
+        description:"Un cerchio a sette colori che lascia scie luminose a ogni giro. Fatta apposta per il Criceto Arcobaleno, ma accetta anche ospiti senza vestiti coordinati.",
+        speed:"700 giri al minuto, tutti colorati",
+        duration:"Un anno e un giorno",
+        price:29.99
     },
     {
         id:"x1", category:"halloween", name:"Criceto Vampiro", emoji:"🧛", color:"#2f2340", tag:"Edizione limitata",
@@ -3623,7 +3658,7 @@ const cartTotal = () =>
         0
     );
 const productDetails = {
-    h1: ["Il modello da cui è partito tutto. Non ha superpoteri, non ha manie e non ha un profilo social: si sveglia, mangia un seme e corre finché non si ricorda di una cosa che doveva fare. Poi corre lo stesso.", [["Livello di rumore", "Un cigolio rassicurante"], ["Passatempo", "Fissare il muro con convinzione"], ["Compatibile con", "Lunedì mattina"]]],
+    h1: ["Il modello da cui è partito tutto. Non ha superpoteri, non ha manie e non ha un profilo social: si sveglia, mangia un seme e corre finché non si ricorda di una cosa che doveva fare.", [["Livello di rumore", "Medio"], ["Passatempo", "Fissare il muro"], ["Compatibile con", "Tutti i giorni"]]],
     h2: ["Si è fatto assumere da una startup e non si è più fermato. Risponde alle email mentre corre, corre mentre dorme e dorme solo quando finisce il caffè. Consigliato in periodo di esami, sconsigliato al tuo battito cardiaco.", [["Caffeina nel sangue", "Il 70%"], ["Passatempo", "Fare tre cose insieme, male"], ["Effetti collaterali", "Tremolio delle vibrisse"]]],
     h3: ["Tre proprietari, due traslochi e un'esperienza traumatica con un aspirapolvere. Lo abbiamo lavato, pettinato e rimesso in vendita con una toppa nuova di zecca. *La garanzia copre solo la toppa.", [["Condizioni", "Come nuovo (se strizzi gli occhi)"], ["Ricordi", "Preferisce non parlarne"], ["Garanzia", "Solo sulla toppa"]]],
     h4: ["Ha letto tutto Nietzsche in una notte e da allora guarda la ruota con sospetto. Quando finalmente corre, lo fa per dimostrare qualcosa all'universo. L'universo non ha ancora risposto.", [["Autore preferito", "Socrate (le parti col formaggio)"], ["Domanda ricorrente", "Ma la ruota gira o sono io?"], ["Risposte trovate", "Nessuna, per ora"]]],
@@ -3634,6 +3669,8 @@ const productDetails = {
     h9: ["Ha un abbonamento a sei piattaforme e nessuna intenzione di uscire. Corre solo se la ruota è davanti allo schermo e si ferma a ogni colpo di scena per fissarti scioccato.", [["Serie in corso", "14 contemporaneamente"], ["Spoiler fatti", "Tutti, involontariamente"], ["Frase tipica", "«Ancora una e vado a letto»"]]],
     h10: ["Ha scritto un intero album sul giorno in cui ha perso il suo seme preferito. Canta nella ruota a squarciagola e ogni giro è una strofa: tieni i fazzoletti a portata di zampa.", [["Canzone preferita", "vampire (versione criceto)"], ["Colore preferito", "Viola, ovviamente"], ["Fazzoletti consumati", "Una scatola a ritornello"]]],
     h11: ["Pelo nero, ciuffo verde acido e felpa taglia XXL. Canta piano o a squarciagola a seconda dell'umore, ride di gusto e preferisce le cose dette in faccia a quelle dette a metà. Ama gli animali e i testi scritti in cameretta.", [["Volume della voce", "Dal piano al fortissimo, a sorpresa"], ["Stile", "Comodo, largo, tutto verde e nero"], ["Hobby", "Comporre, ridere, difendere gli animali"]]],
+    h13: ["Un criceto che sembra uscito da un temporale appena finito: pelo a strisce di sette colori, guance a stella e la sicurezza di chi sa di essere fotogenico. Passa le giornate a farsi ammirare e a correre su ruote che gli stanno bene.", [["Colori", "Tutti, in ordine di arcobaleno"], ["Vanità", "Moderata, ma non negoziabile"], ["Compatibile con", "Ruota Arcobaleno"]]],
+    w11: ["Raggi colorati, rim a sette tinte e una scia luminosa che resta nell'aria per qualche secondo. Consigliata a criceti con spiccato senso estetico e a chi vuole una ruota che si veda dall'altra stanza.", [["Colori", "Rosso, arancio, giallo, verde, azzurro, blu, viola"], ["Scia", "Sì, ma solo nell'immaginazione"], ["Abbinata a", "Criceto Arcobaleno"]]],
     h12: ["Imbraccia la chitarrina e trasforma qualsiasi momento in un video emozionante con la musica di sottofondo. Dopo il terzo ritornello piangerete entrambi senza sapere bene perché.", [["Strumento", "Chitarrina (una corda rotta)"], ["Pubblico", "Tu e il gatto"], ["Lacrime per canzone", "Almeno tre"]]],
     w1: ["La ruota più venduta nella storia dei criceti: plastica onesta, un cigolio familiare e la promessa di girare quasi sempre. Montaggio facile, se trovi tutte le viti.", [["Materiale", "Plastica di carattere"], ["Viti incluse", "11 su 12"], ["Rumorosità", "Media, soprattutto di notte"]]],
     w2: ["Progettata in una galleria del vento per criceti, con cuscinetti silenziosi e un rivestimento menta antistress. I brillantini non servono a niente, ma fanno sentire il criceto un atleta.", [["Cuscinetti", "Svizzeri, dicono"], ["Brillantini", "Quantità ingiustificata"], ["Silenziosità", "Senti solo il criceto pensare"]]],
@@ -3882,8 +3919,8 @@ const normalizeText = text => String(text).normalize("NFD").replace(/[\u0300-\u0
 const matchesQuery = product => !shopQuery || normalizeText(`${product.name} ${product.tag} ${product.description}`).includes(shopQuery);
 let shopSort = "evidenza";
 const shopGroup = product => product.id === "w7" ? "extra" : product.category;
-const SHOP_ORDER = ["h1", "h3", "h2", "h5", "h4", "h7", "h8", "h9", "h6", "h10", "h11", "h12",
-    "w1", "w3", "w4", "w2", "w5", "w6", "w8", "w9", "w10",
+const SHOP_ORDER = ["h1", "h3", "h2", "h5", "h4", "h7", "h8", "h9", "h6", "h10", "h11", "h12", "h13",
+    "w1", "w3", "w4", "w2", "w5", "w6", "w8", "w9", "w10", "w11",
     "pl4", "pl2", "pl1", "pl3", "pl5",
     "e1", "e2", "e3", "w7"];
 const shopRank = id => { const i = SHOP_ORDER.indexOf(id); return i < 0 ? 999 : i; };
@@ -4025,16 +4062,21 @@ function showPage(pageName,fromHistory = false) {
 }
 window.addEventListener("popstate",() => showPage(pageFromHash(),true));
 function goToSection(sectionId) {
+    const chip = document.querySelector('.filter-chip[data-filter="tutto"]');
+    const search = document.getElementById("searchProducts");
+    if ((typeof shopFilter !== "undefined" && shopFilter !== "tutto") || (search && search.value)) {
+        if (search && search.value) { search.value = ""; search.dispatchEvent(new Event("input", { bubbles: true })); }
+        if (chip) chip.click();
+    }
     showPage("catalogo");
-    setTimeout(() => {
+    const go = () => {
         const section = document.getElementById(sectionId);
-        if (section) {
-            section.scrollIntoView({
-                behavior:"smooth",
-                block:"start"
-            });
-        }
-    },50);
+        if (!section) return;
+        const head = document.querySelector("header");
+        const top = section.getBoundingClientRect().top + window.scrollY - (head ? head.offsetHeight : 0) - 8;
+        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    };
+    setTimeout(go, 120);
 }
 function addToCart(id) {
     const product = getProduct(id);
@@ -4652,6 +4694,12 @@ function initHamsterCreator() {
             dark: "#7C9A60",
             tail: "#AFC98F",
             innerEar: "#E0B9AE"
+        },
+        rainbow: {
+            main: "url(#furRainbow)",
+            dark: "#8F77B5",
+            tail: "url(#furRainbow)",
+            innerEar: "#F6B8CF"
         }
     };
     const accessoryIds = {
@@ -5045,6 +5093,8 @@ function initHamsterCreator() {
             const part = lookParts[key][state[key]] ?? lookParts[key][lookDefaults[key]];
             if (element) element.innerHTML = typeof part === "function" ? part(colors, state) : part;
         });
+        const patFeet = document.getElementById("hamsterPatternFeet"), pat = document.getElementById("hamsterPattern");
+        if (patFeet && pat) patFeet.innerHTML = pat.innerHTML;
         const back = document.getElementById("hamsterHeldBack");
         if (back) back.innerHTML = heldBack[state.held] ? heldBack[state.held](colors, state) : "";
         const top = document.getElementById("hamsterHeldTop");
@@ -5836,7 +5886,8 @@ function decorateWithHamsters() {
         h9: { fur: "grey", eyes: "small", accessories: ["headphones", "scarf"] },
         h10: { fur: "cream", eyes: "anime", mouth: "grin", cheeks: "lilac", accessories: ["bow"], accColorHead: "purple", held: "mic" },
         h11: { fur: "black", innerFur: "white", pattern: "stripe", mouth: "smug", eyes: "big", eyeColor: "dark", cheeks: "none", whiskers: "soft", whiskerColor: "brown", accessories: ["crown", "bowtie"], accColorHead: "mint", accColorNeck: "mint", held: "mic" },
-        h12: { fur: "honey", eyes: "happy", mouth: "grin", accessories: ["scarf"], accColorNeck: "blue", held: "guitar" }
+        h12: { fur: "honey", eyes: "happy", mouth: "grin", accessories: ["scarf"], accColorNeck: "blue", held: "guitar" },
+        h13: { fur: "rainbow", innerFur: "white", eyes: "big", mouth: "grin", cheeks: "stars", accessories: [], held: "seed" }
     };
     Object.entries(looks).forEach(([id, look]) => {
         const product = getProduct(id);
@@ -6031,6 +6082,13 @@ function drawProductArt() {
         return `<path d="M${x} 168 Q${x + lean / 2} 135 ${x + lean} ${112 + (i * 13) % 18}" stroke="${i % 3 ? "#d9ae52" : "#fbe39c"}" stroke-width="3" fill="none" stroke-linecap="round"/>`;
     }).join("");
     const art = {
+        w11: wheel({
+            rim: "#d8c4ee", fill: "#fbf6ff", rung: "#d9c7f0", hub: "#b79ceb", stand: "#9d85c9",
+            extra: ["#FF8FA3", "#FFB36B", "#FFE27A", "#9ADB9A", "#7FC4F2", "#B79CEB"].map((c, i) => {
+                const pt = a => `${(100 + 68 * Math.cos(a * Math.PI / 180)).toFixed(2)} ${(92 + 68 * Math.sin(a * Math.PI / 180)).toFixed(2)}`;
+                return `<path d="M${pt(i * 60 - 90)} A68 68 0 0 1 ${pt(i * 60 - 30)}" fill="none" stroke="${c}" stroke-width="11" stroke-linecap="butt"/>`;
+            }).join("") + `<g fill="#fff" stroke="#e6dcf3" stroke-width="2"><path d="M20 168c-9 0-10-11-2-12 1-8 13-8 15-1 8-1 10 11 2 13z"/><path d="M168 150c-8 0-9-10-2-11 1-7 12-7 14-1 7-1 9 10 2 12z"/></g>` + star(172, 30, 9, "#FFE27A") + star(28, 40, 7, "#FF8FA3")
+        }),
         w1: wheel({
             rim: "#c88965", fill: "#f7d3b4", rung: "#dfa883", hub: "#c88965", stand: "#a86f4f",
             extra: `<g fill="none" stroke="#c88965" stroke-width="4" stroke-linecap="round" opacity=".55"><path d="M20 70q-8 22 0 44"/><path d="M8 78q-5 14 0 28"/></g>`
@@ -7329,7 +7387,6 @@ initWheelCreator();
             void icon.offsetWidth;
             icon.classList.add("wiggle");
             icon.addEventListener("animationend", () => icon.classList.remove("wiggle"), { once: true });
-            sparkle(event.clientX, event.clientY, ["✨", "🌻"], 4, 40);
         }
         if (event.target.closest("#heroScene")) sparkle(event.clientX, event.clientY, ["✨", "💭", "💗"], 4, 50);
         const surprise = event.target.closest(".creator-actions button");
