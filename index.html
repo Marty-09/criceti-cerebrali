@@ -364,6 +364,23 @@ footer .footer-title{color:#e9b8c0}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.product-card:hover{transform:none}}
 </style>
+<style id="polish16">
+/* Polish v16 */
+p,li,.product-body p,.modal p{text-wrap:pretty}
+h1,h2,h3,.page-heading h1,.creator-heading h1,.section-heading h2{text-wrap:balance}
+:focus-visible{outline:3px solid rgba(225,90,110,.55);outline-offset:2px;border-radius:10px}
+button,.btn,a.nav-link,.product-card,.game-card,.choice,.opt{transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease,border-color .22s ease,filter .22s ease}
+button:active{transform:scale(.97)}
+.product-card,.panel,.season-hero,.creator-panel{box-shadow:0 10px 30px -14px rgba(70,40,40,.28)}
+.product-art img{filter:drop-shadow(0 10px 12px rgba(60,30,30,.16))}
+@media(hover:hover) and (pointer:fine){.product-card:hover{box-shadow:0 22px 44px -18px rgba(70,40,40,.38)}}
+@media(max-width:700px){
+ .season-page .season-hero>*:not(svg):not(img){position:relative;z-index:2}
+ .season-page .season-hero p{text-shadow:0 1px 8px rgba(0,0,0,.28)}
+ .page{padding-left:14px;padding-right:14px}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
 </head>
 
 <body>
