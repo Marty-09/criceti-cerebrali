@@ -279,6 +279,91 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
 }
 @media (prefers-reduced-motion:reduce){.gx-runner.running img,.gx-runner.running .gx-dust,.gx-stage.final .gx-run::after,.gx-step img{animation:none}}
 </style>
+<style id="polish15">
+/* ===== Polish v15 ===== */
+/* home menu */
+@media (min-width:1020px){.home-menu-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:860px){.home-menu-grid .home-menu-card:last-child:nth-child(even){grid-column:span 2}}
+.home-menu-card{background:linear-gradient(180deg,#fff,#fffaf6);border-radius:20px;border:1.5px solid #f3e6dd;box-shadow:0 8px 18px -16px rgba(120,70,50,.5)}
+.home-menu-card:hover{border-color:#f2b9c1;box-shadow:0 16px 28px -16px rgba(200,100,110,.45)}
+.home-menu-card:hover .home-menu-icon{transform:translateY(-2px) rotate(-6deg) scale(1.06)}
+/* hub giochi */
+.games-grid{gap:22px}
+.game-card{padding:0;overflow:hidden;gap:0;background:#fff;border:1.5px solid #f3e6dd;border-radius:26px;box-shadow:0 14px 28px -22px rgba(120,70,50,.6);transition:transform .28s cubic-bezier(.2,.8,.3,1),box-shadow .28s,border-color .28s}
+.game-card:hover{transform:translateY(-6px);box-shadow:0 26px 40px -24px rgba(200,100,110,.55);border-color:#f2b9c1}
+.game-art{display:block;width:100%;height:158px;overflow:hidden;background:#fdeef0}
+.game-art svg{display:block;width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.8,.3,1)}
+.game-card:hover .game-art svg{transform:scale(1.06)}
+.game-body{display:flex;flex-direction:column;gap:6px;padding:18px 22px 22px;flex:1;width:100%}
+.game-body h2{margin:0;font-size:1.3rem}
+.game-body p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.5}
+.game-body .game-go{margin-top:auto;padding-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:900;color:#c04f66}
+.game-card:hover .game-go{gap:10px}
+/* memory */
+#memory .race-card,#acchiappa .race-card{background:linear-gradient(180deg,#fff,#fffaf7)}
+.memory-grid{max-width:480px;padding:16px;border-radius:26px;background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.7),transparent 45%),linear-gradient(145deg,#ffeedd,#ffdfe8);box-shadow:inset 0 0 0 4px #fff,inset 0 10px 24px rgba(200,120,110,.14),0 16px 28px -22px rgba(160,80,70,.5)}
+.mem-card{background:radial-gradient(circle at 28% 22%,rgba(255,255,255,.6),transparent 42%),linear-gradient(145deg,#f7a4b8,#ffc3a2);box-shadow:inset 0 0 0 3px rgba(255,255,255,.7),0 7px 12px -8px rgba(160,70,60,.7)}
+.mem-card .mem-back{filter:grayscale(1) brightness(2.6);opacity:.9}
+.mem-card.flipped,.mem-card.matched{background:#fff;box-shadow:inset 0 0 0 3px #f3dccf,0 7px 12px -8px rgba(160,70,60,.45)}
+.mem-card.matched{background:linear-gradient(180deg,#f1fbea,#e1f3d6);box-shadow:inset 0 0 0 3px #a9d19a,0 0 18px rgba(130,200,110,.45);animation:memPop .5s ease-out}
+.mem-card.flipped .mem-in{animation:memFlip .32s ease-out}
+@keyframes memFlip{from{transform:scaleX(.05)}to{transform:scaleX(1)}}
+@keyframes memPop{0%{transform:scale(1)}40%{transform:scale(1.1)}100%{transform:scale(1)}}
+.mem-progress,.wh-bar{height:10px;max-width:480px;margin:0 auto 6px;border-radius:999px;background:#f6e6df;overflow:hidden}
+.mem-progress i,.wh-bar i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#f4a7b4,#f5b668);transition:width .4s ease}
+/* acchiappa */
+.whack-field{position:relative;max-width:480px;margin:12px auto;padding:22px 18px 26px;border-radius:28px;overflow:hidden;background:radial-gradient(circle at 15% 10%,rgba(255,255,255,.5),transparent 40%),linear-gradient(180deg,#cdeaa6,#a5d77d);box-shadow:inset 0 0 0 4px rgba(255,255,255,.55),0 18px 30px -22px rgba(60,110,40,.65)}
+.whack-field::before{content:"";position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none;background:radial-gradient(ellipse 22px 9px at 12% 22%,rgba(70,140,60,.35),transparent 70%),radial-gradient(ellipse 26px 10px at 82% 14%,rgba(70,140,60,.3),transparent 70%),radial-gradient(ellipse 24px 9px at 70% 62%,rgba(70,140,60,.3),transparent 70%),radial-gradient(ellipse 22px 8px at 20% 78%,rgba(70,140,60,.3),transparent 70%),radial-gradient(ellipse 18px 7px at 50% 40%,rgba(255,255,255,.28),transparent 70%)}
+.whack-field .whack-grid{position:relative;max-width:none;margin:0;gap:6px 12px}
+.hole{background:none;border-radius:0;overflow:visible;clip-path:inset(-150% -30% 4% -30%);box-shadow:none}
+.hole::before{content:"";position:absolute;left:3%;right:3%;bottom:4%;height:38%;border-radius:50%;background:radial-gradient(ellipse at 50% 35%,#2a1811 0 60%,#4f3626 62% 100%);box-shadow:0 4px 0 #8a6847}
+.hole::after{content:"";position:absolute;left:0;right:0;bottom:-2%;height:26%;z-index:2;border-radius:50% 50% 0 0/100% 100% 0 0;background:linear-gradient(180deg,#9a7550,#7a5a3d);box-shadow:inset 0 3px 0 rgba(255,255,255,.25)}
+.hole span{z-index:1;transition:bottom .16s cubic-bezier(.3,1.4,.6,1)}
+.hole.up span{bottom:16%}
+.hole.hit span{bottom:10%;animation:whHit .28s ease-out}
+@keyframes whHit{0%{transform:translateX(-50%) scale(1)}35%{transform:translateX(-50%) scale(1.14,.82)}100%{transform:translateX(-50%) scale(1)}}
+.wh-pt{position:absolute;left:50%;top:6%;z-index:3;transform:translateX(-50%);font-weight:900;font-size:1.2rem;color:#fff;text-shadow:0 2px 0 #e0606f,0 0 8px rgba(240,96,111,.6);pointer-events:none;animation:whPt .75s ease-out forwards}
+.wh-pt.bad{text-shadow:0 2px 0 #444,0 0 8px rgba(0,0,0,.4);color:#ffd1d1}
+@keyframes whPt{from{opacity:1;transform:translate(-50%,0) scale(.8)}to{opacity:0;transform:translate(-50%,-34px) scale(1.25)}}
+/* inner pages */
+.inner-page .page-heading::before{content:"🛒";display:grid;place-items:center;width:64px;height:64px;margin-bottom:14px;border-radius:21px;font-size:1.9rem;background:linear-gradient(145deg,#ffe3e8,#fff0d6);box-shadow:0 12px 20px -14px rgba(170,80,60,.6),inset 0 0 0 2px #fff}
+#tracking .page-heading::before{content:"📦"}
+#assistenza .page-heading::before{content:"🛠️"}
+#restituzioni .page-heading::before{content:"♻️"}
+.inner-page .panel{position:relative;overflow:hidden;border-radius:26px;border:1.5px solid #f3e6dd;box-shadow:0 18px 32px -26px rgba(120,70,50,.55)}
+.inner-page .panel::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#f4a7b4,#f5b668,#c7b2ee)}
+.field label{font-size:.88rem;color:#4a3b36}
+.field input,.field select,.field textarea{border:2px solid #f0e4dd;border-radius:14px;background:#fffdfb;padding:13px 15px;transition:border-color .2s,box-shadow .2s,background .2s}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:#e8cfc6}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#ee9aa6;background:#fff;box-shadow:0 0 0 4px rgba(244,167,180,.25)}
+.field select{-webkit-appearance:none;appearance:none;padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23c04f66' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center}
+.primary-button{box-shadow:0 12px 20px -12px rgba(224,96,111,.75);transition:transform .2s,box-shadow .2s,filter .2s}
+.primary-button:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 16px 24px -12px rgba(224,96,111,.8);filter:saturate(1.08)}
+.primary-button:active:not(:disabled){transform:translateY(0)}
+.track-journey{display:flex;align-items:center;justify-content:space-between;gap:6px;max-width:620px;margin:0 0 22px;padding:16px 18px;border-radius:22px;background:linear-gradient(145deg,#fff4f6,#fff8ea);border:1.5px solid #f3e6dd}
+.track-journey span{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:1.6rem}
+.track-journey small{font-size:.7rem;font-weight:800;color:#8a6a5c}
+.track-journey i{flex:1;height:0;border-top:3px dashed #f0b6bf;min-width:10px;margin-bottom:16px}
+/* footer */
+footer{background:linear-gradient(180deg,#3a2f2c,#2b2220)}
+footer .footer-links .text-button:hover{color:#ffc2cb;transform:translateX(3px)}
+@media (max-width:650px){.game-art{height:132px}.whack-field{padding:16px 12px 20px}.memory-grid{padding:12px;gap:9px}.track-journey span{font-size:1.3rem}.track-journey small{font-size:.62rem}}
+@media (prefers-reduced-motion:reduce){.game-art svg,.mem-card.flipped .mem-in,.mem-card.matched,.hole.hit span{animation:none;transition:none}}
+/* polish v15b */
+.product-card{transition:transform .28s cubic-bezier(.2,.8,.3,1),box-shadow .28s,border-color .28s}
+@media (hover:hover){.product-card:hover{transform:translateY(-6px);box-shadow:0 26px 40px -26px rgba(200,100,110,.5);border-color:#f2c4ca}.product-card:hover .product-image img{transform:scale(1.06) translateY(-2px)}}
+.product-image img{transition:transform .45s cubic-bezier(.2,.8,.3,1)}
+.section-heading h2{position:relative;display:inline-block}
+.section-heading h2::after{content:"";display:block;height:6px;width:64%;margin-top:6px;border-radius:6px;background:linear-gradient(90deg,#f4a7b4,#f5b668 60%,transparent);opacity:.85}
+.cart-item,.cart-line{border-radius:20px;box-shadow:0 10px 20px -18px rgba(120,70,50,.55)}
+.payment-option:has(input:checked),.payment-card:has(input:checked){border-color:#ee9aa6;background:#fff4f6;box-shadow:0 0 0 4px rgba(244,167,180,.22)}
+.toast{border-radius:20px;box-shadow:0 18px 32px -16px rgba(120,70,50,.5)}
+.tiny-label{box-shadow:0 4px 10px -8px rgba(190,80,100,.6)}
+footer .footer-title{color:#e9b8c0}
+::selection{background:#f9d0d6}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.product-card:hover{transform:none}}
+</style>
 </head>
 
 <body>
@@ -866,6 +951,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
             <h1>Traccia il tuo ordine</h1>
             <p>Inserisci il numero d'ordine che trovi nella conferma. I tempi di consegna sono accelerati per la demo: in pochi minuti il pacco fa tutto il viaggio.</p>
         </div>
+        <div class="track-journey" aria-hidden="true"><span>📦<small>Preparato</small></span><i></i><span>🧼<small>Pettinato</small></span><i></i><span>🚚<small>In viaggio</small></span><i></i><span>🏠<small>Consegnato</small></span></div>
         <section class="panel">
             <form id="trackForm" class="track-form">
                 <div class="field">
@@ -2761,9 +2847,9 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
             <p>Scegli un gioco: parte solo quando lo apri, così il negozio resta leggero.</p>
         </div>
         <div class="games-grid">
-            <button type="button" class="game-card" onclick="showPage('gara')"><span class="game-emoji">🏁</span><h2>Gara di criceti</h2><p>Scommetti sul più veloce e tifa a gran voce.</p><span class="game-go">Gioca →</span></button>
-            <button type="button" class="game-card" onclick="showPage('memory')"><span class="game-emoji">🃏</span><h2>Memory dei criceti</h2><p>Trova le coppie, sempre che ti ricordi dove sono.</p><span class="game-go">Gioca →</span></button>
-            <button type="button" class="game-card" onclick="showPage('acchiappa')"><span class="game-emoji">🔨</span><h2>Acchiappa il criceto</h2><p>Sbucano dalle tane: tu tocca, senza fargli male.</p><span class="game-go">Gioca →</span></button>
+            <button type="button" class="game-card" onclick="showPage('gara')"><span class="game-art"><svg viewBox="0 0 320 158" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="gsk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe6ff"/><stop offset="1" stop-color="#eaf8ff"/></linearGradient></defs><rect width="320" height="158" fill="url(#gsk)"/><circle cx="270" cy="26" r="14" fill="#ffd966"/><ellipse cx="60" cy="24" rx="26" ry="8" fill="#fff"/><path d="M0 60Q80 38 160 56T320 52V158H0z" fill="#aedb8e"/><rect x="0" y="70" width="320" height="32" fill="#cfe8b4"/><rect x="0" y="102" width="320" height="32" fill="#c3e0a6"/><rect x="0" y="134" width="320" height="32" fill="#cfe8b4"/><path d="M0 102H320M0 134H320" stroke="#fff" stroke-width="3" stroke-dasharray="8 6"/><rect x="286" y="70" width="14" height="88" fill="repeating-conic-gradient(#2f2a33 0 25%,#fff 0 50%) 0 0/14px 14px"/><g><g transform="translate(70 88) scale(0.62)"><circle cx="-15" cy="-14" r="7" fill="#E8D1B5"/><circle cx="15" cy="-14" r="7" fill="#E8D1B5"/><circle cx="-15" cy="-14" r="3.6" fill="#ECA6A9"/><circle cx="15" cy="-14" r="3.6" fill="#ECA6A9"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#E8D1B5"/><circle cx="-8" cy="-2" r="2.6" fill="#30231F"/><circle cx="8" cy="-2" r="2.6" fill="#30231F"/><ellipse cx="0" cy="5" rx="3" ry="2.2" fill="#E58B9A"/><circle cx="-14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/><circle cx="14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/></g><g transform="translate(150 120) scale(0.62)"><circle cx="-15" cy="-14" r="7" fill="#D8A15D"/><circle cx="15" cy="-14" r="7" fill="#D8A15D"/><circle cx="-15" cy="-14" r="3.6" fill="#ECA6A9"/><circle cx="15" cy="-14" r="3.6" fill="#ECA6A9"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#D8A15D"/><circle cx="-8" cy="-2" r="2.6" fill="#30231F"/><circle cx="8" cy="-2" r="2.6" fill="#30231F"/><ellipse cx="0" cy="5" rx="3" ry="2.2" fill="#E58B9A"/><circle cx="-14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/><circle cx="14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/></g><g transform="translate(212 152) scale(0.62)"><circle cx="-15" cy="-14" r="7" fill="#F3F0EA"/><circle cx="15" cy="-14" r="7" fill="#F3F0EA"/><circle cx="-15" cy="-14" r="3.6" fill="#ECA6A9"/><circle cx="15" cy="-14" r="3.6" fill="#ECA6A9"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#F3F0EA"/><circle cx="-8" cy="-2" r="2.6" fill="#30231F"/><circle cx="8" cy="-2" r="2.6" fill="#30231F"/><ellipse cx="0" cy="5" rx="3" ry="2.2" fill="#E58B9A"/><circle cx="-14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/><circle cx="14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/></g></g><path d="M292 70V36" stroke="#6b5a50" stroke-width="3"/><path d="M292 36l22 7-22 7z" fill="#f0606f"/></svg></span><span class="game-body"><h2>Gara di criceti</h2><p>Scommetti sul più veloce e tifa a gran voce.</p><span class="game-go">Gioca →</span></span></button>
+            <button type="button" class="game-card" onclick="showPage('memory')"><span class="game-art"><svg viewBox="0 0 320 158" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="158" fill="#f3e9ff"/><circle cx="40" cy="30" r="40" fill="#fff" opacity=".5"/><circle cx="290" cy="130" r="46" fill="#fff" opacity=".45"/><g transform="rotate(-14 90 90)"><rect x="52" y="34" width="76" height="96" rx="12" fill="#f7a4b8" stroke="#fff" stroke-width="4"/><text x="90" y="92" text-anchor="middle" font-size="34" fill="#fff" opacity=".85">🐾</text></g><g transform="rotate(14 230 90)"><rect x="192" y="34" width="76" height="96" rx="12" fill="#f7a4b8" stroke="#fff" stroke-width="4"/><text x="230" y="92" text-anchor="middle" font-size="34" fill="#fff" opacity=".85">🐾</text></g><g><rect x="122" y="20" width="76" height="100" rx="12" fill="#fff" stroke="#f3dccf" stroke-width="4"/><g transform="translate(160 72) scale(1.05)"><circle cx="-15" cy="-14" r="7" fill="#E8D1B5"/><circle cx="15" cy="-14" r="7" fill="#E8D1B5"/><circle cx="-15" cy="-14" r="3.6" fill="#ECA6A9"/><circle cx="15" cy="-14" r="3.6" fill="#ECA6A9"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#E8D1B5"/><circle cx="-8" cy="-2" r="2.6" fill="#30231F"/><circle cx="8" cy="-2" r="2.6" fill="#30231F"/><ellipse cx="0" cy="5" rx="3" ry="2.2" fill="#E58B9A"/><circle cx="-14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/><circle cx="14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/></g></g></svg></span><span class="game-body"><h2>Memory dei criceti</h2><p>Trova le coppie, sempre che ti ricordi dove sono.</p><span class="game-go">Gioca →</span></span></button>
+            <button type="button" class="game-card" onclick="showPage('acchiappa')"><span class="game-art"><svg viewBox="0 0 320 158" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="gwf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cdeaa6"/><stop offset="1" stop-color="#a5d77d"/></linearGradient></defs><rect width="320" height="158" fill="url(#gwf)"/><ellipse cx="60" cy="30" rx="40" ry="9" fill="#fff" opacity=".35"/><ellipse cx="60" cy="122" rx="38" ry="13" fill="#2a1811" stroke="#8a6847" stroke-width="4"/><ellipse cx="160" cy="122" rx="38" ry="13" fill="#2a1811" stroke="#8a6847" stroke-width="4"/><ellipse cx="260" cy="122" rx="38" ry="13" fill="#2a1811" stroke="#8a6847" stroke-width="4"/><g><g transform="translate(160 92) scale(0.9)"><circle cx="-15" cy="-14" r="7" fill="#D8A15D"/><circle cx="15" cy="-14" r="7" fill="#D8A15D"/><circle cx="-15" cy="-14" r="3.6" fill="#ECA6A9"/><circle cx="15" cy="-14" r="3.6" fill="#ECA6A9"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#D8A15D"/><circle cx="-8" cy="-2" r="2.6" fill="#30231F"/><circle cx="8" cy="-2" r="2.6" fill="#30231F"/><ellipse cx="0" cy="5" rx="3" ry="2.2" fill="#E58B9A"/><circle cx="-14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/><circle cx="14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/></g></g><path d="M122 124Q160 98 198 124V136H122z" fill="#9a7550"/><path d="M22 124Q60 108 98 124V136H22z" fill="#9a7550"/><path d="M222 124Q260 108 298 124V136H222z" fill="#9a7550"/><g transform="rotate(-30 262 60)"><rect x="256" y="34" width="8" height="46" rx="3" fill="#b9875a"/><rect x="244" y="26" width="32" height="16" rx="6" fill="#f0606f"/></g></svg></span><span class="game-body"><h2>Acchiappa il criceto</h2><p>Sbucano dalle tane: tu tocca, senza fargli male.</p><span class="game-go">Gioca →</span></span></button>
         </div>
     </div>
 </section>
@@ -2811,6 +2897,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                 <p id="memHint">Gira due carte per volta.</p>
                 <span class="race-score" id="memScore">Mosse: 0 · Record: –</span>
             </div>
+            <div class="mem-progress" aria-hidden="true"><i id="memBar"></i></div>
             <div class="memory-grid" id="memGrid"></div>
             <div class="race-actions"><button class="primary-button" type="button" id="memReset">Rimescola</button></div>
         </div>
@@ -2830,7 +2917,8 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:1
                 <p id="whHint">Premi «Via!» e sii veloce.</p>
                 <span class="race-score" id="whScore">Punti: 0 · Tempo: 30 · Record: –</span>
             </div>
-            <div class="whack-grid" id="whGrid"></div>
+            <div class="wh-bar" aria-hidden="true"><i id="whBar" style="width:100%"></i></div>
+            <div class="whack-field"><div class="whack-grid" id="whGrid"></div></div>
             <div class="race-actions"><button class="primary-button" type="button" id="whStart">Via!</button></div>
         </div>
     </div>
@@ -8619,9 +8707,9 @@ window.__initMini=function(){
     const hint=document.getElementById("memHint"),score=document.getElementById("memScore");
     let first=null,lock=false,moves=0,found=0;
     const rec=()=>best("cc_mem_best")||"–";
-    function back(b){b.textContent="";const sp=document.createElement("span");sp.className="mem-in";sp.textContent="🐾";b.appendChild(sp)}
+    function back(b){b.textContent="";const sp=document.createElement("span");sp.className="mem-in mem-back";sp.textContent="🐾";b.appendChild(sp)}
     function face(b,id){const p=products.find(q=>q.id===id);b.textContent="";const sp=document.createElement("span");sp.className="mem-in";const im=document.createElement("img");im.src=p.image;im.alt=p.name;im.title=p.name;sp.appendChild(im);b.appendChild(sp)}
-    function draw(){score.textContent=`Mosse: ${moves} · Record: ${rec()}`}
+    function draw(){score.textContent=`Mosse: ${moves} · Coppie: ${found}/${icons.length||8} · Record: ${rec()}`;const bar=document.getElementById("memBar");if(bar)bar.style.width=(found/(icons.length||8)*100)+"%"}
     function reset(){
       grid.replaceChildren();first=null;lock=false;moves=0;found=0;
       hint.textContent="Gira due carte per volta.";
@@ -8664,7 +8752,7 @@ window.__initMini=function(){
     for(let i=0;i<9;i++){const h=document.createElement("button");h.type="button";h.className="hole";h.setAttribute("aria-label","Tana");h.innerHTML="<span></span>";wg.append(h);holes.push(h)}
     let points=0,time=30,running=false,tick,spawn,current=null;
     const rec=()=>best("cc_wh_best")||"–";
-    function draw(){sc.textContent=`Punti: ${points} · Tempo: ${time} · Record: ${rec()}`}
+    function draw(){sc.textContent=`Punti: ${points} · Tempo: ${time} · Record: ${rec()}`;const bar=document.getElementById("whBar");if(bar)bar.style.width=Math.max(0,time/30*100)+"%"}
     let hamPick=[];
     function setFace(h,kind){
       const sp=h.firstChild;
@@ -8683,8 +8771,10 @@ window.__initMini=function(){
     }
     holes.forEach(h=>h.addEventListener("click",()=>{
       if(!running||!h.classList.contains("up")||h.classList.contains("hit"))return;
-      if(h.dataset.kind==="cat"){points=Math.max(0,points-3);hint.textContent="Era il gatto! −3 😿"}
-      else{points++;setFace(h,"hit");hint.textContent=["Boop!","Preso!","Squit!","Che riflessi!"][points%4]}
+      const pt=document.createElement("b");pt.className="wh-pt";
+      if(h.dataset.kind==="cat"){points=Math.max(0,points-3);hint.textContent="Era il gatto! −3 😿";pt.textContent="−3";pt.classList.add("bad")}
+      else{points++;setFace(h,"hit");hint.textContent=["Boop!","Preso!","Squit!","Che riflessi!"][points%4];pt.textContent="+1"}
+      h.append(pt);setTimeout(()=>pt.remove(),800);
       h.classList.add("hit");draw();
     }));
     function end(){
