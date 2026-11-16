@@ -381,6 +381,21 @@ button:active{transform:scale(.97)}
 }
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
+<style id="polish17">
+.nw-card{max-width:760px}
+.nw-field{display:block;margin:0 auto;width:100%;border-radius:22px;border:3px solid #fff;box-shadow:0 18px 34px -22px rgba(100,60,50,.55);touch-action:none;user-select:none;-webkit-user-select:none;background:#dff2ff}
+#seCanvas{max-width:380px}
+#saCanvas{touch-action:manipulation}
+.nw-ctrl{display:flex;justify-content:center;gap:14px;margin-top:14px}
+.nw-ctrl button{min-width:92px;min-height:52px;border:0;border-radius:18px;font-size:1.5rem;font-weight:900;color:#fff;background:linear-gradient(135deg,#f4a7b4,#f5b668);box-shadow:0 10px 18px -10px rgba(200,100,100,.7);touch-action:manipulation;user-select:none}
+.nw-ctrl button:active{transform:scale(.95)}
+.sim-pads{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:420px;margin:6px auto 0}
+.sim-pad{aspect-ratio:1;border:0;border-radius:28px;font-size:clamp(2.4rem,9vw,3.6rem);display:grid;place-items:center;box-shadow:inset 0 -8px 0 rgba(0,0,0,.12),0 12px 22px -14px rgba(0,0,0,.4);opacity:.72;transition:transform .12s,opacity .12s,filter .12s;touch-action:manipulation}
+.sim-pad:nth-child(1){background:#f9b4c4}.sim-pad:nth-child(2){background:#ffd98a}.sim-pad:nth-child(3){background:#b9e3b0}.sim-pad:nth-child(4){background:#a9d4f5}
+.sim-pad.lit{opacity:1;transform:scale(1.05);filter:brightness(1.12) saturate(1.2);box-shadow:0 0 0 6px rgba(255,255,255,.9),0 0 30px rgba(255,200,120,.9)}
+.sim-pad:disabled{cursor:default}
+@media(hover:hover) and (pointer:fine){.sim-pad:not(:disabled):hover{opacity:.95}}
+</style>
 </head>
 
 <body>
@@ -2867,6 +2882,9 @@ button:active{transform:scale(.97)}
             <button type="button" class="game-card" onclick="showPage('gara')"><span class="game-art"><svg viewBox="0 0 320 158" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="gsk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe6ff"/><stop offset="1" stop-color="#eaf8ff"/></linearGradient></defs><rect width="320" height="158" fill="url(#gsk)"/><circle cx="270" cy="26" r="14" fill="#ffd966"/><ellipse cx="60" cy="24" rx="26" ry="8" fill="#fff"/><path d="M0 60Q80 38 160 56T320 52V158H0z" fill="#aedb8e"/><rect x="0" y="70" width="320" height="32" fill="#cfe8b4"/><rect x="0" y="102" width="320" height="32" fill="#c3e0a6"/><rect x="0" y="134" width="320" height="32" fill="#cfe8b4"/><path d="M0 102H320M0 134H320" stroke="#fff" stroke-width="3" stroke-dasharray="8 6"/><rect x="286" y="70" width="14" height="88" fill="repeating-conic-gradient(#2f2a33 0 25%,#fff 0 50%) 0 0/14px 14px"/><g><g transform="translate(70 88) scale(0.62)"><circle cx="-15" cy="-14" r="7" fill="#E8D1B5"/><circle cx="15" cy="-14" r="7" fill="#E8D1B5"/><circle cx="-15" cy="-14" r="3.6" fill="#ECA6A9"/><circle cx="15" cy="-14" r="3.6" fill="#ECA6A9"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#E8D1B5"/><circle cx="-8" cy="-2" r="2.6" fill="#30231F"/><circle cx="8" cy="-2" r="2.6" fill="#30231F"/><ellipse cx="0" cy="5" rx="3" ry="2.2" fill="#E58B9A"/><circle cx="-14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/><circle cx="14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/></g><g transform="translate(150 120) scale(0.62)"><circle cx="-15" cy="-14" r="7" fill="#D8A15D"/><circle cx="15" cy="-14" r="7" fill="#D8A15D"/><circle cx="-15" cy="-14" r="3.6" fill="#ECA6A9"/><circle cx="15" cy="-14" r="3.6" fill="#ECA6A9"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#D8A15D"/><circle cx="-8" cy="-2" r="2.6" fill="#30231F"/><circle cx="8" cy="-2" r="2.6" fill="#30231F"/><ellipse cx="0" cy="5" rx="3" ry="2.2" fill="#E58B9A"/><circle cx="-14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/><circle cx="14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/></g><g transform="translate(212 152) scale(0.62)"><circle cx="-15" cy="-14" r="7" fill="#F3F0EA"/><circle cx="15" cy="-14" r="7" fill="#F3F0EA"/><circle cx="-15" cy="-14" r="3.6" fill="#ECA6A9"/><circle cx="15" cy="-14" r="3.6" fill="#ECA6A9"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#F3F0EA"/><circle cx="-8" cy="-2" r="2.6" fill="#30231F"/><circle cx="8" cy="-2" r="2.6" fill="#30231F"/><ellipse cx="0" cy="5" rx="3" ry="2.2" fill="#E58B9A"/><circle cx="-14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/><circle cx="14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/></g></g><path d="M292 70V36" stroke="#6b5a50" stroke-width="3"/><path d="M292 36l22 7-22 7z" fill="#f0606f"/></svg></span><span class="game-body"><h2>Gara di criceti</h2><p>Scommetti sul più veloce e tifa a gran voce.</p><span class="game-go">Gioca →</span></span></button>
             <button type="button" class="game-card" onclick="showPage('memory')"><span class="game-art"><svg viewBox="0 0 320 158" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="158" fill="#f3e9ff"/><circle cx="40" cy="30" r="40" fill="#fff" opacity=".5"/><circle cx="290" cy="130" r="46" fill="#fff" opacity=".45"/><g transform="rotate(-14 90 90)"><rect x="52" y="34" width="76" height="96" rx="12" fill="#f7a4b8" stroke="#fff" stroke-width="4"/><text x="90" y="92" text-anchor="middle" font-size="34" fill="#fff" opacity=".85">🐾</text></g><g transform="rotate(14 230 90)"><rect x="192" y="34" width="76" height="96" rx="12" fill="#f7a4b8" stroke="#fff" stroke-width="4"/><text x="230" y="92" text-anchor="middle" font-size="34" fill="#fff" opacity=".85">🐾</text></g><g><rect x="122" y="20" width="76" height="100" rx="12" fill="#fff" stroke="#f3dccf" stroke-width="4"/><g transform="translate(160 72) scale(1.05)"><circle cx="-15" cy="-14" r="7" fill="#E8D1B5"/><circle cx="15" cy="-14" r="7" fill="#E8D1B5"/><circle cx="-15" cy="-14" r="3.6" fill="#ECA6A9"/><circle cx="15" cy="-14" r="3.6" fill="#ECA6A9"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#E8D1B5"/><circle cx="-8" cy="-2" r="2.6" fill="#30231F"/><circle cx="8" cy="-2" r="2.6" fill="#30231F"/><ellipse cx="0" cy="5" rx="3" ry="2.2" fill="#E58B9A"/><circle cx="-14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/><circle cx="14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/></g></g></svg></span><span class="game-body"><h2>Memory dei criceti</h2><p>Trova le coppie, sempre che ti ricordi dove sono.</p><span class="game-go">Gioca →</span></span></button>
             <button type="button" class="game-card" onclick="showPage('acchiappa')"><span class="game-art"><svg viewBox="0 0 320 158" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="gwf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cdeaa6"/><stop offset="1" stop-color="#a5d77d"/></linearGradient></defs><rect width="320" height="158" fill="url(#gwf)"/><ellipse cx="60" cy="30" rx="40" ry="9" fill="#fff" opacity=".35"/><ellipse cx="60" cy="122" rx="38" ry="13" fill="#2a1811" stroke="#8a6847" stroke-width="4"/><ellipse cx="160" cy="122" rx="38" ry="13" fill="#2a1811" stroke="#8a6847" stroke-width="4"/><ellipse cx="260" cy="122" rx="38" ry="13" fill="#2a1811" stroke="#8a6847" stroke-width="4"/><g><g transform="translate(160 92) scale(0.9)"><circle cx="-15" cy="-14" r="7" fill="#D8A15D"/><circle cx="15" cy="-14" r="7" fill="#D8A15D"/><circle cx="-15" cy="-14" r="3.6" fill="#ECA6A9"/><circle cx="15" cy="-14" r="3.6" fill="#ECA6A9"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#D8A15D"/><circle cx="-8" cy="-2" r="2.6" fill="#30231F"/><circle cx="8" cy="-2" r="2.6" fill="#30231F"/><ellipse cx="0" cy="5" rx="3" ry="2.2" fill="#E58B9A"/><circle cx="-14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/><circle cx="14" cy="6" r="4" fill="#F4B0B6" opacity=".7"/></g></g><path d="M122 124Q160 98 198 124V136H122z" fill="#9a7550"/><path d="M22 124Q60 108 98 124V136H22z" fill="#9a7550"/><path d="M222 124Q260 108 298 124V136H222z" fill="#9a7550"/><g transform="rotate(-30 262 60)"><rect x="256" y="34" width="8" height="46" rx="3" fill="#b9875a"/><rect x="244" y="26" width="32" height="16" rx="6" fill="#f0606f"/></g></svg></span><span class="game-body"><h2>Acchiappa il criceto</h2><p>Sbucano dalle tane: tu tocca, senza fargli male.</p><span class="game-go">Gioca →</span></span></button>
+            <button type="button" class="game-card" onclick="showPage('semi')"><span class="game-art"><svg viewBox="0 0 320 158" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="gsm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfeaff"/><stop offset="1" stop-color="#f1fbff"/></linearGradient></defs><rect width="320" height="158" fill="url(#gsm)"/><rect y="128" width="320" height="30" fill="#a5d77d"/><text x="70" y="40" font-size="30">🌰</text><text x="150" y="78" font-size="30">🌻</text><text x="230" y="36" font-size="30">🍓</text><text x="260" y="96" font-size="28">🧦</text><text x="110" y="124" font-size="46">🐹</text></svg></span><span class="game-body"><h2>Semi al volo</h2><p>Raccogli i semi che cadono, schiva i calzini.</p><span class="game-go">Gioca →</span></span></button>
+            <button type="button" class="game-card" onclick="showPage('simon')"><span class="game-art"><svg viewBox="0 0 320 158" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="158" fill="#fff3dc"/><rect x="62" y="16" width="92" height="62" rx="18" fill="#f9b4c4"/><rect x="166" y="16" width="92" height="62" rx="18" fill="#ffd98a"/><rect x="62" y="86" width="92" height="62" rx="18" fill="#b9e3b0"/><rect x="166" y="86" width="92" height="62" rx="18" fill="#a9d4f5"/><text x="108" y="58" font-size="32" text-anchor="middle">🍓</text><text x="212" y="58" font-size="32" text-anchor="middle">🌻</text><text x="108" y="128" font-size="32" text-anchor="middle">🥬</text><text x="212" y="128" font-size="32" text-anchor="middle">🫐</text></svg></span><span class="game-body"><h2>Simon dei criceti</h2><p>Ripeti la sequenza di cibi, sempre più lunga.</p><span class="game-go">Gioca →</span></span></button>
+            <button type="button" class="game-card" onclick="showPage('salta')"><span class="game-art"><svg viewBox="0 0 320 158" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="gsl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cdeaff"/><stop offset="1" stop-color="#f3fbff"/></linearGradient></defs><rect width="320" height="158" fill="url(#gsl)"/><rect y="118" width="320" height="40" fill="#a5d77d"/><path d="M0 138H320" stroke="#fff" stroke-width="3" stroke-dasharray="14 18"/><text x="70" y="96" font-size="44">🐹</text><text x="214" y="124" font-size="34">🧦</text><text x="270" y="124" font-size="38">🪴</text></svg></span><span class="game-body"><h2>Salta il calzino</h2><p>Il criceto corre, tu salti gli ostacoli.</p><span class="game-go">Gioca →</span></span></button>
         </div>
     </div>
 </section>
@@ -2937,6 +2955,57 @@ button:active{transform:scale(.97)}
             <div class="wh-bar" aria-hidden="true"><i id="whBar" style="width:100%"></i></div>
             <div class="whack-field"><div class="whack-grid" id="whGrid"></div></div>
             <div class="race-actions"><button class="primary-button" type="button" id="whStart">Via!</button></div>
+        </div>
+    </div>
+</section>
+
+<section class="page creator-page" id="semi">
+    <div class="container">
+        <button class="creator-back-button" type="button" onclick="showPage('giochi')">← Tutti i giochi</button>
+        <div class="creator-heading">
+            <span class="tiny-label">Mini-gioco · riflessi e cestino</span>
+            <h1>Semi al volo</h1>
+            <p>In 40 secondi raccogli semi, girasoli e fragole. I calzini cadono dal cielo senza motivo: evitali, costano 3 punti.</p>
+        </div>
+        <div class="race-card nw-card">
+            <div class="race-top"><p id="seHint">Trascina il criceto, oppure usa le frecce.</p><span class="race-score" id="seScore">Punti: 0</span></div>
+            <div class="wh-bar" aria-hidden="true"><i id="seBar" style="width:100%"></i></div>
+            <canvas class="nw-field" id="seCanvas" aria-label="Campo di gioco"></canvas>
+            <div class="nw-ctrl"><button type="button" id="seL" aria-label="Sinistra">◀</button><button type="button" id="seR" aria-label="Destra">▶</button></div>
+            <div class="race-actions"><button class="primary-button" type="button" id="seStart">Via!</button></div>
+        </div>
+    </div>
+</section>
+
+<section class="page creator-page" id="simon">
+    <div class="container">
+        <button class="creator-back-button" type="button" onclick="showPage('giochi')">← Tutti i giochi</button>
+        <div class="creator-heading">
+            <span class="tiny-label">Mini-gioco · memoria a breve termine</span>
+            <h1>Simon dei criceti</h1>
+            <p>Guarda la sequenza di cibi che si illuminano e ripetila nello stesso ordine. Ogni round ne aggiunge uno: i criceti arrivano a una ventina, tu?</p>
+        </div>
+        <div class="race-card nw-card">
+            <div class="race-top"><p id="siHint">Premi «Via!» per cominciare.</p><span class="race-score" id="siScore">Round: 0</span></div>
+            <div class="sim-pads" id="simonPads"><button type="button" class="sim-pad" aria-label="Fragola">🍓</button><button type="button" class="sim-pad" aria-label="Girasole">🌻</button><button type="button" class="sim-pad" aria-label="Lattuga">🥬</button><button type="button" class="sim-pad" aria-label="Mirtillo">🫐</button></div>
+            <div class="race-actions"><button class="primary-button" type="button" id="siStart">Via!</button></div>
+        </div>
+    </div>
+</section>
+
+<section class="page creator-page" id="salta">
+    <div class="container">
+        <button class="creator-back-button" type="button" onclick="showPage('giochi')">← Tutti i giochi</button>
+        <div class="creator-heading">
+            <span class="tiny-label">Mini-gioco · salto perfetto</span>
+            <h1>Salta il calzino</h1>
+            <p>Il criceto corre da solo, tu devi solo saltare i calzini e i vasi che incontra. Tocca lo schermo o premi spazio: più vai lontano, più va veloce.</p>
+        </div>
+        <div class="race-card nw-card">
+            <div class="race-top"><p id="saHint">Premi «Via!» e tocca per saltare.</p><span class="race-score" id="saScore">Metri: 0</span></div>
+            <canvas class="nw-field" id="saCanvas" aria-label="Campo di gioco"></canvas>
+            <div class="nw-ctrl"><button type="button" id="saJump" aria-label="Salta">⤴ Salta</button></div>
+            <div class="race-actions"><button class="primary-button" type="button" id="saStart">Via!</button></div>
         </div>
     </div>
 </section>
@@ -4017,8 +4086,19 @@ const productDetails = {
     s5: ["Succosa, dolce e tagliata a misura di criceto. Arriva già con i semi, che il criceto conserva ordinatamente sotto il cuscino.", [["Peso", "Quanto il criceto"], ["Semi", "Conservati sotto il cuscino"], ["Freschezza", "Da frigo"]]],
     s6: ["Leggera, colorata e a prova di sabbia. Il criceto la usa per andare dall'ombrellone al bar dei semi senza scottarsi le zampe.", [["Spicchi", "6 colori"], ["Galleggia", "Sì, ma non è consigliato"], ["Meta preferita", "Il bar dei semi"]]]
 };
+
+/* v17: schede criceti uniformi (stile dei primi quattro) */
+(function(){
+    const H = {"h6": ["Furtivo", "??? m/s", "Pericolosa", "5 giorni o 5 minuti", "Basso", "Smontare ruote", "Niente di prezioso"], "h7": ["Saccente", "500 giri/min", "Accademica", "Fino al dottorato", "Basso", "Correggere i congiuntivi", "Biblioteche"], "h8": ["Teatrale", "250 giri/min", "Tattica", "Fino all'infortunio", "Alto", "Esultare", "Gabbie con prato"], "h9": ["Pigro", "10 giri/min", "Media", "Una stagione", "Basso", "Maratone di serie", "Divano"], "h10": ["Drammatico", "1 license/min", "Emotiva", "Finché non passa", "Alto", "Scrivere canzoni", "Fazzoletti"], "h11": ["Sincero e ironico", "120 ritornelli/h", "Creativa", "Una canzone", "Variabile", "Comporre", "Tutto"], "h12": ["Sentimentale", "500 ritornelli/min", "Bassa", "Finché c'è pubblico", "Alto", "Suonare la chitarrina", "Un gatto paziente"], "h13": ["Solare e vanitoso", "7 colori/s", "Brillante", "Finché c'è sole", "Basso", "Farsi ammirare", "Ruota Arcobaleno"], "x1": ["Elegante e notturno", "60 m/s", "Alta", "Fino all'alba", "Basso", "Pettinarsi", "Gabbie buie"], "x2": ["Pasticciona", "1 scopa/min", "Media", "Luna piena", "Medio", "Preparare pozioni", "Gatti neri"], "x3": ["Timido", "Fluttuante", "Media", "Eterna", "Nessuno", "Fare «Buu»", "Tutto, anche i muri"], "y1": ["Generoso", "300 pacchi/ora", "Alta", "Fino all'Epifania", "Medio", "Fare regali", "Camini"], "y2": ["Testardo", "In discesa", "Media", "Fino all'Epifania", "Basso", "Illuminarsi", "Slitte"], "y3": ["Operoso", "300 nastri/ora", "Media", "Tutto dicembre", "Medio", "Incartare", "Laboratori"], "v1": ["Romantico", "1 freccia/min", "Media", "Fino al 14 febbraio", "Basso", "Fare coppie", "Cuori solitari"], "v2": ["Sentimentale", "200 battiti/min", "Poetica", "Per sempre", "Medio", "Scrivere poesie", "Cuori"], "v3": ["Indipendente", "Al proprio ritmo", "Alta", "Finché va", "Basso", "Maratone di serie", "Se stesso"], "p1": ["Furbo", "1 balzo/min", "Media", "Fino a Pasqua", "Basso", "Nascondere uova", "Carote"], "p2": ["Stupito", "Appena nato", "Media", "Fino alla schiusa", "Basso", "Sorprendersi", "Uova"], "p3": ["Dolce", "Lento", "Al 70%", "Fino a Pasqua", "Nessuno", "Stare in frigo", "Frigorifero"], "s1": ["Rilassato", "0 m/s", "Media", "Fino a settembre", "Basso", "Stare in amaca", "Ombrelloni"], "s2": ["Vigile", "Scatto in 2 s", "Media", "Turno 9–19", "Alto", "Fischiare", "Ciotole d'acqua"], "s3": ["Goloso", "Lento", "Media", "Finché non si scioglie", "Basso", "Leccare", "Fragola"]};
+    products.forEach(pr => {
+        const d = H[pr.id]; if (!d) return;
+        pr.personality = d[0]; pr.speed = d[1]; pr.intelligence = d[2]; pr.duration = d[3]; pr.isHamster = true;
+        const det = productDetails[pr.id] || ["", []];
+        productDetails[pr.id] = [det[0], [["Livello di rumore", d[4]], ["Passatempo", d[5]], ["Compatibile con", d[6]]]];
+    });
+})();
 function productStats(product) {
-    if (product.category === "criceto") return [
+    if (product.category === "criceto" || product.isHamster) return [
         ["Personalità", product.personality],
         ["Velocità", product.speed],
         ["Intelligenza", product.intelligence],
@@ -4339,7 +4419,7 @@ function showPage(pageName,fromHistory = false) {
     document.querySelectorAll(".nav-link").forEach(button => {
         button.classList.toggle(
             "current",
-            button.dataset.page === pageName || (button.dataset.page === "giochi" && ["gara", "memory", "acchiappa"].includes(pageName))
+            button.dataset.page === pageName || (button.dataset.page === "giochi" && ["gara", "memory", "acchiappa", "semi", "simon", "salta"].includes(pageName))
         );
     });
     if (!fromHistory) {
@@ -8814,6 +8894,7 @@ window.__initMini=function(){
   window.ensureGame=function(name){
     if(name==="gara"&&!done.race){done.race=1;window.__initRace();}
     if((name==="memory"||name==="acchiappa")&&!done.mini){done.mini=1;window.__initMini();}
+    if(window.__initNew)window.__initNew(name);
   };
 })();
 </script>
@@ -8839,6 +8920,7 @@ window.__initMini=function(){
             if (fromHistory) history.replaceState(null, "", location.pathname + location.search);
         }
         if (name !== "acchiappa" && window.stopWhack) window.stopWhack();
+        if (window.stopNew) window.stopNew(name);
         return baseShow.call(this, name, fromHistory);
     };
     document.addEventListener("visibilitychange", () => { if (document.hidden && window.stopWhack) window.stopWhack(); });
@@ -8926,6 +9008,117 @@ window.__initMini=function(){
     else if(e.key==="Tab")close();
   });
   sync();
+})();
+</script>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const rec=(k,v)=>{try{if(v!==undefined)localStorage.setItem(k,String(v));return localStorage.getItem(k)}catch(e){return null}};
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let stops={};
+  window.stopNew=function(keep){Object.keys(stops).forEach(k=>{if(k!==keep)stops[k]()})};
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)window.stopNew('')});
+  function fitCanvas(c,W,H){c.width=W*2;c.height=H*2;const x=c.getContext('2d');x.scale(2,2);return x}
+  function emoji(x,e,px,py,size,rot){x.save();x.translate(px,py);if(rot)x.rotate(rot);x.font=size+'px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillText(e,0,0);x.restore()}
+  function rr(x,a,b,w,h,r){x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath()}
+
+  /* ---------- Semi al volo ---------- */
+  function initSemi(){
+    const c=$('seCanvas'),W=360,H=520,x=fitCanvas(c,W,H),btn=$('seStart'),hint=$('seHint'),score=$('seScore'),bar=$('seBar');
+    let run=false,raf=0,last=0,t=0,px=W/2,tx=W/2,pts=0,items=[],spawn=0,pops=[],best=+rec('cc_semi')||0,left=0,right=0;
+    const DUR=40;
+    const kinds=[{e:'🌰',p:1,w:70,s:30},{e:'🌻',p:2,w:14,s:30},{e:'🍓',p:3,w:8,s:30},{e:'🧦',p:-3,w:18,s:30}];
+    function pick(){let r=Math.random()*kinds.reduce((a,k)=>a+k.w,0);for(const k of kinds){if((r-=k.w)<0)return k}return kinds[0]}
+    function label(){score.textContent='Punti: '+pts+' · Tempo: '+Math.max(0,Math.ceil(DUR-t))+' · Record: '+(best||'–')}
+    function draw(){
+      const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#cfeaff');g.addColorStop(.7,'#f1fbff');g.addColorStop(1,'#cfe9b0');x.fillStyle=g;x.fillRect(0,0,W,H);
+      x.fillStyle='rgba(255,255,255,.8)';[[60,70,34],[250,110,40],[170,40,26]].forEach(([a,b,r])=>{x.beginPath();x.ellipse(a,b,r*1.6,r*.6,0,0,7);x.fill()});
+      x.fillStyle='#a5d77d';x.fillRect(0,H-48,W,48);x.fillStyle='#8fc766';x.fillRect(0,H-48,W,6);
+      items.forEach(i=>emoji(x,i.k.e,i.x,i.y,i.k.s,i.r));
+      emoji(x,'🐹',px,H-62,56);
+      x.fillStyle='#b08a5e';rr(x,px-32,H-40,64,16,8);x.fill();x.fillStyle='rgba(255,255,255,.35)';rr(x,px-26,H-38,52,5,3);x.fill();
+      pops=pops.filter(p=>p.a>0);pops.forEach(p=>{x.globalAlpha=p.a;x.fillStyle=p.v<0?'#d6455d':'#2f8f4e';x.font='800 22px Nunito,system-ui,sans-serif';x.textAlign='center';x.fillText((p.v>0?'+':'')+p.v,p.x,p.y);x.globalAlpha=1;p.y-=.7;p.a-=.02});
+    }
+    function frame(ts){
+      if(!run)return;const dt=Math.min(.05,(ts-last)/1000||0);last=ts;t+=dt;
+      if(left||right)tx=Math.max(30,Math.min(W-30,tx+(right-left)*360*dt));
+      px+=(tx-px)*Math.min(1,dt*14);
+      spawn-=dt;if(spawn<=0){spawn=Math.max(.32,.75-t*.012);const k=pick();items.push({k,x:24+Math.random()*(W-48),y:-20,v:120+t*3+Math.random()*60,r:(Math.random()-.5)*.6})}
+      items.forEach(i=>{i.y+=i.v*dt;i.r+=dt*.8});
+      items=items.filter(i=>{if(i.y>H-70&&i.y<H-30&&Math.abs(i.x-px)<38){pts=Math.max(0,pts+i.k.p);pops.push({x:i.x,y:H-90,v:i.k.p,a:1});return false}return i.y<H+30});
+      bar.style.width=Math.max(0,100-t/DUR*100)+'%';label();draw();
+      if(t>=DUR)end();else raf=requestAnimationFrame(frame);
+    }
+    function end(){run=false;cancelAnimationFrame(raf);btn.disabled=false;btn.textContent='Ancora!';let m='Tempo scaduto: '+pts+' punti.';if(pts>best){best=pts;rec('cc_semi',best);m+=' Nuovo record!'}hint.textContent=m;label();draw()}
+    stops.semi=function(){if(!run)return;run=false;cancelAnimationFrame(raf);btn.disabled=false;btn.textContent='Ancora!';hint.textContent='Partita in pausa.'};
+    function move(e){const r=c.getBoundingClientRect();tx=Math.max(30,Math.min(W-30,(e.clientX-r.left)/r.width*W))}
+    c.addEventListener('pointerdown',e=>{move(e);try{c.setPointerCapture(e.pointerId)}catch(_){}});
+    c.addEventListener('pointermove',move);
+    const hold=(el,dir)=>{const on=e=>{e.preventDefault();dir<0?left=1:right=1};const off=()=>{dir<0?left=0:right=0};el.addEventListener('pointerdown',on);['pointerup','pointerleave','pointercancel'].forEach(ev=>el.addEventListener(ev,off))};
+    hold($('seL'),-1);hold($('seR'),1);
+    document.addEventListener('keydown',e=>{if(!$('semi').classList.contains('active'))return;if(e.key==='ArrowLeft')left=1;if(e.key==='ArrowRight')right=1});
+    document.addEventListener('keyup',e=>{if(e.key==='ArrowLeft')left=0;if(e.key==='ArrowRight')right=0});
+    btn.addEventListener('click',()=>{items=[];pops=[];pts=0;t=0;spawn=.3;px=tx=W/2;run=true;btn.disabled=true;hint.textContent='Raccogli i semi, schiva i calzini!';last=performance.now();raf=requestAnimationFrame(frame)});
+    label();draw();
+  }
+
+  /* ---------- Simon dei criceti ---------- */
+  function initSimon(){
+    const pads=[...document.querySelectorAll('#simonPads .sim-pad')],btn=$('siStart'),hint=$('siHint'),score=$('siScore');
+    let seq=[],pos=0,state='idle',timers=[],best=+rec('cc_simon')||0,ac=null;
+    const freq=[262,330,392,523];
+    function tone(i){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type='sine';o.frequency.value=freq[i];g.gain.value=.08;o.connect(g);g.connect(ac.destination);o.start();g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+.3);o.stop(ac.currentTime+.32)}catch(e){}}
+    function lab(){score.textContent='Round: '+seq.length+' · Record: '+(best||'–')}
+    function later(f,ms){timers.push(setTimeout(f,ms))}
+    function flash(i,ms){pads[i].classList.add('lit');tone(i);later(()=>pads[i].classList.remove('lit'),ms)}
+    function show(){state='show';hint.textContent='Guarda bene…';pads.forEach(p=>p.disabled=true);const step=Math.max(320,640-seq.length*28);seq.forEach((s,k)=>later(()=>flash(s,step*.7),500+k*step));later(()=>{state='input';pos=0;hint.textContent='Tocca a te!';pads.forEach(p=>p.disabled=false)},500+seq.length*step)}
+    function next(){seq.push(Math.floor(Math.random()*4));lab();show()}
+    function over(){state='idle';pads.forEach(p=>p.disabled=true);const r=seq.length-1;let m='Sbagliato! Hai completato '+r+' round.';if(r>best){best=r;rec('cc_simon',best);m+=' Nuovo record!'}hint.textContent=m;btn.disabled=false;btn.textContent='Ancora!';seq=seq.slice(0,0)+[];lab_over(r)}
+    function lab_over(r){score.textContent='Round: '+r+' · Record: '+(best||'–')}
+    pads.forEach((p,i)=>p.addEventListener('click',()=>{if(state!=='input')return;flash(i,200);if(i!==seq[pos]){later(over,250);state='idle';return}pos++;if(pos===seq.length){state='wait';hint.textContent='Bravo! Si continua…';later(next,800)}}));
+    stops.simon=function(){timers.forEach(clearTimeout);timers=[];pads.forEach(p=>{p.classList.remove('lit');p.disabled=true});if(state!=='idle'){state='idle';hint.textContent='Partita in pausa.';btn.disabled=false;btn.textContent='Ancora!'}};
+    btn.addEventListener('click',()=>{timers.forEach(clearTimeout);timers=[];seq=[];btn.disabled=true;next()});
+    pads.forEach(p=>p.disabled=true);lab();
+  }
+
+  /* ---------- Salta il calzino ---------- */
+  function initSalta(){
+    const c=$('saCanvas'),W=640,H=240,x=fitCanvas(c,W,H),btn=$('saStart'),hint=$('saHint'),score=$('saScore'),jb=$('saJump');
+    const G=190;let run=false,raf=0,last=0,hy=G,vy=0,obs=[],dist=0,spd=260,gap=1,best=+rec('cc_salta')||0,clouds=[[90,50],[300,34],[520,60]],ph=0;
+    function lab(){score.textContent='Metri: '+Math.floor(dist/20)+' · Record: '+(best||'–')}
+    function jump(){if(!run)return;if(hy>=G-1){vy=-640}}
+    function draw(){
+      const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#cdeaff');g.addColorStop(1,'#f3fbff');x.fillStyle=g;x.fillRect(0,0,W,H);
+      x.fillStyle='rgba(255,255,255,.85)';clouds.forEach(([a,b])=>{x.beginPath();x.ellipse(a,b,34,12,0,0,7);x.fill();x.beginPath();x.ellipse(a+20,b-8,20,10,0,0,7);x.fill()});
+      x.fillStyle='#a5d77d';x.fillRect(0,G+22,W,H-G-22);x.fillStyle='#8fc766';x.fillRect(0,G+22,W,5);
+      x.strokeStyle='rgba(255,255,255,.7)';x.lineWidth=3;x.setLineDash([14,18]);x.lineDashOffset=dist%32;x.beginPath();x.moveTo(0,G+38);x.lineTo(W,G+38);x.stroke();x.setLineDash([]);
+      x.fillStyle='rgba(0,0,0,.12)';x.beginPath();x.ellipse(90,G+24,22-(G-hy)/12,6,0,0,7);x.fill();
+      obs.forEach(o=>emoji(x,o.e,o.x,G+2,o.s));
+      emoji(x,'🐹',90,hy-2,50,hy<G-1?-.25:Math.sin(ph)*.08);
+    }
+    function frame(ts){
+      if(!run)return;const dt=Math.min(.04,(ts-last)/1000||0);last=ts;
+      spd=260+Math.min(260,dist/40);dist+=spd*dt;ph+=dt*18;
+      vy+=1900*dt;hy=Math.min(G,hy+vy*dt);if(hy>=G){vy=0}
+      clouds.forEach(cl=>{cl[0]-=spd*dt*.12;if(cl[0]<-60)cl[0]=W+60});
+      gap-=dt;if(gap<=0){const big=Math.random()<.3;obs.push({x:W+30,e:big?'🪴':'🧦',s:big?46:38,w:big?18:16,h:big?30:22});gap=.85+Math.random()*.9-Math.min(.3,dist/6000)}
+      obs.forEach(o=>o.x-=spd*dt);obs=obs.filter(o=>o.x>-40);
+      for(const o of obs){if(Math.abs(o.x-90)<o.w+10&&hy>G-o.h){return end()}}
+      lab();draw();raf=requestAnimationFrame(frame);
+    }
+    function end(){run=false;cancelAnimationFrame(raf);draw();const m=Math.floor(dist/20);let t='Ahi! Hai corso per '+m+' metri.';if(m>best){best=m;rec('cc_salta',best);t+=' Nuovo record!'}hint.textContent=t;lab();btn.disabled=false;btn.textContent='Ancora!'}
+    stops.salta=function(){if(!run)return;run=false;cancelAnimationFrame(raf);btn.disabled=false;btn.textContent='Ancora!';hint.textContent='Partita in pausa.'};
+    c.addEventListener('pointerdown',e=>{e.preventDefault();jump()});jb.addEventListener('pointerdown',e=>{e.preventDefault();jump()});
+    document.addEventListener('keydown',e=>{if(!$('salta').classList.contains('active'))return;if(e.code==='Space'||e.key==='ArrowUp'){e.preventDefault();jump()}});
+    btn.addEventListener('click',()=>{obs=[];dist=0;hy=G;vy=0;gap=1;run=true;btn.disabled=true;hint.textContent='Tocca per saltare!';last=performance.now();raf=requestAnimationFrame(frame)});
+    lab();draw();
+  }
+  const done={};
+  window.__initNew=function(name){
+    if(name==='semi'&&!done.semi){done.semi=1;initSemi()}
+    if(name==='simon'&&!done.simon){done.simon=1;initSimon()}
+    if(name==='salta'&&!done.salta){done.salta=1;initSalta()}
+  };
 })();
 </script>
 </body>
