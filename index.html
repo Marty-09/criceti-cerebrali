@@ -402,34 +402,63 @@ button:active{transform:scale(.97)}
 .sim-pad:disabled{cursor:default}
 @media(hover:hover) and (pointer:fine){.sim-pad:not(:disabled):hover{opacity:.95}}
 </style>
-<style id="polish18">
-.no-wrap{display:grid;justify-items:center;margin:8px 0 4px}
-.no-grid{--c:min(54px,calc((100vw - 96px)/(var(--n) + 2.4)));display:grid;grid-template-columns:calc(var(--c)*1.9) repeat(var(--n),var(--c));gap:2px;padding:12px;border-radius:22px;background:#fff6ee;border:2px solid #f3e1d3;box-shadow:0 18px 34px -24px rgba(120,70,50,.6);touch-action:none;user-select:none;-webkit-user-select:none}
-.no-grid.n8{--c:min(44px,calc((100vw - 96px)/(var(--n) + 2.4)))}
-.no-corner{min-height:calc(var(--c)*1.9)}
-.no-col{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:1px;padding-bottom:4px;font-weight:800;font-size:clamp(.72rem,calc(var(--c)*.34),.95rem);color:#8a5a50;line-height:1.1}
-.no-row{display:flex;justify-content:flex-end;align-items:center;gap:6px;padding-right:8px;font-weight:800;font-size:clamp(.72rem,calc(var(--c)*.34),.95rem);color:#8a5a50}
-.no-col b,.no-row b{font-weight:800}
-.no-col.ok,.no-row.ok{color:#b8c2b0}
-.no-cell{width:var(--c);height:var(--c);border-radius:9px;background:#fff;border:2px solid #f1dfd0;cursor:pointer;display:grid;place-items:center;font-size:calc(var(--c)*.5);color:#c98d95;font-weight:900;transition:background .12s,transform .12s}
-.no-cell.rt{margin-right:5px}.no-cell.bt{margin-bottom:5px}
-.no-cell.f{background:linear-gradient(135deg,#f4a7b4,#f5b668);border-color:#e98f9d}
-.no-cell.x::after{content:"✕"}
-.no-cell.x{background:#fbf3ee}
-@media(hover:hover) and (pointer:fine){.no-cell:not(.f):hover{background:#fff0f1}}
-.no-grid.won .no-cell.f{animation:noPop .5s ease both}
-@keyframes noPop{50%{transform:scale(1.14)}}
-.no-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:2px 0 10px}
-.no-chips button{border:1.5px solid #f1dfd0;background:#fff;border-radius:999px;padding:7px 14px;font-weight:800;font-size:.88rem;color:#6c4a42}
-.no-chips button.on{background:#fff0f1;border-color:#f2b9c1;color:#b8566a}
-.no-reveal{text-align:center;font-weight:900;font-size:1.3rem;margin:12px 0 0;color:#b8566a}
-.no-reveal[hidden]{display:none}
-.nw-ctrl .alt,#noMode.alt{background:linear-gradient(135deg,#7fc4ee,#9d8fe8)}
-#noMode{min-width:150px;min-height:48px;padding:0 20px;border:0;border-radius:999px;font-weight:900;color:#fff;background:linear-gradient(135deg,#f4a7b4,#f5b668);box-shadow:0 10px 18px -10px rgba(200,100,100,.7)}
-#noMode.alt{box-shadow:0 10px 18px -10px rgba(90,100,200,.7)}
-.crea-grid .game-card:nth-child(1) .game-art{background:#fff0f1}
-</style>
 <style id="polish19">header{background:#fffaf5!important;box-shadow:0 6px 18px -14px rgba(80,40,30,.45)}.nav-links.open,#mainMenu{z-index:60}.toast{z-index:90}</style>
+<style id="polish20">
+.no-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;max-width:980px;margin:0 auto;align-items:start}.no-layout>*{min-width:0}
+@media(min-width:900px){.no-layout{grid-template-columns:minmax(0,1fr) 290px}}
+@media(max-width:520px){.no-card{padding:14px}.no-grid{padding:10px;gap:2px}.no-seg button{padding:10px 12px}}
+.no-card{background:#fff;border-radius:28px;padding:20px;border:2px solid #fff;box-shadow:0 26px 50px -30px rgba(130,70,60,.55)}
+.no-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.no-badge{background:linear-gradient(135deg,#f4a7b4,#f5b668);color:#fff;font-weight:900;border-radius:999px;padding:7px 16px;font-size:.95rem;box-shadow:0 8px 16px -10px rgba(200,100,100,.8)}
+.no-pill{background:#fff0f1;color:#b8566a;font-weight:800;border-radius:999px;padding:6px 12px;font-size:.85rem}
+.no-stats{margin-left:auto;display:flex;gap:14px;font-weight:700;color:#7a5a52;font-size:.95rem}
+.no-stats b{font-variant-numeric:tabular-nums;color:#3a2a26}
+.no-progress{height:8px;border-radius:99px;background:#f7e9df;margin:14px 0 10px;overflow:hidden}
+.no-progress i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#f4a7b4,#f5b668);transition:width .25s}
+.no-card #noHint{margin:0 0 10px;color:#6f5249;font-size:.95rem;min-height:1.3em}
+.no-wrap{display:grid;justify-items:center;margin:6px 0 4px}
+.no-grid{--c:min(52px,calc((100vw - 142px)/(var(--n) + 2.2)));display:grid;grid-template-columns:calc(var(--c)*1.9) repeat(var(--n),var(--c));gap:3px;padding:14px;border-radius:24px;background:linear-gradient(160deg,#fff8f1,#ffeef0);border:2px solid #f6e2d6;touch-action:none;user-select:none;-webkit-user-select:none}
+.no-grid.n8{--c:min(44px,calc((100vw - 142px)/(var(--n) + 2.2)))}
+.no-grid.n10{--c:min(38px,calc((100vw - 142px)/(var(--n) + 2.2)))}
+.no-corner{min-height:calc(var(--c)*1.9)}
+.no-col{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:1px;padding-bottom:5px;font-weight:800;font-size:clamp(.7rem,calc(var(--c)*.36),.98rem);color:#8a5a50;line-height:1.1;border-radius:10px;transition:background .15s,color .15s}
+.no-row{display:flex;justify-content:flex-end;align-items:center;gap:6px;padding-right:8px;font-weight:800;font-size:clamp(.7rem,calc(var(--c)*.36),.98rem);color:#8a5a50;border-radius:10px;transition:background .15s,color .15s}
+.no-col.hl,.no-row.hl{background:#ffe3e8;color:#b8566a}
+.no-col.ok,.no-row.ok{color:#b9c4b0;text-decoration:line-through;text-decoration-thickness:1.5px}
+.no-cell{width:var(--c);height:var(--c);border-radius:10px;background:#fff;border:2px solid #f3e1d3;cursor:pointer;display:grid;place-items:center;font-size:calc(var(--c)*.5);color:#c98d95;font-weight:900;transition:background .12s,transform .12s,box-shadow .12s}
+.no-cell.rt{margin-right:6px}.no-cell.bt{margin-bottom:6px}
+.no-cell.f{background:linear-gradient(135deg,#f4a7b4,#f5b668);border-color:#e98f9d;box-shadow:inset 0 -3px 0 rgba(0,0,0,.08)}
+.no-cell.x{background:#fbf3ee}.no-cell.x::after{content:"✕"}
+.no-cell.hint{animation:noHint .9s ease}
+@keyframes noHint{30%{transform:scale(1.2);box-shadow:0 0 0 6px rgba(255,200,120,.8)}}
+@media(hover:hover) and (pointer:fine){.no-cell:not(.f):hover{background:#fff0f1}}
+.no-grid.won .no-cell.f{animation:noPop .55s ease both}
+@keyframes noPop{50%{transform:scale(1.14)}}
+.no-tools{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:16px}
+.no-seg{display:inline-flex;background:#f7e9df;border-radius:999px;padding:4px}
+.no-seg button{border:0;background:transparent;padding:10px 16px;border-radius:999px;font-weight:800;color:#8a5a50;min-height:44px}
+.no-seg button.on{background:#fff;color:#b8566a;box-shadow:0 6px 12px -8px rgba(150,80,70,.7)}
+.no-btn{border:0;min-height:48px;padding:0 18px;border-radius:999px;font-weight:800;color:#fff;background:linear-gradient(135deg,#f4a7b4,#f5b668);box-shadow:0 10px 18px -12px rgba(200,100,100,.8)}
+.no-btn.soft{background:#fff;color:#8a5a50;border:2px solid #f3e1d3;box-shadow:none}
+.no-link{display:block;margin:12px auto 0;border:0;background:none;color:#a07a70;font-weight:700;text-decoration:underline;font-size:.85rem}
+.no-win{position:relative;overflow:hidden;margin-top:16px;padding:20px;border-radius:22px;background:linear-gradient(135deg,#fff0f1,#fff6dc);text-align:center;animation:noIn .5s ease}
+.no-win[hidden]{display:none}
+@keyframes noIn{from{opacity:0;transform:translateY(10px)}}
+.no-stars{font-size:2rem;letter-spacing:6px;color:#e6d6cc}
+.no-stars .on{color:#f5b02e;text-shadow:0 4px 10px rgba(245,176,46,.5)}
+.no-winpic{font-weight:900;font-size:1.3rem;color:#b8566a;margin:4px 0}
+.no-wintext{margin:0 0 12px;color:#6f5249}
+.no-conf{position:absolute;inset:0;pointer-events:none}
+.no-conf i{position:absolute;top:-24px;font-style:normal;animation:noFall 2.2s ease-in forwards}
+@keyframes noFall{to{transform:translateY(260px) rotate(300deg);opacity:0}}
+.no-side{background:#fff;border-radius:24px;padding:20px;box-shadow:0 20px 40px -30px rgba(130,70,60,.5)}
+.no-side h3{margin:0 0 10px;font-size:1.05rem}
+.no-side ol{margin:0;padding-left:20px;color:#6f5249;display:grid;gap:8px;font-size:.93rem}
+.no-ex{display:flex;align-items:center;gap:6px;margin:14px 0 4px;font-weight:800;color:#8a5a50}
+.no-ex i{width:22px;height:22px;border-radius:6px;background:#fff;border:2px solid #f3e1d3}.no-ex i.f{background:linear-gradient(135deg,#f4a7b4,#f5b668);border-color:#e98f9d}
+.crea-grid .game-card:nth-child(1) .game-art{background:#fff0f1}
+@media(prefers-reduced-motion:reduce){.no-conf{display:none}}
+</style>
 </head>
 
 <body>
@@ -3056,14 +3085,32 @@ button:active{transform:scale(.97)}
         <div class="creator-heading">
             <span class="tiny-label">Mini-gioco · logica a quadretti</span>
             <h1>Nonogram dei criceti</h1>
-            <p>I numeri a lato dicono quante caselle consecutive vanno riempite in ogni riga e colonna. Risolvi il puzzle e scopri il disegno nascosto.</p>
+            <p>Puzzle sempre nuovi e a sorpresa: più livelli superi, più la griglia cresce. Ogni numero ti dice quante caselle di fila riempire.</p>
         </div>
-        <div class="race-card nw-card" style="max-width:640px">
-            <div class="race-top"><p id="noHint">Scegli un puzzle.</p><span class="race-score" id="noScore">Tempo 0:00</span></div>
-            <div class="no-chips" id="noChips"></div>
-            <div class="no-wrap"><div class="no-grid" id="noGrid"></div></div>
-            <p class="no-reveal" id="noReveal" hidden></p>
-            <div class="race-actions nw-row"><button type="button" id="noMode">⬛ Riempi</button><button class="primary-button" type="button" id="noReset">Ricomincia</button></div>
+        <div class="no-layout">
+            <div class="no-card">
+                <div class="no-head"><span class="no-badge" id="noLevel">Livello 1</span><span class="no-pill" id="noSize">5×5</span>
+                    <div class="no-stats"><span>⏱ <b id="noTime">0:00</b></span><span>🏆 <b id="noBest">–</b></span></div></div>
+                <div class="no-progress" aria-hidden="true"><i id="noBar"></i></div>
+                <p id="noHint"></p>
+                <div class="no-wrap"><div class="no-grid" id="noGrid"></div></div>
+                <div class="no-win" id="noWin" hidden><div class="no-conf" id="noConf"></div><div class="no-stars" id="noStars"></div><div class="no-winpic" id="noWinPic"></div><p class="no-wintext" id="noWinText"></p><button class="no-btn" type="button" id="noNext">Avanti →</button></div>
+                <div class="no-tools">
+                    <div class="no-seg" id="noSeg"><button type="button" class="on" data-m="f">⬛ Riempi</button><button type="button" data-m="x">✕ Segna</button></div>
+                    <button type="button" class="no-btn soft" id="noHelp">💡 Aiuto</button>
+                    <button type="button" class="no-btn soft" id="noReset">↺ Ricomincia</button>
+                    <button type="button" class="no-btn soft" id="noSkip">⤼ Altro puzzle</button>
+                </div>
+                <button type="button" class="no-link" id="noRestart">Ricomincia dal livello 1</button>
+            </div>
+            <aside class="no-side">
+                <h3>Come si gioca</h3>
+                <ol><li>I numeri a sinistra e in alto indicano i gruppi di caselle piene in quella riga o colonna.</li><li>Tocca o trascina per riempire; con «Segna» puoi marcare le caselle che sai vuote.</li><li>Un numero si sbarra quando la sua riga o colonna è giusta.</li></ol>
+                <div class="no-ex"><i class="f"></i><i class="f"></i><i></i><i class="f"></i> = 2 1</div>
+                <h3 style="margin-top:16px">Livelli</h3>
+                <ol><li>1–3: griglie 5×5</li><li>4–7: griglie 8×8</li><li>Dall'8: griglie 10×10</li></ol>
+                <p style="margin:12px 0 0;color:#8a6a62;font-size:.85rem">Ogni puzzle è casuale: a volte nasconde un disegno, a volte è una sorpresa astratta. Il tempo migliore è salvato per ogni misura. Gli aiuti costano 15 secondi.</p>
+            </aside>
         </div>
     </div>
 </section>
@@ -9178,57 +9225,87 @@ window.__initMini=function(){
   try{window.__initNew(document.body.dataset.page)}catch(e){}
 })();
 </script>
-<script>
+<script id="nono2">
 (function(){
   const $=id=>document.getElementById(id);
   const rec=(k,v)=>{try{if(v!==undefined)localStorage.setItem(k,String(v));return localStorage.getItem(k)}catch(e){return null}};
-  const P=[
-    {n:'Cuore',e:'💗',g:['.X.X.','XXXXX','XXXXX','.XXX.','..X..']},
-    {n:'Casetta',e:'🏠',g:['..X..','.XXX.','XXXXX','XXXXX','XX.XX']},
-    {n:'Stella',e:'⭐',g:['..X..','XXXXX','.XXX.','.X.X.','X...X']},
-    {n:'Seme',e:'🌰',g:['..X..','.XXX.','XXXXX','.XXX.','..X..']},
-    {n:'Criceto',e:'🐹',g:['.XX..XX.','XXXXXXXX','XXXXXXXX','XX.XX.XX','XXXXXXXX','XXX..XXX','.XXXXXX.','..XXXX..']},
-    {n:'Ruota',e:'🎡',g:['..XXXX..','.X.XX.X.','X..XX..X','XXXXXXXX','XXXXXXXX','X..XX..X','.X.XX.X.','..XXXX..']}
-  ];
-  let timer=0;
-  function clues(arr){const r=[];let c=0;arr.forEach(v=>{if(v)c++;else if(c){r.push(c);c=0}});if(c)r.push(c);return r.length?r:[0]}
+  const PIC={
+    5:[['Cuore','💗',['.X.X.','XXXXX','XXXXX','.XXX.','..X..']],['Casetta','🏠',['..X..','.XXX.','XXXXX','XXXXX','XX.XX']],['Stella','⭐',['..X..','XXXXX','.XXX.','.X.X.','X...X']],['Seme','🌰',['..X..','.XXX.','XXXXX','.XXX.','..X..']],['Albero','🌳',['..X..','.XXX.','XXXXX','..X..','..X..']],['Sole','☀️',['X.X.X','.XXX.','XXXXX','.XXX.','X.X.X']],['Gatto','🐱',['X...X','XXXXX','X.X.X','XXXXX','.XXX.']],['Fungo','🍄',['.XXX.','XXXXX','X.X.X','..X..','..X..']]],
+    8:[['Criceto','🐹',['.XX..XX.','XXXXXXXX','XXXXXXXX','XX.XX.XX','XXXXXXXX','XXX..XXX','.XXXXXX.','..XXXX..']],['Ruota','🎡',['..XXXX..','.X.XX.X.','X..XX..X','XXXXXXXX','XXXXXXXX','X..XX..X','.X.XX.X.','..XXXX..']],['Cuoricione','💖',['.XX..XX.','XXXXXXXX','XXXXXXXX','XXXXXXXX','.XXXXXX.','..XXXX..','...XX...','........']]]
+  };
+  const praise=['Ottimo lavoro!','Che occhio!','Criceto-genio!','Perfetto!','Bravissimo!'];
+  const sizeFor=l=>l<=3?5:l<=7?8:10;
+  let timer=0,last='';
+  function clues(a){const r=[];let c=0;a.forEach(v=>{if(v)c++;else if(c){r.push(c);c=0}});if(c)r.push(c);return r.length?r:[0]}
+  const eq=(a,b)=>a.length===b.length&&a.every((v,i)=>v===b[i]);
+  function randomGrid(n){
+    for(let t=0;t<50;t++){
+      const dens=.5+Math.random()*.15,g=[];
+      for(let r=0;r<n;r++){const row=[];for(let c=0;c<Math.ceil(n/2);c++)row.push(Math.random()<dens?1:0);g.push(row.concat(row.slice(0,Math.floor(n/2)).reverse()))}
+      const rowsOk=g.every(r=>r.some(v=>v)),colsOk=g[0].every((_,c)=>g.some(r=>r[c]));
+      const tot=g.flat().reduce((a,b)=>a+b,0);
+      if(rowsOk&&colsOk&&tot>n*n*.4&&tot<n*n*.72)return g;
+    }
+    return Array.from({length:n},(_,r)=>Array.from({length:n},(_,c)=>(r+c)%2?0:1));
+  }
   function init(){
-    const wrap=$('noGrid'),chips=$('noChips'),hint=$('noHint'),score=$('noScore'),mode=$('noMode'),reset=$('noReset');
-    let cur=0,sol,N,st,fillMode=true,t0=0,secs=0,won=false,paint=null,cells=[],rowEls=[],colEls=[];
-    const key=i=>'cc_nono_'+i;
-    function fmt(s){return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
-    function lab(){const b=+rec(key(cur));const k=st.flat().filter(v=>v===1).length;score.textContent='Tempo '+fmt(secs)+' · Record '+(b?fmt(b):'–')}
-    function build(i){
-      cur=i;sol=P[i].g.map(r=>[...r].map(c=>c==='X'?1:0));N=sol.length;st=sol.map(r=>r.map(()=>0));won=false;secs=0;t0=0;clearInterval(timer);timer=0;
+    const wrap=$('noGrid'),hint=$('noHint'),lvlEl=$('noLevel'),timeEl=$('noTime'),bestEl=$('noBest'),mode=$('noMode'),reset=$('noReset'),help=$('noHelp'),skip=$('noSkip'),win=$('noWin'),next=$('noNext'),stars=$('noStars'),wtxt=$('noWinText'),wpic=$('noWinPic'),sizeEl=$('noSize'),bar=$('noBar');
+    let lvl=Math.max(1,+rec('cc_nono_lvl')||1),sol,N,st,fillMode=true,t0=0,secs=0,won=false,paint=null,cells=[],rowEls=[],colEls=[],pic=null,helps=0,total=0;
+    const fmt=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+    const bkey=()=>'cc_nono_best_'+N;
+    function labels(){lvlEl.textContent='Livello '+lvl;sizeEl.textContent=N+'×'+N;timeEl.textContent=fmt(secs);const b=+rec(bkey());bestEl.textContent=b?fmt(b):'–';const f=st.flat().filter(v=>v===1).length;bar.style.width=Math.min(100,f/total*100)+'%'}
+    function build(){
+      const n=sizeFor(lvl);N=n;pic=null;
+      const pool=(PIC[n]||[]).filter(p=>p[0]!==last);
+      if(pool.length&&Math.random()<(n===5?.55:.5)){const p=pool[Math.floor(Math.random()*pool.length)];pic=p;last=p[0];sol=p[2].map(r=>[...r].map(c=>c==='X'?1:0))}
+      else{last='';sol=randomGrid(n)}
+      total=sol.flat().reduce((a,b)=>a+b,0);
+      st=sol.map(r=>r.map(()=>0));won=false;secs=0;t0=0;helps=0;clearInterval(timer);timer=0;
       const rc=sol.map(clues),cc=sol[0].map((_,c)=>clues(sol.map(r=>r[c])));
-      wrap.innerHTML='';wrap.style.setProperty('--n',N);wrap.className='no-grid n'+N;
-      const mk=(cls,txt)=>{const d=document.createElement('div');d.className=cls;if(txt!==undefined)d.textContent=txt;wrap.appendChild(d);return d};
+      wrap.innerHTML='';wrap.className='no-grid n'+N;wrap.style.setProperty('--n',N);
+      const mk=(cls)=>{const d=document.createElement('div');d.className=cls;wrap.appendChild(d);return d};
       mk('no-corner');colEls=cc.map(a=>{const d=mk('no-col');d.innerHTML=a.map(v=>'<b>'+v+'</b>').join('');return d});
       cells=[];rowEls=[];
       sol.forEach((row,r)=>{const d=mk('no-row');d.innerHTML=rc[r].map(v=>'<b>'+v+'</b>').join('');rowEls.push(d);
-        row.forEach((_,c)=>{const b=mk('no-cell');b.dataset.r=r;b.dataset.c=c;b.setAttribute('role','button');b.setAttribute('aria-label','Casella '+(r+1)+','+(c+1));if((c+1)%5===0&&c<N-1)b.classList.add('rt');if((r+1)%5===0&&r<N-1)b.classList.add('bt');cells.push(b)})});
-      chips.querySelectorAll('button').forEach((b,k)=>b.classList.toggle('on',k===i));
-      hint.textContent='Riempi le caselle in base ai numeri: ogni numero è un gruppo di caselle consecutive.';
-      $('noReveal').hidden=true;lab();render();
+        row.forEach((_,c)=>{const b=mk('no-cell');b.dataset.r=r;b.dataset.c=c;b.setAttribute('role','button');b.setAttribute('aria-label','Casella '+(r+1)+','+(c+1));if(N>5&&(c+1)%5===0&&c<N-1)b.classList.add('rt');if(N>5&&(r+1)%5===0&&r<N-1)b.classList.add('bt');cells.push(b)})});
+      win.hidden=true;hint.textContent=pic?'Disegno nascosto: riempi le caselle giuste per scoprirlo.':'Puzzle a sorpresa: ogni numero è un gruppo di caselle consecutive.';
+      render();labels();
     }
+    function lineOk(r){return eq(clues(st[r].map(v=>v===1?1:0)),clues(sol[r]))}
+    function colOk(c){return eq(clues(st.map(r=>r[c]===1?1:0)),clues(sol.map(r=>r[c])))}
     function render(){
       cells.forEach((b,k)=>{const v=st[Math.floor(k/N)][k%N];b.classList.toggle('f',v===1);b.classList.toggle('x',v===2)});
-      sol.forEach((_,r)=>{const ok=JSON.stringify(clues(st[r].map(v=>v===1?1:0)))===JSON.stringify(clues(sol[r].map(v=>v)));rowEls[r].classList.toggle('ok',ok)});
-      sol[0].forEach((_,c)=>{const ok=JSON.stringify(clues(st.map(r=>r[c]===1?1:0)))===JSON.stringify(clues(sol.map(r=>r[c])));colEls[c].classList.toggle('ok',ok)});
+      sol.forEach((_,r)=>rowEls[r].classList.toggle('ok',lineOk(r)));sol[0].forEach((_,c)=>colEls[c].classList.toggle('ok',colOk(c)));
     }
-    function solved(){return sol.every((row,r)=>JSON.stringify(clues(st[r].map(v=>v===1?1:0)))===JSON.stringify(clues(row))) && sol[0].every((_,c)=>JSON.stringify(clues(st.map(r=>r[c]===1?1:0)))===JSON.stringify(clues(sol.map(r=>r[c]))))}
-    function win(){won=true;clearInterval(timer);timer=0;let m='Risolto in '+fmt(secs)+'!';const b=+rec(key(cur));if(!b||secs<b){rec(key(cur),secs);m+=' Nuovo record!'}hint.textContent=m;lab();wrap.classList.add('won');const rv=$('noReveal');rv.hidden=false;rv.textContent=P[cur].e+' '+P[cur].n}
-    function set(el,val){if(won||!el||!el.classList.contains('no-cell'))return;const r=+el.dataset.r,c=+el.dataset.c;if(st[r][c]===val)return;st[r][c]=val;if(!t0){t0=Date.now();timer=setInterval(()=>{secs=Math.floor((Date.now()-t0)/1000);lab()},500)}render();if(solved())win()}
-    function target(el){const cur=st[+el.dataset.r][+el.dataset.c];const w=fillMode?1:2;return cur===w?0:w}
+    const solved=()=>sol.every((_,r)=>lineOk(r))&&sol[0].every((_,c)=>colOk(c));
+    function finish(){
+      won=true;clearInterval(timer);timer=0;wrap.classList.add('won');
+      const par=N*N*(N>8?4:5),sc=helps===0&&secs<=par?3:(helps<=1&&secs<=par*2?2:1);
+      stars.innerHTML=[1,2,3].map(i=>'<span class="'+(i<=sc?'on':'')+'">★</span>').join('');
+      let m=praise[Math.floor(Math.random()*praise.length)]+' Risolto in '+fmt(secs)+(helps?' ('+helps+' aiut'+(helps>1?'i':'o')+')':'')+'.';
+      const b=+rec(bkey());if(helps===0&&(!b||secs<b)){rec(bkey(),secs);m+=' Nuovo record!'}
+      wtxt.textContent=m;wpic.textContent=pic?pic[1]+' '+pic[0]:'✨ Disegno astratto';
+      lvl++;rec('cc_nono_lvl',lvl);next.textContent='Livello '+lvl+' →';win.hidden=false;labels();
+      if(!matchMedia('(prefers-reduced-motion:reduce)').matches){const cf=$('noConf');cf.innerHTML='';for(let i=0;i<22;i++){const s=document.createElement('i');s.textContent=['🌰','💗','⭐','🌻','🍓'][i%5];s.style.left=Math.random()*100+'%';s.style.animationDelay=Math.random()*.5+'s';s.style.fontSize=14+Math.random()*14+'px';cf.appendChild(s)}}
+      setTimeout(()=>win.scrollIntoView({behavior:'smooth',block:'nearest'}),150);
+    }
+    function set(el,val){if(won||!el||!el.classList.contains('no-cell'))return;const r=+el.dataset.r,c=+el.dataset.c;if(st[r][c]===val)return;st[r][c]=val;
+      if(!timer){t0=t0||Date.now();timer=setInterval(()=>{secs=Math.floor((Date.now()-t0)/1000)+helps*15;timeEl.textContent=fmt(secs)},500)}
+      render();labels();if(solved())finish()}
+    const target=el=>{const cur=st[+el.dataset.r][+el.dataset.c],w=fillMode?1:2;return cur===w?0:w};
     wrap.addEventListener('pointerdown',e=>{const el=e.target.closest('.no-cell');if(!el)return;e.preventDefault();paint=target(el);set(el,paint)});
-    wrap.addEventListener('pointermove',e=>{if(paint===null)return;const el=document.elementFromPoint(e.clientX,e.clientY);if(el&&el.classList.contains('no-cell'))set(el,paint)});
-    ['pointerup','pointercancel','pointerleave'].forEach(ev=>wrap.addEventListener(ev,()=>{paint=null}));
+    wrap.addEventListener('pointermove',e=>{const el=document.elementFromPoint(e.clientX,e.clientY);wrap.querySelectorAll('.hl').forEach(x=>x.classList.remove('hl'));if(el&&el.classList.contains('no-cell')){const r=+el.dataset.r,c=+el.dataset.c;rowEls[r].classList.add('hl');colEls[c].classList.add('hl');if(paint!==null)set(el,paint)}});
+    ['pointerup','pointercancel'].forEach(ev=>wrap.addEventListener(ev,()=>{paint=null}));
+    wrap.addEventListener('pointerleave',()=>{paint=null;wrap.querySelectorAll('.hl').forEach(x=>x.classList.remove('hl'))});
     wrap.addEventListener('contextmenu',e=>e.preventDefault());
-    mode.addEventListener('click',()=>{fillMode=!fillMode;mode.textContent=fillMode?'⬛ Riempi':'✕ Segna vuota';mode.classList.toggle('alt',!fillMode)});
-    reset.addEventListener('click',()=>build(cur));
-    P.forEach((p,i)=>{const b=document.createElement('button');b.type='button';b.textContent=p.e+' '+p.n+' '+p.g.length+'×'+p.g.length;b.addEventListener('click',()=>build(i));chips.appendChild(b)});
-    window.__nonoStop=()=>{clearInterval(timer);timer=0;if(t0&&!won){t0=0}};
-    build(0);
+    document.querySelectorAll('#noSeg button').forEach(b=>b.addEventListener('click',()=>{fillMode=b.dataset.m==='f';document.querySelectorAll('#noSeg button').forEach(x=>x.classList.toggle('on',x===b))}));
+    reset.addEventListener('click',()=>{st=sol.map(r=>r.map(()=>0));won=false;wrap.classList.remove('won');win.hidden=true;t0=0;secs=0;helps=0;clearInterval(timer);timer=0;render();labels()});
+    skip.addEventListener('click',()=>{wrap.classList.remove('won');build()});
+    next.addEventListener('click',()=>{wrap.classList.remove('won');build()});
+    $('noRestart').addEventListener('click',()=>{lvl=1;rec('cc_nono_lvl',1);wrap.classList.remove('won');build()});
+    help.addEventListener('click',()=>{if(won)return;const bad=[];sol.forEach((row,r)=>row.forEach((v,c)=>{if((v===1&&st[r][c]!==1)||(v===0&&st[r][c]===1))bad.push([r,c])}));if(!bad.length)return;const [r,c]=bad[Math.floor(Math.random()*bad.length)];helps++;st[r][c]=sol[r][c]?1:0;const el=cells[r*N+c];el.classList.add('hint');setTimeout(()=>el.classList.remove('hint'),900);if(!timer){t0=t0||Date.now();timer=setInterval(()=>{secs=Math.floor((Date.now()-t0)/1000)+helps*15;timeEl.textContent=fmt(secs)},500)}secs+=15;render();labels();hint.textContent='Aiuto usato: +15 secondi.';if(solved())finish()});
+    window.__nonoStop=()=>{clearInterval(timer);timer=0;if(!won&&t0){t0=Date.now()-(secs-helps*15)*1000;}};
+    build();
   }
   const done={};const oldInit=window.__initNew,oldStop=window.stopNew;
   window.__initNew=function(n){if(oldInit)oldInit(n);if(n==='nonogram'&&!done.n){done.n=1;init()}};
