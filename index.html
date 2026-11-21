@@ -785,7 +785,7 @@ input.x24-ok{border-color:#58b37a!important}input.x24-bad{border-color:#e0405a!i
 .cs.open .cs-btn svg{transform:rotate(180deg)}
 .cs.dis .cs-btn{background:#f8f2ee;color:#b3a29d;cursor:not-allowed}
 .cs.bad .cs-btn{border-color:#e06a7c;box-shadow:0 0 0 4px #ffe1e6}
-.cs-list{position:absolute;z-index:80;top:calc(100% + 8px);left:0;right:0;max-height:min(320px,56vh);overflow:auto;margin:0;padding:8px;list-style:none;background:#fff;border:1.5px solid #f1e2d8;border-radius:20px;box-shadow:0 18px 40px rgba(120,70,60,.18);animation:sortIn .18s ease;overscroll-behavior:contain}
+.cs-list{position:absolute;z-index:9500;top:calc(100% + 8px);left:0;right:0;max-height:min(320px,56vh);overflow:auto;margin:0;padding:8px;list-style:none;background:#fff;border:1.5px solid #f1e2d8;border-radius:20px;box-shadow:0 18px 40px rgba(120,70,60,.18);animation:sortIn .18s ease;overscroll-behavior:contain}
 .cs-list[hidden]{display:none}
 .cs.up .cs-list{top:auto;bottom:calc(100% + 8px)}
 .cs-opt{white-space:normal!important;line-height:1.3}
@@ -801,7 +801,26 @@ input.x24-ok{border-color:#58b37a!important}input.x24-bad{border-color:#e0405a!i
 @keyframes rxUp{0%{opacity:0;transform:translate(0,0) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translate(var(--x),-95vh) rotate(var(--r))}}
 @media(prefers-reduced-motion:reduce){.rx-burst{display:none}}
 </style>
-<style id="polish25">body[data-page="carrello"] .cmp-bar,body[data-page="tracking"] .cmp-bar,body[data-page="assistenza"] .cmp-bar,body[data-page="restituzioni"] .cmp-bar,body[data-page="crea"] .cmp-bar,body[data-page="crea-criceto"] .cmp-bar,body[data-page="crea-casa"] .cmp-bar,body[data-page="crea-ruota"] .cmp-bar,body[data-page="giochi"] .cmp-bar,body[data-page="gara"] .cmp-bar,body[data-page="memory"] .cmp-bar,body[data-page="acchiappa"] .cmp-bar,body[data-page="semi"] .cmp-bar,body[data-page="simon"] .cmp-bar,body[data-page="salta"] .cmp-bar,body[data-page="nonogram"] .cmp-bar,body[data-page="sudoku"] .cmp-bar,body[data-page="picross"] .cmp-bar{display:none}</style>
+<style id="audit28css">
+[hidden]{display:none!important}
+#carrello:has(.empty-cart) .cart-toolbar button,#carrello:has(.empty-cart) .promo-box,#carrello:has(.empty-cart) .checkout-totals,#carrello:has(.empty-cart) .x24-cartbox{display:none!important}
+#carrello:has(.empty-cart) .cart-toolbar{padding-bottom:0}
+.cart-toolbar{flex-wrap:wrap;gap:8px 14px;align-items:center}.cart-toolbar h2{margin:0}
+.empty-cart{padding:26px 15px}
+#clearCartButton[style*="hidden"]{display:none}
+.promo-box input::placeholder{text-transform:none;letter-spacing:0}.promo-box input{min-width:0;flex:1}
+#ageOptions{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+@media(max-width:430px){#ageOptions .creator-option,#ageOptions>*{padding:10px 6px}#ageOptions strong,#ageOptions span{font-size:.82rem}}
+#crea-criceto .creator-tabs{margin-top:0}
+#carrello:has(.empty-cart) section.panel+section.panel{display:none}
+.dots button{position:relative}.dots button::after{content:"";position:absolute;inset:-12px -4px}
+.details-link{display:inline-flex;align-items:center;min-height:36px}
+#noRestart{min-height:36px;padding:6px 10px}
+
+@media(max-width:600px){.cmp-scroll table{min-width:0;table-layout:fixed}.cmp-scroll th,.cmp-scroll td{padding:8px 4px;font-size:.76rem;overflow-wrap:anywhere;hyphens:auto}.cmp-scroll td:first-child,.cmp-scroll th:first-child{width:80px;font-size:.68rem;white-space:normal!important;overflow-wrap:anywhere;word-break:normal}.cmp-th{width:48px;height:48px}.cmp-scroll th{font-size:.78rem}}
+
+#tlName.name-card{margin:0 0 18px}
+</style><style id="polish25">body[data-page="carrello"] .cmp-bar,body[data-page="tracking"] .cmp-bar,body[data-page="assistenza"] .cmp-bar,body[data-page="restituzioni"] .cmp-bar,body[data-page="crea"] .cmp-bar,body[data-page="crea-criceto"] .cmp-bar,body[data-page="crea-casa"] .cmp-bar,body[data-page="crea-ruota"] .cmp-bar,body[data-page="giochi"] .cmp-bar,body[data-page="gara"] .cmp-bar,body[data-page="memory"] .cmp-bar,body[data-page="acchiappa"] .cmp-bar,body[data-page="semi"] .cmp-bar,body[data-page="simon"] .cmp-bar,body[data-page="salta"] .cmp-bar,body[data-page="nonogram"] .cmp-bar,body[data-page="sudoku"] .cmp-bar,body[data-page="picross"] .cmp-bar{display:none}</style>
 </head>
 
 <body>
@@ -1393,6 +1412,37 @@ input.x24-ok{border-color:#58b37a!important}input.x24-bad{border-color:#e0405a!i
                             </div>
                         </div>
                     </div>
+                    <div class="field full type-fields" id="returnCageFields" hidden>
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="cageReturnCondition">In che condizioni è la gabbia?</label>
+                                <select id="cageReturnCondition" name="returnCondition" required disabled>
+                                    <option value="">Valuta lo stato della gabbia</option>
+                                    <option>Come nuova</option>
+                                    <option>Qualche graffio</option>
+                                    <option>Sbarre piegate</option>
+                                    <option>Montaggio a metà</option>
+                                    <option>Danneggiata o incompleta</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="cageReturnReason">Perché la restituisci?</label>
+                                <select id="cageReturnReason" name="returnReason" required disabled>
+                                    <option value="">Scegli il motivo</option>
+                                    <option>Troppo piccola</option>
+                                    <option>Troppo grande per la scrivania</option>
+                                    <option>Il criceto è evaso</option>
+                                    <option>Vorrei proporla per il ricondizionamento</option>
+                                    <option>Voglio passare alla Gabbia Pro</option>
+                                    <option>Manca un componente</option>
+                                </select>
+                            </div>
+                            <div class="field full">
+                                <label for="cageReturnDetails">Difetti o componenti mancanti (facoltativo)</label>
+                                <textarea id="cageReturnDetails" name="returnDetails" maxlength="500" placeholder="Es. manca una vite, il tetto non si chiude..." disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-actions">
@@ -1468,6 +1518,8 @@ input.x24-ok{border-color:#58b37a!important}input.x24-bad{border-color:#e0405a!i
                             <option value="">Seleziona una categoria</option>
                             <option value="criceto">Domanda su un criceto</option>
                             <option value="ruota">Domanda su una ruota</option>
+                            <option value="gabbia">Domanda su una gabbia</option>
+                            <option value="peluche">Domanda su un peluche</option>
                             <option value="extra">Domanda su un accessorio</option>
                             <option value="ordine">Problema con un ordine</option>
                             <option value="tecnico">Problema tecnico del sito</option>
@@ -5630,12 +5682,15 @@ function updateReturnFields() {
     const modelSelect = document.getElementById("returnModel");
     const hamsterFields = document.getElementById("returnHamsterFields");
     const wheelFields = document.getElementById("returnWheelFields");
+    const cageFields = document.getElementById("returnCageFields");
     const isHamster = category === "criceto";
     const isWheel = category === "ruota";
     hamsterFields.hidden = !isHamster;
     wheelFields.hidden = !isWheel;
+    cageFields.hidden = category !== "gabbia";
     setGroupEnabled(hamsterFields,isHamster);
     setGroupEnabled(wheelFields,isWheel);
+    setGroupEnabled(cageFields,category === "gabbia");
     modelSelect.replaceChildren();
     const placeholder = document.createElement("option");
     placeholder.value = "";
@@ -5692,6 +5747,8 @@ function updateSupportFields() {
     const isProduct =
         topic === "criceto" ||
         topic === "ruota" ||
+        topic === "gabbia" ||
+        topic === "peluche" ||
         topic === "extra";
     orderFields.hidden = topic !== "ordine";
     productFields.hidden = !isProduct;
@@ -10218,7 +10275,7 @@ window.__initMini=function(){
   /* ================= Nomi (crea criceto) · Curiosità (home) ================= */
   const nameHost=$('#hamsterName');
   const nameBox=document.createElement('div');nameBox.className='tl-card name-card';nameBox.id='tlName';
-  if(nameHost)nameHost.insertAdjacentElement('afterend',nameBox);
+  {const tabs=document.querySelector('#crea-criceto .creator-tabs');if(tabs)tabs.insertAdjacentElement('beforebegin',nameBox);else if(nameHost)nameHost.insertAdjacentElement('afterend',nameBox)}
   const ageBox=document.createElement('div');ageBox.className='x-card';ageBox.id='tlAge';
   const todayGrid=$('.x-today .grid');if(todayGrid){todayGrid.appendChild(ageBox);const h=$('.x-today h2');if(h)h.textContent='Tre cose da sapere oggi'}
 
@@ -10881,7 +10938,7 @@ window.__initMini=function(){
 (function(){
   const CH='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
   const all=new Set();let openCs=null;
-  function close(){if(openCs){openCs.wrap.classList.remove('open');openCs.list.hidden=true;openCs.btn.setAttribute('aria-expanded','false');openCs=null}}
+  function close(){if(openCs){openCs.wrap.classList.remove('open');openCs.list.hidden=true;openCs.wrap.appendChild(openCs.list);openCs.list.style.cssText='';openCs.list.classList.remove('cs-portal');openCs.btn.setAttribute('aria-expanded','false');openCs=null}}
   function enhance(sel){
     if(sel.dataset.cs||sel.id==='sortProducts'||sel.hidden)return;sel.dataset.cs='1';
     const wrap=document.createElement('div');wrap.className='cs';
@@ -10898,8 +10955,12 @@ window.__initMini=function(){
       if(!o.value&&i===0)li.classList.add('ph');if(o.disabled)li.classList.add('dis');li.setAttribute('aria-selected',i===sel.selectedIndex?'true':'false');
       li.onclick=()=>{if(o.disabled)return;sel.selectedIndex=i;sel.dispatchEvent(new Event('input',{bubbles:true}));sel.dispatchEvent(new Event('change',{bubbles:true}));st.sync();close();btn.focus()};list.append(li)})}
     function open(){if(sel.disabled)return;close();build();wrap.classList.add('open');list.hidden=false;btn.setAttribute('aria-expanded','true');openCs=st;
-      wrap.classList.remove('up');const r=btn.getBoundingClientRect();if(innerHeight-r.bottom<Math.min(list.offsetHeight,300)+16&&r.top>list.offsetHeight)wrap.classList.add('up');
+      document.body.appendChild(list);list.classList.add('cs-portal');place();
       const a=list.querySelector('[aria-selected="true"]');if(a)a.scrollIntoView({block:'nearest'})}
+    function place(){const r=btn.getBoundingClientRect();const vh=innerHeight;const below=vh-r.bottom-14,above=r.top-14;const h=Math.min(list.scrollHeight+2,320);
+      const up=below<Math.min(h,200)&&above>below;const mh=Math.max(120,Math.min(320,up?above:below));
+      list.style.cssText='position:fixed;left:'+Math.round(r.left)+'px;width:'+Math.round(r.width)+'px;right:auto;max-height:'+mh+'px;'+(up?'bottom:'+Math.round(vh-r.top+8)+'px;top:auto':'top:'+Math.round(r.bottom+8)+'px;bottom:auto')}
+    st.place=place;
     btn.onclick=e=>{e.stopPropagation();openCs===st?close():open()};
     btn.onkeydown=e=>{const opts=[...list.querySelectorAll('.cs-opt:not(.dis)')];
       if(e.key==='Escape'){close();return}
@@ -10913,9 +10974,9 @@ window.__initMini=function(){
     sel.addEventListener('invalid',()=>{wrap.classList.add('bad');btn.focus();setTimeout(()=>wrap.classList.remove('bad'),1500)});
     st.sync();
   }
-  document.addEventListener('click',e=>{if(openCs&&!openCs.wrap.contains(e.target))close()});
+  document.addEventListener('click',e=>{if(openCs&&!openCs.wrap.contains(e.target)&&!openCs.list.contains(e.target))close()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
-  window.addEventListener('scroll',()=>{if(openCs&&!openCs.wrap.classList.contains('up'))return},{passive:true});
+  window.addEventListener('scroll',e=>{if(openCs&&!openCs.list.contains(e.target))openCs.place()},{passive:true,capture:true});window.addEventListener('resize',()=>{if(openCs)openCs.place()});
   function scan(){document.querySelectorAll('select').forEach(enhance)}
   scan();new MutationObserver(scan).observe(document.body,{childList:true,subtree:true});
   setInterval(()=>all.forEach(s=>{if(!s.sel.isConnected){all.delete(s);return}s.sync()}),350);
@@ -10973,7 +11034,6 @@ window.__initMini=function(){
       if(name==='giochi')say('g1','🎮','Benvenuto nella sala giochi','Prova il sudoku: hai tre vite, usale con calma.',{once:true,delay:2000});
       if(name==='crea-criceto')say('cc1','🎨','Che si crea?','Ogni criceto ha un nome: scegline uno che gli stia bene.',{once:true,delay:2000});
       if(name==='restituzioni'&&!Object.keys(cart).length&&!(typeof loadOrders==='function'&&loadOrders().length))say('r0','♻️','Niente da rendere?','Stai già pensando ai resi prima di comprare. Previdente!',{once:true,delay:2000});
-      if(name==='carrello'&&!Object.keys(cart).length)say('c0','🛒','Carrello vuoto','Il criceto sta aspettando. Fai un giro in negozio.',{once:false,delay:2000});
     }
     if(name==='tracking'&&sess.pages[name]===4)say('trk4','📦','Il pacco sta arrivando','Controllarlo quattro volte non lo rende più veloce. Ma ci piace il tuo spirito.',{once:false,delay:1800});
     if(name==='assistenza'&&sess.pages[name]===3)say('as3','🛠️','Tutto ok?','Terza visita all\'assistenza: forse conviene scrivere il messaggio.',{once:false,delay:1800});
