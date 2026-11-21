@@ -667,6 +667,7 @@ input.x24-ok{border-color:#58b37a!important}input.x24-bad{border-color:#e0405a!i
 @media(max-width:480px){.x24-rel>div{grid-template-columns:repeat(3,minmax(0,1fr))}.x24-rel span{font-size:.7rem}}
 @media print{body *{visibility:hidden!important}#trackResult,#trackResult *{visibility:visible!important}#trackResult{position:absolute;left:0;top:0;width:100%}.x24-actions,.track-demo{display:none!important}}
 </style>
+<style id="extras26css">.product-art>button.wish-btn{position:absolute;top:10px;right:10px;z-index:3}.product-art>button.cmp-btn{position:absolute;top:10px;right:56px;z-index:3}.product-art>.product-tag{z-index:3}</style>
 <style id="extras25css">.cmp-best{color:#2f7a4a;font-weight:900}.cmp-best small{display:block;font-weight:700;font-size:.72rem}.cmp-scroll td small{color:inherit}</style>
 <style id="picrosscss">
 .pic-card{max-width:760px;margin:0 auto;background:#fff;border-radius:28px;padding:22px;box-shadow:0 24px 50px -34px rgba(120,70,50,.6);display:grid;gap:16px}
@@ -719,21 +720,29 @@ input.x24-ok{border-color:#58b37a!important}input.x24-bad{border-color:#e0405a!i
 .x25-saved span{flex:1 1 180px;font-weight:700;font-size:.9rem}
 .x25-saved button{border:1.5px solid #d9c9ee;background:#fff;border-radius:999px;padding:6px 12px;font:inherit;font-weight:800;font-size:.8rem;color:#6e55a0;cursor:pointer}
 .save-later{display:block;margin-top:4px;color:#6e55a0!important}
-.x25-kit{padding:10px 0 4px}
-.x25-kitcard{background:linear-gradient(135deg,#fff3e6,#ffe8ee);border-radius:28px;padding:26px;display:grid;gap:18px;box-shadow:0 24px 44px -34px rgba(120,70,50,.6)}
-.x25-kitcard h2{margin:4px 0 6px}.x25-kitcard p{margin:0;color:var(--muted)}
-.x25-kitsel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.x25-kitsel label{display:grid;gap:6px;font-weight:800;font-size:.9rem;min-width:0}
-.x25-kitsel select{min-width:0;width:100%}
-.x25-kitfoot{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
-.x25-kitfoot b{font-size:1.5rem}
-.x25-kitfoot button:disabled{opacity:.45}
-@media(max-width:720px){.x25-kitsel{grid-template-columns:minmax(0,1fr)}.x25-kitcard{padding:20px}}
 .x25-daily{display:flex;align-items:center;gap:14px;max-width:1120px;margin:0 auto 22px;background:#fff;border-radius:22px;padding:14px 18px;box-shadow:0 18px 36px -28px rgba(120,70,50,.6)}
 .x25-daily>div{flex:1;min-width:0;display:grid;gap:2px}.x25-daily small{color:var(--muted);font-weight:700}
 .x25-dg{font-size:2rem}
 .x25-daily button{border:0;background:#e9798f;color:#fff;border-radius:999px;padding:10px 18px;font:inherit;font-weight:800;cursor:pointer;white-space:nowrap}
 @media(max-width:520px){.x25-daily{flex-wrap:wrap}.x25-daily button{width:100%}}
+</style>
+<style id="extras26kit">
+.x26-kit{padding:6px 0 26px}
+.x26-head{margin-bottom:18px}.x26-head h2{margin:6px 0 4px;font-family:"Nunito",sans-serif;font-weight:900;font-size:clamp(1.5rem,3vw,2rem)}.x26-head p{margin:0;color:var(--muted)}
+.x26-slots{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:center}
+.x26-plus{font-size:1.6rem;font-weight:900;color:#c9a99c}
+.x26-slot{display:grid;grid-template-columns:84px minmax(0,1fr);grid-template-areas:"t l" "t s";gap:2px 14px;align-items:center;background:#fff;border-radius:26px;padding:12px;box-shadow:0 18px 34px -26px rgba(120,70,50,.6);border:1.5px solid transparent;transition:transform .2s,box-shadow .2s}
+.x26-slot:hover{transform:translateY(-2px)}
+.x26-slot.pink{--tone:#ffe1e6}.x26-slot.green{--tone:#e0f0dc}.x26-slot.purple{--tone:#ece3fa}
+.x26-thumb{grid-area:t;width:84px;height:84px;border-radius:22px;background:var(--tone);display:grid;place-items:center;overflow:hidden}
+.x26-thumb img{width:100%;height:100%;object-fit:cover}.x26-emo{font-size:2.2rem}
+.x26-lab{grid-area:l;align-self:end;font-size:.72rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#a07a6c}
+.x26-slot select{grid-area:s;align-self:start;min-width:0;width:100%;border:1.5px solid #f0e0d6;border-radius:12px;background:#fffaf5;padding:8px 10px;font:inherit;font-weight:700;font-size:.88rem;color:var(--ink)}
+.x26-foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-top:16px;background:#fff;border-radius:24px;padding:14px 18px;box-shadow:0 18px 34px -28px rgba(120,70,50,.6)}
+.x26-foot small{display:block;color:var(--muted);font-weight:700}.x26-foot b{font-size:1.6rem}
+.x26-foot button:disabled{opacity:.45}
+@media(max-width:900px){.x26-slots{grid-template-columns:minmax(0,1fr)}.x26-plus{display:none}}
+@media(max-width:480px){.x26-slot{grid-template-columns:68px minmax(0,1fr)}.x26-thumb{width:68px;height:68px;border-radius:18px}.x26-foot{padding:14px}.x26-foot button{width:100%}}
 </style>
 <style id="polish25">body[data-page="carrello"] .cmp-bar,body[data-page="tracking"] .cmp-bar,body[data-page="assistenza"] .cmp-bar,body[data-page="restituzioni"] .cmp-bar,body[data-page="crea"] .cmp-bar,body[data-page="crea-criceto"] .cmp-bar,body[data-page="crea-casa"] .cmp-bar,body[data-page="crea-ruota"] .cmp-bar,body[data-page="giochi"] .cmp-bar,body[data-page="gara"] .cmp-bar,body[data-page="memory"] .cmp-bar,body[data-page="acchiappa"] .cmp-bar,body[data-page="semi"] .cmp-bar,body[data-page="simon"] .cmp-bar,body[data-page="salta"] .cmp-bar,body[data-page="nonogram"] .cmp-bar,body[data-page="quiz"] .cmp-bar,body[data-page="picross"] .cmp-bar{display:none}</style>
 </head>
@@ -5588,6 +5597,14 @@ document.getElementById("returnForm").addEventListener("submit",function(event) 
     const data = new FormData(this);
     const product = getProduct(data.get("returnModel"));
     if (!product) return;
+    if (product.id === "h6") {
+        showFormNotice(
+            "negativeNotice",
+            "Reso impossibile!",
+            "Il Criceto Napoletano non accetta resi: è già tornato indietro tre volte, ogni volta con un po' dei tuoi risparmi. Scegli un altro criceto, oppure fai finta di niente."
+        );
+        return;
+    }
     showFormNotice(
         "returnNotice",
         "Richiesta confermata!",
@@ -7292,11 +7309,16 @@ function drawProductArt() {
                 <path d="M80 44v40" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
             </svg>`,
         e3: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-                <ellipse cx="100" cy="182" rx="80" ry="7" fill="rgba(80,40,25,.10)"/>
-                <path d="M24 176Q34 104 100 100q66 4 76 76z" fill="#f5d27a" stroke="#d4a64a" stroke-width="3" stroke-linejoin="round"/>
-                ${strands}
-                <g stroke="#d9ae52" stroke-width="3" stroke-linecap="round" fill="none"><path d="M64 112q-8-12-4-22"/><path d="M136 110q10-10 8-20"/><path d="M100 100q3-14-3-24"/></g>
-                <path d="M100 150c-6-7-16 0-10 8l10 9 10-9c6-8-4-15-10-8z" fill="#f28da0"/>
+                <ellipse cx="100" cy="184" rx="84" ry="7" fill="rgba(80,40,25,.12)"/>
+                ${Array.from({ length: 15 }, (_, i) => { const a = (-62 + i * 8.9) * Math.PI / 180, L = 56 + (i * 37 % 22); return `<path d="M${(100 + Math.sin(a) * 24).toFixed(1)} 116 L${(100 + Math.sin(a) * L).toFixed(1)} ${(116 - Math.cos(a) * L).toFixed(1)}" stroke="${["#e6b64e", "#f6d98a", "#d9a53f"][i % 3]}" stroke-width="3.6" stroke-linecap="round"/>`; }).join("")}
+                <path d="M26 124q-12 6-14 18M26 136q-14 2-18 14M26 148q-12-2-16 8" stroke="#d9a53f" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+                <path d="M174 124q12 6 14 18M174 136q14 2 18 14M174 148q12-2 16 8" stroke="#d9a53f" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+                <rect x="24" y="112" width="152" height="68" rx="22" fill="#f5d27a" stroke="#c99636" stroke-width="3.5"/>
+                <g fill="none" stroke-linecap="round"><path d="M38 128q30-8 62 0t62 0" stroke="#e0b04c" stroke-width="3"/><path d="M36 144q32-8 64 0t64 0" stroke="#fbe6a6" stroke-width="3"/><path d="M38 160q30-8 62 0t62 0" stroke="#e0b04c" stroke-width="3"/></g>
+                <rect x="88" y="106" width="24" height="80" rx="6" fill="#e9798f" stroke="#c0455c" stroke-width="3"/>
+                <path d="M100 108c-14-18-30-12-24 2 4 8 18 6 24-2zM100 108c14-18 30-12 24 2-4 8-18 6-24-2z" fill="#f28da0" stroke="#c0455c" stroke-width="3" stroke-linejoin="round"/>
+                <circle cx="100" cy="108" r="5" fill="#c0455c"/>
+                <path d="M150 58l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#fff" opacity=".9"/><path d="M48 70l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#fff" opacity=".8"/>
             </svg>`
     };
     Object.entries(art).forEach(([id, svg]) => {
@@ -7339,7 +7361,7 @@ function drawProductArt() {
     const PLUSH_SHOP = { pl1: "bear", pl2: "bunny", pl3: "cat", pl4: "chick", pl5: "hamster", pl6: "heart", pl7: "star" };
     Object.entries(PLUSH_SHOP).forEach(([id, kind]) => {
         const product = getProduct(id);
-        if (product) product.image = svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><ellipse cx="100" cy="182" rx="52" ry="7" fill="rgba(80,40,25,.12)"/><g transform="${kind === "hamster" ? "translate(100 101) scale(2.15)" : kind === "heart" ? "translate(100 98) scale(2.2)" : kind === "star" ? "translate(100 100) scale(2.3)" : "translate(100 106) scale(2.05)"}">${window.plushSVG(kind, window.plushDef[kind])}</g></svg>`);
+        if (product) product.image = svgDataUrl(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><ellipse cx="100" cy="182" rx="52" ry="7" fill="rgba(80,40,25,.12)"/><g transform="${kind === "hamster" ? "translate(100 101) scale(2.15)" : kind === "heart" ? "translate(100 98) scale(2.2)" : kind === "star" ? "translate(100 100) scale(2.3)" : kind === "bunny" ? "translate(100 114) scale(1.78)" : "translate(100 106) scale(2.05)"}">${window.plushSVG(kind, window.plushDef[kind])}</g></svg>`);
     });
 }
 function initHeroHamster() {
@@ -10108,7 +10130,6 @@ window.__initMini=function(){
   const sq=$('#searchProducts');if(sq)sq.addEventListener('input',()=>{const v=sq.value.trim().toLowerCase();const m={domani:['🛋️','Ne riparliamo domani','Il Procrastinatore è già in cerca, ma con calma.'],'42':['🌌','La risposta è 42','42 semi, per l\'esattezza.'],segreto:['🤫','Shhh…','Il segreto è la paglia.'],tiktok:['📱','Ti sento…','Anche il Procrastinatore sta guardando.'],mamma:['💗','Aww','I criceti salutano la mamma.']};if(m[v]){toast(...m[v]);if(v==='segreto')rain(['🤫','🌰'],18)}});
   const fb=$('footer .footer-brand strong');let fc=0,ft2=0;if(fb)fb.addEventListener('click',()=>{fc++;clearTimeout(ft2);ft2=setTimeout(()=>fc=0,1500);if(fc>=5){fc=0;rain(['🌰','🕳️'],24);toast('🕳️','Hai trovato la tana segreta!','Qui dentro si tengono i semi di scorta.')}});
   const hh=$('#heroScene');let hc=0,ht=0;if(hh)hh.addEventListener('click',()=>{hc++;clearTimeout(ht);ht=setTimeout(()=>hc=0,2500);if(hc>=8){hc=0;rain(['⭐','🐹','💨'],24);toast('💨','Turbo!','Il criceto ha superato la velocità del suono. Di poco.')}});
-  const t0=document.title;document.addEventListener('visibilitychange',()=>{document.title=document.hidden?'🐹 Torna da noi, ti aspettiamo!':t0});
 })();
 </script>
 <script id="extras23">
@@ -10128,7 +10149,7 @@ window.__initMini=function(){
     <div class="creator-heading"><span class="tiny-label">Mini-gioco · cinque domande</span><h1>Che criceto sei?</h1><p>Rispondi con sincerità (o quasi): ti diremo quale criceto del negozio ti somiglia di più.</p></div>
     <div class="tl-card quiz-card" id="tlQuiz"></div></div>`;
   const nonoPage=$('#nonogram');if(nonoPage)nonoPage.parentNode.insertBefore(quizPage,nonoPage);
-  const grid=$('.games-grid');
+  const grid=$('#giochi .games-grid');
   if(grid){const b=document.createElement('button');b.type='button';b.className='game-card';b.setAttribute('onclick',"showPage('quiz')");
     b.innerHTML='<span class="game-art"><svg viewBox="0 0 320 158" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="320" height="158" fill="#eaf4ff"/><circle cx="46" cy="124" r="50" fill="#fff" opacity=".6"/><circle cx="286" cy="26" r="40" fill="#fff" opacity=".6"/><g transform="translate(160 80)"><circle r="46" fill="#ffd98a"/><circle cx="-30" cy="-34" r="15" fill="#f6c06a"/><circle cx="30" cy="-34" r="15" fill="#f6c06a"/><circle cx="-16" cy="-6" r="5" fill="#4a3530"/><circle cx="16" cy="-6" r="5" fill="#4a3530"/><ellipse cx="0" cy="10" rx="6" ry="4.5" fill="#e9798f"/><text x="46" y="-34" font-size="44" font-weight="900" fill="#e9798f" font-family="sans-serif">?</text></g></svg></span><span class="game-body"><h2>Che criceto sei?</h2><p>Cinque domande per scoprire il tuo gemello peloso.</p><span class="game-go">Gioca →</span></span>';
     grid.appendChild(b)}
@@ -10434,7 +10455,7 @@ window.__initMini=function(){
       <div class="pic-win" id="picWin" hidden></div>
     </div></div>`;
   const nonoPage=$('#nonogram');if(nonoPage)nonoPage.parentNode.insertBefore(page,nonoPage);
-  const hub=$('.games-grid');
+  const hub=$('#giochi .games-grid');
   if(hub){const cols=['#e9798f','#4f9fe0','#f2b84b','#58b37a'];const pat=[[0,0,1,1,-1],[0,2,2,1,-1],[-1,2,3,3,1],[3,3,-1,1,1],[3,-1,0,0,2]];
     const cells=pat.map((r,y)=>r.map((v,x)=>v<0?'':`<rect x="${86+x*30}" y="${6+y*30}" width="27" height="27" rx="6" fill="${cols[v]}"/>`).join('')).join('');
     const b=document.createElement('button');b.type='button';b.className='game-card';b.setAttribute('onclick',"showPage('picross')");
@@ -10579,6 +10600,7 @@ window.__initMini=function(){
     if(o.slot)notes.push('🕘 Fascia di consegna: '+SLOT[o.slot]);
     if(o.invoice)notes.push('🧾 Fattura richiesta ('+(o.invoice.type==='cf'?'CF ':'P.IVA ')+o.invoice.id+(o.invoice.name?' · '+esc(o.invoice.name):'')+')');
     if(notes.length&&info)info.insertAdjacentElement('afterend',mk('p','x24-giftline',notes.join('<br>')));
+    {const bar2=$('.x24-actions',tr);if(bar2){const d=mk('button','x25-cancelbtn','🗑 Elimina dalla cronologia');d.type='button';d.onclick=()=>{if(!confirm('Elimino l\'ordine '+o.id+' dalla cronologia?'))return;saveOrders(loadOrders().filter(x=>x.id!==o.id));tr.hidden=true;tr.replaceChildren();renderRecentOrders();showToast('🗑','Ordine eliminato',o.id)};bar2.append(d)}}
     if(o.cancelled){const h=$('.track-head h2',tr);if(h)h.textContent='Ordine annullato';
       const when=new Date(o.cancelled).toLocaleString('it-IT',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
       tr.insertBefore(mk('p','x25-cancelbanner','❌ Ordine annullato il '+when+'. '+(o.promo?'Il codice '+esc(o.promo)+' è di nuovo disponibile. ':'')+'Non è stato addebitato nulla.'),$('.track-bar',tr));return}
@@ -10596,12 +10618,10 @@ window.__initMini=function(){
   const _so=showOrder;showOrder=function(code){const c=String(code||'').trim().toUpperCase();const o=loadOrders().find(x=>(x.ship&&x.ship.tracking)===c);return _so.call(this,o?o.id:code)};
   const tl=$('label[for="trackCode"]');if(tl)tl.textContent='Numero d\'ordine o di spedizione';const ti=$('#trackCode');if(ti){ti.maxLength=16;ti.placeholder='CC-ABC123 oppure BL1234567890'}
 
-  /* 4 · esporta / importa ordini */
+  /* svuota la memoria degli ordini */
   const rec=$('#trackRecent');
-  if(rec){const t=mk('div','x25-backup',`<button type="button" id="ordExp">⬇ Esporta ordini</button><button type="button" id="ordImp">⬆ Importa</button><input type="file" id="ordFile" accept="application/json,.json" hidden><small>Gli ordini sono salvati solo su questo dispositivo: esportali per non perderli.</small>`);rec.append(t);
-    $('#ordExp').onclick=()=>{const data={app:'criceti-cerebrali',version:1,exportedAt:new Date().toISOString(),orders:loadOrders(),promosUsed:usedPromos()};const a=mk('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='ordini-criceti-cerebrali.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);showToast('⬇','Ordini esportati',data.orders.length+' ordini nel file.')};
-    $('#ordImp').onclick=()=>$('#ordFile').click();
-    $('#ordFile').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;try{const d=JSON.parse(await f.text());const inc=(Array.isArray(d)?d:d.orders)||[];const ok=inc.filter(o=>o&&typeof o.id==='string'&&typeof o.placedAt==='number'&&Array.isArray(o.items));const cur=loadOrders();let n=0;ok.forEach(o=>{if(!cur.some(x=>x.id===o.id)){cur.push(o);n++}});cur.sort((a,b)=>b.placedAt-a.placedAt);saveOrders(cur);const pu=usedPromos();(d.promosUsed||[]).forEach(c=>{if(typeof c==='string'&&PROMOS[c]&&!pu.includes(c))pu.push(c)});try{localStorage.setItem('cc_promos_used',JSON.stringify(pu))}catch(_){}renderRecentOrders();showToast('⬆','Importazione completata',n+(n===1?' ordine nuovo.':' ordini nuovi.'))}catch(err){showToast('⚠️','File non valido','Scegli un file esportato da qui.')}}}
+  if(rec){const t=mk('div','x25-backup',`<button type="button" id="ordClear">🗑 Cancella tutti gli ordini</button><small>Gli ordini sono salvati solo su questo dispositivo. I codici sconto già usati restano usati.</small>`);rec.append(t);
+    $('#ordClear').onclick=()=>{if(!loadOrders().length)return;if(!confirm('Cancello tutti gli ordini salvati su questo dispositivo? Non si può annullare.'))return;saveOrders([]);const r=$('#trackResult');if(r){r.hidden=true;r.replaceChildren()}renderRecentOrders();showToast('🗑','Ordini cancellati','La cronologia è vuota.')}}
 
   /* 3 · codici sconto disponibili nel carrello */
   const note=$('#promoNote');const codes=mk('div','x25-codes');if(note)note.insertAdjacentElement('afterend',codes);
@@ -10623,18 +10643,22 @@ window.__initMini=function(){
   const _rc=renderCart;renderCart=function(){const r=_rc.apply(this,arguments);paintCodes();paintSaved();return r};
   paintCodes();paintSaved();
 
-  /* 6 · kit di partenza */
-  const gab=$('#gabbie');
-  if(gab){const sec=mk('section','catalog-section x25-kit');sec.id='kit';
-    const opts=cat=>products.filter(p=>p.category===cat).map(p=>`<option value="${p.id}">${esc(p.name)} · ${euro(p.price)}</option>`).join('');
-    sec.innerHTML=`<div class="container"><div class="x25-kitcard"><div><span class="tiny-label">Tutto in un colpo</span><h2>Componi il tuo kit di partenza</h2><p>Scegli criceto, casa e ruota: li mettiamo insieme nel carrello con un tocco solo.</p></div>
-      <div class="x25-kitsel"><label>Criceto<select id="kitH"><option value="">Nessuno</option>${opts('criceto')}</select></label><label>Gabbia<select id="kitC"><option value="">Nessuna</option>${opts('gabbia')}</select></label><label>Ruota<select id="kitW"><option value="">Nessuna</option>${opts('ruota')}</select></label></div>
-      <div class="x25-kitfoot"><b id="kitTot">0,00 €</b><button type="button" class="primary-button" id="kitGo">Aggiungi il kit al carrello</button></div></div></div>`;
-    gab.parentNode.insertBefore(sec,gab);
-    const picks=()=>['#kitH','#kitC','#kitW'].map(s=>$(s).value).filter(Boolean);
-    const upd=()=>{const t=picks().reduce((a,id)=>a+getProduct(id).price,0);$('#kitTot').textContent=euro(t);$('#kitGo').disabled=!picks().length};
-    $$('select',sec).forEach(s=>s.onchange=upd);upd();
-    $('#kitGo').onclick=()=>{const ids=picks();ids.forEach(id=>{cart[id]=(cart[id]||0)+1});updateCartCount();renderCart();showToast('🎁','Kit nel carrello',ids.length+(ids.length===1?' articolo':' articoli')+' · '+$('#kitTot').textContent)}}
+  /* 6 · kit di partenza (ridisegnato) */
+  const sf=$('.shop-filters');
+  if(sf){const sec=mk('section','x26-kit');sec.id='kit';
+    const slots=[['criceto','Criceto','🐹','pink','kitH','Nessun criceto'],['gabbia','Gabbia','🏠','green','kitC','Nessuna gabbia'],['ruota','Ruota','🎡','purple','kitW','Nessuna ruota']];
+    const opts=cat=>products.filter(p=>p.category===cat&&p.price>0).map(p=>`<option value="${p.id}">${esc(p.name)} · ${euro(p.price)}</option>`).join('');
+    sec.innerHTML=`<div class="container"><div class="x26-head"><span class="tiny-label">Tutto in un colpo</span><h2>Il tuo kit di partenza</h2><p>Scegli criceto, casa e ruota: finiscono nel carrello insieme.</p></div>
+      <div class="x26-slots">${slots.map((s,i)=>`${i?'<span class="x26-plus" aria-hidden="true">＋</span>':''}<label class="x26-slot ${s[3]}"><span class="x26-thumb" id="${s[4]}T"><span class="x26-emo">${s[2]}</span></span><span class="x26-lab">${s[1]}</span><select id="${s[4]}" aria-label="${s[1]}"><option value="">${s[5]}</option>${opts(s[0])}</select></label>`).join('')}</div>
+      <div class="x26-foot"><div><small>Totale del kit</small><b id="kitTot">0,00 €</b></div><button type="button" class="primary-button" id="kitGo">Aggiungi il kit al carrello</button></div></div>`;
+    sf.parentNode.insertBefore(sec,sf);
+    const ids=['#kitH','#kitC','#kitW'];
+    const picks=()=>ids.map(x=>$(x).value).filter(Boolean);
+    const thumb=(sel,emo)=>{const p=$(sel).value?getProduct($(sel).value):null;$(sel+'T').innerHTML=p&&p.image?`<img alt="" src="${p.image}">`:`<span class="x26-emo">${emo}</span>`};
+    const upd=()=>{ids.forEach((x,i)=>thumb(x,slots[i][2]));const t=picks().reduce((a,id)=>a+getProduct(id).price,0);$('#kitTot').textContent=euro(t);$('#kitGo').disabled=!picks().length};
+    ids.forEach(x=>$(x).onchange=upd);
+    $('#kitH').value='h1';$('#kitC').value='ga1';$('#kitW').value='w1';upd();
+    $('#kitGo').onclick=()=>{const list=picks();list.forEach(id=>{cart[id]=(cart[id]||0)+1});updateCartCount();renderCart();showToast('🎁','Kit nel carrello',list.length+(list.length===1?' articolo':' articoli')+' · '+$('#kitTot').textContent)}}
 
   /* 7 · cancella i miei dati */
   const navs=$$('footer .footer-links');const fn=navs[navs.length-1];
@@ -10645,7 +10669,7 @@ window.__initMini=function(){
 
   /* 8 · gioco del giorno + serie */
   const GAMES=[['gara','Gara di criceti','🏁'],['memory','Memory dei criceti','🧠'],['acchiappa','Acchiappa il criceto','🐹'],['semi','Semi al volo','🌻'],['simon','Simon dei criceti','🎵'],['salta','Salta il calzino','🧦'],['nonogram','Nonogram dei criceti','🔲'],['quiz','Che criceto sei?','❓'],['picross','Picross a colori','🎨']];
-  const hub=$('.games-grid');let banner=null;
+  const hub=$('#giochi .games-grid');let banner=null;
   if(hub){banner=mk('div','x25-daily');hub.insertAdjacentElement('beforebegin',banner)}
   const dayN=()=>Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5);
   function paintDaily(){
